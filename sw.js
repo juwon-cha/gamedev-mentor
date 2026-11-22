@@ -1,6 +1,6 @@
 /* 앱 셸과 문제 JSON을 캐시해 오프라인에서도 복습할 수 있게 합니다.
    네트워크 우선이라 문제를 추가해 push하면 다음 접속 때 바로 반영되고, 오프라인일 때만 캐시를 씁니다. */
-const CACHE = 'gdm-v6';
+const CACHE = 'gdm-v7';
 const SHELL = [
   './', './index.html', './css/style.css',
   './js/storage.js', './js/editor.js', './js/rubric.js', './js/judge.js', './js/promptBuilder.js', './js/app.js',

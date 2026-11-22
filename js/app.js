@@ -128,6 +128,7 @@ const state = {
   problems: [],
   sources: {},
   loadErrors: [],
+  pending: [],
   filters: Object.assign({ track: 'all', mode: 'all', diff: 'all', status: 'all', tag: '', q: '' }, (Storage.ui.get().filters) || {}),
   currentId: Storage.ui.get().currentId || null,
 };
@@ -168,9 +169,12 @@ async function loadData() {
       // 트랙 파일이 자체 선언한 추가 출처를 레지스트리에 합칩니다.
       (j.extraSources || []).forEach(s => { if (s && s.id && !state.sources[s.id]) state.sources[s.id] = { kind: '레퍼런스', ...s, tracks: [t.id] }; });
       return (j.problems || []).map(p => ({ ...p, track: p.track || t.id, trackName: j.trackName || t.short }));
-    } catch (e) { t.failed = true; if (!/HTTP 404/.test(e.message)) state.loadErrors.push(`${t.file}: ${e.message}`); return []; }
+    } catch (e) { t.failed = true; return []; }
   }));
-  TRACKS = TRACKS.filter(t => !t.failed); // 아직 문제 파일이 없는 트랙은 숨깁니다
+  // 문제 파일을 읽지 못한 트랙(아직 공개 전이거나 일시적 오류)은 목록에서 빼고 '준비 중'으로 안내합니다.
+  state.pending = TRACKS.filter(t => t.failed).map(t => t.short);
+  if (TRACKS.length && state.pending.length === TRACKS.length) state.loadErrors.push('문제 파일을 하나도 읽지 못했습니다. 인터넷 연결을 확인한 뒤 새로고침하세요.');
+  TRACKS = TRACKS.filter(t => !t.failed);
   state.problems = results.flat().filter(p => p && p.id && p.title);
 }
 
@@ -189,14 +193,14 @@ function renderFilters() {
 }
 function renderList() {
   const list = filtered();
-  $('#list-count').textContent = `${list.length}문제 / 전체 ${state.problems.length}문제`;
+  $('#list-count').textContent = `${list.length}문제 / 전체 ${state.problems.length}문제` + (state.pending.length ? ` · 준비 중: ${state.pending.map(x => x.split(':')[0]).join(', ')}` : '');
   $('#problem-list').innerHTML = list.length ? list.map(p => {
     const e = Storage.get(p.id);
     return `<li><button type="button" class="pitem" data-open="${esc(p.id)}" aria-current="${p.id === state.currentId}">
       <span class="pitem-title"><i class="dot st-${statusBucket(e)}" title="${esc(STATUS_LABEL[e.status] || '미풀이')}"></i>${esc(p.title)}</span>
       <span class="pitem-meta">${esc(trackOf(p.track).short.split(':')[0])} · ${esc(modeName(p.mode))} · ${esc(diffName(p.difficulty))}${Judge.can(p) ? ' · 실행 채점' + (e.judge && e.judge.total ? ` ${e.judge.passed}/${e.judge.total}` : '') : ''}${e.rubric ? ` · ${e.rubric.score}점` : ''}</span>
     </button></li>`;
-  }).join('') : `<li class="empty">${state.loadErrors.length ? '문제 파일을 읽지 못했습니다.<br>' + state.loadErrors.map(esc).join('<br>') : '조건에 맞는 문제가 없습니다.'}</li>`;
+  }).join('') : `<li class="empty">${state.loadErrors.length ? state.loadErrors.map(esc).join('<br>') : '조건에 맞는 문제가 없습니다. 필터를 풀어 보세요.'}</li>`;
 }
 
 // ---------- rendering: 문제 ----------
@@ -521,6 +525,7 @@ $('#import-input').addEventListener('change', async e => {
   });
   await loadData();
   if (!current()) state.currentId = null;
+  if (state.filters.track !== 'all' && !TRACKS.some(t => t.id === state.filters.track)) state.filters.track = 'all';
   renderFilters(); renderList(); renderProblem(); renderWork();
   document.body.dataset.mpane = current() ? 'problem' : 'list';
   setView('study');

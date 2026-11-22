@@ -11,11 +11,17 @@ const text = arr => (arr || []).map(x => x.text).join('\n');
 
 async function run(language, source) {
   const c = COMPILERS[language];
-  const res = await fetch(`https://godbolt.org/api/compiler/${c.id}/compile`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ source, options: { userArguments: c.args, compilerOptions: { executorRequest: true }, filters: { execute: true } } }),
-  });
+  let res;
+  for (let attempt = 0; ; attempt++) {
+    res = await fetch(`https://godbolt.org/api/compiler/${c.id}/compile`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ source, options: { userArguments: c.args, compilerOptions: { executorRequest: true }, filters: { execute: true } } }),
+    });
+    // 서비스가 요청 빈도를 제한(429)하거나 일시 오류(5xx)를 내면 간격을 늘려 다시 시도합니다.
+    if ((res.status === 429 || res.status >= 500) && attempt < 5) { await new Promise(r => setTimeout(r, 8000 * (attempt + 1))); continue; }
+    break;
+  }
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const j = await res.json();
   const built = !j.buildResult || j.buildResult.code === 0;
