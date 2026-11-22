@@ -1,0 +1,1088 @@
+{
+ "track": "track6",
+ "trackName": "트랙 6 · 게임 수학",
+ "extraSources": [
+  {
+   "id": "unity-vector3-dot",
+   "title": "Unity Scripting API (6000.0) · Vector3.Dot",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/vector3/dot",
+   "summary": "내적은 두 벡터의 크기와 사이각 코사인의 곱. 정규화된 벡터면 같은 방향 1, 반대 -1, 수직 0. \"뒤에 있는가\" 판정 예제 포함."
+  },
+  {
+   "id": "unity-mathf-cos",
+   "title": "Unity Scripting API (6000.0) · Mathf.Cos",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/mathf/cos",
+   "summary": "Mathf.Cos 의 입력 각도는 라디안이라고 명시."
+  },
+  {
+   "id": "ms-mathf-cos",
+   "title": "Microsoft Learn · MathF.Cos(Single)",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.mathf.cos",
+   "summary": ".NET 의 MathF.Cos 는 라디안을 받으며, 도는 MathF.PI/180 을 곱해 변환한다고 명시."
+  },
+  {
+   "id": "unity-vector3-cross",
+   "title": "Unity Scripting API (6000.0) · Vector3.Cross",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/vector3/cross",
+   "summary": "외적 결과는 두 입력에 수직이고 크기는 |a||b|sin. 결과 방향을 \"왼손 법칙\"으로 정한다고 설명."
+  },
+  {
+   "id": "unity-vector2-signedangle",
+   "title": "Unity Scripting API (6000.0) · Vector2.SignedAngle",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/vector2/signedangle",
+   "summary": "두 2D 벡터 사이의 부호 있는 반시계 방향 각도를 도 단위로, -180 ~ 180 범위에서 반환."
+  },
+  {
+   "id": "wiki-cross-product",
+   "title": "Wikipedia — Cross product",
+   "url": "https://en.wikipedia.org/wiki/Cross_product",
+   "summary": "외적의 성분식(셋째 성분 a1b2 - a2b1), 크기 |a||b||sin θ|, 오른손 법칙과 공간의 방향(orientation) 의존성."
+  },
+  {
+   "id": "unity-time-deltatime",
+   "title": "Unity Scripting API (6000.0) · Time.deltaTime",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/time/deltatime",
+   "summary": "직전 프레임에서 현재 프레임까지의 간격(초). FixedUpdate 안에서는 fixedDeltaTime 을 반환."
+  },
+  {
+   "id": "wiki-exponential-smoothing",
+   "title": "Wikipedia — Exponential smoothing",
+   "url": "https://en.wikipedia.org/wiki/Exponential_smoothing",
+   "summary": "지수 평활 s_t = αx_t + (1-α)s_{t-1} 과, 샘플 간격 ΔT·시간 상수 τ 에 대한 α = 1 - e^(-ΔT/τ) 관계."
+  },
+  {
+   "id": "gaffer-integration-basics",
+   "title": "Gaffer On Games — Integration Basics",
+   "url": "https://gafferongames.com/post/integration_basics/",
+   "summary": "명시적 오일러와 semi-implicit 오일러의 갱신 순서와 정확도, 등가속도의 정확한 해 s = ut + ½at² 와의 비교."
+  },
+  {
+   "id": "gaffer-fix-timestep",
+   "title": "Gaffer On Games — Fix Your Timestep!",
+   "url": "https://gafferongames.com/post/fix_your_timestep/",
+   "summary": "가변 dt 시뮬레이션이 프레임률에 따라 달라지는 문제와 고정 타임스텝 + 누적기 + 보간 구조."
+  },
+  {
+   "id": "mdn-2d-collision",
+   "title": "MDN — 2D collision detection",
+   "url": "https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection",
+   "summary": "축 정렬 사각형끼리의 겹침 판정(엄격한 부등호 사용)과 원-원 판정."
+  },
+  {
+   "id": "mdn-3d-collision",
+   "title": "MDN — 3D collision detection",
+   "url": "https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_collision_detection",
+   "summary": "AABB-AABB 판정(<=, >= 사용)과, 구의 중심을 AABB 범위로 클램프해 가장 가까운 점을 구하는 구-AABB 판정."
+  },
+  {
+   "id": "wiki-line-sphere",
+   "title": "Wikipedia — Line–sphere intersection",
+   "url": "https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection",
+   "summary": "직선 x = o + du 와 구의 교점을 구하는 이차방정식, 판별식 부호에 따른 해의 개수(없음·접함·두 점)."
+  },
+  {
+   "id": "unity-rotation-manual",
+   "title": "Unity Manual (6000.0) · Rotation and orientation in Unity",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/manual/working-with-gameobjects/gameobject-fundamentals/rotation-orientation/quaternion-and-euler-rotations-in-unity",
+   "summary": "오일러 각의 적용 순서(z, x, y 순 extrinsic), 짐벌 락의 정의, Unity 가 회전을 내부적으로 쿼터니언으로 저장하는 이유."
+  },
+  {
+   "id": "unity-quaternion",
+   "title": "Unity Scripting API (6000.0) · Quaternion",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/quaternion",
+   "summary": "쿼터니언은 {x,y,z,w} 네 실수. 짐벌 락 없이 보간 가능, 정규화되어 있어야 하며 성분을 직접 수정하지 말라는 경고."
+  },
+  {
+   "id": "unity-quaternion-multiply",
+   "title": "Unity Scripting API (6000.0) · Quaternion.operator *",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/quaternion/op-multiply",
+   "summary": "lhs * rhs 는 rhs 를 먼저, 그다음 lhs 를 원래 기준 좌표계에 대해 적용한 회전. 교환법칙이 성립하지 않음. quaternion * vector 로 점을 회전."
+  },
+  {
+   "id": "unity-quaternion-lerp",
+   "title": "Unity Scripting API (6000.0) · Quaternion.Lerp",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/quaternion/lerp",
+   "summary": "보간 후 정규화. Slerp 보다 빠르지만 두 회전이 멀면 각속도가 일정하지 않다고 명시."
+  },
+  {
+   "id": "unity-quaternion-lookrotation",
+   "title": "Unity Scripting API (6000.0) · Quaternion.LookRotation",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/quaternion/lookrotation",
+   "summary": "Z 축을 forward 에 맞추는 회전 생성. forward 가 0 이면 오류 로그와 identity, forward 와 upwards 가 일직선이면 FromToRotation 과 같은 결과."
+  },
+  {
+   "id": "unity-transform-transformpoint",
+   "title": "Unity Scripting API (6000.0) · Transform.TransformPoint",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/transform/transformpoint",
+   "summary": "위치를 로컬 → 월드로 변환(스케일의 영향을 받음). 방향 벡터는 TransformDirection, 역변환은 InverseTransformPoint."
+  },
+  {
+   "id": "unity-transform-transformdirection",
+   "title": "Unity Scripting API (6000.0) · Transform.TransformDirection",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/transform/transformdirection",
+   "summary": "방향을 로컬 → 월드로 변환. 스케일과 위치의 영향을 받지 않고 길이가 유지됨."
+  },
+  {
+   "id": "wiki-slerp",
+   "title": "Wikipedia — Slerp",
+   "url": "https://en.wikipedia.org/wiki/Slerp",
+   "summary": "Slerp 공식과 일정 각속도 성질, q 와 -q 가 같은 회전이라 내적이 음수면 한쪽 부호를 뒤집어 짧은 경로를 택하는 방법."
+  },
+  {
+   "id": "unity-transform-eulerangles",
+   "title": "Unity Scripting API (6000.0) · Transform.eulerAngles",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/transform/eulerangles",
+   "summary": "오일러 각은 Z, X, Y 순서로 적용. 같은 회전을 나타내는 오일러 각 표현이 여러 개라 읽어 온 값이 대입한 값과 크게 다를 수 있으므로, 읽은 값을 조금씩 누적하는 방식에 의존하지 말라고 권고."
+  },
+  {
+   "id": "unity-mathematics-trs",
+   "title": "Unity Mathematics (1.3) · float4x4.TRS",
+   "url": "https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/api/Unity.Mathematics.float4x4.TRS.html",
+   "summary": "스케일·회전·이동을 합친 행렬을 반환하며 mul(translationTransform, mul(rotationTransform, scaleTransform)) 과 같다고 명시(스케일 → 회전 → 이동 순서로 적용)."
+  },
+  {
+   "id": "ms-matrix4x4",
+   "title": "Microsoft Learn · Matrix4x4 Struct (System.Numerics)",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4",
+   "summary": "행렬 변환에서 Vector2/3/4 는 행(row)으로 표현되며 벡터 v 는 행렬 M 으로 vM 곱셈으로 변환된다고 명시."
+  },
+  {
+   "id": "blow-understanding-slerp",
+   "title": "Jonathan Blow — Understanding Slerp, Then Not Using It",
+   "url": "http://number-none.com/product/Understanding%20Slerp,%20Then%20Not%20Using%20It/",
+   "summary": "slerp 와 nlerp(정규화한 선형 보간)의 성질 비교: 둘 다 최단(torque-minimal) 경로를 지나지만 nlerp 는 속도가 일정하지 않고 대신 교환법칙이 성립한다."
+  }
+ ],
+ "problems": [
+  {
+   "id": "t6-impl-fov-dot-sight",
+   "track": "track6",
+   "mode": "implementation",
+   "difficulty": "Medium",
+   "title": "경비병 시야 판정: 내적으로 시야각(FOV)과 거리 검사하기",
+   "tags": [
+    "Math_DotProduct",
+    "Math_FieldOfView"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "unity-vector3-dot",
+    "ms-mathf-cos",
+    "unity-mathf-cos"
+   ],
+   "scenario": "잠입 액션 게임에서 경비병 최대 **200명**이 매 프레임 \"플레이어가 내 시야 원뿔 안에 있는가\"를 검사합니다. 기존 코드는 각도를 `Acos` 로 직접 구하고 거리를 `Sqrt` 로 구해 비교했는데, 프로파일러에서 이 함수가 AI 틱의 상위권에 올라왔습니다.\n\n**할 일:** 내적을 이용해 `Vision.IsInSight` 를 구현하세요. 시야는 관찰자 위치를 꼭짓점으로 하는 3D 원뿔입니다(높이 차이도 각도에 포함).\n\n1. **거리:** 관찰자에서 타깃까지의 거리가 `viewDistance` 이하(경계 포함)여야 합니다.\n2. **각도:** `observerForward` 와 타깃 방향 사이의 각이 `fovDegrees / 2` 이하(경계 포함)여야 합니다. `fovDegrees` 는 시야각 **전체**입니다.\n3. 타깃이 관찰자와 **같은 위치**면 방향을 정의할 수 없으므로 `true` 로 약속합니다(이미 붙어 있음).\n4. `observerForward` 가 영벡터이거나 `viewDistance < 0`, `fovDegrees <= 0` 이면 `false`. `fovDegrees >= 360` 이면 거리만 검사합니다.\n5. `observerForward` 는 **정규화되어 있지 않을 수 있습니다**(길이 10 이든 0.001 이든 결과가 같아야 함).\n\nUnityEngine 없이 `System.Numerics.Vector3` 로 작성합니다. Unity 의 `Vector3.Dot` 도 같은 값을 계산하고, `MathF.Cos` 와 Unity 의 `Mathf.Cos` 는 둘 다 **라디안**을 받습니다. 벽에 가려졌는지(레이캐스트)는 이 함수의 범위가 아닙니다.\n\n부동소수 오차 때문에 숨은 테스트는 각도 경계에서 0.5도, 거리 경계에서 0.01 이상 떨어진 입력만 판정합니다(단, `(0,0,10)` 과 시야 거리 10 처럼 오차 없이 계산되는 \"거리 == viewDistance\" 는 검사합니다). 따라서 정확히 `fovDegrees / 2` 인 방향을 포함하는지(`>=` 와 `>` 의 차이)는 실행으로 구분되지 않으며, 각도의 경계 포함 정책은 채점표에서 스스로 확인합니다.",
+   "constraints": [
+    "시간 O(1), 힙 할당 없음.",
+    "Acos / Atan2 등 역삼각함수 사용 금지. 각도를 구하지 말고 cos(fov/2) 와 내적을 비교한다.",
+    "거리 판정은 제곱 거리끼리 비교한다. 목표는 함수 전체에서 Sqrt(Length, Distance, Normalize 포함) 0회, 삼각함수는 Cos 1회.",
+    "IsInSight 의 시그니처를 바꾸지 않는다."
+   ],
+   "starterCode": "using System;\nusing System.Numerics;\n\npublic static class Vision\n{\n    // observerPos 에 서서 observerForward 방향을 보는 적이 targetPos 를 볼 수 있으면 true.\n    // fovDegrees : 시야각 \"전체\" 각도(도). 중심선에서 fovDegrees / 2 까지 보인다.\n    // viewDistance : 시야 거리. 거리 == viewDistance 는 보이는 것으로 처리한다.\n    // observerForward 는 정규화되어 있지 않을 수 있다.\n    public static bool IsInSight(Vector3 observerPos, Vector3 observerForward,\n                                 Vector3 targetPos, float fovDegrees, float viewDistance)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "타깃이 관찰자와 같은 위치: 방향 벡터가 영벡터라 정규화하면 NaN 이 나온다. 약속대로 true.",
+    "원뿔 경계: fov 90 이면 중심선에서 45도까지 포함. cos(fov) 가 아니라 cos(fov/2) 와 비교해야 한다(60도 방향은 제외).",
+    "타깃이 뒤에 있을 때(내적 음수): 양변을 제곱해 비교하면 부호가 사라져 뒤쪽이 보이는 것으로 판정될 수 있다.",
+    "거리 == viewDistance 는 포함, 조금이라도 넘으면 제외. 각도는 맞지만 거리 밖인 경우.",
+    "정규화되지 않은 forward (길이 10, 0.001, (3,0,3)) 와 180도를 넘는 시야각(fov 270: cos(fov/2) 가 음수)."
+   ],
+   "hints": [
+    "내적의 정의는 `a·b = |a||b|cos θ` 입니다. cos 은 0~180도에서 단조 감소하므로 \"θ <= 반각\" 은 \"cos θ >= cos(반각)\" 과 같습니다. 반례로 확인해 보세요: fov 90, forward (0,0,1) 일 때 중심선에서 60도 벗어난 타깃은 보이면 안 됩니다. `cos(90도) = 0` 과 비교하면 어떻게 되나요? 그리고 forward 가 (0,0,10) 이면 내적 값은 몇 배가 되나요?",
+    "`cos θ = dot / (|f||d|)` 에서 나눗셈과 제곱근을 없애려면 양변에 `|f||d|` 를 곱하면 됩니다. 길이 대신 길이의 제곱만 쓰고 싶다면 양변을 제곱해야 하는데, 제곱은 부호를 지웁니다. dot 이 음수일 때와 cos(반각) 이 음수일 때(fov > 180)를 각각 어떻게 처리할지 경우를 나눠 보세요. 검사 순서는 \"싼 것부터, 탈락시키기 쉬운 것부터\"입니다.",
+    "뼈대입니다. 핵심 비교식은 직접 채우세요.\n```\nIsInSight(pos, forward, target, fovDeg, viewDist):\n    잘못된 입력(forward 영벡터, 음수 거리, fov <= 0)이면 false\n    toTarget = target - pos\n    distSq = toTarget 의 길이 제곱\n    if (거리 조건을 제곱끼리 비교) return false\n    if distSq == 0: return true\n    cosHalf = cos( ____ )            // 도 → 라디안, 전체각 → 반각\n    dot = Dot(forward, toTarget)\n    // dot >= cosHalf * |forward| * |toTarget| 를 Sqrt 없이:\n    if cosHalf >= 0: return dot >= 0 && ____\n    else:            return dot >= 0 || ____\n```"
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Numerics;\n\npublic static class Vision\n{\n    public static bool IsInSight(Vector3 observerPos, Vector3 observerForward,\n                                 Vector3 targetPos, float fovDegrees, float viewDistance)\n    {\n        // 1) 잘못된 입력: 방향이 없는 forward, 음수(또는 NaN) 거리, 0 이하의 시야각\n        float forwardLenSq = observerForward.LengthSquared();\n        if (forwardLenSq == 0f || !(viewDistance >= 0f) || !(fovDegrees > 0f)) return false;\n\n        // 2) 거리: 제곱끼리 비교해 Sqrt 를 피한다 (경계 포함)\n        Vector3 toTarget = targetPos - observerPos;\n        float distSq = toTarget.LengthSquared();\n        if (distSq > viewDistance * viewDistance) return false;\n\n        // 3) 같은 위치: 방향을 정의할 수 없으므로 \"보인다\"로 약속한다\n        if (distSq == 0f) return true;\n        if (fovDegrees >= 360f) return true;\n\n        // 4) 각도: cos(theta) = dot / (|f||d|) >= cos(fov/2)\n        //    양변에 |f||d| (> 0) 를 곱하면 dot >= cosHalf * |f| * |d|.\n        //    제곱해서 Sqrt 를 없애되, 제곱은 부호를 지우므로 부호별로 나눠 비교한다.\n        float cosHalf = MathF.Cos(fovDegrees * 0.5f * (MathF.PI / 180f)); // MathF 는 라디안\n        float dot = Vector3.Dot(observerForward, toTarget);\n        float rhsSq = cosHalf * cosHalf * forwardLenSq * distSq;\n\n        if (cosHalf >= 0f)                      // 시야각 180도 이하: 앞쪽 반공간 안에서만 보인다\n            return dot >= 0f && dot * dot >= rhsSq;\n        return dot >= 0f || dot * dot <= rhsSq; // 180도 초과: 뒤쪽 일부까지 보인다\n    }\n}\n",
+   "explanation": "**접근.** 각도를 구하지 않습니다. 내적은 `f·d = |f||d|cos θ` 이고(Unity 의 Vector3.Dot 문서도 같은 정의를 씁니다) cos 은 0~180도에서 단조 감소하므로, \"θ <= fov/2\" 는 \"cos θ >= cos(fov/2)\" 와 동치입니다. `cos(fov/2)` 는 경비병마다 한 번만 계산해 캐시할 수 있는 상수이고, 나머지는 곱셈과 비교뿐입니다.\n\n**Sqrt 없애기.** `dot / (|f||d|) >= cosHalf` 의 양변에 양수 `|f||d|` 를 곱하면 `dot >= cosHalf·|f|·|d|` 입니다. 길이의 제곱만 쓰려면 양변을 제곱해야 하는데 제곱은 부호를 지우므로 경우를 나눕니다.\n\n- `cosHalf >= 0` (fov 180 이하): 우변이 0 이상이라 `dot < 0` 이면 무조건 탈락, 아니면 `dot² >= cosHalf²·|f|²·|d|²`.\n- `cosHalf < 0` (fov 180 초과): `dot >= 0` 이면 무조건 통과, 아니면 양변이 모두 음수이므로 부등호가 뒤집혀 `dot² <= cosHalf²·|f|²·|d|²`.\n\n`|f|²` 을 곱해 두었기 때문에 forward 가 정규화되어 있지 않아도 결과가 같습니다.\n\n**검사 순서.** 거리 검사(뺄셈 3번, 곱셈 4번)가 가장 싸고 대부분의 타깃을 탈락시키므로 먼저 합니다. 같은 위치(`distSq == 0`)는 방향이 없어서 정규화하면 0 으로 나누게 되는 지점이라 각도 계산 전에 반환합니다. 복잡도는 O(1), 할당은 없습니다.\n\n**흔한 실수.**\n- `cos(fov)` 와 비교: 시야가 의도의 두 배가 됩니다. fov 90 이면 옆(90도)까지 보입니다.\n- 도를 그대로 `Cos` 에 전달: MathF.Cos 와 Unity 의 Mathf.Cos 모두 라디안을 받습니다. `MathF.PI / 180` (Unity 는 `Mathf.Deg2Rad`)을 곱해야 합니다.\n- forward 가 단위 벡터라고 가정: 길이 10 인 forward 로는 내적이 10배가 되어 시야가 훨씬 넓어집니다(fov 90 이면 조건이 `cos θ >= cos 45° / 10` 이 되어 약 86도 방향까지 통과).\n- 부호 처리 없이 제곱 비교: 정확히 뒤에 있는 타깃이 \"정면\"으로 판정됩니다.\n\n**실무 메모.** float 연산이므로 경계 위(정확히 45도)의 판정은 반올림 오차에 따라 어느 쪽으로든 나올 수 있습니다. 시야 판정처럼 경계가 게임플레이에 민감하지 않은 곳에서는 문제가 되지 않지만, 테스트를 쓸 때는 경계에서 조금 떨어진 값을 써야 합니다. 실제 게임에서는 이 함수가 true 일 때만 비싼 레이캐스트(가림 판정)를 수행하는 2단계 구조가 일반적입니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "각도 판정이 cos(fov/2) 기준이다: fov 90, forward (0,0,1) 에서 44.5도 방향은 true, 45.5도와 60도 방향은 false 가 나온다.",
+      "points": 15,
+      "sourceId": "unity-vector3-dot"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "거리 == viewDistance 는 true, 초과는 false 이고, 타깃이 같은 위치면 true, forward 가 영벡터면 false 를 반환한다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "forward 를 (0,0,10) 이나 (0,0,0.001) 로 바꿔도 (0,0,1) 일 때와 결과가 같다(정규화 가정 없음). 뒤쪽 타깃(내적 음수)은 fov 180 이하에서 항상 false 다.",
+      "points": 10,
+      "sourceId": "unity-vector3-dot"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "함수 안에 Acos, Atan2 등 역삼각함수 호출이 없다.",
+      "points": 15,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "거리 판정을 제곱 거리로 하고, 함수 전체에 Sqrt / Length() / Distance / Normalize 호출이 없다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "거리 검사가 각도 계산(Cos 호출)보다 먼저 있고, 힙 할당(new 클래스, 배열, LINQ)이 없다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "Cos 에 넘기기 전에 도를 라디안으로 바꾸고(× PI/180) 전체각을 반으로 나눈다.",
+      "points": 10,
+      "sourceId": "ms-mathf-cos"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "float 리터럴(f)과 MathF 를 써서 double 로 승격되는 연산이 없고, 0 으로 나누거나 영벡터를 정규화하는 경로가 없다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "입력 검증 → 거리 → 같은 위치 → 각도 순서로 읽히고 각 단계가 early return 으로 끝난다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "cosHalf 같은 이름이나 주석으로 \"전체각의 절반\"과 경계 포함(>=, <=) 정책이 코드에 드러난다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "cos(fov/2) 가 아니라 cos(fov) 와 비교한다: 시야각이 의도의 두 배가 된다.",
+      "penalty": -20,
+      "sourceId": ""
+     },
+     {
+      "id": "d2",
+      "description": "Acos(또는 Vector3.Angle 류)로 각도를 구해 비교한다: 제약 위반이며 200명 × 매 프레임 호출에서 불필요한 비용이다.",
+      "penalty": -15,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "forward 가 단위 벡터라고 가정해 길이가 1 이 아니면 결과가 달라진다.",
+      "penalty": -15,
+      "sourceId": ""
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector3 V(float x, float y, float z) { return new System.Numerics.Vector3(x, y, z); }\n\n    // forward = +Z 기준으로 수평 또는 수직 방향으로 deg 만큼 벗어난, 거리 dist 의 점\n    static System.Numerics.Vector3 At(double deg, float dist, bool vertical)\n    {\n        double r = deg * System.Math.PI / 180.0;\n        float s = (float)(System.Math.Sin(r) * dist), c = (float)(System.Math.Cos(r) * dist);\n        return vertical ? V(0f, s, c) : V(s, 0f, c);\n    }\n\n    static string Check(string what, System.Numerics.Vector3 pos, System.Numerics.Vector3 fwd, System.Numerics.Vector3 target, float fov, float dist, bool expected)\n    {\n        bool got = Vision.IsInSight(pos, fwd, target, fov, dist);\n        if (got == expected) return null;\n        return what + \": 관찰자 \" + pos + \", forward \" + fwd + \", 타깃 \" + target + \", fov \" + fov + \", 시야 거리 \" + dist + \" → 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    public static void Main()\n    {\n        var O = V(0f, 0f, 0f);\n        var F = V(0f, 0f, 1f);\n\n        Run(\"front-and-behind\", () =>\n            Check(\"정면\", O, F, V(0f, 0f, 5f), 90f, 10f, true)\n            ?? Check(\"정반대(뒤)\", O, F, V(0f, 0f, -5f), 90f, 10f, false)\n            ?? Check(\"바로 옆(90도)\", O, F, V(5f, 0f, 0f), 90f, 10f, false)\n            ?? Check(\"원점이 아닌 관찰자, -X 를 보는 중\", V(10f, 2f, -3f), V(-1f, 0f, 0f), V(4f, 2f, -3f), 60f, 10f, true)\n            ?? Check(\"원점이 아닌 관찰자의 뒤쪽\", V(10f, 2f, -3f), V(-1f, 0f, 0f), V(16f, 2f, -3f), 60f, 10f, false));\n\n        Run(\"half-angle-not-full-angle\", () =>\n            Check(\"fov 90 에서 44.5도\", O, F, At(44.5, 5f, false), 90f, 10f, true)\n            ?? Check(\"fov 90 에서 45.5도\", O, F, At(45.5, 5f, false), 90f, 10f, false)\n            ?? Check(\"fov 90 에서 60도 (cos(fov) 와 비교하면 통과해 버림)\", O, F, At(60, 5f, false), 90f, 10f, false)\n            ?? Check(\"fov 90 에서 왼쪽 44.5도\", O, F, At(-44.5, 5f, false), 90f, 10f, true)\n            ?? Check(\"fov 120 에서 위로 59.5도\", O, F, At(59.5, 5f, true), 120f, 10f, true)\n            ?? Check(\"fov 120 에서 위로 60.5도\", O, F, At(60.5, 5f, true), 120f, 10f, false)\n            ?? Check(\"fov 30 에서 20도\", O, F, At(20, 5f, false), 30f, 10f, false));\n\n        Run(\"distance-limit\", () =>\n            Check(\"거리 == viewDistance (포함)\", O, F, V(0f, 0f, 10f), 90f, 10f, true)\n            ?? Check(\"거리 10.01 > 10\", O, F, V(0f, 0f, 10.01f), 90f, 10f, false)\n            ?? Check(\"대각선 (0,3,4) 는 거리 5\", O, F, V(0f, 3f, 4f), 90f, 5f, true)\n            ?? Check(\"대각선 (0,3,4), 시야 거리 4.99\", O, F, V(0f, 3f, 4f), 90f, 4.99f, false)\n            ?? Check(\"각도는 맞지만 너무 멂\", O, F, V(1f, 0f, 50f), 90f, 10f, false));\n\n        Run(\"target-at-observer\", () =>\n            Check(\"같은 위치는 보이는 것으로 약속\", V(3f, 1f, -2f), F, V(3f, 1f, -2f), 60f, 10f, true)\n            ?? Check(\"같은 위치, 시야 거리 0\", V(3f, 1f, -2f), F, V(3f, 1f, -2f), 60f, 0f, true));\n\n        Run(\"non-normalized-forward\", () =>\n            Check(\"forward 길이 10, 60도 방향\", O, V(0f, 0f, 10f), At(60, 5f, false), 90f, 10f, false)\n            ?? Check(\"forward 길이 10, 30도 방향\", O, V(0f, 0f, 10f), At(30, 5f, false), 90f, 10f, true)\n            ?? Check(\"forward 길이 0.001, 정면\", O, V(0f, 0f, 0.001f), V(0f, 0f, 5f), 90f, 10f, true)\n            ?? Check(\"forward (3,0,3), 타깃 +X 방향(45도 차이)\", O, V(3f, 0f, 3f), V(5f, 0f, 0f), 100f, 10f, true)\n            ?? Check(\"forward (3,0,3), 타깃 -X 방향(135도 차이)\", O, V(3f, 0f, 3f), V(-5f, 0f, 0f), 100f, 10f, false));\n\n        Run(\"wide-fov\", () =>\n            Check(\"fov 270 에서 130도\", O, F, At(130, 5f, false), 270f, 10f, true)\n            ?? Check(\"fov 270 에서 140도\", O, F, At(140, 5f, false), 270f, 10f, false)\n            ?? Check(\"fov 270 에서 정면\", O, F, V(0f, 0f, 5f), 270f, 10f, true)\n            ?? Check(\"fov 360 에서 정반대\", O, F, V(0f, 0f, -5f), 360f, 10f, true)\n            ?? Check(\"fov 360 이어도 거리 밖\", O, F, V(0f, 0f, -11f), 360f, 10f, false)\n            ?? Check(\"fov 400 (360 이상은 거리만 검사) 에서 정반대\", O, F, V(0f, 0f, -5f), 400f, 10f, true));\n\n        Run(\"invalid-input\", () =>\n            Check(\"forward 가 영벡터\", O, V(0f, 0f, 0f), V(0f, 0f, 5f), 90f, 10f, false)\n            ?? Check(\"음수 시야 거리\", O, F, V(0f, 0f, 5f), 90f, -1f, false)\n            ?? Check(\"시야각 0 (정면이어도 false)\", O, F, V(0f, 0f, 5f), 0f, 10f, false)\n            ?? Check(\"음수 시야각\", O, F, V(0f, 0f, 5f), -90f, 10f, false));\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int tested = 0;\n            for (int i = 0; i < 4000; i++)\n            {\n                var pos = V((float)(rng.NextDouble() * 40 - 20), (float)(rng.NextDouble() * 10 - 5), (float)(rng.NextDouble() * 40 - 20));\n                var fwd = V((float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1));\n                if (fwd.Length() < 0.2f) continue;\n                fwd *= (float)(0.1 + rng.NextDouble() * 20);\n                var target = pos + V((float)(rng.NextDouble() * 30 - 15), (float)(rng.NextDouble() * 30 - 15), (float)(rng.NextDouble() * 30 - 15));\n                float fov = (float)(10 + rng.NextDouble() * 340);\n                float view = 12f;\n                // 기준 구현: double + Acos 로 각도를 직접 구한다\n                double dx = (double)target.X - pos.X, dy = (double)target.Y - pos.Y, dz = (double)target.Z - pos.Z;\n                double d = System.Math.Sqrt(dx * dx + dy * dy + dz * dz);\n                double fl = System.Math.Sqrt((double)fwd.X * fwd.X + (double)fwd.Y * fwd.Y + (double)fwd.Z * fwd.Z);\n                if (d < 0.05) continue;\n                double cos = (dx * fwd.X + dy * fwd.Y + dz * fwd.Z) / (d * fl);\n                double ang = System.Math.Acos(System.Math.Max(-1.0, System.Math.Min(1.0, cos))) * 180.0 / System.Math.PI;\n                // 경계 근처(각도 0.5도, 거리 0.01 이내)는 부동소수 오차 때문에 판정하지 않는다\n                if (System.Math.Abs(ang - fov * 0.5) < 0.5 || System.Math.Abs(d - view) < 0.01) continue;\n                bool expected = d <= view && ang <= fov * 0.5;\n                tested++;\n                string e = Check(\"무작위 #\" + i + \" (각도 \" + ang.ToString(\"F1\") + \"도, 거리 \" + d.ToString(\"F2\") + \")\", pos, fwd, target, fov, view, expected);\n                if (e != null) return e;\n            }\n            return tested > 3000 ? null : \"검사한 표본 수가 부족함: \" + tested;\n        });\n    }\n}\n",
+    "cases": [
+     "front-and-behind",
+     "half-angle-not-full-angle",
+     "distance-limit",
+     "target-at-observer",
+     "non-normalized-forward",
+     "wide-fov",
+     "invalid-input",
+     "random-vs-reference"
+    ],
+    "note": "정면/뒤, 반각 비교(fov 90 에서 44.5도·45.5도·60도), 거리 경계, 같은 위치, 정규화되지 않은 forward, 180도 초과·360도 이상 시야각, 잘못된 입력(영벡터 forward, 음수 거리, 0 이하 시야각), 그리고 double + Acos 기준 구현과의 무작위 비교를 검사합니다. 각도 경계 0.5도·거리 경계 0.01 이내의 입력은 판정하지 않으므로(오차 없이 계산되는 \"거리 == viewDistance\" 는 예외) 정확히 반각 위의 방향을 포함하는지는 실행으로 구분되지 않습니다. Acos/Sqrt 사용 여부는 실행으로 검사할 수 없어 채점표에서 봅니다. Vision.IsInSight(Vector3, Vector3, Vector3, float, float) 시그니처는 바꾸면 안 됩니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "모범 답안·시작 코드를 채점 서버에서 실행하고, Acos 기반 정답·cos(fov) 오답·부호 없는 제곱 비교 오답을 로컬 dotnet 으로 돌려 테스트 판정을 확인했으며 Unity·Microsoft 문서로 내적 정의와 라디안 규약을 대조했습니다."
+   },
+   "nextMission": "경비병 200명의 cos(fov/2) 와 viewDistance² 를 미리 계산해 배열에 담아 두고, \"거리 → 각도\" 순서와 \"각도 → 거리\" 순서의 판정 시간을 Stopwatch 로 비교해 보세요. 그다음 시야를 수평각과 수직각이 다른 사각뿔(카메라 프러스텀 형태)로 바꿔 구현해 봅니다."
+  },
+  {
+   "id": "t6-impl-turret-cross-signed-angle",
+   "track": "track6",
+   "mode": "implementation",
+   "difficulty": "Medium",
+   "title": "포탑 회전 방향: 2D 외적으로 좌우 판정과 부호 있는 각도 구하기",
+   "tags": [
+    "Math_CrossProduct",
+    "Math_SignedAngle"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "wiki-cross-product",
+    "unity-vector2-signedangle",
+    "unity-vector3-cross",
+    "unity-rotation-manual"
+   ],
+   "scenario": "탑다운 타워 디펜스의 포탑은 초당 회전 속도가 제한되어 있어서, 매 프레임 \"타깃을 향하려면 **왼쪽으로 돌지 오른쪽으로 돌지**\"와 \"얼마나 남았는지\"를 알아야 합니다. 내적은 `cos` 만 알려 주기 때문에 30도 왼쪽과 30도 오른쪽을 구분하지 못합니다. 좌우를 가르는 것은 외적의 부호입니다.\n\n**좌표·부호 규약 (이 문제의 약속)**\n\n- `+X` 는 오른쪽, `+Y` 는 위쪽인 2D 평면입니다.\n- **반시계 방향(왼쪽으로 도는 방향)이 양수**입니다. `Cross((1,0), (0,1)) = +1`.\n\n**할 일:** `TurretMath` 의 세 함수를 구현하세요.\n\n- `Cross(a, b)`: 2D 외적 `a.X*b.Y - a.Y*b.X`.\n- `TurnDirection(turretPos, turretForward, targetPos)`: 왼쪽이면 `+1`, 오른쪽이면 `-1`, 이미 정면이거나 타깃이 포탑 위치와 같으면 `0`. 타깃이 **정확히 뒤**에 있으면 `+1`(왼쪽으로 돈다고 약속).\n- `SignedAngleDegrees(from, to)`: `from` 을 `to` 로 돌리는 각도(도), 범위 `(-180, 180]`. 정반대 방향은 `+180`, 둘 중 하나가 영벡터면 `0`.\n\n입력 벡터는 정규화되어 있지 않을 수 있습니다. 각도 비교의 허용 오차는 0.001도(무작위 비교는 0.01도)입니다.\n\n**숨은 테스트가 보는 경계.** 정확히 정반대인 입력은 `(1,0) → (-1,0)` 뿐 아니라 `(0,1) → (0,-1)` 도 검사하며, 둘 다 `-180` 이 아니라 `+180` 이어야 합니다(TurnDirection 의 \"정확히 뒤 = +1\" 과 부호를 맞추기 위한 약속). 외적 값이 `+0` 이 아니라 `-0` 으로 계산되는 입력이 있다는 점에 주의하세요.\n\n**엔진 메모.** Unity 의 `Vector2.SignedAngle` 문서도 \"부호 있는 반시계 방향 각도\"를 -180 ~ 180도로 돌려준다고 설명합니다. 반면 3D 에서는 Unity 가 `Vector3.Cross` 의 방향을 **왼손 법칙**으로 설명하므로, 탑다운 3D(XZ 평면)로 옮길 때는 부호가 뒤집히지 않는지 `(1,0) → (0,1)` 같은 알려진 입력으로 반드시 확인하세요.",
+   "constraints": [
+    "시간 O(1), 힙 할당 없음.",
+    "TurnDirection 은 삼각함수, Sqrt, Normalize 없이 곱셈·뺄셈·비교만으로 구현한다.",
+    "SignedAngleDegrees 는 Atan2 를 한 번만 쓴다. Acos 로 각도를 구한 뒤 부호를 따로 붙이는 방식은 쓰지 않는다. 정규화도 하지 않는다.",
+    "부호 규약(반시계 = 양수)과 세 함수의 시그니처를 바꾸지 않는다."
+   ],
+   "starterCode": "using System;\nusing System.Numerics;\n\n// 좌표 규약: +X 가 오른쪽, +Y 가 위쪽인 2D 평면 (수학 좌표계).\n// 부호 규약: 반시계 방향(CCW, 왼쪽으로 도는 방향)이 양수.\npublic static class TurretMath\n{\n    // 2D 외적(스칼라): a.X * b.Y - a.Y * b.X\n    // b 가 a 의 왼쪽(반시계 쪽)에 있으면 양수, 오른쪽이면 음수.\n    public static float Cross(Vector2 a, Vector2 b)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 포탑이 타깃을 향하려면 어느 쪽으로 돌아야 하는가.\n    // +1 : 왼쪽(반시계), -1 : 오른쪽(시계), 0 : 이미 정면이거나 방향을 정할 수 없음.\n    // 타깃이 정확히 뒤에 있으면 +1 (왼쪽으로 돈다고 약속).\n    public static int TurnDirection(Vector2 turretPos, Vector2 turretForward, Vector2 targetPos)\n    {\n        throw new NotImplementedException();\n    }\n\n    // from 을 to 방향으로 돌리는 부호 있는 각도(도). 범위 (-180, 180].\n    // 반시계가 양수. 정반대 방향이면 +180, 둘 중 하나가 영벡터면 0.\n    public static float SignedAngleDegrees(Vector2 from, Vector2 to)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "타깃이 정확히 뒤: 외적이 0 이라 좌우를 정할 수 없다. 내적의 부호로 앞/뒤를 가르고, 뒤면 약속대로 +1 / +180.",
+    "-0 함정: from (0,1), to (0,-1) 이면 `0*(-1) - 1*0 = -0` 이고 `Atan2(-0, 음수)` 는 -180도를 돌려준다. 범위 (-180, 180] 을 지키려면 일직선을 직접 처리해야 한다.",
+    "targetPos 는 위치다. turretPos 를 빼서 방향 벡터로 만들지 않으면 포탑이 원점에 있을 때만 맞는다.",
+    "영벡터(타깃이 포탑 위치와 같음, forward 가 0): 0 을 반환하고 NaN 이 나오면 안 된다.",
+    "정규화되지 않은 벡터: (3,0) → (0,0.5) 도 +90도."
+   ],
+   "hints": [
+    "2D 외적 `a.X*b.Y - a.Y*b.X` 의 값은 `|a||b|sin θ` 입니다(θ 는 a 에서 b 로 반시계 방향으로 잰 각). sin 은 왼쪽(0~180도)에서 양수, 오른쪽에서 음수입니다. 직접 계산해 보세요: forward (0,1) 인 포탑이 (10,10) 에 있고 타깃이 (5,20) 에 있을 때, `Cross(forward, targetPos)` 와 `Cross(forward, targetPos - turretPos)` 의 부호는 각각 무엇인가요?",
+    "외적은 `|a||b|sin θ`, 내적은 `|a||b|cos θ` 입니다. 두 값의 공통 배율 `|a||b|` 는 양수이므로 `Atan2(sin 쪽, cos 쪽)` 에 그대로 넣어도 각도가 같습니다(정규화 불필요). 남는 문제는 외적이 0 인 일직선 경우뿐입니다. 이때 내적의 부호가 무엇을 알려 주는지, 그리고 `-0f` 가 Atan2 에 들어가면 어떤 값이 나오는지 확인하세요.",
+    "뼈대입니다. 빈칸은 직접 채우세요.\n```\nTurnDirection(pos, forward, targetPos):\n    toTarget = ____\n    c = Cross(forward, toTarget)\n    if c > 0: return ____\n    if c < 0: return ____\n    // 일직선: 앞인가 뒤인가?\n    return (____ < 0) ? 1 : 0\n\nSignedAngleDegrees(from, to):\n    c = Cross(from, to);  d = Dot(from, to)\n    if c == 0: return (d < 0) ? 180 : 0     // -0 과 영벡터까지 여기서 처리\n    return Atan2( ____, ____ ) 를 도로 변환\n```"
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Numerics;\n\n// 좌표 규약: +X 가 오른쪽, +Y 가 위쪽인 2D 평면 (수학 좌표계).\n// 부호 규약: 반시계 방향(CCW, 왼쪽으로 도는 방향)이 양수.\npublic static class TurretMath\n{\n    // 3D 외적 (ax, ay, 0) x (bx, by, 0) 의 z 성분. 값은 |a||b|sin(theta).\n    public static float Cross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;\n\n    public static int TurnDirection(Vector2 turretPos, Vector2 turretForward, Vector2 targetPos)\n    {\n        Vector2 toTarget = targetPos - turretPos; // 위치가 아니라 \"포탑에서 타깃으로 가는 방향\"\n        float cross = Cross(turretForward, toTarget);\n        if (cross > 0f) return 1;   // 타깃이 왼쪽\n        if (cross < 0f) return -1;  // 타깃이 오른쪽\n        // 일직선: 내적으로 앞/뒤를 가른다. 뒤면 왼쪽으로 돈다고 약속.\n        return Vector2.Dot(turretForward, toTarget) < 0f ? 1 : 0;\n    }\n\n    public static float SignedAngleDegrees(Vector2 from, Vector2 to)\n    {\n        float cross = Cross(from, to);      // |a||b|sin\n        float dot = Vector2.Dot(from, to);  // |a||b|cos\n        // 일직선(또는 영벡터)은 직접 처리한다.\n        // cross 가 -0 이면 Atan2(-0, 음수) 가 -180 을 돌려줘 범위 (-180, 180] 이 깨진다.\n        if (cross == 0f) return dot < 0f ? 180f : 0f;\n        // Atan2 는 두 인자의 공통 배율(|a||b|)에 영향받지 않으므로 정규화가 필요 없다.\n        return MathF.Atan2(cross, dot) * (180f / MathF.PI);\n    }\n}\n",
+   "explanation": "**접근.** 2D 벡터를 `(x, y, 0)` 으로 확장해 3D 외적을 구하면 z 성분만 남고 그 값이 `a.X*b.Y - a.Y*b.X` 입니다(Wikipedia 의 성분식에서 셋째 성분 `a1b2 - a2b1`). 크기는 `|a||b||sin θ|` 이고 부호는 b 가 a 의 어느 쪽에 있는지를 알려 줍니다. `+X` 오른쪽 · `+Y` 위 좌표계에서는 양수가 반시계(왼쪽)입니다.\n\n**TurnDirection.** 좌우 판정에는 각도가 필요 없습니다. `Cross(forward, target - pos)` 의 부호만 보면 되므로 곱셈 2번, 뺄셈 3번으로 끝납니다. 외적이 0 인 경우는 타깃이 forward 직선 위에 있다는 뜻이고, 앞인지 뒤인지는 내적의 부호로 가릅니다. 뒤일 때 어느 쪽으로 돌지는 수학적으로 정해지지 않으므로 \"왼쪽(+1)\"이라는 약속을 코드에 명시했습니다.\n\n**SignedAngleDegrees.** 외적은 `|a||b|sin θ`, 내적은 `|a||b|cos θ` 이므로 `Atan2(cross, dot)` 이 바로 부호 있는 각도입니다. Atan2 는 두 인자에 같은 양수를 곱해도 결과가 같아서 정규화(Sqrt 2번)가 필요 없습니다. `Acos(dot)` 방식은 0~180도만 돌려줘 좌우를 잃고, 인자를 [-1, 1] 로 클램프하지 않으면 반올림 오차로 NaN 이 나오며, 0도와 180도 근처에서 정밀도가 나쁩니다.\n\n**-0 함정.** IEEE 754 에서 `0*(-1) - 1*0` 은 `-0` 이고 `Atan2(-0, 음수)` 는 `-π` 입니다. 그래서 from (0,1), to (0,-1) 에서 단순 구현은 -180 을 돌려줘 범위 `(-180, 180]` 을 깨고, TurnDirection(+1) 과 부호가 어긋납니다(반면 (1,0) → (-1,0) 은 외적이 `+0` 이라 단순 구현도 +180 이 나옵니다). `cross == 0f` 비교는 -0 에도 참이므로 일직선을 먼저 분기하면 영벡터(0 반환)까지 한 번에 처리됩니다. 참고로 정반대에서 오른쪽으로 아주 조금만 벗어난 입력(예: 외적 -1e-9, 내적 -1)은 실제 각도가 -180 보다 조금 큰 값이지만 float 로 반올림되면 -180 으로 출력될 수 있습니다. 이것은 시계 방향으로 거의 반 바퀴라는 올바른 답이며, 약속(+180)이 적용되는 것은 외적이 정확히 0 인 경우뿐입니다.\n\n**복잡도.** 세 함수 모두 O(1), 할당 없음. TurnDirection 에는 삼각함수가 없습니다.\n\n**흔한 실수.**\n- `targetPos` 를 방향 벡터로 착각해 `turretPos` 를 빼지 않음: 포탑이 원점일 때만 맞습니다.\n- `Cross(toTarget, forward)` 로 인자 순서를 뒤집음: 외적은 반대칭이라 부호가 정확히 반대가 됩니다.\n- 부호 규약을 확인하지 않고 엔진으로 옮김: Unity 의 Vector2.SignedAngle 은 문서상 반시계 방향 각도라 이 문제와 같습니다. 하지만 탑다운 3D 에서 XZ 평면(+X 오른쪽, +Z 앞)을 쓰면 달라집니다. 3D 외적의 y 성분은 성분식으로 `a.z*b.x - a.x*b.z` 인데, 이는 (x, z) 를 이 문제의 (X, Y) 로 놓은 2D 외적 `a.x*b.z - a.z*b.x` 와 부호가 정반대입니다. 즉 `Vector3.Cross(a, b).y` 가 양수면 위에서 내려다볼 때 b 는 a 의 왼쪽이 아니라 오른쪽에 있습니다. Unity 는 왼손 좌표계를 쓰고 Vector3.Cross 의 방향도 왼손 법칙으로 설명하므로, 옮긴 뒤에는 알려진 입력으로 부호를 반드시 확인해야 합니다.\n\n**실무 메모.** 실제 포탑은 외적이 0 근처에서 프레임마다 +1 / -1 로 떨리지 않도록 데드존(예: |각도| < 0.5도면 0)을 두고, 한 프레임 회전량을 `min(|남은 각도|, 회전 속도 × dt)` 로 제한합니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "Cross 가 a.X*b.Y - a.Y*b.X 이다: Cross((1,0),(0,1)) == 1, Cross((0,1),(1,0)) == -1, 평행한 벡터는 0.",
+      "points": 12,
+      "sourceId": "wiki-cross-product"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "TurnDirection 이 targetPos - turretPos 로 방향을 만든 뒤 외적 부호로 판정하고, 정면 0 · 정확히 뒤 +1 · 같은 위치 0 을 반환한다.",
+      "points": 12,
+      "sourceId": ""
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "SignedAngleDegrees 가 (-180, 180] 범위다: (1,0)→(0,1) 은 +90, (0,1)→(0,-1) 은 -180 이 아니라 +180, 영벡터는 0.",
+      "points": 11,
+      "sourceId": "unity-vector2-signedangle"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "TurnDirection 안에 삼각함수, Sqrt, Normalize 호출이 없다(곱셈·뺄셈·비교만).",
+      "points": 15,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "SignedAngleDegrees 가 Atan2(cross, dot) 한 번으로 각도를 구한다. Acos 호출과 입력 정규화가 없다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "세 함수 모두 힙 할당이 없다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "좌표·부호 규약(+X 오른쪽, +Y 위, 반시계 양수)이 주석이나 문서에 적혀 있고, 다른 좌표계(Unity 3D 의 왼손 좌표계 등)로 옮길 때 부호 확인이 필요하다는 점을 설명할 수 있다.",
+      "points": 10,
+      "sourceId": "unity-vector3-cross"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "라디안 → 도 변환(× 180/PI)이 정확하고, 외적이 0(-0 포함)인 경우를 Atan2 에 넘기지 않고 직접 분기한다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "TurnDirection 과 SignedAngleDegrees 가 외적 식을 복사하지 않고 Cross 를 호출한다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "\"정확히 뒤 = 왼쪽(+1, +180)\" 약속이 두 함수에서 일관되고 그 분기가 코드에서 한눈에 보인다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "Acos(내적)으로 각도를 구해 좌우를 구분하지 못하거나, 부호를 근거 없이 붙인다.",
+      "penalty": -20,
+      "sourceId": ""
+     },
+     {
+      "id": "d2",
+      "description": "targetPos 를 방향 벡터로 그대로 써서 포탑이 원점이 아니면 틀린다.",
+      "penalty": -15,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "Cross 의 인자 순서나 성분을 뒤집어 부호 규약(반시계 = 양수)과 반대로 동작한다.",
+      "penalty": -10,
+      "sourceId": "wiki-cross-product"
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    const float Eps = 0.001f; // 각도 비교 허용 오차(도)\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector2 V(float x, float y) { return new System.Numerics.Vector2(x, y); }\n\n    static string Turn(string what, System.Numerics.Vector2 pos, System.Numerics.Vector2 fwd, System.Numerics.Vector2 target, int expected)\n    {\n        int got = TurretMath.TurnDirection(pos, fwd, target);\n        return got == expected ? null : what + \": 포탑 \" + pos + \", forward \" + fwd + \", 타깃 \" + target + \" → 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Angle(System.Numerics.Vector2 from, System.Numerics.Vector2 to, float expected, float eps)\n    {\n        float got = TurretMath.SignedAngleDegrees(from, to);\n        return System.Math.Abs(got - expected) <= eps ? null : \"SignedAngleDegrees(\" + from + \", \" + to + \") → 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    public static void Main()\n    {\n        Run(\"cross-sign\", () =>\n        {\n            float a = TurretMath.Cross(V(1f, 0f), V(0f, 1f));\n            if (a != 1f) return \"Cross((1,0),(0,1)) 기대 1 / 결과 \" + a;\n            float b = TurretMath.Cross(V(0f, 1f), V(1f, 0f));\n            if (b != -1f) return \"Cross((0,1),(1,0)) 기대 -1 / 결과 \" + b;\n            float c = TurretMath.Cross(V(2f, 3f), V(4f, 6f));\n            if (c != 0f) return \"평행한 벡터 Cross((2,3),(4,6)) 기대 0 / 결과 \" + c;\n            float d = TurretMath.Cross(V(3f, -2f), V(-5f, 4f));\n            return d == 2f ? null : \"Cross((3,-2),(-5,4)) 기대 2 / 결과 \" + d;\n        });\n\n        Run(\"turn-left-right\", () =>\n            Turn(\"위를 보는 포탑, 왼쪽 앞 타깃\", V(10f, 10f), V(0f, 1f), V(5f, 20f), 1)\n            ?? Turn(\"위를 보는 포탑, 오른쪽 앞 타깃\", V(10f, 10f), V(0f, 1f), V(15f, 20f), -1)\n            ?? Turn(\"위를 보는 포탑, 왼쪽 뒤 타깃\", V(10f, 10f), V(0f, 1f), V(5f, 0f), 1)\n            ?? Turn(\"위를 보는 포탑, 오른쪽 뒤 타깃\", V(10f, 10f), V(0f, 1f), V(15f, 0f), -1)\n            ?? Turn(\"-X 를 보는 포탑, 아래쪽 타깃은 왼쪽\", V(-4f, 3f), V(-1f, 0f), V(-6f, -5f), 1)\n            ?? Turn(\"-X 를 보는 포탑, 위쪽 타깃은 오른쪽\", V(-4f, 3f), V(-1f, 0f), V(-6f, 9f), -1));\n\n        Run(\"aligned-and-behind\", () =>\n            Turn(\"정면\", V(2f, 2f), V(1f, 0f), V(9f, 2f), 0)\n            ?? Turn(\"정확히 뒤 (+1 로 약속)\", V(2f, 2f), V(1f, 0f), V(-5f, 2f), 1)\n            ?? Turn(\"위를 보는 포탑의 정확히 뒤\", V(2f, 2f), V(0f, 1f), V(2f, -7f), 1)\n            ?? Turn(\"타깃이 포탑 위치와 같음\", V(2f, 2f), V(1f, 0f), V(2f, 2f), 0)\n            ?? Turn(\"정규화되지 않은 forward\", V(0f, 0f), V(0f, 25f), V(-0.5f, 100f), 1)\n            ?? Turn(\"길이가 작은 forward\", V(0f, 0f), V(0.125f, 0f), V(8f, -0.25f), -1));\n\n        Run(\"signed-angle-basic\", () =>\n            Angle(V(1f, 0f), V(0f, 1f), 90f, Eps)\n            ?? Angle(V(0f, 1f), V(1f, 0f), -90f, Eps)\n            ?? Angle(V(1f, 0f), V(1f, 1f), 45f, Eps)\n            ?? Angle(V(1f, 0f), V(1f, -1f), -45f, Eps)\n            ?? Angle(V(0f, -2f), V(3f, 0f), 90f, Eps)\n            ?? Angle(V(3f, 0f), V(0f, 0.5f), 90f, Eps)\n            ?? Angle(V(-1f, -1f), V(-1f, 1f), -90f, Eps)\n            ?? Angle(V(1f, 0f), V(-1f, 1f), 135f, Eps));\n\n        Run(\"signed-angle-range\", () =>\n            Angle(V(1f, 0f), V(-1f, 0f), 180f, Eps)\n            ?? Angle(V(0f, 1f), V(0f, -1f), 180f, Eps)\n            ?? Angle(V(0f, 2f), V(0f, -0.5f), 180f, Eps)\n            ?? Angle(V(1f, 0f), V(-1f, -0.001f), -179.9427f, 0.01f)\n            ?? Angle(V(1f, 0f), V(-1f, 0.001f), 179.9427f, 0.01f)\n            ?? Angle(V(2f, 2f), V(5f, 5f), 0f, Eps)\n            ?? Angle(V(0f, 0f), V(1f, 0f), 0f, Eps)\n            ?? Angle(V(1f, 0f), V(0f, 0f), 0f, Eps));\n\n        Run(\"angle-matches-turn\", () =>\n        {\n            var rng = new System.Random(606);\n            for (int i = 0; i < 2000; i++)\n            {\n                var pos = V(rng.Next(-20, 21), rng.Next(-20, 21));\n                var fwd = V(rng.Next(-5, 6), rng.Next(-5, 6));\n                var target = V(rng.Next(-20, 21), rng.Next(-20, 21));\n                int turn = TurretMath.TurnDirection(pos, fwd, target);\n                float ang = TurretMath.SignedAngleDegrees(fwd, target - pos);\n                int sign = ang > 0f ? 1 : (ang < 0f ? -1 : 0);\n                if (turn != sign) return \"포탑 \" + pos + \", forward \" + fwd + \", 타깃 \" + target + \": TurnDirection 은 \" + turn + \" 인데 SignedAngleDegrees 는 \" + ang;\n                if (!(ang > -180f && ang <= 180f)) return \"범위 (-180, 180] 밖: \" + ang;\n            }\n            return null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int i = 0; i < 3000; i++)\n            {\n                double a0 = rng.NextDouble() * 360 - 180, a1 = rng.NextDouble() * 360 - 180;\n                double l0 = 0.01 + rng.NextDouble() * 50, l1 = 0.01 + rng.NextDouble() * 50;\n                var from = V((float)(System.Math.Cos(a0 * System.Math.PI / 180) * l0), (float)(System.Math.Sin(a0 * System.Math.PI / 180) * l0));\n                var to = V((float)(System.Math.Cos(a1 * System.Math.PI / 180) * l1), (float)(System.Math.Sin(a1 * System.Math.PI / 180) * l1));\n                // 기준 구현: 두 벡터의 절대 각도 차이를 (-180, 180] 로 접는다\n                double r = (System.Math.Atan2(to.Y, to.X) - System.Math.Atan2(from.Y, from.X)) * 180 / System.Math.PI;\n                while (r > 180) r -= 360;\n                while (r <= -180) r += 360;\n                if (System.Math.Abs(r) > 179.5) continue; // 접히는 지점 근처는 제외\n                string e = Angle(from, to, (float)r, 0.01f);\n                if (e != null) return \"무작위 #\" + i + \": \" + e;\n                int turn = TurretMath.TurnDirection(V(0f, 0f), from, to);\n                if (System.Math.Abs(r) > 0.5 && turn != (r > 0 ? 1 : -1)) return \"무작위 #\" + i + \": forward \" + from + \", 타깃 \" + to + \" → TurnDirection 기대 \" + (r > 0 ? 1 : -1) + \" / 결과 \" + turn;\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "cross-sign",
+     "turn-left-right",
+     "aligned-and-behind",
+     "signed-angle-basic",
+     "signed-angle-range",
+     "angle-matches-turn",
+     "random-vs-reference"
+    ],
+    "note": "외적의 부호, 원점이 아닌 포탑의 좌우 판정, 정면·정확히 뒤·같은 위치, 부호 있는 각도의 기본값과 범위((0,1)→(0,-1) 은 +180), TurnDirection 과 SignedAngleDegrees 의 부호 일치, double 기준 구현과의 무작위 비교(허용 오차 0.01도, ±179.5도 밖은 제외)를 검사합니다. 정확히 정반대인 입력에서 -180 을 반환하면 실패합니다. 제약에서 금지한 Acos 기반 구현은 0도 근처의 정밀도가 나빠 무작위 비교의 허용 오차(0.01도)를 넘겨 실패할 수 있습니다. TurretMath.Cross(Vector2, Vector2), TurnDirection(Vector2, Vector2, Vector2), SignedAngleDegrees(Vector2, Vector2) 시그니처와 부호 규약은 바꾸면 안 됩니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "모범 답안·시작 코드를 채점 서버에서 실행하고 -0 과 Atan2 동작을 로컬 dotnet 으로 재현했으며, 단순 Atan2 구현·위치를 빼지 않는 오답·Acos 구현의 판정을 확인하고 Unity 문서의 SignedAngle·Cross 규약을 대조했습니다."
+   },
+   "nextMission": "`float StepToward(Vector2 forward, Vector2 toTarget, float maxDegreesPerSecond, float dt)` 를 추가해 이번 프레임에 실제로 돌 각도를 반환하세요(남은 각도를 넘지 않게 제한, |각도| < 0.5도 데드존). 30fps 와 144fps 로 2초씩 시뮬레이션해 최종 방향이 같은지 확인합니다."
+  },
+  {
+   "id": "t6-debug-framerate-smoothing-integration",
+   "track": "track6",
+   "mode": "debugging",
+   "difficulty": "Medium",
+   "title": "프레임률에 따라 달라지는 카메라 추적과 점프 높이 디버깅",
+   "tags": [
+    "Math_DeltaTime",
+    "Math_ExponentialSmoothing",
+    "Math_Integration"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "unity-time-deltatime",
+    "wiki-exponential-smoothing",
+    "gaffer-integration-basics",
+    "gaffer-fix-timestep"
+   ],
+   "scenario": "액션 게임 QA 리포트입니다.\n\n- \"144Hz 모니터에서는 HP 바와 추적 카메라가 **훨씬 빨리** 따라붙고, 30fps 로 제한된 기기에서는 느릿하다.\"\n- \"프레임률에 따라 **점프 높이와 투사체 낙하 지점이 다르다**. 리플레이가 기기마다 어긋난다.\"\n\n원인으로 지목된 것은 아래 `FrameMath` 의 두 함수입니다. 둘 다 매 프레임 한 번씩 호출되며 `dt` 는 이번 프레임의 경과 시간(초)입니다. Unity 라면 `Time.deltaTime`(직전 프레임부터 현재 프레임까지의 간격)을 넘기는 자리입니다.\n\n**요구 스펙**\n\n1. `SmoothFollow`: 목표와의 남은 차이 `target - current` 가 시간 `t` 초 뒤에 `e^(-sharpness·t)` 배가 되어야 합니다. 같은 총 시간이라면 프레임을 **어떻게 나눠 호출해도** 결과가 같아야 합니다. `dt = 0` 이나 `sharpness = 0` 이면 값이 변하지 않고, 아무리 긴 프레임에서도 목표를 지나치지 않습니다.\n2. `Integrate`: 가속도가 일정할 때, 프레임을 어떻게 나누든 총 시간 `T` 뒤의 결과가 `p = p0 + v0·T + ½·a·T²`, `v = v0 + a·T` 와 일치해야 합니다.\n\n허용 오차는 검사에 따라 0.01 ~ 0.02 이고, 한 번만 호출하는 등속 이동 검사는 0.001 입니다(숨은 테스트는 같은 총 시간을 30fps 와 144fps, 그리고 들쭉날쭉한 dt 로 시뮬레이션해 비교합니다).\n\n**할 일:** 버그를 모두 찾아 고치고, 버그마다 수정 전에는 실패하는 구체적인 입력을 제시하세요. UnityEngine 없이 순수 C# 으로 컴파일되어야 합니다.",
+   "constraints": [
+    "두 함수 모두 호출당 O(1): dt 를 잘게 쪼개 내부에서 반복하는 방식(서브스텝 루프)으로 맞추지 않는다.",
+    "프레임률을 가정한 상수(60, 1/60 등)를 쓰지 않는다. 프레임률을 고정하는 것은 해결책이 아니다.",
+    "SmoothFollow 와 Integrate 의 시그니처(ref 포함)를 바꾸지 않는다.",
+    "힙 할당 없음."
+   ],
+   "starterCode": "using System;\nusing System.Numerics;\n\npublic static class FrameMath\n{\n    private static float Lerp(float a, float b, float t) => a + (b - a) * t;\n\n    // 매 프레임 호출: current 가 target 을 부드럽게 따라간다 (카메라, HP 바).\n    // sharpness : 따라가는 빠르기(1/초). dt : 이번 프레임의 경과 시간(초).\n    public static float SmoothFollow(float current, float target, float sharpness, float dt)\n    {\n        return Lerp(current, target, 0.1f);\n    }\n\n    // 매 프레임 호출: 등가속도 운동(점프, 투사체)을 dt 만큼 진행시킨다.\n    public static void Integrate(ref Vector2 position, ref Vector2 velocity, Vector2 acceleration, float dt)\n    {\n        velocity += acceleration * dt;\n        position += velocity;\n    }\n}\n",
+   "edgeCases": [
+    "dt = 0 (일시 정지, 같은 프레임 중복 호출): 값이 변하면 안 된다.",
+    "긴 프레임(로딩 히치로 dt = 2초): 목표를 지나쳐 반대편으로 튀면 안 된다.",
+    "들쭉날쭉한 dt: 0.016, 0.05, 0.008, 0.1 ... 처럼 프레임마다 달라도 총 시간이 같으면 결과가 같아야 한다.",
+    "가속도 0 인 등속 운동과, 중력처럼 가속도가 있는 운동(점프 정점 높이)을 따로 확인한다."
+   ],
+   "hints": [
+    "손으로 계산해 보세요. (1) `SmoothFollow` 를 0.5초 동안 30fps 로 호출하면 15번, 144fps 로는 72번 호출됩니다. 남은 차이는 각각 `0.9^15` 와 `0.9^72` 배입니다. 같은가요? (2) 속도 (3, -2), 가속도 0 인 물체를 `Integrate(dt = 0.5)` 로 한 번 진행하면 위치가 얼마나 움직여야 하고, 실제로는 얼마나 움직이나요? (3) 그걸 고친 뒤 v0 = (4, 10), 중력 (0, -20) 인 점프의 0.5초 뒤 높이를 30fps 와 144fps 로 각각 구해 보세요. 해석적인 답은 2.5 입니다.",
+    "`SmoothFollow` 에서 `sharpness` 와 `dt` 가 계산에 쓰이는지 보세요. \"같은 시간이 지나면 남은 차이가 같은 비율로 줄어든다\"를 만족하면서 `f(a + b) = f(a)·f(b)` 인 함수가 무엇인지 떠올리면 보간 계수가 정해집니다. `Integrate` 는 단위를 확인하세요(m/s 를 m 에 그대로 더하고 있지 않은가). 그리고 dt 동안 속도가 계속 변하는데, 위치를 옮길 때 그 구간의 **어느 시점** 속도를 쓰고 있는지 보세요.",
+    "고친 뒤의 뼈대입니다. 빈칸은 직접 채우세요.\n```\nSmoothFollow(current, target, sharpness, dt):\n    t = 1 - ____            // dt 가 0 이면 0, dt 가 커질수록 1 에 가까워지되 1 을 넘지 않는다\n    return Lerp(current, target, t)\n\nIntegrate(ref position, ref velocity, acceleration, dt):\n    // dt 동안 속도는 v 에서 v + a*dt 로 직선으로 변한다 → 이동량은 그 평균 속도 × dt\n    position += ____ * dt + ____ * dt * dt\n    velocity += ____\n```"
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Numerics;\n\npublic static class FrameMath\n{\n    private static float Lerp(float a, float b, float t) => a + (b - a) * t;\n\n    // 남은 차이 (target - current) 가 시간 dt 뒤에 exp(-sharpness * dt) 배가 되도록 한다.\n    // exp(-k*a) * exp(-k*b) == exp(-k*(a+b)) 이므로 dt 를 어떻게 쪼개 호출해도 결과가 같다.\n    public static float SmoothFollow(float current, float target, float sharpness, float dt)\n    {\n        if (!(sharpness > 0f) || !(dt > 0f)) return current; // 시간이 흐르지 않았으면 그대로\n        float t = 1f - MathF.Exp(-sharpness * dt);            // 수학적으로 [0, 1). float 에서도 1 을 넘지 않는다\n        return Lerp(current, target, t);\n    }\n\n    // 가속도가 dt 동안 일정하다고 보고 구간을 정확히 적분한다.\n    //   p += v*dt + 0.5*a*dt^2   (이전 속도 기준)\n    //   v += a*dt\n    // 등가속도 운동에서는 프레임을 어떻게 나눠도 p0 + v0*T + 0.5*a*T^2 과 일치한다.\n    public static void Integrate(ref Vector2 position, ref Vector2 velocity, Vector2 acceleration, float dt)\n    {\n        if (!(dt > 0f)) return;\n        position += velocity * dt + acceleration * (0.5f * dt * dt);\n        velocity += acceleration * dt;\n    }\n}\n",
+   "explanation": "버그는 세 개이고, 각각 아래 입력으로 재현됩니다.\n\n**버그 1 — 프레임당 고정 비율 `Lerp(current, target, 0.1f)`.** 호출 한 번에 남은 차이가 0.9배가 되므로 N 프레임 뒤에는 `0.9^N` 배입니다. 0 → 100, 0.5초에서 30fps(15회)는 `100·(1 - 0.9^15) = 79.41`, 144fps(72회)는 `99.95` 입니다. 단일 호출로는 `SmoothFollow(0, 100, 6, 0.1)` 이 10 을 돌려줍니다(기대 45.12). 스펙은 \"시간 t 뒤 `e^(-k·t)` 배\"이므로 계수는 `1 - exp(-k·dt)` 입니다. `exp(-k·a)·exp(-k·b) = exp(-k·(a+b))` 라서 dt 를 어떻게 쪼개도 곱이 같습니다. 이것은 Wikipedia 의 지수 평활 식 `α = 1 - e^(-ΔT/τ)` 에서 시간 상수를 `τ = 1/k` 로 둔 것과 같습니다. 계수는 수학적으로 `[0, 1)` 이고 float 계산에서도 1 을 넘지 않으므로(`k·dt` 가 아주 크면 반올림되어 정확히 1 이 될 수는 있습니다) 긴 프레임에서도 목표를 넘지 않습니다.\n\n**흔한 오답: `0.1f` 를 `sharpness * dt` 로 바꾸기.** 이것은 `1 - exp(-k·dt)` 의 1차 근사라 프레임률 의존이 남습니다(k = 6, 0.5초: 30fps 96.48, 144fps 95.33, 정답 95.02). 게다가 `k·dt > 1` 이면 목표를 지나칩니다.\n\n**버그 2 — `position += velocity` 에 dt 가 없다.** 속도 (3, -2), 가속도 0, `dt = 0.5` 한 번이면 (1.5, -1) 만큼 움직여야 하는데 (3, -2) 만큼 움직입니다. \"초당 속도\"를 \"프레임당 이동량\"으로 쓰고 있어서 144fps 에서는 30fps 보다 4.8배 빠르게 움직입니다.\n\n**버그 3 — 속도를 먼저 갱신하고 그 값으로 위치를 옮긴다(1차 적분 오차).** dt 만 곱해 고치면 semi-implicit 오일러가 되는데, 등가속도에서 T 초 뒤 위치 오차가 `½·a·T·dt` 로 dt 에 비례합니다. v0 = (4, 10), 중력 (0, -20), 0.5초 뒤 높이가 30fps 는 2.333, 144fps 는 2.465 이고 정답은 2.5 입니다. 순서를 바꾼 명시적 오일러도 반대 방향으로 같은 크기만큼 틀립니다(2.667 / 2.535). Gaffer On Games 의 Integration Basics 가 지적하듯 명시적 오일러는 한 스텝 동안 변화율이 일정할 때만 정확한데, 가속도가 있으면 스텝 안에서 속도가 변합니다. 가속도가 일정하면 속도는 직선으로 변하므로 구간의 이동량은 평균 속도 × dt, 즉 `v·dt + ½·a·dt²` 이고 이것은 근사가 아니라 정확한 값입니다. 정확한 스텝을 이어 붙이므로 프레임 분할과 무관하게 `p0 + v0·T + ½·a·T²` 이 됩니다.\n\n**복잡도.** 두 함수 모두 O(1), `Exp` 1회.\n\n**한계와 실무.** 이 적분이 정확한 것은 가속도가 일정할 때뿐입니다. 스프링, 공기 저항, 충돌처럼 힘이 위치·속도에 따라 변하면 이 식은 더 이상 정확하지 않고, 오일러 같은 일반적인 수치 적분은 스텝 크기에 따라 오차가 달라져 가변 dt 에서는 프레임률에 따라 결과가 달라집니다. 그래서 Gaffer On Games 의 Fix Your Timestep 처럼 고정 타임스텝으로 시뮬레이션하고 남는 시간은 누적기에 넘기며 렌더링만 보간합니다. Unity 에서 `Time.deltaTime` 은 `FixedUpdate` 안에서 `fixedDeltaTime` 을 반환하므로 같은 코드가 어느 루프에서 호출되는지도 확인해야 합니다. 회전 보간(`Slerp(current, target, 0.1f)`)에도 버그 1 과 똑같은 문제가 있습니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "SmoothFollow(0 → 100, sharpness 6)를 0.5초 동안 30fps 와 144fps 로 돌린 결과가 서로 0.02 이내로 같고 95.02 이다.",
+      "points": 12,
+      "sourceId": "wiki-exponential-smoothing"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "Integrate 가 위치 갱신에 dt 를 반영한다: 속도 (3,-2), 가속도 0, dt 0.5 한 번에 위치가 (1.5,-1) 만큼 변한다.",
+      "points": 12,
+      "sourceId": "unity-time-deltatime"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "v0 = (4,10), 가속도 (0,-20) 인 점프의 0.5초 뒤 높이가 30fps 와 144fps 모두 2.5 (오차 0.01 이내)다.",
+      "points": 11,
+      "sourceId": "gaffer-integration-basics"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "두 함수가 호출당 O(1) 이다: 내부에 dt 를 쪼개 도는 반복문이 없고 Exp 호출은 1회다.",
+      "points": 15,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "보간 계수가 Clamp 없이도 [0, 1] 범위를 벗어나지 않아, dt = 2 같은 긴 프레임에서 목표를 지나치지 않는다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "힙 할당이 없고 Integrate 가 ref 인자를 그대로 갱신한다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "시간에 의존하는 모든 갱신에 dt 가 들어가고, 60 이나 1/60 같은 프레임률 가정 상수가 없다.",
+      "points": 10,
+      "sourceId": "unity-time-deltatime"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "dt = 0 또는 sharpness = 0 이면 값이 정확히 그대로이고, float 용 MathF.Exp 를 쓴다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "매직 넘버 0.1f 가 사라지고, sharpness 의 단위(1/초)와 \"남은 차이가 exp(-k·dt) 배\"라는 의미가 주석이나 이름에 드러난다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "버그 3개 각각에 대해 수정 전 실패 · 수정 후 통과하는 입력(값 포함)을 제시했다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "0.1f 를 sharpness * dt (또는 0.1f * dt * 60) 로만 바꿨다: 1차 근사라 프레임률 의존이 남고 k·dt > 1 에서 목표를 지나친다.",
+      "penalty": -20,
+      "sourceId": "wiki-exponential-smoothing"
+     },
+     {
+      "id": "d2",
+      "description": "Integrate 에서 dt 만 곱하고 끝냈다(오일러 적분): 점프 높이가 여전히 프레임률에 따라 달라진다.",
+      "penalty": -20,
+      "sourceId": "gaffer-integration-basics"
+     },
+     {
+      "id": "d3",
+      "description": "프레임률을 60 으로 고정하거나 dt 를 상수로 가정해 \"해결\"했다: 프레임 드롭 한 번에 다시 어긋난다.",
+      "penalty": -10,
+      "sourceId": "gaffer-fix-timestep"
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector2 V(float x, float y) { return new System.Numerics.Vector2(x, y); }\n\n    // 같은 총 시간 seconds 를 fps 프레임으로 나눠 SmoothFollow 를 반복 호출한다\n    static float Follow(float start, float target, float k, int fps, float seconds)\n    {\n        float v = start;\n        int frames = (int)System.Math.Round(fps * seconds);\n        float dt = seconds / frames;\n        for (int i = 0; i < frames; i++) v = FrameMath.SmoothFollow(v, target, k, dt);\n        return v;\n    }\n\n    static void Simulate(ref System.Numerics.Vector2 p, ref System.Numerics.Vector2 v, System.Numerics.Vector2 a, int fps, float seconds)\n    {\n        int frames = (int)System.Math.Round(fps * seconds);\n        float dt = seconds / frames;\n        for (int i = 0; i < frames; i++) FrameMath.Integrate(ref p, ref v, a, dt);\n    }\n\n    static bool Near(float a, float b, float eps) { return System.Math.Abs(a - b) <= eps; }\n    static bool Near(System.Numerics.Vector2 a, System.Numerics.Vector2 b, float eps) { return Near(a.X, b.X, eps) && Near(a.Y, b.Y, eps); }\n\n    public static void Main()\n    {\n        Run(\"smooth-single-step\", () =>\n        {\n            // 남은 차이는 exp(-k*dt) 배: 100 * (1 - exp(-0.6)) = 45.1188\n            float a = FrameMath.SmoothFollow(0f, 100f, 6f, 0.1f);\n            if (!Near(a, 45.1188f, 0.01f)) return \"SmoothFollow(0, 100, k=6, dt=0.1) 기대 45.119 / 결과 \" + a;\n            float b = FrameMath.SmoothFollow(80f, 20f, 2f, 0.25f);\n            return Near(b, 56.3918f, 0.01f) ? null : \"SmoothFollow(80, 20, k=2, dt=0.25) 기대 56.392 / 결과 \" + b;\n        });\n\n        Run(\"smooth-30fps-vs-144fps\", () =>\n        {\n            float lo = Follow(0f, 100f, 6f, 30, 0.5f), hi = Follow(0f, 100f, 6f, 144, 0.5f);\n            float expected = 100f * (1f - (float)System.Math.Exp(-3.0)); // 95.0213\n            if (!Near(lo, hi, 0.02f)) return \"0.5초 뒤 값이 프레임률에 따라 다름: 30fps \" + lo + \" / 144fps \" + hi + \" (기대 \" + expected + \")\";\n            if (!Near(lo, expected, 0.02f)) return \"0.5초 뒤 기대 \" + expected + \" / 결과 \" + lo;\n            lo = Follow(100f, 30f, 3f, 30, 1f); hi = Follow(100f, 30f, 3f, 144, 1f);\n            expected = 30f + 70f * (float)System.Math.Exp(-3.0); // 33.4851\n            if (!Near(lo, hi, 0.02f) || !Near(lo, expected, 0.02f)) return \"HP 바 100→30, k=3, 1초 뒤: 30fps \" + lo + \" / 144fps \" + hi + \" (기대 \" + expected + \")\";\n            return null;\n        });\n\n        Run(\"smooth-uneven-frames\", () =>\n        {\n            // 프레임 시간이 들쭉날쭉해도 총 시간이 같으면 결과가 같아야 한다\n            float[] dts = { 0.016f, 0.05f, 0.008f, 0.1f, 0.033f, 0.2f, 0.093f }; // 합 0.5\n            float v = 10f;\n            foreach (float dt in dts) v = FrameMath.SmoothFollow(v, -50f, 4f, dt);\n            float one = FrameMath.SmoothFollow(10f, -50f, 4f, 0.5f);\n            float expected = -50f + 60f * (float)System.Math.Exp(-2.0); // -41.8799\n            if (!Near(v, one, 0.01f)) return \"7프레임으로 나눈 결과 \" + v + \" 와 한 번에 0.5초 진행한 결과 \" + one + \" 가 다름\";\n            return Near(v, expected, 0.01f) ? null : \"기대 \" + expected + \" / 결과 \" + v;\n        });\n\n        Run(\"smooth-zero-dt-and-hitch\", () =>\n        {\n            float same = FrameMath.SmoothFollow(12.5f, 100f, 6f, 0f);\n            if (same != 12.5f) return \"dt = 0 이면 값이 변하면 안 됨: 기대 12.5 / 결과 \" + same;\n            float still = FrameMath.SmoothFollow(12.5f, 100f, 0f, 0.1f);\n            if (still != 12.5f) return \"sharpness = 0 이면 값이 변하면 안 됨: 기대 12.5 / 결과 \" + still;\n            float hitch = FrameMath.SmoothFollow(0f, 100f, 6f, 2f); // 2초 멈췄다 돌아온 프레임\n            if (!(hitch <= 100f)) return \"긴 프레임(dt = 2)에서 목표를 넘어감: \" + hitch;\n            return hitch >= 99.99f ? null : \"dt = 2, k = 6 이면 사실상 목표에 도달해야 함: 기대 99.999 이상 / 결과 \" + hitch;\n        });\n\n        Run(\"integrate-constant-velocity\", () =>\n        {\n            var p = V(1f, 2f); var v = V(3f, -2f);\n            FrameMath.Integrate(ref p, ref v, V(0f, 0f), 0.5f);\n            if (!Near(p, V(2.5f, 1f), 0.001f)) return \"속도 (3,-2) 로 0.5초: 위치 기대 (2.5, 1) / 결과 \" + p;\n            if (!Near(v, V(3f, -2f), 0.001f)) return \"가속도가 0 인데 속도가 변함: \" + v;\n            var p30 = V(0f, 0f); var v30 = V(6f, 0f); Simulate(ref p30, ref v30, V(0f, 0f), 30, 2f);\n            var p144 = V(0f, 0f); var v144 = V(6f, 0f); Simulate(ref p144, ref v144, V(0f, 0f), 144, 2f);\n            if (!Near(p30, V(12f, 0f), 0.01f) || !Near(p144, V(12f, 0f), 0.01f)) return \"초속 6 으로 2초 이동: 30fps \" + p30 + \" / 144fps \" + p144 + \" (기대 (12, 0))\";\n            return null;\n        });\n\n        Run(\"integrate-jump-30fps-vs-144fps\", () =>\n        {\n            // 점프: v0 = (4, 10), 중력 (0, -20). 0.5초 뒤 정점 (2, 2.5), 1초 뒤 착지 (4, 0)\n            var g = V(0f, -20f);\n            var p30 = V(0f, 0f); var v30 = V(4f, 10f); Simulate(ref p30, ref v30, g, 30, 0.5f);\n            var p144 = V(0f, 0f); var v144 = V(4f, 10f); Simulate(ref p144, ref v144, g, 144, 0.5f);\n            if (!Near(p30, p144, 0.01f)) return \"점프 정점 높이가 프레임률에 따라 다름: 30fps \" + p30 + \" / 144fps \" + p144 + \" (기대 (2, 2.5))\";\n            if (!Near(p30, V(2f, 2.5f), 0.01f)) return \"0.5초 뒤 위치 기대 (2, 2.5) / 결과 \" + p30;\n            if (!Near(v30, V(4f, 0f), 0.01f) || !Near(v144, V(4f, 0f), 0.01f)) return \"0.5초 뒤 속도 기대 (4, 0): 30fps \" + v30 + \" / 144fps \" + v144;\n            Simulate(ref p30, ref v30, g, 30, 0.5f); Simulate(ref p144, ref v144, g, 144, 0.5f);\n            if (!Near(p30, V(4f, 0f), 0.01f) || !Near(p144, V(4f, 0f), 0.01f)) return \"1초 뒤 착지 위치 기대 (4, 0): 30fps \" + p30 + \" / 144fps \" + p144;\n            var p = V(5f, 5f); var v = V(1f, 1f); FrameMath.Integrate(ref p, ref v, g, 0f);\n            return p == V(5f, 5f) && v == V(1f, 1f) ? null : \"dt = 0 이면 위치와 속도가 변하면 안 됨: \" + p + \", \" + v;\n        });\n\n        Run(\"random-vs-analytic\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int run = 0; run < 200; run++)\n            {\n                var p0 = V((float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10));\n                var v0 = V((float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10));\n                var a = V((float)(rng.NextDouble() * 30 - 15), (float)(rng.NextDouble() * 30 - 15));\n                float start = (float)(rng.NextDouble() * 200 - 100), target = (float)(rng.NextDouble() * 200 - 100);\n                float k = (float)(0.5 + rng.NextDouble() * 12);\n                var p = p0; var v = v0; float s = start; double T = 0;\n                int frames = 20 + rng.Next(200);\n                for (int i = 0; i < frames; i++)\n                {\n                    float dt = (float)(0.002 + rng.NextDouble() * 0.04); // 프레임마다 다른 dt\n                    FrameMath.Integrate(ref p, ref v, a, dt);\n                    s = FrameMath.SmoothFollow(s, target, k, dt);\n                    T += dt;\n                }\n                float t = (float)T;\n                var pe = p0 + v0 * t + a * (0.5f * t * t);\n                var ve = v0 + a * t;\n                float se = target + (start - target) * (float)System.Math.Exp(-k * T);\n                if (!Near(p, pe, 0.02f) || !Near(v, ve, 0.02f)) return \"무작위 #\" + run + \" (\" + frames + \"프레임, 총 \" + t + \"초): 위치 기대 \" + pe + \" / 결과 \" + p + \", 속도 기대 \" + ve + \" / 결과 \" + v;\n                if (!Near(s, se, 0.02f)) return \"무작위 #\" + run + \" (\" + frames + \"프레임, 총 \" + t + \"초, k=\" + k + \"): SmoothFollow 기대 \" + se + \" / 결과 \" + s;\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "smooth-single-step",
+     "smooth-30fps-vs-144fps",
+     "smooth-uneven-frames",
+     "smooth-zero-dt-and-hitch",
+     "integrate-constant-velocity",
+     "integrate-jump-30fps-vs-144fps",
+     "random-vs-analytic"
+    ],
+    "note": "SmoothFollow 의 단일 스텝 값, 같은 총 시간을 30fps·144fps·들쭉날쭉한 dt 로 나눴을 때의 일치, dt = 0 과 긴 프레임, Integrate 의 등속 운동과 점프(30fps vs 144fps), 그리고 프레임마다 다른 dt 로 진행한 결과를 해석적인 답과 비교합니다. 허용 오차는 0.01 ~ 0.02 입니다. FrameMath.SmoothFollow(float, float, float, float) 와 Integrate(ref Vector2, ref Vector2, Vector2, float) 시그니처는 바꾸면 안 됩니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "모범 답안·시작 코드를 채점 서버에서 실행하고, 설명의 수치(79.41·99.95·96.48·95.33·2.333·2.465 등)를 15~1000fps 시뮬레이션으로 다시 계산했으며 sharpness*dt 오답과 오일러 오답이 테스트에 걸리는지 확인했습니다."
+   },
+   "nextMission": "스프링(가속도 = -k·x - c·v)을 가변 dt 로 적분해 30fps 와 144fps 결과가 어긋나는 것을 직접 확인한 뒤, 고정 타임스텝(예: 1/120초) + 누적기 + 렌더 보간 구조로 바꿔 두 프레임률의 결과가 일치하도록 만들어 보세요."
+  },
+  {
+   "id": "t6-impl-aabb-circle-overlap",
+   "track": "track6",
+   "mode": "implementation",
+   "difficulty": "Easy",
+   "title": "충돌 판정 기초: AABB vs AABB, 원 vs AABB 겹침 검사",
+   "tags": [
+    "Math_AABB",
+    "Math_CircleCollision"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "mdn-2d-collision",
+    "mdn-3d-collision"
+   ],
+   "scenario": "2D 탑다운 슈팅 게임의 충돌 모듈을 만듭니다. 벽 타일과 캐릭터 히트박스는 축 정렬 경계 상자(AABB), 총알과 폭발 범위는 원입니다. 한 프레임에 수천 쌍을 검사하므로 판정 하나는 비교 몇 번으로 끝나야 합니다.\n\n**맞닿음에 대한 약속 (중요)**\n\n이 게임에서는 **맞닿기만 한 것은 충돌이 아닙니다.** 나란히 깔린 타일끼리, 그리고 벽에 딱 붙어 선 캐릭터와 벽이 매 프레임 충돌로 보고되면 안 되기 때문입니다.\n\n- AABB vs AABB: 겹친 영역의 넓이가 0 보다 커야 `true`. 변이나 꼭짓점만 공유하면 `false`.\n- 원 vs AABB: 원의 중심에서 상자 위 가장 가까운 점까지의 거리가 반지름보다 **작아야** `true`. 거리 == 반지름이면 `false`. `radius <= 0` 이면 항상 `false`.\n\n참고로 이 경계 정책은 자료마다 다릅니다. MDN 의 2D 충돌 문서는 엄격한 부등호(`<`, `>`)를, 3D 충돌 문서의 AABB 판정은 `<=`, `>=` 를 씁니다. 어느 쪽이든 팀이 하나를 정해 일관되게 쓰는 것이 핵심입니다.\n\n**할 일:** `Collision2D` 의 세 함수를 구현하세요. `Aabb` 는 `Min <= Max` 가 보장된다고 가정합니다.\n\n- `AabbOverlap(a, b)`\n- `ClosestPoint(box, p)`: 상자(내부와 경계 포함) 위에서 `p` 에 가장 가까운 점. `p` 가 상자 안이면 `p` 자신.\n- `CircleAabbOverlap(center, radius, box)`\n\n`System.Numerics.Vector2` 를 쓰는 순수 C# 입니다. 숨은 테스트의 맞닿음 케이스는 오차 없이 계산되는 값(정수, 3-4-5 삼각형)만 쓰고, 무작위 비교는 경계에서 0.001 이내인 입력을 제외합니다.",
+   "constraints": [
+    "세 함수 모두 O(1), 힙 할당 없음.",
+    "Sqrt 사용 금지(Length, Distance 포함): 제곱 거리와 반지름 제곱을 비교한다.",
+    "원 vs AABB 를 \"원을 감싸는 정사각형 vs AABB\" 로 대체하지 않는다.",
+    "Aabb 구조체와 세 함수의 시그니처를 바꾸지 않는다. Math.Clamp, Math.Min/Max, Vector2.Clamp 는 사용 가능."
+   ],
+   "starterCode": "using System;\nusing System.Numerics;\n\n// 축 정렬 경계 상자. Min.X <= Max.X, Min.Y <= Max.Y 라고 가정한다.\npublic readonly struct Aabb\n{\n    public readonly Vector2 Min;\n    public readonly Vector2 Max;\n    public Aabb(Vector2 min, Vector2 max) { Min = min; Max = max; }\n}\n\npublic static class Collision2D\n{\n    // 두 상자가 \"넓이를 가지고\" 겹치면 true.\n    // 변이나 꼭짓점만 맞닿은 경우(겹친 넓이 0)는 false.\n    public static bool AabbOverlap(Aabb a, Aabb b)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 상자(내부와 경계 포함) 위의 점 중 p 에 가장 가까운 점. p 가 상자 안이면 p 자신.\n    public static Vector2 ClosestPoint(Aabb box, Vector2 p)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 원과 상자가 겹치면 true. 원이 변이나 꼭짓점에 정확히 닿기만 한 경우\n    // (가장 가까운 점까지의 거리 == radius)는 false. radius <= 0 이면 항상 false.\n    public static bool CircleAabbOverlap(Vector2 center, float radius, Aabb box)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "변이 맞닿은 두 상자 [0,4] 와 [4,8], 꼭짓점만 맞닿은 두 상자: 약속대로 false.",
+    "X 구간은 겹치지만 Y 로 떨어진 경우: 한 축만 보고 true 를 반환하면 안 된다.",
+    "꼭짓점 대각선 방향의 원: 상자 (0,0)~(4,4), 중심 (5,5), 반지름 1.2. 원을 감싸는 정사각형은 상자와 겹치지만 꼭짓점까지 거리는 1.414 라 겹치지 않는다.",
+    "원의 중심이 상자 안: 가장 가까운 점이 중심 자신이므로 거리 0, 겹침.",
+    "원이 변이나 꼭짓점에 정확히 닿음(거리 == 반지름), 그리고 반지름 0 이하."
+   ],
+   "hints": [
+    "1차원부터 생각하세요. 구간 [a0, a1] 과 [b0, b1] 이 길이를 가지고 겹칠 조건은 `a0 < b1 && b0 < a1` 입니다. 2D 상자는 X 구간과 Y 구간이 **둘 다** 겹쳐야 겹칩니다. 반례: 상자 (0,0)~(4,4) 와 (1,6)~(3,8) 은 X 로는 겹치지만 떨어져 있습니다. 원 쪽 반례: 상자 (0,0)~(4,4), 원 중심 (5,5), 반지름 1.2 는 겹칠까요? 꼭짓점 (4,4) 까지의 거리를 계산해 보세요.",
+    "원 vs 상자의 핵심은 \"상자 위에서 원의 중심에 가장 가까운 점\"입니다. 그 점은 X 와 Y 를 서로 독립적으로 구할 수 있습니다. 중심의 X 가 상자의 X 범위 왼쪽에 있으면, 안에 있으면, 오른쪽에 있으면 각각 가장 가까운 X 는 무엇인가요? 그 점을 구했다면 남은 것은 점과 원의 판정뿐이고, 거리 비교는 제곱끼리 하면 Sqrt 가 필요 없습니다.",
+    "뼈대입니다. 비교 연산자와 빈칸은 약속(맞닿음 = false)에 맞게 직접 채우세요.\n```\nAabbOverlap(a, b):\n    return (X 구간이 겹침) ____ (Y 구간이 겹침)\n\nClosestPoint(box, p):\n    x = p.X 를 [box.Min.X, box.Max.X] 로 ____\n    y = p.Y 를 [box.Min.Y, box.Max.Y] 로 ____\n\nCircleAabbOverlap(center, radius, box):\n    if radius <= 0: return false\n    d = center - ClosestPoint(box, center)\n    return (d 의 길이 제곱) ____ (radius 의 제곱)\n```"
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Numerics;\n\n// 축 정렬 경계 상자. Min.X <= Max.X, Min.Y <= Max.Y 라고 가정한다.\npublic readonly struct Aabb\n{\n    public readonly Vector2 Min;\n    public readonly Vector2 Max;\n    public Aabb(Vector2 min, Vector2 max) { Min = min; Max = max; }\n}\n\npublic static class Collision2D\n{\n    // 분리축: X 구간과 Y 구간이 \"둘 다\" 겹쳐야 상자가 겹친다.\n    // 맞닿음은 충돌이 아니라고 약속했으므로 엄격한 부등호(<)를 쓴다.\n    public static bool AabbOverlap(Aabb a, Aabb b)\n    {\n        return a.Min.X < b.Max.X && b.Min.X < a.Max.X\n            && a.Min.Y < b.Max.Y && b.Min.Y < a.Max.Y;\n    }\n\n    // 축마다 독립적으로 [Min, Max] 구간에 클램프한다.\n    public static Vector2 ClosestPoint(Aabb box, Vector2 p)\n    {\n        return new Vector2(Math.Clamp(p.X, box.Min.X, box.Max.X),\n                           Math.Clamp(p.Y, box.Min.Y, box.Max.Y));\n    }\n\n    // 원의 중심에서 상자 위 가장 가까운 점까지의 제곱 거리를 반지름 제곱과 비교한다.\n    // 중심이 상자 안이면 가장 가까운 점이 중심 자신이라 거리 0 → 겹침.\n    public static bool CircleAabbOverlap(Vector2 center, float radius, Aabb box)\n    {\n        if (!(radius > 0f)) return false;\n        Vector2 d = center - ClosestPoint(box, center);\n        return d.LengthSquared() < radius * radius; // 맞닿음(==)은 제외\n    }\n}\n",
+   "explanation": "**AABB vs AABB.** 축 정렬 상자는 각 축에 투영하면 구간이 됩니다. 두 상자가 겹치려면 X 구간과 Y 구간이 모두 겹쳐야 하고, 어느 한 축에서라도 떨어져 있으면 그 축이 두 상자를 가르는 분리축입니다. 1차원 구간 `[a0, a1]`, `[b0, b1]` 이 길이를 가지고 겹칠 조건은 `a0 < b1 && b0 < a1` 이므로 비교 4개를 `&&` 로 묶으면 끝입니다. 식이 a 와 b 에 대해 대칭이라 인자 순서와 무관합니다.\n\n**맞닿음 정책.** `<` 를 쓰면 `a.Max.X == b.Min.X` 인 맞닿은 상자는 겹치지 않는 것으로, `<=` 를 쓰면 겹치는 것으로 판정됩니다. MDN 의 2D 문서 예제는 `<` / `>`, 3D 문서의 AABB 예제는 `<=` / `>=` 를 쓰듯이 정답이 하나로 정해진 것이 아니라 정책입니다. 이 문제는 \"나란히 깔린 타일이 서로 충돌하면 안 된다\"는 이유로 엄격한 부등호를 택했고, 원 판정도 같은 정책(`<`)으로 맞췄습니다. 두 판정의 정책이 다르면 \"상자로는 안 닿았는데 원으로는 닿은\" 모순이 생깁니다.\n\n**원 vs AABB.** 원이 상자와 겹친다는 것은 상자 위의 어떤 점이 원 안에 있다는 뜻이고, 그런 점이 있다면 중심에 가장 가까운 점도 원 안에 있습니다. 그래서 가장 가까운 점 하나만 검사하면 됩니다. 상자는 축마다 독립인 구간의 곱이므로 가장 가까운 점은 좌표를 축별로 `[Min, Max]` 에 클램프한 것입니다(MDN 3D 문서의 구-AABB 판정과 같은 방법). 중심이 상자 안이면 클램프해도 그대로라 거리 0 이 되어 별도 분기 없이 겹침으로 판정됩니다. 거리 비교는 양변이 0 이상이므로 제곱끼리 비교해도 동치이고 Sqrt 가 필요 없습니다.\n\n**복잡도.** 모두 O(1). AABB 는 비교 4번, 원은 클램프 2번 + 곱셈 3번 + 비교 2번(반지름 검사 포함)이며 할당이 없습니다.\n\n**흔한 실수.**\n- 축 조건을 `||` 로 묶거나 한 축만 검사: X 로만 겹쳐도 충돌이 됩니다.\n- 원을 감싸는 정사각형으로 대체: 꼭짓점 대각선 방향에서 오탐이 납니다. 상자 (0,0)~(4,4), 중심 (5,5), 반지름 1.2 는 정사각형끼리는 겹치지만 꼭짓점까지 거리가 √2 ≈ 1.414 라 실제로는 닿지 않습니다. 탄막 게임에서 \"안 맞았는데 죽었다\"는 버그의 전형입니다.\n- 꼭짓점 4개와 변 4개를 따로따로 검사: 클램프 한 번이면 내부·변·꼭짓점 영역이 모두 처리됩니다.\n- `Vector2.Distance(...) < radius` 로 비교: 수학적으로는 같은 판정이지만 판정마다 Sqrt 가 들어갑니다.\n\n**실무 메모.** float 좌표에서 \"정확히 맞닿음\"은 오차 없이 표현되는 값에서만 의미가 있습니다. 충돌 응답(밀어내기)까지 구현할 때는 밀어낸 뒤 다시 겹침으로 판정되어 떨리지 않도록 작은 여유값(skin)을 두는 것이 보통입니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "AabbOverlap 이 X 구간과 Y 구간이 모두 겹칠 때만 true 다(&&). (0,0)~(4,4) vs (1,6)~(3,8) 은 false 이고 인자 순서를 바꿔도 결과가 같다.",
+      "points": 12,
+      "sourceId": "mdn-2d-collision"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "맞닿음은 false 다: 변을 공유한 상자, 꼭짓점만 공유한 상자, 거리 == 반지름인 원(중심 (6,2), 반지름 2 vs (0,0)~(4,4)) 모두 false.",
+      "points": 11,
+      "sourceId": "mdn-2d-collision"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "CircleAabbOverlap 이 가장 가까운 점 기준이다: (0,0)~(4,4) 에 대해 중심 (5,5) 반지름 1.2 는 false, 반지름 1.5 는 true, 중심이 상자 안이면 true.",
+      "points": 12,
+      "sourceId": "mdn-3d-collision"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "원 판정이 제곱 거리와 반지름 제곱을 비교한다. Sqrt / Length() / Distance 호출이 없다.",
+      "points": 15,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "AABB 판정은 비교 4개, 가장 가까운 점은 축별 클램프 2번으로 끝난다. 꼭짓점이나 변을 순회하는 반복문·경우 나누기가 없다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "힙 할당이 없고 Aabb 가 readonly struct 로 유지된다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "AABB 판정과 원 판정이 같은 경계 정책(엄격한 부등호)을 쓰고, 그 정책이 주석에 적혀 있다.",
+      "points": 10,
+      "sourceId": "mdn-2d-collision"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "radius <= 0 을 먼저 걸러내고, Min <= Max 전제와 클램프 수단(Math.Clamp 등)이 올바르게 쓰였다(Min/Max 인자 순서 포함).",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "CircleAabbOverlap 이 클램프 식을 복사하지 않고 ClosestPoint 를 호출한다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "세 함수가 상태 없는 순수 함수이고, 이름과 주석만으로 \"무엇을 겹침으로 보는지\"를 알 수 있다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "원을 감싸는 정사각형과 상자의 AABB 판정으로 대체했다: 꼭짓점 대각선 방향에서 닿지 않은 원이 충돌로 판정된다.",
+      "penalty": -20,
+      "sourceId": ""
+     },
+     {
+      "id": "d2",
+      "description": "축 조건을 || 로 연결하거나 한 축만 검사한다.",
+      "penalty": -15,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "문제의 약속과 달리 <= 로 비교해, 나란히 맞닿은 타일이나 접한 원이 충돌로 판정된다.",
+      "penalty": -10,
+      "sourceId": ""
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector2 V(float x, float y) { return new System.Numerics.Vector2(x, y); }\n    static Aabb B(float x0, float y0, float x1, float y1) { return new Aabb(V(x0, y0), V(x1, y1)); }\n    static string S(Aabb b) { return \"[\" + b.Min + \" ~ \" + b.Max + \"]\"; }\n\n    // a, b 순서를 바꿔도 결과가 같아야 한다\n    static string Box(string what, Aabb a, Aabb b, bool expected)\n    {\n        bool g1 = Collision2D.AabbOverlap(a, b), g2 = Collision2D.AabbOverlap(b, a);\n        if (g1 != expected) return what + \": \" + S(a) + \" vs \" + S(b) + \" → 기대 \" + expected + \" / 결과 \" + g1;\n        if (g2 != expected) return what + \" (인자 순서를 바꿈): \" + S(b) + \" vs \" + S(a) + \" → 기대 \" + expected + \" / 결과 \" + g2;\n        return null;\n    }\n\n    static string Circle(string what, float cx, float cy, float r, Aabb box, bool expected)\n    {\n        bool got = Collision2D.CircleAabbOverlap(V(cx, cy), r, box);\n        return got == expected ? null : what + \": 원 중심 (\" + cx + \", \" + cy + \") 반지름 \" + r + \" vs 상자 \" + S(box) + \" → 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Closest(Aabb box, float px, float py, float ex, float ey)\n    {\n        var got = Collision2D.ClosestPoint(box, V(px, py));\n        return got == V(ex, ey) ? null : \"ClosestPoint(\" + S(box) + \", (\" + px + \", \" + py + \")) → 기대 (\" + ex + \", \" + ey + \") / 결과 \" + got;\n    }\n\n    public static void Main()\n    {\n        var box = B(0f, 0f, 4f, 4f);\n\n        Run(\"aabb-basic\", () =>\n            Box(\"일부가 겹침\", B(0f, 0f, 4f, 4f), B(3f, 3f, 6f, 6f), true)\n            ?? Box(\"한 상자가 다른 상자 안에 있음\", B(0f, 0f, 10f, 10f), B(4f, 4f, 5f, 5f), true)\n            ?? Box(\"완전히 같은 상자\", B(1f, 1f, 2f, 2f), B(1f, 1f, 2f, 2f), true)\n            ?? Box(\"X 로 떨어져 있음\", B(0f, 0f, 4f, 4f), B(5f, 0f, 9f, 4f), false)\n            ?? Box(\"X 구간은 겹치지만 Y 로 떨어져 있음\", B(0f, 0f, 4f, 4f), B(1f, 6f, 3f, 8f), false)\n            ?? Box(\"Y 구간은 겹치지만 X 로 떨어져 있음\", B(-8f, -1f, -6f, 1f), B(-5f, -3f, 5f, 3f), false)\n            ?? Box(\"십자(+) 모양으로 교차\", B(-5f, -1f, 5f, 1f), B(-1f, -5f, 1f, 5f), true)\n            ?? Box(\"음수 좌표에서 겹침\", B(-6f, -6f, -2f, -2f), B(-3f, -3f, 1f, 1f), true));\n\n        Run(\"aabb-touching\", () =>\n            Box(\"변이 맞닿음 (나란히 놓인 타일)\", B(0f, 0f, 4f, 4f), B(4f, 0f, 8f, 4f), false)\n            ?? Box(\"위아래로 맞닿음\", B(0f, 0f, 4f, 4f), B(0f, 4f, 4f, 8f), false)\n            ?? Box(\"꼭짓점만 맞닿음\", B(0f, 0f, 4f, 4f), B(4f, 4f, 8f, 8f), false)\n            ?? Box(\"0.001 만큼 파고듦\", B(0f, 0f, 4f, 4f), B(3.999f, 0f, 8f, 4f), true)\n            ?? Box(\"0.001 만큼 떨어짐\", B(0f, 0f, 4f, 4f), B(4.001f, 0f, 8f, 4f), false));\n\n        Run(\"closest-point\", () =>\n            Closest(box, 2f, 3f, 2f, 3f)\n            ?? Closest(box, -3f, 2f, 0f, 2f)\n            ?? Closest(box, 9f, 1f, 4f, 1f)\n            ?? Closest(box, 1f, 7f, 1f, 4f)\n            ?? Closest(box, 6f, -2f, 4f, 0f)\n            ?? Closest(box, -1f, -1f, 0f, 0f)\n            ?? Closest(box, 4f, 2f, 4f, 2f)\n            ?? Closest(B(-5f, -3f, -1f, -2f), 0f, 0f, -1f, -2f));\n\n        Run(\"circle-basic\", () =>\n            Circle(\"중심이 상자 안\", 2f, 2f, 0.5f, box, true)\n            ?? Circle(\"중심이 상자 안, 원이 상자보다 큼\", 1f, 3f, 50f, box, true)\n            ?? Circle(\"오른쪽 변 근처에서 겹침\", 5f, 2f, 1.5f, box, true)\n            ?? Circle(\"오른쪽으로 멀리\", 9f, 2f, 1.5f, box, false)\n            ?? Circle(\"아래쪽 변 근처에서 겹침\", 2f, -1f, 1.25f, box, true)\n            ?? Circle(\"왼쪽으로 반지름보다 멀리\", -3f, 2f, 2.5f, box, false));\n\n        Run(\"circle-corner\", () =>\n            Circle(\"꼭짓점 대각선 방향: 원의 외접 사각형은 겹치지만 원은 안 겹침\", 5f, 5f, 1.2f, box, false)\n            ?? Circle(\"같은 위치, 반지름 1.5 (대각선 거리 1.414)\", 5f, 5f, 1.5f, box, true)\n            ?? Circle(\"왼쪽 아래 꼭짓점 방향\", -1f, -1f, 1.2f, box, false)\n            ?? Circle(\"꼭짓점까지 3-4-5, 반지름 5.01\", 7f, 8f, 5.01f, box, true)\n            ?? Circle(\"꼭짓점까지 3-4-5, 반지름 4.99\", 7f, 8f, 4.99f, box, false));\n\n        Run(\"circle-touching\", () =>\n            Circle(\"변에 정확히 닿음 (거리 2, 반지름 2)\", 6f, 2f, 2f, box, false)\n            ?? Circle(\"변을 0.001 파고듦\", 6f, 2f, 2.001f, box, true)\n            ?? Circle(\"꼭짓점에 정확히 닿음 (3-4-5)\", 7f, 8f, 5f, box, false)\n            ?? Circle(\"위쪽 변에 정확히 닿음\", 2f, 4.5f, 0.5f, box, false)\n            ?? Circle(\"반지름 0, 중심이 상자 안\", 2f, 2f, 0f, box, false)\n            ?? Circle(\"음수 반지름\", 2f, 2f, -1f, box, false));\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int i = 0; i < 4000; i++)\n            {\n                // 정수 좌표: 맞닿는 경우가 자주 나오고 오차가 없다\n                int ax = rng.Next(-8, 8), ay = rng.Next(-8, 8), bx = rng.Next(-8, 8), by = rng.Next(-8, 8);\n                var a = B(ax, ay, ax + rng.Next(1, 6), ay + rng.Next(1, 6));\n                var b = B(bx, by, bx + rng.Next(1, 6), by + rng.Next(1, 6));\n                // 기준 구현: 어느 한 축에서라도 떨어져(또는 맞닿아) 있으면 겹치지 않는다\n                bool sep = a.Max.X <= b.Min.X || b.Max.X <= a.Min.X || a.Max.Y <= b.Min.Y || b.Max.Y <= a.Min.Y;\n                string e = Box(\"무작위 #\" + i, a, b, !sep);\n                if (e != null) return e;\n\n                float cx = (float)(rng.NextDouble() * 24 - 12), cy = (float)(rng.NextDouble() * 24 - 12), r = (float)(0.1 + rng.NextDouble() * 5);\n                // 기준 구현: 축별로 상자 밖으로 벗어난 양(음수면 0)으로 거리를 구한다\n                double ox = System.Math.Max(System.Math.Max((double)a.Min.X - cx, (double)cx - a.Max.X), 0.0);\n                double oy = System.Math.Max(System.Math.Max((double)a.Min.Y - cy, (double)cy - a.Max.Y), 0.0);\n                double dist = System.Math.Sqrt(ox * ox + oy * oy);\n                if (System.Math.Abs(dist - r) < 0.001) continue; // 맞닿는 경계 근처는 제외\n                e = Circle(\"무작위 #\" + i + \" (가장 가까운 점까지 거리 \" + dist.ToString(\"F3\") + \")\", cx, cy, r, a, dist < r);\n                if (e != null) return e;\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "aabb-basic",
+     "aabb-touching",
+     "closest-point",
+     "circle-basic",
+     "circle-corner",
+     "circle-touching",
+     "random-vs-reference"
+    ],
+    "note": "AABB 의 겹침·포함·한 축만 겹침·인자 순서 대칭, 변과 꼭짓점의 맞닿음(false), 가장 가까운 점, 원의 내부·변·꼭짓점 대각선 케이스, 원의 맞닿음과 반지름 0 이하, 그리고 다른 식으로 쓴 기준 구현과의 무작위 비교(경계 0.001 이내 제외)를 검사합니다. Sqrt 사용 여부는 채점표에서 봅니다. Aabb(Vector2 min, Vector2 max) 와 Min/Max 필드, Collision2D.AabbOverlap / ClosestPoint / CircleAabbOverlap 시그니처는 바꾸면 안 됩니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "모범 답안·시작 코드를 채점 서버에서 실행하고 맞닿음·꼭짓점 케이스의 기대값을 손으로 다시 계산했으며, <= 오답과 외접 사각형 오답이 테스트에 걸리는지 확인하고 MDN 2D·3D 문서의 부등호를 대조했습니다."
+   },
+   "nextMission": "겹쳤을 때 원을 상자 밖으로 밀어내는 최소 이동 벡터 `Vector2 ResolveCircleAabb(center, radius, box)` 를 구현해 보세요. 중심이 상자 밖일 때(가장 가까운 점 방향으로 밀기)와 상자 안일 때(가장 가까운 변 쪽으로 밀기)를 나눠 처리해야 합니다."
+  },
+  {
+   "id": "t6-impl-ray-sphere-hitscan",
+   "track": "track6",
+   "mode": "implementation",
+   "difficulty": "Medium",
+   "title": "히트스캔 판정: 반직선과 구의 교차에서 가장 가까운 명중 거리 구하기",
+   "tags": [
+    "Math_RaySphere",
+    "Math_Raycast"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "wiki-line-sphere"
+   ],
+   "scenario": "FPS 의 히트스캔 라이플(탄속 없이 즉시 명중)을 서버에서 판정합니다. 캐릭터의 머리 히트박스는 구이고, 한 발마다 사정거리 안의 구 수십 개와 교차 검사를 해서 **가장 가까운 명중 거리**를 가진 대상을 고릅니다. 엔진의 물리 쿼리를 쓸 수 없는 전용 서버 코드라 직접 구현해야 합니다.\n\n**할 일:** `Hitscan.RaySphere` 를 구현하세요. 반직선은 `P(t) = origin + t·direction` (`t >= 0`) 입니다.\n\n1. 명중하면 `true` 를 반환하고 `distance` 에 `origin` 에서 가장 가까운 명중점까지의 **월드 거리**를 담습니다.\n2. `direction` 은 **정규화되어 있지 않을 수 있습니다.** 길이가 5 든 0.01 이든 `distance` 는 같아야 합니다(매개변수 `t` 가 아니라 거리).\n3. `origin` 이 구 **안이나 표면**에 있으면 `true`, `distance = 0` 입니다(총구가 이미 히트박스 안에 있는 근접 사격).\n4. 구가 반직선 **뒤쪽**에 있으면 `false`. 직선으로는 만나더라도 `t < 0` 인 교점은 명중이 아닙니다.\n5. 스치는 경우(접선, 판별식 0)는 `true` 입니다.\n6. `direction` 이 영벡터이거나 `radius < 0` 이면 `false`. `false` 일 때 `distance` 는 `0` 으로 둡니다.\n\n`System.Numerics.Vector3` 를 쓰는 순수 C# 입니다. 거리 비교의 허용 오차는 0.001(무작위 비교는 0.005)이고, 접선 케이스는 판별식이 오차 없이 0 이 되는 입력만 검사합니다. 무작위 비교는 접선이나 표면에서 0.01 이내인 입력을 제외합니다.",
+   "constraints": [
+    "시간 O(1), 힙 할당 없음. 반직선을 따라 조금씩 전진하며 검사하는 방식(레이 마칭) 금지.",
+    "Sqrt 는 최대 2회(판별식, direction 의 길이). 빗나가는 것이 확정된 경로에서는 Sqrt 를 호출하기 전에 반환한다.",
+    "삼각함수 사용 금지.",
+    "RaySphere 의 시그니처(out float distance 포함)를 바꾸지 않는다."
+   ],
+   "starterCode": "using System;\nusing System.Numerics;\n\npublic static class Hitscan\n{\n    // origin 에서 direction 방향으로 나가는 반직선이 구(center, radius)에 맞으면 true.\n    // distance : origin 에서 가장 가까운 명중점까지의 \"월드 거리\" (0 이상).\n    //   - direction 은 정규화되어 있지 않을 수 있다. 길이가 달라도 distance 는 같아야 한다.\n    //   - origin 이 구 안(또는 표면)에 있으면 true, distance = 0.\n    //   - 구가 반직선 뒤쪽에 있으면 false. 스치는 경우(접선)는 true.\n    //   - direction 이 영벡터이거나 radius 가 음수면 false.\n    //   - false 를 반환할 때 distance 는 0 으로 둔다.\n    public static bool RaySphere(Vector3 origin, Vector3 direction, Vector3 center, float radius, out float distance)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "origin 이 구 안: 이차방정식의 작은 해는 음수(뒤쪽 교점)다. 그 값을 그대로 쓰면 음수 거리가 나오거나 빗나간 것으로 처리된다.",
+    "구가 뒤에 있음: 판별식은 0 이상이지만 두 해가 모두 음수다. 판별식만 보면 뒤에 있는 적이 맞는다.",
+    "접선: origin (0,1,-5), direction (0,0,1), 중심 (0,0,0), 반지름 1 → 판별식 0, 거리 5.",
+    "정규화되지 않은 direction: (0,0,5) 로 쏘면 t = 1.6 이지만 거리는 8 이다.",
+    "direction 이 영벡터: 정규화하면 NaN 이 되고 a = 0 으로 나누게 된다."
+   ],
+   "hints": [
+    "반직선 위의 점 `origin + t·direction` 을 구의 식 `|P - center|² = r²` 에 대입하면 t 에 대한 이차방정식이 됩니다. 해가 두 개면 작은 쪽이 들어가는 점, 큰 쪽이 나오는 점입니다. 반례 두 개를 직접 풀어 보세요. (1) origin (0,0,-10), direction (0,0,-1), 구 중심 원점, 반지름 2: 판별식은 양수인데 명중인가요? (2) origin (0,0,-10), direction (0,0,5): t 는 얼마이고 거리는 얼마인가요?",
+    "`oc = origin - center` 로 두면 계수는 `a = d·d`, `b = oc·d`(절반 계수), `c = oc·oc - r²` 입니다. c 의 부호는 origin 이 구 안인지 밖인지를 알려 줍니다. origin 이 구 밖일 때 b 의 부호는 반직선이 구 쪽으로 다가가는지 멀어지는지를 알려 줍니다. 이 두 검사를 판별식보다 먼저 하면 Sqrt 없이 걸러낼 수 있는 경우가 무엇인지 생각해 보세요. 마지막으로 t 를 월드 거리로 바꾸려면 무엇을 곱해야 할까요?",
+    "뼈대입니다. 빈칸은 직접 채우세요.\n```\nRaySphere(origin, direction, center, radius, out distance):\n    distance = 0\n    a = Dot(direction, direction)\n    if a == 0 또는 radius < 0: return false\n    oc = origin - center\n    c = Dot(oc, oc) - radius * radius\n    if ____ : return true            // 시작점이 구 안(표면 포함)\n    b = Dot(oc, direction)\n    if ____ : return false           // 구 밖에서 멀어지는 중\n    disc = b * b - a * c\n    if disc < 0: return false\n    t = ( ____ ) / a                 // 두 해 중 어느 쪽?\n    distance = t * ____\n    return true\n```"
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Numerics;\n\npublic static class Hitscan\n{\n    // 반직선 P(t) = origin + t * direction (t >= 0) 을 구의 식 |P - center|^2 = r^2 에 대입하면\n    //   a t^2 + 2 b t + c = 0,  a = d.d,  b = oc.d,  c = oc.oc - r^2   (oc = origin - center)\n    // b 를 \"절반 계수\"로 잡았으므로 판별식은 b^2 - a c, 해는 (-b ± sqrt(disc)) / a 이다.\n    public static bool RaySphere(Vector3 origin, Vector3 direction, Vector3 center, float radius, out float distance)\n    {\n        distance = 0f;\n        float a = direction.LengthSquared();\n        if (a == 0f || !(radius >= 0f)) return false;   // 방향 없음 / 잘못된 반지름\n\n        Vector3 oc = origin - center;\n        float c = oc.LengthSquared() - radius * radius;\n        if (c <= 0f) return true;                       // 시작점이 구 안(또는 표면): 거리 0\n\n        float b = Vector3.Dot(oc, direction);\n        if (b >= 0f) return false;                      // 구 밖에서 멀어지는 중: 두 해 모두 음수\n\n        float disc = b * b - a * c;\n        if (disc < 0f) return false;                    // 빗나감 (disc == 0 은 접선 명중)\n\n        // 여기서는 b < 0, c > 0 이라 두 해가 모두 양수다. 작은 쪽이 들어가는 지점.\n        float t = (-b - MathF.Sqrt(disc)) / a;\n        distance = t * MathF.Sqrt(a);                   // 매개변수 t 를 월드 거리로: |direction| 배\n        return true;\n    }\n}\n",
+   "explanation": "**식 세우기.** 반직선 `P(t) = o + t·d` 를 구의 식 `|P - c|² = r²` 에 대입하고 `oc = o - c` 로 두면 `(d·d)t² + 2(oc·d)t + (oc·oc - r²) = 0` 입니다. Wikipedia 의 Line–sphere intersection 이 유도하는 식과 같고, 판별식이 음수면 만나지 않음, 0 이면 접함, 양수면 두 점에서 만납니다. 풀이 코드는 일차항을 절반 계수 `b = oc·d` 로 잡아 판별식을 `b² - a·c`, 해를 `(-b ± √disc) / a` 로 씁니다(2 와 4 가 약분되어 곱셈이 줄어듭니다).\n\n**직선이 아니라 반직선.** 이차방정식은 무한 직선과의 교점을 주므로 `t >= 0` 조건을 따로 처리해야 합니다. 풀이는 판별식 전에 두 가지를 먼저 봅니다.\n\n- `c <= 0`: `|oc|² <= r²`, 즉 시작점이 구 안이나 표면입니다. 스펙대로 거리 0 으로 명중 처리합니다. 이 분기가 없으면 작은 해가 음수라 빗나간 것으로 처리됩니다.\n- `c > 0` 이고 `b >= 0`: 두 해의 곱은 `c/a > 0` 이라 부호가 같고, 합은 `-2b/a <= 0` 이므로 해가 있더라도 둘 다 음수입니다. 구가 뒤에 있다는 뜻이므로 Sqrt 없이 false 입니다.\n\n두 검사를 통과하면 `c > 0`, `b < 0` 이라 실근은 모두 양수이고, 작은 쪽 `(-b - √disc)/a` 가 들어가는 점입니다. 접선은 `disc == 0` 으로 두 해가 겹친 경우라 같은 식으로 처리됩니다.\n\n**t 는 거리가 아니다.** `t` 는 \"direction 을 몇 배 했는가\"이므로 월드 거리는 `t·|d|` 입니다. direction 을 미리 정규화해도 되지만 그러면 빗나가는 경우에도 Sqrt 를 치르게 됩니다. `a = d·d` 를 식에 남겨 두면 명중이 확정된 뒤에만 `√a` 를 계산하면 되고, 영벡터 검사도 `a == 0` 한 번으로 끝나 NaN 이 생길 경로가 없습니다.\n\n**복잡도.** O(1). 빗나가는 대부분의 구는 내적 3번과 비교 몇 번으로 끝나고, 명중할 때만 Sqrt 2회를 씁니다.\n\n**흔한 실수.**\n- 판별식만 보고 명중 처리: 등 뒤의 적이 맞습니다.\n- `+√disc` 쪽(나오는 점)을 반환: 거리가 구를 관통하는 길이(최대 지름)만큼 길어져 \"가장 가까운 대상\" 선택이 틀어집니다.\n- t 를 그대로 거리로 반환: direction 이 단위 벡터일 때만 맞습니다.\n- `Vector3.Normalize(Vector3.Zero)` 로 NaN 생성: NaN 과의 대소 비교는 모두 false 라 예외 없이 조용히 틀립니다.\n\n**정밀도 메모.** `c = |oc|² - r²` 은 아주 멀리 있는 작은 구에서 큰 수끼리의 뺄셈이 되어 유효 자릿수를 잃습니다. 월드가 크면 원점을 사수 근처로 옮겨 계산하거나 double 을 쓰는 것을 검토하세요. 여러 구 중 가장 가까운 것을 고를 때는 지금까지의 최소 거리보다 먼 구를 일찍 건너뛰도록 최대 거리 인자를 추가하는 것이 다음 단계입니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "두 해 중 가까운 쪽을 반환한다: origin (0,0,-10), direction (0,0,1), 중심 원점, 반지름 2 에서 거리가 12 가 아니라 8 이다.",
+      "points": 12,
+      "sourceId": "wiki-line-sphere"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "origin 이 구 안이면 true / 거리 0, 구가 뒤에 있으면 false, 접선(판별식 0)이면 true 를 반환한다.",
+      "points": 12,
+      "sourceId": "wiki-line-sphere"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "direction 이 정규화되지 않아도 월드 거리를 반환한다: direction (0,0,5) 로 쏴도 거리는 1.6 이 아니라 8 이다.",
+      "points": 11,
+      "sourceId": ""
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "닫힌 형태의 해로 O(1) 에 끝난다. 반직선을 따라 전진하는 반복문이 없다.",
+      "points": 15,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "빗나가는 경로(구가 뒤에 있음, 판별식 음수)는 Sqrt 를 호출하기 전에 반환하고, 명중 경로의 Sqrt 는 2회 이하다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "힙 할당과 삼각함수 호출이 없다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "direction 이 영벡터일 때 0 으로 나누거나 정규화하지 않고 false 를 반환하며, distance 에 NaN 이 들어가지 않는다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "out 인자 distance 가 모든 반환 경로에서 대입되고, false 를 반환할 때는 0 이다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "이차방정식의 계수 a, b, c 가 무엇인지(b 가 절반 계수인지 포함) 주석이나 이름으로 알 수 있다.",
+      "points": 8,
+      "sourceId": "wiki-line-sphere"
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "분기가 입력 검증 → 구 안 → 뒤쪽 → 판별식 → 해 순서로 읽히고 각 분기에 이유가 적혀 있다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "판별식만 확인하고 t >= 0 조건을 보지 않아, 반직선 뒤쪽에 있는 구에 명중한다.",
+      "penalty": -20,
+      "sourceId": "wiki-line-sphere"
+     },
+     {
+      "id": "d2",
+      "description": "큰 해(나오는 점)를 반환하거나 두 해를 구분하지 않는다.",
+      "penalty": -15,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "direction 이 단위 벡터라고 가정해 매개변수 t 를 거리로 반환한다.",
+      "penalty": -15,
+      "sourceId": ""
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    const float Eps = 0.001f; // 거리 비교 허용 오차\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector3 V(float x, float y, float z) { return new System.Numerics.Vector3(x, y, z); }\n\n    static string Desc(System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 c, float r)\n    {\n        return \"origin \" + o + \", direction \" + d + \", 구 중심 \" + c + \" 반지름 \" + r;\n    }\n\n    static string Hit(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 c, float r, float expected, float eps)\n    {\n        float dist;\n        bool hit = Hitscan.RaySphere(o, d, c, r, out dist);\n        if (!hit) return what + \": \" + Desc(o, d, c, r) + \" → 기대 명중(거리 \" + expected + \") / 결과 빗나감\";\n        if (!(System.Math.Abs(dist - expected) <= eps)) return what + \": \" + Desc(o, d, c, r) + \" → 거리 기대 \" + expected + \" / 결과 \" + dist;\n        return null;\n    }\n\n    static string Miss(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 c, float r)\n    {\n        float dist;\n        bool hit = Hitscan.RaySphere(o, d, c, r, out dist);\n        return hit ? what + \": \" + Desc(o, d, c, r) + \" → 기대 빗나감 / 결과 명중(거리 \" + dist + \")\" : null;\n    }\n\n    public static void Main()\n    {\n        var Z = V(0f, 0f, 1f);\n        var C0 = V(0f, 0f, 0f);\n\n        Run(\"head-on-nearest-hit\", () =>\n            Hit(\"정면 명중: 들어가는 점(8)이지 나가는 점(12)이 아님\", V(0f, 0f, -10f), Z, C0, 2f, 8f, Eps)\n            ?? Hit(\"중심에서 벗어난 명중 (3-4-5)\", V(3f, 0f, -10f), Z, C0, 5f, 6f, Eps)\n            ?? Hit(\"원점이 아닌 구\", V(1f, 2f, 3f), V(1f, 0f, 0f), V(11f, 2f, 3f), 1.5f, 8.5f, Eps)\n            ?? Hit(\"대각선 방향\", V(-10f, -10f, 0f), V(0.70710678f, 0.70710678f, 0f), C0, 1f, 13.142136f, Eps));\n\n        Run(\"miss\", () =>\n            Miss(\"옆으로 빗나감\", V(3f, 0f, -10f), Z, C0, 2f)\n            ?? Miss(\"아슬아슬하게 빗나감\", V(0f, 2.01f, -10f), Z, C0, 2f)\n            ?? Miss(\"방향이 구와 수직\", V(0f, 0f, -10f), V(1f, 0f, 0f), C0, 2f));\n\n        Run(\"pointing-away\", () =>\n            Miss(\"구가 정확히 뒤에 있음\", V(0f, 0f, -10f), V(0f, 0f, -1f), C0, 2f)\n            ?? Miss(\"구가 비스듬히 뒤에 있음\", V(0f, 0f, 10f), V(0.1f, 0f, 1f), C0, 3f)\n            ?? Miss(\"구를 이미 지나친 뒤\", V(0f, 0f, 2.5f), Z, C0, 2f));\n\n        Run(\"origin-inside\", () =>\n            Hit(\"중심에서 발사\", C0, Z, C0, 2f, 0f, Eps)\n            ?? Hit(\"구 안에서 중심 쪽으로\", V(0f, 1f, -1f), Z, C0, 2f, 0f, Eps)\n            ?? Hit(\"구 안에서 바깥쪽으로\", V(0f, 0f, 1.5f), Z, C0, 2f, 0f, Eps)\n            ?? Hit(\"큰 구 안, 정규화되지 않은 방향\", V(40f, -30f, 10f), V(-3f, 2f, 9f), V(35f, -28f, 12f), 50f, 0f, Eps));\n\n        Run(\"tangent\", () =>\n            Hit(\"접선 (판별식 0)\", V(0f, 1f, -5f), Z, C0, 1f, 5f, Eps)\n            ?? Hit(\"접선, 길이 2 인 방향\", V(0f, 1f, -5f), V(0f, 0f, 2f), C0, 1f, 5f, Eps)\n            ?? Hit(\"접선, -X 쪽에서\", V(-8f, -3f, 0f), V(1f, 0f, 0f), C0, 3f, 8f, Eps));\n\n        Run(\"non-normalized-direction\", () =>\n            Hit(\"길이 5 인 방향: 거리는 8 (t = 1.6 이 아님)\", V(0f, 0f, -10f), V(0f, 0f, 5f), C0, 2f, 8f, Eps)\n            ?? Hit(\"길이 0.01 인 방향\", V(0f, 0f, -10f), V(0f, 0f, 0.01f), C0, 2f, 8f, Eps)\n            ?? Hit(\"방향 (3,0,4)\", V(-6f, 0f, -8f), V(3f, 0f, 4f), C0, 1f, 9f, Eps)\n            ?? Miss(\"길이 5 인 방향으로 빗나감\", V(3f, 0f, -10f), V(0f, 0f, 5f), C0, 2f)\n            ?? Miss(\"길이 5 인 방향, 구가 뒤\", V(0f, 0f, -10f), V(0f, 0f, -5f), C0, 2f));\n\n        Run(\"zero-direction\", () =>\n        {\n            string e = Miss(\"direction 이 영벡터\", V(0f, 0f, -10f), V(0f, 0f, 0f), C0, 2f)\n                ?? Miss(\"음수 반지름\", V(0f, 0f, -10f), Z, C0, -1f);\n            if (e != null) return e;\n            float dist;\n            bool hit = Hitscan.RaySphere(V(0f, 0f, -10f), V(0f, 0f, 0f), C0, 2f, out dist);\n            return float.IsNaN(dist) ? \"영벡터 방향에서 distance 가 NaN\" : null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int hits = 0, tested = 0;\n            for (int i = 0; i < 4000; i++)\n            {\n                var o = V((float)(rng.NextDouble() * 40 - 20), (float)(rng.NextDouble() * 40 - 20), (float)(rng.NextDouble() * 40 - 20));\n                var c = V((float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10));\n                float r = (float)(0.5 + rng.NextDouble() * 8);\n                // 절반은 구 근처를 겨냥해 명중이 충분히 나오게 한다\n                var aim = c + V((float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1)) * (r * 1.3f);\n                var d = i % 2 == 0 ? aim - o : V((float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1));\n                if (d.Length() < 0.1f) continue;\n                d *= (float)(0.05 + rng.NextDouble() * 4) / d.Length();\n                // 기준 구현(double, 기하학적 방법): 중심을 반직선에 투영해 가장 가까운 접근 거리를 구한다\n                double lx = (double)c.X - o.X, ly = (double)c.Y - o.Y, lz = (double)c.Z - o.Z;\n                double dl = System.Math.Sqrt((double)d.X * d.X + (double)d.Y * d.Y + (double)d.Z * d.Z);\n                double ux = d.X / dl, uy = d.Y / dl, uz = d.Z / dl;\n                double l2 = lx * lx + ly * ly + lz * lz, L = System.Math.Sqrt(l2);\n                double tca = lx * ux + ly * uy + lz * uz;\n                double perp = System.Math.Sqrt(System.Math.Max(0.0, l2 - tca * tca));\n                // 구 표면 근처에서 출발하거나 접선에 가까운 경우는 오차 때문에 판정하지 않는다\n                if (System.Math.Abs(L - r) < 0.01 || System.Math.Abs(perp - r) < 0.01) continue;\n                tested++;\n                string e;\n                if (L < r) e = Hit(\"무작위 #\" + i + \" (구 안에서 출발)\", o, d, c, r, 0f, Eps);\n                else if (tca < 0 || perp > r) e = Miss(\"무작위 #\" + i, o, d, c, r);\n                else { hits++; e = Hit(\"무작위 #\" + i, o, d, c, r, (float)(tca - System.Math.Sqrt((double)r * r - perp * perp)), 0.005f); }\n                if (e != null) return e;\n            }\n            return tested > 3000 && hits > 500 ? null : \"검사한 표본 수가 부족함: \" + tested + \" / 명중 \" + hits;\n        });\n    }\n}\n",
+    "cases": [
+     "head-on-nearest-hit",
+     "miss",
+     "pointing-away",
+     "origin-inside",
+     "tangent",
+     "non-normalized-direction",
+     "zero-direction",
+     "random-vs-reference"
+    ],
+    "note": "정면 명중의 가까운 해, 빗나감, 뒤쪽에 있는 구, 구 안에서의 발사(거리 0), 접선, 정규화되지 않은 방향에서의 월드 거리, 영벡터 방향, 그리고 double 로 쓴 기하학적 기준 구현과의 무작위 비교를 검사합니다. 거리 허용 오차는 0.001(무작위 0.005)이며 빗나갔을 때의 distance 값은 NaN 여부만 봅니다. Sqrt 호출 횟수는 채점표에서 봅니다. Hitscan.RaySphere(Vector3, Vector3, Vector3, float, out float) 시그니처는 바꾸면 안 됩니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "모범 답안·시작 코드를 채점 서버에서 실행하고 각 테스트의 기대 거리와 접선 판별식을 손으로 다시 계산했으며, 정규화 방식·전체 계수 방식·기하학적 방식의 정답과 t >= 0 을 보지 않는 오답의 판정을 로컬 dotnet 으로 확인했습니다."
+   },
+   "nextMission": "`maxDistance` 인자를 추가하고, 구 배열을 받아 가장 가까운 명중의 인덱스와 거리를 반환하는 `ClosestHit` 를 작성해 보세요(지금까지의 최소 거리를 다음 검사의 maxDistance 로 넘겨 조기 탈락). 그다음 같은 방식으로 반직선 vs AABB(슬랩 방법)를 구현합니다."
+  },
+  {
+   "id": "t6-interview-rotation-quaternion-transform",
+   "track": "track6",
+   "mode": "interview",
+   "difficulty": "Hard",
+   "title": "회전과 변환: 오일러 각 vs 쿼터니언, 그리고 스케일·회전·이동의 합성 순서",
+   "tags": [
+    "Math_Quaternion",
+    "Math_Transform"
+   ],
+   "language": "none",
+   "sourceRefs": [
+    "unity-rotation-manual",
+    "unity-quaternion-multiply",
+    "unity-transform-transformpoint",
+    "wiki-slerp",
+    "unity-transform-eulerangles",
+    "unity-mathematics-trs",
+    "ms-matrix4x4",
+    "blow-understanding-slerp"
+   ],
+   "scenario": "Unity 6 로 3인칭 슈터를 만들고 있습니다. 코드 리뷰에 신입이 쓴 코드 두 건이 올라왔습니다.\n\n- 카메라: 매 프레임 `transform.eulerAngles` 를 읽어 마우스 입력을 더한 뒤 다시 대입합니다. 위나 아래를 똑바로 볼 때 카메라가 갑자기 돌거나 뒤집힌다는 버그가 있습니다. 같은 파일에 \"살짝 기울이기\"를 하겠다며 `rotation.x += 0.1f` 로 쿼터니언 성분을 직접 고친 코드도 있습니다.\n- 총구 이펙트: 캐릭터의 자식으로 붙였는데, 부모의 스케일이 (2, 1, 1) 인 캐릭터에서만 이펙트 위치가 총구에서 어긋납니다. 로컬 좌표로 계산한 오프셋을 월드 좌표에 그대로 더하고 있습니다.\n\n**질문: 오일러 각과 쿼터니언은 각각 무엇이고, 왜 회전을 쿼터니언으로 저장·합성·보간합니까? 짐벌 락, Slerp, 그리고 쿼터니언의 성분을 직접 고치면 안 되는 이유를 포함해 설명해 주세요. 이어서 Transform 의 스케일·회전·이동은 어떤 순서로 적용되고, 로컬 공간과 월드 공간 사이의 변환은 어떻게 이뤄지는지 설명해 주세요.**",
+   "constraints": [],
+   "starterCode": "",
+   "edgeCases": [
+    "피치가 ±90도 근처일 때: 오일러 각의 두 축이 겹쳐 짐벌 락이 생기는 지점.",
+    "q 와 -q 는 같은 회전: 보간할 때 내적이 음수면 먼 길(180도 초과)로 돈다.",
+    "LookRotation 에 영벡터가 들어가거나 forward 가 up 과 일직선인 경우(타깃이 바로 머리 위).",
+    "부모에 비균등 스케일이 있을 때 자식의 위치(점)와 방향 벡터를 변환하는 경우."
+   ],
+   "hints": [],
+   "followUps": [
+    {
+     "question": "쿼터니언 곱은 왜 교환법칙이 성립하지 않습니까? 그리고 Unity 에서 `transform.rotation = delta * transform.rotation` 과 `transform.rotation = transform.rotation * delta` 는 결과가 어떻게 다릅니까?",
+     "intent": "곱셈 순서를 외운 것이 아니라 \"회전의 합성\"으로 이해하는지, 월드 축 기준 회전과 로컬 축 기준 회전을 곱셈 순서로 구분해 쓸 수 있는지 확인한다.",
+     "keyAnswer": "- **왜 비가환인가:** 3D 회전 자체가 순서에 의존한다. 책을 X 축으로 90도 돌린 뒤 Y 축으로 90도 돌린 결과와 반대 순서의 결과는 다르다. 쿼터니언 곱은 회전의 합성을 나타내므로 같은 성질을 물려받는다(같은 축에 대한 회전끼리만 순서가 무관하다).\n- **Unity 의 순서 규칙:** Unity 문서에 따르면 `lhs * rhs` 로 회전하는 것은 **rhs 를 먼저, 그다음 lhs 를** 원래(고정된) 기준 좌표계에 대해 차례로 적용한 것과 같다. 문서의 예제 주석도 `rotX * rotY` 를 \"Y 회전을 먼저, 그다음 X\"라고 적는다.\n- **`delta * rotation`:** 현재 회전을 먼저 적용하고 그 뒤에 delta 를 고정 축 기준으로 적용한다. 즉 **월드 축 기준**으로 delta 만큼 더 도는 것이다(예: 기울어진 비행기를 월드 Y 축 기준으로 선회).\n- **`rotation * delta`:** delta 를 먼저 적용한 결과를 현재 회전으로 다시 돌린다. 이는 오브젝트의 **로컬 축 기준**으로 delta 만큼 도는 것과 같다(예: 기체 자신의 앞축 기준 롤).\n- **벡터 회전:** 점이나 방향은 `rotation * vector` 로 돌린다(쿼터니언이 왼쪽).\n- **누적 오차:** 매 프레임 곱을 누적하면 부동소수 오차로 길이가 1 에서 조금씩 벗어난다. Unity 는 쿼터니언이 정규화되어 있기를 기대하므로 주기적으로 정규화하거나, 누적하지 말고 각도 상태에서 매번 새로 만든다."
+    },
+    {
+     "question": "포탑의 포신이 타깃을 향하게 하려고 `Quaternion.LookRotation(target - muzzle)` 을 썼습니다. (1) 타깃이 포신과 같은 위치이거나 바로 머리 위에 있으면 무슨 일이 생깁니까? (2) 모델의 포신이 로컬 +Z 가 아니라 +X 를 향하도록 만들어져 있거나, 조준에 반동 오프셋을 더해야 한다면 회전을 어떻게 합성하겠습니까?",
+     "intent": "API 의 예외 입력을 문서 수준으로 알고 방어하는지, 그리고 앞 질문의 곱셈 순서 규칙을 \"축 보정\"과 \"조준 오프셋\"이라는 실제 문제에 적용할 수 있는지 확인한다.",
+     "keyAnswer": "- **LookRotation 이 하는 일:** Unity 문서에 따르면 Z 축을 forward 에, X 축을 forward 와 upwards 의 외적에, Y 축을 Z 와 X 의 외적에 맞춘 회전을 만든다. upwards 는 \"대략 위\"를 알려 주는 힌트이지 결과의 Y 축이 정확히 그 방향이 되는 것은 아니다.\n- **(1) 예외 입력:** forward 가 영벡터면 문서상 콘솔에 오류를 남기고 identity 를 반환한다. 포신이 갑자기 기본 방향으로 튀므로, 방향 벡터의 길이 제곱이 아주 작으면 이전 회전을 유지하도록 먼저 걸러낸다. forward 와 upwards 가 일직선이면(타깃이 정확히 위/아래) 문서상 +Z 를 forward 로 보내는 FromToRotation 과 같은 결과로 대체된다. 이때 롤의 기준이 달라져 회전이 튈 수 있으므로 upwards 를 상황에 맞는 벡터(포탑 받침의 up 등)로 주거나 피치를 제한해 그 자세를 피한다.\n- **(2) 축 보정:** `look = LookRotation(dir)` 는 +Z 를 dir 로 보낸다. 포신이 로컬 +X 를 향하는 모델이라면 \"+X 를 +Z 로 보내는 고정 회전\" `modelFix` 를 한 번 만들어 `look * modelFix` 로 합성한다. Unity 의 순서 규칙(오른쪽이 먼저)대로 읽으면 \"먼저 포신을 +Z 로 맞추고, 그다음 타깃 쪽으로 돌린다\"가 된다.\n- **조준 오프셋:** 반동처럼 \"조준 방향 기준으로 위로 2도\"인 오프셋은 조준 좌표계의 로컬 회전이므로 오른쪽에 곱한다(`look * recoil`). \"월드 기준으로 북쪽으로 2도\"라면 왼쪽에 곱한다.\n- **순서를 틀리면:** 타깃 방향에 따라 오프셋이 적용되는 축이 달라져서 \"정면을 볼 때는 맞는데 옆을 보면 틀리는\" 버그가 된다. 근본 해결은 모델의 축을 임포트 단계에서 맞추거나 빈 부모 오브젝트로 보정하는 것이다."
+    },
+    {
+     "question": "원격 플레이어의 회전을 매 프레임 목표 회전 쪽으로 부드럽게 따라가게 하려고 합니다. Slerp 대신 Lerp 후 정규화(nlerp)를 써도 되는 조건은 무엇입니까? 그리고 어느 쪽을 쓰든 생길 수 있는 \"먼 길로 도는\" 문제와 프레임률 의존 문제는 어떻게 처리합니까?",
+     "intent": "보간 방식을 비용과 품질의 트레이드오프로 판단하는지, 쿼터니언의 이중 덮개(q 와 -q)와 프레임률 독립 보간까지 연결해 설명할 수 있는지 확인한다.",
+     "keyAnswer": "- **차이:** Slerp 는 두 회전을 잇는 대원의 호를 따라 **일정한 각속도**로 움직인다(Wikipedia). Unity 문서는 `Quaternion.Lerp` 를 \"보간한 뒤 정규화하며 Slerp 보다 빠르지만, 두 회전이 멀리 떨어져 있으면 각속도가 일정하지 않다\"고 설명한다.\n- **nlerp 로 충분한 경우:** 두 회전 사이의 각이 작을 때다. 매 프레임 목표를 조금씩 따라가는 스무딩, 촘촘한 애니메이션 키나 네트워크 스냅샷 사이의 보간이 여기에 해당한다. 두 쿼터니언의 선형 결합을 정규화한 값은 Slerp 가 지나는 것과 같은 대원의 호 위에 있으므로 nlerp 가 그리는 경로 자체는 Slerp 와 같다(짧은 쪽 부호를 맞췄다는 전제). 달라지는 것은 같은 t 에서 호 위의 어디까지 왔는가, 즉 진행 속도다. nlerp 는 각속도가 일정하지 않아 양 끝에서 느리고 가운데에서 빠르다. Jonathan Blow 의 글도 nlerp 를 경로는 최단(torque-minimal)이지만 속도가 일정하지 않은 보간으로 정리한다. t = 0.25 에서 두 결과의 차이를 직접 계산하면 사이각 10도에서는 0.01도 미만, 90도에서 약 0.9도, 170도에서 약 6.7도다. 따라서 각이 작으면 차이가 눈에 띄지 않고 삼각함수 비용도 없다.\n- **Slerp 가 필요한 경우:** 큰 각도를 일정한 속도로 보여 줘야 할 때다(컷신 카메라, 90도 이상 도는 포탑). 회전 \"속도 제한\"이 목적이라면 보간 비율이 아니라 프레임당 최대 각도로 제한하는 방식이 더 맞다.\n- **먼 길 문제:** 단위 쿼터니언 q 와 -q 는 같은 회전을 나타낸다(Wikipedia). 두 쿼터니언의 내적이 음수면 그대로 보간했을 때 180도가 넘는 쪽으로 돈다. 내적이 음수일 때 한쪽의 부호를 뒤집으면 짧은 쪽으로 돈다. 보간을 직접 구현하거나(전용 서버, 압축 해제 직후) 다른 라이브러리를 쓸 때는 이 검사가 들어 있는지 확인해야 한다.\n- **프레임률 의존:** `Slerp(current, target, 0.1f)` 를 매 프레임 호출하면 144fps 에서 더 빨리 따라붙는다. 보간 비율을 `1 - exp(-k * deltaTime)` 으로 바꾸면 총 시간이 같을 때 결과가 같아진다.\n- **네트워크 보간:** \"현재 값에서 목표로 끌려가기\"보다, 받은 스냅샷 두 개 사이를 렌더 시각 기준의 t 로 보간하는 방식이 지연이 일정하고 결과가 프레임률에 좌우되지 않는다."
+    }
+   ],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "",
+   "explanation": "**오일러 각.** 세 축에 대한 각도 세 개로 방향을 표현합니다. 사람이 읽기 쉬워서 인스펙터가 이 값으로 보여 주지만 두 가지 문제가 있습니다. 첫째, 세 번의 회전을 차례로 적용하므로 순서에 따라 결과가 다릅니다(Unity 매뉴얼에 따르면 Unity 는 z, x, y 순서로 extrinsic 하게 적용합니다). 둘째, 가운데 축이 90도가 되면 나머지 두 축이 평행해져 자유도 하나를 잃습니다. 이것이 짐벌 락입니다. 카메라가 위를 똑바로 볼 때 요와 롤이 같은 회전이 되어 버리는 것이 리뷰의 첫 번째 버그입니다.\n\n**쿼터니언.** {x, y, z, w} 네 실수로 회전 하나를 통째로 표현합니다. 단위 쿼터니언은 회전축 n 과 각 θ 에 대해 `(n·sin(θ/2), cos(θ/2))` 꼴이므로 x, y, z 는 \"축별 각도\"가 아닙니다. 그래서 `rotation.x += 0.1f` 는 의미 있는 회전 변화가 아닐 뿐 아니라 길이를 1 에서 벗어나게 합니다. Unity 문서도 성분을 직접 수정하지 말라고 경고하고, 쿼터니언이 정규화되어 있기를 기대한다고 적습니다. 회전은 `Quaternion.Euler`, `AngleAxis`, `LookRotation` 으로 만들고 곱셈으로 합성합니다.\n\n**왜 쿼터니언으로 저장·보간하는가.** Unity 는 회전을 내부적으로 쿼터니언으로 저장합니다. 합성은 곱셈 한 번이고, 보간은 Slerp 로 두 회전을 잇는 호를 일정한 각속도로 지납니다. 오일러 각을 성분별로 Lerp 하면 세 축이 따로 움직여 경로가 휘고, 359도와 1도 사이에서 먼 길로 돌며, 짐벌 락 근처에서 튑니다. 단, 쿼터니언을 쓴다고 자동으로 안전한 것은 아닙니다. Unity 매뉴얼은 계산을 위해 오일러 각으로 변환하면 짐벌 락 위험이 있다고 명시합니다.\n\n**카메라 수정안.** `eulerAngles` 를 읽어 누적하지 말고, yaw 와 pitch 를 float 상태로 직접 보관합니다. 입력을 더한 뒤 pitch 를 ±89도 정도로 제한하고 매 프레임 `Quaternion.Euler(pitch, yaw, 0)` 로 회전을 새로 만듭니다. Unity 의 Transform.eulerAngles 문서는 같은 회전을 나타내는 오일러 각 표현이 여러 개라 읽어 온 값이 대입한 값과 크게 다를 수 있으니, 읽은 값을 조금씩 누적하는 방식에 의존하지 말라고 권고합니다. 이 구조에서는 읽지 않으므로 문제가 없습니다.\n\n**변환의 합성 순서.** 로컬 점은 스케일 → 회전 → 이동 순서로 월드에 놓입니다(열벡터 표기로 `T·R·S·p`). UnityEngine 의 `Matrix4x4.TRS` 페이지는 \"위치 pos, 회전 q, 스케일 s 로 놓는 행렬\"이라고만 적고 순서를 직접 밝히지 않지만, Unity.Mathematics 의 `float4x4.TRS` 문서는 이 행렬이 `mul(이동, mul(회전, 스케일))` 과 같다고 명시합니다. 순서가 중요한 이유는 각 연산이 원점 기준이기 때문입니다. 이동을 먼저 하고 회전하면 제자리 회전이 아니라 원점 주위를 공전하고, 회전 뒤에 비균등 스케일을 하면 모양이 기울어집니다. 계층 구조에서는 `월드 = 부모의 월드 변환 · 자식의 로컬 변환` 이 부모 쪽으로 계속 곱해집니다.\n\n**로컬 ↔ 월드.** 위치는 `TransformPoint` 로 변환하며 문서에 적힌 대로 스케일의 영향을 받습니다. 방향은 `TransformDirection` 으로 변환하며 스케일과 위치의 영향을 받지 않고 길이가 유지됩니다. 역방향은 `InverseTransformPoint` 입니다. 리뷰의 두 번째 버그는 부모 스케일 (2, 1, 1) 이 적용되어야 할 로컬 오프셋을 월드 좌표에 그대로 더한 것이므로, 오프셋을 `TransformPoint` 로 변환하면 됩니다. 점과 방향을 구분하지 않는 것이 이 주제에서 가장 흔한 실수입니다.\n\n**엔진 밖에서.** 곱셈 순서와 행렬 표기는 라이브러리마다 다릅니다. 예를 들어 Microsoft 문서에 따르면 System.Numerics 는 벡터를 행으로 취급해 `v·M` 으로 변환하므로, 같은 \"스케일 → 회전 → 이동\" 변환을 `S * R * T` 순서로 곱해 `Vector3.Transform(p, S * R * T)` 로 씁니다(Unity 식으로 `T * R * S` 를 쓰면 다른 결과가 나옵니다). 새 라이브러리를 쓸 때는 알려진 입력(예: +Z 를 Y 축으로 90도 회전)으로 규약을 먼저 확인합니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "짐벌 락을 \"오일러 각의 두 회전축이 평행해져 자유도 하나를 잃는 현상\"으로 설명하고 구체적인 자세(피치 ±90도 등)를 예로 들었다.",
+      "points": 12,
+      "sourceId": "unity-rotation-manual"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "쿼터니언의 x, y, z, w 가 축별 각도가 아니라는 점과, 성분을 직접 고치면 왜 깨지는지(의미 없는 회전, 단위 길이 훼손)를 말하고 대안 API(Euler, AngleAxis, 곱셈 등)를 제시했다.",
+      "points": 12,
+      "sourceId": "unity-quaternion"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "스케일 → 회전 → 이동 순서와 순서를 바꾸면 결과가 달라지는 이유를 설명하고, 점(스케일 영향 받음)과 방향(영향 없음)의 변환을 구분했다.",
+      "points": 11,
+      "sourceId": "unity-transform-transformdirection"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "Slerp 와 Lerp 후 정규화의 차이(일정 각속도 vs 더 빠르지만 각이 크면 속도 불균일)와 각각을 쓰는 조건을 말했다.",
+      "points": 12,
+      "sourceId": "unity-quaternion-lerp"
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "보간이 먼 길로 도는 원인(q 와 -q 가 같은 회전)과 해결(내적이 음수면 부호 반전)을 말했다.",
+      "points": 10,
+      "sourceId": "wiki-slerp"
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "고정 비율 보간을 매 프레임 호출하면 프레임률에 따라 속도가 달라진다는 점과 deltaTime 기반 계수(1 - exp(-k·dt) 등)를 언급했다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "Unity 에서 lhs * rhs 가 rhs 를 먼저 적용하는 것임을 알고, 왼쪽 곱(월드 축 기준)과 오른쪽 곱(로컬 축 기준)을 구분해 설명했다.",
+      "points": 10,
+      "sourceId": "unity-quaternion-multiply"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "LookRotation 에 영벡터나 up 과 일직선인 방향이 들어갈 때의 동작을 알고 방어 방법을 하나 이상 말했다.",
+      "points": 10,
+      "sourceId": "unity-quaternion-lookrotation"
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "카메라 버그의 구체적인 수정안(yaw/pitch 를 따로 보관하고 pitch 를 제한한 뒤 매 프레임 쿼터니언을 새로 생성)을 제시했다.",
+      "points": 8,
+      "sourceId": "unity-transform-eulerangles"
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "답변이 결론 → 근거 → 예시 순서이고, 회전 표현과 변환 합성 두 주제를 섞지 않고 나눠 말했다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "쿼터니언의 x, y, z 를 축별 회전 각도라고 설명하거나 성분을 직접 더하고 빼도 된다고 답한다.",
+      "penalty": -20,
+      "sourceId": "unity-quaternion"
+     },
+     {
+      "id": "d2",
+      "description": "쿼터니언(회전) 곱의 순서는 상관없다고 답하거나 월드 축 기준과 로컬 축 기준 회전을 구분하지 못한다.",
+      "penalty": -15,
+      "sourceId": "unity-quaternion-multiply"
+     },
+     {
+      "id": "d3",
+      "description": "\"쿼터니언을 쓰면 짐벌 락은 절대 없다\"고 단정하면서, 계산을 위해 오일러 각으로 변환해 누적하는 코드는 그대로 둔다.",
+      "penalty": -15,
+      "sourceId": "unity-rotation-manual"
+     }
+    ]
+   },
+   "tests": null,
+   "verified": {
+    "level": "reviewed",
+    "date": "2026-11-22",
+    "note": "인용한 Unity 매뉴얼·스크립팅 API, Microsoft Learn, Wikipedia, Jonathan Blow 글을 모두 열어 문장별로 대조했고, System.Numerics 의 행벡터 곱셈 순서와 nlerp·Slerp 의 경로 일치 및 각도 차이는 로컬 dotnet 으로 직접 계산해 확인했습니다."
+   },
+   "nextMission": "System.Numerics.Quaternion 으로 nlerp 와 slerp 를 직접 구현하고(내적이 음수면 부호 반전 포함), 두 회전 사이의 각이 10도 · 90도 · 170도일 때 t = 0.25 에서 두 결과가 몇 도나 차이 나는지 출력해 보세요. 그다음 CreateFromAxisAngle 로 만든 두 회전을 순서를 바꿔 곱해 (0,0,1) 에 적용한 결과가 달라지는 것을 확인합니다."
+  }
+ ]
+}
