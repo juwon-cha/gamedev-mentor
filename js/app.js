@@ -136,6 +136,16 @@ const saveUi = () => Storage.ui.set({ filters: state.filters, currentId: state.c
 const current = () => state.problems.find(p => p.id === state.currentId) || null;
 const statusBucket = e => (e.status === 'done' ? 'done' : e.status ? 'review' : 'todo');
 
+// 검색은 제목·태그뿐 아니라 시나리오, 개념, 해설(흔한 오해 포함), 꼬리질문까지 봅니다.
+const searchCache = new Map();
+function searchText(p) {
+  let t = searchCache.get(p.id);
+  if (t === undefined) {
+    t = [p.title, (p.tags || []).join(' '), p.scenario, p.concept, p.explanation, ...(p.followUps || []).map(f => f.question)].filter(Boolean).join(' ').toLowerCase();
+    searchCache.set(p.id, t);
+  }
+  return t;
+}
 function filtered() {
   const f = state.filters, q = f.q.trim().toLowerCase();
   return state.problems.filter(p => {
@@ -144,7 +154,7 @@ function filtered() {
     if (f.diff !== 'all' && p.difficulty !== f.diff) return false;
     if (f.status !== 'all' && statusBucket(Storage.get(p.id)) !== f.status) return false;
     if (f.tag && !(p.tags || []).includes(f.tag)) return false;
-    if (q && !(`${p.title} ${(p.tags || []).join(' ')}`.toLowerCase().includes(q))) return false;
+    if (q && !searchText(p).includes(q)) return false;
     return true;
   });
 }
