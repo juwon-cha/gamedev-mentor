@@ -1524,7 +1524,7 @@
         "date": "2026-11-22",
         "note": "실행 테스트가 없는 문제로, 호출 시점·고정 스텝 예시(128fps/40fps)·maximumDeltaTime·보간 설명을 Unity 6000.0 매뉴얼의 Event functions, Fixed updates, Handling variation in time, Rigidbody interpolation과 Time.deltaTime API 문서 원문과 대조했습니다."
       },
-      "nextMission": "빈 씬에 `Update`, `FixedUpdate`, `LateUpdate`의 호출 횟수를 1초마다 집계해 출력하는 스크립트를 붙이고, `Application.targetFrameRate`를 30 / 60 / 144로, Fixed Timestep을 0.02 / 0.01로 바꿔 가며 프레임당 FixedUpdate 횟수가 예측과 맞는지 표로 정리하세요. 그다음 Rigidbody 큐브를 따라가는 카메라를 만들어 Interpolate를 None / Interpolate / Extrapolate로 바꿨을 때의 차이를 144Hz에서 녹화해 비교해 보세요."
+      "nextMission": "빈 씬에 `Update`, `FixedUpdate`, `LateUpdate`의 호출 횟수를 1초마다 집계해 출력하는 스크립트를 붙이고, `QualitySettings.vSyncCount = 0`으로 둔 채(데스크톱에서는 vSyncCount가 0이 아니면 targetFrameRate가 무시됩니다) `Application.targetFrameRate`를 30 / 60 / 144로, Fixed Timestep을 0.02 / 0.01로 바꿔 가며 프레임당 FixedUpdate 횟수가 예측과 맞는지 표로 정리하세요. 그다음 Rigidbody 큐브를 따라가는 카메라를 만들어 Interpolate를 None / Interpolate / Extrapolate로 바꿨을 때의 차이를 144Hz에서 녹화해 비교해 보세요."
     },
     {
       "id": "t4-impl-ability-cooldown-humble-object",
