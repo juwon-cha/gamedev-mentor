@@ -214,22 +214,32 @@ function renderList() {
 }
 
 // ---------- rendering: 문제 ----------
+// 열어 본 힌트·꼬리질문은 접고 펼 수 있다. 펼침 상태는 같은 문제를 보는 동안만 기억하고(저장하지 않음),
+// 다른 문제를 봤다가 돌아오거나 새로 고치면 모두 접힌 채로 보인다. 열람 기록(몇 단계까지 열었는지)은 그대로 저장된다.
+const expand = { id: null, open: new Set() };
+function expandFor(id) { if (expand.id !== id) { expand.id = id; expand.open = new Set(); } return expand.open; }
+function revealSecHead(title, kind, n, total, resetLabel) {
+  return `<div class="sec-head"><h3>${esc(title)}${n ? ` <span class="muted small num">${n}/${total} 열람</span>` : ''}</h3>${n ? `<button type="button" class="btn ghost small" data-reveal="reset-${kind}">${esc(resetLabel)}</button>` : ''}</div>`;
+}
 function hintsHtml(p, e) {
   const hints = p.hints || []; if (!hints.length) return '';
-  let h = '<section class="sec"><h3>단계별 힌트</h3>';
+  const open = expandFor(p.id), n = Math.min(e.reveal.hints, hints.length);
+  let h = '<section class="sec">' + revealSecHead('단계별 힌트', 'hints', n, hints.length, '힌트 기록 초기화');
   hints.forEach((txt, i) => {
-    if (i < e.reveal.hints) h += `<div class="reveal hint"><b>${esc(HINT_LABELS[i] || `힌트 ${i + 1}단계`)}</b>${md(txt)}</div>`;
-    else h += `<button type="button" class="btn hint wide" data-reveal="hints" ${i > e.reveal.hints ? 'disabled' : ''}>${esc(HINT_LABELS[i] || `힌트 ${i + 1}단계`)}</button>`;
+    const label = esc(HINT_LABELS[i] || `힌트 ${i + 1}단계`);
+    if (i < e.reveal.hints) h += `<details class="reveal hint" data-exp="hints-${i}"${open.has('hints-' + i) ? ' open' : ''}><summary><b>${label}</b></summary>${md(txt)}</details>`;
+    else h += `<button type="button" class="btn hint wide" data-reveal="hints" ${i > e.reveal.hints ? 'disabled' : ''}>${label}</button>`;
   });
   return h + '</section>';
 }
 function followHtml(p, e) {
   const fs = p.followUps || []; if (!fs.length) return '';
-  let h = '<section class="sec"><h3>압박 꼬리질문</h3>';
+  const open = expandFor(p.id), n = Math.min(e.reveal.follow, fs.length);
+  let h = '<section class="sec">' + revealSecHead('압박 꼬리질문', 'follow', n, fs.length, '꼬리질문 기록 초기화');
   fs.forEach((f, i) => {
-    if (i < e.reveal.follow) h += `<div class="reveal follow"><b>꼬리질문 ${i + 1}단계</b>${md(f.question)}
+    if (i < e.reveal.follow) h += `<details class="reveal follow" data-exp="follow-${i}"${open.has('follow-' + i) ? ' open' : ''}><summary><b>꼬리질문 ${i + 1}단계</b></summary>${md(f.question)}
       <details><summary>면접관이 노리는 의도</summary>${md(f.intent)}</details>
-      <details><summary>모범 답변 핵심 포인트</summary>${md(f.keyAnswer)}</details></div>`;
+      <details><summary>모범 답변 핵심 포인트</summary>${md(f.keyAnswer)}</details></details>`;
     else h += `<button type="button" class="btn wide" data-reveal="follow" ${i > e.reveal.follow ? 'disabled' : ''}>꼬리질문 ${i + 1}단계 열기</button>`;
   });
   return h + '</section>';
@@ -414,6 +424,13 @@ function openNewPrompt() {
 }
 
 // ---------- events ----------
+// 힌트·꼬리질문을 접거나 펼 때 상태를 기억한다(toggle 이벤트는 버블링되지 않아 캡처로 받는다).
+document.addEventListener('toggle', e => {
+  const el = e.target; if (!(el instanceof HTMLDetailsElement) || !el.dataset.exp) return;
+  const p = current(); if (!p) return;
+  const open = expandFor(p.id);
+  if (el.open) open.add(el.dataset.exp); else open.delete(el.dataset.exp);
+}, true);
 document.addEventListener('click', e => {
   const el = e.target.closest('button, a.btn, a.brand'); if (!el) return;
   const d = el.dataset;
@@ -433,9 +450,12 @@ document.addEventListener('click', e => {
   if (d.reveal) {
     const p = current(); if (!p) return;
     const r = { ...Storage.get(p.id).reveal };
-    if (d.reveal === 'hints') r.hints++;
-    else if (d.reveal === 'follow') r.follow++;
-    else if (d.reveal === 'reset') { r.hints = 0; r.follow = 0; r.solution = false; }
+    const open = expandFor(p.id);
+    if (d.reveal === 'hints') open.add('hints-' + r.hints++);
+    else if (d.reveal === 'follow') open.add('follow-' + r.follow++);
+    else if (d.reveal === 'reset-hints') { r.hints = 0; [...open].filter(k => k.startsWith('hints-')).forEach(k => open.delete(k)); }
+    else if (d.reveal === 'reset-follow') { r.follow = 0; [...open].filter(k => k.startsWith('follow-')).forEach(k => open.delete(k)); }
+    else if (d.reveal === 'reset') { r.hints = 0; r.follow = 0; r.solution = false; open.clear(); }
     else if (d.reveal === 'solution') {
       if (!confirm(p.mode === 'interview' ? '모범 답안을 볼까요? 먼저 내 답변을 적어 두는 것을 권합니다.' : '정답과 해설을 볼까요? 한 번 보면 스스로 찾는 연습 효과가 줄어듭니다.')) return;
       r.solution = true;

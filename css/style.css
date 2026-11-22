@@ -171,11 +171,20 @@ textarea { resize: vertical; line-height: 1.55; display: block; }
 .reveal.hint { border-color: transparent; background: var(--hint-soft); }
 .reveal.hint > b { color: var(--hint); font-size: .85rem; }
 .reveal.follow > b { color: var(--danger); font-size: .85rem; }
+.sec-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.sec-head h3 { margin: 0; }
+details.reveal { display: block; padding-top: 4px; padding-bottom: 4px; }
+details.reveal > summary { min-height: 36px; }
+details.reveal > summary b { font-size: .85rem; }
+details.reveal.hint > summary b, details.reveal.hint > summary::before { color: var(--hint); }
+details.reveal.follow > summary b, details.reveal.follow > summary::before { color: var(--danger); }
+details.reveal[open] { padding-bottom: 12px; }
+details.reveal[open] > * + * { margin-top: 8px; }
 .reveal.solution { border-color: var(--ok); }
 details { border-top: 1px dashed var(--line); padding-top: 8px; }
 details summary { cursor: pointer; font-weight: 500; font-size: .9rem; min-height: 32px; display: flex; align-items: center; gap: 6px; }
 details summary::before { content: "▸"; color: var(--ink-2); }
-details[open] summary::before { content: "▾"; }
+details[open] > summary::before { content: "▾"; }
 details summary::-webkit-details-marker { display: none; }
 details > :not(summary) { margin-top: 6px; }
 .source { font-size: .88rem; }
