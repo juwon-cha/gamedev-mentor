@@ -397,6 +397,198 @@
       "title": "Gaffer On Games — Fix Your Timestep!",
       "url": "https://gafferongames.com/post/fix_your_timestep/",
       "summary": "가변 dt 시뮬레이션이 프레임률에 따라 달라지는 문제와 고정 타임스텝 + 누적기 + 보간 구조."
+    },
+    {
+      "id": "gpp-type-object",
+      "title": "Game Programming Patterns - Type Object",
+      "url": "https://gameprogrammingpatterns.com/type-object.html",
+      "summary": "종족(Breed) 을 타입 객체로 두는 패턴, 부모 종족 상속의 동적 위임과 copy-down 위임의 장단점, Flyweight 와의 차이"
+    },
+    {
+      "id": "ms-learn-nullable-value-types",
+      "title": "Microsoft Learn — Nullable value types (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types",
+      "summary": "T? 가 T 의 모든 값과 null 을 나타내며 \"정의되지 않은 값\"을 표현할 때 쓴다는 설명, GetValueOrDefault"
+    },
+    {
+      "id": "ms-learn-null-coalescing",
+      "title": "Microsoft Learn — ?? and ??= operators (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator",
+      "summary": "?? 는 왼쪽이 null 이 아니면 그 값을, null 이면 오른쪽을 계산해 돌려준다"
+    },
+    {
+      "id": "wiki-circular-buffer",
+      "title": "Wikipedia — Circular buffer",
+      "url": "https://en.wikipedia.org/wiki/Circular_buffer",
+      "summary": "고정 크기 버퍼의 양 끝을 이어 붙인 FIFO 구조. 가득 찼을 때 덮어쓰기/오류의 선택지와 full·empty 구분 방법(한 칸 비우기, 개수 유지)을 설명."
+    },
+    {
+      "id": "ms-learn-queue",
+      "title": "Microsoft Learn — Queue<T> Class (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1?view=net-8.0",
+      "summary": "Queue<T> 는 원형 배열로 구현된 FIFO 컬렉션. Enqueue 는 끝에 추가, Dequeue 는 가장 오래된 원소 제거, Peek 은 제거 없이 반환하며 용량은 내부 배열 재할당으로 늘어난다고 설명."
+    },
+    {
+      "id": "ms-gh-runtime-queue-cs-net8",
+      "title": "dotnet/runtime (release/8.0) — Queue.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Collections/Generic/Queue.cs",
+      "summary": ".NET 8 의 Queue<T> 구현. _head / _tail / _size 필드를 둔 원형 버퍼이며 가득 차면 Grow 로 배열을 늘린다(구현 세부)."
+    },
+    {
+      "id": "wiki-memento-pattern",
+      "title": "Wikipedia — Memento pattern",
+      "url": "https://en.wikipedia.org/wiki/Memento_pattern",
+      "summary": "originator·caretaker·memento 세 객체로 상태를 되돌리는 패턴. caretaker 가 memento 를 받아 두었다가 되돌려 주며 memento 자체는 불변, 용도는 실행 취소·버전 관리·직렬화, PRNG 시드 예."
+    },
+    {
+      "id": "ms-learn-array-clone",
+      "title": "Microsoft Learn — Array.Clone Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.array.clone?view=net-8.0",
+      "summary": "Array.Clone 은 얕은 복사: 원소만 복사하고 참조가 가리키는 객체는 복사하지 않는다는 설명"
+    },
+    {
+      "id": "ms-learn-readonly",
+      "title": "Microsoft Learn — readonly (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/readonly",
+      "summary": "참조형 readonly 필드는 언제나 같은 객체를 가리킬 뿐, 그 객체의 데이터가 바뀌는 것은 막지 않는다"
+    },
+    {
+      "id": "ms-learn-list-ctor",
+      "title": "Microsoft Learn — List<T> Constructors (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.-ctor?view=net-8.0",
+      "summary": "List<T>(IEnumerable<T>) 는 지정한 컬렉션에서 복사한 원소를 담는 새 리스트를 만든다"
+    },
+    {
+      "id": "ms-learn-with-expression",
+      "title": "Microsoft Learn — with expression (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression",
+      "summary": "with 식은 피연산자의 사본을 만들지만 참조형 멤버는 참조만 복사해 원본과 같은 인스턴스를 쓴다. record class 는 복사 생성자로 복사 방식을 바꿀 수 있다."
+    },
+    {
+      "id": "ms-learn-list-toarray",
+      "title": "Microsoft Learn — List<T>.ToArray Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.toarray?view=net-8.0",
+      "summary": "List<T> 의 원소를 새 배열에 복사하며 O(n) 이라는 설명"
+    },
+    {
+      "id": "wiki-characterization-test",
+      "title": "Wikipedia — Characterization test",
+      "url": "https://en.wikipedia.org/wiki/Characterization_test",
+      "summary": "기존 코드의 실제 동작을 기록해 의도하지 않은 변경을 잡는 테스트(Golden Master). 용어는 Michael Feathers, 올바름이 아니라 관찰된 동작을 확인하는 변화 감지기이며 반복 가능성에 기댄다."
+    },
+    {
+      "id": "ms-arch-strangler-fig",
+      "title": "Microsoft Learn (Azure Architecture Center) — Strangler Fig pattern",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig",
+      "summary": "façade(프록시)가 요청을 가로채 레거시와 새 시스템으로 나누고 점차 새 쪽으로 옮긴 뒤 걷어 내는 단계, façade 가 병목이 되지 않게 할 것, 부패 방지 계층, 맞지 않는 경우."
+    },
+    {
+      "id": "fowler-feature-toggles",
+      "title": "Pete Hodgson — Feature Toggles (aka Feature Flags), martinfowler.com (2017)",
+      "url": "https://martinfowler.com/articles/feature-toggles.html",
+      "summary": "토글의 종류(출시·실험·운영·권한)와 수명, \"꺼짐 = 옛 동작\" 규약, 테스트할 설정, 토글을 재고로 보고 줄이는 제거 관행."
+    },
+    {
+      "id": "ms-learn-feature-management",
+      "title": "Microsoft Learn — Feature management overview (Azure App Configuration)",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-feature-management",
+      "summary": "기능 출시와 코드 배포를 떼어 놓는 기능 관리. Azure App Configuration 의 Switch(kill switch)·Rollout(비율 기반 점진 출시)·Experiment 시나리오."
+    },
+    {
+      "id": "ms-arch-common-web-architectures",
+      "title": "Microsoft Learn — Common web application architectures (Architect Modern Web Applications with ASP.NET Core and Azure)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures",
+      "summary": "책임에 따른 층 나누기와 층 사이 통신 제한, 전통적 N-층의 단점, 업무 로직을 가운데 두고 의존을 뒤집는 Clean Architecture, composition root."
+    },
+    {
+      "id": "unity-loadscenemode-api",
+      "title": "Unity Scripting API (6000.0) - LoadSceneMode",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/scenemanagement/loadscenemode",
+      "summary": "Single은 현재 로드된 모든 씬을 닫고 씬을 로드하고, Additive는 현재 로드된 씬들에 씬을 추가한다는 열거형 설명"
+    },
+    {
+      "id": "unity-unloadsceneasync-api",
+      "title": "Unity Scripting API (6000.0) - SceneManager.UnloadSceneAsync",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/scenemanagement/scenemanager/unloadsceneasync",
+      "summary": "씬에 속한 모든 GameObject를 파괴하고 씬을 SceneManager에서 제거하지만 에셋은 언로드하지 않으므로, 에셋 메모리를 비우려면 Resources.UnloadUnusedAssets를 호출하라는 설명"
+    },
+    {
+      "id": "gpp-architecture",
+      "title": "Game Programming Patterns — Architecture, Performance, and Games",
+      "url": "https://gameprogrammingpatterns.com/architecture-performance-and-games.html",
+      "summary": "추상화·확장 지점은 미래에 대한 추측이며 빗나가면 해롭다(YAGNI), 사방의 인터페이스가 추적을 어렵게 하고 유연성을 주는 패턴에 런타임 비용이 있다는 논지와 단순함의 강조."
+    },
+    {
+      "id": "ms-learn-queue-enqueue",
+      "title": "Microsoft Learn — Queue<T>.Enqueue(T) (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.queue-1.enqueue?view=net-8.0",
+      "summary": "Count 가 용량과 같으면 내부 배열을 다시 할당해 용량을 늘리며, 그때는 O(n), 아니면 O(1) 이라는 설명"
+    },
+    {
+      "id": "fowler-refactoring",
+      "title": "Martin Fowler — refactoring.com",
+      "url": "https://refactoring.com/",
+      "summary": "리팩터링을 외부 동작을 바꾸지 않고 내부 구조를 바꾸는, 동작을 보존하는 작은 변환의 연속으로 정의."
+    },
+    {
+      "id": "ms-naming-conventions",
+      "title": "Microsoft Learn — General Naming Conventions (.NET Framework design guidelines)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/general-naming-conventions",
+      "summary": "읽기 쉬운 식별자, 짧음보다 읽기 쉬움, 식별자에 약어·축약을 쓰지 않는다는 .NET 명명 지침."
+    },
+    {
+      "id": "ms-playbook-pull-requests",
+      "title": "Microsoft Code With Engineering Playbook — Pull Requests",
+      "url": "https://microsoft.github.io/code-with-engineering-playbook/code-reviews/pull-requests/",
+      "summary": "PR 을 작고 한 목표에 집중하게, 빌드를 깨지 않고 관련 테스트를 포함하게. 숨긴 기능(feature flag)으로 PR 을 작게 유지하는 전략."
+    },
+    {
+      "id": "ms-playbook-reviewer-guidance",
+      "title": "Microsoft Code With Engineering Playbook — Reviewer Guidance",
+      "url": "https://microsoft.github.io/code-with-engineering-playbook/code-reviews/process-guidance/reviewer-guidance/",
+      "summary": "리뷰어는 단정보다 질문을, 직접 지적할 때는 이유와 예를, 사소한 지적에는 \"Nit:\" 를 붙인다."
+    },
+    {
+      "id": "fowler-strangler-fig",
+      "title": "Martin Fowler — Strangler Fig (2024)",
+      "url": "https://martinfowler.com/bliki/StranglerFigApplication.html",
+      "summary": "레거시 위에 얹되 분리된 작은 추가부터 만들어 동작을 조금씩 옮기는 점진적 현대화. 전면 교체의 위험, 이음매(seam), 지울 전환용 구조의 비용과 가치."
+    },
+    {
+      "id": "unity-unloadunusedassets-api",
+      "title": "Unity Scripting API (6000.0) - Resources.UnloadUnusedAssets",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/resources/unloadunusedassets",
+      "summary": "게임 오브젝트 계층 전체(스크립트 컴포넌트 포함)와 static 변수를 훑어 닿지 않는 에셋을 미사용으로 보고 언로드하며, 스크립트 실행 스택은 검사하지 않는다는 설명"
+    },
+    {
+      "id": "addressables-memory-assets",
+      "title": "Addressables 2.7 Manual - Managing Addressable asset memory",
+      "url": "https://docs.unity3d.com/Packages/com.unity.addressables@2.7/manual/memory-assets.html",
+      "summary": "로드 호출마다 릴리스 호출을 짝지어야 하고, 릴리스된 에셋의 메모리는 그 에셋이 속한 AssetBundle이 언로드되어야 해제된다는 설명(tree·tank·cow 예시)과 asset churn 주의"
+    },
+    {
+      "id": "unity-object-api",
+      "title": "Unity Scripting API (6000.0) - UnityEngine.Object",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/object",
+      "summary": "네이티브 쪽이 파괴된 오브젝트는 == null이 true가 되지만 ?. 와 ?? 는 재정의할 수 없어 Unity 오브젝트에 지원되지 않는다는 설명"
+    },
+    {
+      "id": "unity-loadscene-api",
+      "title": "Unity Scripting API (6000.0) - SceneManager.LoadScene",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/scenemanagement/scenemanager/loadscene",
+      "summary": "LoadScene 은 다음 프레임에 로드되므로 대부분 LoadSceneAsync 를 쓰라는 안내와, Single 모드로 씬을 로드하면 Unity 가 Resources.UnloadUnusedAssets 를 자동으로 호출한다는 설명"
+    },
+    {
+      "id": "feathers-characterization-testing",
+      "title": "Michael Feathers — Characterization Testing (2016)",
+      "url": "https://michaelfeathers.silvrback.com/characterization-testing",
+      "summary": "특성 테스트의 목적은 바라는 동작이 아니라 시스템의 실제 동작을 기록하는 것이고, 버그라고 판단하기 전에는 테스트를 남겨 두며, 운영 중인 시스템은 어떤 의미에서 그 자체가 명세가 된다는 관점. 가장 어려운 일은 의존을 끊어 테스트 하네스에 올리는 것."
+    },
+    {
+      "id": "unity-support-destroyed-object",
+      "title": "Unity Support — Why am I getting MissingReferenceException in the Editor and a NullReferenceException on mobile devices…",
+      "url": "https://support.unity.com/hc/en-us/articles/115000404563-Why-am-I-getting-MissingReferenceException-in-the-Editor-and-a-NullReferenceException-on-mobile-devices-when-running-the-same-piece-of-code",
+      "summary": "Unity 6 이상: 파괴된 오브젝트를 쓰면 에디터에서는 MissingReferenceException, 빌드에서는 NullReferenceException 이 난다. == null / != null 로 검사하고, is null · ?. · ?? 는 Unity 의 연산자를 우회한다."
     }
   ],
   "problems": [
@@ -4276,6 +4468,957 @@
         "note": "모범 답안과 시작 코드를 로컬 dotnet 8 로 실행해 16·33·50 ms 프레임에서 39·39·40발이 모두 40발로, 4초 렉 프레임이 1발에서 2발+1발로 바뀌는 것을 확인했고, 개념 카드와 퀴즈를 GPP Game Loop·Update Method 장 원문과 Fix Your Timestep 에 맞춰 고쳤다."
       },
       "nextMission": "같은 석상을 GPP 의 \"고정 업데이트 + 가변 렌더링\" 루프 안에 넣어 보세요. 고정 스텝을 20 ms 로 두고, 렌더 프레임 시간이 16 ms, 33 ms, 4000 ms 로 섞여 들어와도 석상의 Update 는 언제나 20 ms 로만 불리게 합니다. 그다음 안쪽 루프의 반복 상한을 10 으로 두면 4초 렉 프레임에서 무슨 일이 생기는지(게임이 느려진다) 발사 수로 확인하세요."
+    },
+    {
+      "id": "t10-impl-type-object-breeds",
+      "track": "track10",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "몬스터 종족을 데이터로: 부모 종족에게서 기본값을 물려받는 Type Object",
+      "tags": [
+        "Pattern_TypeObject",
+        "Pattern_DataDriven"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "gpp-type-object",
+        "ms-learn-nullable-value-types",
+        "ms-learn-null-coalescing",
+        "gh-gpp"
+      ],
+      "scenario": "던전 RPG 의 몬스터는 지금 `class Troll : Monster`, `class TrollArcher : Troll` 처럼 종족마다 클래스입니다. 기획자가 트롤의 체력을 48 에서 52 로 바꿔 달라고 할 때마다 프로그래머가 코드를 고치고 다시 빌드합니다. 그래서 종족을 **데이터**로 옮기기로 했습니다. 종족 하나는 `Breed` 객체 하나이고, 몬스터는 자기 종족 객체를 참조합니다. 기획 표는 이런 모양이고, 로더는 표의 **위에서부터 한 행씩** `BreedTable.Define` 을 호출합니다.\n\n| name | parent | maxHealth | armor | attack |\n|---|---|---|---|---|\n| Troll | (없음) | 48 | 2 | \"clubs\" |\n| TrollArcher | Troll | | | \"arrow\" |\n| TrollArcherCaptain | TrollArcher | 80 | | |\n| PaperTroll | Troll | | 0 | |\n\n빈칸은 \"부모에게서 물려받는다\"는 뜻입니다. 위 표라면 TrollArcherCaptain 은 체력 80, 방어력 2, 공격 \"arrow\" 이고, PaperTroll 은 48, **0**, \"clubs\" 입니다. `Monster` 는 완성되어 있습니다.\n\n**요구 스펙**\n\n1. **`Define(name, parentName, maxHealth, armor, attackText)`** 는 종족을 만들어 등록하고 반환한다.\n   - `parentName` 이 null 이면 루트 종족이다. 루트는 세 값을 모두 직접 정해야 하며, 하나라도 null 이면 `ArgumentException`.\n   - `parentName` 이 null 이 아니면 그 이름이 **이 표에 이미 정의되어 있어야** 한다. 아니면 `KeyNotFoundException`.\n   - 이미 있는 이름이면 `ArgumentException`.\n   - 예외를 던진 `Define` 은 표를 바꾸지 않는다(`Count`, `Get` 결과, 기존 종족 모두 그대로).\n2. **값의 상속.** 값 인자의 `null` 은 \"물려받는다\"이고, null 이 아닌 값은 **0 과 빈 문자열 `\"\"` 까지 포함해** \"덮어쓴다\"이다. 종족의 `MaxHealth` / `Armor` / `AttackText` 는 자기 자신, 부모, 조부모 순으로 올라가며 그 값을 **처음으로 정한 종족**의 값이다. 루트는 모든 값을 정하므로 언제나 답이 나온다.\n3. **부모 사슬의 순환.** 부모는 먼저 정의되어 있어야 하고 이름은 다시 정의할 수 없다. 그래서 부모 사슬은 언제나 루트에서 끝나고 순환이 생길 수 없다. 자기 자신을 부모로 주는 `Define(\"Imp\", \"Imp\", ...)` 는 \"없는 부모\"(`KeyNotFoundException`)로, 이미 있는 `Troll` 을 자기 자손 `TrollArcher` 아래로 다시 정의하려는 호출은 \"이미 있는 이름\"(`ArgumentException`)으로 거절된다.\n4. **`Breed`** 는 만든 뒤 바뀌지 않는다. `Name`, `Parent`(루트면 null, 아니면 `Get(parentName)` 과 같은 객체), 위의 세 값, `IsA(breedName)`(자기 자신이나 조상 중에 그 이름이 있으면 true), `NewMonster()`(이 종족의 새 몬스터. 몬스터의 `Breed` 는 이 종족 객체 그 자체이고 체력은 `MaxHealth` 로 시작한다)를 제공한다.\n5. **`Get(name)`** 은 등록된 바로 그 객체를 돌려주고, 없으면 `KeyNotFoundException`. **`Count`** 는 등록된 종족 수. 이름 비교는 대소문자를 구분한다(ordinal). 표끼리는 종족을 공유하지 않는다.\n\n`name` 으로 null 은 주어지지 않고, 값의 범위(음수 등)는 검사하지 않습니다. 한 호출에 오류가 둘 이상 겹치는 경우(이미 있는 이름이면서 부모도 없는 경우 등)는 어떤 예외든 던지기만 하면 됩니다.",
+      "constraints": [
+        "종족마다 C# 클래스를 만들거나 종족 이름으로 `switch` 하지 않는다. 모든 종족은 `Breed` 의 인스턴스다.",
+        "`Breed` 에 public setter 를 두지 않는다(만든 뒤 불변).",
+        "`Get` 은 평균 O(1). 세 값은 `Define` 때 풀어 두면 읽기가 O(1), 읽을 때마다 사슬을 걸으면 O(사슬 깊이)이며 둘 다 허용한다. `IsA` 는 O(사슬 깊이). 어느 연산도 표 전체를 훑지 않는다.",
+        "표의 저장소를 `static` 으로 두지 않는다.",
+        "`Monster` 는 수정하지 않는다. `BreedTable` 의 `Count` / `Define(string, string, int?, int?, string)` / `Get(string)` 과 `Breed` 의 public 멤버 시그니처는 바꾸지 않는다(`Breed` 의 internal 생성자는 바꿔도 된다)."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 완성되어 있습니다. 수정하지 마세요. -----\n\n// 게임 안에 돌아다니는 몬스터 한 마리 (typed object). 몬스터마다 다른 것은 현재 체력뿐이다.\npublic sealed class Monster\n{\n    internal Monster(Breed breed)\n    {\n        Breed = breed;\n        Health = breed.MaxHealth;\n    }\n\n    public Breed Breed { get; }\n    public int Health { get; private set; }\n\n    // 방어력만큼 깎인 피해를 받는다. 체력은 0 아래로 내려가지 않는다.\n    public void TakeDamage(int amount)\n    {\n        int dealt = Math.Max(0, amount - Breed.Armor);\n        Health = Math.Max(0, Health - dealt);\n    }\n\n    // 몬스터 쪽에서 종족의 값을 덮어쓸 수 있는 자리: 빈사 상태면 다른 문구를 쓴다.\n    public string Attack()\n    {\n        return Health * 4 < Breed.MaxHealth ? Breed.Name + \" 이(가) 비틀거리며 허우적댄다\" : Breed.AttackText;\n    }\n}\n\n// ----- 여기부터 구현하세요. -----\n\n// 몬스터 \"종족\" 하나 (type object). 만든 뒤에는 바뀌지 않는다.\npublic sealed class Breed\n{\n    // BreedTable 만 부른다. 시그니처는 바꿔도 된다.\n    internal Breed(string name, Breed parent, int? maxHealth, int? armor, string attackText)\n    {\n        Name = name;\n        Parent = parent;\n    }\n\n    public string Name { get; }\n    public Breed Parent { get; }        // 루트 종족이면 null\n\n    // 아래 셋은 부모 사슬을 반영한 \"최종\" 값이다.\n    public int MaxHealth\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    public int Armor\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    public string AttackText\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 이 종족 자신이나 조상 중에 그 이름이 있으면 true.\n    public bool IsA(string breedName)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 이 종족의 몬스터를 새로 만든다.\n    public Monster NewMonster()\n    {\n        throw new NotImplementedException();\n    }\n}\n\npublic sealed class BreedTable\n{\n    public int Count\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // parentName 이 null 이면 루트 종족. 값 인자의 null 은 \"부모에게서 물려받는다\".\n    public Breed Define(string name, string parentName, int? maxHealth, int? armor, string attackText)\n    {\n        throw new NotImplementedException();\n    }\n\n    public Breed Get(string name)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "TrollArcherCaptain(부모 TrollArcher, 80, null, null): 체력은 자기 값 80, 방어력은 조부모 Troll 의 2, 공격은 부모의 \"arrow\".",
+        "PaperTroll 을 방어력 0, 공격 `\"\"` 로 정의하면: 0 과 \"\" 도 덮어쓰기다. 모든 값이 null 인 그 자식도 0 과 \"\" 를 물려받는다.",
+        "`Define(\"Imp\", \"Imp\", ...)` 와, 이미 있는 `Troll` 을 `TrollArcher` 아래로 다시 정의하는 호출: 둘 다 거절되고 표는 그대로다.",
+        "루트인데 방어력이 null 인 `Ghost`: `ArgumentException` 이고, 그 뒤 `Get(\"Ghost\")` 는 `KeyNotFoundException`."
+      ],
+      "hints": [
+        "PaperTroll 의 방어력 0 을 \"정하지 않음\"으로 읽으면 무엇이 나오나요? 0 을 \"물려받기\" 표시로 쓰면 방어력 0 인 종족은 데이터로 만들 수 없습니다. \"정하지 않음\"은 `int?` 의 null 하나뿐입니다. 그리고 TrollArcherCaptain 의 방어력을 찾으려면 사슬을 몇 단계 올라가야 하나요?",
+        "값을 푸는 시점은 둘 중 하나입니다. `Define` 에서 부모의 값을 복사해 두거나, 읽을 때마다 사슬을 걷거나. 앞의 방식을 고른다면 복사할 것은 부모가 받은 원래 인자(null 일 수 있음)가 아니라 부모의 **최종값**입니다. 부모는 항상 먼저 만들어지므로 그 값은 이미 풀려 있습니다. 그리고 `Define` 은 검사를 모두 끝낸 **뒤에** 등록해야 실패한 호출이 표에 흔적을 남기지 않습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nDefine(name, parentName, hp, armor, attack):\n    if 이미 있는 이름: throw ArgumentException\n    parent = null\n    if parentName != null:\n        parent = ____            // 없으면 KeyNotFoundException\n    else if 셋 중 하나라도 null: throw ArgumentException\n    breed = new Breed(name, parent,\n                      hp ?? ____, armor ?? ____, attack ?? ____)\n    등록하고 반환               // 검사가 모두 끝난 뒤에만\n\nIsA(n):\n    for b = this; b != null; b = ____:\n        if b.Name == n: return true\n    return false\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 완성되어 있습니다. 수정하지 마세요. -----\n\n// 게임 안에 돌아다니는 몬스터 한 마리 (typed object). 몬스터마다 다른 것은 현재 체력뿐이다.\npublic sealed class Monster\n{\n    internal Monster(Breed breed)\n    {\n        Breed = breed;\n        Health = breed.MaxHealth;\n    }\n\n    public Breed Breed { get; }\n    public int Health { get; private set; }\n\n    // 방어력만큼 깎인 피해를 받는다. 체력은 0 아래로 내려가지 않는다.\n    public void TakeDamage(int amount)\n    {\n        int dealt = Math.Max(0, amount - Breed.Armor);\n        Health = Math.Max(0, Health - dealt);\n    }\n\n    // 몬스터 쪽에서 종족의 값을 덮어쓸 수 있는 자리: 빈사 상태면 다른 문구를 쓴다.\n    public string Attack()\n    {\n        return Health * 4 < Breed.MaxHealth ? Breed.Name + \" 이(가) 비틀거리며 허우적댄다\" : Breed.AttackText;\n    }\n}\n\n// ----- 여기부터 구현했습니다. -----\n\n// 몬스터 \"종족\" 하나 (type object). 만든 뒤에는 바뀌지 않는다.\npublic sealed class Breed\n{\n    // 부모 사슬은 Define 이 만든 그 순간에 끝까지 풀어 둔다(copy-down).\n    // 종족은 불변이라 나중에 부모가 바뀔 일이 없으므로 결과는 매번 사슬을 걷는 방식과 같다.\n    internal Breed(string name, Breed parent, int maxHealth, int armor, string attackText)\n    {\n        Name = name;\n        Parent = parent;\n        MaxHealth = maxHealth;\n        Armor = armor;\n        AttackText = attackText;\n    }\n\n    public string Name { get; }\n    public Breed Parent { get; }        // 루트 종족이면 null\n    public int MaxHealth { get; }\n    public int Armor { get; }\n    public string AttackText { get; }\n\n    // 이 종족 자신이나 조상 중에 그 이름이 있으면 true. 사슬 깊이만큼 걷는다.\n    public bool IsA(string breedName)\n    {\n        for (Breed b = this; b != null; b = b.Parent)\n            if (string.Equals(b.Name, breedName, StringComparison.Ordinal)) return true;\n        return false;\n    }\n\n    // 몬스터를 만드는 유일한 입구 (\"생성자\" 역할의 팩터리 메서드).\n    public Monster NewMonster()\n    {\n        return new Monster(this);\n    }\n}\n\npublic sealed class BreedTable\n{\n    private readonly Dictionary<string, Breed> _breeds = new Dictionary<string, Breed>(StringComparer.Ordinal);\n\n    public int Count\n    {\n        get { return _breeds.Count; }\n    }\n\n    public Breed Define(string name, string parentName, int? maxHealth, int? armor, string attackText)\n    {\n        // 1) 모든 검사를 먼저 끝낸다. 실패하면 표는 그대로다.\n        if (_breeds.ContainsKey(name)) throw new ArgumentException(\"이미 정의된 종족: \" + name, nameof(name));\n\n        Breed parent = null;\n        if (parentName != null)\n        {\n            // 부모는 이미 정의된 것만 쓸 수 있다. 자기 이름을 부모로 주면 아직 없으므로 여기서 걸린다.\n            if (!_breeds.TryGetValue(parentName, out parent))\n                throw new KeyNotFoundException(name + \" 의 부모 종족이 아직 없음: \" + parentName);\n        }\n        else if (maxHealth == null || armor == null || attackText == null)\n        {\n            throw new ArgumentException(\"루트 종족은 모든 값을 직접 정해야 함: \" + name, nameof(name));\n        }\n\n        // 2) null 이면 부모의 (이미 풀린) 값, 아니면 자기 값. 0 과 \"\" 도 덮어쓰기다.\n        var breed = new Breed(\n            name,\n            parent,\n            maxHealth ?? parent.MaxHealth,\n            armor ?? parent.Armor,\n            attackText ?? parent.AttackText);\n\n        _breeds.Add(name, breed);\n        return breed;\n    }\n\n    public Breed Get(string name)\n    {\n        Breed breed;\n        if (!_breeds.TryGetValue(name, out breed)) throw new KeyNotFoundException(\"정의되지 않은 종족: \" + name);\n        return breed;\n    }\n}\n",
+      "explanation": "**패턴.** Game Programming Patterns(GPP) 의 Type Object 장은 타입 객체 클래스와 타입을 가진 객체(typed object) 클래스를 두고, 타입 객체의 인스턴스 하나가 논리적인 타입 하나를 나타내며, 타입을 가진 객체는 자기 타입을 설명하는 타입 객체의 참조를 저장한다고 정의합니다. 여기서는 `Breed` 가 타입 객체, `Monster` 가 타입을 가진 객체입니다. 몬스터마다 다른 현재 체력은 `Monster` 에, 같은 종족이 함께 쓰는 최대 체력·방어력·공격 문구는 `Breed` 에 둡니다. 새 종족은 새 클래스가 아니라 `Define` 호출 한 번, 곧 데이터 한 행입니다. `NewMonster()` 는 GPP 가 \"생성자\" 역할의 팩터리 메서드라고 부르는 자리로, 몬스터를 만드는 입구를 종족에 둡니다. 완성된 `Monster.Attack()` 이 빈사 상태에서 다른 문구를 쓰는 것은 GPP 가 \"타입 객체를 캡슐화하면 몬스터가 종족의 동작을 골라 덮어쓸 수 있다\"며 드는 예와 같습니다. 다만 이 문제의 `Monster` 는 `Breed` 도 공개하므로, 그 덮어쓰기는 공격 문구를 `Attack()` 으로 읽는 코드에만 적용됩니다.\n\n**상속 규칙: 0 과 null.** GPP 의 예제는 체력은 0 이 아니면, 공격 문구는 NULL 이 아니면 덮어쓰고, 아니면 그 값을 부모에게서 물려받습니다. 그 규칙을 이 문제의 방어력에 그대로 쓰면 0 이 \"정하지 않음\"이 되어 방어력 0 인 종족을 데이터로 만들 수 없습니다. 이 문제는 그 구분을 `int?` 로 합니다. Microsoft Learn 은 nullable 값 형식 `T?` 가 기본 형식 `T` 의 모든 값에 null 하나를 더한 것을 나타내고, 값이 정의되지 않았거나 없을 수 있을 때 쓴다고 설명합니다. `??` 는 왼쪽이 null 이 아니면 그 값을, null 이면 오른쪽을 계산해 돌려주므로 `armor ?? parent.Armor` 는 정확히 null 일 때만 부모 값을 씁니다. 반대로 `GetValueOrDefault()` 는 null 대신 기본 형식의 기본값(`int` 면 0)을 돌려주고, `string.IsNullOrEmpty` 는 `\"\"` 덮어쓰기를 지워 버립니다.\n\n**언제 푸는가.** GPP 는 두 구현을 비교합니다. 읽을 때마다 사슬을 걷는 동적 위임은 실행 중에 종족이 어떤 값을 더는 덮어쓰지 않거나 더는 물려받지 않게 바뀌어도 맞게 동작하지만, 부모 포인터를 들고 있어야 해서 메모리를 조금 더 쓰고 조회할 때마다 사슬을 걸어 느립니다. 종족의 값이 바뀌지 않는다고 믿을 수 있으면 생성 시점에 상속을 적용하는 copy-down 위임이 더 빠릅니다. 모범 답안은 copy-down 입니다. 부모가 항상 먼저 만들어지므로 `parent.Armor` 는 이미 풀린 최종값이고, 한 단계만 봐도 가장 가까운 조상의 값이 됩니다(루트부터 차례로 성립하는 귀납). GPP 의 copy-down 예제는 부모 필드가 더는 필요 없다고 하지만, 여기서는 `IsA` 때문에 `Parent` 를 남깁니다. 종족이 불변이므로 동적 위임으로 풀어도 결과가 같고, 둘 다 정답입니다.\n\n**순환과 실패한 정의.** 부모는 이미 정의된 것만 받고 재정의를 금지하면, 새 종족의 사슬은 이미 루트에서 끝나는 사슬 앞에 한 칸을 붙인 것이므로 순환이 생길 수 없습니다. GPP 의 `Breed(Breed* parent, ...)` 생성자도 이미 만들어진 부모 객체를 받습니다. 검사를 모두 끝낸 뒤에 등록해야 실패한 `Define` 이 표에 흔적을 남기지 않습니다.\n\n**복잡도.** `Get` 평균 O(1). copy-down 이면 `Define` 과 세 값 읽기가 O(1)(동적 위임이면 읽기 O(사슬 깊이)). `IsA` 는 O(사슬 깊이).\n\n**흔한 실수.** 0 이나 `\"\"` 를 \"정하지 않음\"으로 읽기, 바로 위 부모나 루트에서만 값을 가져오기(3단 사슬에서 틀림), 부모의 원래 인자(null)를 복사하기, 등록한 뒤에 검증하기, static 저장소.\n\n### 흔한 오해\n- **\"Type Object 는 Flyweight 의 다른 이름이다. 둘 다 공유 데이터를 따로 빼는 패턴이니까.\"** — 둘 다 인스턴스 사이에 데이터를 공유한다는 점은 맞습니다. 하지만 GPP 는 Flyweight 의 목적이 메모리 절약이고 공유 데이터가 개념적인 \"타입\"이 아닐 수도 있는 반면, Type Object 는 구성과 유연성에 초점이 있다고 구분합니다. 이 문제의 핵심도 메모리가 아니라 \"새 종족을 코드 없이 데이터로 정의하는 것\"입니다. [gpp-type-object]\n- **\"부모 값은 생성 시점에 복사해 두는 copy-down 이 언제나 낫다.\"** — GPP 는 copy-down 을 종족의 값이 바뀌지 않는다고 믿을 수 있을 때의 더 빠른 방법으로 소개합니다. 실행 중에 종족이 어떤 값을 더는 덮어쓰지 않거나 더는 물려받지 않게 바뀔 수 있다면 매번 사슬을 걷는 동적 위임이 맞게 동작하고, copy-down 으로 복사해 둔 값은 낡은 채 남습니다. 이 문제는 종족이 불변이라 둘의 결과가 같을 뿐입니다. [gpp-type-object]",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "세 값이 자기 자신부터 루트까지 올라가며 처음으로 값을 정한 종족의 값이다: TrollArcherCaptain 은 80/2/\"arrow\", 중간 조상이 방어력 5 를 정한 TrollBruteKing 은 방어력 5.",
+            "points": 12,
+            "sourceId": "gpp-type-object"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "null 만 \"물려받기\"이고 0 과 `\"\"` 는 덮어쓰기이며, 그 자손도 0 과 `\"\"` 를 물려받는다.",
+            "points": 12,
+            "sourceId": "ms-learn-nullable-value-types"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "`Define` 의 오류가 스펙과 같다(이미 있는 이름 `ArgumentException`, 없는 부모와 자기 자신을 부모로 준 경우 `KeyNotFoundException`, 값이 빠진 루트 `ArgumentException`). 실패한 호출 뒤 `Count`, `Get`, 기존 종족이 그대로다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "`Get` 이 이름을 키로 한 딕셔너리 조회라 평균 O(1) 이다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "값을 푸는 비용이 고른 방식에 맞다: copy-down 이면 부모의 최종값 하나씩만 복사해 `Define` 과 읽기가 O(1), 동적 위임이면 값을 정한 종족을 만날 때까지만 올라간다. 어느 쪽도 표 전체를 훑지 않는다.",
+            "points": 10,
+            "sourceId": "gpp-type-object"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "`NewMonster` 가 이 종족 객체 자체를 넘겨, 같은 종족의 몬스터들이 `Breed` 하나를 참조로 공유한다(종족마다 새 `Breed` 나 값 복사본을 만들지 않는다).",
+            "points": 10,
+            "sourceId": "gpp-type-object"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "\"정하지 않음\"을 `int?` / `string` 의 null 로 판정하고 `??` (또는 `HasValue`)로 푼다. `GetValueOrDefault()`, `!= 0`, `string.IsNullOrEmpty` 로 판정하지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-null-coalescing"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "`Breed` 의 public 멤버가 모두 읽기 전용이고, 이름 비교(딕셔너리, `IsA`)가 대소문자를 구분하는 ordinal 비교다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "종족마다 클래스나 `switch` 가 없고, 새 종족이 `Define` 호출(데이터 한 행)만으로 추가된다. `IsA` 가 `Parent` 사슬을 따라간다.",
+            "points": 8,
+            "sourceId": "gpp-type-object"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "표의 저장소가 인스턴스 필드이고, `Define` 안에서 \"모두 검사 → 값 풀기 → 등록\" 순서가 그대로 읽힌다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "0 이나 빈 문자열을 \"물려받기\" 표시로 써서 방어력 0 이나 빈 공격 문구를 가진 종족을 만들 수 없다.",
+            "penalty": -20,
+            "sourceId": "gpp-type-object"
+          },
+          {
+            "id": "d2",
+            "description": "가장 가까운 조상이 아니라 바로 위 부모의 원래 인자나 루트에서만 값을 가져와, 3단 이상 사슬에서 값이 틀린다.",
+            "penalty": -20,
+            "sourceId": "gpp-type-object"
+          },
+          {
+            "id": "d3",
+            "description": "종족마다 C# 클래스를 만들거나 종족 이름으로 `switch` 해서 Type Object 를 우회했다.",
+            "penalty": -15,
+            "sourceId": "gpp-type-object"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Exception Thrown(System.Action a)\n    {\n        try { a(); } catch (System.Exception ex) { return ex; }\n        return null;\n    }\n\n    static string Name(System.Exception e) { return e == null ? \"없음\" : e.GetType().Name; }\n\n    static string Vals(Breed b) { return b.MaxHealth + \"/\" + b.Armor + \"/\\\"\" + b.AttackText + \"\\\"\"; }\n\n    static BreedTable Trolls()\n    {\n        var t = new BreedTable();\n        t.Define(\"Troll\", null, 48, 2, \"clubs\");\n        t.Define(\"TrollArcher\", \"Troll\", null, null, \"arrow\");\n        t.Define(\"TrollArcherCaptain\", \"TrollArcher\", 80, null, null);\n        t.Define(\"TrollBrute\", \"Troll\", null, 5, null);\n        t.Define(\"TrollBruteKing\", \"TrollBrute\", null, null, \"roars\");\n        return t;\n    }\n\n    public static void Main()\n    {\n        Run(\"root-breed\", () =>\n        {\n            var t = new BreedTable();\n            if (t.Count != 0) return \"새 표의 Count 는 0 이어야 함\";\n            Breed troll = t.Define(\"Troll\", null, 48, 2, \"clubs\");\n            if (troll == null || troll.Name != \"Troll\" || troll.Parent != null) return \"루트 종족: Name 은 \\\"Troll\\\", Parent 는 null 이어야 함\";\n            if (Vals(troll) != \"48/2/\\\"clubs\\\"\") return \"루트 종족 값: 기대 48/2/\\\"clubs\\\", 결과 \" + Vals(troll);\n            if (!ReferenceEquals(t.Get(\"Troll\"), troll) || !ReferenceEquals(t.Get(\"Troll\"), t.Get(\"Troll\"))) return \"Get(\\\"Troll\\\") 은 Define 이 돌려준 바로 그 객체를 매번 돌려줘야 함\";\n            if (t.Count != 1) return \"Count 기대 1, 결과 \" + t.Count;\n            var other = new BreedTable();\n            return other.Count == 0 && Thrown(() => other.Get(\"Troll\")) is System.Collections.Generic.KeyNotFoundException ? null : \"표끼리 종족을 공유하면 안 됨 (static 저장소?)\";\n        });\n\n        Run(\"nearest-ancestor-wins\", () =>\n        {\n            var t = Trolls();\n            Breed troll = t.Get(\"Troll\"), archer = t.Get(\"TrollArcher\"), captain = t.Get(\"TrollArcherCaptain\"), king = t.Get(\"TrollBruteKing\");\n            if (!ReferenceEquals(archer.Parent, troll) || !ReferenceEquals(captain.Parent, archer) || !ReferenceEquals(king.Parent, t.Get(\"TrollBrute\"))) return \"Parent 는 Get(부모 이름) 과 같은 객체여야 함\";\n            if (Vals(archer) != \"48/2/\\\"arrow\\\"\") return \"TrollArcher(부모 Troll, null, null, \\\"arrow\\\"): 기대 48/2/\\\"arrow\\\", 결과 \" + Vals(archer);\n            if (Vals(captain) != \"80/2/\\\"arrow\\\"\") return \"TrollArcherCaptain(부모 TrollArcher, 80, null, null): 기대 80/2/\\\"arrow\\\", 결과 \" + Vals(captain);\n            if (Vals(king) != \"48/5/\\\"roars\\\"\") return \"TrollBruteKing(부모 TrollBrute(방어 5), null, null, \\\"roars\\\"): 방어력은 가장 가까운 조상의 5, 기대 48/5/\\\"roars\\\", 결과 \" + Vals(king);\n            return Vals(troll) == \"48/2/\\\"clubs\\\"\" ? null : \"자식을 정의한 뒤 부모의 값이 바뀜: \" + Vals(troll);\n        });\n\n        Run(\"zero-and-empty-override\", () =>\n        {\n            var t = Trolls();\n            Breed paper = t.Define(\"PaperTroll\", \"TrollBrute\", null, 0, \"\");\n            if (Vals(paper) != \"48/0/\\\"\\\"\") return \"PaperTroll(부모 TrollBrute, null, 0, \\\"\\\"): 0 과 \\\"\\\" 도 덮어쓰기, 기대 48/0/\\\"\\\", 결과 \" + Vals(paper);\n            Breed scrap = t.Define(\"ScrapTroll\", \"PaperTroll\", null, null, null);\n            if (Vals(scrap) != \"48/0/\\\"\\\"\") return \"ScrapTroll(부모 PaperTroll, 모두 null): 부모의 0 과 \\\"\\\" 를 물려받아야 함, 기대 48/0/\\\"\\\", 결과 \" + Vals(scrap);\n            Breed slime = t.Define(\"Slime\", null, 1, 0, \"\");\n            return Vals(slime) == \"1/0/\\\"\\\"\" ? null : \"루트 Slime(1, 0, \\\"\\\"): 0 과 \\\"\\\" 는 값이 주어진 것, 기대 1/0/\\\"\\\", 결과 \" + Vals(slime);\n        });\n\n        Run(\"define-errors-keep-table\", () =>\n        {\n            var t = Trolls();\n            Breed troll = t.Get(\"Troll\");\n            System.Exception e = Thrown(() => t.Define(\"Troll\", \"TrollArcher\", 99, 9, \"loop\"));\n            if (!(e is System.ArgumentException)) return \"이미 있는 이름 Troll 을 부모 TrollArcher 로 다시 Define: 기대 ArgumentException, 결과 \" + Name(e);\n            if (!ReferenceEquals(t.Get(\"Troll\"), troll) || troll.Parent != null || Vals(troll) != \"48/2/\\\"clubs\\\"\") return \"실패한 재정의가 기존 Troll 을 바꿈\";\n            e = Thrown(() => t.Define(\"Imp\", \"Imp\", 10, 0, \"bites\"));\n            if (!(e is System.Collections.Generic.KeyNotFoundException)) return \"자기 자신을 부모로 Define(\\\"Imp\\\", \\\"Imp\\\", ...): 기대 KeyNotFoundException, 결과 \" + Name(e);\n            e = Thrown(() => t.Define(\"Ogre\", \"Giant\", null, null, null));\n            if (!(e is System.Collections.Generic.KeyNotFoundException)) return \"없는 부모 Giant: 기대 KeyNotFoundException, 결과 \" + Name(e);\n            e = Thrown(() => t.Define(\"Ghost\", null, 30, null, \"wails\"));\n            if (!(e is System.ArgumentException)) return \"루트 Ghost 의 방어력이 null: 기대 ArgumentException, 결과 \" + Name(e);\n            e = Thrown(() => t.Define(\"Wisp\", null, 30, 1, null));\n            if (!(e is System.ArgumentException)) return \"루트 Wisp 의 공격 문구가 null: 기대 ArgumentException, 결과 \" + Name(e);\n            if (t.Count != 5) return \"실패한 Define 다섯 번 뒤 Count 기대 5, 결과 \" + t.Count;\n            foreach (string n in new[] { \"Imp\", \"Ogre\", \"Ghost\", \"Wisp\", \"troll\" })\n                if (!(Thrown(() => t.Get(n)) is System.Collections.Generic.KeyNotFoundException)) return \"Get(\\\"\" + n + \"\\\"): 기대 KeyNotFoundException (실패한 Define 이 등록되었거나 이름 비교가 대소문자를 무시함)\";\n            Breed ogre = t.Define(\"Ogre\", \"Troll\", 70, null, null);\n            return Vals(ogre) == \"70/2/\\\"clubs\\\"\" && t.Count == 6 ? null : \"실패 뒤 같은 이름을 올바르게 Define: 기대 70/2/\\\"clubs\\\" 와 Count 6, 결과 \" + Vals(ogre) + \" / \" + t.Count;\n        });\n\n        Run(\"is-a-chain\", () =>\n        {\n            var t = Trolls();\n            Breed captain = t.Get(\"TrollArcherCaptain\"), troll = t.Get(\"Troll\"), brute = t.Get(\"TrollBrute\");\n            if (!captain.IsA(\"TrollArcherCaptain\") || !captain.IsA(\"TrollArcher\") || !captain.IsA(\"Troll\")) return \"TrollArcherCaptain 은 자신, TrollArcher, Troll 모두에 대해 IsA 가 true 여야 함\";\n            if (troll.IsA(\"TrollArcher\")) return \"Troll.IsA(\\\"TrollArcher\\\") 는 false (부모가 자식인 것은 아님)\";\n            if (brute.IsA(\"TrollArcher\") || brute.IsA(\"TrollArcherCaptain\")) return \"형제 종족 TrollBrute.IsA(\\\"TrollArcher\\\") 는 false\";\n            if (captain.IsA(\"troll\") || captain.IsA(\"Dragon\")) return \"IsA 는 대소문자를 구분하고, 없는 이름이면 false\";\n            return null;\n        });\n\n        Run(\"monsters-share-breed\", () =>\n        {\n            var t = Trolls();\n            Breed captain = t.Get(\"TrollArcherCaptain\");\n            Monster a = captain.NewMonster(), b = captain.NewMonster();\n            if (a == null || ReferenceEquals(a, b)) return \"NewMonster 는 호출할 때마다 새 몬스터를 만들어야 함\";\n            if (!ReferenceEquals(a.Breed, captain) || !ReferenceEquals(b.Breed, captain)) return \"몬스터의 Breed 는 NewMonster 를 부른 종족 객체 그 자체여야 함\";\n            if (a.Health != 80 || a.Attack() != \"arrow\") return \"새 몬스터: 기대 체력 80 / 공격 \\\"arrow\\\", 결과 \" + a.Health + \" / \" + a.Attack();\n            a.TakeDamage(12);\n            if (a.Health != 70 || b.Health != 80) return \"a 만 12 피해(방어 2): 기대 a 70 / b 80, 결과 \" + a.Health + \" / \" + b.Health;\n            Monster p = t.Define(\"PaperTroll\", \"Troll\", null, 0, null).NewMonster();\n            p.TakeDamage(5);\n            return p.Health == 43 && captain.MaxHealth == 80 ? null : \"PaperTroll(방어 0) 이 5 피해: 기대 43, 결과 \" + p.Health;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(4471);\n            for (int round = 0; round < 300; round++)\n            {\n                var t = new BreedTable();\n                var names = new System.Collections.Generic.List<string>();\n                var parent = new System.Collections.Generic.List<int>();\n                var spec = new System.Collections.Generic.List<object[]>();\n                int ops = rng.Next(1, 16);\n                for (int op = 0; op < ops; op++)\n                {\n                    string name = \"B\" + rng.Next(0, 12);\n                    int p = names.Count == 0 || rng.Next(4) == 0 ? -1 : rng.Next(names.Count);\n                    bool badParent = rng.Next(10) == 0;\n                    string parentName = badParent ? \"X\" + rng.Next(5) : p < 0 ? null : names[p];\n                    int? hp = p < 0 || rng.Next(2) == 0 ? rng.Next(0, 4) * 10 : (int?)null;\n                    int? ar = p < 0 || rng.Next(2) == 0 ? rng.Next(0, 3) : (int?)null;\n                    string at = p < 0 || rng.Next(2) == 0 ? (rng.Next(3) == 0 ? \"\" : \"a\" + rng.Next(5)) : null;\n                    if (p < 0 && !badParent && rng.Next(8) == 0) ar = null;\n                    bool ok = !names.Contains(name) && !badParent && (p >= 0 || (hp != null && ar != null && at != null));\n                    System.Exception e = Thrown(() => t.Define(name, parentName, hp, ar, at));\n                    if (ok != (e == null)) return \"라운드 \" + round + \": Define(\" + name + \", \" + (parentName ?? \"null\") + \", ...) \" + (ok ? \"은 성공해야 함, 결과 \" + Name(e) : \"은 실패해야 함\");\n                    if (ok) { names.Add(name); parent.Add(badParent ? -1 : p); spec.Add(new object[] { hp, ar, at }); }\n                }\n                if (t.Count != names.Count) return \"라운드 \" + round + \": Count 기대 \" + names.Count + \", 결과 \" + t.Count;\n                for (int i = 0; i < names.Count; i++)\n                {\n                    object[] want = new object[3];\n                    for (int k = 0; k < 3; k++) for (int j = i; want[k] == null; j = parent[j]) want[k] = spec[j][k];\n                    Breed b = t.Get(names[i]);\n                    string exp = want[0] + \"/\" + want[1] + \"/\\\"\" + want[2] + \"\\\"\";\n                    if (Vals(b) != exp) return \"라운드 \" + round + \": \" + names[i] + \" 기대 \" + exp + \", 결과 \" + Vals(b);\n                    if (!ReferenceEquals(b.Parent, parent[i] < 0 ? null : t.Get(names[parent[i]]))) return \"라운드 \" + round + \": \" + names[i] + \" 의 Parent 가 다름\";\n                    int q = rng.Next(names.Count);\n                    bool isA = false;\n                    for (int j = i; j >= 0 && !isA; j = parent[j]) isA = j == q;\n                    if (b.IsA(names[q]) != isA) return \"라운드 \" + round + \": \" + names[i] + \".IsA(\" + names[q] + \") 기대 \" + isA;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "root-breed",
+          "nearest-ancestor-wins",
+          "zero-and-empty-override",
+          "define-errors-keep-table",
+          "is-a-chain",
+          "monsters-share-breed",
+          "random-vs-reference"
+        ],
+        "note": "루트 종족과 Get 의 동일 객체·표끼리의 독립, 3단 사슬에서 가장 가까운 조상의 값, 0 과 \"\" 의 덮어쓰기와 그 상속, 이미 있는 이름·자기 자신을 부모로 준 경우·없는 부모·값이 빠진 루트의 예외와 실패 뒤 표가 그대로인지, 대소문자를 구분하는 이름, IsA 의 조상·형제 판정, NewMonster 가 그 종족 객체를 공유하고 몬스터마다 체력이 따로인지, 그리고 무작위 표 300개를 참조 모델과 비교합니다. 값을 푸는 시점(copy-down / 동적 위임)은 채점하지 않습니다. Monster 전체, BreedTable 의 생성자 / Count / Define(string, string, int?, int?, string) / Get(string), Breed 의 Name / Parent / MaxHealth / Armor / AttackText / IsA(string) / NewMonster() 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 .NET 8 과 Compiler Explorer 에서 모범 답안 전부 통과·시작 코드 실패를 확인하고, 0/\"\" 를 물려받기로 읽는 답·루트 값만 쓰는 답·실패 전에 등록하는 답·대소문자를 무시하는 답이 실패하고 동적 위임으로 다르게 짠 정답은 통과함을 실행해 보았으며, 설명은 GPP Type Object 장과 Microsoft Learn 의 nullable·?? 문서 원문과 대조했다."
+      },
+      "nextMission": "로더가 표를 정렬하지 않고 아무 순서로 넘기는 경우를 처리해 보세요. `BreedTable.LoadAll(rows)` 가 먼저 모든 행을 이름으로 모은 뒤, 부모를 따라가며 \"방문 중 / 완료\" 두 표시로 순환(`A → B → A`)과 없는 부모를 찾아 문제가 된 행 이름들을 담은 예외로 알리고, 문제가 없으면 부모부터 `Define` 하게 만드세요. 그다음 몬스터의 종족을 바꾸는 `Monster.ChangeBreed(Breed)` 를 추가한다면, GPP 가 경고하듯 \"현재 체력이 새 종족의 최대 체력을 넘지 않는다\" 같은 가정을 어떻게 검증할지 테스트부터 써 보세요."
+    },
+    {
+      "id": "t10-impl-event-queue-sound-ring-buffer",
+      "track": "track10",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "효과음 요청 큐: 링 버퍼로 요청과 재생을 시간으로 떼어 놓고, 같은 소리는 하나로 합치기",
+      "tags": [
+        "Pattern_EventQueue",
+        "Pattern_RingBuffer"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "gpp-event-queue",
+        "wiki-circular-buffer",
+        "ms-learn-queue",
+        "ms-gh-runtime-queue-cs-net8"
+      ],
+      "scenario": "액션 게임의 효과음 코드는 지금 `Audio.Play(id, volume)` 을 부르면 그 자리에서 소리 파일을 찾고 채널을 잡아 재생합니다. 문제가 셋 생겼습니다.\n\n- 메뉴를 넘길 때 소리 파일을 읽느라 화면이 몇 프레임 멈춘다. 요청한 쪽이 처리가 끝날 때까지 막힌다.\n- 광역기가 한 프레임에 적 다섯을 맞히면 같은 피격음이 다섯 번 겹쳐 터무니없이 커진다. 요청을 하나씩만 보니 묶어서 처리할 수 없다.\n- 보스전에서 요청이 몰리면 한 프레임에 쓸 수 있는 채널 수를 넘는다.\n\n그래서 요청을 받는 일과 처리하는 일을 떼어 놓습니다. 게임 코드는 `Request` 로 요청만 넣고 바로 돌아가고, 오디오 시스템은 프레임마다 `Update(budget)` 을 불러 앞에서부터 최대 `budget` 개(이번 프레임에 남은 채널 수)를 재생합니다. 실제 재생은 생성자로 받은 `play(soundId, volume)` 콜백이 합니다.\n\n**요구 스펙**\n\n1. **링 버퍼.** 생성자에서 길이가 `capacity` 인 배열을 한 번 만들고 그 칸을 돌려 쓴다(값마다 배열을 따로 두거나 구조체 배열을 써도 된다). 대기 요청은 최대 `Capacity` 개까지 둔다. 한 칸도 비워 두지 않는다. `capacity < 1` 이면 `ArgumentOutOfRangeException`, `play` 가 null 이면 `ArgumentNullException`.\n2. **`Request(soundId, volume)`** 는 다음 순서로 판단한다.\n   1. `volume` 이 0~100 밖이면 `ArgumentOutOfRangeException` 이고 아무것도 바뀌지 않는다.\n   2. **합치기.** 같은 `soundId` 가 아직 대기 중이면 그 요청에 합친다. 자리는 그대로이고 음량은 둘 중 큰 값이다. `true` 를 반환하고 `Count` 는 그대로다. 큐가 가득 차 있어도 합치기는 된다.\n   3. **넘침.** 합칠 곳이 없고 대기 요청이 `Capacity` 개면 새 요청을 버린다. `false` 를 반환하고 `DroppedCount` 가 1 늘며, 다른 것은 바뀌지 않는다.\n   4. 그 밖에는 맨 뒤에 줄을 서고 `true` 를 반환한다.\n3. **`Update(budget)`** 은 `Update` 를 시작한 시점에 대기 중이던 요청 중 앞에서부터 `min(budget, Count)` 개를 들어온 순서대로(합쳐진 요청은 처음 자리 기준) 재생하고, 재생한 수를 반환한다. `budget < 0` 이면 `ArgumentOutOfRangeException`.\n   - 각 요청은 **콜백을 부르기 전에** 큐에서 빠진다.\n   - 콜백 안에서도 `Request` 를 부를 수 있고 규칙 2 가 그대로 적용된다. 아직 대기 중인 요청에는 합쳐진다(그 요청이 이번 `Update` 에서 재생될 차례라면 합쳐진 음량으로 재생된다). 지금 재생 중인 요청은 이미 빠졌으므로, 같은 id 를 요청하면 새로 줄을 선다. 콜백 안에서 새로 줄을 선 요청은 `budget` 이 남아 있어도 **이번 `Update` 에서는 재생하지 않는다**.\n   - 콜백이 예외를 던지면 그 예외는 `Update` 밖으로 그대로 나온다. 그 요청은 이미 빠졌으므로 다시 재생되지 않고, 아직 재생하지 않은 요청은 순서대로 남는다.\n4. `Request` 는 그 자리에서 재생하지 않는다. 재생은 `Update` 에서만 일어난다.\n\n예: `Capacity` 3 에서 1, 2, 3 을 요청하면 4 는 버려지고(`false`), 2 를 다시 요청하면 합쳐진다(`true`). `Update(1)` 로 1 을 재생하고 나면 4 가 들어간다.\n\n단일 스레드에서만 쓰입니다. 콜백 안에서 `Update` 를 부르는 경우는 범위 밖입니다(채점하지 않음).",
+      "constraints": [
+        "`Queue<T>`, `List<T>` 같은 컬렉션 대신 생성자에서 한 번 만든 배열로 링 버퍼를 직접 구현한다(head 와 개수, 또는 head 와 tail). 요청을 꺼낼 때 나머지 원소를 앞으로 밀지 않는다.",
+        "준비가 끝난 뒤의 `Request` / `Update` 는 힙 할당을 하지 않는다(요청마다 객체·배열 생성, 람다 캡처, LINQ, 박싱 금지).",
+        "`Update` 는 재생하는 요청 수 k 에 대해 O(k). `Request` 는 대기 요청을 훑는 O(Count) 까지 허용한다(id 색인으로 평균 O(1) 로 만들어도 된다).",
+        "콜백 안에서 들어온 요청을 재귀 호출로 그 자리에서 재생하지 않는다.",
+        "public 시그니처(생성자 `(int, Action<int, int>)`, `Capacity`, `Count`, `DroppedCount`, `Request(int, int)`, `Update(int)`)는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// 효과음 재생 요청을 받아 두었다가 오디오 쪽의 Update 에서 처리하는 큐.\npublic sealed class SoundRequestQueue\n{\n    // play(soundId, volume): 실제로 소리를 내는 오디오 엔진 쪽 호출.\n    public SoundRequestQueue(int capacity, Action<int, int> play)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 대기할 수 있는 요청의 최대 수.\n    public int Capacity\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 지금 대기 중인 요청 수.\n    public int Count\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 큐가 가득 차서 버린 요청 수(누적).\n    public int DroppedCount\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 받아들였으면(새로 줄을 섰거나 대기 중인 요청에 합쳐졌으면) true, 버렸으면 false.\n    public bool Request(int soundId, int volume)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 앞에서부터 최대 budget 개를 재생하고, 재생한 수를 반환한다.\n    public int Update(int budget)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "`Capacity` 3 에 1, 2, 3 이 대기 중일 때 `Request(4, 40)` 은 false, `Request(2, 99)` 는 true: 가득 차도 합치기가 넘침 검사보다 먼저다.",
+        "`Capacity` 4 에 넷을 넣고 셋을 재생한 뒤 5, 6, 7 을 넣으면 배열 끝을 넘어 앞으로 돈다. 그 상태에서 6 과 4 에 합치기가 되어야 하고, 둘을 더 재생한 뒤 다시 요청한 5 는 빈 칸에 남은 옛 값과 합치지 않고 새로 줄을 선다.",
+        "1 을 재생하는 콜백이 9, 2, 1 을 요청: 2 는 아직 대기 중이라 합쳐져 이번 `Update` 에 음량 100 으로 재생되고, 9 와 1 은 다음 `Update` 에 재생된다.",
+        "13 을 재생하는 콜백이 예외를 던짐: 11 과 13 은 이미 빠졌고 15 는 남아 다음 `Update` 에 재생된다."
+      ],
+      "hints": [
+        "`Capacity` 3 인 링 버퍼에서 head 와 tail 두 인덱스만으로 \"비었음\"과 \"가득 참\"을 구분할 수 있을까요? 1, 2, 3 을 넣으면 tail 은 한 바퀴 돌아 다시 head 와 같아집니다. 그리고 1 을 재생하는 콜백이 1 을 다시 요청하면, 그 요청은 무엇과 합쳐져야 하나요? 지금 재생 중인 1 은 그 순간 아직 큐에 있나요?",
+        "`Request` 에서는 세 판단(합치기, 넘침, 줄 서기)의 **순서**가 첫 관문이고, 합치기 검사는 0 번 칸부터가 아니라 head 에서부터 `Count` 칸을 배열 끝에서 돌아가며 훑어야 합니다. `Update` 에서는 \"몇 개를 처리할지\"를 언제 정하는지와 head 를 콜백 전에 옮기는지 후에 옮기는지가 핵심입니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nRequest(id, volume):\n    범위 검사 (상태를 바꾸기 전에)\n    for k in 0 ..< count:\n        i = (head + k) % capacity\n        if ids[i] == id: volumes[i] = ____; return true\n    if ____: dropped++; return false\n    tail = ____\n    ids[tail] = id; volumes[tail] = volume; count++\n    return true\n\nUpdate(budget):\n    n = ____                    // 언제 정해야 콜백이 넣은 요청이 이번 프레임에 끼지 않나\n    repeat n times:\n        (id, volume) = head 칸\n        ____                    // play 를 부르기 전에 해야 할 일\n        play(id, volume)\n    return n\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 효과음 재생 요청을 받아 두었다가 오디오 쪽의 Update 에서 처리하는 큐.\n// 요청하는 쪽(전투, UI, AI)과 재생하는 쪽(오디오)을 \"시간\"으로 떼어 놓는다.\npublic sealed class SoundRequestQueue\n{\n    // 링 버퍼: 생성자에서 한 번 만든 배열 두 개를 끝까지 다시 쓴다.\n    private readonly int[] _ids;\n    private readonly int[] _volumes;\n    private readonly Action<int, int> _play;\n    private int _head;    // 가장 오래된 대기 요청이 있는 칸\n    private int _count;   // 대기 요청 수. 개수를 따로 두므로 Capacity 칸을 모두 쓴다.\n\n    public SoundRequestQueue(int capacity, Action<int, int> play)\n    {\n        if (capacity < 1) throw new ArgumentOutOfRangeException(nameof(capacity));\n        if (play == null) throw new ArgumentNullException(nameof(play));\n        _ids = new int[capacity];\n        _volumes = new int[capacity];\n        _play = play;\n    }\n\n    public int Capacity\n    {\n        get { return _ids.Length; }\n    }\n\n    public int Count\n    {\n        get { return _count; }\n    }\n\n    public int DroppedCount { get; private set; }\n\n    public bool Request(int soundId, int volume)\n    {\n        if (volume < 0 || volume > 100) throw new ArgumentOutOfRangeException(nameof(volume));\n\n        // 1) 같은 소리가 아직 대기 중이면 그 요청에 합친다. 자리는 그대로, 음량은 큰 쪽.\n        //    가득 찬 큐에서도 합치기는 칸을 쓰지 않으므로 받아들인다.\n        for (int k = 0, i = _head; k < _count; k++, i = Next(i))\n        {\n            if (_ids[i] == soundId)\n            {\n                if (volume > _volumes[i]) _volumes[i] = volume;\n                return true;\n            }\n        }\n\n        // 2) 합칠 곳이 없고 가득 찼으면 새 요청을 버린다.\n        if (_count == _ids.Length)\n        {\n            DroppedCount++;\n            return false;\n        }\n\n        // 3) 꼬리(가장 오래된 것에서 _count 칸 뒤)에 넣는다.\n        int tail = _head + _count;\n        if (tail >= _ids.Length) tail -= _ids.Length;\n        _ids[tail] = soundId;\n        _volumes[tail] = volume;\n        _count++;\n        return true;\n    }\n\n    public int Update(int budget)\n    {\n        if (budget < 0) throw new ArgumentOutOfRangeException(nameof(budget));\n\n        // 이번 Update 가 처리할 개수는 시작할 때 정한다. 콜백 안에서 들어온 요청은 모두 이들 뒤에 서므로\n        // 이번 프레임에는 처리되지 않는다.\n        int n = Math.Min(budget, _count);\n        for (int k = 0; k < n; k++)\n        {\n            int id = _ids[_head];\n            int volume = _volumes[_head];\n\n            // 콜백을 부르기 전에 큐에서 뺀다. 콜백이 같은 소리를 다시 요청하면 새 요청으로 줄을 서고,\n            // 콜백이 예외를 던져도 이 요청이 다시 재생되지 않는다.\n            _head = Next(_head);\n            _count--;\n\n            _play(id, volume);\n        }\n        return n;\n    }\n\n    private int Next(int i)\n    {\n        i++;\n        return i == _ids.Length ? 0 : i;\n    }\n}\n",
+      "explanation": "**패턴.** Game Programming Patterns(GPP) 의 Event Queue 장은 이 패턴의 의도를 \"메시지나 이벤트를 보내는 시점과 처리하는 시점을 떼어 놓는다\"로 적고, 큐가 알림이나 요청을 선입선출 순서로 저장하며 보내는 쪽은 요청을 넣고 돌아가고 처리하는 쪽이 나중에 꺼내 처리한다고 설명합니다. 이 장의 예제가 바로 효과음입니다. 같은 장은 누가 받는지만 떼어 놓으려면 Observer 나 Command 로 충분하고, 큐는 시간으로 떼어 놓고 싶을 때만 필요하다고 조언합니다. 대가로 보내는 쪽은 통제권을 잃습니다. `Request` 가 알려 주는 것은 \"받아들였다 / 버렸다\"뿐이고 \"재생했다\"가 아닙니다. GPP 도 보내는 쪽이 응답을 받아야 할 때는 큐가 맞지 않는다고 말합니다.\n\n**링 버퍼와 가득 참.** head 는 가장 오래된 요청, tail 은 다음 요청이 들어갈 칸입니다. Wikipedia 의 Circular buffer 문서는 시작·끝 인덱스만으로는 모든 칸을 쓰면서 가득 참과 비었음을 구분할 수 없고, 사용 크기를 길이 − 1 까지로 제한하거나 개수를 따로 세면 된다고 설명합니다. GPP 의 예제는 앞의 방식입니다(넣기 전에 `(tail_ + 1) % MAX_PENDING != head_` 를 assert). 이 문제는 길이 `Capacity` 인 배열의 칸을 모두 쓰라고 했으므로(스펙 1) 개수를 따로 둡니다. 배열을 한 칸 크게 만들고 한 칸을 비워 두는 방식도 담는 요청 수는 같지만 스펙 1 과는 다릅니다. Microsoft Learn 에 따르면 `Queue<T>` 도 원형 배열로 구현되고(.NET 8 의 release/8.0 소스에는 `_head`, `_tail`, `_size` 필드가 있습니다. 구현 세부이지 보장은 아닙니다), 가득 차면 내부 배열을 다시 할당해 늘리며 그때 `Enqueue` 는 O(n) 입니다. \"몰리면 버린다\"는 고정 용량과 프레임 중 할당 0 을 지키려고 배열을 직접 돌립니다.\n\n**합치기와 넘침.** GPP 는 넣을 때 대기 요청을 훑어 같은 소리가 있으면 큰 음량을 쓰고 새로 넣지 않습니다. 칸을 낭비하지 않는 방식이고, GPP 코드에서도 합치기 루프가 넘침 assert 보다 앞에 있습니다. 그래서 가득 찬 큐에서도 합치기는 됩니다. 대가는 `Request` 마다 대기 요청 전체를 훑는 O(n) 이고, GPP 는 SoundId 를 키로 한 해시 테이블이면 중복을 상수 시간에 찾을 수 있다고 덧붙입니다. 합칠 수 있는 \"동시\" 요청의 창은 큐 크기만큼이라, 처리가 밀리면 더 많이 합쳐지고 빠르면 덜 합쳐진다는 점도 GPP 가 짚습니다. 가득 찼을 때 가장 오래된 데이터를 덮어쓸지, 쓰기를 막고 오류를 알릴지는 버퍼를 쓰는 쪽이 정할 의미라고 Wikipedia 는 설명합니다. 이 문제는 새 요청을 버리고 `false` 와 `DroppedCount` 로 알립니다.\n\n**콜백 안의 요청.** 콜백 전에 빼야 \"재생 중인 소리를 다시 요청\"이 새 요청이 되고, 콜백이 던져도 같은 소리를 두 번 재생하지 않습니다. 처리할 개수를 시작할 때 정하면 콜백이 넣은 요청은 모두 그 뒤에 서므로 다음 `Update` 로 밀립니다. 그래서 서로를 요청하는 두 소리도 한 프레임에 `budget` 개까지만 씁니다.\n\n**복잡도.** `Update` 는 재생 수 k 에 O(k), `Request` 는 O(Count)(색인을 두면 평균 O(1)), 메모리는 생성자에서 한 번 만든 O(Capacity).\n\n**흔한 실수.** 넘침을 합치기보다 먼저 검사하기, 0 번 칸부터 훑기(한 바퀴 돈 뒤 틀림), 콜백을 부른 뒤에 빼기(재생 중인 요청에 합쳐져 새 요청이 사라짐), 큐가 빌 때까지 처리하기, 한 칸을 비워 두면서 배열은 `Capacity` 칸으로 만들기.\n\n### 흔한 오해\n- **\"링 버퍼는 비었음과 가득 참을 구분하려고 언제나 한 칸을 비워 둬야 한다.\"** — head 와 tail 두 인덱스만 쓸 때의 이야기입니다. Wikipedia 의 Circular buffer 문서대로 개수를 따로 세면(쓸 때 늘리고 읽을 때 줄이면) 개수 0 이 비었음, 개수 = 길이가 가득 참이 되어 모든 칸을 쓸 수 있고, 이 문제의 모범 답안이 그 방식입니다. [wiki-circular-buffer]\n- **\"동기 호출을 이벤트 큐로 바꾸면 이벤트끼리 서로를 부르는 순환 문제가 사라진다.\"** — 사라지는 것은 스택 오버플로라는 증상입니다. GPP 는 동기 방식에서는 순환이 스택을 넘쳐 금방 드러나지만, 큐를 쓰면 비동기가 스택을 풀어 버려 가짜 이벤트가 계속 오가는데도 게임이 돌아갈 수 있다고 경고합니다. 이 문제의 \"콜백이 넣은 요청은 다음 `Update` 로\" 규칙도 순환을 없애지 않고 한 프레임의 비용을 `budget` 으로 묶을 뿐입니다. [gpp-event-queue]",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "`Update(budget)` 이 앞에서부터 `min(budget, Count)` 개를 들어온 순서대로 재생하고 그 수를 반환하며, `Request` 는 그 자리에서 재생하지 않는다.",
+            "points": 9,
+            "sourceId": "gpp-event-queue"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "같은 id 가 대기 중이면 자리를 지킨 채 큰 음량으로 합치고 true 를 반환하며, 큐가 가득 차 있어도 합치기가 먼저 적용된다.",
+            "points": 9,
+            "sourceId": "gpp-event-queue"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "합칠 곳이 없고 가득 찼으면 false 를 반환하고 `DroppedCount` 만 1 늘린다. 대기 요청을 `Capacity` 개까지 모두 담는다.",
+            "points": 9,
+            "sourceId": "wiki-circular-buffer"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "요청을 콜백 전에 빼고, 처리 개수를 `Update` 시작 때 정해 콜백이 새로 넣은 요청을 다음 `Update` 로 미룬다. 콜백이 던진 뒤에도 남은 요청이 순서대로 남는다.",
+            "points": 8,
+            "sourceId": "gpp-event-queue"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "저장소가 생성자에서 한 번 만든 고정 길이 배열이고, 인덱스가 배열 끝에서 0 으로 돌아가며, 꺼낼 때 원소를 옮기지 않는다(`Queue<T>` / `List<T>` 없음).",
+            "points": 10,
+            "sourceId": "wiki-circular-buffer"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "준비가 끝난 뒤의 `Request` / `Update` 가 힙 할당을 하지 않는다(요청마다 객체·배열·클로저·박싱 없음).",
+            "points": 10,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "`Update` 가 재생 수에 비례하고, `Request` 의 합치기 검사가 대기 중인 `Count` 칸만 훑거나 id 색인을 쓴다(배열 전체나 지난 요청까지 훑지 않는다).",
+            "points": 10,
+            "sourceId": "gpp-event-queue"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "인자 검사가 스펙의 예외 형식(`ArgumentOutOfRangeException`, `ArgumentNullException`)이고 상태를 바꾸기 전에 던지며, 콜백의 예외를 삼키거나 감싸지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "요청을 값 형식(int 배열이나 구조체 배열)으로 저장하고, 저장소 배열과 콜백 필드가 `readonly` 다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "`Request` 의 판단 순서(검사 → 합치기 → 넘침 → 줄 서기)와 `Update` 의 단계(처리 개수 확정 → 빼기 → 콜백)가 코드에서 그 순서로 읽히고, 넘침 정책이 주석이나 이름으로 드러난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "큐가 인스턴스 안에 캡슐화되어(static 전역 아님) 바깥에는 `Request` / `Update` 만 보이고, 칸을 한 칸 넘기는 계산이 한 곳에 모여 있다.",
+            "points": 7,
+            "sourceId": "gpp-event-queue"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "콜백 안에서 들어온 요청을 같은 `Update` 에서 재생하거나(큐가 빌 때까지 처리) 재귀로 곧장 재생해, 서로를 요청하는 두 소리가 한 프레임을 끝없이 붙잡을 수 있다.",
+            "penalty": -20,
+            "sourceId": "gpp-event-queue"
+          },
+          {
+            "id": "d2",
+            "description": "`Queue<T>` / `List<T>` 처럼 늘어나는 컬렉션을 쓰거나 꺼낼 때 원소를 앞으로 밀어, 고정 용량 링 버퍼를 우회했다.",
+            "penalty": -20,
+            "sourceId": "ms-learn-queue-enqueue"
+          },
+          {
+            "id": "d3",
+            "description": "넘침 검사를 합치기보다 먼저 해서, 가득 찬 큐에서 이미 대기 중인 소리의 요청까지 버린다.",
+            "penalty": -15,
+            "sourceId": "gpp-event-queue"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\r\n\r\npublic static class __Judge\r\n{\r\n    static void Run(string id, System.Func<string> body)\r\n    {\r\n        string err;\r\n        try { err = body(); }\r\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\r\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\r\n    }\r\n\r\n    static string Thrown(System.Action a)\r\n    {\r\n        try { a(); } catch (System.Exception ex) { return ex.GetType().Name; }\r\n        return \"없음\";\r\n    }\r\n\r\n    static string Take(System.Collections.Generic.List<string> log)\r\n    {\r\n        string s = string.Join(\" \", log);\r\n        log.Clear();\r\n        return s;\r\n    }\r\n\r\n    public static void Main()\r\n    {\r\n        Run(\"fifo-and-budget\", () =>\r\n        {\r\n            var log = new System.Collections.Generic.List<string>();\r\n            var q = new SoundRequestQueue(8, (id, v) => log.Add(id + \":\" + v));\r\n            if (q.Capacity != 8 || q.Count != 0 || q.DroppedCount != 0) return \"새 큐: Capacity 8, Count 0, DroppedCount 0 이어야 함\";\r\n            for (int i = 1; i <= 5; i++) if (!q.Request(i, i * 10)) return \"빈 자리가 있는데 Request(\" + i + \") 가 false\";\r\n            if (log.Count != 0) return \"Request 는 그 자리에서 재생하면 안 됨 (Update 에서만 재생)\";\r\n            int n = q.Update(2);\r\n            string got = Take(log);\r\n            if (n != 2 || got != \"1:10 2:20\" || q.Count != 3) return \"Update(2): 기대 반환 2 / [1:10 2:20] / Count 3, 결과 \" + n + \" / [\" + got + \"] / \" + q.Count;\r\n            n = q.Update(10); got = Take(log);\r\n            if (n != 3 || got != \"3:30 4:40 5:50\" || q.Count != 0) return \"Update(10): 기대 반환 3 / [3:30 4:40 5:50] / Count 0, 결과 \" + n + \" / [\" + got + \"] / \" + q.Count;\r\n            n = q.Update(4); got = Take(log);\r\n            if (n != 0 || got != \"\") return \"빈 큐의 Update(4): 기대 반환 0, 재생 없음\";\r\n            q.Request(6, 0);\r\n            n = q.Update(0); got = Take(log);\r\n            return n == 0 && got == \"\" && q.Count == 1 ? null : \"Update(0) 은 아무것도 재생하지 않아야 함\";\r\n        });\r\n\r\n        Run(\"merge-in-place\", () =>\r\n        {\r\n            var log = new System.Collections.Generic.List<string>();\r\n            var q = new SoundRequestQueue(8, (id, v) => log.Add(id + \":\" + v));\r\n            q.Request(7, 40); q.Request(3, 50);\r\n            if (!q.Request(3, 20) || !q.Request(7, 90) || !q.Request(7, 60)) return \"대기 중인 소리와 합쳐지는 Request 는 true 여야 함\";\r\n            if (q.Count != 2) return \"7, 3, 3, 7, 7 을 요청한 뒤 Count 기대 2 (같은 소리는 합쳐짐), 결과 \" + q.Count;\r\n            q.Update(10);\r\n            string got = Take(log);\r\n            return got == \"7:90 3:50\" ? null : \"합친 요청은 처음 자리를 지키고 음량은 큰 쪽: 기대 [7:90 3:50], 결과 [\" + got + \"]\";\r\n        });\r\n\r\n        Run(\"full-queue-policy\", () =>\r\n        {\r\n            var log = new System.Collections.Generic.List<string>();\r\n            var q = new SoundRequestQueue(3, (id, v) => log.Add(id + \":\" + v));\r\n            if (!q.Request(1, 10) || !q.Request(2, 20) || !q.Request(3, 30)) return \"Capacity 3 인 큐에 요청 3개가 모두 들어가야 함 (한 칸을 비워 두는 링 버퍼?)\";\r\n            if (q.Request(4, 40)) return \"가득 찬 큐에 새 소리 4: 기대 false\";\r\n            if (q.DroppedCount != 1 || q.Count != 3) return \"버린 뒤 기대 DroppedCount 1 / Count 3, 결과 \" + q.DroppedCount + \" / \" + q.Count;\r\n            if (!q.Request(2, 99)) return \"가득 찬 큐라도 대기 중인 소리 2 와는 합쳐져야 함 (true)\";\r\n            if (q.DroppedCount != 1) return \"합쳐진 요청은 버린 것으로 세지 않음\";\r\n            q.Update(1);\r\n            if (!q.Request(4, 40)) return \"한 칸이 빈 뒤의 Request(4) 는 true\";\r\n            q.Update(10);\r\n            string got = Take(log);\r\n            return got == \"1:10 2:99 3:30 4:40\" ? null : \"기대 [1:10 2:99 3:30 4:40], 결과 [\" + got + \"]\";\r\n        });\r\n\r\n        Run(\"wraparound-merge\", () =>\r\n        {\r\n            var log = new System.Collections.Generic.List<string>();\r\n            var q = new SoundRequestQueue(4, (id, v) => log.Add(id + \":\" + v));\r\n            q.Request(1, 10); q.Request(2, 20); q.Request(3, 30); q.Request(4, 40);\r\n            q.Update(3); log.Clear();\r\n            if (!q.Request(5, 50) || !q.Request(6, 60) || !q.Request(7, 70)) return \"앞의 세 칸이 빈 뒤 5, 6, 7 이 배열 앞쪽으로 돌아 들어가야 함\";\r\n            if (q.Request(8, 80) || q.Count != 4) return \"다시 가득 찬 큐: Request(8) 기대 false, Count 4\";\r\n            if (!q.Request(6, 80) || !q.Request(4, 45)) return \"배열 끝을 넘어 돌아간 요청(6)과 앞에 남은 요청(4)에 합쳐져야 함\";\r\n            q.Update(2);\r\n            string got = Take(log);\r\n            if (got != \"4:45 5:50\") return \"Update(2): 기대 [4:45 5:50], 결과 [\" + got + \"]\";\r\n            if (!q.Request(5, 55) || q.Count != 3) return \"이미 재생된 5 를 다시 요청: 새로 줄을 서야 함, Count 기대 3, 결과 \" + q.Count + \" (빈 칸에 남은 옛 값과 합쳤나? 0 번 칸부터 훑기?)\";\r\n            if (!q.Request(7, 75) || q.Count != 3) return \"대기 중인 7 과 합쳐져야 함: Count 기대 3, 결과 \" + q.Count;\r\n            q.Update(10);\r\n            got = Take(log);\r\n            return got == \"6:80 7:75 5:55\" ? null : \"기대 [6:80 7:75 5:55], 결과 [\" + got + \"]\";\r\n        });\r\n\r\n        Run(\"requests-during-update\", () =>\r\n        {\r\n            var log = new System.Collections.Generic.List<string>();\r\n            SoundRequestQueue q = null;\r\n            q = new SoundRequestQueue(8, (id, v) =>\r\n            {\r\n                log.Add(id + \":\" + v);\r\n                if (id == 1 && v == 10) { q.Request(9, 30); q.Request(2, 100); q.Request(1, 50); }\r\n            });\r\n            q.Request(1, 10); q.Request(2, 20); q.Request(3, 30);\r\n            int n = q.Update(10);\r\n            string got = Take(log);\r\n            if (got != \"1:10 2:100 3:30\" || n != 3) return \"1 을 재생하는 콜백이 9 / 2(합치기) / 1 을 요청: 이번 Update 기대 [1:10 2:100 3:30] 와 반환 3, 결과 [\" + got + \"] 와 \" + n;\r\n            if (q.Count != 2) return \"콜백에서 새로 줄을 선 9 와 1 이 남아야 함: Count 기대 2, 결과 \" + q.Count;\r\n            q.Update(10);\r\n            got = Take(log);\r\n            return got == \"9:30 1:50\" ? null : \"다음 Update 기대 [9:30 1:50] (재생 중인 1 은 이미 빠졌으므로 새 요청), 결과 [\" + got + \"]\";\r\n        });\r\n\r\n        Run(\"errors-keep-state\", () =>\r\n        {\r\n            if (Thrown(() => new SoundRequestQueue(0, (a, b) => { })) != \"ArgumentOutOfRangeException\") return \"capacity 0: 기대 ArgumentOutOfRangeException\";\r\n            if (Thrown(() => new SoundRequestQueue(4, null)) != \"ArgumentNullException\") return \"play null: 기대 ArgumentNullException\";\r\n            var log = new System.Collections.Generic.List<string>();\r\n            var q = new SoundRequestQueue(4, (id, v) => { log.Add(id + \":\" + v); if (id == 13) throw new System.InvalidOperationException(\"채널 없음\"); });\r\n            q.Request(11, 50); q.Request(13, 50); q.Request(15, 50);\r\n            string t = Thrown(() => q.Request(11, 101));\r\n            if (t != \"ArgumentOutOfRangeException\" || Thrown(() => q.Request(20, -1)) != \"ArgumentOutOfRangeException\") return \"음량 101 / -1: 기대 ArgumentOutOfRangeException, 결과 \" + t;\r\n            if (Thrown(() => q.Update(-1)) != \"ArgumentOutOfRangeException\") return \"Update(-1): 기대 ArgumentOutOfRangeException\";\r\n            if (q.Count != 3) return \"거절된 호출 뒤 Count 기대 3, 결과 \" + q.Count;\r\n            t = Thrown(() => q.Update(10));\r\n            if (t != \"InvalidOperationException\") return \"콜백의 예외는 Update 밖으로 그대로 나와야 함, 결과 \" + t;\r\n            string got = Take(log);\r\n            if (got != \"11:50 13:50\") return \"던지기 전까지의 재생 기대 [11:50 13:50] (거절된 Request(11, 101) 은 합쳐지지 않음), 결과 [\" + got + \"]\";\r\n            if (q.Count != 1) return \"13 의 콜백이 던진 뒤 Count 기대 1 (11, 13 은 이미 빠짐), 결과 \" + q.Count;\r\n            q.Update(10);\r\n            got = Take(log);\r\n            return got == \"15:50\" ? null : \"예외 뒤 다음 Update 기대 [15:50] (13 을 다시 재생하지 않음), 결과 [\" + got + \"]\";\r\n        });\r\n\r\n        Run(\"random-vs-reference\", () =>\r\n        {\r\n            var rng = new System.Random(90210);\r\n            for (int round = 0; round < 300; round++)\r\n            {\r\n                int cap = rng.Next(1, 7);\r\n                int[] reactId = new int[8], reactVol = new int[8];\r\n                for (int i = 0; i < 8; i++) { reactId[i] = rng.Next(3) == 0 ? rng.Next(8) : -1; reactVol[i] = rng.Next(0, 101); }\r\n                var log = new System.Collections.Generic.List<string>();\r\n                var refLog = new System.Collections.Generic.List<string>();\r\n                SoundRequestQueue q = null;\r\n                q = new SoundRequestQueue(cap, (id, v) => { log.Add(id + \":\" + v); if (reactId[id] >= 0) log.Add(\"r\" + q.Request(reactId[id], reactVol[id])); });\r\n                var pend = new System.Collections.Generic.List<int[]>();\r\n                int dropped = 0;\r\n                System.Func<int, int, bool> refReq = (id, v) =>\r\n                {\r\n                    foreach (int[] p in pend) if (p[0] == id) { p[1] = System.Math.Max(p[1], v); return true; }\r\n                    if (pend.Count == cap) { dropped++; return false; }\r\n                    pend.Add(new[] { id, v }); return true;\r\n                };\r\n                for (int op = 0; op < 40; op++)\r\n                {\r\n                    string what;\r\n                    if (rng.Next(3) > 0)\r\n                    {\r\n                        int id = rng.Next(8), v = rng.Next(0, 101);\r\n                        what = \"Request(\" + id + \", \" + v + \")\";\r\n                        bool got = q.Request(id, v), exp = refReq(id, v);\r\n                        if (got != exp) return \"라운드 \" + round + \" (Capacity \" + cap + \"), \" + what + \": 기대 \" + exp + \", 결과 \" + got;\r\n                    }\r\n                    else\r\n                    {\r\n                        int b = rng.Next(0, 4);\r\n                        what = \"Update(\" + b + \")\";\r\n                        int got = q.Update(b), exp = System.Math.Min(b, pend.Count);\r\n                        for (int k = 0; k < exp; k++)\r\n                        {\r\n                            int[] p = pend[0]; pend.RemoveAt(0);\r\n                            refLog.Add(p[0] + \":\" + p[1]);\r\n                            if (reactId[p[0]] >= 0) refLog.Add(\"r\" + refReq(reactId[p[0]], reactVol[p[0]]));\r\n                        }\r\n                        string a = Take(log), e = Take(refLog);\r\n                        if (got != exp || a != e) return \"라운드 \" + round + \" (Capacity \" + cap + \"), \" + what + \": 기대 반환 \" + exp + \" / [\" + e + \"], 결과 \" + got + \" / [\" + a + \"]\";\r\n                    }\r\n                    if (q.Count != pend.Count || q.DroppedCount != dropped) return \"라운드 \" + round + \", \" + what + \" 뒤: 기대 Count \" + pend.Count + \" / DroppedCount \" + dropped + \", 결과 \" + q.Count + \" / \" + q.DroppedCount;\r\n                }\r\n            }\r\n            return null;\r\n        });\r\n\r\n        Run(\"no-allocation-steady-state\", () =>\r\n        {\r\n            long sum = 0;\r\n            var q = new SoundRequestQueue(64, (id, v) => { sum += id * v; });\r\n            System.Action frames = () =>\r\n            {\r\n                for (int f = 0; f < 2000; f++)\r\n                {\r\n                    for (int i = 0; i < 12; i++) q.Request((f * 7 + i * 3) % 40, (f + i) % 101);\r\n                    q.Update(9);\r\n                }\r\n            };\r\n            frames(); frames();\r\n            long before = System.GC.GetAllocatedBytesForCurrentThread();\r\n            frames();\r\n            long bytes = System.GC.GetAllocatedBytesForCurrentThread() - before;\r\n            if (sum == 0) return \"콜백이 한 번도 불리지 않음\";\r\n            return bytes < 16000 ? null : \"준비가 끝난 뒤 2,000 프레임(요청 24,000번)에서 \" + bytes + \" 바이트를 할당함 (요청이나 Update 마다 힙 할당?)\";\r\n        });\r\n    }\r\n}\r\n",
+        "cases": [
+          "fifo-and-budget",
+          "merge-in-place",
+          "full-queue-policy",
+          "wraparound-merge",
+          "requests-during-update",
+          "errors-keep-state",
+          "random-vs-reference",
+          "no-allocation-steady-state"
+        ],
+        "note": "budget 만큼 순서대로 재생하고 반환값이 맞는지, 합치기가 자리를 지키고 큰 음량을 쓰는지, Capacity 개를 모두 담고 가득 찼을 때 새 요청은 버리되 대기 중인 소리와는 합치는지, 배열 끝을 넘어 돈 뒤의 합치기와 이미 재생된 소리의 재요청, 콜백 안의 요청(합치기 / 다음 Update 로 미루기 / 재생 중인 id 의 재요청), 인자 예외와 콜백 예외 뒤의 상태, 콜백이 무작위로 요청하는 300개 시나리오를 참조 모델과 비교하고, 준비 뒤 2,000 프레임 동안의 할당량(GC.GetAllocatedBytesForCurrentThread, 16,000 바이트 미만)을 봅니다. 컬렉션 사용 여부와 Request 의 시간 복잡도는 채점하지 않습니다(채점표). SoundRequestQueue(int, Action<int, int>), Capacity, Count, DroppedCount, Request(int, int), Update(int) 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 .NET 8 과 Compiler Explorer 에서 모범 답안 통과·시작 코드 실패를 확인하고, 넘침을 먼저 검사하는 답·0 번 칸부터 훑는 답·콜백 뒤에 빼는 답·빌 때까지 처리하는 답·한 칸을 비우는 답·음량 검사를 늦게 하는 답이 실패하고 구조체 배열과 Dictionary 색인으로 다르게 짠 정답은 통과함을 실행해 보았으며, 설명은 GPP Event Queue 장, Wikipedia Circular buffer, Microsoft Learn Queue<T> 문서와 .NET 8 Queue.cs 원문과 대조했다."
+      },
+      "nextMission": "합치기를 O(1) 로 바꿔 보세요. soundId 를 키로 칸 번호를 담는 색인을 두고, `Update` 에서 요청이 빠질 때 색인에서도 지웁니다. 대기 요청 256개, 요청 10만 번에서 두 버전을 `Stopwatch` 로 비교해 수치를 적고, 색인 버전도 준비 뒤 할당이 0 인지 `GC.GetAllocatedBytesForCurrentThread()` 로 확인하세요. 그다음 넘침 정책을 \"가장 조용한 대기 요청을 밀어낸다\"로 바꾸면 FIFO 링 버퍼만으로는 왜 부족한지, 어떤 자료구조가 더 필요한지 적어 보세요."
+    },
+    {
+      "id": "t10-debug-memento-checkpoint-aliasing",
+      "track": "track10",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "체크포인트 디버깅: 부활해도 남아 있는 포션, 두 번째 부활에 올라가 있는 스킬, 구버전 세이브의 크래시",
+      "tags": [
+        "Pattern_Memento",
+        "Pattern_DeepCopy",
+        "Pattern_SaveVersioning"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-memento-pattern",
+        "ms-learn-array-clone",
+        "ms-learn-readonly",
+        "ms-learn-list-ctor"
+      ],
+      "scenario": "로그라이트의 층 입구 체크포인트입니다. 층에 들어설 때 `Capture()` 로 체크포인트를 만들고, 죽으면 `Restore(checkpoint)` 로 층 입구 상태로 돌아갑니다. 세이브 파일에도 같은 체크포인트를 저장하며, 불러올 때는 로더가 `PlayerCheckpoint` 의 public 생성자로 다시 만듭니다. QA 리포트입니다.\n\n- 층에서 주운 포션이 죽고 부활한 뒤에도 가방에 있다. 그 층에서 버린 검은 부활해도 돌아오지 않는다.\n- 첫 번째 부활 뒤에 올린 스킬 레벨이 두 번째 부활 때 그대로 남아 있다. 협동 모드에서 같은 체크포인트로 부활한 동료가 레벨업하면 내 캐릭터의 레벨도 오른다.\n- 1.0(체크포인트 v1) 세이브를 1.1 에서 불러오면, 1.1 에서 추가된 네 번째 스킬을 올리는 순간 게임이 죽는다. 개발 빌드의 클라우드 세이브(v3)는 오류 없이 불러와져 이상한 값이 들어간다.\n\n**할 일:** `PlayerCheckpoint` 와 `PlayerState` 의 버그를 모두 찾아 고치세요. 의도한 동작은 다음과 같습니다.\n\n1. **체크포인트는 찍은 순간의 사본이다.** `Capture` 뒤에 플레이어가 무엇을 바꿔도 체크포인트는 바뀌지 않는다. 담기는 것은 체력, 골드, 아이템 목록, 스킬 레벨 전부다.\n2. **복원한 상태도 체크포인트와 공유하지 않는다.** 복원 뒤의 변경은 체크포인트를 바꾸지 않는다. 그래서 같은 체크포인트로 몇 번을 복원해도, 다른 `PlayerState` 가 복원해도 같은 상태가 된다.\n3. **버전.** `Restore` 는 상태를 하나라도 바꾸기 전에 버전을 확인한다.\n   - v2(현재): 그대로 복원한다.\n   - v1: 스킬이 3개였다. 앞의 세 레벨을 그대로 쓰고 네 번째 스킬은 0 으로 복원한다.\n   - 그 밖의 버전: `ArgumentException` 을 던지고, 플레이어 상태는 하나도 바뀌지 않는다.\n   - `checkpoint` 가 null 이면 `ArgumentNullException`.\n\n`PlayerCheckpoint` 의 public 생성자에는 버전에 맞는 길이의 스킬 배열이 주어진다고 가정합니다(v1 은 3개, v2 는 4개, 그 밖의 버전은 아무 길이). 스킬 번호는 0~3 만, 인자로 null 배열은 주어지지 않습니다.",
+      "constraints": [
+        "체크포인트 하나당 아이템 목록과 스킬 배열은 체크포인트를 만들 때(`Capture` 나 internal 생성자에서) 한 번, `Restore` 에서 한 번 복사한다(O(아이템 수 + 스킬 수)).",
+        "직렬화(JSON 등) 왕복이나 리플렉션으로 깊은 복사를 하지 않는다. (자동 채점 제외)",
+        "`PlayerCheckpoint` 에 바깥에서 내용을 바꾸거나 꺼낼 수 있는 public 멤버(setter, 컬렉션을 돌려주는 속성 등)를 추가하지 않는다. 세이브 시스템이 읽는 것은 `Version` 뿐이다.",
+        "public 시그니처(`PlayerCheckpoint.CurrentVersion` / `Version` / public 생성자, `PlayerState` 의 `SkillCount` / `Hp` / `Gold` / `Items` / `GetSkillLevel` / `TakeDamage` / `AddGold` / `AddItem` / `RemoveItem` / `LevelUp` / `Capture` / `Restore`)는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 층 입구 체크포인트 (memento). 세이브 시스템은 Version 만 읽고 나머지는 열어 보지 않는다.\npublic sealed class PlayerCheckpoint\n{\n    public const int CurrentVersion = 2;   // v1: 스킬 3개, v2(1.1 패치): 스킬 4개\n\n    public int Version { get; }\n    internal readonly int Hp;\n    internal readonly int Gold;\n    internal readonly List<string> Items;\n    internal readonly int[] SkillLevels;\n\n    // 세이브 파일 로더가 쓰는 생성자. 넘겨받은 배열은 복사해서 갖는다.\n    public PlayerCheckpoint(int version, int hp, int gold, string[] items, int[] skillLevels)\n        : this(version, hp, gold, new List<string>(items), (int[])skillLevels.Clone())\n    {\n    }\n\n    // PlayerState.Capture 가 쓰는 생성자. 넘겨받은 것을 그대로 갖는다.\n    internal PlayerCheckpoint(int version, int hp, int gold, List<string> items, int[] skillLevels)\n    {\n        Version = version;\n        Hp = hp;\n        Gold = gold;\n        Items = items;\n        SkillLevels = skillLevels;\n    }\n}\n\n// 플레이어 상태 (originator).\npublic sealed class PlayerState\n{\n    public const int SkillCount = 4;\n\n    private int _hp = 100;\n    private int _gold;\n    private List<string> _items = new List<string>();\n    private int[] _skillLevels = new int[SkillCount];\n\n    public int Hp\n    {\n        get { return _hp; }\n    }\n\n    public int Gold\n    {\n        get { return _gold; }\n    }\n\n    public IReadOnlyList<string> Items\n    {\n        get { return _items; }\n    }\n\n    public int GetSkillLevel(int skill)\n    {\n        return _skillLevels[skill];\n    }\n\n    public void TakeDamage(int amount)\n    {\n        _hp = Math.Max(0, _hp - amount);\n    }\n\n    public void AddGold(int amount)\n    {\n        _gold += amount;\n    }\n\n    public void AddItem(string itemId)\n    {\n        _items.Add(itemId);\n    }\n\n    public bool RemoveItem(string itemId)\n    {\n        return _items.Remove(itemId);\n    }\n\n    public void LevelUp(int skill)\n    {\n        _skillLevels[skill]++;\n    }\n\n    // 층에 들어설 때 부른다.\n    public PlayerCheckpoint Capture()\n    {\n        return new PlayerCheckpoint(PlayerCheckpoint.CurrentVersion, _hp, _gold, _items, (int[])_skillLevels.Clone());\n    }\n\n    // 죽었을 때나 세이브를 불러올 때 부른다.\n    public void Restore(PlayerCheckpoint checkpoint)\n    {\n        if (checkpoint == null) throw new ArgumentNullException(nameof(checkpoint));\n\n        _hp = checkpoint.Hp;\n        _gold = checkpoint.Gold;\n        _items = new List<string>(checkpoint.Items);\n        _skillLevels = checkpoint.SkillLevels;\n    }\n}\n",
+      "edgeCases": [
+        "sword 를 든 채 `Capture` → potion 을 줍고 sword 를 버림 → `Restore`: 가방은 [sword].",
+        "`Restore` → 스킬 2 레벨업 → 같은 체크포인트로 다시 `Restore`: 스킬 2 는 체크포인트의 값이다.",
+        "같은 체크포인트로 a 와 b 가 복원한 뒤 b 만 레벨업: a 도, 체크포인트로 새로 복원한 c 도 그대로다.",
+        "v1 체크포인트 [2, 1, 3] → 스킬 [2, 1, 3, 0] 이고 네 번째 스킬을 올릴 수 있다. v3 과 v0 은 `ArgumentException` 이고 상태는 그대로다."
+      ],
+      "hints": [
+        "QA 의 첫 증상을 손으로 따라가 보세요. sword 를 든 채 `Capture()` 하고, `AddItem(\"potion\")`, `RemoveItem(\"sword\")` 뒤에 `Restore`. `Capture` 가 체크포인트에 넘긴 아이템 목록과 플레이어의 `_items` 는 서로 다른 리스트인가요? 같은 줄에서 스킬 배열은 어떻게 넘기고 있는지 비교해 보세요.",
+        "참조형 데이터가 살아 있는 상태와 체크포인트 사이를 건너가는 곳은 네 군데입니다: 두 생성자, `Capture`, `Restore`. 네 곳에서 각각 \"이 리스트나 배열을 지금 누가 또 갖고 있나?\"를 물어보세요. 버전 문제는 `Restore` 의 첫 대입보다 앞에서 끝내야 합니다. 대입 도중에 예외가 나면 상태가 반만 바뀝니다.",
+        "고친 `Restore` 의 모양입니다. 빈칸은 직접 채우세요.\n```\nRestore(cp):\n    null 검사\n    levels = new int[SkillCount]\n    if cp.Version == CurrentVersion: ____\n    else if cp.Version == 1:        ____          // 네 번째는 0\n    else: throw ArgumentException                 // 여기까지 상태는 그대로\n    hp, gold = cp 의 값\n    items = ____                                  // cp 의 리스트를 그대로 쓰지 않는다\n    skillLevels = ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 층 입구 체크포인트 (memento). 세이브 시스템은 Version 만 읽고 나머지는 열어 보지 않는다.\npublic sealed class PlayerCheckpoint\n{\n    public const int CurrentVersion = 2;   // v1: 스킬 3개, v2(1.1 패치): 스킬 4개\n\n    public int Version { get; }\n    internal readonly int Hp;\n    internal readonly int Gold;\n    internal readonly List<string> Items;\n    internal readonly int[] SkillLevels;\n\n    // 세이브 파일 로더가 쓰는 생성자. 넘겨받은 배열은 복사해서 갖는다.\n    public PlayerCheckpoint(int version, int hp, int gold, string[] items, int[] skillLevels)\n        : this(version, hp, gold, new List<string>(items), (int[])skillLevels.Clone())\n    {\n    }\n\n    // PlayerState.Capture 가 쓰는 생성자. 넘겨받은 것을 그대로 갖는다(소유권을 넘겨받는다).\n    // 그러니 부르는 쪽은 다른 누구도 갖고 있지 않은 새 컬렉션을 넘겨야 한다.\n    internal PlayerCheckpoint(int version, int hp, int gold, List<string> items, int[] skillLevels)\n    {\n        Version = version;\n        Hp = hp;\n        Gold = gold;\n        Items = items;\n        SkillLevels = skillLevels;\n    }\n}\n\n// 플레이어 상태 (originator).\npublic sealed class PlayerState\n{\n    public const int SkillCount = 4;\n\n    private int _hp = 100;\n    private int _gold;\n    private List<string> _items = new List<string>();\n    private int[] _skillLevels = new int[SkillCount];\n\n    public int Hp\n    {\n        get { return _hp; }\n    }\n\n    public int Gold\n    {\n        get { return _gold; }\n    }\n\n    public IReadOnlyList<string> Items\n    {\n        get { return _items; }\n    }\n\n    public int GetSkillLevel(int skill)\n    {\n        return _skillLevels[skill];\n    }\n\n    public void TakeDamage(int amount)\n    {\n        _hp = Math.Max(0, _hp - amount);\n    }\n\n    public void AddGold(int amount)\n    {\n        _gold += amount;\n    }\n\n    public void AddItem(string itemId)\n    {\n        _items.Add(itemId);\n    }\n\n    public bool RemoveItem(string itemId)\n    {\n        return _items.Remove(itemId);\n    }\n\n    public void LevelUp(int skill)\n    {\n        _skillLevels[skill]++;\n    }\n\n    // 층에 들어설 때 부른다.\n    public PlayerCheckpoint Capture()\n    {\n        // 수정 1: 아이템 목록도 복사한다. 그대로 넘기면 체크포인트가 살아 있는 목록을 함께 쓴다.\n        return new PlayerCheckpoint(PlayerCheckpoint.CurrentVersion, _hp, _gold,\n            new List<string>(_items), (int[])_skillLevels.Clone());\n    }\n\n    // 죽었을 때나 세이브를 불러올 때 부른다.\n    public void Restore(PlayerCheckpoint checkpoint)\n    {\n        if (checkpoint == null) throw new ArgumentNullException(nameof(checkpoint));\n\n        // 수정 3: 상태를 건드리기 전에 버전부터 확인하고, 새 스킬 배열을 먼저 완성한다.\n        int[] levels = new int[SkillCount];\n        if (checkpoint.Version == PlayerCheckpoint.CurrentVersion)\n        {\n            Array.Copy(checkpoint.SkillLevels, levels, SkillCount);\n        }\n        else if (checkpoint.Version == 1)\n        {\n            // v1 에는 네 번째 스킬이 없었다: 앞의 셋을 옮기고 네 번째는 0 으로 둔다.\n            Array.Copy(checkpoint.SkillLevels, levels, 3);\n        }\n        else\n        {\n            throw new ArgumentException(\"지원하지 않는 체크포인트 버전: \" + checkpoint.Version, nameof(checkpoint));\n        }\n\n        _hp = checkpoint.Hp;\n        _gold = checkpoint.Gold;\n        _items = new List<string>(checkpoint.Items);\n        // 수정 2: 체크포인트의 배열을 그대로 가져오지 않는다. 위에서 만든 새 배열을 쓴다.\n        _skillLevels = levels;\n    }\n}\n",
+      "explanation": "세 버그는 모두 \"누가 이 데이터를 갖고 있나\"와 \"언제 검사하나\"의 문제입니다.\n\n**버그 1: `Capture` 가 살아 있는 아이템 목록을 넘긴다.** internal 생성자는 넘겨받은 리스트를 그대로 갖는데(소유권을 넘겨받는 생성자), `Capture` 가 `_items` 자체를 넘깁니다. 체크포인트와 플레이어가 같은 리스트를 씁니다. 재현: sword 를 든 채 `Capture` → `AddItem(\"potion\")`, `RemoveItem(\"sword\")` → `Restore`. 가방은 [sword] 여야 하는데 [potion] 입니다. 같은 줄에서 스킬 배열은 `Clone()` 으로 넘기고 있어 스킬은 멀쩡했습니다. 수정: `new List<string>(_items)`. Microsoft Learn 은 이 생성자가 지정한 컬렉션에서 복사한 원소를 담는 새 리스트를 만든다고 설명합니다. internal 생성자가 받은 것을 복사하도록 바꾸는 것도 맞는 수정이지만, 그때는 이미 복사해서 넘기던 곳(`Capture` 와 public 생성자의 `Clone()`)에서 복사를 빼야 같은 배열을 두 번 복사하지 않습니다.\n\n**버그 2: `Restore` 가 체크포인트의 배열을 그대로 가져온다.** `_skillLevels = checkpoint.SkillLevels` 뒤로는 플레이어가 체크포인트의 배열에 레벨업합니다. 재현: 스킬 2 가 1 인 체크포인트로 `Restore` → `LevelUp(2)`, `LevelUp(0)` → 다시 `Restore`. 기대 `0,0,1,0` 이 `1,0,2,0` 이 됩니다. 협동 모드에서 a 와 b 가 같은 체크포인트로 부활하면 두 플레이어가 배열 하나를 함께 씁니다. 수정: 새 배열을 만들어 옮깁니다. 아이템 쪽은 원래 `new List<string>(checkpoint.Items)` 로 복사하고 있었으므로, 공유는 \"건너가는\" 네 곳(두 생성자, `Capture`, `Restore`) 중 두 곳에서만 새고 있었습니다.\n\n**버그 3: 버전을 보지 않는다.** v1 체크포인트의 스킬 배열은 길이 3 입니다. 재현: `new PlayerCheckpoint(1, 70, 15, new[] { \"map\" }, new[] { 2, 1, 3 })` 로 `Restore` 한 뒤 `LevelUp(3)` → `IndexOutOfRangeException`. v3 체크포인트는 길이 5 배열과 함께 그냥 받아들여집니다. 수정: 대입보다 먼저 버전을 판정하고 새 배열을 완성합니다. v2 는 네 칸, v1 은 세 칸을 옮기고 네 번째는 0, 그 밖은 `ArgumentException`. 검사가 대입 뒤에 있으면 거절된 복원이 체력과 골드를 이미 바꾼 뒤입니다.\n\n**왜 맞는가.** 고친 뒤에는 모든 리스트와 배열의 주인이 정확히 하나입니다. `Capture` 가 만든 사본은 체크포인트만, `Restore` 가 만든 사본은 플레이어만 갖습니다. Wikipedia 의 Memento pattern 문서는 원본(originator)이 만든 memento 를 관리자(caretaker)가 보관했다가 되돌려 주며, memento 객체 자체는 불변이라고 설명합니다. 그 불변성은 아무도 memento 의 컬렉션을 함께 갖고 있지 않을 때만 성립합니다. 같은 문서는 이 패턴의 용도로 실행 취소와 함께 직렬화를 꼽는데, 디스크에 저장된 memento 는 코드보다 오래 살아남습니다. 그래서 아는 옛 버전은 명시적으로 올리고, 모르는 버전은 추측하지 않고 거절합니다.\n\n**복잡도.** `Capture` 와 `Restore` 모두 O(아이템 수 + 스킬 수).\n\n**복사의 깊이.** string 은 불변이고 int 는 값이라 컨테이너만 새로 만들면 충분합니다. 아이템이 내구도를 가진 가변 클래스였다면 리스트를 복사해도 원소 객체는 공유되므로 원소까지 복사해야 합니다.\n\n### 흔한 오해\n- **\"`Clone()` 을 부르면 깊은 복사가 된다.\"** — Microsoft Learn 에 따르면 `Array.Clone` 은 얕은 복사입니다. 배열의 원소만 복사하고, 원소가 참조형이면 그 참조가 가리키는 객체는 복사하지 않아 새 배열과 원래 배열의 참조가 같은 객체를 가리킵니다. 이 문제의 `int[]` 는 원소가 값이라 `Clone()` 으로 충분했을 뿐이고, 가변 아이템 객체의 배열이었다면 원소는 공유됩니다. [ms-learn-array-clone]\n- **\"`readonly` 로 선언한 리스트 필드는 바뀌지 않으니 체크포인트가 안전하다.\"** — Microsoft Learn 은 참조형 `readonly` 필드는 언제나 같은 객체를 가리켜야 할 뿐 그 객체가 불변인 것은 아니며, 필드를 통해 인스턴스 데이터가 바뀌는 것은 막지 않는다고 설명합니다. 시작 코드의 `PlayerCheckpoint.Items` 도 `readonly` 였지만 플레이어와 함께 쓰는 리스트라 내용이 바뀌었습니다. [ms-learn-readonly]",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "`Capture` 가 아이템 목록과 스킬 배열을 새 컬렉션으로 넘겨, `Capture` 뒤의 획득·버림·레벨업이 체크포인트에 보이지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-list-ctor"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "`Restore` 가 체크포인트의 리스트·배열을 그대로 가져오지 않아, 같은 체크포인트로 여러 번 복원하거나 다른 플레이어가 복원해도 같은 상태가 된다.",
+            "points": 10,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "v2 는 그대로, v1 은 앞의 세 레벨에 네 번째 0 을 붙여 복원하고, 그 밖의 버전은 `ArgumentException`, null 은 `ArgumentNullException` 이다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "거절되는 `Restore` 가 상태를 하나도 바꾸지 않는다(버전 판정과 새 배열 준비가 첫 대입보다 앞에 있다).",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "목록과 배열을 체크포인트를 만들 때 한 번, `Restore` 에서 한 번만 복사해 O(아이템 수 + 스킬 수)이다. 복사를 `Capture` 에서 하든 internal 생성자에서 하든 같은 데이터를 두 번 복사하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "직렬화 왕복이나 리플렉션 같은 범용 깊은 복사 대신 필요한 컬렉션만 직접 복사한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "원소의 성질에 맞는 깊이로 복사한다: 원소가 불변인 string 과 값인 int 이므로 리스트·배열 컨테이너만 새로 만들고, 원소마다 새 객체를 만드는 불필요한 복사를 하지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-array-clone"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "예외 형식이 스펙과 같고(`ArgumentNullException`, `ArgumentException`), 매개변수 이름을 `nameof` 로 넘긴다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "`readonly` 필드나 `IReadOnlyList<T>` 로 감싸는 것을 해결책으로 쓰지 않고, 공유하던 참조 자체를 끊었다.",
+            "points": 10,
+            "sourceId": "ms-learn-readonly"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "체크포인트가 세이브 시스템(caretaker)에 불투명하게 남는다: `Version` 말고는 내용을 보거나 바꿀 public 멤버를 추가하지 않았다.",
+            "points": 8,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "버전별 처리가 `Restore` 의 첫 부분(또는 별도의 변환 메서드) 한 곳에 모여 있고, v1 → v2 변환이 이름이나 주석으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "고친 뒤에도 체크포인트와 살아 있는 상태가 리스트나 배열을 하나라도 공유한다(`Capture` 쪽이든 `Restore` 쪽이든).",
+            "penalty": -20,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "d2",
+            "description": "거절해야 할 버전의 체크포인트로 상태가 일부라도 바뀐다(검사보다 대입이 먼저).",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "v1 체크포인트를 거절하거나 길이 3 배열을 그대로 써서, 1.0 세이브가 복원되지 않거나 네 번째 스킬에서 예외가 난다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string Thrown(System.Action a)\n    {\n        try { a(); } catch (System.Exception ex) { return ex.GetType().Name; }\n        return \"없음\";\n    }\n\n    // \"hp/gold/[items]/l0,l1,l2,l3\"\n    static string Show(PlayerState p)\n    {\n        var lv = new string[PlayerState.SkillCount];\n        for (int i = 0; i < lv.Length; i++) lv[i] = p.GetSkillLevel(i).ToString();\n        return p.Hp + \"/\" + p.Gold + \"/[\" + string.Join(\",\", p.Items) + \"]/\" + string.Join(\",\", lv);\n    }\n\n    public static void Main()\n    {\n        Run(\"capture-not-shared\", () =>\n        {\n            var p = new PlayerState();\n            p.AddItem(\"sword\"); p.AddGold(30); p.LevelUp(1);\n            PlayerCheckpoint cp = p.Capture();\n            if (cp.Version != PlayerCheckpoint.CurrentVersion) return \"Capture 의 Version 은 CurrentVersion 이어야 함\";\n            p.AddItem(\"potion\"); p.RemoveItem(\"sword\"); p.AddGold(50); p.LevelUp(1); p.TakeDamage(40);\n            p.Restore(cp);\n            string got = Show(p);\n            return got == \"100/30/[sword]/0,1,0,0\" ? null : \"체크포인트 뒤 potion 획득, sword 제거, 골드·레벨·피해 → Restore: 기대 100/30/[sword]/0,1,0,0, 결과 \" + got;\n        });\n\n        Run(\"restore-twice-same-state\", () =>\n        {\n            var p = new PlayerState();\n            p.AddItem(\"rope\"); p.LevelUp(2);\n            PlayerCheckpoint cp = p.Capture();\n            p.Restore(cp);\n            p.LevelUp(2); p.LevelUp(0); p.AddItem(\"bomb\"); p.TakeDamage(100);\n            p.Restore(cp);\n            string got = Show(p);\n            if (got != \"100/0/[rope]/0,0,1,0\") return \"Restore → 레벨업·아이템·사망 → 같은 체크포인트로 다시 Restore: 기대 100/0/[rope]/0,0,1,0, 결과 \" + got;\n            p.LevelUp(3); p.Restore(cp);\n            got = Show(p);\n            return got == \"100/0/[rope]/0,0,1,0\" ? null : \"세 번째 Restore: 기대 100/0/[rope]/0,0,1,0, 결과 \" + got;\n        });\n\n        Run(\"two-players-one-checkpoint\", () =>\n        {\n            var a = new PlayerState();\n            a.AddItem(\"key\"); a.LevelUp(0);\n            PlayerCheckpoint cp = a.Capture();\n            var b = new PlayerState();\n            b.Restore(cp); a.Restore(cp);\n            b.LevelUp(0); b.LevelUp(0); b.AddItem(\"gem\");\n            string ga = Show(a);\n            if (ga != \"100/0/[key]/1,0,0,0\") return \"같은 체크포인트로 복원한 b 의 변경이 a 에 보임: a 기대 100/0/[key]/1,0,0,0, 결과 \" + ga;\n            var c = new PlayerState();\n            c.Restore(cp);\n            string gc = Show(c);\n            return gc == \"100/0/[key]/1,0,0,0\" ? null : \"b 의 변경이 체크포인트를 바꿈: 새로 복원한 c 기대 100/0/[key]/1,0,0,0, 결과 \" + gc;\n        });\n\n        Run(\"v1-checkpoint-upgraded\", () =>\n        {\n            int[] fromDisk = { 2, 1, 3 };\n            var cp1 = new PlayerCheckpoint(1, 70, 15, new[] { \"map\" }, fromDisk);\n            fromDisk[0] = 9;\n            var p = new PlayerState();\n            p.LevelUp(3); p.AddItem(\"junk\");\n            p.Restore(cp1);\n            string got = Show(p);\n            if (got != \"70/15/[map]/2,1,3,0\") return \"v1 체크포인트(스킬 3개 [2,1,3]) 복원: 기대 70/15/[map]/2,1,3,0, 결과 \" + got;\n            p.LevelUp(3);\n            if (p.GetSkillLevel(3) != 1) return \"v1 복원 뒤 네 번째 스킬 LevelUp: 기대 1, 결과 \" + p.GetSkillLevel(3);\n            p.Restore(cp1);\n            got = Show(p);\n            return got == \"70/15/[map]/2,1,3,0\" ? null : \"같은 v1 체크포인트로 다시 복원: 기대 70/15/[map]/2,1,3,0, 결과 \" + got;\n        });\n\n        Run(\"unsupported-version-untouched\", () =>\n        {\n            var p = new PlayerState();\n            p.AddItem(\"torch\"); p.AddGold(12); p.LevelUp(1); p.TakeDamage(5);\n            string before = Show(p);\n            var cp3 = new PlayerCheckpoint(3, 1, 999, new[] { \"cloud-item\" }, new[] { 5, 5, 5, 5, 5 });\n            string t = Thrown(() => p.Restore(cp3));\n            if (t != \"ArgumentException\") return \"더 새로운 버전 3 의 체크포인트: 기대 ArgumentException, 결과 \" + t;\n            if (Show(p) != before) return \"거절된 Restore 가 상태를 바꿈: 기대 \" + before + \", 결과 \" + Show(p);\n            var cp0 = new PlayerCheckpoint(0, 1, 999, new string[0], new[] { 4, 4, 4 });\n            t = Thrown(() => p.Restore(cp0));\n            if (t != \"ArgumentException\" || Show(p) != before) return \"버전 0 의 체크포인트: 기대 ArgumentException 과 상태 그대로, 결과 \" + t + \" / \" + Show(p);\n            t = Thrown(() => p.Restore(null));\n            return t == \"ArgumentNullException\" ? null : \"Restore(null): 기대 ArgumentNullException, 결과 \" + t;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(7341);\n            string[] names = { \"a\", \"b\", \"c\", \"d\" };\n            for (int round = 0; round < 200; round++)\n            {\n                var p = new PlayerState();\n                var cps = new System.Collections.Generic.List<PlayerCheckpoint>();\n                var refs = new System.Collections.Generic.List<string>();\n                for (int op = 0; op < 40; op++)\n                {\n                    int k = rng.Next(8);\n                    if (k == 0) p.TakeDamage(rng.Next(1, 30));\n                    else if (k == 1) p.AddGold(rng.Next(1, 20));\n                    else if (k == 2) p.AddItem(names[rng.Next(4)]);\n                    else if (k == 3) p.RemoveItem(names[rng.Next(4)]);\n                    else if (k == 4) p.LevelUp(rng.Next(PlayerState.SkillCount));\n                    else if (k == 5) { cps.Add(p.Capture()); refs.Add(Show(p)); }\n                    else if (cps.Count > 0)\n                    {\n                        int j = rng.Next(cps.Count);\n                        p.Restore(cps[j]);\n                        if (Show(p) != refs[j]) return \"라운드 \" + round + \", 연산 \" + op + \": \" + j + \" 번째 체크포인트 복원 기대 \" + refs[j] + \", 결과 \" + Show(p);\n                    }\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "capture-not-shared",
+          "restore-twice-same-state",
+          "two-players-one-checkpoint",
+          "v1-checkpoint-upgraded",
+          "unsupported-version-untouched",
+          "random-vs-reference"
+        ],
+        "note": "Capture 뒤의 아이템 획득·버림·레벨업·피해가 체크포인트에 새지 않는지, 같은 체크포인트로 세 번 복원했을 때와 두 플레이어가 함께 복원했을 때 서로의 변경이 보이지 않는지, v1 체크포인트(스킬 3개)가 네 번째 스킬 0 으로 올라오고 로더에 넘긴 배열을 나중에 바꿔도 영향이 없는지, v3·v0 체크포인트가 ArgumentException 으로 거절되고 상태가 그대로인지와 Restore(null), 그리고 무작위 연산 200 묶음에서 체크포인트를 찍은 순간의 값과 복원 결과를 비교합니다. 복사 방식(직렬화 여부)은 채점하지 않습니다. PlayerCheckpoint.CurrentVersion / Version / public 생성자 (int, int, int, string[], int[]) 와 PlayerState 의 SkillCount, Hp, Gold, Items, GetSkillLevel, TakeDamage, AddGold, AddItem, RemoveItem, LevelUp, Capture, Restore 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 .NET 8 과 Compiler Explorer 에서 모범 답안 통과·시작 코드 실패를 확인하고, 세 버그 중 하나만 또는 둘만 남긴 변형 6개와 버전 검사를 대입 뒤에 둔 변형이 모두 실패하며 internal 생성자에서 복사하도록 다르게 고친 정답은 통과함을 실행해 보았고, 설명은 Wikipedia Memento 와 Microsoft Learn 의 Array.Clone·readonly·List<T> 생성자 문서 원문과 대조했다."
+      },
+      "nextMission": "아이템을 `string` 에서 내구도가 줄어드는 가변 클래스 `Item { string Id; int Durability; }` 로 바꿔 보세요. 리스트만 복사한 체크포인트에서 \"층에서 검 내구도를 깎고 죽으면 부활 뒤에도 깎여 있다\"를 재현하는 테스트를 먼저 쓰고, 원소까지 복사해 고친 뒤 같은 테스트가 통과하는지 확인하세요. 그다음 체크포인트 v3(아이템마다 내구도 추가)를 정의하고 v1 → v2 → v3 로 한 단계씩 올리는 변환 함수를 버전마다 하나씩 두는 구조로 `Restore` 를 정리해 보세요."
+    },
+    {
+      "id": "t10-impl-memento-battle-undo",
+      "track": "track10",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "턴제 전투 되돌리기: 아무것도 공유하지 않는 스냅숏과 Undo 스택 (Memento)",
+      "tags": [
+        "Pattern_Memento",
+        "Pattern_Undo"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-memento-pattern",
+        "ms-learn-with-expression",
+        "ms-learn-list-toarray"
+      ],
+      "scenario": "턴제 전략 게임에 \"행동 되돌리기\"를 넣습니다. 플레이어가 행동하기 직전마다 `TurnHistory.Checkpoint()` 로 전투 상태를 쌓고, 되돌리기 버튼을 누르면 `Undo()` 로 가장 최근 체크포인트로 돌아갑니다. 리플레이 뷰어는 같은 스냅숏을 다른 `BattleState` 에 불러와 보여 줍니다.\n\n전투 코드는 `Unit` 의 `Hp` 와 `Statuses` 를 직접 고치고, `Units` 에 유닛을 넣고 빼며, `NextRoll` 로 명중을 판정합니다. 그러니 스냅숏이 전투와 무엇이든 함께 쓰면 되돌리기가 조용히 틀립니다. `Unit` 과 `BattleState` 의 나머지는 완성되어 있습니다.\n\n**요구 스펙**\n\n1. **`BattleState.Save()`** 는 지금 상태의 스냅숏을 만든다. 스냅숏에 담기는 것은 `Turn`, 난수 상태, `Units` 의 순서와 각 유닛의 `Name` / `Hp` / `Statuses`(순서 포함) 전부다.\n2. **찍은 뒤에는 바뀌지 않는다.** `Save` 뒤에 전투에서 체력을 바꾸든, 상태 목록에 넣고 빼든, 유닛을 추가·제거·교체하든, 턴을 넘기고 난수를 굴리든 스냅숏의 내용은 그대로다.\n3. **`Load(snapshot)`** 는 전투를 스냅숏을 찍은 순간의 상태로 되돌린다(`Units` 리스트는 그 인스턴스 그대로 두고 내용을 바꾼다). 불러온 뒤의 변경도 스냅숏에 닿지 않는다. 그래서 같은 스냅숏을 몇 번이든, 다른 `BattleState` 에서도 `Load` 할 수 있고 결과는 늘 같다. 난수 상태도 돌아오므로 `Load` 뒤의 `NextRoll` 수열은 `Save` 직후의 수열과 같다. `snapshot` 이 null 이면 `ArgumentNullException`.\n4. **`BattleSnapshot`** 은 바깥(`TurnHistory`, UI)에 `Turn` 만 보인다. 내용을 바꿀 수 있는 public 멤버나 public 생성자는 두지 않는다.\n5. **`TurnHistory(battle)`**: `battle` 이 null 이면 `ArgumentNullException`. `Checkpoint()` 는 `battle.Save()` 를 쌓고, `Undo()` 는 가장 최근 체크포인트를 기록에서 빼서 `Load` 한다(나중에 쌓은 것부터). 기록이 비었으면 `InvalidOperationException` 이고 전투는 그대로다. `Count` 는 남은 체크포인트 수.\n\n`Load` 전에 꺼내 둔 `Unit` 참조가 `Load` 뒤에도 전투 안에 있는지는 정하지 않습니다(채점하지 않음). 전투 코드는 `Load` 뒤에 `Units` 를 다시 읽습니다. 유닛 이름과 상태 문자열로 null 은 주어지지 않습니다.",
+      "constraints": [
+        "`Save` / `Load` 는 O(유닛 수 + 상태 수). 직렬화(JSON 등) 왕복이나 리플렉션으로 복사하지 않는다.",
+        "스냅숏은 전투가 가진 `Unit` 객체나 `List<string>` 을 하나도 참조하지 않는다. `Load` 도 스냅숏이 가진 객체를 전투에 그대로 넣지 않는다.",
+        "`BattleSnapshot` 의 public 멤버는 `Turn` 하나뿐이고, 만든 뒤에 바뀌지 않는다.",
+        "`Unit` 과 `BattleState` 의 완성된 부분(생성자, `Turn`, `Units`, `RngState`, `EndTurn`, `NextRoll`)은 바꾸지 않는다. `Save()` / `Load(BattleSnapshot)` / `BattleSnapshot.Turn` / `TurnHistory` 의 생성자 · `Count` · `Checkpoint()` · `Undo()` 시그니처도 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 완성되어 있습니다. 수정하지 마세요. -----\n\n// 전투 코드가 직접 고치는 가변 객체.\npublic sealed class Unit\n{\n    public Unit(string name, int hp)\n    {\n        Name = name;\n        Hp = hp;\n    }\n\n    public string Name { get; }\n    public int Hp { get; set; }\n    public List<string> Statuses { get; } = new List<string>();   // \"poison\", \"stun\" ...\n}\n\n// ----- 여기부터 구현하세요. (BattleState 는 Save / Load 만 구현합니다) -----\n\n// 턴제 전투의 상태 (originator).\npublic sealed class BattleState\n{\n    private uint _rng;\n\n    public BattleState(uint seed)\n    {\n        _rng = seed;\n    }\n\n    public int Turn { get; private set; }\n    public List<Unit> Units { get; } = new List<Unit>();\n    public uint RngState\n    {\n        get { return _rng; }   // 디버그 표시용\n    }\n\n    public void EndTurn()\n    {\n        Turn++;\n    }\n\n    // 명중·치명타 판정에 쓰는 결정적 난수. 호출할 때마다 상태가 바뀐다.\n    public int NextRoll(int max)\n    {\n        _rng = _rng * 1664525u + 1013904223u;\n        return (int)((_rng >> 16) % (uint)max);\n    }\n\n    // 지금 상태의 스냅숏을 만든다.\n    public BattleSnapshot Save()\n    {\n        throw new NotImplementedException();\n    }\n\n    // 스냅숏을 찍은 순간의 상태로 되돌린다.\n    public void Load(BattleSnapshot snapshot)\n    {\n        throw new NotImplementedException();\n    }\n}\n\n// 스냅숏 (memento). 필요한 필드와 생성자는 직접 정하세요. 바깥에는 Turn 만 보인다.\npublic sealed class BattleSnapshot\n{\n    public int Turn\n    {\n        get { throw new NotImplementedException(); }\n    }\n}\n\n// 되돌리기 기록 (caretaker).\npublic sealed class TurnHistory\n{\n    public TurnHistory(BattleState battle)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 남아 있는 체크포인트 수.\n    public int Count\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 지금 상태를 체크포인트로 쌓는다.\n    public void Checkpoint()\n    {\n        throw new NotImplementedException();\n    }\n\n    // 가장 최근 체크포인트로 되돌리고 그 체크포인트를 기록에서 뺀다.\n    public void Undo()\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "`Save` 뒤 knight 의 체력을 깎고 상태에 \"burn\" 을 넣고, slime 의 상태를 비우고, orc 를 넣고 knight 를 빼고, 턴과 난수를 넘긴 뒤 `Load`: 모두 `Save` 때로 돌아온다.",
+        "같은 스냅숏으로 `Load` → 유닛 변경 → 다시 `Load`, 그리고 리플레이 뷰어가 같은 스냅숏을 불러와 바꾼 경우: 원래 전투와 스냅숏은 그대로다.",
+        "`Save` → 판정 3번 → `Load` → 판정 3번: 두 수열이 같다.",
+        "체크포인트 둘을 쌓고 `Undo` 두 번 → 처음 상태, 세 번째 `Undo` 는 `InvalidOperationException` 이고 전투는 그대로다."
+      ],
+      "hints": [
+        "바뀔 수 있는 것을 모두 적어 보세요: `Units` 리스트, 리스트 안의 `Unit` 객체 하나하나(`Hp`), 그리고 유닛마다 있는 `Statuses` 리스트. `new List<Unit>(Units)` 로 리스트만 복사하면 이 중 무엇이 여전히 전투와 공유되나요? 또 `NextRoll` 이 바꾸는 `_rng` 는 어디에 저장되나요?",
+        "복사는 두 방향에서 필요합니다. `Save` 에서 한 번(전투 → 스냅숏), `Load` 에서 한 번(스냅숏 → 전투). `Load` 에서 스냅숏이 가진 객체를 `Units` 에 그대로 넣으면, 불러온 뒤의 전투가 스냅숏을 고치게 됩니다. 스냅숏 안에는 `Unit` 대신 값만 담은 작은 구조체를 두면 실수할 여지가 줄어듭니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nSave():\n    data = 유닛 수 길이의 배열\n    for i: data[i] = (Name, Hp, ____)        // 상태 목록의 사본\n    return new BattleSnapshot(Turn, ____, data)\n\nLoad(s):\n    null 검사\n    Units.Clear()\n    for d in s 의 유닛 데이터:\n        u = new Unit(d.Name, d.Hp)\n        ____                                  // 상태를 새 리스트에 담는다\n        Units.Add(u)\n    Turn = s.Turn; ____ = s 의 난수 상태\n\nUndo():\n    if 비었음: throw InvalidOperationException\n    battle.Load(____)                         // 가장 최근 것을 빼서\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 완성되어 있습니다. 수정하지 마세요. -----\n\n// 전투 코드가 직접 고치는 가변 객체.\npublic sealed class Unit\n{\n    public Unit(string name, int hp)\n    {\n        Name = name;\n        Hp = hp;\n    }\n\n    public string Name { get; }\n    public int Hp { get; set; }\n    public List<string> Statuses { get; } = new List<string>();   // \"poison\", \"stun\" ...\n}\n\n// ----- 여기부터 구현했습니다. -----\n\n// 턴제 전투의 상태 (originator).\npublic sealed class BattleState\n{\n    private uint _rng;\n\n    public BattleState(uint seed)\n    {\n        _rng = seed;\n    }\n\n    public int Turn { get; private set; }\n    public List<Unit> Units { get; } = new List<Unit>();\n    public uint RngState\n    {\n        get { return _rng; }   // 디버그 표시용\n    }\n\n    public void EndTurn()\n    {\n        Turn++;\n    }\n\n    // 명중·치명타 판정에 쓰는 결정적 난수. 호출할 때마다 상태가 바뀐다.\n    public int NextRoll(int max)\n    {\n        _rng = _rng * 1664525u + 1013904223u;\n        return (int)((_rng >> 16) % (uint)max);\n    }\n\n    public BattleSnapshot Save()\n    {\n        // 살아 있는 Unit 이나 List 를 하나도 넘기지 않는다. 값만 새 배열로 옮긴다.\n        var units = new BattleSnapshot.UnitData[Units.Count];\n        for (int i = 0; i < units.Length; i++)\n        {\n            Unit u = Units[i];\n            units[i] = new BattleSnapshot.UnitData(u.Name, u.Hp, u.Statuses.ToArray());\n        }\n        return new BattleSnapshot(Turn, _rng, units);   // 난수 상태도 상태다\n    }\n\n    public void Load(BattleSnapshot snapshot)\n    {\n        if (snapshot == null) throw new ArgumentNullException(nameof(snapshot));\n\n        // 스냅숏의 배열을 넘기지 않고, 그 값으로 새 Unit 과 새 List 를 만든다.\n        // 그래서 Load 뒤에 전투가 무엇을 바꿔도 스냅숏은 그대로이고, 같은 스냅숏을 몇 번이든 다시 쓸 수 있다.\n        Units.Clear();\n        foreach (BattleSnapshot.UnitData d in snapshot.Units)\n        {\n            var u = new Unit(d.Name, d.Hp);\n            u.Statuses.AddRange(d.Statuses);   // 원소(string)를 복사해 넣는다. 배열은 공유하지 않는다\n            Units.Add(u);\n        }\n        Turn = snapshot.Turn;\n        _rng = snapshot.Rng;\n    }\n}\n\n// 스냅숏 (memento). 바깥에는 Turn 만 보이고, 만든 뒤에는 바뀌지 않는다.\npublic sealed class BattleSnapshot\n{\n    internal readonly struct UnitData\n    {\n        public readonly string Name;\n        public readonly int Hp;\n        public readonly string[] Statuses;   // 이 스냅숏만 가진 배열. 밖으로 내보내지 않는다\n\n        public UnitData(string name, int hp, string[] statuses)\n        {\n            Name = name; Hp = hp; Statuses = statuses;\n        }\n    }\n\n    internal readonly uint Rng;\n    internal readonly UnitData[] Units;\n\n    internal BattleSnapshot(int turn, uint rng, UnitData[] units)\n    {\n        Turn = turn;\n        Rng = rng;\n        Units = units;\n    }\n\n    public int Turn { get; }\n}\n\n// 되돌리기 기록 (caretaker). 스냅숏의 내용은 모르고 쌓았다가 돌려줄 뿐이다.\npublic sealed class TurnHistory\n{\n    private readonly BattleState _battle;\n    private readonly Stack<BattleSnapshot> _checkpoints = new Stack<BattleSnapshot>();\n\n    public TurnHistory(BattleState battle)\n    {\n        if (battle == null) throw new ArgumentNullException(nameof(battle));\n        _battle = battle;\n    }\n\n    public int Count\n    {\n        get { return _checkpoints.Count; }\n    }\n\n    public void Checkpoint()\n    {\n        _checkpoints.Push(_battle.Save());\n    }\n\n    public void Undo()\n    {\n        if (_checkpoints.Count == 0) throw new InvalidOperationException(\"되돌릴 체크포인트가 없음\");\n        _battle.Load(_checkpoints.Pop());\n    }\n}\n",
+      "explanation": "**세 역할.** Wikipedia 의 Memento pattern 문서는 이 패턴을 originator, caretaker, memento 세 객체로 설명합니다. caretaker 는 originator 에게 memento 를 받아 두었다가, 작업 전으로 되돌리고 싶을 때 그 memento 를 originator 에게 돌려줍니다. memento 객체 자체는 불변입니다. 여기서는 `BattleState` 가 originator, `BattleSnapshot` 이 memento, `TurnHistory` 가 caretaker 입니다. 스냅숏을 만들고 해석하는 코드는 `BattleState` 에만 있고, `TurnHistory` 는 내용을 모른 채 쌓았다가 돌려줍니다. `BattleSnapshot` 이 `Turn` 하나만 공개하는 것은 같은 문서가 말하는 \"캡슐화를 깨지 않고 내부 상태를 붙잡는다\"를 지키기 위해서입니다.\n\n**무엇을 복사하나.** 바뀔 수 있는 것은 세 층입니다. `Units` 리스트, 그 안의 `Unit` 객체(`Hp`), 유닛마다의 `Statuses` 리스트. 모범 답안의 `Save` 는 유닛마다 이름·체력과 상태 목록의 새 배열(`List<T>.ToArray` 는 원소를 새 배열에 복사합니다)을 값 구조체에 담습니다. string 은 불변이므로 원소까지 복제할 필요는 없습니다. `Load` 는 그 값으로 새 `Unit` 과 새 상태 리스트를 만듭니다. 그래서 두 방향 모두 끊깁니다. `Save` 뒤의 변경은 스냅숏에 닿지 않고, `Load` 뒤의 변경도 스냅숏에 닿지 않으므로 같은 스냅숏을 몇 번이든, 다른 전투에서도 다시 쓸 수 있습니다. 스냅숏이 `Unit` 의 깊은 사본 목록을 들고 `Load` 때 한 번 더 사본을 만드는 구조도 정답입니다. 다만 `Unit` 은 바깥 코드가 고칠 수 있는 타입이라, 값 구조체 쪽이 \"스냅숏은 불변\"을 지키기 쉽습니다.\n\n**난수도 상태다.** `NextRoll` 은 `_rng` 에서 다음 값을 계산하는 결정적 생성기입니다. 이것을 빼먹으면 되돌린 뒤 같은 공격의 명중 판정이 달라집니다. 되돌린 뒤 다시 굴리게 할지는 기획의 선택이지만, 그렇게 하려면 의도해서 빼야 합니다.\n\n**caretaker.** 되돌리기는 나중에 쌓은 것부터이므로 스택입니다. `Undo` 는 꺼낸 체크포인트를 기록에서 실제로 제거합니다. 빈 기록에서는 `InvalidOperationException` 을 던지고 전투를 건드리지 않습니다.\n\n**복잡도.** `Save` / `Load` 는 O(유닛 수 + 상태 수). 기록 전체의 메모리는 체크포인트 수 × 상태 크기로 자라므로, 긴 전투에서는 기록 수에 상한을 두거나 변경분만 기록하는 방식을 고려합니다.\n\n**흔한 실수.** 리스트만 복사하기(`Unit` 공유), `Load` 에 스냅숏의 객체를 그대로 넣기, 난수 상태 빼먹기, `Clear` 없이 덧붙이기, `Undo` 에서 꺼내지 않고 보기만 하기.\n\n### 흔한 오해\n- **\"상태를 record 로 만들고 `with` 로 복사하면 깊은 사본이 된다.\"** — Microsoft Learn 은 `with` 식이 피연산자의 사본을 만들되, 멤버가 참조형이면 그 참조만 복사해 사본과 원본이 같은 인스턴스를 쓴다고 설명합니다. `record BattleData(int Turn, List<Unit> Units)` 를 `with` 로 복사하면 `Units` 리스트와 그 안의 `Unit` 이 그대로 공유됩니다. record class 는 복사 생성자를 직접 선언해 복사 방식을 바꿀 수 있지만, 구조체 형식은 바꿀 수 없다고 같은 문서는 덧붙입니다. [ms-learn-with-expression]\n- **\"되돌리기에는 유닛 데이터만 저장하면 된다. 난수는 어차피 무작위니까.\"** — 이 게임의 판정 난수는 상태에서 다음 값을 계산하는 결정적 생성기라, 상태를 저장하지 않으면 Undo 뒤 같은 판정의 결과가 달라집니다. 난수 상태를 빼먹은 풀이가 rng-state-restored 테스트에서 다른 수열을 내는 것을 .NET 8 로 실행해 확인했습니다. Wikipedia 의 Memento 문서도 PRNG 를 originator, 시드를 memento 로 보고 같은 의사 난수열을 다시 만들어 내는 것을 이 패턴의 고전적인 예로 듭니다. [wiki-memento-pattern]",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "`Save` 뒤의 어떤 변경(체력, 상태 목록, 유닛 추가·제거·교체, 턴, 난수)도 스냅숏에 닿지 않는다.",
+            "points": 12,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "`Load` 가 새 `Unit` 과 새 상태 리스트를 만들어, 같은 스냅숏을 여러 번 또는 다른 `BattleState` 에서 `Load` 해도 결과가 같다.",
+            "points": 12,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "`Turn` 과 난수 상태까지 복원해 `Load` 뒤의 판정 수열이 `Save` 직후와 같고, `Undo` 가 나중에 쌓은 체크포인트부터 되돌리며 `Count` 가 맞다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "`Save` / `Load` 가 O(유닛 수 + 상태 수)이고 직렬화 왕복이나 리플렉션을 쓰지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-list-toarray"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "복사 깊이가 데이터에 맞다: 가변인 `Unit` 과 리스트는 새로 만들고, 불변인 string 원소는 그대로 옮긴다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "`Undo` 가 꺼낸 체크포인트를 기록에서 실제로 제거해, 다시 쓰지 않을 스냅숏을 붙잡아 두지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "`Load(null)` 과 `TurnHistory(null)` 은 `ArgumentNullException`, 빈 기록의 `Undo` 는 `InvalidOperationException` 이며 전투를 바꾸지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "`BattleSnapshot` 의 필드가 `readonly`(또는 읽기 전용)이고 생성자가 public 이 아니며, 바깥에 보이는 public 멤버는 `Turn` 뿐이다.",
+            "points": 10,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "스냅숏을 만들고 해석하는 코드가 `BattleState` 에만 있고, `TurnHistory` 는 스냅숏의 내용을 모른 채 쌓고 돌려준다.",
+            "points": 8,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "복사 규칙이 `Save` 와 `Load` 에 각각 한 곳씩 모여 있고, \"공유하지 않는다\"는 의도가 이름이나 주석으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "스냅숏과 전투가 `Unit` 객체나 상태 리스트를 공유한다(리스트만 복사하거나, `Load` 에 스냅숏의 객체를 그대로 넣는다).",
+            "penalty": -25,
+            "sourceId": "ms-learn-with-expression"
+          },
+          {
+            "id": "d2",
+            "description": "난수 상태나 `Turn` 을 저장·복원하지 않아, 되돌린 뒤 같은 판정이 다른 결과를 낸다.",
+            "penalty": -15,
+            "sourceId": "wiki-memento-pattern"
+          },
+          {
+            "id": "d3",
+            "description": "`BattleSnapshot` 에 public setter 나 내부 컬렉션을 돌려주는 public 멤버가 있어 caretaker 나 UI 가 스냅숏을 고칠 수 있다.",
+            "penalty": -10,
+            "sourceId": "wiki-memento-pattern"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string Thrown(System.Action a)\n    {\n        try { a(); } catch (System.Exception ex) { return ex.GetType().Name; }\n        return \"없음\";\n    }\n\n    // \"T턴 R난수상태 | 이름:체력[상태,...] ...\"\n    static string Show(BattleState b)\n    {\n        var sb = new System.Text.StringBuilder();\n        sb.Append(\"T\" + b.Turn + \" R\" + b.RngState + \" |\");\n        foreach (Unit u in b.Units) sb.Append(\" \" + u.Name + \":\" + u.Hp + \"[\" + string.Join(\",\", u.Statuses) + \"]\");\n        return sb.ToString();\n    }\n\n    static BattleState Sample()\n    {\n        var b = new BattleState(12345u);\n        var knight = new Unit(\"knight\", 40); knight.Statuses.Add(\"guard\");\n        var slime = new Unit(\"slime\", 12); slime.Statuses.Add(\"poison\"); slime.Statuses.Add(\"slow\");\n        b.Units.Add(knight); b.Units.Add(slime);\n        b.EndTurn(); b.NextRoll(100);\n        return b;\n    }\n\n    public static void Main()\n    {\n        Run(\"snapshot-isolated-from-battle\", () =>\n        {\n            BattleState b = Sample();\n            string saved = Show(b);\n            BattleSnapshot s = b.Save();\n            if (s == null || s.Turn != 1) return \"Save 의 Turn 기대 1\";\n            b.Units[0].Hp -= 15; b.Units[0].Statuses.Add(\"burn\"); b.Units[1].Statuses.Clear();\n            b.Units.Add(new Unit(\"orc\", 30)); b.Units.RemoveAt(0);\n            b.EndTurn(); b.NextRoll(6); b.NextRoll(6);\n            b.Load(s);\n            string got = Show(b);\n            return got == saved ? null : \"Save 뒤 체력·상태·유닛 목록·턴·난수를 바꾸고 Load: 기대 \" + saved + \", 결과 \" + got;\n        });\n\n        Run(\"load-twice-and-shared-snapshot\", () =>\n        {\n            BattleState b = Sample();\n            string saved = Show(b);\n            BattleSnapshot s = b.Save();\n            b.Load(s);\n            b.Units[1].Hp = 0; b.Units[1].Statuses.Add(\"dead\"); b.Units[0].Statuses.Remove(\"guard\");\n            b.Load(s);\n            string got = Show(b);\n            if (got != saved) return \"Load → 유닛 변경 → 같은 스냅숏으로 다시 Load: 기대 \" + saved + \", 결과 \" + got;\n            var viewer = new BattleState(1u);\n            viewer.Load(s);\n            viewer.Units[0].Hp = 1; viewer.Units[0].Statuses.Add(\"viewer-only\");\n            got = Show(b);\n            if (got != saved) return \"다른 전투가 같은 스냅숏을 Load 해 바꾼 값이 원래 전투에 보임: \" + got;\n            b.Load(s);\n            got = Show(b);\n            return got == saved ? null : \"다른 전투의 변경이 스냅숏을 바꿈: 기대 \" + saved + \", 결과 \" + got;\n        });\n\n        Run(\"rng-state-restored\", () =>\n        {\n            BattleState b = Sample();\n            BattleSnapshot s = b.Save();\n            string first = b.NextRoll(100) + \",\" + b.NextRoll(100) + \",\" + b.NextRoll(6);\n            b.Load(s);\n            string second = b.NextRoll(100) + \",\" + b.NextRoll(100) + \",\" + b.NextRoll(6);\n            if (first != second) return \"Save → 판정 3번 → Load → 판정 3번: 같은 수열이어야 함, 기대 \" + first + \", 결과 \" + second;\n            return b.Turn == 1 ? null : \"Load 뒤 Turn 기대 1, 결과 \" + b.Turn;\n        });\n\n        Run(\"load-null-and-empty\", () =>\n        {\n            var b = new BattleState(7u);\n            BattleSnapshot empty = b.Save();\n            if (empty.Turn != 0) return \"빈 전투의 스냅숏 Turn 기대 0\";\n            string t = Thrown(() => b.Load(null));\n            if (t != \"ArgumentNullException\") return \"Load(null): 기대 ArgumentNullException, 결과 \" + t;\n            b.Units.Add(new Unit(\"bat\", 5)); b.EndTurn(); b.EndTurn(); b.NextRoll(10);\n            b.Load(empty);\n            string got = Show(b);\n            return got == \"T0 R7 |\" ? null : \"빈 스냅숏으로 Load: 기대 \\\"T0 R7 |\\\", 결과 \\\"\" + got + \"\\\"\";\n        });\n\n        Run(\"history-undo-stack\", () =>\n        {\n            if (Thrown(() => new TurnHistory(null)) != \"ArgumentNullException\") return \"TurnHistory(null): 기대 ArgumentNullException\";\n            BattleState b = Sample();\n            var h = new TurnHistory(b);\n            string s0 = Show(b);\n            h.Checkpoint();\n            b.Units[1].Hp -= 5; b.Units[1].Statuses.Add(\"stun\"); b.NextRoll(100); b.EndTurn();\n            string s1 = Show(b);\n            h.Checkpoint();\n            b.Units.RemoveAt(1); b.Units[0].Statuses.Add(\"rage\"); b.NextRoll(100); b.EndTurn();\n            if (h.Count != 2) return \"체크포인트 두 번 뒤 Count 기대 2, 결과 \" + h.Count;\n            h.Undo();\n            if (Show(b) != s1 || h.Count != 1) return \"첫 Undo: 기대 \" + s1 + \" / Count 1, 결과 \" + Show(b) + \" / \" + h.Count;\n            b.Units[0].Hp = 99;\n            h.Undo();\n            if (Show(b) != s0 || h.Count != 0) return \"두 번째 Undo: 기대 \" + s0 + \" / Count 0, 결과 \" + Show(b) + \" / \" + h.Count;\n            b.Units[0].Statuses.Add(\"x\");\n            string before = Show(b);\n            string t = Thrown(() => h.Undo());\n            if (t != \"InvalidOperationException\") return \"빈 기록에서 Undo: 기대 InvalidOperationException, 결과 \" + t;\n            return Show(b) == before ? null : \"실패한 Undo 가 전투를 바꿈\";\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(2718);\n            string[] st = { \"poison\", \"stun\", \"guard\", \"slow\" };\n            for (int round = 0; round < 200; round++)\n            {\n                var b = new BattleState((uint)rng.Next());\n                var h = new TurnHistory(b);\n                var refStack = new System.Collections.Generic.List<string>();\n                var snaps = new System.Collections.Generic.List<BattleSnapshot>();\n                var snapRefs = new System.Collections.Generic.List<string>();\n                for (int op = 0; op < 50; op++)\n                {\n                    int k = rng.Next(10);\n                    if (k == 0) b.Units.Add(new Unit(\"u\" + rng.Next(5), rng.Next(1, 50)));\n                    else if (k == 1 && b.Units.Count > 0) b.Units.RemoveAt(rng.Next(b.Units.Count));\n                    else if (k == 2 && b.Units.Count > 0) b.Units[rng.Next(b.Units.Count)].Hp -= rng.Next(1, 9);\n                    else if (k == 3 && b.Units.Count > 0) b.Units[rng.Next(b.Units.Count)].Statuses.Add(st[rng.Next(4)]);\n                    else if (k == 4 && b.Units.Count > 0) b.Units[rng.Next(b.Units.Count)].Statuses.Clear();\n                    else if (k == 5) { b.EndTurn(); b.NextRoll(100); }\n                    else if (k == 6) { h.Checkpoint(); refStack.Add(Show(b)); }\n                    else if (k == 7 && refStack.Count > 0)\n                    {\n                        h.Undo();\n                        string exp = refStack[refStack.Count - 1]; refStack.RemoveAt(refStack.Count - 1);\n                        if (Show(b) != exp || h.Count != refStack.Count) return \"라운드 \" + round + \", 연산 \" + op + \" Undo: 기대 \" + exp + \", 결과 \" + Show(b);\n                    }\n                    else if (k == 8) { snaps.Add(b.Save()); snapRefs.Add(Show(b)); }\n                    else if (k == 9 && snaps.Count > 0)\n                    {\n                        int j = rng.Next(snaps.Count);\n                        b.Load(snaps[j]);\n                        if (Show(b) != snapRefs[j]) return \"라운드 \" + round + \", 연산 \" + op + \": \" + j + \" 번째 스냅숏 Load 기대 \" + snapRefs[j] + \", 결과 \" + Show(b);\n                    }\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "snapshot-isolated-from-battle",
+          "load-twice-and-shared-snapshot",
+          "rng-state-restored",
+          "load-null-and-empty",
+          "history-undo-stack",
+          "random-vs-reference"
+        ],
+        "note": "Save 뒤의 체력·상태·유닛 목록·턴·난수 변경이 스냅숏에 닿지 않는지, 같은 스냅숏으로 다시 Load 하거나 다른 BattleState 가 Load 해 바꾼 값이 새지 않는지, Load 뒤 NextRoll 수열이 Save 직후와 같은지, 빈 스냅숏과 Load(null), TurnHistory 의 LIFO Undo·Count·빈 기록의 예외와 TurnHistory(null), 그리고 무작위 연산 200 묶음에서 체크포인트·스냅숏을 찍은 순간의 값과 복원 결과를 비교합니다. 스냅숏의 내부 구조와 공개 범위는 채점하지 않습니다(채점표). Unit 전체, BattleState 의 생성자(uint) / Turn / Units / RngState / EndTurn / NextRoll / Save() / Load(BattleSnapshot), BattleSnapshot.Turn, TurnHistory(BattleState) / Count / Checkpoint() / Undo() 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 .NET 8 과 Compiler Explorer 에서 모범 답안 통과·시작 코드 실패를 확인하고, 리스트만 복사하는 답·Load 에 스냅숏 객체를 그대로 넣는 답·난수 상태를 빼먹은 답·Peek 으로 Undo 하는 답·Clear 없이 덧붙이는 답이 실패하고 Unit 깊은 사본 목록으로 다르게 짠 정답은 통과함을 실행해 보았으며, 설명은 Wikipedia Memento 와 Microsoft Learn 의 with 식·ToArray 문서 원문과 대조했다."
+      },
+      "nextMission": "`TurnHistory` 에 `RollbackTo(int turn)` 을 추가해 보세요. 그 턴에 찍은 가장 최근 체크포인트로 되돌리고, 그보다 나중에 쌓인 체크포인트는 모두 버립니다(없으면 예외, 기록과 전투는 그대로). 그다음 체크포인트를 최대 20개만 두도록 상한을 걸고, 50턴 전투에서 전체 스냅숏 방식과 \"행동마다 되돌리는 연산을 기록하는\" 방식이 할당하는 바이트 수를 `GC.GetAllocatedBytesForCurrentThread()` 로 비교해 표로 적어 보세요(이 값은 살아남은 메모리가 아니라 누적 할당량입니다)."
+    },
+    {
+      "id": "t10-interview-legacy-refactoring",
+      "track": "track10",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "3년 된 전투 코드를 안전하게 고치기: 특성 테스트, 스트랭글러 피그, 기능 플래그, 이름과 리뷰 습관",
+      "tags": [
+        "Pattern_Refactoring",
+        "Pattern_StranglerFig",
+        "Pattern_FeatureFlag"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "wiki-characterization-test",
+        "ms-arch-strangler-fig",
+        "fowler-feature-toggles",
+        "ms-learn-feature-management"
+      ],
+      "scenario": "출시 3년 차 온라인 액션 RPG 입니다. 2주마다 패치가 나갑니다. 전투 피해 계산은 `CombatSystem.cs`(4,000줄)의 `ApplyHit` 한 메서드(600줄)에 몰려 있고 테스트는 없습니다. 발췌하면 이렇습니다.\n\n```csharp\npublic static int ApplyHit(Unit a, Unit t, Skill s)\n{\n    float d = a.atk * s.pow;\n    if (s.type == 3 && t.facing == a.facing) d *= 1.5f;           // 3 = 단검 (배후 공격)\n    if (UnityEngine.Random.value < a.crit) { d *= 2f; if (s.type == 3) d *= 1.5f; }\n    if (GameManager.Instance.mode == 2) d *= 0.8f;                  // 2 = PvP\n    d -= t.def;\n    if (d < 1) d = 1;\n    t.hp -= (int)d;\n    UI.ShowDamage(t, (int)d);\n    if (t.hp <= 0) GameManager.Instance.OnKill(a, t);\n    return (int)d;\n    // ... 이런 분기가 600줄 이어진다\n}\n```\n\n작년에 누군가 새 브랜치에서 3개월 동안 전투 코드를 통째로 다시 짰지만, 합칠 때 충돌이 쏟아졌고 테스트 서버에서 \"피해 숫자가 달라졌다\"는 제보가 이어져 버려졌습니다. 이번에는 기획이 \"속성 저항\" 시스템을 다음 시즌에 넣고 싶어 하고, 그러려면 이 코드를 손봐야 합니다.\n\n리드가 묻습니다.\n\n**\"이 레거시 전투 코드를 안전하게 리팩터링하는 계획을 말해 주세요. 무엇부터 테스트로 고정할지(특성 테스트), 새 구현을 어떻게 옆에 키워 옮길지(스트랭글러 피그), 기능 플래그를 어디에 쓰고 언제 지울지, 그리고 이름 짓기와 코드 리뷰를 어떻게 운영할지까지요.\"**\n\n(시계·난수를 생성자로 주입하는 방법, Humble Object, 테스트 대역의 종류는 다른 문제에서 다뤘습니다. 결합도·응집도 진단도 범위 밖입니다. 여기서는 \"동작을 바꾸지 않고 구조를 바꾸는 절차\"에 집중합니다.)",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "특성 테스트가 버그처럼 보이는 동작을 고정한다: 단검 배후 공격이 치명타면 1.5 × 2 × 1.5 = 4.5 배가 된다. 이것을 리팩터링 도중에 고쳐도 되는가.",
+        "`Random.value` 와 `GameManager.Instance.mode` 때문에 같은 입력을 넣어도 기록된 결과와 비교할 수 없다(반복성이 없다).",
+        "옛 경로와 새 경로가 float 를 int 로 자르는 시점이 달라 피해가 1 씩 어긋난다. 특성 테스트가 이 차이를 잡아야 한다.",
+        "기능 플래그를 넣은 지 세 시즌이 지났는데 옛 경로와 플래그가 그대로 남아 있다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "특성 테스트를 만들었더니 단검 배후 공격이 치명타일 때 4.5 배가 되는 동작이 고정됐습니다. 기획 문서에는 \"치명타 2 배\"만 있습니다. 리팩터링하면서 고쳐야 합니까, 유지해야 합니까?",
+          "intent": "특성 테스트가 올바름이 아니라 관찰된 동작을 고정하는 변화 감지기라는 점, 리팩터링(동작 보존)과 동작 변경을 분리해야 한다는 점, 그리고 라이브 게임에서 동작 변경을 결정하고 기록하는 절차를 아는지 확인한다.",
+          "keyAnswer": "- **특성 테스트는 버그인지 판단하지 않는다.** Wikipedia 의 Characterization test 문서대로 특성 테스트는 올바른 동작이 아니라 작성할 때 관찰된 동작을 확인하는 변화 감지기이고, 감지된 변화가 의도한 것인지는 결과를 보는 사람이 정합니다. 명세나 테스트가 없을 때는 옛 동작을 요구 사항으로 가정하는 것이 보수적인 길이라고도 적습니다. 용어를 만든 Michael Feathers 도 특성 테스트의 목적은 바라는 동작을 확인하는 것이 아니라 시스템의 실제 동작을 기록하는 것이라고 하고, 드러난 동작이 버그라고 판단하기 전까지는 그 테스트를 그대로 두는 편이 좋다고 씁니다.\n- **리팩터링 중에는 유지한다.** Fowler 의 정의로 리팩터링은 외부 동작을 바꾸지 않고 내부 구조를 바꾸는 것이므로, 4.5 배를 2 배로 바꾸는 순간 그 변경은 리팩터링이 아닙니다. 구조를 바꾸는 동안은 4.5 배를 그대로 옮기고, 테스트 이름이나 주석에 \"현재 동작: 배후+치명타 4.5 배(기획 확인 필요)\"라고 남깁니다.\n- **바꿀지는 기획과 따로 정한다.** 라이브 게임에서는 플레이어 빌드와 공략이 지금 수치에 맞춰져 있을 수 있으므로(Feathers 는 버그를 고쳤더니 그 동작에 기대던 사용자들이 불만을 냈던 경험을 들며, 운영에 들어간 시스템은 어떤 의미에서 그 자체가 명세가 된다고 씁니다), 고치기로 하면 별도 변경으로, 패치 노트에 적고, 가능하면 플래그 뒤에서 내보냅니다. 그 변경에서 golden master 의 해당 항목만 의도적으로 갱신하고, 리뷰어가 그 갱신을 따로 확인합니다.\n- **하면 안 되는 것.** 테스트가 실패했다고 기대값을 말없이 새 출력으로 덮어쓰기, 리팩터링 커밋에 밸런스 수정을 섞기. 둘 다 \"무엇이 왜 바뀌었는지\"를 리뷰에서 지웁니다."
+        },
+        {
+          "question": "새 `DamagePipeline` 을 옆에 만들고 기능 플래그로 전환하기로 했습니다. 플래그를 어떻게 설계하고, 두 경로가 모두 살아 있는 동안 무엇을 어떤 설정으로 테스트하며, 언제 어떻게 지웁니까?",
+          "intent": "토글의 종류와 수명, \"꺼짐 = 옛 동작\" 규약, 테스트할 설정을 좁히는 기준, 토글의 유지 비용과 제거 관행을 출처대로 말하고, 게임 루프에 맞는 결정 지점(한 곳, 전투 단위)을 제시하는지 확인한다.",
+          "keyAnswer": "- **종류와 수명.** Pete Hodgson 의 Feature Toggles(martinfowler.com)는 출시 토글(Release Toggle)이 본래 일시적이라 보통 한두 주 이상 남기지 말아야 한다고 하고, 성능 영향이 불확실한 기능을 운영자가 빨리 끌 수 있게 하는 운영 토글(Ops Toggle)은 대개 짧게 쓰되 소수의 장수하는 kill switch 를 두는 시스템도 흔하다고 설명합니다. 여기서는 출시 토글로 시작해, 새 경로를 연 뒤 한두 번의 패치 동안 kill switch 로 남겼다가 지우는 계획이 맞습니다.\n- **규약과 결정 지점.** 같은 글은 플래그가 꺼지면 기존 동작, 켜지면 새 동작이 되게 하는 규약을 권합니다. 플래그는 façade(예: `IDamageResolver` 를 고르는 곳) 한 곳에서만 읽고, 전투가 시작될 때 정해 전투 도중에는 바뀌지 않게 합니다. 멀티플레이라면 서버가 정한 값을 클라이언트가 따르게 합니다(이 둘은 실무 판단이지 글의 권고가 아닙니다).\n- **무엇을 테스트하나.** Hodgson 은 모든 조합을 테스트할 필요는 없다고 합니다. 대부분의 플래그는 서로 영향을 주지 않기 때문입니다. 출시될 설정(지금의 운영 설정 + 이번에 켤 플래그 On)이 가장 중요하고, 이번에 켤 플래그를 Off 로 둔 대비 설정도 확인하며, 많은 팀이 모든 토글을 켠 설정도 돌린다고 합니다. 여기에 특성 테스트 묶음을 두 경로 모두에 돌리고, QA 빌드에서는 같은 입력을 두 경로에 넣어 피해 차이를 기록합니다(출시 빌드에서는 비교를 끕니다).\n- **지우기.** Hodgson 은 토글을 유지 비용이 드는 재고로 보는 팀이 재고를 낮게 유지한다며, 출시 토글을 만들 때 제거 작업을 백로그에 함께 넣거나, 만료일을 두거나, 만료일이 지나면 테스트를 실패시키는 \"time bomb\" 을 두거나, 동시에 둘 수 있는 플래그 수에 상한을 두는 관행을 소개합니다. 제거 PR 은 플래그, 옛 경로, 비교 코드를 한 번에 지웁니다.\n- **서비스로 관리한다면.** Microsoft 의 Azure App Configuration 문서는 기능 관리를 기능 출시와 코드 배포를 떼어 놓는 실무로 설명하고, 재배포 없이 문제 있는 기능을 끄는 kill switch, 사용자 비율을 늘려 가는 점진 출시를 자사 서비스의 시나리오로 듭니다. 이 기능은 그 제품의 것이지 모든 플래그 시스템의 기본 기능은 아닙니다."
+        },
+        {
+          "question": "전환을 절반쯤 진행했을 때 새로 온 리드가 \"옆에서 키우는 건 느리다, 다음 시즌에 맞춰 새로 짜서 한 번에 바꾸자\"고 합니다. 어떻게 판단하고 설득하겠습니까? 그리고 스트랭글러 방식이 맞지 않는 경우는 언제입니까?",
+          "intent": "Fowler 와 Microsoft 문서가 드는 근거(전면 교체의 위험, 전환용 구조의 비용과 가치, 맞지 않는 조건, façade 의 위험, 부패 방지 계층)를 출처를 섞지 않고 말하고, 조직과 리뷰 습관까지 이어 가는지 확인한다.",
+          "keyAnswer": "- **전면 교체의 위험(Fowler).** Fowler 는 옛 시스템이 하는 일을 똑같이 새로 만들면 된다는 계획이 대부분 실패하는 것을 봤다고 쓰고, 교체에는 오래 걸려 사용자가 새 기능을 기다릴 수 없고, 교체는 명세하기 쉬워 보이지만 기존 동작의 세부를 알아내기 어려우며, 그 동작의 상당 부분은 실제로 원하지 않는 것이라고 이유를 듭니다. 작년의 3개월짜리 재작성이 바로 그 경로였습니다.\n- **전환용 구조의 값(Fowler).** 옛 코드와 새 코드가 공존하는 동안만 쓰고 지울 전환용 구조(transitional architecture)는 만들어야 한다는 데 사람들이 흔히 난색을 보이고 낭비처럼 보일 수도 있지만, Fowler 는 점진적 방식의 낮은 위험과 이른 가치가 그 비용보다 크다고 봅니다. 이미 옮긴 스킬 종류는 지금 시즌에도 가치를 내고 있다는 진척(옮긴 비율, 특성 테스트 통과)을 숫자로 보여 줍니다.\n- **맞지 않는 경우(Microsoft).** Azure 아키텍처 센터의 Strangler Fig 패턴 문서는 백엔드로 가는 요청을 가로챌 수 없을 때, 레거시의 소스에 접근할 수 없고 바꿀 수 있는 다른 연결 지점도 없을 때, 시스템이 작아 전체 교체가 간단할 때, 원래 솔루션을 빨리 걷어내야 할 때는 맞지 않을 수 있다고 적습니다. 예를 들어 `ApplyHit` 이 200줄짜리 독립 함수였다면 특성 테스트를 깔고 한 번에 다시 쓰는 편이 낫습니다.\n- **façade 의 위험(Microsoft).** 같은 문서는 façade 가 마이그레이션을 따라가는지, 단일 장애점이나 성능 병목이 되지 않는지 확인하라고 하고, 공존하는 동안 두 시스템 사이의 호출은 부패 방지 계층(Anti-corruption Layer)으로 다뤄 새 시스템의 설계를 레거시의 의미로부터 지키라고 합니다. 게임에서는 피격마다 도는 경로에 분기가 하나 늘어나는 것이므로 프로파일러로 확인하고, `s.type == 3` 같은 레거시의 매직 넘버는 경계에서 `SkillKind.Dagger` 로 번역해 새 파이프라인 안으로 들이지 않습니다.\n- **사람과 습관(Fowler + Microsoft 플레이북).** Fowler 는 조직의 문화와 리더십이 바뀌지 않으면 새 시스템도 비슷한 혼란으로 끝난다고 경고합니다. 그래서 리뷰 습관을 함께 바꿉니다. Microsoft 엔지니어링 플레이북은 PR 을 작게, 한 목표에 집중하게, 빌드를 깨지 않고 관련 테스트를 포함하게 하라고 하며, 숨긴 기능(feature flag)으로 내보내는 것을 PR 을 작게 유지하는 전략의 하나로 듭니다. 리뷰어에게는 단정보다 질문을, 직접 지적할 때는 이유와 예를, 사소한 지적에는 \"Nit:\" 를 붙이라고 권합니다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**순서가 전부다.** 고정한다 → 이음매를 낸다 → 옆에서 키운다 → 플래그로 전환한다 → 지운다.\n\n**1. 지금 동작을 고정한다.** Wikipedia 의 Characterization test 문서는 이 용어를 Michael Feathers 가 만들었다고 밝히고, 특성 테스트를 기존 소프트웨어의 실제 동작을 기술해 레거시 코드의 기존 동작을 의도하지 않은 변경으로부터 자동 테스트로 지키는 수단이라고 설명합니다(Golden Master 테스트라고도 부릅니다). `ApplyHit` 이라면 QA 로그나 리플레이에서 (공격자, 대상, 스킬, 난수) 입력 수천 건을 모아 지금 코드의 출력(피해, 남은 체력, 처치 여부)을 기록해 둡니다. 같은 문서는 이 방식이 반복 가능성에 기대므로 변하는 값과 비결정적인 값을 가려야 한다고 적습니다. 그래서 첫 변경은 `Random.value` 와 `GameManager.Instance.mode` 를 인자로 받는 이음매(seam)를 내는 최소한의 수정이고(Feathers 도 특성 테스트에서 가장 어려운 부분은 코드 주변의 의존을 끊어 테스트 하네스에서 돌릴 수 있게 만드는 일이라고 씁니다), 이 변경만은 테스트 없이 손으로 꼼꼼히 리뷰합니다. 기록된 입력은 엔진 없이 순수 C# 로 돌려 커밋마다 몇 초 안에 끝나게 합니다.\n\n**2. 리팩터링과 동작 변경을 섞지 않는다.** Fowler 는 refactoring.com 에서 리팩터링을 외부 동작을 바꾸지 않고 내부 구조를 바꾸는 규율 있는 기법이자 동작을 보존하는 작은 변환의 연속으로 정의하고, 단계마다 시스템이 온전히 동작하므로 크게 망가질 가능성이 줄어든다고 설명합니다. 이름 바꾸기·메서드 추출 커밋에서는 특성 테스트가 하나도 바뀌지 않아야 하고, 밸런스나 버그 수정은 별도 커밋입니다.\n\n**3. 옆에서 키워 옮긴다(Strangler Fig).** Fowler 는 레거시 위에 얹되 분리된 작은 추가부터 만들고 동작을 조금씩 새 코드로 옮기는 점진적 현대화를 이 이름으로 부르며, 나눌 이음매를 찾는 일과 두 코드가 공존하는 동안만 쓰는 전환용 구조가 따른다고 말합니다. Microsoft 의 Azure 아키텍처 센터 문서는 같은 패턴을 façade(프록시)가 요청을 가로채 레거시나 새 서비스로 보내고, 옮길수록 새 쪽으로 보내는 요청을 늘리다가 마지막에 façade 를 걷어 내는 단계로 설명합니다. 두 문서의 예는 시스템·서비스 수준입니다. 이것을 `IDamageResolver` 를 façade 로 두고 스킬 종류별로 새 `DamagePipeline` 으로 옮기는 클래스 수준에 쓰는 것은 같은 생각을 옮겨 온 것입니다.\n\n**4. 플래그로 전환하고, 반드시 지운다.** Pete Hodgson 의 Feature Toggles(martinfowler.com)는 플래그가 복잡도를 들여오므로 개수를 줄이라고 하고, 출시 토글은 본래 일시적이라고 말합니다. 꺼짐 = 옛 동작, 켜짐 = 새 동작 규약을 지키고, 플래그는 façade 한 곳에서 전투 시작 때 읽습니다.\n\n**5. 이름과 리뷰.** .NET 명명 지침은 짧음보다 읽기 쉬움을 택하고 식별자에 약어나 축약을 쓰지 말라고 합니다(`d` → `damage`, `s.type == 3` → `SkillKind.Dagger`). 이름 바꾸기는 IDE 의 리팩터링 기능으로, 동작 변경 없이 단독 커밋으로 합니다. Microsoft 엔지니어링 플레이북은 PR 을 작고 한 목표에 집중하게 하고 관련 테스트를 포함하라고 하며, 리뷰어에게는 단정보다 질문을, 직접 지적할 때는 이유와 예를 적으라고 권합니다.\n\n### 흔한 오해\n- **\"특성 테스트는 코드가 올바르게 동작하는지 검증하는 테스트다.\"** — Wikipedia 의 Characterization test 문서는 특성 테스트가 회귀 테스트와 아주 비슷하지만 올바른 동작을 검증하지 않고, 작성할 때 관찰된 동작을 검증한다고 설명합니다. 본질적으로 변화 감지기이고, 감지된 변화가 바람직한지는 결과를 분석하는 사람이 정합니다. 그래서 4.5 배 같은 이상한 동작도 일단 그대로 고정됩니다. [wiki-characterization-test]\n- **\"기능 플래그를 넣으면 모든 플래그 조합을 테스트해야 하니 테스트가 감당이 안 된다.\"** — Hodgson 은 플래그가 늘면 가능한 상태가 조합적으로 폭발한다는 걱정을 인정하면서도, 대부분의 플래그는 서로 영향을 주지 않고 한 릴리스에서 둘 이상의 플래그 설정을 바꾸는 일은 드물어 모든 조합을 테스트할 필요는 없다고 말합니다. 출시될 설정과 새 플래그를 끈 대비 설정이 핵심이고, 많은 팀이 모두 켠 설정도 돌립니다. 이 조언은 \"꺼짐 = 옛 동작\" 규약을 지킬 때만 성립합니다. [fowler-feature-toggles]",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "특성 테스트를 \"지금 실제로 하는 동작을 기록해 의도하지 않은 변경을 잡는 테스트\"로 설명하고, 올바름이 아니라 관찰된 동작을 확인하는 변화 감지기라고 말했다(용어는 Michael Feathers).",
+            "points": 9,
+            "sourceId": "wiki-characterization-test"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "리팩터링을 외부 동작을 바꾸지 않고 내부 구조를 바꾸는 작은 변환의 연속으로 정의하고, 버그·밸런스 수정을 리팩터링 커밋에 섞지 않는다고 했다.",
+            "points": 9,
+            "sourceId": "fowler-refactoring"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "스트랭글러 피그를 출처별로 구분해 설명했다: Fowler 는 새 코드를 옆에 만들어 동작을 조금씩 옮기는 점진적 현대화와 지울 전환용 구조, Microsoft 문서는 façade 가 요청을 가로채 레거시와 새 쪽으로 나누다 마지막에 걷어 내는 단계.",
+            "points": 9,
+            "sourceId": "ms-arch-strangler-fig"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "특성 테스트를 반복 가능하게 만들기 위해 난수·전역 모드 같은 비결정 값을 이음매로 빼거나 가린다고 말했다.",
+            "points": 8,
+            "sourceId": "wiki-characterization-test"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "기록된 입력 수천 건을 엔진 없이 돌려 커밋마다 실행할 수 있을 만큼 빠른 특성 테스트 묶음을 만든다고 말했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "façade 와 플래그 분기가 피격마다 도는 경로에 들어간다는 점을 짚고, 병목이 되지 않게 확인(프로파일러)하거나 플래그를 전투 시작 때 한 번 읽는다고 했다.",
+            "points": 10,
+            "sourceId": "ms-arch-strangler-fig"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "두 경로를 함께 돌리는 비교는 개발·QA 빌드에 한정하고, 플래그를 유지 비용이 드는 재고로 보아 처음부터 제거 계획(백로그의 제거 작업, 만료일, 개수 상한)을 세워 전환 뒤 플래그·옛 경로·비교 코드를 지운다고 했다.",
+            "points": 10,
+            "sourceId": "fowler-feature-toggles"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "\"꺼짐 = 옛 동작, 켜짐 = 새 동작\" 규약과 테스트할 설정(출시될 설정, 새 플래그를 끈 대비 설정, 많은 팀이 쓰는 모두 켠 설정)을 말하고, 모든 조합이 필요하지 않은 이유를 댔다.",
+            "points": 10,
+            "sourceId": "fowler-feature-toggles"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "이름 규칙(짧음보다 읽기 쉬움, 약어 금지)을 근거로 들고, 이름 바꾸기를 IDE 리팩터링 기능으로 동작 변경 없는 단독 커밋으로 한다고 했다.",
+            "points": 10,
+            "sourceId": "ms-naming-conventions"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "PR 운영을 구체적으로 말했다: 작고 한 목표에 집중한 PR, 빌드를 깨지 않고 관련 테스트 포함, 구조 변경 PR 과 동작 변경 PR 을 나눈다.",
+            "points": 8,
+            "sourceId": "ms-playbook-pull-requests"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "리뷰어의 습관을 구체적으로 말했다: 단정보다 질문, 직접 지적할 때는 이유와 예, 사소한 지적에는 \"Nit:\" 표시.",
+            "points": 7,
+            "sourceId": "ms-playbook-reviewer-guidance"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "테스트로 동작을 고정하지 않고 한 번에 다시 짜자고 하거나, 구조 변경과 밸런스·버그 수정을 한 변경에 섞는다.",
+            "penalty": -20,
+            "sourceId": "fowler-strangler-fig"
+          },
+          {
+            "id": "d2",
+            "description": "특성 테스트를 올바름의 검증으로 설명하거나, 실패한 특성 테스트의 기대값을 확인 없이 새 출력으로 덮어쓰자고 한다.",
+            "penalty": -15,
+            "sourceId": "feathers-characterization-testing"
+          },
+          {
+            "id": "d3",
+            "description": "기능 플래그를 넣으면서 제거 계획이 없다(옛 경로와 플래그가 무기한 남는다).",
+            "penalty": -15,
+            "sourceId": "fowler-feature-toggles"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Wikipedia Characterization test, Michael Feathers 의 Characterization Testing, Fowler 의 Strangler Fig 와 refactoring.com, Hodgson 의 Feature Toggles, Microsoft Learn 의 Strangler Fig·기능 관리·명명 지침, Microsoft 엔지니어링 플레이북 원문을 열어 모든 귀속 주장과 대조했다."
+      },
+      "nextMission": "`ApplyHit` 과 비슷한 레거시 함수를 하나 골라(없으면 위 발췌를 순수 C# 로 옮겨) 특성 테스트부터 써 보세요. 난수를 인자로 뺀 뒤 입력 1,000개를 고정 시드로 만들어 출력을 파일에 기록하고, 다음 실행부터 그 파일과 비교하는 테스트를 만듭니다. 그다음 매직 넘버를 enum 으로 바꾸고 메서드를 셋으로 추출하는 리팩터링을 커밋 3개로 나눠 하면서, 매 커밋마다 테스트가 그대로 통과하는지 확인하세요. 마지막으로 4.5 배 동작을 고치는 변경을 플래그 뒤에 넣고, 기록 파일에서 바뀌는 항목만 갱신하는 PR 설명을 \"무엇을, 왜\" 형식으로 써 보세요."
+    },
+    {
+      "id": "t10-interview-unity-architecture-lifetimes",
+      "track": "track10",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "중간 규모 Unity 게임의 구조: 데이터·도메인·표현 층, 씬보다 오래 사는 것과 짧게 사는 것, 패턴이 값을 하는 곳과 과한 곳",
+      "tags": [
+        "Pattern_Architecture",
+        "Pattern_Layering",
+        "Pattern_Lifetime"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "ms-arch-common-web-architectures",
+        "unity-loadscenemode-api",
+        "unity-unloadsceneasync-api",
+        "gpp-architecture"
+      ],
+      "scenario": "Unity 6 로 만드는 액션 로그라이트입니다. 프로그래머 다섯을 포함해 열두 명이 2년째 개발 중이고, 프로토타입이 그대로 커졌습니다. 씬은 `Boot`, `Title`, `Hub`(마을), 던전 층마다 하나씩인 `Floor_01` ~ `Floor_12`, `Results` 입니다. 거의 모든 코드가 MonoBehaviour 이고, 몬스터·유물 수치는 프리팹 인스펙터에 들어 있습니다. 최근 버그입니다.\n\n- 층 씬을 `LoadScene(..., LoadSceneMode.Single)` 로 넘길 때마다 런 중에 얻은 유물과 남은 체력이 사라진다. 지금은 `PlayerRunData` 컴포넌트를 층마다 다시 찾아 값을 복사하는 코드로 버티고 있다.\n- 허브와 던전을 오갈수록 메모리가 계속 오른다. 최근 로딩을 줄이려고 층을 `Additive` 로 올리고 `UnloadSceneAsync` 로 내리도록 바꿨다.\n- 퀘스트 서비스(`DontDestroyOnLoad`)가 \"보스에게 다가가기\" 목표를 위해 층 보스의 `Transform` 참조를 들고 있다. 층을 넘긴 뒤 `bossTransform?.position` 줄이 null 검사를 그대로 통과해 예외를 던진다(에디터에서는 `MissingReferenceException`).\n- 기획이 \"해금 진행도를 ScriptableObject 에 기록하자\"고 제안했다.\n\n리드가 묻습니다.\n\n**\"이 게임의 코드 구조를 다시 잡는다면 어떤 층(데이터 · 도메인 · 표현)으로 나누고 각 층에 무엇을 두겠습니까? 씬에 사는 것, 씬보다 오래 사는 서비스, 한 번의 런 동안만 사는 것의 수명을 어떻게 나누고 관리하겠습니까? 그리고 이 규모에서 어떤 패턴이 값을 하고 어떤 것은 과하다고 보십니까?\"**\n\n(싱글턴의 비용과 대안(DI·서비스 로케이터·ScriptableObject 참조·이벤트 채널), 결합도·응집도와 asmdef 로 의존 방향을 강제하는 법, 테스트 대역은 다른 문제에서 다뤘습니다. 여기서는 층의 경계, 수명, 그리고 패턴의 비용 대비 가치에 집중합니다.)",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "층 씬을 Single 로 로드하면 지금 로드된 씬이 모두 닫히고 그 씬의 오브젝트가 파괴된다. 런 상태를 씬 오브젝트에 두면 층마다 사라진다.",
+        "층을 Additive 로 올리고 `UnloadSceneAsync` 로 내리면 GameObject 는 파괴되지만 에셋은 내려가지 않는다. 서비스나 static 리스트가 에셋을 잡고 있으면 `UnloadUnusedAssets` 로도 안 내려간다.",
+        "씬보다 오래 사는 서비스가 씬 오브젝트를 참조하면, 씬이 내려간 뒤 그 참조는 파괴된(detached) 오브젝트를 가리키고 `?.` 는 그것을 null 로 보지 않는다.",
+        "진행도를 ScriptableObject 에 쓰면 에디터에서는 남는 것처럼 보이지만, 스탠드얼론 플레이어에서는 에셋의 저장된 데이터를 읽기만 할 수 있다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "층을 넘길 때 런 상태가 사라지고, 허브와 던전을 오갈 때마다 메모리가 오릅니다. 수명을 어떻게 나누고, 씬 로드 방식(Single / Additive)과 에셋 해제를 어떻게 설계하겠습니까?",
+          "intent": "수명을 앱 · 런 · 씬 단위로 나눠 각 수명의 소유자를 정하는지, 그리고 Single / Additive 로드와 씬 언로드, 에셋 언로드, Addressables 의 참조 카운트에 대한 Unity 문서의 사실을 정확히 말하는지 확인한다.",
+          "keyAnswer": "- **수명별 소유자.** 앱 수명(세이브, 오디오, 입력, 원격 설정)은 부트 단계에서 한 번 만든다. 런 수명은 `RunState`(체력, 유물, 층 번호, 런 시드) 같은 순수 C# 객체로 두고, 런을 시작할 때 만들어 결과 화면에서 세이브에 반영한 뒤 통째로 버린다. 씬 수명은 그 층의 몬스터, 지형, 층 UI 다. 층의 오브젝트는 시작할 때 `RunState` 를 읽어 자신을 꾸미고, 바뀐 결과를 `RunState` 에 쓴다. 층마다 `PlayerRunData` 를 찾아 값을 복사하는 코드는 필요 없어진다(이 나눔은 출처의 규칙이 아니라 설계 판단이다).\n- **씬 로드의 사실(Unity 6000.0 문서).** `LoadSceneMode.Single` 은 지금 로드된 씬을 모두 닫고 씬을 로드하며, `Additive` 는 로드된 씬들에 씬을 더한다. `DontDestroyOnLoad` 문서는 새 씬의 로드가 현재 씬의 오브젝트를 모두 파괴한다고 적고(기존 씬을 닫지 않는 Additive 로드가 아니라 Single 로드에 해당하는 말이다), 이 함수는 루트 GameObject(또는 그 컴포넌트)에만 동작해 그것을 남긴다. 그래서 런 상태를 층 씬의 컴포넌트에 둔 것이 첫 버그의 원인이다.\n- **에셋은 씬과 따로 내려간다.** `SceneManager.LoadScene` 문서는 Single 모드로 씬을 로드하면 Unity 가 `Resources.UnloadUnusedAssets` 를 자동으로 부른다고 적고, `UnloadSceneAsync` 문서는 그 씬의 GameObject 를 모두 파괴하지만 에셋은 내리지 않으므로 에셋 메모리를 비우려면 `Resources.UnloadUnusedAssets` 를 부르라고 적는다. Additive 로 바꾼 뒤 메모리가 오르기 시작한 것과 맞아떨어진다. 층을 내린 뒤(예: 로딩 화면에서) `UnloadUnusedAssets` 를 부른다.\n- **무엇이 에셋을 붙잡나.** `UnloadUnusedAssets` 는 게임 오브젝트 계층 전체(스크립트 컴포넌트 포함)와 static 변수를 훑어 닿지 않는 에셋만 미사용으로 본다. 그러니 서비스나 static 캐시가 층의 텍스처·프리팹 참조를 들고 있으면 언로드를 불러도 남는다. 층 전용 에셋 참조는 씬 수명 객체만 갖게 한다.\n- **Addressables 를 쓴다면(2.7 문서).** 시스템이 불러온 항목마다 참조 카운트를 두므로 load 마다 release 를 짝지어야 누수가 없고, 해제한 에셋도 그 에셋이 든 AssetBundle 의 참조 카운트가 0 이 되어 번들이 내려가야 메모리가 풀린다. 번들에 남은 마지막 에셋을 해제한 직후 그 에셋이나 같은 번들의 다른 에셋을 다시 부르면 번들을 내렸다가 다시 올리는 asset churn 이 생기므로, 층 사이에 함께 쓰는 에셋은 되도록 오래 붙잡아 둔다.\n- **확인.** Memory Profiler 로 왕복 전후 스냅숏을 비교해 무엇이 남는지와 누가 참조하는지를 본다(실무 방법)."
+        },
+        {
+          "question": "도메인 층을 순수 C# 로 빼자고 하니 \"그러면 코루틴, 물리, 애니메이션을 못 쓴다\"는 반론이 나옵니다. 어디까지 도메인에 두고 어디부터 표현에 두겠습니까? 표현은 도메인을 알고 도메인은 표현을 모르게 하려면 무엇을 어떻게 연결합니까?",
+          "intent": "Microsoft 가이드의 층 분리와 Clean Architecture 를 게임에 맞게 옮기되 과하게 밀어붙이지 않는지, 도메인 → 표현 통지와 수명(구독 해지)을 함께 설계하는지, 파괴된 Unity 오브젝트 참조의 위험을 아는지 확인한다.",
+          "keyAnswer": "- **근거(Microsoft 가이드).** ASP.NET Core 웹 앱 아키텍처 가이드는 층마다 다른 층과의 통신을 제한하면 한 층을 바꿀 때 그 층과 일하는 층만 영향을 받고, 테스트 때 층을 알려진 응답을 주는 가짜 구현으로 바꾸기 쉬워 테스트가 쓰기 쉽고 빨라진다고 설명한다. Clean Architecture 에서는 업무 로직(Application Core)이 다른 층에 의존하지 않고, Core 가 정의한 인터페이스를 바깥 층이 구현하며, 구현을 인터페이스에 잇는 일은 composition root 에서 한다. 웹 앱을 위한 글이므로 게임에는 생각만 옮긴다.\n- **도메인에 두는 것.** 결정적이고 규칙인 것: 피해 공식, 버프 지속, 인벤토리·장비 슬롯, 상점 가격, 해금 조건, 층 생성 규칙(시드 입력), `RunState`. 시간은 `Tick(dt)` 처럼 인자로 받는다.\n- **표현에 두는 것.** Unity 가 실제로 해 주는 일: 물리 질의와 충돌, 애니메이션과 루트 모션, 코루틴 연출, VFX, 오디오 재생, UI. 물리 판정이 곧 게임 규칙인 부분(플랫포머 점프 같은)은 억지로 빼지 않고 MonoBehaviour 에 둔다. 충돌 결과를 \"누가 누구를 어떤 스킬로 맞혔다\"는 도메인 호출로 넘기는 경계만 분명히 한다. UI 는 도메인 모델과 뷰 사이에 프레젠터를 두는 방식이 잘 맞는다(판단). Unity 의 e-book 소개 페이지도 다루는 주제로 MVP(Model View Presenter)를 꼽는다.\n- **연결.** 표현이 도메인을 호출하고, 도메인은 C# 이벤트나 콜백으로 \"바뀌었다\"를 알릴 뿐 MonoBehaviour 타입을 모른다. 구독은 짧게 사는 쪽(씬의 뷰)이 오래 사는 쪽(런·앱 수명 도메인)에 하고, 자기 수명이 끝날 때(`OnDisable` / `OnDestroy`) 해지한다. 반대 방향, 곧 오래 사는 서비스가 씬 오브젝트를 붙잡는 것이 세 번째 버그의 원인이다.\n- **파괴된 오브젝트(Unity 문서).** `UnityEngine.Object` 는 네이티브 대응 객체와 이어져 있고, 네이티브 쪽이 먼저 파괴되면 관리 객체는 detached 상태가 된다. 이때 `== null` 은 Unity 의 연산자 재정의 덕분에 true 지만 `ReferenceEquals(obj, null)` 은 false 이고, `?.` 와 `??` 는 재정의할 수 없어 Unity 오브젝트에는 지원되지 않는다. 그렇게 걸러지지 않은 파괴된 오브젝트의 속성에 접근하면, Unity 지원 문서에 따르면 에디터에서는 `MissingReferenceException`(오브젝트가 \"has been destroyed but you are still trying to access it\"), 빌드에서는 그냥 `NullReferenceException` 이 난다. 퀘스트 서비스는 보스의 `Transform` 대신 층이 알려 주는 도메인 이벤트(\"보스 위치 갱신\", \"보스 처치\", 보스 id 포함)를 받고, 층이 내려갈 때 그 목표를 정리해야 한다."
+        },
+        {
+          "question": "새로 온 시니어가 모든 시스템에 인터페이스와 DI 컨테이너, 전역 이벤트 버스, ECS 를 도입하자고 합니다. 이 규모에서 어떤 패턴이 값을 하고 어떤 것이 과합니까? 판단 기준과 되돌리는 방법까지 말해 주세요.",
+          "intent": "패턴과 추상화가 유연성에 대한 추측이고 비용이 있다는 GPP 의 논지를 근거로, 이 게임의 구체적인 지점마다 값을 하는지 판단하는 기준을 세우는지 확인한다.",
+          "keyAnswer": "- **근거(GPP).** Game Programming Patterns 의 Architecture, Performance, and Games 장은 추상화 층이나 확장 지점을 더할 때마다 나중에 그 유연성이 필요하리라 추측하는 것이고, 그 코드는 개발·디버그·유지 시간이 드는 복잡도이며, 추측이 빗나가면 그 모듈성은 금방 적극적으로 해로워진다고 말한다. 이 충동에 맞서는 말로 YAGNI 를 소개하고, 인터페이스와 추상화가 사방에 있으면 실제로 일하는 코드를 찾기까지 발판을 한참 따라가야 하며 추상화 층 자체가 머릿속 공간을 채운다고 경고한다. 유연하게 만드는 패턴 다수가 가상 디스패치, 인터페이스, 메시지처럼 런타임 비용이 있다는 점, 설계가 자리 잡을 때까지 유연하게 두고 나중에 일부 추상화를 걷어 내는 절충도 같은 장에 있다.\n- **Unity 의 안내.** Unity 의 e-book 소개 페이지는 예제를 보고 장단점을 따져 프로젝트에 가장 맞는 패턴을 고르라고 안내한다. 패턴은 목록이 아니라 선택이다.\n- **판단 기준(실무 판단).** (1) 두 번째 구현이나 테스트용 대체가 지금 실제로 있는가. (2) 그 지점이 자주 바뀌는가(기획이 매주 만지는 곳인가). (3) 추상화가 줄여 주는 수정 범위가 추적 비용보다 큰가. (4) 핫 경로인가: 프레임마다 수천 번 도는 곳이면 가상 호출과 메시지 비용을 측정한다.\n- **이 게임에서 값을 하는 것.** 허브 → 런 → 결과 흐름과 보스 AI 의 상태 기계, 도메인 → UI 통지, 탄환·피격 이펙트 풀, 몬스터·유물의 데이터 주도 정의(Type Object), 입력과 리플레이의 Command, 세이브 저장소 경계의 인터페이스(파일 / 클라우드 / 테스트용 메모리 구현이 실제로 셋).\n- **과한 것.** 구현이 하나뿐이고 테스트도 대체하지 않는 클래스마다의 인터페이스, 측정된 병목 없이 수백 개 엔티티에 들이는 ECS 전환, 결과와 순서가 필요한 흐름(구매 → 차감 → 지급 → 저장)까지 전역 이벤트로 쪼개기. DI 컨테이너는 조립 지점을 정리해 주지만, 손으로 짠 composition root 로 충분한 규모라면 팀이 도구를 배우는 비용이 더 클 수 있다(판단).\n- **되돌리기.** 쓰이지 않는 인터페이스(구현 하나, 대체 없음)는 구체 타입으로 접고, 발행자가 하나·수신자가 하나인 이벤트는 직접 호출로 바꾼다. 패턴을 들일 때 PR 설명에 \"무엇이 두 번째 구현인가\"를 적게 하면 리뷰에서 걸러진다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**층.** Microsoft 의 ASP.NET Core 웹 앱 아키텍처 가이드(Common web application architectures)는 애플리케이션을 책임에 따라 층으로 나누는 것이 관심사 분리를 따르는 방법이며, 층끼리의 통신을 제한하면 한 층을 바꿀 때 그 층과 일하는 층만 영향을 받는다고 설명합니다. 같은 가이드는 UI → 업무 로직 → 데이터 접근으로 의존이 내려가는 전통적 N-층에서는 핵심 로직이 데이터 접근 세부에 묶여 테스트가 어렵다고 지적하고, 업무 로직을 가운데 두고 바깥 층이 그 안에 정의된 인터페이스를 구현하게 하는 Clean Architecture 를 소개합니다. 웹 앱을 위한 글이니 게임에는 생각만 옮깁니다.\n- **데이터:** 정적 기획 데이터(몬스터·유물·스킬 정의)와 세이브 데이터(프로필, 해금). Unity 매뉴얼은 스탠드얼론 플레이어에서는 ScriptableObject 에셋의 저장된 데이터를 읽기만 할 수 있다고 하므로, 정의는 ScriptableObject 나 테이블에, 진행도는 세이브 파일에 둡니다.\n- **도메인:** `RunState`, 피해·버프·인벤토리·해금 규칙. 순수 C# 이고 MonoBehaviour 를 모릅니다.\n- **표현:** MonoBehaviour, 물리 질의, 애니메이션, VFX, 오디오, UI. 도메인을 읽고 입력과 충돌 결과를 도메인 호출로 바꿉니다.\n\n**수명은 셋(과 프레임).** 앱 수명(세이브, 오디오, 입력)은 부트 단계에서, 런 수명(`RunState`)은 런 시작에서 만들어 결과 화면 뒤에 버리고, 씬 수명은 층의 오브젝트입니다. Unity 문서에 따르면 `LoadSceneMode.Single` 은 지금 로드된 씬을 모두 닫고 씬을 로드하고(그래서 그 씬들의 오브젝트가 파괴되고), `Additive` 는 지금 씬들에 씬을 더합니다. 런 상태가 층 씬의 컴포넌트에 있었기 때문에 층마다 사라진 것입니다. 규칙은 하나입니다. 오래 사는 것은 짧게 사는 것을 붙잡지 않고, 짧게 사는 쪽이 오래 사는 쪽을 구독했다가 자기 수명 끝에 해지합니다.\n\n**에셋 수명은 씬과 따로.** Single 로드는 `Resources.UnloadUnusedAssets` 를 자동으로 부르지만, `UnloadSceneAsync` 는 그 씬의 GameObject 를 파괴할 뿐 에셋은 내리지 않습니다. 그리고 `UnloadUnusedAssets` 는 계층 전체와 static 변수를 훑어 닿지 않는 에셋만 내리므로, 서비스나 static 캐시가 잡은 층 에셋은 남습니다. Additive 로 바꾼 뒤 메모리가 오르기 시작한 이유입니다.\n\n**패턴의 값과 과함.** GPP 의 Architecture, Performance, and Games 장은 추상화나 확장 지점을 더할 때마다 그 유연성이 나중에 필요하리라 추측하는 것이고, 빗나가면 그 모듈성이 적극적으로 해롭다고 경고합니다(YAGNI). Unity 의 game programming patterns e-book 소개 페이지도 장단점을 따져 프로젝트에 맞는 패턴을 고르라고 안내합니다. 이 게임에서는 흐름과 보스 AI 의 상태 기계, 도메인 → UI 통지, 풀, 데이터 주도 정의, 실제로 구현이 셋인 세이브 저장소 인터페이스가 값을 하고, 구현이 하나뿐인 클래스마다의 인터페이스, 측정 없는 ECS 전환, 결과가 필요한 흐름의 이벤트화는 과합니다.\n\n### 흔한 오해\n- **\"씬을 언로드하면 그 씬이 쓰던 텍스처와 메시도 메모리에서 내려간다.\"** — Unity 6000.0 의 `SceneManager.UnloadSceneAsync` 문서는 그 씬의 GameObject 를 모두 파괴하지만 에셋은 내리지 않으며, 에셋 메모리를 비우려면 `Resources.UnloadUnusedAssets` 를 부르라고 적습니다. 자동으로 불리는 것은 Single 모드로 씬을 로드할 때입니다 [unity-loadscene-api]. 그마저도 static 변수나 살아 있는 계층에서 닿는 에셋은 내려가지 않습니다. [unity-unloadsceneasync-api]\n- **\"`bossTransform?.position` 처럼 `?.` 를 쓰면 파괴된 Unity 오브젝트도 안전하게 건너뛴다.\"** — Unity 문서에 따르면 네이티브 쪽이 파괴된 관리 객체(detached)는 Unity 가 재정의한 `==` 로는 null 과 같다고 나오지만 실제로 null 은 아니어서 `ReferenceEquals(obj, null)` 은 false 이고, `?.` 와 `??` 는 재정의할 수 없어 Unity 오브젝트에는 지원되지 않습니다 [unity-object-api]. 그래서 `?.` 를 통과한 파괴된 `Transform` 에 접근하면 예외가 나는데, Unity 지원 문서에 따르면 에디터에서는 `MissingReferenceException`, 빌드에서는 `NullReferenceException` 입니다 [unity-support-destroyed-object]. 파괴되었을 수 있는 참조는 `== null` 이나 bool 변환으로 검사하고, 더 근본적으로는 씬보다 오래 사는 서비스가 씬 오브젝트를 붙잡지 않게 합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "세 층과 각 층의 내용을 말했다: 데이터(정적 정의와 세이브), 도메인(순수 C# 규칙과 런 상태), 표현(MonoBehaviour·UI·연출). 표현이 도메인을 알고 도메인은 표현을 모르며, 근거로 층 사이 통신 제한이나 Clean Architecture 를 들되 웹 앱 가이드임을 밝혔다.",
+            "points": 9,
+            "sourceId": "ms-arch-common-web-architectures"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "씬 로드의 사실을 정확히 말했다: Single 은 로드된 씬을 모두 닫고 로드해 그 오브젝트가 파괴되고, Additive 는 씬을 더하며, `DontDestroyOnLoad` 는 루트 GameObject 에만 동작한다.",
+            "points": 9,
+            "sourceId": "unity-loadscenemode-api"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "에셋 수명의 사실을 말했다: `UnloadSceneAsync` 는 GameObject 를 파괴하지만 에셋은 내리지 않고, Single 로드는 `UnloadUnusedAssets` 를 자동 호출하며, `UnloadUnusedAssets` 는 계층과 static 변수를 훑으므로 거기서 닿는 에셋은 남는다.",
+            "points": 9,
+            "sourceId": "unity-unloadunusedassets-api"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "진행도를 ScriptableObject 에 쓰자는 제안이 틀린 이유(스탠드얼론 플레이어에서는 저장된 데이터를 읽기만 한다)를 대고 세이브 파일로 돌렸다.",
+            "points": 8,
+            "sourceId": "unity-scriptableobject"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "런 상태를 씬 오브젝트가 아닌 런 수명의 순수 C# 객체에 두고, 런이 끝나면 통째로 버려 층 이동 복사 코드와 누수를 없앴다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "왕복 메모리 증가의 원인 후보(Additive 언로드 뒤 미해제 에셋, 서비스·static 이 잡은 에셋, Addressables 의 짝 없는 load)를 대고, Addressables 는 load 마다 release 하며 번들 단위로 풀린다는 점과 프로파일러로 확인하는 방법을 말했다.",
+            "points": 10,
+            "sourceId": "addressables-memory-assets"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "유연성을 주는 패턴(가상 호출, 인터페이스, 메시지)의 런타임 비용을 알고, 프레임마다 많이 도는 경로에서는 측정해 구체 호출이나 데이터 배열을 택할 수 있다고 했다.",
+            "points": 10,
+            "sourceId": "gpp-architecture"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "서비스가 씬 오브젝트를 붙잡지 않게(도메인 이벤트로 받기) 하고, 파괴되었을 수 있는 Unity 오브젝트는 `?.` / `??` 가 아니라 `== null` 로 검사해야 하는 이유(detached 상태)를 말했다.",
+            "points": 10,
+            "sourceId": "unity-object-api"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "수명마다 만들고 버리는 지점이 하나씩 정해져 있다(앱은 부트 단계, 런은 시작과 결과, 씬은 그 씬의 오브젝트). 구독은 짧게 사는 쪽이 하고 `OnDisable` / `OnDestroy` 에서 해지한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "패턴을 들일지의 판단 기준(두 번째 구현이나 테스트 대체가 실제로 있는가, 변경 빈도, 추적 비용 대비 이득, 핫 경로 여부)을 말하고, 추상화는 미래에 대한 추측이라는 YAGNI 근거를 들었다.",
+            "points": 8,
+            "sourceId": "gpp-architecture"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "이 게임의 구체적인 지점마다 값을 하는 패턴과 과한 패턴을 짝지어 말하고, 쓰이지 않는 추상화를 되돌리는 방법까지 냈다.",
+            "points": 7,
+            "sourceId": "unity-patterns-ebook"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "런·진행 상태를 층 씬의 오브젝트나 ScriptableObject 에셋에 써서 유지하자고 한다.",
+            "penalty": -20,
+            "sourceId": "unity-scriptableobject"
+          },
+          {
+            "id": "d2",
+            "description": "씬을 언로드하면 에셋도 자동으로 내려간다고 가정하거나, 파괴된 오브젝트를 `?.` 로 거르면 된다고 답한다.",
+            "penalty": -15,
+            "sourceId": "unity-unloadsceneasync-api"
+          },
+          {
+            "id": "d3",
+            "description": "규모와 무관하게 모든 시스템에 인터페이스·DI 컨테이너·이벤트 버스·ECS 를 넣자고 하거나, 반대로 층을 나누지 않고 모든 것을 MonoBehaviour 에 두자고 한다.",
+            "penalty": -15,
+            "sourceId": "gpp-architecture"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6000.0 의 LoadSceneMode·LoadScene·UnloadSceneAsync·UnloadUnusedAssets·DontDestroyOnLoad·Object 페이지, ScriptableObject 매뉴얼, Addressables 2.7 메모리 문서, Unity 지원 문서, Microsoft 웹 앱 아키텍처 가이드, GPP Architecture 장, Unity e-book 소개 페이지 원문을 열어 각 주장과 대조했다."
+      },
+      "nextMission": "이 게임의 런 흐름을 작은 프로젝트로 재현해 보세요. `Boot` 씬이 앱 수명 서비스를 만들고, `RunState`(순수 C#)를 런 시작 때 만들어 층 씬 셋을 Additive 로 차례로 올리고 내리며, 층마다 큰 텍스처를 하나씩 씁니다. Memory Profiler 로 (1) `UnloadSceneAsync` 만 부른 경우, (2) 그 뒤 `Resources.UnloadUnusedAssets` 를 부른 경우, (3) static 리스트가 그 텍스처를 잡고 있는 경우의 스냅숏을 비교해 표로 정리하고, 마지막으로 퀘스트 서비스가 보스 참조 대신 \"보스 처치\" 이벤트를 받도록 바꿔 층을 넘긴 뒤에도 예외가 없는지 확인하세요."
     }
   ]
 }
