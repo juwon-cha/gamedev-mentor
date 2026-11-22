@@ -194,6 +194,9 @@ details > :not(summary) { margin-top: 6px; }
 .src { font: .72rem var(--mono); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; text-decoration: none; color: var(--ink-2); white-space: nowrap; }
 .src.big { font: .8rem var(--font); padding: 4px 10px; color: var(--accent); border-color: var(--accent); min-height: 30px; display: inline-flex; align-items: center; white-space: normal; }
 .src.missing { border-style: dashed; }
+.src.basis { font-family: var(--font); cursor: help; }
+.src.basis-principle { background: var(--surface-2); }
+.src.basis-tests { color: var(--ok); border-color: var(--ok); background: var(--ok-soft); }
 .rubric { border: 1.5px solid var(--line); border-radius: var(--r); padding: 14px; background: var(--surface); }
 .rb-cat { display: flex; flex-direction: column; gap: 4px; }
 .rb-cat > b { font-size: .88rem; }

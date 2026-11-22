@@ -2,6 +2,7 @@
 /* 구독 중인 AI(Gemini·Claude 앱)에 붙여넣을 프롬프트를 조립합니다. 이 앱은 AI를 직접 호출하지 않습니다. */
 const PromptBuilder = (() => {
   const MODE_NAME = { tutoring: '과외·개념', interview: '압박 면접', debugging: '디버깅', implementation: '실전 구현' };
+  const BASIS_NAME = { principle: '일반 원칙', tests: '테스트로 확인' };
   const list = arr => (arr && arr.length ? arr.map(x => `- ${x}`).join('\n') : '- (없음)');
   const fence = (code, lang) => '```' + (lang && lang !== 'none' ? lang : '') + '\n' + String(code).replace(/\s+$/, '') + '\n```';
   const srcLine = (id, sources) => { const s = sources && sources[id]; return s ? `- [${id}] ${s.title} — ${s.url}` : `- [${id}]`; };
@@ -34,9 +35,9 @@ const PromptBuilder = (() => {
     if (rb) {
       out.push('## 공식 채점표 (100점 만점)',
         '| ID | 분류 | 채점 기준 | 배점 | 근거 |', '|---|---|---|---|---|',
-        ...rb.criteria.map(c => `| ${c.id} | ${c.category} | ${String(c.description).replace(/\|/g, '/')} | ${c.points} | ${c.sourceId || '-'} |`), '');
+        ...rb.criteria.map(c => `| ${c.id} | ${c.category} | ${String(c.description).replace(/\|/g, '/')} | ${c.points} | ${c.sourceId || BASIS_NAME[c.basis] || '-'} |`), '');
       if ((rb.criticalDeductions || []).length) out.push('### 치명적 감점 (해당하면 차감)',
-        ...rb.criticalDeductions.map(d => `- ${d.id}: ${d.description} (${d.penalty}점${d.sourceId ? `, 근거 ${d.sourceId}` : ''})`), '');
+        ...rb.criticalDeductions.map(d => `- ${d.id}: ${d.description} (${d.penalty}점${d.sourceId ? `, 근거 ${d.sourceId}` : BASIS_NAME[d.basis] ? `, 근거 ${BASIS_NAME[d.basis]}` : ''})`), '');
       out.push('### 등급', '- 85점 이상: Pass · Senior Ready / 60~84점: Borderline · 복습 권장 / 59점 이하: Retry · 오답노트 필수', '');
     } else if ((p.reviewCriteria || []).length) {
       out.push('## 평가 기준', list(p.reviewCriteria), '');

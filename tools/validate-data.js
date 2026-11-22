@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 /* 문제 파일의 스키마·채점표 합계·출처 ID를 검사합니다. (Node 18+)
    사용법: node tools/validate-data.js            → data/의 모든 트랙 파일
-           node tools/validate-data.js <파일>...  → 지정한 파일만 */
+           node tools/validate-data.js <파일>...  → 지정한 파일만
+           --strict-basis  채점 항목·치명적 감점마다 sourceId나 basis 중 하나를 요구 */
 const fs = require('fs'), path = require('path');
 const dataDir = path.join(__dirname, '..', 'data');
 const regList = JSON.parse(fs.readFileSync(path.join(dataDir, 'sources.json'), 'utf8')).sources;
 const reg = new Set(regList.map(s => s.id));
 const regUrl = Object.fromEntries(regList.map(s => [s.id, s.url]));
 const tracks = JSON.parse(fs.readFileSync(path.join(dataDir, 'tracks.json'), 'utf8')).tracks;
-const files = process.argv.length > 2 ? process.argv.slice(2) : fs.readdirSync(dataDir).filter(f => /^track\d+_.*\.json$/.test(f)).map(f => path.join(dataDir, f));
+const args = process.argv.slice(2), strictBasis = args.includes('--strict-basis'), fileArgs = args.filter(a => a !== '--strict-basis');
+const BASIS = ['principle', 'tests'];
+const files = fileArgs.length ? fileArgs : fs.readdirSync(dataDir).filter(f => /^track\d+_.*\.json$/.test(f)).map(f => path.join(dataDir, f));
 const CATS = { '정확성': 35, '메모리·성능': 30, '엔진·언어 규약': 20, '아키텍처·가독성': 15 };
 const MODES = ['tutoring', 'interview', 'debugging', 'implementation'];
 const ids = new Set(); let bad = 0, count = 0;
@@ -42,9 +45,11 @@ for (const file of files) {
     for (const [cat, pts] of Object.entries(CATS)) { const s = crit.filter(c => c.category === cat).reduce((a, c) => a + c.points, 0); if (s !== pts) e(`${cat} 배점 ${s} (${pts}이어야 함)`); }
     const cid = new Set();
     crit.forEach(c => { if (!(c.category in CATS)) e(`category 오류: ${c.category}`); if (cid.has(c.id)) e(`criteria id 중복: ${c.id}`); cid.add(c.id); if (c.sourceId && !known(c.sourceId)) e(`알 수 없는 sourceId: ${c.sourceId}`); });
+    const checkBasis = (c, k) => { if (c.basis !== undefined && !BASIS.includes(c.basis)) e(`${k} ${c.id}: basis 값 오류 ${c.basis} (principle 또는 tests)`); if (c.basis === 'tests' && !p.tests) e(`${k} ${c.id}: basis가 tests인데 문제에 tests가 없음`); if (strictBasis && !c.sourceId && !c.basis) e(`${k} ${c.id}: sourceId나 basis가 필요함`); };
+    crit.forEach(c => checkBasis(c, '채점 항목'));
     const ded = rb.criticalDeductions || [];
     if (ded.length < 2 || ded.length > 3) e(`criticalDeductions ${ded.length}개 (2~3개)`);
-    ded.forEach(d => { if (!(d.penalty <= -10 && d.penalty >= -30)) e(`penalty 범위 오류: ${d.penalty}`); if (d.sourceId && !known(d.sourceId)) e(`알 수 없는 sourceId: ${d.sourceId}`); });
+    ded.forEach(d => { if (!(d.penalty <= -10 && d.penalty >= -30)) e(`penalty 범위 오류: ${d.penalty}`); if (d.sourceId && !known(d.sourceId)) e(`알 수 없는 sourceId: ${d.sourceId}`); checkBasis(d, '감점'); });
     if (p.tests) {
       if (typeof p.tests.template !== 'string' || p.tests.template.split('{{USER_CODE}}').length !== 2) e('tests.template에 {{USER_CODE}}가 정확히 1개 있어야 함');
       if (!(p.tests.cases || []).length) e('tests.cases 비어 있음');

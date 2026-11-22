@@ -77,8 +77,9 @@ node -e "JSON.parse(require('fs').readFileSync('data/track1_csharp.json','utf8')
 | `concept`, `quiz` | 개념 카드, `{question, answer}` 셀프 체크 (과외) |
 | `solutionCode`, `explanation` | 모범 코드, 시니어 해설 |
 | `sourceRefs` | 출처 ID 배열. `data/sources.json`의 `id`나 같은 파일 `extraSources`의 `id` |
-| `rubric.criteria` | `{id, category, description, points, sourceId}` 배열. 배점 합계 100 (정확성 35 / 메모리·성능 30 / 엔진·언어 규약 20 / 아키텍처·가독성 15) |
-| `rubric.criticalDeductions` | `{id, description, penalty, sourceId}` 배열. 실무에서 바로 반려되는 실수, 음수 점수 |
+| `rubric.criteria` | `{id, category, description, points, sourceId 또는 basis}` 배열. 배점 합계 100 (정확성 35 / 메모리·성능 30 / 엔진·언어 규약 20 / 아키텍처·가독성 15) |
+| `rubric.criticalDeductions` | `{id, description, penalty, sourceId 또는 basis}` 배열. 실무에서 바로 반려되는 실수, 음수 점수 |
+| `basis` | 채점 항목·감점의 근거 종류. 근거 문서(`sourceId`) 대신 `"principle"`(항목 설명에 밝힌 일반 공학 원칙, 화면에 "일반 원칙") 또는 `"tests"`(숨은 테스트가 그 동작을 직접 확인, 화면에 "테스트로 확인")를 씁니다. 모든 항목은 `sourceId`나 `basis` 중 하나를 가집니다 |
 | `tests` | 실행 채점용 숨은 테스트 또는 `null`. 아래 참고 |
 | `verified` | `{level, date, note}`. 독립 검수를 통과한 문제에 붙음. `executed`(실행 검증) / `reviewed`(문서 대조) |
 | `nextMission` | 다음 복습 미션 |

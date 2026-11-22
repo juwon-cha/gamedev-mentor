@@ -20,6 +20,14 @@ const Rubric = (() => {
   }
   const missed = (p, checked) => p.rubric.criteria.filter(c => !checked.includes(c.id));
 
+  /* basis: 근거 문서 대신 근거의 종류를 밝힌 항목의 배지 */
+  const BASIS = {
+    principle: { label: '일반 원칙', title: '항목 설명에 밝힌 일반 공학 원칙을 채점합니다' },
+    tests: { label: '테스트로 확인', title: '숨은 테스트가 이 동작을 직접 확인합니다' },
+  };
+  const basisBadge = (b, h) => (BASIS[b] ? `<span class="src basis basis-${b}" title="${h.esc(BASIS[b].title)}">${h.esc(BASIS[b].label)}</span>` : '');
+  const badges = (c, h) => (c.sourceId ? ' ' + h.srcBadge(c.sourceId) : '') + (c.basis && BASIS[c.basis] ? ' ' + basisBadge(c.basis, h) : '');
+
   /* esc, inline: 문자열 이스케이프·인라인 마크다운 함수 / srcBadge: sourceId → 배지 HTML */
   function render(p, saved, h) {
     if (!has(p)) return '';
@@ -27,7 +35,7 @@ const Rubric = (() => {
     const r = compute(p, checked, ded);
     const cats = [...new Set(p.rubric.criteria.map(c => c.category))];
     const row = (c, kind, on) => `<li><label><input type="checkbox" data-rubric="${kind}" value="${h.esc(c.id)}" id="rb-${kind}-${h.esc(c.id)}" ${on ? 'checked' : ''}>
-      <span class="rb-desc">${h.inline(String(c.description))}${c.sourceId ? ' ' + h.srcBadge(c.sourceId) : ''}</span>
+      <span class="rb-desc">${h.inline(String(c.description))}${badges(c, h)}</span>
       <span class="rb-pts num">${kind === 'c' ? '+' + c.points : c.penalty}</span></label></li>`;
     return `<section class="sec rubric" id="rubric">
       <h3>공식 채점표 · 자가 채점 <span class="muted">(100점 만점)</span></h3>
