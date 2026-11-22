@@ -4,7 +4,9 @@
            node tools/validate-data.js <파일>...  → 지정한 파일만 */
 const fs = require('fs'), path = require('path');
 const dataDir = path.join(__dirname, '..', 'data');
-const reg = new Set(JSON.parse(fs.readFileSync(path.join(dataDir, 'sources.json'), 'utf8')).sources.map(s => s.id));
+const regList = JSON.parse(fs.readFileSync(path.join(dataDir, 'sources.json'), 'utf8')).sources;
+const reg = new Set(regList.map(s => s.id));
+const regUrl = Object.fromEntries(regList.map(s => [s.id, s.url]));
 const tracks = JSON.parse(fs.readFileSync(path.join(dataDir, 'tracks.json'), 'utf8')).tracks;
 const files = process.argv.length > 2 ? process.argv.slice(2) : fs.readdirSync(dataDir).filter(f => /^track\d+_.*\.json$/.test(f)).map(f => path.join(dataDir, f));
 const CATS = { '정확성': 35, '메모리·성능': 30, '엔진·언어 규약': 20, '아키텍처·가독성': 15 };
@@ -14,6 +16,7 @@ for (const file of files) {
   const j = JSON.parse(fs.readFileSync(file, 'utf8')), f = path.basename(file);
   const extra = new Set((j.extraSources || []).map(s => s.id));
   const known = id => reg.has(id) || extra.has(id);
+  for (const s of j.extraSources || []) if (regUrl[s.id] && regUrl[s.id] !== s.url) { console.log(`${f}: extraSources id ${s.id}가 sources.json의 같은 id와 다른 주소를 가리킴`); bad++; }
   const tr = tracks.find(t => t.id === j.track);
   if (!tr) { console.log(`${f}: tracks.json에 없는 트랙 ${j.track}`); bad++; }
   for (const s of j.extraSources || []) if (!s.id || !s.title || !/^https?:\/\//.test(s.url || '')) { console.log(`${f}: extraSources 항목 오류 ${s.id}`); bad++; }
