@@ -193,6 +193,60 @@
       "title": "Microsoft Learn — Enumeration types (C# reference)",
       "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum",
       "summary": "열거형 멤버의 상수 값은 기본적으로 int 이고, 0 에서 시작해 정의된 순서대로 1 씩 증가한다."
+    },
+    {
+      "id": "wiki-partial-sorting",
+      "title": "Wikipedia — Partial sorting",
+      "url": "https://en.wikipedia.org/wiki/Partial_sorting",
+      "summary": "상위(또는 하위) k 개만 순서대로 구하는 부분 정렬. 크기 k 인 힙을 유지하며 입력을 한 번 훑는 방법은 삽입마다 O(log k), 전체 O(n log k) 이고 k 가 작거나 입력이 흘러 들어오는 상황에 실용적이라고 설명한다."
+    },
+    {
+      "id": "ms-dotnet9-priorityqueue-remove",
+      "title": "Microsoft Learn — What's new in .NET 9 libraries: PriorityQueue.Remove() method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/libraries#priorityqueueremove-method",
+      "summary": "배열 힙은 일반적으로 우선순위 갱신을 지원하지 않는다는 설명과, .NET 9 에 추가된 Remove 로 갱신을 흉내 낼 수 있지만 O(n) 시간이 든다는 안내."
+    },
+    {
+      "id": "redblob-line-drawing",
+      "title": "Red Blob Games — Line drawing on a grid",
+      "url": "https://www.redblobgames.com/grids/line-drawing/",
+      "summary": "격자 위 선 그리기. 선형 보간으로 찍는 선(N = 대각 거리, 점 N+1 개), 경계선을 하나씩 건너는 grid walking, 선이 지나는 모든 칸을 잡는 supercover line 의 정수 판정식, 시야 판정에서 대각 이동이 벽 사이를 통과하는 문제를 다룬다."
+    },
+    {
+      "id": "wiki-bresenham",
+      "title": "Wikipedia — Bresenham's line algorithm",
+      "url": "https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm",
+      "summary": "정수 덧셈·뺄셈·시프트만으로 직선에 가까운 래스터 점을 고르는 알고리즘. 기울기가 0 과 1 사이인 구간에서는 열 x 마다 선의 픽셀이 든 행 y 가 정확히 하나라고 설명한다."
+    },
+    {
+      "id": "aipro-behavior-selection",
+      "title": "Game AI Pro, Chapter 4 — Behavior Selection Algorithms: An Overview (Dawe, Gargolinski, Dicken, Humphreys, Mark)",
+      "url": "https://www.gameaipro.com/GameAIPro/GameAIPro_Chapter04_Behavior_Selection_Algorithms.pdf",
+      "summary": "FSM, HFSM(history state), Behavior Tree, Utility System, GOAP, HTN 을 한 장에서 비교하는 개관. 구조마다 동작 방식, 장점, 약점(상태 폭발, 매번 루트부터 평가, 튜닝의 어려움, 연출 통제력 상실)을 정리한다."
+    },
+    {
+      "id": "wiki-utility-system",
+      "title": "Wikipedia — Utility system",
+      "url": "https://en.wikipedia.org/wiki/Utility_system",
+      "summary": "행동마다 점수(utility)를 매겨 가장 높은 것을 고르거나 점수를 가중치로 무작위 선택하는 게임 AI 구조. 행동 사이의 우선순위를 사람이 직접 적지 않아도 된다는 점을 Behavior Tree 와 대비해 설명한다."
+    },
+    {
+      "id": "redblob-hex-range",
+      "title": "Red Blob Games — Hexagonal Grids: Movement Range (Obstacles)",
+      "url": "https://www.redblobgames.com/grids/hexagons/#range-obstacles",
+      "summary": "장애물이 있을 때 이동 범위를 구하는 가장 단순한 방법으로 거리 제한 flood fill(너비 우선 탐색)을 제시하고, k 걸음에 닿는 칸들을 단계별로 넓혀 가는 의사코드를 보여 준다."
+    },
+    {
+      "id": "wiki-dijkstra",
+      "title": "Wikipedia — Dijkstra's algorithm",
+      "url": "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm",
+      "summary": "음수가 아닌 간선 가중치에서 최단 경로를 구하는 알고리즘. 이진 힙을 쓰면 O((V+E) log V), 시작점 하나만 큐에 넣고 발견하는 대로 추가하는 변형을 설명한다."
+    },
+    {
+      "id": "ms-learn-list-sort",
+      "title": "Microsoft Learn — List<T>.Sort Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=net-8.0",
+      "summary": "List<T>.Sort 는 Array.Sort 를 쓰는 불안정 정렬이라 같은 값의 순서가 보존되지 않을 수 있다고 명시한다."
     }
   ],
   "problems": [
@@ -2578,6 +2632,811 @@
       },
       "nextMission": "상태에 들어갈 때 한 번 실행되는 진입 동작을 추가하세요: `SetOnEnter(EnemyState state, Action action)` 으로 등록하고, `Fire` 가 전이에 성공하면 새 상태의 동작을 한 번 호출합니다(동작도 상태 수 크기의 배열에 둡니다). `Stunned` 의 진입 동작에서 횟수를 세어, 기절 중에 `Stun` 이 다시 와도 횟수가 늘지 않는지 확인하세요. 그런 다음 퀴즈 2 의 \"기절이 풀리면 하던 상태로 돌아가기\"를 `Stack<EnemyState>` 로 구현해 보세요.",
       "tests": null
+    },
+    {
+      "id": "t3-impl-leaderboard-topk-minheap",
+      "track": "track3",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "아케이드 랭킹 보드: 최소 힙으로 상위 K 개 기록만 유지하기",
+      "tags": [
+        "Algo_TopK_Heap",
+        "Algo_Leaderboard_TieRule"
+      ],
+      "language": "csharp",
+      "scenario": "아케이드 슈팅 게임의 **오늘의 랭킹 TOP K** 보드입니다. 하루에 수십만 판의 기록이 제출되지만 화면에 보이는 것은 상위 K 개(예: 100개)뿐입니다. 그래서 서버는 제출된 기록을 전부 쌓아 두지 않고 **가장 좋은 K 개만** 메모리에 둡니다.\n\n`Leaderboard` 를 구현하세요.\n\n**순위 규칙**\n\n- 점수가 높은 기록이 순위가 높습니다.\n- 점수가 같으면 **먼저 제출한 기록**이 순위가 높습니다.\n- 기록은 판마다 따로입니다. 오락실 점수판처럼 한 플레이어의 기록이 보드에 여러 개 올라갈 수 있습니다.\n\n**메서드**\n\n- `Submit(player, score)`: 기록을 제출합니다. 제출 직후 이 기록이 보드에 있으면 `true`, 없으면 `false` 입니다. 보드가 가득 찼을 때 새 기록의 점수가 K 위 기록과 **같으면**, 먼저 제출한 쪽이 이기므로 새 기록은 들어가지 못합니다.\n- `GetTop()`: 보드의 기록을 1위부터 차례로 담은 **새 리스트**. 기록이 K 개보다 적으면 있는 만큼만, 하나도 없으면 빈 리스트입니다. 호출해도 보드는 바뀌지 않습니다.\n- `RankOf(player)`: 그 플레이어의 기록 중 보드에서 **가장 높은 순위**(1부터). 보드에 그 플레이어의 기록이 없으면 `0`.\n\n예: K = 3\n\n| 호출 | 반환 | 보드(1위부터) |\n|---|---|---|\n| `Submit(\"ann\", 100)` | true | `ann:100` |\n| `Submit(\"bob\", 300)` | true | `bob:300 ann:100` |\n| `Submit(\"ann\", 300)` | true | `bob:300 ann:300 ann:100` |\n| `Submit(\"cat\", 100)` | false | `bob:300 ann:300 ann:100` |\n| `Submit(\"cat\", 200)` | true | `bob:300 ann:300 cat:200` |\n\n이 상태에서 `RankOf(\"ann\")` 은 2, `RankOf(\"cat\")` 은 3, `RankOf(\"dan\")` 은 0 입니다.\n\n`k` 는 1 이상이고, 점수는 음수일 수도 있습니다.",
+      "constraints": [
+        "`Submit` 은 O(log K) 이다. 제출할 때마다 보드를 정렬하거나 처음부터 훑지 않는다.",
+        "메모리는 O(K) 이다. 보드에 들지 못한 기록과 밀려난 기록은 저장하지 않는다.",
+        "`GetTop` 과 `RankOf` 는 결과 화면을 열 때만 불리므로 O(K log K) 까지 허용한다. 이때 K 개를 정렬하는 데는 `List<T>.Sort` 를 써도 된다.",
+        "힙은 .NET 8 의 `PriorityQueue<TElement, TPriority>` 를 써도 되고 직접 구현해도 된다. `SortedSet`, `SortedList`, LINQ(`OrderBy` 등)는 쓰지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 아케이드 랭킹 보드: 가장 좋은 기록 K 개만 남긴다.\n// 점수가 높을수록 순위가 높고, 점수가 같으면 먼저 제출한 기록이 높다.\npublic sealed class Leaderboard\n{\n    // k 는 1 이상이다.\n    public Leaderboard(int k)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 기록 하나를 제출한다. 이 기록이 보드(상위 K)에 들어갔으면 true, 못 들어갔으면 false.\n    public bool Submit(string player, int score)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 보드의 기록을 1위부터 차례로 담은 새 리스트. 보드의 내용은 바뀌지 않는다.\n    public List<(string player, int score)> GetTop()\n    {\n        throw new NotImplementedException();\n    }\n\n    // player 의 기록 중 보드에서 가장 높은 순위(1부터). 보드에 기록이 없으면 0.\n    public int RankOf(string player)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "가득 찬 보드에 커트라인(K 위)과 같은 점수를 제출하는 경우: 들어가지 못하고 보드는 그대로다.",
+        "동점인 기록 둘 중 하나가 밀려나야 하는 경우: 늦게 제출한 쪽이 나간다.",
+        "한 플레이어의 기록이 보드에 여러 개 있을 때의 `RankOf`, 기록이 모두 밀려난 플레이어의 `RankOf`.",
+        "기록이 K 개보다 적을 때, 그리고 K = 1 일 때."
+      ],
+      "hints": [
+        "K = 2 인 보드에 `ann:100`, `bob:100` 이 차례로 들어와 있습니다. 여기에 `cat:100` 을 제출하면 보드에는 누가 남아야 하나요? 이어서 `dan:101` 을 제출하면 `ann` 과 `bob` 중 누가 나가야 하나요? 새 기록이 들어올 때 비교할 상대는 1위가 아니라 **꼴찌(K 위)** 입니다. \"가장 약한 것을 가장 빨리 꺼내는 자료구조\"가 무엇인지 떠올려 보세요.",
+        "K 개를 최소 힙에 담으면 루트가 곧 커트라인입니다. 그런데 우선순위를 점수 하나로만 두면 동점일 때 누가 루트에 오는지 정해지지 않습니다. 제출할 때마다 1 씩 커지는 순번을 함께 저장하고, \"점수가 같으면 **늦게** 제출한 기록이 더 약하다\"가 되도록 우선순위를 값 두 개로 구성하세요. 그리고 `GetTop` 에서 힙의 원소를 꺼내 버리면 보드가 비게 됩니다. 꺼내지 말고 복사해서 정렬해야 합니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nheap  = 최소 힙, 우선순위 = (점수, ____)     // 루트 = 가장 약한 기록\nseq   = 0\n\nSubmit(player, score):\n    entry = (score, ____);  seq += 1\n    if heap.Count < K:  heap 에 넣고 return true\n    weakest = heap 의 루트(꺼내지 않고 본다)\n    if ____ : return false                   // 동점이면 누가 이기는가?\n    루트를 빼고 entry 를 넣는다\n    return true\n\nGetTop():\n    items = heap 의 내용을 복사(순서 없음)\n    items 를 (점수 내림차순, ____ ) 으로 정렬\n    return items\n\nRankOf(player):\n    GetTop() 을 앞에서부터 보다가 처음 만난 player 의 위치 + 1, 없으면 0\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 아케이드 랭킹 보드: 가장 좋은 기록 K 개만 남긴다.\n// 점수가 높을수록 순위가 높고, 점수가 같으면 먼저 제출한 기록이 높다.\npublic sealed class Leaderboard\n{\n    private readonly int _k;\n\n    // 최소 힙. 루트는 \"보드에서 가장 약한 기록\", 곧 커트라인이다.\n    // 우선순위 (score, -seq): 점수가 낮을수록, 점수가 같으면 늦게 제출한 기록일수록 약하다.\n    private readonly PriorityQueue<string, (int score, long negSeq)> _heap;\n    private long _nextSeq; // 제출 순번. 동점일 때 누가 먼저였는지 가린다.\n\n    public Leaderboard(int k)\n    {\n        _k = k;\n        _heap = new PriorityQueue<string, (int score, long negSeq)>(k);\n    }\n\n    public bool Submit(string player, int score)\n    {\n        var entry = (score, negSeq: -_nextSeq);\n        _nextSeq++;\n\n        if (_heap.Count < _k)\n        {\n            _heap.Enqueue(player, entry);\n            return true;\n        }\n\n        // 가득 찼다면 커트라인(루트)과만 비교한다.\n        _heap.TryPeek(out _, out var weakest);\n        // 새 기록은 언제나 가장 늦은 제출이므로, 점수가 같으면 커트라인을 넘지 못한다.\n        if (score <= weakest.score) return false;\n\n        _heap.Dequeue();              // 가장 약한 기록을 밀어내고\n        _heap.Enqueue(player, entry); // 새 기록을 넣는다\n        return true;\n    }\n\n    public List<(string player, int score)> GetTop()\n    {\n        // 힙의 내부 배열 순서는 순위가 아니다. K 개를 복사해 순위 기준으로 정렬한다.\n        var items = new List<(string player, int score, long negSeq)>(_heap.Count);\n        foreach (var (element, priority) in _heap.UnorderedItems)\n            items.Add((element, priority.score, priority.negSeq));\n\n        items.Sort((a, b) =>\n        {\n            int byScore = b.score.CompareTo(a.score);                     // 점수 높은 순\n            return byScore != 0 ? byScore : b.negSeq.CompareTo(a.negSeq); // 같으면 먼저 제출한 순\n        });\n\n        var top = new List<(string player, int score)>(items.Count);\n        foreach (var it in items) top.Add((it.player, it.score));\n        return top;\n    }\n\n    public int RankOf(string player)\n    {\n        var top = GetTop();\n        for (int i = 0; i < top.Count; i++)\n            if (top[i].player == player) return i + 1; // 1위부터 훑으므로 처음 만난 것이 가장 높은 순위\n        return 0;\n    }\n}\n",
+      "explanation": "**접근.** 새 기록이 보드에 드는지는 1위가 아니라 **K 위(커트라인)** 와 비교해야 알 수 있습니다. 그래서 K 개를 \"가장 약한 기록이 루트에 오는\" 최소 힙에 담습니다. 보드가 덜 찼으면 그냥 넣고, 가득 찼으면 루트와 비교해 더 좋을 때만 루트를 빼고 새 기록을 넣습니다. Wikipedia 의 Partial sorting 문서가 설명하는 힙 기반 방법이 이것입니다. 문서는 \"가장 작은 k 개\"를 구하는 예라서 최대 힙으로 설명하는데, 우리는 가장 큰 K 개가 필요하므로 방향을 뒤집은 최소 힙을 씁니다. 같은 문서는 삽입 한 번이 O(log k), 전체가 O(n log k) 이며 k 가 작을 때와 입력이 계속 들어오는 상황에 실용적이라고 적습니다.\n\n**동점 규칙은 우선순위 안에 넣습니다.** Microsoft Learn 에 따르면 `PriorityQueue<TElement, TPriority>` 는 우선순위 값이 가장 낮은 원소를 먼저 꺼내는 최소 힙이고, 우선순위가 같은 원소의 선입선출을 보장하지 않습니다. 점수만 우선순위로 쓰면 동점인 기록 중 누가 커트라인이 되는지 알 수 없다는 뜻입니다. 그래서 제출 순번 `seq` 를 함께 저장하고 우선순위를 `(score, -seq)` 로 둡니다. 튜플은 앞 항목부터 비교하므로 점수가 낮은 기록이 먼저, 점수가 같으면 `-seq` 가 작은(= 늦게 제출한) 기록이 먼저 루트에 옵니다. \"보드에서 가장 약한 기록\"의 정의와 정확히 같습니다.\n\n**Submit.** 새 기록은 언제나 지금까지 중 가장 늦은 제출입니다. 따라서 커트라인과 점수가 같으면 반드시 지고, `score <= weakest.score` 이면 `false` 를 반환하면 됩니다. `<` 로 쓰면 늦게 온 동점 기록이 먼저 온 기록을 밀어냅니다.\n\n**GetTop / RankOf.** 힙의 내부 배열은 순위 순서가 아닙니다. Microsoft Learn 도 `UnorderedItems` 를 \"순서 없이 열거하는 컬렉션\"이라고 설명합니다. 그래서 K 개를 복사한 뒤 (점수 내림차순, 순번 오름차순)으로 정렬합니다. 비교 기준에 순번이 들어가 있어 동점이 없으므로 불안정 정렬인 `List<T>.Sort` 를 써도 결과가 하나로 정해집니다. `Dequeue` 를 K 번 불러 순서를 얻으면 보드가 비어 버립니다. `RankOf` 는 1위부터 훑어 처음 만난 기록의 위치를 돌려주므로 \"가장 높은 순위\"가 됩니다.\n\n**복잡도.** `Submit` 은 힙 연산 한두 번이라 O(log K), 메모리는 O(K), `GetTop` 과 `RankOf` 는 O(K log K) 입니다. 제출이 10만 건이어도 힙에는 K 개만 있습니다.\n\n**흔한 실수.** (1) 최대 힙을 쓴다. 루트가 1위라서 커트라인을 알 수 없다. (2) 가득 찬 보드에서 `>=` 로 비교해 동점인 새 기록을 넣는다. (3) 순번 없이 점수만 저장해 동점 순서가 힙의 내부 배치에 따라 달라진다. (4) `GetTop` 이 힙을 비운다. (5) `RankOf` 가 0부터 세거나, 그 플레이어의 가장 낮은 기록을 돌려준다.\n\n**이 구조가 답하지 못하는 것(추론).** 밀려난 기록은 버리므로 \"내 최고 기록은 전체 몇 위인가\" 같은 K 밖의 순위는 알 수 없습니다. 그 요구가 생기면 플레이어별 최고 기록을 따로 저장하고 순위를 셀 수 있는 다른 구조가 필요합니다. 상위 K 개만 보여 주는 보드에는 이 문제의 구조가 가장 싸게 맞습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "가장 좋은 K 개만 남고 더 좋은 기록이 오면 가장 약한 기록이 밀려난다: K = 3 에서 100, 300, 200, 250 을 차례로 제출하면 보드는 300, 250, 200 이다.",
+            "points": 12,
+            "sourceId": "wiki-partial-sorting"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "가득 찬 보드에서 커트라인과 같은 점수의 새 기록은 들어가지 못하고(false), 동점 기록 중 하나가 밀려날 때는 늦게 제출한 쪽이 나간다.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "GetTop 이 점수 내림차순, 동점이면 먼저 제출한 순서로 돌려준다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "RankOf 가 그 플레이어의 기록 중 가장 높은 순위를 1부터 세어 돌려주고, 보드에 기록이 없으면 0 을 돌려준다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Submit 이 힙의 루트(커트라인)와만 비교하고 힙 연산 한두 번으로 끝난다(O(log K)).",
+            "points": 12,
+            "sourceId": "wiki-partial-sorting"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "보드에 들지 못한 기록과 밀려난 기록을 어디에도 저장하지 않는다(메모리 O(K)).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "정렬은 GetTop / RankOf 에서 K 개에 대해서만 일어나고, Submit 안에는 정렬이나 보드 전체 순회가 없다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "동점 순서를 PriorityQueue 가 꺼내는 순서에 맡기지 않고, 제출 순번을 우선순위(또는 비교 기준)에 넣었다.",
+            "points": 10,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "GetTop 이 힙에서 원소를 꺼내지 않고 내용을 복사해(예: UnorderedItems) 새 리스트로 돌려주므로, 호출 뒤에도 보드가 그대로다.",
+            "points": 10,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"루트 = 보드에서 가장 약한 기록\"이라는 힙의 방향과 동점 규칙이 주석이나 이름으로 드러나 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "RankOf 가 순위 규칙을 다시 구현하지 않고 GetTop(또는 같은 비교 함수)을 재사용한다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "제출된 기록을 전부 저장해 두고 정렬한다: 메모리가 O(제출 수)가 되어 제약(O(K))을 넘는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "Submit 이 매번 보드 전체를 훑거나 정렬해 커트라인을 찾는다: 시간 복잡도가 제약(O(log K))을 넘는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "제출 순번 없이 점수만 저장해, 동점 처리가 PriorityQueue 의 내부 순서에 따라 달라진다.",
+            "penalty": -10,
+            "sourceId": "ms-learn-priorityqueue"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "wiki-partial-sorting",
+        "ms-learn-priorityqueue",
+        "ms-learn-list-sort"
+      ],
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Compiler Explorer(.NET 8)에서 모범 답안 전부 통과·스타터 실패를 확인하고, 동점 허용·점수만 우선순위·GetTop 이 힙을 비움·RankOf 가 0부터 세거나 최저 순위를 돌려주는 변형이 실패하고 다르게 쓴 정답은 통과함을 확인했으며, 동점·불안정 정렬·힙 설명을 Microsoft Learn 과 Wikipedia Partial sorting 원문과 대조했다."
+      },
+      "nextMission": "규칙을 \"플레이어당 최고 기록 하나만 보드에 올린다\"로 바꿔 보세요. 이미 보드에 있는 플레이어가 더 높은 점수를 내면 힙 안에 있는 그 플레이어의 항목을 바꿔야 하는데, .NET 8 의 `PriorityQueue` 에는 우선순위를 갱신하는 연산이 없습니다. `Dictionary<string, int>` 로 플레이어별 현재 최고 점수를 두고 힙에서 꺼낸 항목이 그 값과 다르면 버리는 방식으로 구현한 뒤, 이때 힙의 크기가 여전히 O(K) 로 묶이는지, 묶이지 않는다면 언제 정리해야 하는지 설명하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // 보드를 \"kim:90 lee:80\" 형태로 만든다.\n    static string Dump(System.Collections.Generic.List<(string player, int score)> top)\n    {\n        if (top == null) return \"(null)\";\n        var sb = new System.Text.StringBuilder();\n        for (int i = 0; i < top.Count; i++) { if (i > 0) sb.Append(' '); sb.Append(top[i].player).Append(':').Append(top[i].score); }\n        return sb.ToString();\n    }\n\n    static string Top(Leaderboard b, string expected, string when)\n    {\n        string got = Dump(b.GetTop());\n        return got == expected ? null : when + \": GetTop 기대 [\" + expected + \"] / 결과 [\" + got + \"]\";\n    }\n\n    static string Sub(Leaderboard b, string player, int score, bool expected)\n    {\n        bool got = b.Submit(player, score);\n        return got == expected ? null : \"Submit(\" + player + \",\" + score + \") 반환값 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Rank(Leaderboard b, string player, int expected, string when)\n    {\n        int got = b.RankOf(player);\n        return got == expected ? null : when + \": RankOf(\" + player + \") 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    // 기준 구현: 모든 제출을 (점수 내림차순, 제출 순번 오름차순)으로 세운 뒤 앞의 k 개.\n    static System.Collections.Generic.List<(string player, int score, int seq)> RefTop(System.Collections.Generic.List<(string player, int score, int seq)> all, int k)\n    {\n        var copy = new System.Collections.Generic.List<(string player, int score, int seq)>(all);\n        copy.Sort((a, c) => a.score != c.score ? c.score.CompareTo(a.score) : a.seq.CompareTo(c.seq));\n        if (copy.Count > k) copy.RemoveRange(k, copy.Count - k);\n        return copy;\n    }\n\n    static string Join(System.Collections.Generic.List<(string player, int score, int seq)> want)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int j = 0; j < want.Count; j++) { if (j > 0) sb.Append(' '); sb.Append(want[j].player).Append(':').Append(want[j].score); }\n        return sb.ToString();\n    }\n\n    static int RankIn(System.Collections.Generic.List<(string player, int score, int seq)> want, string player)\n    {\n        for (int j = 0; j < want.Count; j++) if (want[j].player == player) return j + 1;\n        return 0;\n    }\n\n    public static void Main()\n    {\n        Run(\"keeps-best-k\", () =>\n        {\n            var b = new Leaderboard(3);\n            return Top(b, \"\", \"빈 보드\") ?? Rank(b, \"ann\", 0, \"빈 보드\")\n                ?? Sub(b, \"ann\", 100, true) ?? Sub(b, \"bob\", 300, true) ?? Sub(b, \"cat\", 200, true)\n                ?? Top(b, \"bob:300 cat:200 ann:100\", \"3건 제출 후\")\n                ?? Sub(b, \"dan\", 250, true) ?? Top(b, \"bob:300 dan:250 cat:200\", \"dan 250 제출 후\")\n                ?? Sub(b, \"eve\", 150, false) ?? Top(b, \"bob:300 dan:250 cat:200\", \"eve 150 제출 후\")\n                ?? Sub(b, \"fay\", 999, true) ?? Top(b, \"fay:999 bob:300 dan:250\", \"fay 999 제출 후\");\n        });\n\n        Run(\"fewer-than-k-and-k-one\", () =>\n        {\n            var b = new Leaderboard(5);\n            string e = Sub(b, \"ann\", -5, true) ?? Sub(b, \"bob\", 0, true) ?? Top(b, \"bob:0 ann:-5\", \"5칸 보드에 2건\")\n                ?? Rank(b, \"ann\", 2, \"5칸 보드에 2건\");\n            if (e != null) return e;\n            var one = new Leaderboard(1);\n            return Sub(one, \"ann\", 10, true) ?? Sub(one, \"bob\", 5, false) ?? Sub(one, \"cat\", 10, false) ?? Top(one, \"ann:10\", \"1칸 보드\")\n                ?? Sub(one, \"dan\", 11, true) ?? Top(one, \"dan:11\", \"1칸 보드에 dan 11\") ?? Rank(one, \"ann\", 0, \"밀려난 뒤\");\n        });\n\n        Run(\"equal-scores-earlier-first\", () =>\n        {\n            var b = new Leaderboard(4);\n            return Sub(b, \"ann\", 100, true) ?? Sub(b, \"bob\", 200, true) ?? Sub(b, \"cat\", 100, true) ?? Sub(b, \"dan\", 200, true)\n                ?? Top(b, \"bob:200 dan:200 ann:100 cat:100\", \"동점 두 쌍\")\n                ?? Rank(b, \"dan\", 2, \"동점 두 쌍\") ?? Rank(b, \"cat\", 4, \"동점 두 쌍\");\n        });\n\n        Run(\"tie-at-cut-line\", () =>\n        {\n            var b = new Leaderboard(2);\n            return Sub(b, \"ann\", 100, true) ?? Sub(b, \"bob\", 100, true)\n                ?? Sub(b, \"cat\", 100, false) ?? Top(b, \"ann:100 bob:100\", \"가득 찬 보드에 커트라인과 같은 점수 제출\")\n                ?? Sub(b, \"dan\", 101, true) ?? Top(b, \"dan:101 ann:100\", \"동점 둘 중 늦게 제출한 bob 이 밀려나야 함\")\n                ?? Sub(b, \"eve\", 100, false) ?? Top(b, \"dan:101 ann:100\", \"다시 커트라인과 같은 점수 제출\");\n        });\n\n        Run(\"rank-of-best-record\", () =>\n        {\n            var b = new Leaderboard(4);\n            return Sub(b, \"kim\", 50, true) ?? Sub(b, \"lee\", 80, true) ?? Sub(b, \"kim\", 90, true) ?? Sub(b, \"park\", 80, true)\n                ?? Top(b, \"kim:90 lee:80 park:80 kim:50\", \"kim 이 기록 두 개\")\n                ?? Rank(b, \"kim\", 1, \"kim 이 기록 두 개\") ?? Rank(b, \"lee\", 2, \"kim 이 기록 두 개\") ?? Rank(b, \"park\", 3, \"kim 이 기록 두 개\") ?? Rank(b, \"choi\", 0, \"보드에 없는 플레이어\")\n                ?? Sub(b, \"choi\", 85, true) ?? Sub(b, \"choi\", 95, true)\n                ?? Top(b, \"choi:95 kim:90 choi:85 lee:80\", \"choi 85, 95 제출 후\")\n                ?? Rank(b, \"kim\", 2, \"kim 50 이 밀려난 뒤\") ?? Rank(b, \"park\", 0, \"park 이 밀려난 뒤\") ?? Rank(b, \"choi\", 1, \"choi 가 기록 두 개\");\n        });\n\n        Run(\"get-top-leaves-board-intact\", () =>\n        {\n            var b = new Leaderboard(3);\n            b.Submit(\"ann\", 10); b.Submit(\"bob\", 30); b.Submit(\"cat\", 20);\n            var first = b.GetTop();\n            if (first != null) first.Clear(); // 돌려받은 리스트를 고쳐도 보드는 그대로여야 한다\n            return Top(b, \"bob:30 cat:20 ann:10\", \"GetTop 을 한 번 부르고 그 리스트를 비운 뒤\") ?? Rank(b, \"cat\", 2, \"GetTop 을 부른 뒤\")\n                ?? Top(b, \"bob:30 cat:20 ann:10\", \"GetTop 을 두 번 부른 뒤\")\n                ?? Sub(b, \"dan\", 15, true) ?? Sub(b, \"eve\", 5, false)\n                ?? Top(b, \"bob:30 cat:20 dan:15\", \"GetTop 뒤에 이어서 제출\");\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint s = 20261122u;\n            System.Func<int, int> rnd = n => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)n); };\n            string[] names = { \"ann\", \"bob\", \"cat\", \"dan\", \"eve\", \"fay\" };\n            for (int run = 0; run < 300; run++)\n            {\n                int k = 1 + rnd(6), range = 2 + rnd(8);\n                var b = new Leaderboard(k);\n                var all = new System.Collections.Generic.List<(string player, int score, int seq)>();\n                for (int i = 0; i < 40; i++)\n                {\n                    string p = names[rnd(names.Length)]; int sc = rnd(range) * 10;\n                    all.Add((p, sc, i));\n                    var want = RefTop(all, k);\n                    bool entered = false;\n                    foreach (var w in want) if (w.seq == i) entered = true;\n                    bool got = b.Submit(p, sc);\n                    string when = \"무작위 \" + run + \"회차(k=\" + k + \") \" + (i + 1) + \"번째 제출 \" + p + \":\" + sc;\n                    if (got != entered) return when + \" 반환값 기대 \" + entered + \" / 결과 \" + got;\n                    string e = Top(b, Join(want), when + \" 후\");\n                    if (e != null) return e;\n                    foreach (string name in names)\n                    {\n                        e = Rank(b, name, RankIn(want, name), when + \" 후\");\n                        if (e != null) return e;\n                    }\n                }\n            }\n            return null;\n        });\n\n        Run(\"long-stream\", () =>\n        {\n            uint s = 77u;\n            System.Func<int, int> rnd = n => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)n); };\n            const int k = 50, n = 100000;\n            var b = new Leaderboard(k);\n            var all = new System.Collections.Generic.List<(string player, int score, int seq)>(n);\n            for (int i = 0; i < n; i++)\n            {\n                string p = \"p\" + rnd(500); int sc = rnd(3000);\n                all.Add((p, sc, i));\n                b.Submit(p, sc);\n            }\n            var want = RefTop(all, k);\n            var got = b.GetTop();\n            if (Dump(got) != Join(want)) return \"제출 10만 건(k=50) 뒤의 GetTop 이 기준 구현과 다름: 개수 기대 \" + want.Count + \" / 결과 \" + (got == null ? 0 : got.Count) + \", 1위 기대 \" + want[0].player + \":\" + want[0].score + \" / 결과 \" + (got != null && got.Count > 0 ? got[0].player + \":\" + got[0].score : \"(없음)\");\n            return Rank(b, want[k - 1].player, RankIn(want, want[k - 1].player), \"제출 10만 건 뒤\");\n        });\n    }\n}\n",
+        "cases": [
+          "keeps-best-k",
+          "fewer-than-k-and-k-one",
+          "equal-scores-earlier-first",
+          "tie-at-cut-line",
+          "rank-of-best-record",
+          "get-top-leaves-board-intact",
+          "random-vs-reference",
+          "long-stream"
+        ],
+        "note": "상위 K 개 유지와 밀려나는 기록, K 개 미만일 때와 K = 1, 동점일 때의 순서(먼저 제출한 기록이 위), 커트라인과 같은 점수의 제출이 거부되고 동점 중 늦은 기록이 밀려나는지, 한 플레이어의 기록이 여러 개일 때와 모두 밀려났을 때의 `RankOf`, `GetTop` 을 부르거나 돌려받은 리스트를 고쳐도 보드가 그대로인지를 고정 입력으로 확인합니다. 그리고 무작위 제출 12,000건에서 매 제출의 반환값, `GetTop`, 모든 플레이어의 `RankOf` 를 \"전부 저장해 정렬하는\" 기준 구현과 비교하고, 제출 10만 건(K = 50) 뒤의 보드를 비교합니다. 결과만 검사하므로 `Submit` 의 O(log K), 메모리 O(K), 금지된 컬렉션 사용 여부는 채점표로 확인하세요. `Leaderboard(int k)`, `Submit(string, int)`(bool 반환), `GetTop()`(`List<(string player, int score)>` 반환), `RankOf(string)`(int 반환) 시그니처는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t3-debug-buff-expiry-scheduler",
+      "track": "track3",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "버프 만료 스케줄러 디버깅: 갱신한 버프가 원래 시각에 꺼지고, 같은 틱에 끝나는 버프가 건 순서대로 나오지 않고, 해제했다 다시 건 버프가 끝나지 않는다",
+      "tags": [
+        "Algo_TimerQueue",
+        "Algo_StaleEntry",
+        "Algo_StableOrder"
+      ],
+      "language": "csharp",
+      "scenario": "MMORPG 전투 서버의 `BuffScheduler` 는 걸려 있는 버프 수천 개의 만료를 처리합니다. 매 틱 모든 버프를 훑지 않으려고 \"만료 시각이 가장 이른 타이머\"를 우선순위 큐에서 꺼내는 구조로 만들었습니다. 시간은 정수 틱입니다.\n\n**요구 스펙**\n\n1. 한 유닛은 같은 종류의 버프를 하나만 가집니다. `Apply(unit, buff, now, duration)` 은 걸려 있지 않으면 새로 걸고, 이미 걸려 있으면 **갱신**합니다. 갱신하면 만료 시각이 `now + duration` 으로 **바뀝니다**(더 늦어질 수도, 더 빨라질 수도 있습니다). 이전 만료 시각은 효력이 없습니다.\n2. `Cancel(unit, buff)` 는 버프를 해제합니다(디스펠). 걸려 있었으면 `true`, 아니면 `false`. 해제된 버프는 만료 이벤트를 내지 않습니다. 해제한 뒤 다시 `Apply` 하면 새로 건 버프입니다.\n3. `Advance(now, expired)` 는 만료 시각이 `now` **이하**인 버프를 모두 끝내고 `expired` 리스트에 추가합니다. 순서는 **만료 시각이 이른 것부터, 만료 시각이 같으면 먼저 건 것부터**입니다. \"건 시점\"은 그 버프에 대한 가장 최근의 `Apply` 호출입니다(갱신하면 그때 새로 건 것으로 칩니다). 한 번 건 버프는 만료 이벤트를 한 번만 냅니다.\n4. `IsActive` 와 `ActiveCount` 는 지금 걸려 있는(만료되지도 해제되지도 않은) 버프를 기준으로 답합니다.\n\n호출 규약: `now` 는 줄어들지 않고 `duration` 은 1 이상입니다. 어떤 틱에 `Apply` / `Cancel` 을 처리하기 전에는 그 틱의 `Advance(now)` 를 먼저 부릅니다(그때까지 끝나는 버프가 없으면 생략할 수 있습니다). `Advance` 를 매 틱 부르지는 않으므로 한 번의 호출이 여러 틱을 건너뛸 수 있습니다.\n\n**QA 제보**\n\n- \"가속 버프를 끝나기 직전에 다시 걸었는데, 원래 끝날 시각에 그대로 꺼진다.\"\n- \"광역 버프 여러 개가 같은 틱에 끝날 때 만료 순서가 건 순서와 다르다. '버프가 끝날 때 발동'하는 효과가 그 순서대로 처리돼서 기획서와 다른 결과가 나온다.\"\n- \"해제 마법으로 지운 버프를 다시 걸면, 지속 시간이 지나도 끝나지 않고 계속 남아 있다.\"\n\n**할 일:** 아래 코드에서 버그를 모두 찾아 고치고, 버그마다 수정 전에는 실패하고 수정 후에는 통과하는 가장 짧은 호출 순서를 제시하세요.",
+      "constraints": [
+        "`Apply` 는 O(log n), `Cancel` 은 O(1) 이다(n = 큐에 들어 있는 타이머 수). 타이머를 지우려고 큐 전체를 훑거나 큐를 다시 만들지 않는다.",
+        "`Advance` 는 이번에 꺼내는 타이머 수 m 에 대해 O(m log n) 이다. 매 틱 걸려 있는 버프 전체를 순회하지 않는다.",
+        "`BuffScheduler` 의 public 멤버(`Apply`, `Cancel`, `Advance`, `IsActive`, `ActiveCount`)의 이름과 시그니처는 유지한다.",
+        "만료 순서가 `PriorityQueue` 의 동률 처리나 `Dictionary` / `HashSet` 의 열거 순서에 의존하면 안 된다.",
+        ".NET 8 기준이다. `PriorityQueue<TElement, TPriority>` 를 그대로 써도 되고, LINQ 는 쓰지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 버프 만료 스케줄러. 시간은 정수 틱이고, 한 유닛은 같은 종류의 버프를 하나만 가진다.\npublic sealed class BuffScheduler\n{\n    // 만료 시각이 가장 이른 타이머가 먼저 나온다.\n    // 만료 시각이 같으면 유닛 번호, 버프 번호 순으로 꺼내 실행할 때마다 순서가 같게 한다.\n    private readonly PriorityQueue<(int unit, int buff), (long at, int unit, int buff)> _timers\n        = new PriorityQueue<(int unit, int buff), (long at, int unit, int buff)>();\n\n    // 지금 걸려 있는 버프와 그 만료 시각\n    private readonly Dictionary<(int unit, int buff), long> _expireAt = new Dictionary<(int unit, int buff), long>();\n\n    // 해제된 버프. 큐에 남은 타이머를 건너뛰는 데 쓴다.\n    private readonly HashSet<(int unit, int buff)> _cancelled = new HashSet<(int unit, int buff)>();\n\n    public int ActiveCount => _expireAt.Count;\n\n    public bool IsActive(int unit, int buff) => _expireAt.ContainsKey((unit, buff));\n\n    // 버프를 건다. 이미 걸려 있으면 갱신한다: 만료 시각이 now + duration 으로 바뀐다. duration 은 1 이상.\n    public void Apply(int unit, int buff, long now, long duration)\n    {\n        var key = (unit, buff);\n        long expireAt = now + duration;\n        _expireAt[key] = expireAt;\n        _timers.Enqueue(key, (expireAt, unit, buff));\n    }\n\n    // 버프를 해제한다. 걸려 있었으면 true. 해제된 버프는 만료 이벤트를 내지 않는다.\n    public bool Cancel(int unit, int buff)\n    {\n        var key = (unit, buff);\n        if (!_expireAt.Remove(key)) return false;\n        _cancelled.Add(key);\n        return true;\n    }\n\n    // 만료 시각이 now 이하인 버프를 모두 끝내고, 끝난 순서대로 expired 에 추가한다.\n    public void Advance(long now, List<(int unit, int buff)> expired)\n    {\n        while (_timers.TryPeek(out var key, out var due) && due.at <= now)\n        {\n            _timers.Dequeue();\n            if (_cancelled.Contains(key)) continue; // 해제된 버프의 타이머는 버린다\n            if (_expireAt.Remove(key)) expired.Add(key);\n        }\n    }\n}\n",
+      "edgeCases": [
+        "만료 시각과 같은 틱의 `Advance`(끝나야 한다)와 1틱 전의 `Advance`(끝나면 안 된다).",
+        "갱신으로 만료가 늦춰진 경우, 앞당겨진 경우, 그리고 만료된 뒤에 같은 버프를 다시 건 경우.",
+        "여러 버프가 같은 틱에 만료되는 경우와, `Advance` 한 번이 여러 틱을 건너뛰는 경우.",
+        "갱신했는데 만료 시각은 그대로인 경우: 시각은 같아도 \"건 시점\"이 바뀌므로 동률 안에서 뒤로 간다.",
+        "해제한 버프를 원래 만료 시각이 되기 전에 다시 건 경우."
+      ],
+      "hints": [
+        "세 가지를 손으로 따라가 보세요. (1) `Apply(1, 7, 0, 10)` → `Advance(8)` → `Apply(1, 7, 8, 10)` → `Advance(10)`: 큐에는 타이머가 몇 개 들어 있고, 10틱에 꺼낸 타이머는 \"지금 유효한\" 타이머인가요? (2) 유닛 4, 1, 6, 2 에게 차례로 50틱에 끝나는 버프를 건 뒤 `Advance(50)`: 어떤 순서로 나오고, 스펙은 어떤 순서를 요구하나요? (3) `Apply(1, 7, 0, 10)` → `Advance(5)` → `Cancel(1, 7)` → `Advance(6)` → `Apply(1, 7, 6, 10)` → `Advance(16)`: `_cancelled` 에는 무엇이 남아 있나요?",
+        "세 버그의 뿌리는 하나입니다. 큐 안의 타이머가 \"어느 버프의 타이머인가\"만 알고 \"그 버프의 **몇 번째** 타이머인가\"는 모릅니다. 그래서 `Advance` 가 꺼낸 타이머가 낡은 것인지 구별하지 못하고, `_cancelled` 는 버프 단위로만 기록해서 다시 건 버프의 새 타이머까지 버립니다. 만료 시각을 비교해 낡은 타이머를 가려내는 방법은 \"갱신했는데 만료 시각이 그대로인 경우\"에 순서가 틀립니다. 동률 순서는 우선순위 튜플의 뒤쪽 값이 정합니다. 지금 그 값은 \"먼저 건 것\"을 나타내지 않고, 그렇다고 빼 버리면 `PriorityQueue` 는 동률의 순서를 보장하지 않습니다.",
+        "고친 뒤의 뼈대입니다. 빈칸은 직접 채우세요.\n```\nliveStamp : 버프 -> 그 버프의 유효한 타이머 번호\nnextStamp = 0\n\nApply(unit, buff, now, duration):\n    stamp = nextStamp++\n    liveStamp[버프] = ____                    // 이전 타이머는 이 순간 낡은 것이 된다\n    큐에 (버프, stamp) 를 우선순위 (now + duration, ____) 로 넣는다\n\nCancel(unit, buff):\n    return liveStamp 에서 버프를 지운 결과   // 큐는 건드리지 않는다\n\nAdvance(now, expired):\n    while 큐가 비지 않았고 루트의 만료 시각 <= now:\n        (버프, stamp) 를 꺼낸다\n        if ____ :                             // 이 타이머가 그 버프의 현재 타이머인가?\n            liveStamp 에서 지우고 expired 에 추가\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 버프 만료 스케줄러. 시간은 정수 틱이고, 한 유닛은 같은 종류의 버프를 하나만 가진다.\npublic sealed class BuffScheduler\n{\n    // 큐의 원소는 \"어느 버프의 몇 번째 타이머인가\"(stamp)까지 들고 있다.\n    // 우선순위는 (만료 시각, stamp): 만료 시각이 같으면 먼저 건 타이머가 먼저 나온다.\n    private readonly PriorityQueue<((int unit, int buff) key, long stamp), (long at, long stamp)> _timers\n        = new PriorityQueue<((int unit, int buff) key, long stamp), (long at, long stamp)>();\n\n    // 지금 걸려 있는 버프 -> 그 버프의 \"유효한 타이머\"의 stamp.\n    // 큐에서 꺼낸 타이머의 stamp 가 이 값과 다르면 갱신되거나 해제되어 낡은 타이머다.\n    private readonly Dictionary<(int unit, int buff), long> _liveStamp = new Dictionary<(int unit, int buff), long>();\n\n    private long _nextStamp; // Apply 가 불릴 때마다 1 씩 증가한다\n\n    public int ActiveCount => _liveStamp.Count;\n\n    public bool IsActive(int unit, int buff) => _liveStamp.ContainsKey((unit, buff));\n\n    // 버프를 건다. 이미 걸려 있으면 갱신한다: 만료 시각이 now + duration 으로 바뀐다. duration 은 1 이상.\n    public void Apply(int unit, int buff, long now, long duration)\n    {\n        var key = (unit, buff);\n        long stamp = _nextStamp++;\n        _liveStamp[key] = stamp;                             // 이전 타이머는 이 순간 낡은 것이 된다\n        _timers.Enqueue((key, stamp), (now + duration, stamp));\n    }\n\n    // 버프를 해제한다. 걸려 있었으면 true. 해제된 버프는 만료 이벤트를 내지 않는다.\n    public bool Cancel(int unit, int buff)\n    {\n        // 큐는 건드리지 않는다. 남은 타이머는 꺼낼 때 stamp 가 맞지 않아 버려진다.\n        return _liveStamp.Remove((unit, buff));\n    }\n\n    // 만료 시각이 now 이하인 버프를 모두 끝내고, 끝난 순서대로 expired 에 추가한다.\n    public void Advance(long now, List<(int unit, int buff)> expired)\n    {\n        while (_timers.TryPeek(out var timer, out var priority) && priority.at <= now)\n        {\n            _timers.Dequeue();\n            // 이 타이머가 그 버프의 \"현재\" 타이머일 때만 만료시킨다.\n            if (_liveStamp.TryGetValue(timer.key, out long live) && live == timer.stamp)\n            {\n                _liveStamp.Remove(timer.key);\n                expired.Add(timer.key);\n            }\n        }\n    }\n}\n",
+      "explanation": "버그는 세 개이고 뿌리는 하나입니다. 큐 안의 타이머가 \"어느 버프의 것인가\"만 알고 \"그 버프의 몇 번째 타이머인가\"를 모릅니다.\n\n**버그 1 — 갱신 전의 타이머가 버프를 끝낸다.** `Apply` 는 갱신할 때 새 타이머를 넣기만 하고 예전 타이머를 큐에 그대로 둡니다. `Advance` 는 꺼낸 타이머의 버프가 `_expireAt` 에 있기만 하면 만료시킵니다. 재현: `Apply(1,7,0,10)` → `Advance(8)` → `Apply(1,7,8,10)` → `Advance(10)`. 18틱에 끝나야 할 버프가 10틱에 끝납니다. 버프가 만료된 뒤 같은 버프를 다시 걸어도, 큐에 남아 있던 더 늦은 시각의 낡은 타이머가 새 버프를 끝냅니다.\n\n**버그 2 — 같은 틱의 만료 순서가 건 순서가 아니다.** 우선순위가 `(만료 시각, unit, buff)` 라서 시각이 같으면 유닛 번호 순으로 나옵니다. 순서가 늘 같기는 하지만 스펙의 \"먼저 건 것부터\"가 아니고, 갱신한 버프를 동률 안에서 뒤로 보낼 수도 없습니다. 재현: 유닛 4, 1, 6, 2 에게 차례로 50틱에 끝나는 버프를 걸고 `Advance(50)` 하면 1, 2, 4, 6 순으로 나옵니다. `unit` 과 `buff` 를 빼고 시각만 남기는 것은 수정이 아닙니다. Microsoft Learn 은 `PriorityQueue<TElement, TPriority>` 가 우선순위가 같은 원소의 선입선출을 보장하지 않는다고 명시합니다. 수정은 뒤쪽 값을 `Apply` 마다 1 씩 커지는 순번으로 바꾸는 것입니다. 순번이 모두 다르므로 꺼내는 순서가 하나로 정해지고, 갱신은 새 순번을 받아 동률 안에서 뒤로 갑니다.\n\n**버그 3 — 해제 기록이 다시 건 버프까지 막는다.** `Cancel` 은 버프를 `_cancelled` 에 넣고, `Advance` 는 그 집합에 있는 버프의 타이머를 버립니다. 그런데 집합에서 빼는 코드가 없어서, 다시 건 버프의 **새 타이머도** 버려집니다. 재현: `Apply(1,7,0,10)` → `Advance(5)` → `Cancel(1,7)` → `Advance(6)` → `Apply(1,7,6,10)` → `Advance(16)`. 이벤트가 나오지 않고 `IsActive` 는 계속 true 입니다. `Apply` 에서 집합에서 빼기만 하면 이번에는 10틱에 낡은 타이머가 살아나 버그 1 과 같은 증상이 됩니다.\n\n**수정.** `Apply` 를 부를 때마다 1 씩 커지는 번호(stamp)를 타이머에 붙이고, `Dictionary` 에 \"버프 → 유효한 타이머의 stamp\"를 둡니다. 갱신은 그 값을 새 stamp 로 덮어쓰고, 해제는 항목을 지웁니다. `Advance` 는 꺼낸 타이머의 stamp 가 사전의 값과 같을 때만 만료시킵니다. `_expireAt` 과 `_cancelled` 는 필요 없어지고, stamp 는 버그 2 의 순번으로도 그대로 쓰입니다.\n\n**만료 시각 비교로는 부족한 이유.** \"꺼낸 타이머의 시각이 `_expireAt` 의 값과 같을 때만 만료\"로 고치면 버그 1 은 사라진 것처럼 보입니다. 하지만 `Apply(1,1,0,10)` → `Apply(2,1,1,9)` → `Apply(1,1,2,8)` 에서는 세 타이머가 모두 10틱이고, 유닛 1 의 낡은 타이머가 가장 먼저 나와 시각이 맞는다는 이유로 유닛 1 을 먼저 끝냅니다. 스펙상 갱신은 새로 건 것이므로 유닛 2 가 먼저여야 합니다.\n\n**왜 큐에서 지우지 않는가.** Microsoft Learn 의 .NET 9 문서는 배열 힙이 일반적으로 우선순위 갱신을 지원하지 않는다고 설명하고, .NET 9 에 추가된 `Remove` 로 갱신을 흉내 낼 수는 있지만 O(n) 이라고 적습니다. 그래서 낡은 타이머는 큐에 두었다가 꺼낼 때 버립니다. Red Blob Games 가 A* 구현에서 같은 노드의 중복 항목을 큐에 그대로 두는 것과 같은 계열의 선택입니다(타이머에 적용한 부분은 추론입니다).\n\n**복잡도와 남는 문제.** `Apply` O(log n), `Cancel` O(1), `Advance` 는 꺼낸 타이머마다 O(log n) 입니다. 낡은 타이머는 자기 만료 시각까지 큐에 남으므로, 긴 버프를 매 틱 갱신하는 서버라면 주기적인 정리가 필요합니다(추론입니다).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "갱신한 버프가 새 만료 시각에 한 번만 끝난다: Apply(1,7,0,10), Advance(8), Apply(1,7,8,10) 뒤 Advance(10) 은 이벤트가 없고 Advance(18) 에서 끝난다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "같은 틱에 만료되는 버프가 건 순서대로 나오고, 갱신한 버프는 동률 안에서 뒤로 간다: Apply(1,1,0,10), Apply(2,1,1,9), Apply(1,1,2,8) 뒤 Advance(10) 은 유닛 2, 유닛 1 순이다.",
+            "points": 10,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "해제 후 다시 건 버프가 새 만료 시각에 끝난다: Apply(1,7,0,10), Advance(5), Cancel(1,7), Advance(6), Apply(1,7,6,10) 뒤 Advance(10) 은 이벤트가 없고 Advance(16) 에서 끝난다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "버그 세 개 각각에 대해 수정 전에는 실패하고 수정 후에는 통과하는 호출 순서를 제시했다.",
+            "points": 5,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "갱신과 해제가 큐를 훑거나 다시 만들지 않는다. 낡은 타이머는 큐에 두고 꺼낼 때 버린다.",
+            "points": 12,
+            "sourceId": "ms-dotnet9-priorityqueue-remove"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "꺼낸 타이머가 유효한지를 Dictionary 조회 한 번으로 판정한다(타이머 번호 비교).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "Advance 가 만료 시각이 now 이하인 타이머만 꺼내고, 걸려 있는 버프 전체를 순회하지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "동률을 유닛·버프 번호나 PriorityQueue 의 내부 순서로 가르지 않고, 우선순위를 (만료 시각, Apply 순번)처럼 건 순서를 나타내는 전부 다른 값으로 만들었다.",
+            "points": 10,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "public 멤버의 이름과 시그니처를 유지했고, 유효성 판정에 TryGetValue 를 써서 조회를 한 번으로 끝낸다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"이 버프의 유효한 타이머는 무엇인가\"를 나타내는 상태가 한 곳(버프 → 번호 사전)에만 있고, 해제 집합 같은 보조 기록이 남아 있지 않다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "타이머 번호가 왜 필요한지(낡은 타이머 구별, 동률 순서)가 주석이나 이름으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "낡은 타이머를 만료 시각 비교로만 가려낸다: 갱신 후 만료 시각이 그대로인 경우 순서가 틀린다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "갱신이나 해제 때 큐 전체를 훑어 타이머를 지우거나 큐를 다시 만든다: 시간 복잡도가 제약을 넘는다.",
+            "penalty": -20,
+            "sourceId": "ms-dotnet9-priorityqueue-remove"
+          },
+          {
+            "id": "d3",
+            "description": "Apply 에서 해제 집합에서 빼는 것으로만 고쳤다: 해제 전의 타이머가 다시 건 버프를 일찍 끝낸다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "ms-learn-priorityqueue",
+        "ms-dotnet9-priorityqueue-remove",
+        "redblob-astar-impl"
+      ],
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "동률 버그를 PriorityQueue 의 동률 처리와 무관하게 늘 틀리는 (만료 시각, unit, buff) 우선순위로 바꾸고, Compiler Explorer(.NET 8)에서 스타터를 여러 번 독립 실행해 같은 실패를 확인했으며, 버그 일부만 고친 변형과 만료 시각 비교 변형이 실패하고 다른 방식의 정답이 통과함을 확인했다."
+      },
+      "nextMission": "낡은 타이머가 쌓이는 문제를 직접 재 보세요. 유닛 1,000 에게 지속 시간 10,000틱짜리 버프를 걸고 매 틱 전부 갱신하면서 큐의 크기를 기록합니다. 그런 다음 \"큐의 크기가 걸려 있는 버프 수의 두 배를 넘으면 유효한 타이머만 모아 큐를 다시 만든다\"는 정리 단계를 넣고, 정리 비용을 갱신 횟수로 나눈 평균(분할 상환) 비용이 얼마인지 설명하세요. 마지막으로 만료 순서가 정리 전후에 같은지 테스트로 확인하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string Dump(System.Collections.Generic.List<(int unit, int buff)> list)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int i = 0; i < list.Count; i++) { if (i > 0) sb.Append(' '); sb.Append('u').Append(list[i].unit).Append('b').Append(list[i].buff); }\n        return sb.ToString();\n    }\n\n    // Advance(now) 가 낸 만료 이벤트를 \"u1b7 u2b7\" 형태의 기대값과 비교한다.\n    static string Adv(BuffScheduler s, long now, string expected)\n    {\n        var list = new System.Collections.Generic.List<(int unit, int buff)>();\n        s.Advance(now, list);\n        string got = Dump(list);\n        return got == expected ? null : \"Advance(\" + now + \") 만료 기대 [\" + expected + \"] / 결과 [\" + got + \"]\";\n    }\n\n    static string Active(BuffScheduler s, int unit, int buff, bool expected, string when)\n    {\n        bool got = s.IsActive(unit, buff);\n        return got == expected ? null : when + \": IsActive(\" + unit + \",\" + buff + \") 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Count(BuffScheduler s, int expected, string when)\n    {\n        int got = s.ActiveCount;\n        return got == expected ? null : when + \": ActiveCount 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Can(BuffScheduler s, int unit, int buff, bool expected, string when)\n    {\n        bool got = s.Cancel(unit, buff);\n        return got == expected ? null : when + \": Cancel(\" + unit + \",\" + buff + \") 반환값 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    public static void Main()\n    {\n        Run(\"expires-exactly-at-its-tick\", () =>\n        {\n            var s = new BuffScheduler();\n            s.Apply(1, 7, 0, 10);\n            return Active(s, 1, 7, true, \"Apply 직후\") ?? Count(s, 1, \"Apply 직후\")\n                ?? Adv(s, 9, \"\") ?? Active(s, 1, 7, true, \"만료 1틱 전\")\n                ?? Adv(s, 10, \"u1b7\") ?? Active(s, 1, 7, false, \"만료 후\") ?? Count(s, 0, \"만료 후\")\n                ?? Adv(s, 11, \"\") ?? Adv(s, 500, \"\");\n        });\n\n        Run(\"refresh-pushes-expiry-back\", () =>\n        {\n            var s = new BuffScheduler();\n            s.Apply(1, 7, 0, 10);            // 10 에 만료 예정\n            string e = Adv(s, 8, \"\");\n            if (e != null) return e;\n            s.Apply(1, 7, 8, 10);            // 갱신: 18 에 만료\n            return Count(s, 1, \"갱신 후\")\n                ?? Adv(s, 10, \"\") ?? Active(s, 1, 7, true, \"0틱에 건 버프를 8틱에 갱신(10틱 지속)한 뒤 10틱\")\n                ?? Adv(s, 17, \"\") ?? Adv(s, 18, \"u1b7\") ?? Active(s, 1, 7, false, \"18틱\") ?? Adv(s, 100, \"\");\n        });\n\n        Run(\"refresh-to-shorter-then-apply-again\", () =>\n        {\n            var s = new BuffScheduler();\n            s.Apply(2, 3, 0, 100);           // 100 에 만료 예정\n            string e = Adv(s, 5, \"\");\n            if (e != null) return e;\n            s.Apply(2, 3, 5, 10);            // 더 짧게 갱신: 15 에 만료\n            e = Adv(s, 14, \"\") ?? Adv(s, 15, \"u2b3\") ?? Active(s, 2, 3, false, \"15틱\") ?? Adv(s, 20, \"\");\n            if (e != null) return e;\n            s.Apply(2, 3, 20, 200);          // 끝난 뒤 다시 건다: 220 에 만료\n            return Adv(s, 100, \"\") ?? Active(s, 2, 3, true, \"20틱에 다시 건 버프(200틱 지속)의 100틱\")\n                ?? Adv(s, 219, \"\") ?? Adv(s, 220, \"u2b3\") ?? Count(s, 0, \"220틱\");\n        });\n\n        Run(\"same-tick-expiry-in-apply-order\", () =>\n        {\n            var s = new BuffScheduler();\n            int[] order = { 4, 1, 6, 2, 5, 3, 8, 7 };\n            for (int i = 0; i < order.Length; i++) s.Apply(order[i], 1, i, 50 - i); // 전부 50 에 만료, 건 순서는 order\n            string e = Adv(s, 49, \"\") ?? Adv(s, 50, \"u4b1 u1b1 u6b1 u2b1 u5b1 u3b1 u8b1 u7b1\") ?? Count(s, 0, \"50틱\");\n            if (e != null) return e;\n            // 여러 틱을 한 번에 넘길 때: 만료 시각이 이른 것부터, 같으면 먼저 건 것부터\n            s.Apply(9, 2, 60, 30);  // 90\n            s.Apply(1, 2, 60, 20);  // 80\n            s.Apply(5, 2, 60, 30);  // 90\n            s.Apply(3, 2, 60, 20);  // 80\n            s.Apply(2, 2, 60, 30);  // 90\n            s.Apply(7, 2, 60, 10);  // 70\n            return Adv(s, 95, \"u7b2 u1b2 u3b2 u9b2 u5b2 u2b2\");\n        });\n\n        Run(\"refresh-counts-as-newly-applied\", () =>\n        {\n            var s = new BuffScheduler();\n            s.Apply(1, 1, 0, 10);   // A: 10 에 만료\n            s.Apply(2, 1, 1, 9);    // B: 10 에 만료\n            s.Apply(1, 1, 2, 8);    // A 갱신: 여전히 10 에 만료하지만 이제 B 보다 나중에 건 것\n            string e = Adv(s, 10, \"u2b1 u1b1\");\n            if (e != null) return \"A(0틱), B(1틱), A 갱신(2틱)이 모두 10틱에 만료. \" + e;\n            return Count(s, 0, \"10틱\") ?? Adv(s, 50, \"\");\n        });\n\n        Run(\"cancel-fires-no-event\", () =>\n        {\n            var s = new BuffScheduler();\n            s.Apply(1, 7, 0, 10);\n            s.Apply(2, 7, 0, 10);\n            return Can(s, 9, 9, false, \"건 적 없는 버프\")\n                ?? Adv(s, 4, \"\") ?? Can(s, 1, 7, true, \"걸려 있는 버프\") ?? Active(s, 1, 7, false, \"해제 후\") ?? Count(s, 1, \"해제 후\")\n                ?? Can(s, 1, 7, false, \"이미 해제한 버프\")\n                ?? Adv(s, 10, \"u2b7\") ?? Adv(s, 20, \"\") ?? Can(s, 2, 7, false, \"이미 만료된 버프\");\n        });\n\n        Run(\"cancel-then-apply-again\", () =>\n        {\n            var s = new BuffScheduler();\n            s.Apply(1, 7, 0, 10);            // 10 에 만료 예정\n            string e = Adv(s, 5, \"\") ?? Can(s, 1, 7, true, \"5틱에 해제\") ?? Adv(s, 6, \"\");\n            if (e != null) return e;\n            s.Apply(1, 7, 6, 10);            // 다시 건다: 16 에 만료\n            return Active(s, 1, 7, true, \"해제 후 다시 건 직후\")\n                ?? Adv(s, 10, \"\") ?? Active(s, 1, 7, true, \"5틱에 해제하고 6틱에 다시 건 버프(10틱 지속)의 10틱\")\n                ?? Adv(s, 15, \"\") ?? Adv(s, 16, \"u1b7\") ?? Active(s, 1, 7, false, \"16틱\") ?? Count(s, 0, \"16틱\") ?? Adv(s, 100, \"\");\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint seed = 9001u;\n            System.Func<int, int> rnd = n => { seed = seed * 1664525u + 1013904223u; return (int)((seed >> 8) % (uint)n); };\n            for (int run = 0; run < 300; run++)\n            {\n                var s = new BuffScheduler();\n                // 기준 모델: 걸려 있는 버프의 (만료 시각, 건 순번)을 리스트에 그대로 둔다.\n                var live = new System.Collections.Generic.List<(int unit, int buff, long at, int seq)>();\n                int seq = 0;\n                long now = 0;\n                for (int step = 0; step < 60; step++)\n                {\n                    now += 1 + rnd(3); // 단계마다 새 틱: Advance 를 먼저 부르고 그 틱의 Apply / Cancel 을 처리한다\n                    var due = live.FindAll(x => x.at <= now);\n                    due.Sort((a, b) => a.at != b.at ? a.at.CompareTo(b.at) : a.seq.CompareTo(b.seq));\n                    live.RemoveAll(x => x.at <= now);\n                    var sb = new System.Text.StringBuilder();\n                    for (int i = 0; i < due.Count; i++) { if (i > 0) sb.Append(' '); sb.Append('u').Append(due[i].unit).Append('b').Append(due[i].buff); }\n                    string when = \"무작위 \" + run + \"회차 \" + step + \"단계\";\n                    string e = Adv(s, now, sb.ToString());\n                    if (e != null) return when + \" \" + e;\n                    int ops = 1 + rnd(3);\n                    for (int o = 0; o < ops; o++)\n                    {\n                        int unit = 1 + rnd(3), buff = 1 + rnd(2);\n                        if (rnd(100) < 70)\n                        {\n                            long dur = 1 + rnd(8);\n                            live.RemoveAll(x => x.unit == unit && x.buff == buff);\n                            live.Add((unit, buff, now + dur, seq++));\n                            s.Apply(unit, buff, now, dur);\n                        }\n                        else\n                        {\n                            bool had = live.RemoveAll(x => x.unit == unit && x.buff == buff) > 0;\n                            e = Can(s, unit, buff, had, when + \" \" + now + \"틱\");\n                            if (e != null) return e;\n                        }\n                    }\n                    e = Count(s, live.Count, when + \" \" + now + \"틱\");\n                    if (e != null) return e;\n                    for (int unit = 1; unit <= 3; unit++)\n                        for (int buff = 1; buff <= 2; buff++)\n                        {\n                            e = Active(s, unit, buff, live.Exists(x => x.unit == unit && x.buff == buff), when + \" \" + now + \"틱\");\n                            if (e != null) return e;\n                        }\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "expires-exactly-at-its-tick",
+          "refresh-pushes-expiry-back",
+          "refresh-to-shorter-then-apply-again",
+          "same-tick-expiry-in-apply-order",
+          "refresh-counts-as-newly-applied",
+          "cancel-fires-no-event",
+          "cancel-then-apply-again",
+          "random-vs-reference"
+        ],
+        "note": "`Advance` 가 `expired` 에 추가한 버프의 목록을 순서까지 기대값과 비교하고, `IsActive` / `ActiveCount` / `Cancel` 의 반환값을 함께 확인합니다. 만료 시각의 경계(같은 틱에 끝나고 1틱 전에는 남아 있는지), 갱신으로 만료가 늦춰진 경우, 앞당겨진 뒤 다시 건 경우, 같은 틱에 끝나는 버프 여덟 개의 순서와 여러 틱을 한 번에 넘길 때의 순서, 갱신했지만 만료 시각이 그대로인 버프가 동률 안에서 뒤로 가는지, 해제된 버프가 이벤트를 내지 않는지, 해제 후 다시 건 버프가 새 시각에 끝나는지, 그리고 무작위 시나리오 300개에서 \"걸려 있는 버프를 리스트에 두고 매번 정렬하는\" 기준 구현과의 일치를 검사합니다. 세 버그는 서로 다른 케이스에서 따로 실패하고, 일부만 고치면 남은 케이스가 실패합니다. 테스트는 시나리오의 호출 규약을 지킵니다. 결과만 검사하므로 큐를 훑거나 다시 만드는지, 큐에 낡은 타이머가 얼마나 남는지는 채점표로 확인하세요. `Apply(int, int, long, long)`, `Cancel(int, int)`(bool 반환), `Advance(long, List<(int unit, int buff)>)`, `IsActive(int, int)`, `ActiveCount` 의 이름과 시그니처는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t3-impl-grid-line-of-sight-supercover",
+      "track": "track3",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "잠입 게임의 경비병 시야: 격자 위 시선이 지나는 모든 칸 검사하기",
+      "tags": [
+        "Algo_LineOfSight",
+        "Algo_GridLine_Supercover"
+      ],
+      "language": "csharp",
+      "scenario": "타일 기반 잠입 게임입니다. 경비병이 플레이어를 발견했는지 판정하려면 \"경비병 칸에서 플레이어 칸까지 시선이 벽에 막히지 않는가\"를 알아야 합니다. 이 함수는 경비병마다 매 프레임 불립니다. 그리고 UI 가 \"저 경비병이 나를 볼 수 있는가\"를 플레이어 쪽에서 거꾸로 묻기도 하므로, **어느 쪽에서 물어도 답이 같아야** 합니다.\n\n`Sight.HasLineOfSight(wall, x0, y0, x1, y1)` 을 구현하세요. `wall[x, y]` 가 `true` 이면 그 칸은 벽입니다.\n\n**규칙**\n\n1. 시선은 `(x0, y0)` 칸의 **중심**과 `(x1, y1)` 칸의 **중심**을 잇는 선분입니다.\n2. 선분이 **내부를 지나는 칸**은 전부 \"지나는 칸\"입니다. 칸의 귀퉁이를 조금만 깎고 지나가도 포함됩니다. **양 끝 칸도 지나는 칸**입니다.\n3. 지나는 칸 중 하나라도 벽이면 `false` 입니다(양 끝 칸이 벽인 경우 포함).\n4. 선분이 네 칸이 만나는 **꼭짓점을 정확히 통과**할 때, 그 꼭짓점에서 선분에 닿기만 하는 양옆 두 칸은 지나는 칸이 **아닙니다**. 다만 그 **두 칸이 모두 벽이면** 빠져나갈 틈이 없으므로 `false` 입니다. 한 칸만 벽이면 시선은 통과합니다.\n5. 위 규칙은 방향과 무관하므로 `(x0, y0) → (x1, y1)` 과 `(x1, y1) → (x0, y0)` 의 결과는 항상 같아야 합니다.\n6. 두 좌표가 같은 칸이면, 그 칸이 벽이 아닌 한 `true` 입니다.\n\n예 (S = 시작 칸, T = 대상 칸, y 는 아래로 증가)\n\n```\n(0,0) → (2,1)            (0,0) → (3,1)\ny=0   S  a  .            y=0   S  a  p  .\ny=1   .  b  T            y=1   .  q  b  T\n```\n\n- 왼쪽: 시선은 `S`, `a`(1,0), `b`(1,1), `T` 네 칸의 내부를 지납니다. `a` 나 `b` 중 하나만 벽이어도 `false` 입니다.\n- 오른쪽: 시선은 `S`, `a`(1,0) 를 지나 네 칸이 만나는 꼭짓점을 정확히 통과하고 `b`(2,1), `T` 로 갑니다. `p`(2,0) 와 `q`(1,1) 는 꼭짓점에서 닿기만 합니다. `p` 와 `q` 가 **둘 다** 벽이면 `false`, 하나만 벽이면 `true` 입니다.\n\n두 좌표는 항상 맵 안에 있습니다.",
+      "constraints": [
+        "시간 복잡도는 O(|x1 - x0| + |y1 - y0|) 이다. 맵 전체를 훑지 않는다.",
+        "힙 할당이 없어야 한다. 지나는 칸을 리스트에 모으지 말고 걸어가면서 바로 검사한다.",
+        "정수 연산만 쓴다. `float` / `double` 나눗셈과 반올림으로 칸을 정하지 않는다(경계에 걸린 값의 반올림이 방향에 따라 달라질 수 있다).",
+        "가로선(`y0 == y1`), 세로선(`x0 == x1`), 같은 칸에서도 0 으로 나누거나 배열 밖을 읽지 않는다."
+      ],
+      "starterCode": "using System;\n\npublic static class Sight\n{\n    // wall[x, y] == true 이면 (x, y) 칸은 시야를 막는 벽이다.\n    // (x0, y0) 칸의 중심과 (x1, y1) 칸의 중심을 잇는 시선이 벽에 막히지 않으면 true.\n    // 두 좌표는 항상 맵 안에 있다.\n    public static bool HasLineOfSight(bool[,] wall, int x0, int y0, int x1, int y1)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "시선이 칸의 귀퉁이만 깎고 지나가는 경우: `(0,0) → (2,1)` 에서 `(1,0)` 과 `(1,1)` 은 둘 다 지나는 칸이다.",
+        "시선이 꼭짓점을 정확히 통과하는 경우: 양옆 두 칸 중 하나만 벽이면 보이고, 둘 다 벽이면 막힌다.",
+        "시작 칸이나 대상 칸이 벽인 경우, 그리고 두 좌표가 같은 칸인 경우.",
+        "가로선과 세로선(한쪽 변화량이 0).",
+        "같은 두 칸을 반대 방향으로 물은 경우: 결과가 같아야 한다."
+      ],
+      "hints": [
+        "`(0,0) → (2,1)` 을 모눈종이에 그려 보세요. 칸 중심 (0.5, 0.5) 에서 (2.5, 1.5) 로 가는 선분은 x = 1 인 세로 경계선, y = 1 인 가로 경계선, x = 2 인 세로 경계선을 차례로 건넙니다. 경계선을 하나 건널 때마다 칸이 하나 바뀌므로 지나는 칸은 4개입니다. \"가로로 한 칸 갈 때마다 칸 하나를 찍는\" 방식은 3개만 찍어 `(1,0)` 이나 `(1,1)` 중 하나를 놓칩니다. 그 칸이 벽이면 경비병이 벽 귀퉁이 너머를 보게 됩니다.",
+        "칸 대신 **경계선**을 세세요. 건너야 할 세로 경계선은 `nx = |x1 - x0|` 개, 가로 경계선은 `ny = |y1 - y0|` 개입니다. 선분 전체를 0 ~ 1 로 볼 때 `ix` 번째 세로 경계선은 `(ix + 0.5) / nx` 지점에, `iy` 번째 가로 경계선은 `(iy + 0.5) / ny` 지점에 있습니다. 둘 중 더 가까운 쪽을 먼저 건너면 됩니다. 두 분수의 비교는 양변에 `2 * nx * ny` 를 곱하면 정수 비교가 됩니다. 두 값이 **같다면** 무슨 뜻일까요?",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\n시작 칸이 벽이면 false\nnx = |dx|, ny = |dy|, stepX = dx 의 부호, stepY = dy 의 부호\nx = x0, y = y0, ix = 0, iy = 0\nwhile ix < nx or iy < ny:\n    decision = (1 + 2*ix) * ____  -  (1 + 2*iy) * ____\n    if decision == 0:                 // 꼭짓점을 정확히 지난다\n        if ____ and ____ : return false\n        x += stepX; y += stepY; ix++; iy++\n    else if decision < 0:  x += stepX; ix++     // 세로 경계선이 먼저\n    else:                  y += stepY; iy++     // 가로 경계선이 먼저\n    if wall[x, y]: return false\nreturn true\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\npublic static class Sight\n{\n    // wall[x, y] == true 이면 (x, y) 칸은 시야를 막는 벽이다.\n    // (x0, y0) 칸의 중심과 (x1, y1) 칸의 중심을 잇는 시선이 벽에 막히지 않으면 true.\n    // 두 좌표는 항상 맵 안에 있다.\n    public static bool HasLineOfSight(bool[,] wall, int x0, int y0, int x1, int y1)\n    {\n        if (wall[x0, y0]) return false; // 양 끝 칸도 \"지나는 칸\"이다\n\n        int dx = x1 - x0, dy = y1 - y0;\n        int nx = Math.Abs(dx), ny = Math.Abs(dy); // 건너야 할 세로 경계선 수, 가로 경계선 수\n        int stepX = dx > 0 ? 1 : -1, stepY = dy > 0 ? 1 : -1;\n\n        int x = x0, y = y0;\n        int ix = 0, iy = 0; // 지금까지 건넌 세로 / 가로 경계선 수\n        while (ix < nx || iy < ny)\n        {\n            // 다음 세로 경계선은 선분의 (ix + 0.5) / nx 지점, 다음 가로 경계선은 (iy + 0.5) / ny 지점에 있다.\n            // 두 분수를 통분해 정수로 비교한다: (1 + 2 ix) * ny  vs  (1 + 2 iy) * nx\n            long decision = (long)(1 + 2 * ix) * ny - (long)(1 + 2 * iy) * nx;\n\n            if (decision == 0)\n            {\n                // 두 경계선을 동시에 만난다 = 꼭짓점을 정확히 지난다.\n                // 꼭짓점만 스치는 양옆 두 칸이 모두 벽이면 틈이 없으므로 막힌다.\n                if (wall[x + stepX, y] && wall[x, y + stepY]) return false;\n                x += stepX; y += stepY;\n                ix++; iy++;\n            }\n            else if (decision < 0)\n            {\n                x += stepX; ix++; // 세로 경계선을 먼저 만난다: 가로로 한 칸\n            }\n            else\n            {\n                y += stepY; iy++; // 가로 경계선을 먼저 만난다: 세로로 한 칸\n            }\n\n            if (wall[x, y]) return false;\n        }\n        return true;\n    }\n}\n",
+      "explanation": "**접근.** 규칙 2 가 요구하는 것은 \"선분이 지나는 모든 칸\"이고, Red Blob Games 의 Line drawing on a grid 는 이것을 **supercover line** 이라고 부릅니다. 같은 글의 방법은 칸을 찍는 대신 **경계선을 하나씩 건너는 것**입니다. 선분이 건너야 할 세로 경계선은 `nx = |dx|` 개, 가로 경계선은 `ny = |dy|` 개이고, 매 단계에서 둘 중 먼저 만나는 경계선을 건넙니다. 세로 경계선을 건너면 x 가 한 칸, 가로 경계선을 건너면 y 가 한 칸 바뀝니다.\n\n**정수 판정식.** 선분을 0 ~ 1 로 매개변수화하면 `ix` 번째 세로 경계선은 `(0.5 + ix) / nx`, `iy` 번째 가로 경계선은 `(0.5 + iy) / ny` 지점에 있습니다. Red Blob 은 이 비교에서 나눗셈과 부동소수점을 없애 `(1 + 2*ix) * ny` 와 `(1 + 2*iy) * nx` 의 비교로 바꿉니다. 차이를 `decision` 이라 하면 음수는 가로 이동, 양수는 세로 이동, **0 은 두 경계선을 동시에 만난다는 뜻, 곧 꼭짓점을 정확히 통과한다는 뜻**입니다. 이때는 대각으로 한 칸 움직입니다. Red Blob 의 표현으로 supercover 에서는 선이 꼭짓점을 정확히 지날 때만 대각 이동이 나옵니다.\n\n**꼭짓점과 벽.** 같은 글의 Line of sight 절은 대각 이동을 허용하면 벽 사이를 뚫고 지나갈 수 있다고 지적하고 두 가지 선택지를 줍니다. 가로·세로 중 한쪽만 열려 있어도 통과시키거나, 둘 다 열려 있어야 통과시키는 것입니다. 이 문제의 규칙 4 는 앞의 것이므로, 대각 이동 직전에 `wall[x + stepX, y] && wall[x, y + stepY]` 이면 막습니다.\n\n**찍는 방식이 틀리는 이유.** 선형 보간이나 Bresenham 계열은 긴 축을 한 칸 갈 때마다 칸 하나를 고릅니다. Red Blob 의 보간 선은 점이 N + 1 개(N = max(|dx|, |dy|))이고, Wikipedia 도 Bresenham 알고리즘이 기울기 0 ~ 1 구간에서 열 x 마다 정확히 한 행을 고른다고 설명합니다. 이 선들은 화면에 그리기에는 좋지만 `(0,0) → (2,1)` 에서 칸 3개만 고르므로, 선분이 실제로 지나는 `(1,0)` 과 `(1,1)` 중 하나를 검사하지 않습니다.\n\n**대칭.** Red Blob 은 보간 방식이 값이 정확히 0.5 일 때의 반올림 규칙과 부동소수점 정밀도 때문에 선을 뒤집었을 때 일관되지 않을 수 있다고 적습니다. 이 구현은 정수 비교만 하고, 지나는 칸의 집합이 선분이라는 도형으로만 정해지므로 방향을 바꿔도 같은 칸을 검사합니다. 동률일 때 한쪽 축을 임의로 먼저 가는 구현은 방향에 따라 다른 칸을 밟으므로 대칭이 깨집니다.\n\n**세부.** `nx == 0` 이면 `decision` 이 항상 양수라 세로로만 가고, `ny == 0` 이면 항상 음수라 가로로만 갑니다. 0 으로 나누는 일이 없고 별도 분기도 필요 없습니다. 한쪽 경계선을 다 건넌 뒤에는 남은 축으로만 움직이므로(부등식으로 확인할 수 있습니다) 배열 밖을 읽지 않습니다. 곱셈은 큰 맵에서 `int` 범위를 넘지 않도록 `long` 으로 합니다.\n\n**복잡도.** 반복은 최대 `nx + ny` 번이고 할당이 없습니다.\n\n**흔한 실수.** (1) 선형 보간 / Bresenham 으로 얇은 선만 검사한다. (2) 꼭짓점에서 두 옆 칸을 모두 \"지나는 칸\"으로 넣어 한쪽만 벽이어도 막는다. (3) 반대로 두 옆 칸을 아예 보지 않아 대각으로 맞닿은 벽 사이를 본다. (4) 시작 칸이나 대상 칸을 검사하지 않는다. (5) 실수 나눗셈으로 구현해 가로·세로선에서 0 으로 나누거나 방향에 따라 결과가 달라진다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "선분이 내부를 지나는 칸을 전부 검사한다: (0,0)→(2,1) 에서 (1,0) 만 벽이어도, (1,1) 만 벽이어도 false 다.",
+            "points": 12,
+            "sourceId": "redblob-line-drawing"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "꼭짓점을 정확히 통과할 때 양옆 두 칸이 모두 벽이면 false, 하나만 벽이면 true 다: (0,0)→(3,1) 에서 (2,0) 과 (1,1) 로 확인된다.",
+            "points": 9,
+            "sourceId": "redblob-line-drawing"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "양 끝 칸을 검사하고, 같은 칸끼리는 그 칸이 벽이 아니면 true 다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "모든 칸 쌍에서 A→B 와 B→A 의 결과가 같다.",
+            "points": 7,
+            "sourceId": "redblob-line-drawing"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "반복 횟수가 |dx| + |dy| 이하이고 맵 전체나 선분의 경계 상자 전체를 훑지 않는다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "함수 안에 힙 할당이 없다(리스트, 배열, 클로저, 튜플 리스트를 만들지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "벽을 만나는 즉시 반환하고 남은 칸을 계속 걷지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "다음에 건널 경계선을 정수 비교((1 + 2 ix) * ny 와 (1 + 2 iy) * nx)로 정하고 실수 나눗셈과 반올림을 쓰지 않는다.",
+            "points": 10,
+            "sourceId": "redblob-line-drawing"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "가로선, 세로선, 같은 칸에서 0 으로 나누거나 배열 밖을 읽지 않고, 판정식의 곱셈이 큰 맵에서 넘치지 않는다(long 사용).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"세로 경계선을 건넌다 / 가로 경계선을 건넌다 / 꼭짓점을 지난다\" 세 경우가 코드에서 구분되어 읽힌다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "방향별(8분면별)로 코드를 복제하지 않고 부호 변수 하나씩으로 모든 방향을 처리한다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "긴 축 한 칸마다 칸 하나만 고르는 얇은 선(선형 보간, Bresenham)으로 검사해 선분이 깎고 지나가는 칸을 놓친다.",
+            "penalty": -20,
+            "sourceId": "wiki-bresenham"
+          },
+          {
+            "id": "d2",
+            "description": "A→B 와 B→A 의 결과가 다른 입력이 있다(동률에서 한쪽 축을 먼저 가거나 실수 반올림에 의존한다).",
+            "penalty": -20,
+            "sourceId": "redblob-line-drawing"
+          },
+          {
+            "id": "d3",
+            "description": "맵 전체 또는 경계 상자의 모든 칸에 대해 선분과의 교차를 검사한다: 시간 복잡도가 제약을 넘는다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "redblob-line-drawing",
+        "wiki-bresenham"
+      ],
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Compiler Explorer(.NET 8)에서 모범 답안 통과·스타터 실패를 확인하고, 선형 보간·꼭짓점 양옆을 모두 지나는 칸으로 봄·양옆 무시·직교 이동만 하는 grid walk·끝 칸 미검사 변형이 실패하고 다른 정수 구현은 통과함을 확인했으며, supercover 와 Line of sight 규칙을 Red Blob Games 원문과 대조했다."
+      },
+      "nextMission": "`HasLineOfSight` 로 시야 범위를 만들어 보세요. 경비병 위치와 시야 거리 R 을 받아, 맨해튼 거리 R 이내의 모든 칸에 대해 보이는지를 `bool[,]` 로 채우는 `ComputeVisible` 을 작성합니다. 그런 다음 경비병이 벽에 바짝 붙어 있을 때 \"A 에서 B 가 보이면 B 에서도 A 가 보인다\"가 실제로 지켜지는지 모든 칸 쌍으로 검증하고, 칸 수가 R² 에 비례할 때 선분 하나의 비용 O(R) 을 곱한 전체 비용이 60 fps 예산에 들어오는 R 의 한계를 `Stopwatch` 로 재 보세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // rows[y][x] == '#' 이면 벽. 반환 배열은 wall[x, y].\n    static bool[,] Map(params string[] rows)\n    {\n        var wall = new bool[rows[0].Length, rows.Length];\n        for (int y = 0; y < rows.Length; y++)\n            for (int x = 0; x < rows[y].Length; x++) wall[x, y] = rows[y][x] == '#';\n        return wall;\n    }\n\n    static string Text(bool[,] wall)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int y = 0; y < wall.GetLength(1); y++)\n        {\n            if (y > 0) sb.Append('/');\n            for (int x = 0; x < wall.GetLength(0); x++) sb.Append(wall[x, y] ? '#' : '.');\n        }\n        return sb.ToString();\n    }\n\n    // 양방향을 모두 호출해 기대값과 비교한다.\n    static string See(bool[,] wall, int x0, int y0, int x1, int y1, bool expected)\n    {\n        bool ab = Sight.HasLineOfSight(wall, x0, y0, x1, y1);\n        if (ab != expected) return \"맵 \" + Text(wall) + \" 에서 (\" + x0 + \",\" + y0 + \")→(\" + x1 + \",\" + y1 + \") 기대 \" + expected + \" / 결과 \" + ab;\n        bool ba = Sight.HasLineOfSight(wall, x1, y1, x0, y0);\n        if (ba != expected) return \"맵 \" + Text(wall) + \" 에서 (\" + x1 + \",\" + y1 + \")→(\" + x0 + \",\" + y0 + \") 기대 \" + expected + \" / 결과 \" + ba;\n        return null;\n    }\n\n    // 기준 구현: 모든 칸에 대해 \"선분이 그 칸의 내부를 지나는가\"를 정수 연산으로 직접 판정한다.\n    // 좌표를 2배로 늘려 칸 (cx, cy) 를 열린 정사각형 (2cx, 2cx+2) x (2cy, 2cy+2), 칸의 중심을 (2cx+1, 2cy+1) 로 둔다.\n    static bool Axis(long p, long d, long c, out long lo, out long hi, out long den)\n    {\n        long a = 2 * c - p, b = 2 * c + 2 - p;\n        lo = 0; hi = 0; den = 0;\n        if (d == 0) return a < 0 && b > 0;\n        if (d > 0) { lo = a; hi = b; den = d; } else { lo = -b; hi = -a; den = -d; }\n        return true;\n    }\n\n    static bool Crosses(long px, long py, long dx, long dy, int cx, int cy)\n    {\n        long xlo, xhi, xden, ylo, yhi, yden;\n        if (!Axis(px, dx, cx, out xlo, out xhi, out xden)) return false;\n        if (!Axis(py, dy, cy, out ylo, out yhi, out yden)) return false;\n        if (xden == 0 && yden == 0) return true;\n        long lo, hi;\n        if (xden == 0) { lo = System.Math.Max(ylo, 0); hi = System.Math.Min(yhi, yden); }\n        else if (yden == 0) { lo = System.Math.Max(xlo, 0); hi = System.Math.Min(xhi, xden); }\n        else\n        {\n            lo = System.Math.Max(System.Math.Max(xlo * yden, ylo * xden), 0);\n            hi = System.Math.Min(System.Math.Min(xhi * yden, yhi * xden), xden * yden);\n        }\n        return lo < hi;\n    }\n\n    static bool Ref(bool[,] wall, int x0, int y0, int x1, int y1)\n    {\n        int w = wall.GetLength(0), h = wall.GetLength(1);\n        long px = 2L * x0 + 1, py = 2L * y0 + 1, dx = 2L * (x1 - x0), dy = 2L * (y1 - y0);\n        var crossed = new bool[w, h];\n        for (int cx = 0; cx < w; cx++)\n            for (int cy = 0; cy < h; cy++)\n            {\n                crossed[cx, cy] = Crosses(px, py, dx, dy, cx, cy);\n                if (crossed[cx, cy] && wall[cx, cy]) return false;\n            }\n        if (dx == 0 || dy == 0) return true; // 칸 중심을 잇는 가로·세로 선은 꼭짓점을 지나지 않는다\n        for (int i = 1; i < w; i++)\n            for (int j = 1; j < h; j++)\n            {\n                long vx = 2L * i - px, vy = 2L * j - py;\n                if (vx * dy - vy * dx != 0) continue;                                    // 꼭짓점이 직선 위에 없다\n                if (vx * dx <= 0 || System.Math.Abs(vx) >= System.Math.Abs(dx)) continue; // 선분 밖\n                int touched = 0, walls = 0;\n                for (int a = i - 1; a <= i; a++)\n                    for (int b = j - 1; b <= j; b++)\n                        if (!crossed[a, b]) { touched++; if (wall[a, b]) walls++; }\n                if (touched == 2 && walls == 2) return false;\n            }\n        return true;\n    }\n\n    public static void Main()\n    {\n        Run(\"open-floor-and-same-cell\", () =>\n        {\n            var m = Map(\".....\", \".....\", \".....\", \".....\");\n            return See(m, 0, 0, 4, 3, true) ?? See(m, 4, 0, 0, 3, true) ?? See(m, 2, 1, 2, 1, true)\n                ?? See(m, 0, 2, 1, 2, true) ?? See(m, 3, 3, 3, 2, true) ?? See(m, 1, 1, 2, 2, true);\n        });\n\n        Run(\"straight-lines\", () =>\n        {\n            var m = Map(\"......\", \"..#...\", \"......\", \"......\");\n            return See(m, 0, 1, 5, 1, false) ?? See(m, 2, 0, 2, 3, false)   // 벽을 가로·세로로 지난다\n                ?? See(m, 0, 0, 5, 0, true) ?? See(m, 0, 2, 5, 2, true)      // 벽 옆 줄은 보인다\n                ?? See(m, 1, 0, 1, 3, true) ?? See(m, 3, 0, 3, 3, true)\n                ?? See(m, 0, 1, 1, 1, true) ?? See(m, 3, 1, 5, 1, true);     // 벽에 닿기 전까지는 보인다\n        });\n\n        Run(\"every-clipped-cell-counts\", () =>\n        {\n            // (0,0)→(2,1) 의 시선은 (0,0) (1,0) (1,1) (2,1) 네 칸의 내부를 지난다.\n            string e = See(Map(\".#.\", \"...\"), 0, 0, 2, 1, false)\n                ?? See(Map(\"...\", \".#.\"), 0, 0, 2, 1, false)\n                ?? See(Map(\"..#\", \"#..\"), 0, 0, 2, 1, true);\n            if (e != null) return e;\n            // (0,0)→(1,2) 는 (0,0) (0,1) (1,1) (1,2)\n            e = See(Map(\"..\", \"#.\", \"..\"), 0, 0, 1, 2, false)\n                ?? See(Map(\"..\", \".#\", \"..\"), 0, 0, 1, 2, false)\n                ?? See(Map(\".#\", \"..\", \"#.\"), 0, 0, 1, 2, true);\n            if (e != null) return e;\n            // (0,0)→(4,1) 은 (0,0) (1,0) (2,0) (2,1) (3,1) (4,1)\n            return See(Map(\"..#..\", \".....\"), 0, 0, 4, 1, false)\n                ?? See(Map(\".....\", \"..#..\"), 0, 0, 4, 1, false)\n                ?? See(Map(\"...##\", \"##...\"), 0, 0, 4, 1, true);\n        });\n\n        Run(\"corner-with-one-wall-is-open\", () =>\n        {\n            return See(Map(\".#\", \"..\"), 0, 0, 1, 1, true)\n                ?? See(Map(\"..\", \"#.\"), 0, 0, 1, 1, true)\n                ?? See(Map(\"#.\", \"..\"), 0, 1, 1, 0, true)\n                ?? See(Map(\"..\", \".#\"), 0, 1, 1, 0, true)\n                // (0,0)→(3,1) 은 (0,0) (1,0) 을 지나 꼭짓점 (2,1) 을 정확히 통과하고 (2,1) (3,1) 로 간다.\n                ?? See(Map(\"..#.\", \"....\"), 0, 0, 3, 1, true)\n                ?? See(Map(\"....\", \".#..\"), 0, 0, 3, 1, true)\n                ?? See(Map(\"....\", \"..#.\", \"....\"), 0, 0, 3, 2, false);\n        });\n\n        Run(\"corner-between-two-walls-is-blocked\", () =>\n        {\n            return See(Map(\".#\", \"#.\"), 0, 0, 1, 1, false)\n                ?? See(Map(\"..#.\", \".#..\"), 0, 0, 3, 1, false)\n                ?? See(Map(\".....\", \".....\", \"...#.\", \"..#..\", \".....\"), 0, 0, 4, 4, false)\n                ?? See(Map(\".....\", \".....\", \".#...\", \"..#..\", \".....\"), 4, 0, 0, 4, false)\n                ?? See(Map(\".....\", \".....\", \".#...\", \"..#..\", \".....\"), 0, 0, 4, 4, true)\n                ?? See(Map(\".....\", \"..#..\", \".#...\", \".....\", \".....\"), 0, 0, 4, 4, false)\n                ?? See(Map(\".....\", \"..#..\", \".#...\", \".....\", \".....\"), 0, 0, 1, 1, true);\n        });\n\n        Run(\"end-cells-are-checked\", () =>\n        {\n            var m = Map(\"#....\", \".....\", \"....#\");\n            return See(m, 1, 1, 4, 2, false) ?? See(m, 0, 0, 2, 1, false) ?? See(m, 0, 0, 0, 0, false)\n                ?? See(m, 0, 0, 4, 2, false) ?? See(m, 1, 0, 4, 1, true);\n        });\n\n        Run(\"same-answer-both-ways\", () =>\n        {\n            var m = Map(\".......\", \"..#....\", \"....#..\", \".#.....\", \".....#.\", \".......\");\n            int w = m.GetLength(0), h = m.GetLength(1);\n            for (int a = 0; a < w * h; a++)\n                for (int b = a + 1; b < w * h; b++)\n                {\n                    int x0 = a % w, y0 = a / w, x1 = b % w, y1 = b / w;\n                    bool ab = Sight.HasLineOfSight(m, x0, y0, x1, y1), ba = Sight.HasLineOfSight(m, x1, y1, x0, y0);\n                    if (ab != ba) return \"맵 \" + Text(m) + \" 에서 (\" + x0 + \",\" + y0 + \")→(\" + x1 + \",\" + y1 + \") 는 \" + ab + \" 인데 반대 방향은 \" + ba;\n                }\n            return null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint s = 31337u;\n            System.Func<int, int> rnd = n => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)n); };\n            for (int run = 0; run < 400; run++)\n            {\n                int w = 1 + rnd(9), h = 1 + rnd(9), density = 5 + rnd(30);\n                var m = new bool[w, h];\n                for (int x = 0; x < w; x++) for (int y = 0; y < h; y++) m[x, y] = rnd(100) < density;\n                for (int q = 0; q < 60; q++)\n                {\n                    int x0 = rnd(w), y0 = rnd(h), x1 = rnd(w), y1 = rnd(h);\n                    bool want = Ref(m, x0, y0, x1, y1);\n                    bool got = Sight.HasLineOfSight(m, x0, y0, x1, y1);\n                    if (got != want) return \"무작위 \" + run + \"회차: 맵 \" + Text(m) + \" 에서 (\" + x0 + \",\" + y0 + \")→(\" + x1 + \",\" + y1 + \") 기대 \" + want + \" / 결과 \" + got;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "open-floor-and-same-cell",
+          "straight-lines",
+          "every-clipped-cell-counts",
+          "corner-with-one-wall-is-open",
+          "corner-between-two-walls-is-blocked",
+          "end-cells-are-checked",
+          "same-answer-both-ways",
+          "random-vs-reference"
+        ],
+        "note": "벽이 없는 맵과 같은 칸, 가로선·세로선(벽을 지나는 줄과 벽 옆 줄), 선분이 귀퉁이를 깎고 지나가는 칸의 검사(얇은 선을 쓰면 여기서 실패), 꼭짓점을 정확히 지날 때 양옆 중 한 칸만 벽이면 보이는지, 두 칸 모두 벽이면 막히는지, 양 끝 칸이 벽일 때, 고정 맵의 모든 칸 쌍에서 양방향 결과가 같은지를 확인합니다. 고정 입력은 전부 양방향으로 호출합니다. 마지막으로 무작위 맵 400개(최대 9 × 9)에서, 모든 칸에 대해 \"선분이 그 칸의 내부를 지나는가\"를 정수 연산으로 직접 판정하는 기준 구현과 비교합니다. 결과만 검사하므로 시간 복잡도, 힙 할당 여부, 정수 연산만 썼는지는 채점표로 확인하세요. `Sight.HasLineOfSight(bool[,] wall, int x0, int y0, int x1, int y1)` 의 이름과 시그니처, `wall[x, y]` 인덱스 순서는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t3-interview-ai-decision-architectures",
+      "track": "track3",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "NPC 의사결정 구조 선택: FSM · HFSM · Behaviour Tree · Utility AI · GOAP",
+      "tags": [
+        "Algo_AI_Architecture",
+        "Algo_UtilityAI",
+        "Algo_GOAP"
+      ],
+      "language": "none",
+      "scenario": "오픈월드 생존 RPG 를 만들고 있습니다. AI 가 필요한 NPC 는 세 종류입니다.\n\n1. **야생 동물 수백 마리**(사슴, 늑대). 행동은 배회, 도주, 추격, 공격 정도로 네댓 가지입니다. 한 마리의 AI 가 쓰는 시간은 짧아야 합니다.\n2. **적 분대 병사.** 엄폐, 사격, 장전, 수류탄, 측면 이동, 부상자 구조 등 전투 행동이 20개가 넘고 계속 추가됩니다. 레벨 디자이너는 보스전 연출에서 \"이 시점에는 반드시 이 행동\"을 직접 지정하고 싶어 합니다.\n3. **마을 주민.** 배고픔, 피로, 사교, 안전 같은 연속적인 욕구 수치에 따라 하루 일과를 고릅니다. \"정답인 행동\"이 하나로 정해져 있지 않고, 주민마다 조금씩 다르게 행동하면 좋겠습니다.\n\n여기에 팀원 한 명이 \"구조가 여러 개면 관리가 어려우니 전부 GOAP 하나로 통일하자\"고 제안했습니다.\n\n**질문: 세 종류의 NPC 에 각각 어떤 의사결정 구조를 쓰겠습니까? FSM, HFSM, Behaviour Tree, Utility AI, GOAP 다섯 가지를 \"다음 행동을 고르는 방식\", \"행동 하나를 추가할 때 드는 비용\", \"왜 그 행동을 했는지 추적하는 방법(디버깅)\" 세 기준으로 비교해 설명하고, 통일 제안에 대한 의견도 말해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "FSM 의 상태가 수십 개로 늘어 새 상태를 끼워 넣을 때마다 기존 전이를 고쳐야 하는 경우.",
+        "점수가 비슷한 두 행동 사이를 NPC 가 계속 오가는 경우(진동).",
+        "연출상 특정 시점에 특정 행동이 반드시 나와야 하는 경우.",
+        "QA 가 \"왜 저 NPC 가 저렇게 행동했는가\"를 물었을 때 근거를 보여 줘야 하는 경우."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "늑대 FSM 에 \"피격 리액션\", \"울부짖어 동료 부르기\" 같은 상태가 추가되어 15개가 됐습니다. 어떤 상태에서 맞든 피격 리액션을 재생한 뒤 **하던 상태로 돌아가야** 합니다. 상태마다 복귀용 상태를 복제하지 않고 해결하는 방법을 두 가지 말하고 차이를 설명해 주세요.",
+          "intent": "순수 FSM 에 \"이전 상태의 기억\"이 없다는 한계를 정확히 짚는지, HFSM 의 history state 와 푸시다운 오토마타(상태 스택)를 구분해 설명하는지, 확장을 멈추고 구조를 바꿀 시점을 아는지 확인한다.",
+          "keyAnswer": "- **문제의 원인:** Game Programming Patterns 는 FSM 에 history 개념이 없다고 설명한다. 지금 상태는 알지만 직전 상태는 기억하지 못하므로, 복귀하려면 \"서 있다가 맞음\", \"달리다가 맞음\"처럼 거의 같은 상태를 출발 상태 수만큼 만들어 각각에 복귀 전이를 하드코딩해야 한다. Game AI Pro 4장도 같은 문제를 경비원의 전화 통화 예제로 보여 주고 이것이 상태와 그래프 복잡도의 폭발로 이어진다고 적는다.\n- **방법 1 — HFSM 의 history state:** 평소 상태들을 하나의 상위 상태(중첩된 상태 기계)로 묶고 피격 리액션을 그 바깥에 둔다. 4장에 따르면 중첩된 기계는 처음 들어갈 때만 초기 상태에서 시작하고, 그 뒤로는 마지막으로 활성이던 상태를 history state 로 기억한다. 리액션이 끝나 상위 상태로 돌아오면 하던 상태가 이어진다. 덤으로 \"어느 하위 상태에서든 맞으면 리액션으로\"라는 전이를 상위 상태에 한 번만 적으면 된다(GPP 가 설명하는 상위 상태로의 위임).\n- **방법 2 — 푸시다운 오토마타:** GPP 의 설명대로 현재 상태 포인터 하나 대신 **상태 스택**을 둔다. 맞으면 리액션 상태를 push 하고, 끝나면 pop 해서 바로 아래 상태로 돌아간다.\n- **차이:** history state 는 중첩된 기계마다 \"마지막 상태 하나\"를 기억하고, 스택은 중첩된 끼어들기(리액션 중에 또 넘어짐)를 깊이만큼 기억한다. 대신 스택은 돌아갈 상태가 그 사이에 무효가 되지 않았는지(쫓던 대상이 죽었는지 등)를 pop 할 때 확인해야 한다(이 문장은 추론이다).\n- **멈출 시점:** 4장은 HFSM 으로도 전이 과부하가 풀리지 않으면 다른 알고리즘이 더 나은 선택일 수 있다고 적는다. 늑대의 행동이 계속 늘어난다면 BT 로 옮기는 것을 검토한다."
+        },
+        {
+          "question": "마을 주민에 Utility AI 를 넣었더니 두 가지 문제가 생겼습니다. (가) '먹기'와 '자기'의 점수가 비슷할 때 주민이 식탁과 침대 사이를 계속 오갑니다. (나) 기획자가 \"축제 종이 울리면 주민 전원이 광장으로 간다\"를 요구합니다. 각각 어떻게 대응하겠습니까? 그리고 QA 가 \"저 주민은 왜 배가 고픈데 밥을 안 먹었나\"를 물으면 무엇을 보여 주겠습니까?",
+          "intent": "Utility AI 의 대가(진동, 예측 불가능성, 튜닝 난이도)를 출처에 근거해 설명하는지, 점수 체계 바깥에 스크립트 계층을 두는 판단을 하는지, 점수 기반 구조의 디버깅 자료가 무엇인지 아는지 확인한다.",
+          "keyAnswer": "- **(가) 진동의 원인:** 매번 \"지금 이 순간의 점수\"만 보고 고르면, 이동하는 동안 두 점수가 엇갈릴 때마다 선택이 뒤집힌다. Game AI Pro 4장은 Behaviour Tree 를 설명하면서 같은 종류의 문제를 상태를 기억하지 않는 행동의 예로 든다. 전투에서 달아난 시민이 충분히 멀어지면 다른 행동이 우선되어 다시 전투 지역으로 돌아가는 일이 반복된다.\n- **(가) 대응:** 4장은 새 행동을 고르는 시점을 \"현재 행동이 끝났을 때 또는 인터럽트가 있을 때\"라고 설명한다. 매 프레임 다시 고르지 않고 이 두 시점에만 고르는 것이 첫 번째 대응이다. 추가로 현재 하고 있는 행동에 가산점을 주거나, 행동마다 최소 지속 시간을 두어 한번 고른 행동이 쉽게 뒤집히지 않게 한다(가산점과 최소 지속 시간은 출처에 없는 내용으로, 추론이다).\n- **(나) 연출 요구:** 4장은 설계상 특정 순간에 특정 행동이 필요하면 Utility 계산을 스크립트된 행동으로 덮어써야 한다고 명시한다. 그래서 점수 계산 앞에 \"강제 행동\" 계층을 두고, 축제 이벤트가 걸려 있는 동안에는 점수와 무관하게 광장 이동을 고르게 한다. 광장 이동의 점수를 아주 크게 주는 방식은 다른 행동의 점수 범위가 바뀌면 깨지므로 피한다(뒤 문장은 추론이다).\n- **디버깅 자료:** 선택이 일어난 시점의 모든 후보 행동의 점수와, 그 점수를 만든 입력값(배고픔, 피로, 식탁까지의 거리 등)을 주민별로 기록해 둔 것을 보여 준다. 그러면 \"먹기 0.61, 자기 0.64\" 같은 수치로 답할 수 있다. 4장은 Utility 가 Boolean 전이 구조에 비해 어느 정도 예측하기 어렵고 튜닝이 \"과학보다 예술에 가깝다\"고 적는데, 이 기록이 없으면 튜닝도 할 수 없다. 가중 무작위 선택을 쓴다면 난수 시드도 함께 남겨야 재현할 수 있다(기록 항목은 추론이다)."
+        },
+        {
+          "question": "분대 병사에 GOAP 을 쓰자는 제안을 다시 평가해 봅시다. GOAP 으로 얻는 것은 무엇이고, 치르는 비용은 무엇입니까? 어떤 조건이면 채택하겠고, Behaviour Tree 와 절충하는 방법이 있습니까?",
+          "intent": "계획 기반 AI 의 이점을 인정하면서 탐색 비용, 연출 통제력, 디버깅 난이도를 구체적으로 말하는지, 출처가 말한 것과 자신의 추론을 구분하는지, 무조건 반대가 아니라 채택 조건을 제시하는지 확인한다.",
+          "keyAnswer": "- **얻는 것:** Game AI Pro 4장에 따르면 디자이너는 단순한 구성 요소(행동의 전제와 효과)만 만들면 되고 행동의 조합은 플래너가 만든다. 팀이 예상하지 못한 해법이 나오기도 한다. 4장의 예로는 무기가 없으면 거치된 무기나 차량으로 같은 목표를 달성하는 계획이 나온다. 행동 20개의 조합을 트리에 손으로 다 적지 않아도 된다는 뜻이다.\n- **비용 1 — 연출 통제력:** 4장은 스스로 \"생각하는\" 캐릭터가 목표는 달성하지만 게임이 의도한 경험과 어긋나는 계획을 세울 수 있다고 경고한다. 4장이 드는 예는 병사의 계획이 연출을 위해 놓아 둔 \"Big Red Barrel\" 옆을 지나가지 않아 준비한 장면이 어그러지는 경우다. 이런 문제를 피할 수는 있지만, 원하는 행동을 결정 로직에 직접 넣을 수 있는 BT 만큼 간단하지 않다고 같은 장이 적는다. 이 시나리오의 \"이 시점에는 반드시 이 행동\" 요구와 정면으로 부딪힌다.\n- **비용 2 — 탐색:** 계획 수립은 탐색이고, 행동 수와 세계 상태가 커질수록 그 비용이 늘어난다(추론이다). 4장은 시야 확보처럼 기호로 표현하기 어려운 조건을 계획 단계에서 빼고 실행 시점에 확인하는 \"context precondition\" 을 탐색을 감당할 수 있게 유지하는 수단으로 설명한다. 병사 수십 명이 동시에 계획을 다시 세우지 않도록 재계획 빈도와 프레임당 계획 수를 제한해야 한다(뒤 문장은 추론이다).\n- **비용 3 — 디버깅:** 행동 순서가 데이터 어디에도 적혀 있지 않고 탐색의 결과로 나온다. \"왜 수류탄을 던졌나\"에 답하려면 목표, 계획을 세운 순간의 세계 상태, 선택된 계획과 버려진 대안을 기록하는 도구가 먼저 있어야 한다(추론이다).\n- **절충:** 4장은 GOAP 의 계획이 \"무엇을 할지\"를 알려 줄 뿐 \"어떻게 할지\"까지 정하지는 않는다고 설명하고, 목표 자체는 우선순위나 상태 전이 같은 다른 방법으로 고른다고 적는다. 그래서 층을 나눌 수 있다. 연출 구간과 큰 전술 선택은 BT 가 쥐고, 특정 노드 아래의 \"엄폐물까지 가서 장전하고 사격\" 같은 행동 조합만 플래너에게 맡기는 방식이다(구체적인 층 구성은 추론이다).\n- **채택 조건:** 행동의 조합이 많아 손으로 적는 비용이 실제로 문제가 되고, 예상 밖의 해법이 이 게임에서 장점이며, 기록·시각화 도구를 만들 일정이 있을 때다. 그 전에 병사 한 종류로 시제품을 만들어 프레임 비용과 연출 충돌을 측정한다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**기준 하나: 다음 행동을 고르는 방식.** 이 절의 설명은 Game AI Pro 4장(Behavior Selection Algorithms)을 따릅니다.\n\n- **FSM.** 한 번에 하나의 상태만 활성이고, 조건이 맞으면 전이를 따라 다른 상태로 갑니다. Game Programming Patterns 의 표현으로는 \"정해진 상태 집합, 하나의 현재 상태, 하드코딩된 전이\"가 전부입니다.\n- **HFSM.** 상태 하나가 그 자체로 상태 기계일 수 있습니다. 4장은 순찰 중 전화를 받고 **하던 순찰로 돌아오는** 경비원 예제로, 중첩된 기계가 마지막 활성 상태를 기억하는 history state 를 설명합니다.\n- **Behaviour Tree.** Wikipedia 의 정의로는 루트가 일정 주기로 tick 을 보내고 각 노드가 running / success / failure 를 돌려줍니다. Selector(fallback)는 실패하지 않는 첫 자식을, Sequence 는 아직 성공하지 않은 첫 자식을 찾아 실행합니다. 우선순위는 자식의 **순서**로 적습니다.\n- **Utility AI.** 행동마다 연속적인 고려 사항을 점수로 바꿔 합치고, 가장 높은 점수를 고르거나 점수를 가중치로 무작위 선택합니다(4장, Wikipedia).\n- **GOAP.** 행동마다 전제 조건(precondition)과 효과(effect)를 적어 두면, 플래너가 현재 세계 상태에서 목표 상태에 이르는 **행동의 순서를 탐색**합니다. 4장은 목표에서 거꾸로 올라가는 backward chaining 으로 설명하고, Jeff Orkin 이 2005년 F.E.A.R. 을 위해 개척한 기법이라고 소개합니다.\n\n**기준 둘: 행동을 추가하는 비용.** FSM 은 처음 몇 개는 쉽지만, 4장에 따르면 상태가 10 ~ 30개인 기계에 새 상태를 끼워 넣는 일은 매우 어렵고 실수하기 쉽습니다. HFSM 은 중복 상태를 줄여 주지만, 모든 상태가 서로 연결되는 \"transition overload\"는 해결하지 못할 수 있다고 같은 장이 적습니다. BT 는 행동들이 서로를 모르게 작성할 수 있어 추가와 제거가 나머지 트리에 영향을 주지 않는다는 것이 4장이 꼽는 장점입니다(어느 위치에 넣을지는 정해야 합니다). Utility 는 Wikipedia 의 표현으로 덜 \"hand-authored\" 입니다. 행동 사이의 우선순위를 직접 적지 않고 점수가 정합니다. 대신 4장은 새 행동을 넣기는 쉬워도 **튜닝이 까다로울 수 있다**고 경고합니다. 행동 하나가 다른 모든 행동의 점수와 경쟁하기 때문입니다. GOAP 은 조합을 플래너가 만들므로 추가 자체는 쌉니다.\n\n**기준 셋: 디버깅.** 4장이 직접 말하는 것: FSM 은 그려서 시각화하기 쉽다. Utility 는 Boolean 전이 구조와 달리 어느 정도 예측하기 어렵다. GOAP 은 개발팀이 예상하지 못한 해법을 만들어 낼 수 있고 작가적·연출적 통제력을 많이 가져간다. 여기서부터는 구조에서 나오는 추론입니다. FSM / HFSM 은 \"현재 상태와 방금 발동한 전이\"만 기록하면 되고, BT 는 이번 tick 에 방문한 노드와 반환값의 경로를, Utility 는 선택 시점의 **모든 후보의 점수와 입력값**을, GOAP 은 목표, 계획을 세울 때의 세계 상태, 선택된 계획, 계획이 깨진 이유를 남겨야 \"왜\"에 답할 수 있습니다.\n\n**선택.**\n1. 야생 동물 → **FSM**. 행동이 네댓 개이고 수백 마리라 가장 싼 구조가 맞습니다. 4장은 BT 가 선택할 때마다 루트부터 다시 평가하므로 실행 시간이 일반적으로 FSM 보다 크다고 적고, GOAP 은 계획 자체가 탐색입니다.\n2. 분대 병사 → **Behaviour Tree**. 행동이 많고 계속 늘며, 4장이 말하듯 원하는 행동을 결정 로직에 직접 끼워 넣기 쉬워 연출 요구에 맞습니다.\n3. 마을 주민 → **Utility AI**. 연속적인 욕구와 정답이 하나로 정해지지 않은 선택은 4장이 Utility 가 유리하다고 꼽는 조건이고, 가중 무작위 선택을 쓰면 행동도 다양해집니다.\n\n**통일 제안.** 받아들이지 않습니다. 동물에게는 계획이 필요 없고, 병사에게는 GOAP 이 가져가는 연출 통제가 필요합니다. 구조의 수를 줄이는 것보다 NPC 마다 요구에 맞는 가장 단순한 구조를 쓰고, 감지와 행동 실행(이동, 애니메이션) 계층을 공유하는 편이 관리 비용을 더 줄입니다(뒤 문장은 추론입니다).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "다섯 구조가 다음 행동을 고르는 방식을 각각 정확히 설명했다: FSM(하나의 활성 상태와 전이), HFSM(상태 안의 상태 기계), BT(루트부터 평가, 자식 순서가 우선순위), Utility(점수), GOAP(전제·효과로 행동 순서를 탐색).",
+            "points": 12,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "세 종류의 NPC 각각에 구조를 하나씩 고르고, 그 NPC 의 특성(행동 수와 개체 수 / 연출 통제 / 연속적 욕구와 정답 없는 선택)과 연결해 이유를 말했다.",
+            "points": 12,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "FSM 에는 이전 상태의 기억이 없다는 점과, HFSM(history state 또는 상위 상태로의 위임)이 그것을 어떻게 보완하는지 설명했다.",
+            "points": 11,
+            "sourceId": "gpp-state"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "실행 비용을 비교했다: BT 는 선택 때마다 루트부터 평가해 FSM 보다 비용이 크고, GOAP 은 계획 수립이 탐색이라 행동 수와 세계 상태에 따라 비용이 늘어난다.",
+            "points": 12,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "개체 수가 많은 NPC(야생 동물 수백 마리)에는 개체당 비용이 가장 낮은 구조를 골랐다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "계획이나 재선택을 매 프레임 하지 않는 방법(현재 행동이 끝났을 때나 인터럽트 때만 선택, 재계획 빈도 제한)을 말했다.",
+            "points": 8,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Utility AI 의 대가를 말했다: 예측하기 어렵고 튜닝이 어려우며, 연출상 꼭 필요한 행동은 점수 계산을 덮어쓰는 별도 경로로 처리한다.",
+            "points": 10,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "GOAP 의 대가를 말했다: 연출 통제력을 잃고, 원하는 행동을 직접 끼워 넣기가 BT 보다 어렵다.",
+            "points": 10,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "구조마다 \"왜 그 행동을 했는가\"를 추적하려면 무엇을 기록해야 하는지 말했다(전이 / 방문한 노드와 반환값 / 후보별 점수와 입력값 / 목표·세계 상태·계획).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "통일 제안에 대해 근거를 들어 찬반을 밝히고, 받아들일 수 있는 조건이나 절충안을 제시했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "\"GOAP(또는 특정 구조)이 가장 발전된 방식이니 전부 그것으로 한다\"처럼 조건과 대가 없이 단정한다.",
+            "penalty": -20,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "d2",
+            "description": "Utility AI 나 GOAP 을 고르면서 연출상 반드시 나와야 하는 행동을 어떻게 보장할지 언급하지 않는다.",
+            "penalty": -15,
+            "sourceId": "aipro-behavior-selection"
+          },
+          {
+            "id": "d3",
+            "description": "디버깅 기준에 대해 \"로그를 찍는다\" 수준으로만 답하고, 구조마다 무엇을 기록해야 하는지 구분하지 못한다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "aipro-behavior-selection",
+        "gpp-state",
+        "wiki-behavior-tree",
+        "wiki-utility-system"
+      ],
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "다섯 구조에 대한 서술을 Game AI Pro 4장 PDF, Game Programming Patterns State 장, Wikipedia Behavior tree / Utility system 원문과 한 문장씩 대조하고, 출처에 없는 주장은 추론으로 표시했다."
+      },
+      "nextMission": "같은 NPC 를 두 구조로 만들어 비교해 보세요. 욕구 세 개(배고픔, 피로, 사교)와 행동 네 개(먹기, 자기, 대화, 배회)를 가진 주민을 (가) 우선순위 Selector 하나짜리 Behaviour Tree 와 (나) 점수 최댓값을 고르는 Utility AI 로 각각 100줄 이내의 C# 콘솔 프로그램으로 작성합니다. 같은 시드로 1,000틱을 돌려 행동 전환 횟수와 행동별 지속 시간을 출력하고, (나)에서 진동이 생기는 입력을 찾아 \"현재 행동 가산점\"을 넣기 전후를 비교하세요. 마지막으로 두 구현 모두에 \"이 틱에 왜 이 행동을 골랐는가\"를 한 줄로 출력하는 기능을 넣고, 어느 쪽이 더 많은 정보를 남겨야 했는지 적으세요.",
+      "tests": null
+    },
+    {
+      "id": "t3-impl-tactics-move-range",
+      "track": "track3",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "전술 RPG 이동 범위 표시: 지형 비용과 이동력으로 제한한 탐색, 그리고 이동 경로 미리보기",
+      "tags": [
+        "Algo_MoveRange",
+        "Algo_CostLimitedSearch",
+        "Algo_PathReconstruction"
+      ],
+      "language": "csharp",
+      "scenario": "턴제 전술 RPG 입니다. 플레이어가 유닛을 선택하면 **이번 턴에 멈출 수 있는 칸**이 파랗게 칠해지고, 커서를 그 칸 위로 옮기면 **이동 경로**와 **도착 후 남는 이동력**이 미리보기로 나옵니다. 커서는 매 프레임 움직이므로, 탐색은 유닛을 선택한 순간 한 번만 하고 그 뒤의 질의는 저장해 둔 결과를 읽기만 해야 합니다.\n\n`MoveRange` 를 구현하세요. 생성자가 탐색을 끝내고, 나머지 메서드는 그 결과를 읽습니다.\n\n**이동 규칙**\n\n1. 상하좌우 네 방향으로만 움직입니다.\n2. 어떤 칸에 **들어갈 때** 그 칸의 `terrain[x, y]` 만큼 이동력을 씁니다(평지 1, 숲 2, 늪 3 같은 식입니다). 시작 칸의 비용은 내지 않습니다. `terrain[x, y] == 0` 인 칸은 들어갈 수 없습니다.\n3. 쓴 이동력의 합이 `movePoints` **이하**인 칸까지 갈 수 있습니다. 이동력을 정확히 다 쓰는 칸도 포함입니다.\n4. **적**(`Enemy`)이 있는 칸은 지나갈 수 없습니다.\n5. **아군**(`Ally`)이 있는 칸은 **지나갈 수는 있지만 멈출 수는 없습니다.** 지나갈 때도 그 칸의 지형 비용은 냅니다.\n6. 시작 칸에는 움직이는 유닛 자신이 있습니다(`units` 값은 `Ally`). 제자리에 머무는 것은 언제나 가능하므로 시작 칸은 멈출 수 있는 칸이고, 남는 이동력은 `movePoints` 입니다.\n\n**메서드**\n\n- `CanStopAt(x, y)`: 그 칸에 멈출 수 있으면 `true`. 이동력 안에 닿을 수 있고 다른 유닛이 없는 칸입니다.\n- `RemainingAt(x, y)`: 그 칸에 멈췄을 때 남는 이동력의 **최댓값**(= `movePoints` − 가장 싼 경로의 비용). 멈출 수 없는 칸이면 `-1`.\n- `PathTo(x, y)`: 시작 칸에서 그 칸까지의 경로. **시작 칸과 도착 칸을 모두 포함**하고, 이웃한 칸끼리 이어져 있으며, 비용의 합이 `movePoints − RemainingAt(x, y)` 여야 합니다. 그런 경로가 여러 개면 어느 것이든 됩니다. 경로는 아군 칸을 지날 수 있습니다. 멈출 수 없는 칸이면 빈 리스트, 시작 칸이면 시작 칸 하나만 든 리스트입니다.\n\n예 1: 지형이 모두 1 인 한 줄, 이동력 4 (`S` 자신, `A` 아군)\n\n```\n칸        S  A  .  A  .\n남는 이동력  4  -  2  -  0        ('-' 는 멈출 수 없는 칸, RemainingAt 은 -1)\n```\n\n예 2: 이동력 5, 윗줄 가운데가 비용 5 인 늪\n\n```\n지형   1 5 1        남는 이동력   5 0 1\n      1 1 1                    4 3 2\n```\n\n오른쪽 위 칸은 늪을 지나면 두 걸음이지만 비용이 6 이라 갈 수 없고, 아랫줄로 돌아가면 네 걸음에 비용 4 라서 1 이 남습니다.\n\n질의 좌표는 항상 맵 안에 있고, 시작 칸은 들어갈 수 있는 지형입니다.",
+      "constraints": [
+        "탐색은 생성자에서 한 번만 한다. 칸 수를 N 이라 할 때 O(N log N) 이내다.",
+        "`CanStopAt` 과 `RemainingAt` 은 O(1), `PathTo` 는 O(경로 길이)다. 질의할 때 다시 탐색하지 않는다.",
+        "이동력을 넘는 칸은 큐에 넣지 않는다. 맵이 커도 탐색 범위는 이동력이 닿는 곳으로 한정되어야 한다.",
+        "우선순위 큐는 .NET 8 의 `PriorityQueue<TElement, TPriority>` 를 써도 된다. LINQ 와 재귀는 쓰지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 전술 RPG 의 이동 범위. 유닛을 선택한 순간 한 번 만들고, 커서가 움직일 때마다 질의한다.\npublic sealed class MoveRange\n{\n    public const int Empty = 0; // 유닛이 없는 칸\n    public const int Ally = 1;  // 아군이 서 있는 칸: 지나갈 수 있지만 멈출 수 없다\n    public const int Enemy = 2; // 적이 서 있는 칸: 지나갈 수 없다\n\n    // terrain[x, y]: 그 칸에 들어갈 때 드는 이동력(1 이상). 0 이면 들어갈 수 없는 지형이다.\n    // units[x, y]: Empty / Ally / Enemy. 시작 칸 (startX, startY) 에는 움직이는 유닛 자신이 있다.\n    // movePoints: 이번 턴에 쓸 수 있는 이동력(0 이상).\n    public MoveRange(int[,] terrain, int[,] units, int startX, int startY, int movePoints)\n    {\n        throw new NotImplementedException();\n    }\n\n    // (x, y) 에 멈출 수 있으면 true.\n    public bool CanStopAt(int x, int y)\n    {\n        throw new NotImplementedException();\n    }\n\n    // (x, y) 에 멈췄을 때 남는 이동력의 최댓값. 멈출 수 없는 칸이면 -1.\n    public int RemainingAt(int x, int y)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 시작 칸에서 (x, y) 까지, 남는 이동력이 RemainingAt(x, y) 가 되는 경로. 시작 칸과 도착 칸을 포함한다.\n    // 멈출 수 없는 칸이면 빈 리스트.\n    public List<(int x, int y)> PathTo(int x, int y)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "걸음 수는 적지만 비용이 큰 길과, 돌아가지만 싼 길이 함께 있는 경우: 싼 쪽의 남는 이동력이 답이다.",
+        "이동력을 정확히 다 써서 닿는 칸(남는 이동력 0)과, 1 이 모자라 닿지 못하는 칸.",
+        "아군 칸: 그 칸 자체는 멈출 수 없지만 그 너머의 칸은 갈 수 있다. 통로 끝이 아군이면 그 앞까지만 칠해진다.",
+        "적 칸과 들어갈 수 없는 지형: 돌아가는 길이 이동력 안에 있을 때만 그 너머에 닿는다.",
+        "이동력 0(시작 칸만 가능), 1 × 1 맵, `PathTo(시작 칸)`."
+      ],
+      "hints": [
+        "예 2 의 지형에서 이동력을 6 으로 늘리고 \"먼저 닿은 값이 확정\"인 너비 우선 탐색으로 돌려 보세요. 오른쪽 위 칸은 늪을 거쳐 두 걸음 만에 먼저 발견되고 그때의 비용은 6 이지만, 아랫줄로 돌아가는 네 걸음짜리 길은 4 입니다. 걸음 수가 적은 길이 싼 길이 아니게 되는 순간 일반 큐는 틀립니다. 그리고 예 1 에서 아군 칸을 \"막힌 칸\"으로 처리하면 그 너머의 칸은 어떻게 되나요? 반대로 아군 칸을 \"보통 칸\"으로 처리하면 무엇이 틀리나요?",
+        "\"지나갈 수 있는가\"와 \"멈출 수 있는가\"를 다른 단계에서 판정하세요. 탐색하는 동안에는 지나갈 수 있는지만 봅니다(적과 진입 불가 지형만 막습니다). 탐색이 끝난 뒤 칸마다 \"닿았고, 다른 유닛이 없는가\"를 따로 계산합니다. 탐색은 비용이 가장 작은 칸부터 꺼내야 하고, 이웃으로 갈 때 드는 비용은 **들어가는 칸**의 지형 비용입니다. 경로를 위해서는 칸마다 \"어느 칸에서 왔는가\" 하나만 기억하면 됩니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\ncost[모든 칸] = 닿지 못함;  cameFrom[모든 칸] = 없음\ncost[시작] = 0;  큐(비용이 작은 것부터)에 (시작, 0)\n\nwhile 큐가 비지 않았다:\n    (cur, c) = 큐에서 꺼낸다\n    if c > cost[cur]: continue\n    for next in cur 의 상하좌우:\n        if 맵 밖 or 지형 0 or ____ : continue      // 통과할 수 없는 것만 막는다\n        nc = c + ____                              // 어느 칸의 비용인가?\n        if nc > ____ : continue                    // 이동력 제한\n        if nc < cost[next]:\n            cost[next] = nc;  cameFrom[next] = cur;  큐에 (next, nc)\n\ncanStop[칸] = cost[칸] 에 닿았다 and (칸 == 시작 or ____)\n\nPathTo(x, y):\n    멈출 수 없으면 빈 리스트\n    도착 칸에서 cameFrom 을 따라 시작 칸까지 모은 뒤 ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 전술 RPG 의 이동 범위. 유닛을 선택한 순간 한 번 만들고, 커서가 움직일 때마다 질의한다.\npublic sealed class MoveRange\n{\n    public const int Empty = 0; // 유닛이 없는 칸\n    public const int Ally = 1;  // 아군이 서 있는 칸: 지나갈 수 있지만 멈출 수 없다\n    public const int Enemy = 2; // 적이 서 있는 칸: 지나갈 수 없다\n\n    private const int Unreached = int.MaxValue;\n    private static readonly int[] Dx = { 1, -1, 0, 0 };\n    private static readonly int[] Dy = { 0, 0, 1, -1 };\n\n    private readonly int _width, _height, _movePoints, _start;\n    private readonly int[] _cost;      // 시작 칸에서 그 칸까지 드는 최소 이동력. 이동력 안에 닿지 못하면 Unreached\n    private readonly int[] _cameFrom;  // 최소 비용 경로에서 바로 앞 칸. 시작 칸과 닿지 못한 칸은 -1\n    private readonly bool[] _canStop;  // 멈출 수 있는 칸인가(닿을 수 있고, 다른 유닛이 없다)\n\n    // terrain[x, y]: 그 칸에 들어갈 때 드는 이동력(1 이상). 0 이면 들어갈 수 없는 지형이다.\n    // units[x, y]: Empty / Ally / Enemy. 시작 칸 (startX, startY) 에는 움직이는 유닛 자신이 있다.\n    // movePoints: 이번 턴에 쓸 수 있는 이동력(0 이상).\n    public MoveRange(int[,] terrain, int[,] units, int startX, int startY, int movePoints)\n    {\n        _width = terrain.GetLength(0);\n        _height = terrain.GetLength(1);\n        _movePoints = movePoints;\n        _start = startY * _width + startX;\n\n        int n = _width * _height;\n        _cost = new int[n];\n        _cameFrom = new int[n];\n        _canStop = new bool[n];\n        for (int i = 0; i < n; i++) { _cost[i] = Unreached; _cameFrom[i] = -1; }\n\n        // 이동력으로 제한한 다익스트라. 큐에는 (칸, 그 칸까지의 비용)을 넣고 비용이 작은 것부터 꺼낸다.\n        var frontier = new PriorityQueue<int, int>();\n        _cost[_start] = 0;\n        frontier.Enqueue(_start, 0);\n\n        while (frontier.TryDequeue(out int cur, out int curCost))\n        {\n            if (curCost > _cost[cur]) continue; // 더 싼 경로가 이미 처리된 낡은 항목\n\n            int cx = cur % _width, cy = cur / _width;\n            for (int d = 0; d < 4; d++)\n            {\n                int nx = cx + Dx[d], ny = cy + Dy[d];\n                if (nx < 0 || ny < 0 || nx >= _width || ny >= _height) continue;\n                if (terrain[nx, ny] <= 0) continue;        // 들어갈 수 없는 지형\n                if (units[nx, ny] == Enemy) continue;      // 적은 통과할 수 없다\n                // 아군 칸은 여기서 막지 않는다: 멈출 수는 없어도 지나갈 수는 있다.\n\n                int next = ny * _width + nx;\n                int nextCost = curCost + terrain[nx, ny];  // 들어가는 칸의 비용을 낸다\n                if (nextCost > movePoints) continue;       // 이동력을 넘으면 더 볼 필요가 없다\n                if (nextCost >= _cost[next]) continue;     // 더 싸질 때만 갱신한다\n\n                _cost[next] = nextCost;\n                _cameFrom[next] = cur;\n                frontier.Enqueue(next, nextCost);\n            }\n        }\n\n        // \"닿을 수 있다\"와 \"멈출 수 있다\"는 다르다. 탐색이 끝난 뒤에 따로 판정한다.\n        for (int i = 0; i < n; i++)\n            _canStop[i] = _cost[i] != Unreached && (i == _start || units[i % _width, i / _width] == Empty);\n    }\n\n    // (x, y) 에 멈출 수 있으면 true.\n    public bool CanStopAt(int x, int y) => _canStop[y * _width + x];\n\n    // (x, y) 에 멈췄을 때 남는 이동력의 최댓값. 멈출 수 없는 칸이면 -1.\n    public int RemainingAt(int x, int y)\n    {\n        int i = y * _width + x;\n        return _canStop[i] ? _movePoints - _cost[i] : -1;\n    }\n\n    // 시작 칸에서 (x, y) 까지, 남는 이동력이 RemainingAt(x, y) 가 되는 경로. 시작 칸과 도착 칸을 포함한다.\n    // 멈출 수 없는 칸이면 빈 리스트.\n    public List<(int x, int y)> PathTo(int x, int y)\n    {\n        var path = new List<(int x, int y)>();\n        int i = y * _width + x;\n        if (!_canStop[i]) return path;\n\n        // 도착 칸에서 시작 칸까지 \"바로 앞 칸\"을 거슬러 올라간 뒤 뒤집는다.\n        for (int at = i; at != -1; at = _cameFrom[at])\n            path.Add((at % _width, at / _width));\n        path.Reverse();\n        return path;\n    }\n}\n",
+      "explanation": "**접근.** 이동 범위는 \"시작 칸에서 비용 `movePoints` 이내로 닿는 칸\"입니다. Red Blob Games 의 육각 격자 글은 장애물이 있을 때의 이동 범위를 거리 제한 flood fill(너비 우선 탐색)로 구합니다. 그 방법은 모든 걸음의 비용이 같을 때 맞습니다. 지형마다 비용이 다르면 Red Blob 의 A* 입문 글이 설명하는 대로 다익스트라가 필요합니다. 큐를 우선순위 큐로 바꾸고, 칸마다 지금까지의 최소 비용(`cost_so_far`)을 저장하고, 새 경로가 더 쌀 때만 갱신합니다. 이 문제는 거기에 \"비용이 `movePoints` 를 넘으면 큐에 넣지 않는다\"는 조건 하나를 더한 것입니다.\n\n**왜 맞는가.** 지형 비용이 1 이상이므로 간선 가중치가 음수가 아니고, Wikipedia 가 설명하는 다익스트라의 전제가 성립합니다. 큐에서 비용이 가장 작은 칸을 꺼낼 때 그 값은 확정된 최소 비용입니다. 이동력을 넘는 칸을 버려도 되는 이유는, 비용이 줄어드는 걸음이 없어서 한번 이동력을 넘은 경로는 다시 이동력 안으로 돌아올 수 없기 때문입니다. 덕분에 큰 맵에서도 탐색은 이동력이 닿는 범위에서 끝납니다.\n\n**통과와 정지를 나눈다.** 이 문제의 핵심 규칙입니다. 탐색 중에는 \"지나갈 수 있는가\"만 봅니다. 적과 진입 불가 지형은 막고, 아군 칸은 비용을 내고 통과시킵니다. 탐색이 끝난 뒤 `canStop = 닿았다 && (시작 칸이거나 유닛이 없다)` 를 따로 계산합니다. 탐색 중에 아군 칸을 건너뛰면 그 너머의 칸이 전부 사라지고, 아군 칸을 보통 칸처럼 두면 아군 위에 겹쳐 서게 됩니다. 시작 칸은 `units` 값이 `Ally` 이지만 자기 자신이므로 예외로 둡니다.\n\n**경로.** Red Blob 의 입문 글대로 칸마다 \"어디에서 왔는가\"(`came_from`)만 저장하면, 도착 칸에서 그 기록을 거슬러 올라가 시작 칸에 닿은 뒤 뒤집어 경로를 얻습니다. 이 기록은 최소 비용이 갱신될 때 함께 바꾸므로 따라간 경로의 비용 합이 `RemainingAt` 과 맞습니다. 경로를 얻으려고 다시 탐색할 필요가 없습니다.\n\n**복잡도.** 칸마다 이웃이 넷이므로 큐에 들어가는 항목은 O(N) 이고, Wikipedia 의 설명대로 이진 힙 기준 O((V + E) log V), 격자에서는 O(N log N) 입니다. .NET 의 `PriorityQueue` 는 Microsoft Learn 에 따르면 4진 최소 힙이며 점근 복잡도는 같습니다. `CanStopAt` / `RemainingAt` 은 배열 조회, `PathTo` 는 경로 길이에 비례합니다.\n\n**낡은 항목 검사에 대해(추론).** `PriorityQueue` 에는 우선순위를 낮추는 연산이 없어서, 더 싼 경로를 찾으면 같은 칸을 한 번 더 넣고 꺼낼 때 `c > cost[cur]` 로 낡은 항목을 버리는 것이 일반적인 형태입니다. 다만 이 문제처럼 비용이 \"들어가는 칸\"에만 달려 있으면, 어떤 칸에 처음 닿는 순간은 그 이웃 중 비용이 가장 작은 칸을 꺼냈을 때이므로 첫 값이 곧 최소이고 낡은 항목은 생기지 않습니다. 그래도 일반형으로 써 두는 편이 안전합니다. 대각 이동 비용이나 \"강을 건널 때 추가 비용\"처럼 간선마다 비용이 달라지는 규칙이 들어오는 순간 이 성질은 깨집니다.\n\n**흔한 실수.** (1) 일반 큐로 탐색하고 처음 닿은 비용을 확정한다. (2) 나가는 칸의 비용을 내거나 시작 칸의 비용을 낸다. (3) `>=` 로 비교해 이동력을 정확히 다 쓰는 칸을 뺀다. (4) 아군을 벽처럼 막거나 멈출 수 있는 칸으로 둔다. (5) 경로를 뒤집지 않거나 시작 칸을 빼먹는다. (6) `PathTo` 를 부를 때마다 탐색을 다시 한다. 결과는 맞지만 커서가 움직일 때마다 탐색 비용을 치릅니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "걸음 수가 아니라 지형 비용의 합으로 판정한다: 지형 151 / 111, 이동력 5 에서 오른쪽 위 칸의 남는 이동력이 1 이다.",
+            "points": 10,
+            "sourceId": "redblob-astar"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "아군 칸은 통과할 수 있지만 멈출 수 없고, 적 칸과 지형 0 은 통과할 수 없다: 한 줄 S A . A . (이동력 4)의 결과가 4, -1, 2, -1, 0 이다.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "들어가는 칸의 비용을 내고 시작 칸의 비용은 내지 않으며, 이동력을 정확히 다 쓰는 칸을 포함한다(남는 이동력 0).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "PathTo 가 시작 칸과 도착 칸을 포함한 이어진 경로를 돌려주고 그 비용 합이 최소 비용과 같다. 멈출 수 없는 칸에는 빈 리스트를 돌려준다.",
+            "points": 8,
+            "sourceId": "redblob-astar"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "탐색이 생성자에서 한 번만 일어나고, 비용이 가장 작은 칸을 우선순위 큐로 꺼낸다(O(N log N)).",
+            "points": 12,
+            "sourceId": "wiki-dijkstra"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "CanStopAt / RemainingAt 이 배열 조회로 끝나고, PathTo 가 저장된 \"이전 칸\" 기록만 따라간다. 질의 때 다시 탐색하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "이동력을 넘는 칸을 큐에 넣지 않아 탐색 범위가 이동력이 닿는 곳으로 한정된다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "칸을 정수 인덱스나 값 타입으로 큐와 배열에 담아, 탐색 중 칸마다 객체를 새로 할당하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "더 싼 경로일 때만 비용과 이전 칸을 함께 갱신하고, 재귀 없이 반복문으로 탐색과 경로 복원을 한다.",
+            "points": 10,
+            "sourceId": "redblob-astar"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"통과할 수 있는가\"(탐색 중)와 \"멈출 수 있는가\"(탐색 후)가 코드에서 서로 다른 자리에 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "Empty / Ally / Enemy 를 숫자 리터럴이 아니라 상수 이름으로 비교하고, 비용·이전 칸·정지 가능 배열의 뜻이 이름이나 주석으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "일반 큐(너비 우선 탐색)로 \"처음 닿은 비용\"을 확정한다: 지형 비용이 다른 맵에서 남는 이동력이 틀린다.",
+            "penalty": -20,
+            "sourceId": "redblob-hex-range"
+          },
+          {
+            "id": "d2",
+            "description": "PathTo 나 RemainingAt 을 부를 때마다 탐색을 다시 한다: 질의의 시간 복잡도가 제약을 넘는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "아군 칸을 탐색 중에 막아 그 너머의 칸에 닿지 못하거나, 아군 칸을 멈출 수 있는 칸으로 표시한다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "redblob-astar",
+        "redblob-hex-range",
+        "wiki-dijkstra",
+        "ms-learn-priorityqueue"
+      ],
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Compiler Explorer(.NET 8)에서 모범 답안 통과·스타터 실패를 확인하고, 너비 우선 탐색·나가는 칸 비용·이동력 경계 >=·아군을 벽 또는 정지 가능 칸으로 처리·경로 미반전 변형이 실패하고 다른 순서로 탐색하는 정답은 통과함을 확인했으며, 설명을 Red Blob Games 와 Wikipedia Dijkstra 원문과 대조했다."
+      },
+      "nextMission": "\"적 옆 칸에 들어가면 그 턴의 이동이 거기서 끝난다\"는 통제 구역(ZOC) 규칙을 추가해 보세요. 적과 상하좌우로 맞닿은 칸은 들어가서 멈출 수는 있지만 그 칸에서 더 나아갈 수는 없습니다. 이 규칙이 \"통과할 수 있는가 / 멈출 수 있는가\"에 이은 세 번째 판정(\"이 칸에서 계속 갈 수 있는가\")이 된다는 점을 코드 구조로 드러내고, 기존 테스트가 그대로 통과하는지 확인하세요. 그런 다음 공격 사거리 2 인 유닛을 위해 \"멈출 수 있는 칸 중 하나에서 공격할 수 있는 칸\"을 빨갛게 칠하는 `CanAttackAt` 을 추가하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    sealed class Board\n    {\n        public int[,] Terrain, Units;\n        public int W, H, Sx, Sy;\n        public string Name;\n    }\n\n    // terrain: 행을 '/' 로 구분, 글자는 이동 비용(0 = 들어갈 수 없음).\n    // units: 같은 모양, '.' 빈 칸, 'S' 움직이는 유닛(시작 칸), 'A' 아군, 'E' 적.\n    static Board Make(string terrain, string units)\n    {\n        string[] t = terrain.Split('/'), u = units.Split('/');\n        var b = new Board { W = t[0].Length, H = t.Length, Name = \"지형 \" + terrain + \" 유닛 \" + units };\n        b.Terrain = new int[b.W, b.H]; b.Units = new int[b.W, b.H];\n        for (int y = 0; y < b.H; y++)\n            for (int x = 0; x < b.W; x++)\n            {\n                b.Terrain[x, y] = t[y][x] - '0';\n                char c = u[y][x];\n                b.Units[x, y] = c == 'E' ? 2 : (c == 'A' || c == 'S') ? 1 : 0;\n                if (c == 'S') { b.Sx = x; b.Sy = y; }\n            }\n        return b;\n    }\n\n    // 기준 구현: 더 줄어드는 칸이 없을 때까지 모든 칸을 반복해서 완화한다(우선순위 큐 없음).\n    static int[,] RefCost(Board b, int move)\n    {\n        const int Inf = int.MaxValue;\n        var cost = new int[b.W, b.H];\n        for (int x = 0; x < b.W; x++) for (int y = 0; y < b.H; y++) cost[x, y] = Inf;\n        cost[b.Sx, b.Sy] = 0;\n        int[] dx = { 1, -1, 0, 0 }, dy = { 0, 0, 1, -1 };\n        bool changed = true;\n        while (changed)\n        {\n            changed = false;\n            for (int x = 0; x < b.W; x++)\n                for (int y = 0; y < b.H; y++)\n                {\n                    if (cost[x, y] == Inf) continue;\n                    for (int d = 0; d < 4; d++)\n                    {\n                        int nx = x + dx[d], ny = y + dy[d];\n                        if (nx < 0 || ny < 0 || nx >= b.W || ny >= b.H) continue;\n                        if (b.Terrain[nx, ny] == 0 || b.Units[nx, ny] == 2) continue;\n                        int c = cost[x, y] + b.Terrain[nx, ny];\n                        if (c <= move && c < cost[nx, ny]) { cost[nx, ny] = c; changed = true; }\n                    }\n                }\n        }\n        return cost;\n    }\n\n    static int RefRemaining(Board b, int[,] cost, int move, int x, int y)\n    {\n        if (cost[x, y] == int.MaxValue) return -1;\n        if (!(x == b.Sx && y == b.Sy) && b.Units[x, y] != 0) return -1;\n        return move - cost[x, y];\n    }\n\n    // 남는 이동력 표를 행마다 '/' 로 이어 붙인 문자열로 만든다('-' = 멈출 수 없음).\n    static string Grid(Board b, System.Func<int, int, int> remainingAt)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int y = 0; y < b.H; y++)\n        {\n            if (y > 0) sb.Append('/');\n            for (int x = 0; x < b.W; x++)\n            {\n                int r = remainingAt(x, y);\n                if (r < 0) sb.Append('-'); else if (r > 9) sb.Append('(').Append(r).Append(')'); else sb.Append(r);\n            }\n        }\n        return sb.ToString();\n    }\n\n    // RemainingAt 표와 CanStopAt 을 기대값과 비교한다.\n    static string Range(Board b, int move, string expected)\n    {\n        var r = new MoveRange(b.Terrain, b.Units, b.Sx, b.Sy, move);\n        string got = Grid(b, (x, y) => r.RemainingAt(x, y));\n        if (got != expected) return b.Name + \" 이동력 \" + move + \": 남는 이동력 기대 [\" + expected + \"] / 결과 [\" + got + \"]\";\n        for (int y = 0; y < b.H; y++)\n            for (int x = 0; x < b.W; x++)\n            {\n                bool want = r.RemainingAt(x, y) >= 0, stop = r.CanStopAt(x, y);\n                if (stop != want) return b.Name + \" 이동력 \" + move + \": CanStopAt(\" + x + \",\" + y + \") 기대 \" + want + \" / 결과 \" + stop;\n            }\n        return null;\n    }\n\n    // 모든 칸의 PathTo 를 규칙으로 검증한다(최소 비용 경로가 여러 개면 어느 것이든 통과).\n    static string Paths(Board b, int move)\n    {\n        var cost = RefCost(b, move);\n        var r = new MoveRange(b.Terrain, b.Units, b.Sx, b.Sy, move);\n        for (int y = 0; y < b.H; y++)\n            for (int x = 0; x < b.W; x++)\n            {\n                string where = b.Name + \" 이동력 \" + move + \" PathTo(\" + x + \",\" + y + \")\";\n                var path = r.PathTo(x, y);\n                if (path == null) return where + \" 가 null 을 반환\";\n                int remaining = RefRemaining(b, cost, move, x, y);\n                if (remaining < 0)\n                {\n                    if (path.Count != 0) return where + \": 멈출 수 없는 칸인데 길이 \" + path.Count + \" 인 경로를 반환\";\n                    continue;\n                }\n                if (path.Count == 0) return where + \": 멈출 수 있는 칸인데 빈 경로를 반환\";\n                if (path[0].x != b.Sx || path[0].y != b.Sy) return where + \": 경로가 시작 칸 (\" + b.Sx + \",\" + b.Sy + \") 이 아니라 (\" + path[0].x + \",\" + path[0].y + \") 에서 시작\";\n                var last = path[path.Count - 1];\n                if (last.x != x || last.y != y) return where + \": 경로가 (\" + last.x + \",\" + last.y + \") 에서 끝남\";\n                int spent = 0;\n                for (int i = 1; i < path.Count; i++)\n                {\n                    int px = path[i].x, py = path[i].y;\n                    if (px < 0 || py < 0 || px >= b.W || py >= b.H) return where + \": 맵 밖의 칸 (\" + px + \",\" + py + \") 을 지남\";\n                    if (System.Math.Abs(px - path[i - 1].x) + System.Math.Abs(py - path[i - 1].y) != 1) return where + \": (\" + path[i - 1].x + \",\" + path[i - 1].y + \") 다음 칸 (\" + px + \",\" + py + \") 이 상하좌우로 붙어 있지 않음\";\n                    if (b.Terrain[px, py] == 0) return where + \": 들어갈 수 없는 지형 (\" + px + \",\" + py + \") 을 지남\";\n                    if (b.Units[px, py] == 2) return where + \": 적이 있는 칸 (\" + px + \",\" + py + \") 을 지남\";\n                    spent += b.Terrain[px, py];\n                }\n                if (spent != move - remaining) return where + \": 경로의 이동력 합 기대 \" + (move - remaining) + \" / 결과 \" + spent;\n            }\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"open-field\", () =>\n        {\n            var b = Make(\"11111/11111/11111/11111/11111\", \"...../...../..S../...../.....\");\n            return Range(b, 2, \"--0--/-010-/01210/-010-/--0--\")\n                ?? Range(b, 1, \"-----/--0--/-010-/--0--/-----\");\n        });\n\n        Run(\"terrain-cost-beats-step-count\", () =>\n        {\n            // (2,0) 은 숲(5)을 지나면 두 걸음에 6, 아래로 돌아가면 네 걸음에 4.\n            var b = Make(\"151/111\", \"S../...\");\n            return Range(b, 5, \"501/432\") ?? Range(b, 4, \"4-0/321\")\n                ?? Range(b, 6, \"612/543\")   // 이동력 6 이면 늪 길(비용 6)이 먼저 닿지만 답은 아랫줄 길(비용 4)\n                ?? Range(Make(\"1311/1191/1111\", \"S.../..../....\"), 6, \"6321/54-0/4321\");\n        });\n\n        Run(\"spending-every-point-is-allowed\", () =>\n        {\n            return Range(Make(\"11111\", \"S....\"), 3, \"3210-\")\n                ?? Range(Make(\"1322\", \"S...\"), 4, \"41--\") ?? Range(Make(\"1322\", \"S...\"), 5, \"520-\")\n                ?? Range(Make(\"9123\", \"S...\"), 6, \"6530\");   // 시작 칸의 비용은 내지 않는다\n        });\n\n        Run(\"allies-can-be-passed-not-stopped-on\", () =>\n        {\n            return Range(Make(\"11111\", \"SA.A.\"), 4, \"4-2-0\")\n                ?? Range(Make(\"1111\", \"S..A\"), 3, \"321-\")\n                ?? Range(Make(\"121/111\", \".A./S.A\"), 3, \"2-0/32-\");\n        });\n\n        Run(\"enemies-block-the-way\", () =>\n        {\n            return Range(Make(\"11111\", \"S.E..\"), 4, \"43---\")\n                ?? Range(Make(\"111/111\", \"SE./...\"), 4, \"4-0/321\")\n                ?? Range(Make(\"111/111\", \"SE./.E.\"), 9, \"9--/8--\");\n        });\n\n        Run(\"blocked-terrain-and-zero-move\", () =>\n        {\n            return Range(Make(\"101/101/111\", \"S../.../...\"), 4, \"4--/3--/210\")\n                ?? Range(Make(\"101/101/111\", \"S../.../...\"), 0, \"0--/---/---\")\n                ?? Range(Make(\"1\", \"S\"), 3, \"3\")\n                ?? Range(Make(\"10/01\", \"S./..\"), 5, \"5-/--\");\n        });\n\n        Run(\"path-is-legal-and-cheapest\", () =>\n        {\n            var one = new MoveRange(Make(\"111/111\", \"S../...\").Terrain, Make(\"111/111\", \"S../...\").Units, 0, 0, 3);\n            var self = one.PathTo(0, 0);\n            if (self == null || self.Count != 1 || self[0].x != 0 || self[0].y != 0) return \"PathTo(시작 칸) 은 시작 칸 하나만 담아야 함: 길이 \" + (self == null ? -1 : self.Count);\n            return Paths(Make(\"151/111\", \"S../...\"), 5)\n                ?? Paths(Make(\"11111\", \"SA.A.\"), 4)\n                ?? Paths(Make(\"111/111\", \"SE./...\"), 4)\n                ?? Paths(Make(\"1311/1191/1111\", \"S.../.A../....\"), 6)\n                ?? Paths(Make(\"12121/10301/11111/21012\", \"..A../...../..S.E/.....\"), 7);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint s = 4649u;\n            System.Func<int, int> rnd = n => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)n); };\n            for (int run = 0; run < 400; run++)\n            {\n                int w = 1 + rnd(7), h = 1 + rnd(7);\n                var t = new System.Text.StringBuilder(); var u = new System.Text.StringBuilder();\n                int sx = rnd(w), sy = rnd(h);\n                for (int y = 0; y < h; y++)\n                {\n                    if (y > 0) { t.Append('/'); u.Append('/'); }\n                    for (int x = 0; x < w; x++)\n                    {\n                        bool start = x == sx && y == sy;\n                        int roll = rnd(100);\n                        t.Append((char)('0' + (start ? 1 + rnd(4) : roll < 15 ? 0 : 1 + rnd(4))));\n                        int who = rnd(100);\n                        u.Append(start ? 'S' : who < 12 ? 'A' : who < 22 ? 'E' : '.');\n                    }\n                }\n                var b = Make(t.ToString(), u.ToString());\n                int move = rnd(10);\n                var cost = RefCost(b, move);\n                string e = Range(b, move, Grid(b, (x, y) => RefRemaining(b, cost, move, x, y))) ?? Paths(b, move);\n                if (e != null) return \"무작위 \" + run + \"회차: \" + e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "open-field",
+          "terrain-cost-beats-step-count",
+          "spending-every-point-is-allowed",
+          "allies-can-be-passed-not-stopped-on",
+          "enemies-block-the-way",
+          "blocked-terrain-and-zero-move",
+          "path-is-legal-and-cheapest",
+          "random-vs-reference"
+        ],
+        "note": "`RemainingAt` 의 표 전체를 기대값과 비교하고 `CanStopAt` 이 그와 일치하는지 확인합니다. 평지의 마름모 범위, 걸음 수와 비용이 엇갈리는 지형(너비 우선 탐색은 여기서 실패), 이동력을 정확히 다 쓰는 칸과 시작 칸 비용, 아군 칸의 통과와 정지 불가, 적 칸과 돌아가는 길, 진입 불가 지형과 이동력 0, 1 × 1 맵을 고정 입력으로 검사합니다. `PathTo` 는 정답 경로와 비교하지 않고 규칙으로 검증합니다. 시작 칸에서 출발해 도착 칸에서 끝나는지, 이웃한 칸끼리 이어지는지, 적이나 진입 불가 지형을 지나지 않는지, 비용 합이 최소 비용과 같은지를 보므로 최소 비용 경로가 여러 개면 어느 것이든 통과합니다. 마지막으로 무작위 맵 400개(최대 7 × 7, 아군·적·진입 불가 지형 포함)에서 \"더 줄어드는 칸이 없을 때까지 전체를 반복 완화하는\" 기준 구현과 표와 경로를 비교합니다. 결과만 검사하므로 탐색을 한 번만 하는지, 질의가 O(1) / O(경로 길이)인지, 이동력을 넘는 칸을 큐에 넣지 않는지는 채점표로 확인하세요. `MoveRange(int[,] terrain, int[,] units, int startX, int startY, int movePoints)`, `CanStopAt(int, int)`, `RemainingAt(int, int)`, `PathTo(int, int)`(`List<(int x, int y)>` 반환)의 시그니처와 상수 `Empty = 0`, `Ally = 1`, `Enemy = 2` 의 값, `terrain[x, y]` 인덱스 순서는 바꾸면 안 됩니다."
+      }
     }
   ]
 }
