@@ -583,6 +583,150 @@
       "title": "Wikipedia · Shadow mapping",
       "url": "https://en.wikipedia.org/wiki/Shadow_mapping",
       "summary": "라이트 시점의 깊이를 저장하는 첫 단계와, 카메라 시점에서 각 점을 라이트 공간으로 옮겨 저장된 깊이와 비교하는 둘째 단계로 이루어진 섀도 매핑의 원리."
+    },
+    {
+      "id": "d3d-rasterization-rules",
+      "title": "Microsoft Learn · Rasterization Rules (Direct3D 11)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d11/d3d10-graphics-programming-guide-rasterizer-stage-rules",
+      "summary": "삼각형 래스터화 규칙: 안에 들어온 픽셀 중심을 그리고, 변 위의 중심은 top-left 규칙(위쪽 변 위이면서 오른쪽 변 위가 아니거나, 왼쪽 변 위이면서 아래쪽 변 위가 아니면 안)과 위쪽·아래쪽·왼쪽·오른쪽 변의 정의로 판정하며 이 규칙이 인접한 삼각형을 한 번씩만 그리게 한다는 설명. MSAA 규칙: 샘플 위치마다 커버리지와 깊이·스텐실을 검사하고, 픽셀 셰이더는 픽셀 중심에서 보간한 속성으로 한 번 실행해 결과를 덮인 샘플에 복제하며, MSAA 는 표면 에일리어싱을 줄이지 않는다는 설명."
+    },
+    {
+      "id": "gl46-core-spec",
+      "title": "Khronos · The OpenGL Graphics System: A Specification, Version 4.6 (Core Profile, May 5, 2022)",
+      "url": "https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf",
+      "summary": "8.14.1 절: λbase = log₂ ρ (식 8.7), 다각형의 ρ = max(√((∂u/∂x)² + (∂v/∂x)² + (∂w/∂x)²), √((∂u/∂y)² + (∂v/∂y)² + (∂w/∂y)²)) (식 8.11, u = 폭 × s), λ ≤ 0 이면 확대, 근사 함수 f(x, y) 의 허용 범위. 8.14.3 절: 밉 레벨 수와 LINEAR_MIPMAP_LINEAR 의 두 레벨 혼합 [1 − frac(λ)]τ₁ + frac(λ)τ₂."
+    },
+    {
+      "id": "ms-hlsl-ddx",
+      "title": "Microsoft Learn · ddx (HLSL intrinsic function)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-ddx",
+      "summary": "화면 공간 x 좌표에 대한 편미분을 돌려주며(y 는 ddy) 픽셀 셰이더에서만 지원된다는 설명."
+    },
+    {
+      "id": "unity-lod-group",
+      "title": "Unity 6 Manual · LOD Group component reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/simplifying-distant-meshes-with-level-of-detail-lod/class-lodgroup",
+      "summary": "LOD 전환 임계값이 화면 높이 대비 오브젝트 높이의 비율이라는 설명, popping 과 크로스페이드(전환 구간에서 두 레벨을 각각 그려 섞음, 디더링이나 투명도), Animate Cross-fading 과 Fade Transition Width."
+    },
+    {
+      "id": "unity-lod-intro",
+      "title": "Unity 6 Manual · Mesh LOD (introduction to level of detail)",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/simplifying-distant-meshes-with-level-of-detail-lod/level-of-detail",
+      "summary": "LOD 는 먼 메시를 렌더링하는 데 드는 GPU 연산을 줄이는 기술이며, 레벨마다 Mesh Renderer 를 가진 별도의 자식 GameObject 를 두고 거리에 따라 하나를 보여 준다는 설명."
+    },
+    {
+      "id": "unity-occlusion-culling",
+      "title": "Unity 6 Manual · Occlusion culling",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/cameras/occlusion-culling/occlusion-culling",
+      "summary": "프러스텀 컬링은 가림을 확인하지 않는다는 점, 내장 오클루전 컬링이 런타임 계산을 CPU 에서 하며 오버드로우로 GPU 바운드일 때 효과가 크다는 점, 베이크 데이터(셀)와 메모리, 움직이는 오브젝트는 가리개가 될 수 없다는 제약."
+    },
+    {
+      "id": "unity-occlusion-setup",
+      "title": "Unity 6 Manual · Set up a scene for occlusion culling",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/cameras/occlusion-culling/getting-started",
+      "summary": "Static Occluder(Terrain 이나 Mesh Renderer, 불투명, 움직이지 않음)와 Static Occludee 의 조건, LOD Group 의 오클루더 판단에 LOD0 을 쓴다는 점, 베이크와 시각화 절차."
+    },
+    {
+      "id": "unity-occlusion-dynamic",
+      "title": "Unity 6 Manual · Cull moving GameObjects",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/cameras/occlusion-culling/dynamic-gameobjects",
+      "summary": "움직이는 오브젝트는 베이크할 수 없고 가려지는 쪽만 될 수 있다는 점, Renderer 의 Dynamic Occlusion(기본 켜짐) 속성."
+    },
+    {
+      "id": "unity-urp-gpu-occlusion",
+      "title": "Unity 6 Manual · Enable GPU occlusion culling in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/in-urp/gpu-culling",
+      "summary": "현재·이전 프레임의 깊이 텍스처와 바운딩 구, 여러 단계로 줄인 깊이 버퍼로 보수적으로 판정하는 GPU 오클루전 컬링의 동작, 효과가 큰 장면과 오히려 느려질 수 있는 경우, GPU Resident Drawer 와 같은 제약."
+    },
+    {
+      "id": "unity-quality-settings",
+      "title": "Unity 6 Manual · Quality settings reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/unity-editor/editor-settings-reference/comp-manager-group/class-quality-settings",
+      "summary": "LOD Bias(전환 거리 배율), Maximum LOD Level(빌드에서 레벨 제외), Built-in 전용 LOD Cross Fade, MSAA Anti Aliasing 드롭다운(샘플 수가 많을수록 GPU 처리 시간 증가) 등 품질 설정 항목."
+    },
+    {
+      "id": "unity-camera-layerculldistances",
+      "title": "Unity 6 Scripting API · Camera.layerCullDistances",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/camera/layerculldistances",
+      "summary": "레이어별로 far plane 보다 짧은 컬링 거리를 주는 32 개짜리 float 배열(0 은 far plane 거리)이며 기본은 카메라에 정렬된 평면 기준이라는 설명."
+    },
+    {
+      "id": "unity-camera-layercullspherical",
+      "title": "Unity 6 Scripting API · Camera.layerCullSpherical",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/camera/layercullspherical",
+      "summary": "레이어별 컬링을 구 거리 기준으로 바꿔 제자리 회전에 영향받지 않게 하는 속성이며 Built-in 렌더러에서만 쓸 수 있다는 설명."
+    },
+    {
+      "id": "unity-sprite-atlas-intro",
+      "title": "Unity 6 Manual · Sprite atlases",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/unity2d/sprite/atlas/atlas-introduction",
+      "summary": "텍스처가 따로면 텍스처마다 드로우 콜이 필요하고 아틀라스로 합치면 아틀라스 안의 스프라이트에 드로우 콜 하나면 된다는 설명, SRP Batcher 를 쓰면 드로우 콜 수가 줄지 않아도 성능이 비슷하게 좋아진다는 메모, 아틀라스를 나누는 권장 기준."
+    },
+    {
+      "id": "unity-sprite-atlas-reference",
+      "title": "Unity 6 Manual · Sprite Atlas Inspector window reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/unity2d/sprite/atlas/sprite-atlas-reference",
+      "summary": "Allow Rotation(Canvas UI 에서는 끈다), Tight Packing, Alpha Dilation, Padding(이웃 스프라이트의 픽셀이 나타나지 않게, 기본 4), Generate Mip Maps, Filter Mode 등 Sprite Atlas 속성."
+    },
+    {
+      "id": "unity-sprite-atlas-create",
+      "title": "Unity 6 Manual · Create a sprite atlas",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/unity2d/sprite/atlas/create-sprite-atlas",
+      "summary": "스프라이트 아틀라스를 만들고 스프라이트를 넣는 절차와, 스프라이트 하나를 여러 아틀라스에 넣으면 런타임에 어느 아틀라스 텍스처를 쓸지 Unity 가 임의로 고른다는 노트."
+    },
+    {
+      "id": "unity-2d-render-order",
+      "title": "Unity 6 Manual · 2D rendering order",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/unity2d/sprite/sort-sprites/sort-sprites",
+      "summary": "Sorting Layer → Order in Layer → Render Queue → 카메라와의 거리 순으로 2D 오브젝트의 그리는 순서를 정하고, 그다음에 셰이더·머티리얼 속성이 같은 오브젝트를 묶어 그린다는 기준."
+    },
+    {
+      "id": "d3d11-3-functional-spec",
+      "title": "Microsoft · Direct3D 11.3 Functional Specification (DirectX-Specs)",
+      "url": "https://microsoft.github.io/DirectX-Specs/d3d/archive/D3D11_3_FunctionalSpec.htm",
+      "summary": "Microsoft 의 Direct3D 11.3 기능 사양. 3.3.1 픽셀 좌표계(왼쪽 위 원점, 픽셀 중심 0.5), 3.4.1 정점 위치를 정확히 n.8 고정소수점으로 맞추고 컬링과 보간도 그 위치로 함, 3.4.2.1 top-left 규칙(두 변이 중심에 닿으면 두 변이 모두 위쪽·왼쪽 변이어야 안), 3.5.7 2×2 단위 도함수, 7.18.10 밉 레벨 선택(mipFloor·mipCeil 과 소수부 가중치), 7.18.11 LOD 계산(log2(max(lengthX, lengthY))), 26 장 상수 목록(D3D11_FLOAT_TO_SRGB_THRESHOLD 0.0031308f, SCALE_1 12.92f, SCALE_2 1.055f, 지수 1/2.4, OFFSET 0.055f, D3D11_SRGB_TO_FLOAT_THRESHOLD 0.04045f)."
+    },
+    {
+      "id": "ms-d3d-data-conversion",
+      "title": "Microsoft Learn · Data Conversion Rules (Direct3D 10)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d10/d3d10-graphics-programming-guide-resources-data-conversion",
+      "summary": "UNORM·SRGB 의 정의와 FLOAT → UNORM / FLOAT → SRGB 변환 규칙: NaN 은 0, [0, 1] 로 자르기, (2ⁿ − 1) 곱하기, 0.5 를 더한 뒤 소수부 버리기."
+    },
+    {
+      "id": "wiki-colour-banding",
+      "title": "Wikipedia · Colour banding",
+      "url": "https://en.wikipedia.org/wiki/Colour_banding",
+      "summary": "각 픽셀의 색이 가장 가까운 단계로 반올림되어 생기는 포스터화로서의 밴딩, 완만한 그라디언트에서 잘 보인다는 점, 해결책으로 디더링과 채널당 비트 수 늘리기."
+    },
+    {
+      "id": "unity-urp-anti-aliasing",
+      "title": "Unity 6 Manual · Anti-aliasing in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/anti-aliasing",
+      "summary": "URP 의 FXAA(가장 가벼운 풀스크린 패스, 모바일 권장), SMAA, TAA(히스토리 버퍼·모션 벡터, 잔상, MSAA·Camera Stacking·Dynamic Resolution 과 함께 못 씀), MSAA(삼각형 가장자리에 강하지만 셰이더 에일리어싱은 못 고침, 타일 GPU 에서의 비용) 비교."
+    },
+    {
+      "id": "unity-urp-bloom",
+      "title": "Unity 6 Manual · Bloom Volume Override reference for URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/post-processing-and-full-screen-effects/urp/effect-list/bloom",
+      "summary": "Bloom 의 Threshold, Intensity, Scatter, Clamp 와 성능 관련 설정 High Quality Filtering, Downscale(최고 성능은 Quarter), Max Iterations(기본 6)."
+    },
+    {
+      "id": "unity-urp-post-processing",
+      "title": "Unity 6 Manual · Post-processing in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/post-processing-and-full-screen-effects/urp/integration-with-post-processing",
+      "summary": "URP 의 Volume 기반 자체 후처리(Post Processing Stack v2 와 비호환, OpenGL ES 2.0 미지원), 후처리가 프레임 시간을 많이 차지할 수 있다는 점과 모바일 친화적인 효과 목록, 저사양에는 Gaussian DoF 권장."
+    },
+    {
+      "id": "unity-urp-perf-config",
+      "title": "Unity 6 Manual · Configure for better performance in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/introduction/configure-for-better-performance",
+      "summary": "URP 의 메모리·CPU·GPU 비용을 줄이는 설정: HDR 끄기 또는 32 Bit, Depth/Opaque Texture, Store Actions, MSAA 축소, Native RenderPass, LOD Cross Fade, 그리고 프로파일러로 측정하라는 안내."
+    },
+    {
+      "id": "unity-post-processing-overview",
+      "title": "Unity 6 Manual · Post-processing and full-screen effects (overview)",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/post-processing-and-full-screen-effects/overview",
+      "summary": "파이프라인별 후처리 지원: URP·HDRP 는 자체 후처리, Built-in 은 Post-Processing Version 2 패키지가 필요하며 서로 호환되지 않는다는 표."
     }
   ],
   "problems": [
@@ -3423,6 +3567,949 @@
         "note": "Unity 6 매뉴얼 10개 페이지와 Microsoft 섀도 문서 2개, Wikipedia 문서를 curl 로 받아 인용 문장을 원문과 대조했고, Bias·Normal Bias 부작용 설명에 Built-in 파이프라인 기준이라는 표시를 붙이고 URP 문서의 설명을 따로 적었으며 추론 항목에 표시가 있는지 확인했습니다."
       },
       "nextMission": "Unity 6 URP 프로젝트에 평지와 캐릭터, 나무 50그루를 놓고 디렉셔널 라이트의 그림자를 켜세요. Cascade Count 1 / 2 / 4, Max Distance 50 / 150 의 여섯 조합에서 Frame Debugger 의 섀도 패스 드로우 콜 수와 캐릭터 발밑 그림자의 캡처를 표로 정리합니다. 그런 다음 Depth Bias 를 0 에서 조금씩 올리며 애크니가 사라지는 값과 캐릭터가 떠 보이기 시작하는 값을 각각 기록하세요."
+    },
+    {
+      "id": "t9-impl-triangle-raster-top-left",
+      "track": "track9",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "삼각형 래스터화: 에지 함수, top-left 규칙, 무게중심 깊이 보간",
+      "tags": [
+        "Gfx_Rasterization",
+        "Gfx_FillRule",
+        "Gfx_Barycentric"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "d3d-rasterization-rules",
+        "d3d11-3-functional-spec",
+        "khronos-vulkan-rasterization",
+        "ms-d3d10-coordinates"
+      ],
+      "scenario": "오픈 월드 액션 게임에 CPU 오클루전 컬링을 붙이고 있습니다. 큰 건물과 절벽 같은 가리개(occluder)의 단순화한 삼각형을 CPU 에서 저해상도 깊이 버퍼에 래스터화해 두고, 그 뒤에 숨은 오브젝트를 GPU 에 보내기 전에 걸러 내는 구조입니다. 첫 구현에서 세 가지 문제가 나왔습니다.\n\n- 사각형 벽을 이루는 두 삼각형이 맞닿은 대각선을 따라 픽셀이 빠집니다. 그 틈으로 벽 뒤의 몬스터가 \"보이는 것\"으로 판정됩니다.\n- 다른 버전은 같은 대각선의 픽셀을 두 삼각형이 모두 그립니다.\n- 화면 밖 멀리까지 뻗은 지형 삼각형은 경계 근처 픽셀의 판정이 가끔 틀립니다.\n\n**할 일:** `TriangleRasterizer` 의 `CoversPixel` 과 `Rasterize` 를 구현하세요. 순수 C#(.NET 8)이고 `System.Numerics.Vector2` 는 좌표를 담는 데만 씁니다.\n\n**규약** (정답의 기준입니다)\n\n| 항목 | 이 문제의 규약 |\n|---|---|\n| 화면 좌표 | 원점은 왼쪽 위, x 는 오른쪽, y 는 **아래로** 증가합니다. 픽셀 (px, py) 의 샘플 위치는 **중심 (px + 0.5, py + 0.5)** 입니다. |\n| 정점 좌표 | 1/256 픽셀의 배수(하위 픽셀 8비트, Direct3D 11 이 정점 위치를 맞추는 n.8 고정소수점 격자와 같습니다)이고 절댓값은 4096 이하입니다. 이미 격자 위에 있으므로 따로 스냅하지 않습니다. 화면 밖 좌표도 옵니다. |\n| 에지 함수 | `E(a, b, p) = (b.x − a.x)(p.y − a.y) − (b.y − a.y)(p.x − a.x)`. 점 p 가 변 a→b 의 어느 쪽에 있는지를 부호로 알려 주는 값(두 배의 부호 있는 면적)입니다. |\n| 감기는 방향 | `E(v0, v1, v2) > 0` 인 삼각형(y 가 아래로 가는 화면에서 **시계 방향**)만 그립니다. 반시계 방향은 아무 픽셀도 덮지 않습니다(뒷면 컬링). 시계 방향이면 안쪽의 점에서 세 변 v0→v1, v1→v2, v2→v0 의 E 가 모두 양수입니다. |\n| 경계 규칙 | 픽셀 중심이 변 위(E = 0)에 정확히 놓이면, 그 변이 **위쪽 변이나 왼쪽 변**일 때만 덮습니다(Direct3D 의 top-left 규칙). 위쪽 변은 정확히 수평이고 다른 변들보다 위에 있는 변, 왼쪽 변은 수평이 아니고 삼각형의 왼쪽에 있는 변입니다. 중심이 두 변 위(꼭짓점)에 놓이면 **두 변이 모두** 위쪽·왼쪽 변일 때만 덮습니다(D3D11.3 기능 사양 3.4.2.1 절). |\n| 보간 | 무게중심 좌표 `b0 = E(v1, v2, p) / E(v0, v1, v2)`, `b1 = E(v2, v0, p) / E(v0, v1, v2)`, `b2 = E(v0, v1, p) / E(v0, v1, v2)` 로 깊이를 화면 공간에서 선형 보간합니다: `z = b0·z0 + b1·z1 + b2·z2`. |\n| 깊이 테스트 | 보간한 깊이를 `float` 로 바꾼 값이 `depthBuffer[py × width + px]` 보다 **작을 때만** 씁니다. |\n| 반환값 | 덮인 픽셀 수. 깊이 테스트에서 떨어진 픽셀도 셉니다. |\n\n면적이 0 인 삼각형, NaN·무한대는 주어지지 않습니다. 이런 입력의 결과는 정하지 않으며 검사하지도 않습니다.\n\n**예시**\n\n- 정사각형 (0, 0)~(8, 8) 을 대각선으로 나눈 시계 방향 두 삼각형 `(0,0) (8,0) (8,8)` 과 `(0,0) (8,8) (0,8)`: 대각선 위의 중심 (0.5, 0.5) … (7.5, 7.5) 여덟 개는 대각선이 **왼쪽 변**인 첫 삼각형만 덮습니다. 덮인 픽셀은 36 개와 28 개, 합 64 개로 빈틈도 겹침도 없습니다.\n- `(0,0) (16,0) (0,16)`, z = 0.2 / 0.6 / 1.0: 픽셀 (3, 5) 의 중심 (3.5, 5.5) 에서 세 에지 함수는 112, 56, 88 이고 면적은 256 입니다. 무게중심 좌표 (0.4375, 0.21875, 0.34375) 로 z = 0.5625. 픽셀 (7, 8) 의 중심 (7.5, 8.5) 은 빗변 위(E = 0)인데 빗변은 오른쪽 변이라 덮지 않습니다. 덮인 픽셀은 120 개입니다.\n- 같은 정점을 `(0,0) (0,16) (16,0)` 순서로 주면 반시계 방향이라 0 개입니다.",
+      "constraints": [
+        "`Rasterize` 는 삼각형의 바운딩 박스를 화면으로 잘라 낸 영역의 픽셀만 검사한다(화면 전체를 훑지 않는다). 시간은 O(잘라 낸 바운딩 박스의 픽셀 수), 픽셀 루프 안에서 힙 할당이 없다.",
+        "에지 함수는 `double`(또는 1/256 단위 `long` 고정소수점)으로 계산한다. 좌표 범위 안에서 `double` 계산은 반올림 없이 정확하지만 `float` 곱셈은 그렇지 않다.",
+        "`depthBuffer` 는 null 이 아니고 길이는 `width × height`, `width` 와 `height` 는 1 이상이다. 화면 밖을 가리키는 인덱스를 만들지 않는다.",
+        "공개 시그니처와 규약(픽셀 중심, 감기는 방향, 경계 규칙, 반환값의 의미)을 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 규약 (이 규약이 정답의 기준입니다)\n// - 화면 좌표: 원점은 왼쪽 위, x 는 오른쪽, y 는 아래로 증가한다.\n//   픽셀 (px, py) 의 샘플 위치는 중심 (px + 0.5, py + 0.5) 이다.\n// - 정점 좌표는 1/256 픽셀의 배수(Direct3D 11 이 정점을 맞추는 n.8 고정소수점 격자)이고 절댓값은 4096 이하다.\n// - 화면에서 시계 방향으로 감긴 삼각형만 그린다. 반시계 방향은 아무 픽셀도 덮지 않는다.\n// - 픽셀 중심이 변 위에 정확히 놓이면 그 변이 위쪽 변이나 왼쪽 변일 때만 덮는다(top-left 규칙).\n//   중심이 두 변 위(꼭짓점)에 놓이면 두 변이 모두 위쪽·왼쪽 변일 때만 덮는다.\n// - 면적이 0 인 삼각형, NaN, 무한대는 주어지지 않는다.\npublic static class TriangleRasterizer\n{\n    // 픽셀 (px, py) 의 중심이 삼각형에 덮이면 true.\n    public static bool CoversPixel(Vector2 v0, Vector2 v1, Vector2 v2, int px, int py)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 덮인 픽셀마다 정점 깊이 z0, z1, z2 를 무게중심 좌표로 보간한다.\n    // 보간한 깊이(float)가 depthBuffer[py * width + px] 보다 작으면 그 값을 쓴다.\n    // 반환값: 덮인 픽셀 수(깊이 테스트 결과와 상관없이 센다).\n    public static int Rasterize(Vector2 v0, Vector2 v1, Vector2 v2, float z0, float z1, float z2,\n                                float[] depthBuffer, int width, int height)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "맞닿은 변: 정사각형을 대각선으로 나눈 두 삼각형에서 `E ≥ 0` 을 쓰면 대각선 픽셀 8 개를 두 번 그리고(합 72), `E > 0` 을 쓰면 둘 다 빠뜨린다(합 56). top-left 규칙을 쓰면 36 + 28 = 64 다.",
+        "수평 변과 수직 변: x 1~5, y 2.5~6.5 직사각형을 두 삼각형으로 나누면 위쪽 변 y = 2.5 위의 픽셀 행은 덮고 아래쪽 변 y = 6.5 위의 행은 덮지 않는다. x 2.5~6.5, y 1~5 직사각형에서는 왼쪽 변 x = 2.5 의 열은 덮고 오른쪽 변 x = 6.5 의 열은 덮지 않는다. 둘 다 덮인 픽셀은 16 개다.",
+        "꼭짓점이 픽셀 중심에 놓일 때: `(2.5, 2.5) (6.5, 2.5) (2.5, 6.5)` 에서 픽셀 (2, 2) 의 중심은 위쪽 변과 왼쪽 변이 만나는 꼭짓점이라 덮고, (6, 2) 와 (2, 6) 의 중심은 오른쪽 변(빗변)에도 닿아 덮지 않는다. 덮인 픽셀은 10 개다. 한 중심을 꼭짓점으로 공유하는 부채꼴 삼각형들 중에서는 정확히 하나만 그 픽셀을 덮는다.",
+        "반시계 방향 삼각형은 0 을 반환하고 버퍼를 건드리지 않는다. 화면 밖으로 크게 걸친 삼각형 `(−20, −5) (30, 3) (4, 40)` 은 바운딩 박스를 화면으로 자르지 않으면 인덱스가 범위를 벗어난다.",
+        "먼 정점: `(964205/256, −301971/256) (−196329/256, 75669/256) (38.5625, 24.4375)` 에서 픽셀 (38, 33) 의 중심은 첫 변의 E 가 0.065 인, 변 바로 안쪽의 점이다. `float` 로 곱하면 두 곱이 같은 값으로 반올림되어 E = 0 이 되고, 그 변은 오른쪽 변이라 판정이 \"덮는다\"에서 \"덮지 않는다\"로 뒤집힌다."
+      ],
+      "hints": [
+        "정사각형 (0,0)~(8,8) 의 두 삼각형 `(0,0) (8,0) (8,8)` 과 `(0,0) (8,8) (0,8)` 에서 픽셀 (3, 3) 의 중심 (3.5, 3.5) 을 넣어 보세요. 두 삼각형 모두 대각선 변의 E 가 정확히 0 이고 나머지 두 변은 양수입니다. \"0 이면 덮는다\"고 하면 두 삼각형이 모두 그리고, \"0 이면 안 덮는다\"고 하면 둘 다 안 그립니다. 둘 중 정확히 하나만 그리게 하려면, 같은 변을 두 삼각형이 서로 **반대 방향**으로 지난다는 점을 이용해야 합니다.",
+        "경계 규칙은 \"변마다\" 정해집니다. 세 변 각각에 대해 그 변이 위쪽 변인지 왼쪽 변인지를 삼각형마다 한 번 구해 두고, 픽셀에서는 `E > 0` 이거나 `E == 0` 이면서 그 변이 위쪽·왼쪽 변일 때만 통과시키세요. 시계 방향(화면 기준) 삼각형을 따라 돌 때 위쪽 변은 어느 방향(x 증가/감소)으로 진행하고, 왼쪽 변은 어느 방향(y 증가/감소)으로 진행합니까? 바운딩 박스는 \"중심 px + 0.5 가 [최소 x, 최대 x] 안에 드는 px\" 이므로 `ceil(최소 − 0.5)` 부터 `floor(최대 − 0.5)` 까지이고, 그 뒤에 0 ~ width − 1 로 자릅니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nE(a, b, px, py) = (b.x - a.x) * (py - a.y) - (b.y - a.y) * (px - a.x)   // double 로\n\nIsTopLeft(a, b):                 // 시계 방향 삼각형의 변 a→b\n    return (a.y == b.y && ____) || ____\n\nRasterize(...):\n    area = E(v0, v1, v2.x, v2.y);  if area <= 0: return 0\n    minX = max(0, ceil(min x - 0.5));  maxX = min(width - 1, floor(max x - 0.5))   // y 도 같다\n    t0 = IsTopLeft(v1, v2); t1 = IsTopLeft(v2, v0); t2 = IsTopLeft(v0, v1)\n    for py in minY..maxY, px in minX..maxX:\n        cx = px + 0.5; cy = py + 0.5\n        e0 = E(v1, v2, cx, cy); e1 = E(v2, v0, cx, cy); e2 = E(v0, v1, cx, cy)\n        if not (Inside(e0, t0) and Inside(e1, t1) and Inside(e2, t2)): continue\n        covered++\n        z = (float)((e0 * z0 + e1 * z1 + e2 * z2) / ____)\n        if z < depth[____]: depth[____] = z\n    return covered\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 규약 (문제 본문과 같다)\n// - 화면 좌표: 원점은 왼쪽 위, x 는 오른쪽, y 는 아래로 증가한다.\n//   픽셀 (px, py) 의 샘플 위치는 중심 (px + 0.5, py + 0.5) 이다.\n// - 정점 좌표는 1/256 픽셀의 배수(Direct3D 11 이 정점을 맞추는 n.8 고정소수점 격자)이고 절댓값은 4096 이하다.\n// - 화면에서 시계 방향으로 감긴 삼각형만 그린다. 반시계 방향은 아무 픽셀도 덮지 않는다.\n// - 픽셀 중심이 변 위에 정확히 놓이면 그 변이 위쪽 변이나 왼쪽 변일 때만 덮는다(top-left 규칙).\n//   중심이 두 변 위(꼭짓점)에 놓이면 두 변이 모두 위쪽·왼쪽 변일 때만 덮는다.\n// - 깊이 테스트: 보간한 깊이(float)가 버퍼의 값보다 작을 때만 쓴다.\npublic static class TriangleRasterizer\n{\n    // 변 a→b 의 에지 함수(두 배 면적). 시계 방향 삼각형의 안쪽에서 양수, 변 위에서 0 이다.\n    // 좌표가 1/256 의 배수이고 4096 이하라서 double 로 계산하면 반올림 없이 정확하다.\n    static double Edge(Vector2 a, Vector2 b, double px, double py)\n    {\n        return ((double)b.X - a.X) * (py - a.Y) - ((double)b.Y - a.Y) * (px - a.X);\n    }\n\n    // 시계 방향(화면 기준) 삼각형에서 위쪽 변은 수평이면서 오른쪽으로 진행하고,\n    // 왼쪽 변은 위쪽(y 가 줄어드는 쪽)으로 진행한다.\n    static bool IsTopLeft(Vector2 a, Vector2 b)\n    {\n        return (a.Y == b.Y && b.X > a.X) || b.Y < a.Y;\n    }\n\n    static bool Inside(double e, bool topLeft)\n    {\n        return e > 0 || (e == 0 && topLeft);\n    }\n\n    public static bool CoversPixel(Vector2 v0, Vector2 v1, Vector2 v2, int px, int py)\n    {\n        if (Edge(v0, v1, v2.X, v2.Y) <= 0) return false; // 반시계 방향은 그리지 않는다\n        double cx = px + 0.5, cy = py + 0.5;\n        return Inside(Edge(v1, v2, cx, cy), IsTopLeft(v1, v2))\n            && Inside(Edge(v2, v0, cx, cy), IsTopLeft(v2, v0))\n            && Inside(Edge(v0, v1, cx, cy), IsTopLeft(v0, v1));\n    }\n\n    public static int Rasterize(Vector2 v0, Vector2 v1, Vector2 v2, float z0, float z1, float z2,\n                                float[] depthBuffer, int width, int height)\n    {\n        double area = Edge(v0, v1, v2.X, v2.Y);\n        if (area <= 0) return 0;\n\n        // 중심 (px + 0.5) 이 [최소, 최대] 안에 드는 픽셀만 보고, 화면 밖은 잘라 낸다.\n        int minX = Math.Max(0, (int)Math.Ceiling(Math.Min(v0.X, Math.Min(v1.X, v2.X)) - 0.5));\n        int maxX = Math.Min(width - 1, (int)Math.Floor(Math.Max(v0.X, Math.Max(v1.X, v2.X)) - 0.5));\n        int minY = Math.Max(0, (int)Math.Ceiling(Math.Min(v0.Y, Math.Min(v1.Y, v2.Y)) - 0.5));\n        int maxY = Math.Min(height - 1, (int)Math.Floor(Math.Max(v0.Y, Math.Max(v1.Y, v2.Y)) - 0.5));\n\n        bool t0 = IsTopLeft(v1, v2), t1 = IsTopLeft(v2, v0), t2 = IsTopLeft(v0, v1);\n        int covered = 0;\n        for (int py = minY; py <= maxY; py++)\n        {\n            double cy = py + 0.5;\n            for (int px = minX; px <= maxX; px++)\n            {\n                double cx = px + 0.5;\n                // e0 은 v0 맞은편 변, e1 은 v1 맞은편 변, e2 는 v2 맞은편 변의 값이다.\n                double e0 = Edge(v1, v2, cx, cy), e1 = Edge(v2, v0, cx, cy), e2 = Edge(v0, v1, cx, cy);\n                if (!Inside(e0, t0) || !Inside(e1, t1) || !Inside(e2, t2)) continue;\n\n                covered++;\n                // 무게중심 좌표 = 맞은편 변의 에지 함수 / 전체 면적. 깊이는 화면 공간에서 선형 보간한다.\n                float z = (float)((e0 * z0 + e1 * z1 + e2 * z2) / area);\n                int i = py * width + px;\n                if (z < depthBuffer[i]) depthBuffer[i] = z;\n            }\n        }\n        return covered;\n    }\n}\n",
+      "explanation": "**에지 함수.** `E(a, b, p)` 는 벡터 a→b 와 a→p 의 외적이라 p 가 변의 어느 쪽에 있는지를 부호로 알려 주고, 크기는 삼각형 (a, b, p) 면적의 두 배입니다. 시계 방향(이 문제의 화면 기준) 삼각형의 안쪽 점은 세 변 모두에서 양수입니다. Vulkan 사양도 앞뒤면을 framebuffer 좌표로 계산한 면적의 부호로 정하고, 어느 부호를 앞면으로 볼지는 `frontFace` 설정에 맡깁니다.\n\n**샘플 위치.** Direct3D 의 픽셀 좌표계는 원점이 렌더 타깃의 왼쪽 위이고 픽셀 중심이 정수 위치에서 (0.5, 0.5) 떨어져 있습니다(Direct3D 10 좌표계 문서, D3D11.3 기능 사양 3.3.1 절). 그래서 `(px, py)` 가 아니라 `(px + 0.5, py + 0.5)` 에서 판정합니다.\n\n**top-left 규칙.** 공유 변 위에 픽셀 중심이 놓이면 두 삼각형 모두 E = 0 이라, `≥ 0` 이면 두 번 그리고 `> 0` 이면 구멍이 납니다. Microsoft Learn 의 Direct3D 래스터화 규칙 문서는 변 위의 중심을 top-left 규칙으로 판정하고(위쪽 변 위에 있으면서 오른쪽 변 위에 있지 않거나, 왼쪽 변 위에 있으면서 아래쪽 변 위에 있지 않으면 안) 이 규칙이 인접한 삼각형을 한 번씩만 그리게 한다고 적습니다. Microsoft 의 D3D11.3 기능 사양(3.4.2.1 절)은 꼭짓점처럼 두 변이 중심에 닿으면 두 변이 모두 위쪽·왼쪽 변이어야 안이라고 정합니다. 왼쪽 변과 오른쪽 변이 만나는 꼭짓점은 Learn 문서의 문장을 글자 그대로 읽으면 안으로 판정되어 기능 사양과 어긋나는데, 이 문제는 기능 사양을 따릅니다(꼭짓점 사례 `(2.5, 2.5) (6.5, 2.5) (2.5, 6.5)` 의 픽셀 (2, 6) 이 그 차이를 가립니다). Vulkan 사양은 규칙 이름 대신, 공통 변 양쪽의 두 다각형 중 정확히 하나만 그 샘플을 덮어야 한다는 조건을 둡니다. 공유 변은 두 삼각형이 반대 방향으로 지나가므로, 시계 방향 삼각형에서 \"위쪽 변 = 수평이고 오른쪽으로 진행(`dy == 0 && dx > 0`)\", \"왼쪽 변 = 위로 진행(`dy < 0`)\" 으로 분류하면 한쪽은 포함, 반대쪽은 제외가 됩니다. 이 분류는 문서의 기하학적 정의를 이 문제의 감기는 방향에 맞춰 옮긴 것이고, 변마다 따로 판정해 세 조건을 모두 요구하면 꼭짓점 규칙도 저절로 지켜집니다.\n\n**보간.** Vulkan 사양의 무게중심 좌표는 `a = A(p pb pc) / A(pa pb pc)` 꼴의 면적 비라서, 이미 구한 e0, e1, e2 를 면적으로 나누면 됩니다. 같은 사양은 깊이 z 를 `f = a·fa + b·fb + c·fc` 로 선형 보간하고, 원근을 반영할 값에는 클립 w 를 쓰는 원근 보간 식을 따로 둡니다.\n\n**정밀도.** D3D11.3 기능 사양(3.4.1 절)은 래스터화할 정점의 x, y 를 정확히 n.8 고정소수점(1/256 픽셀)으로 맞추고 컬링과 보간도 그 위치로 한다고 정합니다. 이 격자에서 좌표가 4096 이하라면 좌표 차이는 21 비트 정수로 나타나고 곱은 약 42 비트라 `double`(가수 53 비트)로 정확합니다. `float`(24 비트)은 곱을 반올림합니다. 먼 정점 사례의 두 곱 −5,499,272.95 와 −5,499,273.02 는 `float` 에서 둘 다 −5,499,273 이 되어 차이 0.065 가 사라집니다. 하드웨어가 고정소수점으로 정확히 계산하려고 이렇게 맞춘다는 해석은 일반 지식입니다.\n\n**복잡도.** 삼각형마다 면적과 변 분류를 한 번, 잘라 낸 바운딩 박스의 픽셀마다 에지 함수 세 번입니다. 시간 O(바운딩 박스 ∩ 화면의 픽셀 수), 추가 메모리 O(1).\n\n**흔한 실수.**\n- `(px, py)` 에서 판정해 작은 삼각형 `(2.25,2.25) (2.75,2.25) (2.5,2.75)` 가 픽셀 (2, 2) 를 놓친다.\n- 경계 규칙을 반대로(bottom-right) 쓴다. 빈틈은 없지만 규약과 다른 픽셀을 덮는다.\n- 감기는 방향을 확인하지 않거나, 바운딩 박스를 화면으로 자르지 않는다.\n- 덮인 수 대신 깊이 테스트를 통과한 수를 세거나, e0 을 v0 이 아닌 정점의 깊이와 짝짓는다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "픽셀 중심 (px + 0.5, py + 0.5) 에서 세 에지 함수의 부호로 판정한다: (1,1) (9,2) (3,8) 에서 픽셀 (3,3) 은 true, (8,6) 은 false, 작은 삼각형 (2.25,2.25) (2.75,2.25) (2.5,2.75) 는 픽셀 (2,2) 하나만 덮는다.",
+            "points": 12,
+            "sourceId": "ms-d3d10-coordinates"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "변 위의 중심을 top-left 규칙으로 처리한다: 정사각형 대각선 분할이 36 개와 28 개, 직사각형의 왼쪽·위쪽 변은 포함하고 오른쪽·아래쪽 변은 제외해 각각 16 개, 꼭짓점 사례 (2.5, 2.5) (6.5, 2.5) (2.5, 6.5) 가 10 개, 빈틈없는 메시의 모든 픽셀을 정확히 한 번 덮는다.",
+            "points": 12,
+            "sourceId": "d3d-rasterization-rules"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "깊이를 무게중심 좌표로 선형 보간하고 작을 때만 쓴다: (0,0) (16,0) (0,16), z 0.2/0.6/1.0 에서 픽셀 (3,5) 이 0.5625, 덮인 수 120, 정점 순서를 돌려도 같은 결과.",
+            "points": 11,
+            "sourceId": "khronos-vulkan-rasterization"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "잘라 낸 바운딩 박스 안의 픽셀만 검사한다(1024×1024 버퍼에 작은 삼각형 3,000 개를 1 초 안에 그린다).",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "픽셀 루프 안에 힙 할당이 없고, 삼각형마다 한 번이면 되는 계산(면적, 변 분류)을 루프 밖에서 한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "반시계 방향 삼각형과 화면과 겹치지 않는 삼각형은 픽셀을 하나도 검사하지 않고 끝난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "에지 함수를 double 이나 long 고정소수점으로 계산한다(먼 정점 사례에서 float 계산처럼 판정이 뒤집히지 않는다).",
+            "points": 10,
+            "sourceId": "d3d11-3-functional-spec"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "감기는 방향 규약(E(v0, v1, v2) > 0 만 그린다)과 버퍼 인덱스 py × width + px 를 지킨다.",
+            "points": 10,
+            "sourceId": "khronos-vulkan-rasterization"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "에지 함수와 위쪽·왼쪽 변 판정을 작은 함수로 분리했고, CoversPixel 과 Rasterize 가 같은 판정을 쓴다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "경계 규칙, 감기는 방향, 정밀도 가정(1/256 격자, double)이 주석이나 이름으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "변 위의 픽셀 중심을 모두 포함(E ≥ 0)하거나 모두 제외(E > 0)해서, 맞닿은 삼각형이 같은 픽셀을 두 번 그리거나 구멍을 낸다.",
+            "penalty": -20,
+            "sourceId": "d3d-rasterization-rules"
+          },
+          {
+            "id": "d2",
+            "description": "화면 전체를 훑거나, 바운딩 박스를 화면으로 자르지 않아 범위 밖 인덱스를 만든다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "규약(픽셀 중심, 감기는 방향, 반환값의 의미)이나 공개 시그니처를 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector2 V(double x, double y) { return new System.Numerics.Vector2((float)x, (float)y); }\n    static string F(double v) { return v.ToString(\"0.#####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static string P(System.Numerics.Vector2 v) { return \"(\" + F(v.X) + \", \" + F(v.Y) + \")\"; }\n    static string Tri(System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c) { return \"삼각형 \" + P(a) + \" \" + P(b) + \" \" + P(c); }\n\n    // ---- 참조 구현: 1/256 고정소수점 정수로 정확히 계산하고, 위쪽·왼쪽 변은 기하학적 정의로 판정한다 ----\n    static long Q(float f) { return (long)System.Math.Round((double)f * 256.0); }\n\n    // 변 (ax, ay)-(bx, by), 맞은편 정점 (rx, ry), 샘플 (sx, sy)\n    static bool RefEdge(long ax, long ay, long bx, long by, long rx, long ry, long sx, long sy)\n    {\n        long es = (bx - ax) * (sy - ay) - (by - ay) * (sx - ax);\n        long er = (bx - ax) * (ry - ay) - (by - ay) * (rx - ax);\n        if (er < 0) es = -es; // 안쪽이 양수가 되도록 맞춘다\n        if (es != 0) return es > 0;\n        if (ay == by) return ry > ay; // 수평 변: 맞은편 정점이 아래에 있으면 위쪽 변\n        long d = (rx - ax) * (by - ay) - (ry - ay) * (bx - ax);\n        return (by > ay ? d : -d) > 0; // 맞은편 정점이 변의 오른쪽에 있으면 왼쪽 변\n    }\n\n    static bool RefCovers(System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c, int px, int py)\n    {\n        long ax = Q(a.X), ay = Q(a.Y), bx = Q(b.X), by = Q(b.Y), cx = Q(c.X), cy = Q(c.Y);\n        if ((bx - ax) * (cy - ay) - (by - ay) * (cx - ax) <= 0) return false; // 화면에서 시계 방향만\n        long sx = px * 256L + 128, sy = py * 256L + 128;\n        return RefEdge(ax, ay, bx, by, cx, cy, sx, sy) && RefEdge(bx, by, cx, cy, ax, ay, sx, sy) && RefEdge(cx, cy, ax, ay, bx, by, sx, sy);\n    }\n\n    static double RefDepth(System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c, float za, float zb, float zc, int px, int py)\n    {\n        double x = px + 0.5, y = py + 0.5;\n        double area = ((double)b.X - a.X) * ((double)c.Y - a.Y) - ((double)b.Y - a.Y) * ((double)c.X - a.X);\n        double wa = ((double)c.X - b.X) * (y - b.Y) - ((double)c.Y - b.Y) * (x - b.X);\n        double wb = ((double)a.X - c.X) * (y - c.Y) - ((double)a.Y - c.Y) * (x - c.X);\n        return (wa * za + wb * zb + (area - wa - wb) * zc) / area;\n    }\n\n    static int RefRaster(System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c, float za, float zb, float zc, float[] buf, int w, int h)\n    {\n        int n = 0;\n        for (int py = 0; py < h; py++)\n            for (int px = 0; px < w; px++)\n                if (RefCovers(a, b, c, px, py))\n                {\n                    n++;\n                    float z = (float)RefDepth(a, b, c, za, zb, zc, px, py);\n                    if (z < buf[py * w + px]) buf[py * w + px] = z;\n                }\n        return n;\n    }\n\n    static float[] Buf(int n, float v) { var b = new float[n]; System.Array.Fill(b, v); return b; }\n\n    // 사용자 구현과 참조 구현을 같은 버퍼 상태에서 돌려 비교한다. 같으면 null.\n    static string Same(string what, System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c, float za, float zb, float zc, float[] mine, float[] refb, int w, int h)\n    {\n        int got = TriangleRasterizer.Rasterize(a, b, c, za, zb, zc, mine, w, h);\n        int exp = RefRaster(a, b, c, za, zb, zc, refb, w, h);\n        if (got != exp) return what + \" \" + Tri(a, b, c) + \" (\" + w + \"×\" + h + \"): 덮인 픽셀 수 기대 \" + exp + \", 결과 \" + got;\n        for (int i = 0; i < w * h; i++)\n        {\n            bool bothInf = float.IsPositiveInfinity(mine[i]) && float.IsPositiveInfinity(refb[i]);\n            if (!bothInf && !(System.Math.Abs(mine[i] - refb[i]) <= 1e-5))\n                return what + \" \" + Tri(a, b, c) + \": 픽셀 (\" + (i % w) + \", \" + (i / w) + \") 의 깊이 기대 \" + F(refb[i]) + \", 결과 \" + F(mine[i]);\n        }\n        return null;\n    }\n\n    static string Cover(System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c, int px, int py, bool exp)\n    {\n        bool got = TriangleRasterizer.CoversPixel(a, b, c, px, py);\n        return got == exp ? null : \"CoversPixel(\" + Tri(a, b, c) + \", 픽셀 (\" + px + \", \" + py + \")): 기대 \" + exp + \", 결과 \" + got;\n    }\n\n    // 픽셀 (x0..x1, y0..y1) 직사각형만 덮였는지 확인한다(두 삼각형의 합집합).\n    static string Union(string what, System.Numerics.Vector2[] t, int w, int h, int x0, int x1, int y0, int y1)\n    {\n        for (int py = 0; py < h; py++)\n            for (int px = 0; px < w; px++)\n            {\n                int n = 0;\n                for (int k = 0; k < t.Length; k += 3) if (TriangleRasterizer.CoversPixel(t[k], t[k + 1], t[k + 2], px, py)) n++;\n                int exp = px >= x0 && px <= x1 && py >= y0 && py <= y1 ? 1 : 0;\n                if (n != exp) return what + \": 픽셀 (\" + px + \", \" + py + \") 을 덮은 삼각형 수 기대 \" + exp + \", 결과 \" + n;\n            }\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"coverage-and-winding\", () =>\n        {\n            var a = V(1, 1); var b = V(9, 2); var c = V(3, 8);\n            string e = Cover(a, b, c, 3, 3, true) ?? Cover(a, b, c, 7, 2, true) ?? Cover(a, b, c, 0, 0, false) ?? Cover(a, b, c, 8, 6, false) ?? Cover(a, b, c, 2, 7, false);\n            if (e != null) return e;\n            // 반시계 방향은 그리지 않는다\n            e = Cover(a, c, b, 3, 3, false) ?? Cover(a, c, b, 7, 2, false);\n            if (e != null) return e;\n            var buf = Buf(100, 1f);\n            int n = TriangleRasterizer.Rasterize(a, c, b, 0.5f, 0.5f, 0.5f, buf, 10, 10);\n            if (n != 0 || System.Array.Exists(buf, v => v != 1f)) return \"반시계 방향 \" + Tri(a, c, b) + \": 아무 픽셀도 덮지 않아야 하는데 \" + n + \" 개를 덮었다\";\n            // 샘플 위치는 픽셀 중심: 이 작은 삼각형은 (2.5, 2.5) 만 덮는다\n            var s0 = V(2.25, 2.25); var s1 = V(2.75, 2.25); var s2 = V(2.5, 2.75);\n            buf = Buf(25, 1f);\n            n = TriangleRasterizer.Rasterize(s0, s1, s2, 0.25f, 0.25f, 0.25f, buf, 5, 5);\n            return n == 1 && buf[2 * 5 + 2] == 0.25f ? null : Tri(s0, s1, s2) + \", z 0.25, 버퍼 초깃값 1: 픽셀 (2, 2) 하나만 덮고 깊이 0.25 를 써야 한다(중심 (2.5, 2.5) 이 안쪽). 결과 덮인 수 \" + n + \", 픽셀 (2, 2) 깊이 \" + F(buf[2 * 5 + 2]);\n        });\n\n        Run(\"top-left-edges\", () =>\n        {\n            // 왼쪽 변 x = 2.5 는 포함, 오른쪽 변 x = 6.5 는 제외\n            var r1 = new[] { V(2.5, 1), V(6.5, 1), V(6.5, 5), V(2.5, 1), V(6.5, 5), V(2.5, 5) };\n            // 위쪽 변 y = 2.5 는 포함, 아래쪽 변 y = 6.5 는 제외\n            var r2 = new[] { V(1, 2.5), V(5, 2.5), V(5, 6.5), V(1, 2.5), V(5, 6.5), V(1, 6.5) };\n            string e = Union(\"직사각형 x 2.5~6.5, y 1~5\", r1, 10, 10, 2, 5, 1, 4) ?? Union(\"직사각형 x 1~5, y 2.5~6.5\", r2, 10, 10, 1, 4, 2, 5);\n            if (e != null) return e;\n            // 정사각형의 대각선 위 픽셀 중심 (k + 0.5, k + 0.5) 은 대각선이 왼쪽 변인 위쪽 삼각형에 속한다\n            var o = V(0, 0); var tr = V(8, 0); var br = V(8, 8); var bl = V(0, 8);\n            int n1 = TriangleRasterizer.Rasterize(o, tr, br, 0.5f, 0.5f, 0.5f, Buf(100, 1f), 10, 10);\n            int n2 = TriangleRasterizer.Rasterize(o, br, bl, 0.5f, 0.5f, 0.5f, Buf(100, 1f), 10, 10);\n            if (n1 != 36 || n2 != 28) return \"정사각형 (0,0)~(8,8) 을 대각선으로 나눈 두 삼각형: 덮인 수 기대 36 과 28, 결과 \" + n1 + \" 과 \" + n2;\n            e = Cover(o, tr, br, 3, 3, true) ?? Cover(o, br, bl, 3, 3, false);\n            if (e != null) return e;\n            // 꼭짓점이 픽셀 중심에 놓이면 그 점에 닿는 두 변이 모두 위쪽·왼쪽 변일 때만 덮는다\n            var c0 = V(2.5, 2.5); var c1 = V(6.5, 2.5); var c2 = V(2.5, 6.5);\n            e = Cover(c0, c1, c2, 2, 2, true) ?? Cover(c0, c1, c2, 6, 2, false) ?? Cover(c0, c1, c2, 2, 6, false);\n            if (e != null) return e;\n            int nv = TriangleRasterizer.Rasterize(c0, c1, c2, 0.5f, 0.5f, 0.5f, Buf(100, 1f), 10, 10);\n            if (nv != 10) return Tri(c0, c1, c2) + \": 덮인 픽셀 수 기대 10, 결과 \" + nv;\n            // 픽셀 중심 (4.5, 4.5) 을 꼭짓점으로 공유하는 부채꼴 삼각형 6 개 중 정확히 하나만 그 픽셀을 덮는다\n            var hub = V(4.5, 4.5);\n            var ring = new[] { V(1, 1), V(8, 1), V(9, 5), V(8, 9), V(1, 8), V(0, 4) };\n            int owners = 0;\n            for (int k = 0; k < 6; k++) if (TriangleRasterizer.CoversPixel(hub, ring[k], ring[(k + 1) % 6], 4, 4)) owners++;\n            return owners == 1 ? null : \"중심 (4.5, 4.5) 을 꼭짓점으로 공유하는 삼각형 6 개: 픽셀 (4, 4) 을 덮은 삼각형 수 기대 1, 결과 \" + owners;\n        });\n\n        Run(\"watertight-mesh\", () =>\n        {\n            var rng = new System.Random(911);\n            const int N = 8, W = 32, H = 32;\n            var g = new System.Numerics.Vector2[N + 1, N + 1];\n            for (int j = 0; j <= N; j++)\n                for (int i = 0; i <= N; i++)\n                {\n                    double x = -8 + 6 * i, y = -8 + 6 * j;\n                    if (i > 0 && i < N && j > 0 && j < N) { x += rng.Next(-3, 4) * 0.5; y += rng.Next(-3, 4) * 0.5; }\n                    g[i, j] = V(x, y);\n                }\n            var count = new int[W * H];\n            int total = 0;\n            for (int j = 0; j < N; j++)\n                for (int i = 0; i < N; i++)\n                {\n                    var p00 = g[i, j]; var p10 = g[i + 1, j]; var p11 = g[i + 1, j + 1]; var p01 = g[i, j + 1];\n                    var tris = rng.Next(2) == 0 ? new[] { p00, p10, p11, p00, p11, p01 } : new[] { p00, p10, p01, p10, p11, p01 };\n                    for (int k = 0; k < 6; k += 3)\n                    {\n                        var buf = Buf(W * H, 1f);\n                        total += TriangleRasterizer.Rasterize(tris[k], tris[k + 1], tris[k + 2], 0.5f, 0.5f, 0.5f, buf, W, H);\n                        for (int q = 0; q < W * H; q++) if (buf[q] != 1f) count[q]++;\n                    }\n                }\n            for (int q = 0; q < W * H; q++)\n                if (count[q] != 1) return \"화면을 빈틈없이 덮는 삼각형 128개의 메시: 픽셀 (\" + (q % W) + \", \" + (q / W) + \") 을 \" + count[q] + \" 번 그렸다(정확히 1 번이어야 한다)\";\n            return total == W * H ? null : \"메시 전체의 덮인 픽셀 수 합계 기대 \" + (W * H) + \", 결과 \" + total;\n        });\n\n        Run(\"interpolate-depth\", () =>\n        {\n            var a = V(0, 0); var b = V(16, 0); var c = V(0, 16);\n            var buf = Buf(256, 1f);\n            int n = TriangleRasterizer.Rasterize(a, b, c, 0.2f, 0.6f, 1.0f, buf, 16, 16);\n            if (n != 120) return Tri(a, b, c) + \": 덮인 픽셀 수 기대 120, 결과 \" + n;\n            int[,] at = { { 3, 5 }, { 0, 0 }, { 10, 4 } };\n            double[] exp = { 0.5625, 0.2375, 0.6875 };\n            for (int k = 0; k < 3; k++)\n            {\n                float got = buf[at[k, 1] * 16 + at[k, 0]];\n                if (!(System.Math.Abs(got - exp[k]) <= 1e-5)) return Tri(a, b, c) + \", z = 0.2/0.6/1.0: 픽셀 (\" + at[k, 0] + \", \" + at[k, 1] + \") 깊이 기대 \" + F(exp[k]) + \", 결과 \" + F(got);\n            }\n            if (buf[8 * 16 + 7] != 1f) return Tri(a, b, c) + \": 픽셀 (7, 8) 의 중심은 오른쪽 변 위라 덮이지 않아야 한다\";\n            // 정점 순서를 돌려도(v1, v2, v0) 결과가 같아야 한다\n            return Same(\"정점 순서를 돌린\", b, c, a, 0.6f, 1.0f, 0.2f, Buf(256, 1f), Buf(256, 1f), 16, 16)\n                ?? Same(\"기울어진\", V(1.25, 0.5), V(14.75, 4.125), V(5.5, 15.25), 0.9f, 0.1f, 0.45f, Buf(256, 1f), Buf(256, 1f), 16, 16);\n        });\n\n        Run(\"depth-test-and-viewport\", () =>\n        {\n            var f0 = V(1, 1); var f1 = V(14, 3); var f2 = V(4, 13);\n            var n0 = V(6, 4); var n1 = V(19, 9); var n2 = V(3, 11);\n            var mine = Buf(20 * 12, float.PositiveInfinity); var refb = Buf(20 * 12, float.PositiveInfinity);\n            string e = Same(\"먼 삼각형(z 0.8)\", f0, f1, f2, 0.8f, 0.8f, 0.8f, mine, refb, 20, 12)\n                ?? Same(\"가까운 삼각형(z 0.3)\", n0, n1, n2, 0.3f, 0.3f, 0.3f, mine, refb, 20, 12)\n                ?? Same(\"먼 삼각형을 다시(가려진 픽셀은 그대로 0.3)\", f0, f1, f2, 0.8f, 0.8f, 0.8f, mine, refb, 20, 12);\n            if (e != null) return e;\n            // 화면 밖으로 크게 벗어난 삼각형과 완전히 밖의 삼각형\n            mine = Buf(20 * 12, 1f); refb = Buf(20 * 12, 1f);\n            return Same(\"화면 밖으로 걸친\", V(-20, -5), V(30, 3), V(4, 40), 0.1f, 0.5f, 0.9f, mine, refb, 20, 12)\n                ?? Same(\"완전히 화면 밖(오른쪽)\", V(25, 1), V(40, 2), V(30, 10), 0.2f, 0.2f, 0.2f, mine, refb, 20, 12)\n                ?? Same(\"완전히 화면 밖(위쪽)\", V(2, -30), V(9, -20), V(1, -4), 0.2f, 0.2f, 0.2f, mine, refb, 20, 12);\n        });\n\n        Run(\"precision-far-vertices\", () =>\n        {\n            // 화면에서 멀리 있는 정점과 픽셀 중심 바로 옆을 지나는 변. 에지 함수를 float 로 계산하면 부호가 틀어진다.\n            var rng = new System.Random(4242);\n            int tested = 0;\n            for (int it = 0; it < 4000; it++)\n            {\n                int px = rng.Next(0, 64), py = rng.Next(0, 64);\n                double sx = px + 0.5, sy = py + 0.5;\n                double ax = rng.Next(-4000 * 256, 4000 * 256) / 256.0, ay = rng.Next(-4000 * 256, 4000 * 256) / 256.0;\n                double k = 0.1 + rng.NextDouble() * 0.8;\n                double bx = System.Math.Round((sx + k * (sx - ax)) * 256) / 256, by = System.Math.Round((sy + k * (sy - ay)) * 256) / 256;\n                double cx = sx + rng.Next(-512, 513) / 16.0, cy = sy + rng.Next(-512, 513) / 16.0;\n                var a = V(ax, ay); var b = V(bx, by); var c = V(cx, cy);\n                long area = (Q(b.X) - Q(a.X)) * (Q(c.Y) - Q(a.Y)) - (Q(b.Y) - Q(a.Y)) * (Q(c.X) - Q(a.X));\n                if (area == 0) continue;\n                if (area < 0) { var t = b; b = c; c = t; } // 시계 방향으로 맞춘다\n                tested++;\n                string e = Cover(a, b, c, px, py, RefCovers(a, b, c, px, py));\n                if (e != null) return e;\n            }\n            return tested > 3000 ? null : \"채점기 오류: 표본 부족 \" + tested;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            const int W = 32, H = 24;\n            var mine = Buf(W * H, 1f); var refb = Buf(W * H, 1f);\n            for (int it = 0; it < 400; it++)\n            {\n                var v = new System.Numerics.Vector2[3];\n                for (int k = 0; k < 3; k++)\n                {\n                    double x = rng.Next(-16, 145) * 0.25, y = rng.Next(-16, 113) * 0.25;\n                    v[k] = V(x, y);\n                }\n                long area = (Q(v[1].X) - Q(v[0].X)) * (Q(v[2].Y) - Q(v[0].Y)) - (Q(v[1].Y) - Q(v[0].Y)) * (Q(v[2].X) - Q(v[0].X));\n                if (area == 0) continue;\n                float z0 = rng.Next(0, 1001) / 1000f, z1 = rng.Next(0, 1001) / 1000f, z2 = rng.Next(0, 1001) / 1000f;\n                if (it % 50 == 0) { mine = Buf(W * H, 1f); refb = Buf(W * H, 1f); }\n                string e = Same(\"무작위 #\" + it, v[0], v[1], v[2], z0, z1, z2, mine, refb, W, H);\n                if (e != null) return e;\n                for (int q = 0; q < 40; q++)\n                {\n                    int px = rng.Next(-2, W + 2), py = rng.Next(-2, H + 2);\n                    e = Cover(v[0], v[1], v[2], px, py, RefCovers(v[0], v[1], v[2], px, py));\n                    if (e != null) return e;\n                }\n            }\n            return null;\n        });\n\n        Run(\"bounding-box-only\", () =>\n        {\n            // 큰 버퍼에 작은 삼각형을 많이 그린다. 화면 전체를 훑으면 제한 시간을 넘긴다.\n            const int W = 1024, H = 1024;\n            var buf = Buf(W * H, 1f);\n            var rng = new System.Random(77);\n            var sw = System.Diagnostics.Stopwatch.StartNew();\n            for (int it = 0; it < 3000; it++)\n            {\n                double x = rng.Next(2, W - 8) + 0.25, y = rng.Next(2, H - 8) + 0.125;\n                var a = V(x, y); var b = V(x + 3, y + 0.5); var c = V(x + 1, y + 3);\n                int got = TriangleRasterizer.Rasterize(a, b, c, 0.5f, 0.5f, 0.5f, buf, W, H);\n                int exp = 0;\n                for (int py = (int)y - 1; py <= (int)y + 4; py++) for (int px = (int)x - 1; px <= (int)x + 4; px++) if (RefCovers(a, b, c, px, py)) exp++;\n                if (got != exp) return Tri(a, b, c) + \": 덮인 픽셀 수 기대 \" + exp + \", 결과 \" + got;\n                if (sw.ElapsedMilliseconds > 1000) return \"작은 삼각형 \" + it + \" 개에 1 초를 넘겼다(바운딩 박스 밖의 픽셀까지 검사하는 것으로 보인다)\";\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "coverage-and-winding",
+          "top-left-edges",
+          "watertight-mesh",
+          "interpolate-depth",
+          "depth-test-and-viewport",
+          "precision-far-vertices",
+          "random-vs-reference",
+          "bounding-box-only"
+        ],
+        "note": "픽셀 중심 샘플링과 감기는 방향(반시계 방향은 0), 직사각형·정사각형 대각선·꼭짓점(픽셀 중심에 놓인 정점과 부채꼴)에서의 top-left 규칙, 정점이 픽셀 중심에도 놓이는 화면 밖까지 이어진 무작위 메시를 모든 픽셀이 정확히 한 번 덮는지, 깊이 보간 값과 깊이 테스트, 화면 밖으로 걸친 삼각형, 멀리 있는 정점에서의 판정(float 계산이면 틀린다), 무작위 삼각형에서 1/256 고정소수점 정수로 계산하는 참조 구현과의 일치, 큰 버퍼에서 작은 삼각형 3,000 개를 1 초 안에 그리는지(바운딩 박스)를 검사합니다. 깊이는 1e-5 오차까지 허용합니다. public static class TriangleRasterizer 의 CoversPixel(Vector2, Vector2, Vector2, int, int) 과 Rasterize(Vector2, Vector2, Vector2, float, float, float, float[], int, int) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 dotnet 8 과 Compiler Explorer 에서 해답 전부 통과·스타터 실패를 확인하고, D3D11.3 기능 사양 3.4.1·3.4.2.1 의 규칙을 글자 그대로 옮긴 독립 참조 구현(정확한 유리수·정수 계산)으로 고정 기댓값과 무작위·정밀도 검사를 모두 다시 맞춰 보았으며, float 에지 함수·E ≥ 0·꼭짓점 규칙 오류 같은 틀린 풀이 10 종이 걸러지고 다르게 쓴 올바른 풀이 2 종은 통과하는 것을 확인했다."
+      },
+      "nextMission": "`Rasterize` 를 증분 방식으로 바꿔 보세요. x 가 1 늘면 `E(a, b, p)` 는 `−(b.y − a.y)` 만큼, y 가 1 늘면 `(b.x − a.x)` 만큼 변하므로, 행의 첫 픽셀에서만 곱셈으로 구하고 나머지는 덧셈으로 갱신할 수 있습니다. 결과가 지금 구현과 픽셀 하나까지 같은지 무작위 삼각형 1,000 개로 비교하고, 400×300 버퍼에 큰 삼각형 2,000 개를 그리는 시간을 `Stopwatch` 로 재어 두 방식을 비교하세요."
+    },
+    {
+      "id": "t9-impl-mip-lod-trilinear",
+      "track": "track9",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "밉 레벨 고르기: UV 도함수로 LOD 계산하고 트라이리니어 가중치 정하기",
+      "tags": [
+        "Gfx_Mipmap",
+        "Gfx_TextureSampling"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "d3d11-3-functional-spec",
+        "gl46-core-spec",
+        "khronos-vulkan-sampling",
+        "ms-hlsl-ddx"
+      ],
+      "scenario": "모바일 레이싱 게임의 아스팔트 텍스처(1024×1024, 밉 11 레벨)가 \"멀리서는 반짝이고, 카메라를 낮추면 도로 끝이 뿌옇게 흐려진다\"는 제보가 올라왔습니다. 원인을 보려고, 리플레이 캡처의 픽셀마다 GPU 가 고를 밉 레벨을 CPU 에서 재현해 레벨별 색으로 칠하는 디버그 도구를 만듭니다. 캡처에는 픽셀마다 화면에서 x 로 한 픽셀, y 로 한 픽셀 갈 때 UV 가 얼마나 변하는지(셰이더의 `ddx(uv)`, `ddy(uv)` 에 해당)가 들어 있습니다.\n\n**할 일:** `MipSelection` 의 두 함수를 구현하세요. 순수 C#(.NET 8) 입니다.\n\n**계산 규칙** (정답의 기준입니다)\n\n1. 텍셀 단위로 바꾸기: `∂u/∂x = uvDdx.X × width`, `∂v/∂x = uvDdx.Y × height`, y 방향도 `uvDdy` 로 똑같이.\n2. 축척 ρ: `ρ = max( √((∂u/∂x)² + (∂v/∂x)²), √((∂u/∂y)² + (∂v/∂y)²) )`. 화면의 한 픽셀이 x, y 방향으로 각각 텍스처의 몇 텍셀을 덮는지 길이로 재고 큰 쪽을 씁니다(Direct3D 11.3 기능 사양 7.18.11 절의 등방 LOD 식, OpenGL 4.6 사양 식 8.11 을 2D 로 줄인 것과 같습니다).\n3. `ComputeLod` 는 `λ = log₂ ρ` 를 돌려줍니다(식 8.7, 바이어스 없음). λ ≤ 0 이면 확대(magnification), λ > 0 이면 축소(minification)입니다.\n4. `SelectLevels` (Vulkan 사양의 레벨 선택 식. D3D11.3 기능 사양 7.18.10 절도 정수부와 소수부로 같은 두 레벨을 고릅니다): `q = mipCount − 1`, `d = clamp(λ, 0, q)`, `fineLevel = ⌊d⌋`, `coarseLevel = min(fineLevel + 1, q)`, `coarseWeight = d − fineLevel`. 화면에 나오는 색은 `(1 − coarseWeight) × fineLevel 의 색 + coarseWeight × coarseLevel 의 색` 입니다.\n\n**이 문제의 단순화:** 비등방 필터링, LOD 바이어스, min/max LOD 가 없고 기준 레벨은 0 입니다. D3D11.3 기능 사양은 두 도함수 벡터를 타원의 직교 축으로 바꾼 뒤 계산하는 것을 이상적인 방법으로 설명하면서 근사를 허용하고, OpenGL 4.6 사양도 ρ 를 정해진 범위 안의 근사 함수로 계산하는 것을 허용합니다. 여기서는 그런 변환이나 근사 없이 계산 규칙 2 의 식을 그대로 씁니다. LOD 와 가중치의 고정소수점 정밀도(D3D11.3 의 \"최소 8.8 고정소수점\", Vulkan 의 `mipmapPrecisionBits`)도 무시합니다. 도함수가 모두 0 인 입력(ρ = 0), NaN·무한대는 주어지지 않습니다.\n\n**예시**\n\n| 텍스처 | uvDdx | uvDdy | ρ | λ | SelectLevels (레벨 수) |\n|---|---|---|---|---|---|\n| 256×256 | (1/256, 0) | (0, 1/256) | 1 | 0 | (0, 1, 0) (9) |\n| 256×256 | (3/256, 4/256) | (−4/256, 3/256) | 5 | 2.3219 | (2, 3, 0.3219) (9) |\n| 256×256 | (2/256, 0) | (0, 8/256) | 8 | 3 | (3, 4, 0) (9) |\n| 512×128 | (1/512, 0) | (0, 4/128) | 4 | 2 | (2, 3, 0) (10) |\n| 1024×1024 | (0.03, 0.001) | (0.002, 0.09) | 92.18 | 6.5264 | (6, 7, 0.5264) (11) |\n| 256×256 | (1/512, 0) | (0, 1/512) | 0.5 | −1 | (0, 1, 0) (9) — 확대 |\n\nλ = 9.3 에 레벨이 9 개면 `(8, 8, 0)`, 레벨이 1 개뿐이면 λ 와 상관없이 `(0, 0, 0)` 입니다.",
+      "constraints": [
+        "두 함수 모두 시간 O(1), 힙 할당 없음. 레벨을 하나씩 반으로 줄여 가며 찾는 반복문을 쓰지 않는다.",
+        "ρ 는 계산 규칙 2 의 식(길이와 최댓값)으로 구한다. 성분의 최댓값이나 절댓값의 합 같은 근사를 쓰지 않는다.",
+        "`width`, `height`, `mipCount` 는 1 이상이다. 도함수는 유한하고 두 벡터가 모두 0 인 입력은 없다. 공개 시그니처를 바꾸지 않는다.",
+        "검사 허용 오차: λ 는 1e-4, 가중치는 1e-5."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 규약 (이 규약이 정답의 기준입니다)\n// - uvDdx, uvDdy: 화면에서 x 로 한 픽셀, y 로 한 픽셀 갈 때 정규화 UV(0~1)의 변화량. 셰이더의 ddx(uv), ddy(uv) 에 해당한다.\n// - 비등방 필터링, LOD 바이어스, min/max LOD 는 없다. 기준 레벨은 0 이다.\npublic static class MipSelection\n{\n    // 밉 레벨 선택에 쓰는 LOD 값 λ 를 돌려준다(자르지 않은 값, 음수일 수 있다).\n    public static float ComputeLod(Vector2 uvDdx, Vector2 uvDdy, int width, int height)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 트라이리니어 필터링에 쓸 두 레벨과, 거친(번호가 큰) 레벨 쪽 가중치를 정한다.\n    // mipCount 는 밉 레벨 수(1 이상)다.\n    public static void SelectLevels(float lod, int mipCount, out int fineLevel, out int coarseLevel, out float coarseWeight)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "대각선 발자국: 256×256 에서 uvDdx (3/256, 4/256) 은 3×4 텍셀 대각선이라 ρ 의 x 성분은 5 다. 성분의 최댓값(4)을 쓰면 λ = 2, 절댓값 합(7)을 쓰면 λ = 2.807 로 틀린다.",
+        "한쪽으로 긴 발자국: x 로 2 텍셀, y 로 8 텍셀이면 ρ = 8, λ = 3 이다. 평균(5)이나 작은 쪽(2)을 쓰면 틀린다.",
+        "직사각형 텍스처 512×128: u 는 폭(512), v 는 높이(128)를 곱한다. 둘 다 폭을 곱하면 uvDdy (0, 4/128) 의 길이가 4 가 아니라 16 이 된다.",
+        "범위 밖의 λ: λ = −1.5 (9 레벨) 는 (0, 1, 0), λ = 9.3 (9 레벨) 은 (8, 8, 0) 이다. 자르기 전에 소수부를 구하면 가중치가 0.5, 0.3 이 되어 틀린다."
+      ],
+      "hints": [
+        "숫자로 따라가 보세요. 256×256 텍스처에서 uvDdx = (4/256, 0) 이면 화면의 한 픽셀이 x 방향으로 텍셀 4 개를 건너뜁니다. 레벨 1 은 128×128 이라 같은 거리가 2 텍셀, 레벨 2 는 1 텍셀입니다. \"한 픽셀에 텍셀 하나\"가 되는 레벨이 log₂ 4 = 2 입니다. 그렇다면 uvDdx = (3/256, 4/256) 은 텍셀 몇 개를 건너뜁니까?",
+        "`ComputeLod` 는 세 줄입니다. 두 도함수를 각각 텍셀 단위 벡터로 바꿔(u 에는 width, v 에는 height) 길이를 재고, 큰 쪽의 log₂ 를 돌려줍니다. `SelectLevels` 에서는 **먼저 λ 를 [0, q] 로 자른 다음** 정수부와 소수부를 나누세요. λ = 9.3 (9 레벨) 과 λ = −1.5 를 넣어 가중치가 0 인지 확인하면 순서가 맞는지 알 수 있습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nComputeLod(uvDdx, uvDdy, width, height):\n    rhoX = length(uvDdx.x * ____, uvDdx.y * ____)\n    rhoY = length(uvDdy.x * ____, uvDdy.y * ____)\n    return log2(____)\n\nSelectLevels(lod, mipCount):\n    q = mipCount - 1\n    d = clamp(lod, ____, ____)\n    fine = floor(d)\n    coarse = min(____, q)\n    weight = ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 규약 (문제 본문과 같다)\n// - uvDdx, uvDdy: 화면에서 x 로 한 픽셀, y 로 한 픽셀 갈 때 정규화 UV(0~1)의 변화량. 셰이더의 ddx(uv), ddy(uv) 에 해당한다.\n// - 비등방 필터링, LOD 바이어스, min/max LOD 는 없다. 기준 레벨은 0 이다.\npublic static class MipSelection\n{\n    // λ = log2(ρ). ρ 는 x 방향과 y 방향 발자국 길이(텍셀 단위) 중 큰 값이다.\n    public static float ComputeLod(Vector2 uvDdx, Vector2 uvDdy, int width, int height)\n    {\n        // 정규화 UV 의 변화량에 텍스처 크기를 곱해 텍셀 단위로 바꾼 뒤 길이를 잰다.\n        float rhoX = new Vector2(uvDdx.X * width, uvDdx.Y * height).Length();\n        float rhoY = new Vector2(uvDdy.X * width, uvDdy.Y * height).Length();\n        return MathF.Log2(MathF.Max(rhoX, rhoY));\n    }\n\n    // 트라이리니어: d = clamp(λ, 0, q), fine = floor(d), coarse = min(fine + 1, q), coarseWeight = d − fine.\n    // 최종 색 = (1 − coarseWeight) × fine 레벨의 색 + coarseWeight × coarse 레벨의 색.\n    public static void SelectLevels(float lod, int mipCount, out int fineLevel, out int coarseLevel, out float coarseWeight)\n    {\n        int q = mipCount - 1;\n        float d = Math.Clamp(lod, 0f, q);\n        fineLevel = (int)MathF.Floor(d);\n        coarseLevel = Math.Min(fineLevel + 1, q);\n        coarseWeight = d - fineLevel;\n    }\n}\n",
+      "explanation": "**ρ 가 뜻하는 것.** OpenGL 4.6 사양은 화면에서 점 하나로 샘플링한 픽셀이 텍스처 공간에서 타원 모양의 발자국을 갖고, 이상적인 축척 ρ 는 그 타원의 장축이라고 설명합니다. 다각형의 ρ 는 텍셀 단위 도함수로 만든 두 벡터의 길이 중 큰 값으로 정하고(식 8.11, u 는 s 에 기준 레벨의 폭을 곱한 값), 구현이 정해진 범위 안의 근사 함수를 쓰는 것도 허용합니다. Microsoft 의 Direct3D 11.3 기능 사양(7.18.11 절)도 도함수에 가장 큰 밉의 텍셀 수(u 는 폭, v 는 높이)를 곱한 뒤 등방 필터링이면 `LOD = log2(max(lengthX, lengthY))` 로 계산하고, 잘린 LOD 가 0 이하이면 확대로 봅니다. 같은 절은 두 벡터를 타원의 직교 축으로 먼저 바꾸는 것을 이상적인 변환으로 소개하면서 근사를 허용합니다. λ = log₂ ρ 인 이유는 레벨이 하나 오를 때마다 해상도가 절반이 되어 픽셀당 텍셀 수도 절반이 되기 때문입니다. ρ = 4 면 레벨 2 가 \"한 픽셀에 한 텍셀\"입니다.\n\n**도함수는 어디서 오나.** HLSL 의 `ddx` 는 화면 공간 x 좌표에 대한 편미분을 돌려주며 픽셀 셰이더에서만 쓸 수 있고, y 는 `ddy` 입니다. D3D11.3 기능 사양(3.5.7 절)은 픽셀 셰이더가 도함수 계산을 위해 최소 2×2 단위로 실행되고 도함수는 이웃 픽셀 데이터의 차이라고 설명합니다.\n\n**레벨 선택.** Vulkan 사양은 (image view 의 minLod 를 빼면) `d = levelbase + clamp(λ, 0, q)`, `d_hi = ⌊d⌋`, `d_lo = min(d_hi + 1, levelbase + q)`, `δ = d − d_hi` 로 두 레벨을 고르고 `(1 − δ)` 와 `δ` 로 섞습니다. fineLevel, coarseLevel, coarseWeight 가 각각 d_hi, d_lo, δ 입니다. D3D11.3 기능 사양(7.18.10 절)은 LOD 를 최소 8.8 고정소수점으로 바꿔 정수부를 mipFloor, 그다음을 mipCeil 로 고르고 두 레벨을 쓸 수 있는 범위로 자르며, mipCeil 의 가중치를 소수부로 둡니다. 범위 밖에서는 두 레벨이 같은 레벨로 잘려 결과 색이 같으므로, 이 문제는 가중치 값까지 하나로 정하려고 Vulkan 식(먼저 자르고 소수부)을 따릅니다.\n\n**제보와 연결하기.** 카메라를 낮추면 도로 끝의 발자국이 한 방향으로만 길어지는데, ρ 가 긴 쪽을 쓰므로 짧은 방향까지 흐린 레벨이 됩니다. Vulkan 사양의 비등방 필터링은 `λ = log₂(ρmax / η)` (η 는 ρmax / ρmin 과 maxAniso 중 작은 값)로 더 촘촘한 레벨을 고르고 샘플 수를 `N = ⌈η⌉` 로 정합니다. 샘플을 어떻게 모을지는 구현에 맡기며, 사양의 노트가 한 가지 방법으로 ρ 가 큰 화면 축을 따라 N 개의 샘플을 평균하는 식을 보여 줍니다. 반짝임은 한 픽셀보다 촘촘한 텍셀을 점 하나로 샘플링할 때의 에일리어싱이라, 먼 도로가 기대한 레벨로 칠해지는지(밉맵이 꺼졌거나 LOD 바이어스가 음수가 아닌지) 이 도구로 확인합니다. 두 진단은 사양에서 나온 추론과 일반적인 렌더링 지식입니다.\n\n**복잡도.** 제곱근 두 번, 로그 한 번. O(1), 할당 없음.\n\n**흔한 실수.**\n- 성분의 최댓값이나 절댓값 합으로 ρ 를 근사한다(사양이 허용하는 근사지만 이 문제의 규칙과 값이 다르다).\n- 두 축의 평균이나 작은 쪽을 쓴다.\n- 텍스처 크기를 곱하지 않거나, 직사각형 텍스처에서 v 에도 폭을 곱한다.\n- `LengthSquared` 의 log₂ 를 그대로 쓴다(값이 두 배가 된다).\n- 자르기 전의 λ 로 소수부를 구하거나, `Round` 로 fineLevel 을 정한다(NEAREST 밉맵 모드의 선택에 가깝다).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "ComputeLod 가 텍셀 단위 두 벡터 길이의 최댓값의 log₂ 다: 256×256 에서 (1/256,0)·(0,1/256) → 0, (3/256,4/256)·(−4/256,3/256) → 2.3219, (2/256,0)·(0,8/256) → 3.",
+            "points": 12,
+            "sourceId": "gl46-core-spec"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "직사각형 텍스처에서 u 에는 폭, v 에는 높이를 곱한다: 512×128 에서 (1/512,0)·(0,4/128) → 2.",
+            "points": 11,
+            "sourceId": "d3d11-3-functional-spec"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "SelectLevels 가 자른 값으로 레벨과 가중치를 정한다: 2.25 → (2, 3, 0.25), −1.5 → (0, 1, 0), 9.3 (9 레벨) → (8, 8, 0), 레벨 1 개 → (0, 0, 0).",
+            "points": 12,
+            "sourceId": "khronos-vulkan-sampling"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "두 함수가 O(1) 이고 힙 할당이 없다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "레벨을 찾는 반복문 없이 log₂ 와 floor 로 바로 구한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "로그를 한 번만 계산한다(두 축의 로그를 따로 구해 비교하지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "입력이 정규화 UV 의 화면 공간 도함수(ddx, ddy)라는 규약대로 텍스처 크기를 곱해 텍셀 단위로 바꿨다.",
+            "points": 10,
+            "sourceId": "ms-hlsl-ddx"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "coarseLevel = min(fineLevel + 1, q), coarseWeight 는 번호가 큰 레벨 쪽 가중치라는 규약을 지켰다.",
+            "points": 10,
+            "sourceId": "khronos-vulkan-sampling"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "텍셀 단위 변환, ρ, λ 가 이름 있는 값으로 드러나 계산 규칙의 단계와 대응한다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "단순화 가정(비등방·바이어스 없음, 기준 레벨 0)이 주석에 적혀 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "ρ 를 성분의 최댓값·합·평균 등 규칙과 다른 식으로 계산했다.",
+            "penalty": -20,
+            "sourceId": "gl46-core-spec"
+          },
+          {
+            "id": "d2",
+            "description": "자르기 전의 λ 로 가중치를 구해 확대 영역이나 마지막 레벨에서 가중치가 0 이 아니다.",
+            "penalty": -15,
+            "sourceId": "khronos-vulkan-sampling"
+          },
+          {
+            "id": "d3",
+            "description": "공개 시그니처나 규약(레벨 순서, 가중치의 방향)을 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string F(double v) { return v.ToString(\"0.#####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static System.Numerics.Vector2 V(double x, double y) { return new System.Numerics.Vector2((float)x, (float)y); }\n\n    static string Lod(System.Numerics.Vector2 dx, System.Numerics.Vector2 dy, int w, int h, double exp)\n    {\n        float got = MipSelection.ComputeLod(dx, dy, w, h);\n        return System.Math.Abs(got - exp) <= 1e-4 ? null\n            : \"ComputeLod(ddx (\" + F(dx.X) + \", \" + F(dx.Y) + \"), ddy (\" + F(dy.X) + \", \" + F(dy.Y) + \"), \" + w + \"×\" + h + \"): 기대 \" + F(exp) + \", 결과 \" + F(got);\n    }\n\n    static string Sel(float lod, int count, int fine, int coarse, double weight)\n    {\n        MipSelection.SelectLevels(lod, count, out int f, out int c, out float wgt);\n        return f == fine && c == coarse && System.Math.Abs(wgt - weight) <= 1e-5 ? null\n            : \"SelectLevels(\" + F(lod) + \", 레벨 \" + count + \" 개): 기대 (\" + fine + \", \" + coarse + \", \" + F(weight) + \"), 결과 (\" + f + \", \" + c + \", \" + F(wgt) + \")\";\n    }\n\n    // 참조 구현: double 로 OpenGL 4.6 식 8.11 과 Vulkan 의 레벨 선택 식을 그대로 계산한다.\n    static double RefLod(System.Numerics.Vector2 dx, System.Numerics.Vector2 dy, int w, int h)\n    {\n        double ux = (double)dx.X * w, vx = (double)dx.Y * h, uy = (double)dy.X * w, vy = (double)dy.Y * h;\n        return System.Math.Log(System.Math.Max(System.Math.Sqrt(ux * ux + vx * vx), System.Math.Sqrt(uy * uy + vy * vy)), 2.0);\n    }\n\n    public static void Main()\n    {\n        Run(\"lod-isotropic\", () =>\n        {\n            // 256×256: 한 픽셀에 텍셀 1 개 → 0, 4 개 → 2, 반 개 → -1 (확대)\n            return Lod(V(1 / 256.0, 0), V(0, 1 / 256.0), 256, 256, 0) ?? Lod(V(4 / 256.0, 0), V(0, 4 / 256.0), 256, 256, 2)\n                ?? Lod(V(1 / 512.0, 0), V(0, 1 / 512.0), 256, 256, -1) ?? Lod(V(0, 16 / 1024.0), V(-16 / 1024.0, 0), 1024, 1024, 4);\n        });\n\n        Run(\"lod-rotated-footprint\", () =>\n        {\n            // 발자국이 대각선이면 성분의 최댓값(4)도 합(7)도 아닌 길이(5)를 쓴다\n            return Lod(V(3 / 256.0, 4 / 256.0), V(-4 / 256.0, 3 / 256.0), 256, 256, System.Math.Log(5, 2))\n                ?? Lod(V(0.03, 0.001), V(0.002, 0.09), 1024, 1024, 6.526424944738482);\n        });\n\n        Run(\"lod-larger-axis\", () =>\n        {\n            // x 로 2 텍셀, y 로 8 텍셀: 평균(5)이나 작은 쪽(2)이 아니라 큰 쪽(8)을 쓴다\n            return Lod(V(2 / 256.0, 0), V(0, 8 / 256.0), 256, 256, 3) ?? Lod(V(0, 8 / 256.0), V(2 / 256.0, 0), 256, 256, 3)\n                ?? Lod(V(6 / 256.0, 0), V(0, 1 / 256.0), 256, 256, System.Math.Log(6, 2));\n        });\n\n        Run(\"lod-non-square\", () =>\n        {\n            // 512×128: u 는 폭, v 는 높이로 텍셀 단위가 된다\n            return Lod(V(1 / 512.0, 0), V(0, 4 / 128.0), 512, 128, 2) ?? Lod(V(0, 2 / 128.0), V(1 / 512.0, 0), 512, 128, 1)\n                ?? Lod(V(3 / 512.0, 4 / 128.0), V(0, 1 / 128.0), 512, 128, System.Math.Log(5, 2));\n        });\n\n        Run(\"levels-in-range\", () =>\n        {\n            return Sel(2.25f, 9, 2, 3, 0.25) ?? Sel(2f, 9, 2, 3, 0) ?? Sel(0.5f, 9, 0, 1, 0.5)\n                ?? Sel(6.5264249f, 11, 6, 7, 0.5264249) ?? Sel(7.75f, 9, 7, 8, 0.75);\n        });\n\n        Run(\"levels-clamped\", () =>\n        {\n            // 확대(λ ≤ 0)는 레벨 0, 가중치 0. 마지막 레벨을 넘으면 마지막 레벨, 가중치 0.\n            return Sel(-1.5f, 9, 0, 1, 0) ?? Sel(0f, 9, 0, 1, 0) ?? Sel(8f, 9, 8, 8, 0) ?? Sel(9.3f, 9, 8, 8, 0)\n                ?? Sel(3.7f, 1, 0, 0, 0) ?? Sel(-0.25f, 1, 0, 0, 0) ?? Sel(4.6f, 5, 4, 4, 0);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int[] sizes = { 1, 2, 16, 64, 128, 256, 512, 1024, 2048 };\n            for (int i = 0; i < 20000; i++)\n            {\n                int w = sizes[rng.Next(sizes.Length)], h = sizes[rng.Next(sizes.Length)];\n                var dx = V((rng.NextDouble() * 2 - 1) * 0.05, (rng.NextDouble() * 2 - 1) * 0.05);\n                var dy = V((rng.NextDouble() * 2 - 1) * 0.05, (rng.NextDouble() * 2 - 1) * 0.05);\n                if (dx.Length() < 1e-4f && dy.Length() < 1e-4f) continue;\n                string e = Lod(dx, dy, w, h, RefLod(dx, dy, w, h));\n                if (e != null) return e;\n                float lod = (float)(rng.NextDouble() * 16 - 3);\n                int count = rng.Next(1, 13);\n                double d = System.Math.Min(System.Math.Max(lod, 0.0), count - 1);\n                int fine = (int)System.Math.Floor(d);\n                e = Sel(lod, count, fine, System.Math.Min(fine + 1, count - 1), d - fine);\n                if (e != null) return e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "lod-isotropic",
+          "lod-rotated-footprint",
+          "lod-larger-axis",
+          "lod-non-square",
+          "levels-in-range",
+          "levels-clamped",
+          "random-vs-reference"
+        ],
+        "note": "ComputeLod 의 값(등방 발자국, 대각선 발자국, 한쪽으로 긴 발자국, 직사각형 텍스처)과 SelectLevels 의 레벨·가중치(범위 안, 확대, 마지막 레벨, 레벨 1 개), 그리고 무작위 도함수·텍스처 크기·λ 에서 double 참조 구현과의 일치를 검사합니다. λ 는 1e-4, 가중치는 1e-5 오차까지 허용합니다. public static class MipSelection 의 ComputeLod(Vector2, Vector2, int, int) 와 SelectLevels(float, int, out int, out int, out float) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "해답 통과·스타터 실패를 실행으로 확인하고 D3D11.3 기능 사양 7.18.10·7.18.11, OpenGL 4.6 식 8.7·8.10·8.11, Vulkan 의 레벨 선택 식 원문과 대조했으며, 성분 최댓값·자르기 전 소수부·Round 같은 틀린 풀이 10 종이 걸러지고 다르게 쓴 올바른 풀이 2 종은 통과하는 것을 확인했다."
+      },
+      "nextMission": "레벨마다 단색(레벨 0 빨강, 1 주황, 2 노랑…)인 디버그 밉 체인을 `float[]` 로 만들고, `SelectLevels` 의 결과로 두 레벨의 색을 섞어 픽셀 색을 내는 `DebugColor(Vector2 uvDdx, Vector2 uvDdy)` 를 추가하세요. 그다음 Vulkan 사양의 비등방 식(η = min(ρmax / ρmin, maxAniso), λ = log₂(ρmax / η))을 `ComputeLodAniso(..., float maxAniso)` 로 구현해, uvDdx (2/256, 0)·uvDdy (0, 16/256) 에서 maxAniso 1, 4, 16 일 때 λ 가 4, 2, 1 로 내려가는지 확인하세요."
+    },
+    {
+      "id": "t9-interview-lod-occlusion-cull-distance",
+      "track": "track9",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "LOD, 오클루전 컬링, 컬링 거리: 무엇을 아끼고 무엇을 대가로 치르나",
+      "tags": [
+        "Gfx_LOD",
+        "Gfx_OcclusionCulling",
+        "Gfx_Culling"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "unity-reduce-rendering-work",
+        "unity-lod-group",
+        "unity-occlusion-culling",
+        "unity-urp-gpu-occlusion",
+        "unity-lod-intro",
+        "unity-occlusion-setup",
+        "unity-occlusion-dynamic",
+        "unity-gpu-resident-drawer",
+        "unity-quality-settings",
+        "unity-camera-layerculldistances",
+        "unity-camera-layercullspherical"
+      ],
+      "scenario": "오픈 월드 모바일 RPG(Unity 6, URP)의 성곽 도시 구역에서 중급 기기의 프레임이 목표에 못 미칩니다. 이 구역에는 높은 성벽과 좁은 골목, 건물 300 채, 화분·상자·등불 같은 소품 8,000 개가 있습니다. 프로파일러에서는 CPU 의 렌더링 준비(가시성 판정과 드로우 콜 제출)가 길고 GPU 도 여유가 없습니다. 회의에서 세 가지 안이 나왔습니다.\n\n- A: 건물과 소품에 모두 LOD Group 을 붙여 멀리 있는 것은 단순한 메시로 그린다.\n- B: 오클루전 컬링을 굽는다. 성벽 뒤의 건물은 어차피 보이지 않는다.\n- C: 소품을 별도 레이어로 옮기고, 그 레이어만 컬링 거리를 30 m 로 줄인다.\n\n**질문: 세 기법이 각각 CPU 와 GPU 의 어떤 비용을 줄이는지, 그 대가(메모리, 런타임 계산, 눈에 보이는 결함)는 무엇인지, 어떤 장면에서 효과가 없거나 오히려 손해인지 설명해 주세요. 그리고 이 구역에 어떤 순서로 적용하고 효과를 어떻게 확인하겠습니까?**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "Unity 의 내장 오클루전 컬링은 런타임 판정을 CPU 에서 하므로 아낀 CPU 시간을 그 계산이 상쇄할 수 있다. 문서는 오버드로우 때문에 GPU 바운드인 프로젝트에서 효과가 가장 클 가능성이 높다고 적는다.",
+        "움직이는 오브젝트는 가려지는 쪽(occludee)은 될 수 있지만 가리는 쪽(occluder)은 될 수 없다. 런타임에 씬 지오메트리를 만드는 프로젝트에는 내장 오클루전 컬링이 맞지 않는다.",
+        "LOD 전환 구간에서 크로스페이드를 쓰면 현재 레벨과 다음 레벨을 둘 다 그린다. 오클루전 컬링은 LOD Group 의 Static Occluder 가 무엇을 가리는지 LOD0 으로 판단하므로, 레벨마다 실루엣이 크게 다르면 오클루더로 적합하지 않다.",
+        "`Camera.layerCullDistances` 의 0 은 \"far plane 거리를 쓴다\"는 뜻이다. 기본은 카메라에 정렬된 평면 기준이라 제자리에서 돌기만 해도 보이는 오브젝트가 바뀔 수 있고, 구 기준으로 바꾸는 `layerCullSpherical` 은 문서상 Built-in 렌더러에서만 쓸 수 있다.",
+        "URP 의 GPU 오클루전 컬링은 GPU Resident Drawer 와 함께 동작하고 같은 제약(Forward+, 컴퓨트 셰이더를 지원하는 API, OpenGL ES 제외)을 받는다. 가림이 별로 없는 장면에서는 준비 작업 때문에 렌더링 시간이 오히려 늘 수 있다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "LOD Group 은 무엇을 기준으로 레벨을 바꾸고, 무엇을 줄이며 무엇은 줄이지 못합니까? 레벨이 바뀔 때 튀어 보이는(popping) 문제는 어떻게 다루고, 그 대가는 무엇입니까?",
+          "intent": "LOD 를 \"드로우 콜을 줄이는 기술\"로 오해하지 않고 정점 처리 비용과 연결하는지, 전환 기준(화면 높이 비율)과 품질 설정, 크로스페이드의 비용을 문서 근거로 말할 수 있는지 확인한다.",
+          "keyAnswer": "- **전환 기준:** LOD Group 문서에 따르면 각 레벨 상자의 퍼센트는 GameObject 의 화면 공간 높이가 전체 화면 높이에서 차지하는 비율로 정한 임계값이다. 예를 들어 LOD 1 의 임계값이 50% 면 오브젝트 높이가 화면의 절반이 될 만큼 카메라가 멀어질 때 LOD 1 이 켜진다. Quality 설정의 LOD Bias 가 이 전환 거리를 배율로 바꾼다(1 보다 크면 더 멀리까지 높은 품질을 유지).\n- **줄이는 것:** Unity 매뉴얼은 LOD 를 먼 메시를 렌더링하는 데 드는 GPU 연산을 줄이는 기술로 설명하고, 멀수록 삼각형이 적은 레벨을 그린다고 적는다. \"Reduce rendering work\" 페이지도 LOD 를 정점 처리 때문에 GPU 가 막힐 때의 대응으로 든다.\n- **줄이지 못하는 것:** 레벨마다 Mesh Renderer 를 가진 별도의 자식 GameObject 이고 Unity 는 그중 하나를 보여 주므로, 레벨이 바뀌어도 그 오브젝트는 계속 그려진다. 레벨마다 머티리얼(서브메시) 수가 같다면 드로우 콜 수도 그대로이고, 크로스페이드 구간에서는 두 레벨을 함께 그려 오히려 는다(문서의 구조 설명에서 나온 추론). 예외는 마지막 레벨 너머다. 문서는 마지막 레벨이 섞을 다음 레벨 없이 페이드아웃된다고 적으므로, 화면 높이 비율이 마지막 임계값보다 작아진 오브젝트(선택 바의 culled 구간)는 그려지지 않고 그만큼은 드로우 콜도 준다. 또 레벨마다 메시가 늘어 메모리를 더 쓴다(일반 지식). Quality 설정의 Maximum LOD Level 로 쓰지 않는 레벨을 빌드에서 빼 메모리를 줄일 수 있다고 문서는 적는다.\n- **popping 과 크로스페이드:** 문서는 레벨이 갑자기 바뀌는 것을 popping 이라 부르고, 전환 구간에서 현재 레벨과 다음 레벨을 각각 렌더링한 뒤 섞는 크로스페이드를 제공한다. 보통 화면 공간 디더링이나 투명도로 구현하고, 마지막 레벨은 섞을 다음 레벨이 없어 혼자 페이드아웃된다. 전환 구간에서는 두 번 그리므로 그만큼 비싸다. 설정 위치는 파이프라인마다 다르다: Built-in 은 Quality 설정의 LOD Cross Fade, URP 는 URP Asset 의 LOD Cross Fade 와 디더링 방식(Bayer Matrix 는 더 빠르고, Blue Noise 는 보기 좋지만 조금 더 비싸다).\n- **이 구역에 적용하면:** 멀리서도 화면에 오래 남는 고폴리곤 건물에는 효과가 있지만, 정점이 적은 소품 8,000 개에 붙이면 정점 이득은 작고 관리할 메시만 는다. 성벽처럼 오클루더로 쓸 메시는 LOD0 과 하위 레벨의 실루엣이 비슷해야 한다. 이 적용 판단은 문서 인용이 아닌 실무 판단이다."
+        },
+        {
+          "question": "B 안대로 오클루전 컬링을 굽는다면 어떤 오브젝트를 Occluder Static 과 Occludee Static 으로 표시하겠습니까? Unity 의 내장(베이크) 오클루전 컬링과 URP 의 GPU 오클루전 컬링은 어떻게 다르고, 각각 어떤 장면에서 손해입니까?",
+          "intent": "두 방식이 판정을 어디서(CPU/GPU) 하는지, 어떤 데이터에 기대는지, 어떤 오브젝트에서 실패하는지를 구분해 설명하고, 비용이 공짜가 아니라는 점을 아는지 확인한다.",
+          "keyAnswer": "- **표시 기준(문서):** Static Occluder 는 Terrain 이나 Mesh Renderer 가 있고, 불투명하며, 런타임에 움직이지 않아야 한다. 벽이나 건물 같은 중간 크기 이상의 단단한 오브젝트가 좋은 후보다. Static Occludee 는 어떤 Renderer 든 되고 움직이지 않으면 되며, 작거나 투명한 오브젝트도 좋은 후보다. 이 구역에서는 성벽과 건물을 Occluder 겸 Occludee 로, 소품을 Occludee 로 표시한다.\n- **움직이는 오브젝트:** 베이크 데이터에 넣을 수 없다. Renderer 의 Dynamic Occlusion(기본 켜짐)이 켜져 있으면 Static Occluder 에 가려질 때 컬링되지만, 움직이는 오브젝트가 다른 것을 가리지는 못한다.\n- **내장 방식의 동작:** 에디터에서 씬을 셀로 나누고 셀 안의 지오메트리와 이웃 셀 사이의 가시성을 데이터로 굽는다. 런타임에는 이 데이터를 메모리에 올리고, Occlusion Culling 이 켜진 카메라마다 데이터에 질의한다. 이때 카메라는 프러스텀 컬링과 오클루전 컬링을 둘 다 한다.\n- **내장 방식이 손해인 경우:** 질의가 CPU 에서 돌아 아낀 CPU 시간을 상쇄할 수 있고, 데이터만큼 메모리를 쓴다. 문서는 작은 구역이 단단한 오브젝트로 확실히 나뉜 장면(복도로 이어진 방)에서 가장 잘 동작한다고 적는다. 탁 트인 평원은 가려지는 것이 적고, 런타임에 지오메트리를 만드는 프로젝트에는 맞지 않는다. 성벽과 골목으로 나뉜 이 구역은 좋은 후보에 가깝다.\n- **GPU 오클루전 컬링(URP):** 카메라 시점의 깊이 텍스처를 만들고, 현재 프레임과 이전 프레임의 깊이로 오브젝트를 컬링한다. 두 프레임 중 하나에서라도 가려지지 않은 것으로 판정된 오브젝트는 그린다. 각 오브젝트를 바운딩 구로 근사하므로 가늘고 긴 오브젝트는 가려졌다고 판정되기 어렵다. 구의 화면 크기에 맞춰 여러 단계로 줄인 깊이 버퍼 중 하나에서 검사한다. 문서상 같은 메시를 쓰는 오브젝트가 많고, 가림이 많고(특히 가려지는 오브젝트의 정점이 많을 때), 가려지는 오브젝트의 화면 반지름이 작을 때 효과가 크다. 가림이 적으면 준비 작업 때문에 렌더링 시간이 늘 수 있다.\n- **GPU 방식의 전제:** GPU Resident Drawer 가 필요하고 같은 제약을 받는다. GPU Resident Drawer 는 Forward+ 렌더링 경로, OpenGL ES 를 제외한 컴퓨트 셰이더 지원 API, Mesh Renderer 에서만 동작한다. 문서의 절차상 Render Graph 를 꺼 두는 Compatibility Mode 도 꺼야 한다. 따라서 OpenGL ES 로 도는 기기에서는 이 방식에 기댈 수 없다.\n- **확인:** 내장 방식은 Occlusion Culling 창과 Scene 뷰의 시각화로, GPU 방식은 Rendering Statistics 오버레이와 Rendering Debugger 로 확인한다고 문서는 안내한다."
+        },
+        {
+          "question": "C 안(소품 레이어의 컬링 거리 30 m)을 구현할 때 무엇을 조심해야 합니까? 세 안을 어떤 순서로 적용하고, 각 단계의 효과를 무엇으로 확인하겠습니까?",
+          "intent": "거리 컬링의 API 동작과 파이프라인 제약을 정확히 알고, 측정으로 CPU/GPU 병목을 먼저 가른 뒤 비용이 싼 것부터 적용하는 절차를 세울 수 있는지 확인한다.",
+          "keyAnswer": "- **API 동작(문서):** 카메라는 보통 `Camera.farClipPlane` 보다 먼 오브젝트를 그리지 않는다. `layerCullDistances` 로 일부 레이어만 더 짧은 컬링 거리를 줄 수 있고, 작은 오브젝트를 적절한 레이어에 넣어 일찍 컬링하는 데 유용하다. 32 개 값을 가진 `float` 배열을 통째로 대입해야 하고, 0 은 far plane 거리를 쓴다는 뜻이다.\n- **평면 대 구:** 기본은 카메라에 정렬된 평면 기준이다. `layerCullSpherical` 을 켜면 구 거리 기준이 되어 제자리에서 돌아도 보이는 오브젝트가 바뀌지 않지만, 문서상 이 API 는 Built-in 렌더러에서만 쓸 수 있다. URP 인 이 프로젝트에서는 카메라를 돌릴 때 화면 가장자리의 소품이 나타나거나 사라질 수 있다고 보고 거리를 정한다(이 결론은 문서 내용에서 나온 추론이다).\n- **눈에 보이는 결함:** 경계에서 소품이 갑자기 나타나는 popping 이 생긴다. 화면에서 충분히 작아지는 거리로 정하고, 큰 소품은 다른 레이어에 둔다(실무 판단).\n- **무엇을 줄이나:** \"Reduce rendering work\" 페이지는 더 엄격한 컬링(오클루전 컬링, far clip plane 축소, 레이어별 컬링 거리)을 CPU 의 렌더링 비용을 줄이는 방법으로 들고, 그리는 오브젝트 수를 줄이면 CPU 와 GPU 의 일이 함께 준다고 적는다.\n- **적용 순서(실무 판단):** 먼저 프로파일러로 CPU 바운드인지 GPU 바운드인지, GPU 라면 정점 처리인지 픽셀(오버드로우)인지 가른다. 문서도 원인을 모른 채 고치면 시간을 낭비하거나 문제를 키울 수 있다고 경고한다. 그다음 비용이 싸고 되돌리기 쉬운 C(데이터도 빌드 과정도 필요 없다), 성벽으로 나뉜 구조에 맞는 B(베이크 데이터의 메모리와 CPU 질의 비용을 함께 잰다), 정점 처리 비용이 크다고 확인된 고폴리곤 건물에만 A 순서로 적용한다.\n- **확인 방법:** 각 단계마다 대상 기기에서 프로파일러의 CPU·GPU 프레임 시간을 비교하고, Frame Debugger 와 Rendering Statistics 로 드로우 콜(Batches)과 삼각형 수의 변화를 본다. B 는 Occlusion Culling 창의 시각화로 실제로 가려지는지 확인한다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**모범 답변의 뼈대: 무엇을 줄이나.** Unity 매뉴얼은 렌더링의 CPU 비용 대부분이 GPU 로 렌더링 명령(드로우 콜과 상태 변경)을 보내는 데서 나온다고 설명하고, 줄이는 방법으로 더 엄격한 컬링(오클루전 컬링, far clip plane 축소, `Camera.layerCullDistances` 로 레이어별 컬링 거리)을 듭니다. 그리는 오브젝트 수를 줄이면 CPU 와 GPU 의 일이 함께 줄어든다고도 적습니다. 반면 LOD 는 정점 처리 때문에 GPU 가 막힐 때의 대응으로 분류합니다.\n\n| 기법 | 주로 줄이는 것 | 대가 | 효과가 없거나 손해인 경우 |\n|---|---|---|---|\n| A. LOD Group | GPU 정점 처리(먼 오브젝트의 삼각형 수) | 레벨별 메시 메모리, 전환 시 popping, 크로스페이드 구간에서 두 레벨을 모두 그림 | 정점이 적은 소품, 보이는 오브젝트 수가 병목인 CPU 바운드 |\n| B. 베이크 오클루전 | 가려진 오브젝트의 드로우 콜(CPU)과 정점·픽셀(GPU) | 베이크 데이터의 메모리, 카메라마다 CPU 질의 | 가림이 적은 열린 공간, 런타임 생성 지오메트리, 움직이는 가리개 |\n| B'. GPU 오클루전(URP) | 가려진 오브젝트의 GPU 작업 | 깊이 텍스처 준비 같은 추가 GPU 작업 | 가림이 적은 장면, 가늘고 긴 오브젝트, GPU Resident Drawer 조건을 못 맞추는 기기(OpenGL ES 등) |\n| C. 레이어 컬링 거리 | 먼 소품의 드로우 콜(CPU)과 GPU 작업 | 경계의 popping | 큰 오브젝트, 회전에 따른 경계 변화(구 기준은 Built-in 전용) |\n\n**근거.** 오클루전 컬링 문서는 프러스텀 컬링이 가림을 확인하지 않아 보이지 않는 Renderer 에 CPU 와 GPU 시간을 낭비할 수 있다고 설명합니다. 동시에 내장 오클루전 컬링이 런타임 계산을 CPU 에서 해 아낀 시간을 상쇄할 수 있으며, 오버드로우로 GPU 바운드일 때 효과가 클 가능성이 높다고 적습니다. 데이터를 메모리에 올려야 하고, 복도로 이어진 방처럼 단단한 오브젝트로 나뉜 장면에서 가장 잘 동작합니다. LOD Group 문서는 전환 기준이 화면 높이 비율이고, 크로스페이드가 전환 구간에서 두 레벨을 따로 그린 뒤 섞는다고 설명합니다. URP 의 GPU 오클루전 컬링 문서는 현재·이전 프레임의 깊이와 바운딩 구를 써서 보수적으로 판정하며, 가림이 적으면 오히려 렌더링 시간이 늘 수 있다고 적습니다.\n\n**이 구역에 대한 답.** 성벽과 골목으로 나뉜 구조라 B 가 잘 맞지만 CPU 질의 비용과 메모리를 함께 재야 합니다. 소품 8,000 개는 C 로 먼저 줄이고, 회전할 때 경계가 흔들리는 문제와 popping 을 확인합니다. A 는 정점 처리 비용이 확인된 고폴리곤 건물에만 씁니다. 순서와 대상 선정은 문서 인용이 아닌 실무 판단입니다.\n\n**흔한 오답.**\n- LOD 를 드로우 콜을 줄이는 기법으로 설명한다. 문서상 LOD 가 줄이는 것은 먼 메시의 삼각형(GPU 연산)이고, 레벨이 바뀌어도 오브젝트는 계속 그려지므로 드로우 콜은 대개 그대로다.\n- 오클루전 컬링을 \"켜면 무조건 이득\"으로 본다. 내장 방식의 CPU 질의와 메모리를 빠뜨린다.\n- 움직이는 캐릭터나 차량이 다른 오브젝트를 가릴 수 있다고 말한다.\n- `layerCullSpherical` 을 URP 에서도 쓸 수 있다고 말한다.\n- 프로파일링 없이 세 가지를 한꺼번에 적용해 어느 것이 효과였는지 모른다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "세 기법이 줄이는 비용을 구분했다: 컬링(오클루전, 컬링 거리)은 그리는 오브젝트 수를 줄여 CPU 와 GPU 를 함께 줄이고, LOD 는 주로 GPU 의 정점 처리를 줄인다.",
+            "points": 12,
+            "sourceId": "unity-reduce-rendering-work"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "내장 오클루전 컬링의 대가와 한계를 말했다: CPU 에서 하는 런타임 질의, 메모리에 올리는 베이크 데이터, 움직이는 오브젝트는 가리개가 될 수 없음, 가림이 적은 장면이나 런타임 생성 지오메트리에서는 부적합.",
+            "points": 8,
+            "sourceId": "unity-occlusion-culling"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Static Occluder 로 표시할 오브젝트의 조건(Terrain 이나 Mesh Renderer, 불투명, 움직이지 않음)을 말했다.",
+            "points": 4,
+            "sourceId": "unity-occlusion-setup"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "LOD 의 전환 기준(화면 높이 비율)과 popping, 크로스페이드가 전환 구간에서 두 레벨을 모두 그린다는 점을 말했다.",
+            "points": 11,
+            "sourceId": "unity-lod-group"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "GPU 오클루전 컬링의 동작(깊이 텍스처, 바운딩 구, 보수적 판정)과 가림이 적을 때 오히려 느려질 수 있다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-urp-gpu-occlusion"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "메모리 측면을 짚었다: LOD 메시와 베이크 데이터가 메모리를 쓰고, Maximum LOD Level 로 쓰지 않는 레벨을 빌드에서 뺄 수 있다.",
+            "points": 10,
+            "sourceId": "unity-quality-settings"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "적용 전에 CPU 바운드인지 GPU 바운드(정점/픽셀)인지 측정으로 가르고, 단계마다 대상 기기에서 효과를 측정하는 절차를 말했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "layerCullDistances 의 동작(32 개 배열, 0 은 far plane 거리)과 기본이 평면 기준이라는 점, layerCullSpherical 이 Built-in 전용이라는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-camera-layerculldistances"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "파이프라인과 플랫폼 조건을 구분했다: GPU 오클루전 컬링은 URP/HDRP 기능이고 GPU Resident Drawer 의 제약(Forward+, OpenGL ES 제외)을 받으며, 크로스페이드 설정 위치는 Built-in(Quality)과 URP(URP Asset)가 다르다.",
+            "points": 10,
+            "sourceId": "unity-gpu-resident-drawer"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "답변이 \"줄이는 비용 → 대가 → 실패 사례 → 이 구역의 적용 순서 → 확인 방법\"으로 이어진다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "문서에 있는 사실과 자신의 추론·실무 판단을 구분해 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "LOD 를 드로우 콜(CPU)을 줄이는 기법으로 설명하고, 먼 메시의 삼각형 수(GPU 정점 처리)를 줄인다는 핵심을 놓쳤다.",
+            "penalty": -20,
+            "sourceId": "unity-lod-intro"
+          },
+          {
+            "id": "d2",
+            "description": "움직이는 오브젝트가 베이크한 오클루전 컬링의 가리개가 될 수 있다고 답했다.",
+            "penalty": -15,
+            "sourceId": "unity-occlusion-dynamic"
+          },
+          {
+            "id": "d3",
+            "description": "한 파이프라인의 기능이나 설정(layerCullSpherical, GPU 오클루전, 크로스페이드 설정 위치)을 모든 파이프라인의 공통 동작처럼 말했다.",
+            "penalty": -10,
+            "sourceId": "unity-camera-layercullspherical"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼(LOD Group, Mesh LOD, 오클루전 컬링 세 페이지, URP GPU 오클루전 컬링, GPU Resident Drawer, Quality 설정, Reduce rendering work)과 Camera.layerCullDistances·layerCullSpherical 스크립팅 문서 원문과 대조했다."
+      },
+      "nextMission": "Unity 6 URP 프로젝트에 벽으로 나뉜 방 네 개와 소품 2,000 개(같은 메시 5 종)를 배치하세요. (1) 아무것도 하지 않은 상태, (2) 소품 레이어에 layerCullDistances 20 m, (3) 베이크 오클루전 컬링 추가, (4) 고폴리곤 소품에 LOD Group 추가의 네 단계에서, 같은 카메라 경로를 따라가며 프로파일러의 CPU·GPU 프레임 시간과 Rendering Statistics 의 Batches·삼각형 수를 표로 정리하세요. 그다음 카메라를 제자리에서 360° 돌리며 (2) 의 경계에서 소품이 나타나고 사라지는지 기록합니다."
+    },
+    {
+      "id": "t9-tutor-sprite-atlas-batching-bleeding",
+      "track": "track9",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "스프라이트 아틀라스와 2D 배칭: 드로우 콜이 줄어드는 조건과 가장자리 번짐(bleeding)",
+      "tags": [
+        "Gfx_SpriteAtlas",
+        "Gfx_Batching",
+        "Gfx_Bleeding"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "unity-sprite-atlas-intro",
+        "unity-sprite-atlas-reference",
+        "unity-2d-render-order",
+        "unity-mipmaps-intro",
+        "unity-sprite-atlas-create"
+      ],
+      "scenario": "2D 모바일 카드 배틀 게임(Unity 6)의 전투 화면에는 카드 4 장이 놓이고, 카드마다 프레임 → 일러스트 → 속성 아이콘 순서로 스프라이트 3 개를 그립니다. 처음에는 스프라이트마다 텍스처가 따로라 드로우 콜이 12 개였습니다. 아트 팀이 스프라이트 아틀라스를 도입한 뒤 두 가지가 올라왔습니다.\n\n- \"프레임·아이콘 아틀라스와 일러스트 아틀라스 두 개로 묶었는데 드로우 콜이 12 에서 9 로밖에 안 줄었다.\"\n- \"카메라를 줌아웃하면 카드 가장자리에 옆 카드의 색이 번진다.\"\n\n**해야 할 일**\n1. 아래 개념 카드를 읽고, 드로우 콜이 9 개인 이유와 3 개로 줄이는 방법을 손으로 따져 보세요.\n2. `starterCode` 의 `CountDrawCalls` 와 `FirstBleedingMip` 을 구현하세요. 순수 C#(.NET 8)입니다.\n3. 구현한 함수로 퀴즈의 숫자를 확인하세요.\n\n**이 연습의 단순화한 모델**\n- 드로우 콜: 정렬된 순서대로 그리고, 바로 앞 스프라이트와 텍스처가 같으면 같은 드로우 콜에 합칩니다. 머티리얼과 셰이더는 모두 같다고 봅니다. 실제 엔진의 배칭 규칙은 이보다 복잡합니다(개념 카드 4번).\n- 블리딩: 아틀라스의 한 줄(1D)만 봅니다. 밉 레벨 m 의 텍셀 j 는 레벨 0 의 텍셀 `[j·2^m, (j+1)·2^m)` 을 평균한다고 봅니다(박스 필터). Unity 문서는 스프라이트 아틀라스의 밉맵을 어떤 필터로 만드는지 밝히지 않으므로, 이 박스 필터는 실제 동작이 아니라 이 연습을 위해 정한 모델입니다. 바이리니어 필터링이 이웃 텍셀까지 읽는 효과는 함수에 넣지 않고 개념 카드에서만 다룹니다.",
+      "constraints": [
+        "`CountDrawCalls` 는 O(n), `FirstBleedingMip` 은 O(maxLevel × 스프라이트 수), 둘 다 힙 할당 없음.",
+        "`FirstBleedingMip` 은 레벨 m 의 밉 텍셀 범위를 `start >> m`, `(start + width − 1) >> m` 처럼 정수로 계산한다(실제 밉 체인을 만들지 않는다).",
+        "입력: 배열은 null 이 아니다. `starts` ≥ 0, `widths` ≥ 1, 스프라이트 구간은 서로 겹치지 않는다, `0 ≤ maxLevel ≤ 20`."
+      ],
+      "starterCode": "using System;\n\n// 이 연습의 단순화한 모델\n// - 드로우 콜: 정렬된 순서대로 그리고, 바로 앞 스프라이트와 텍스처가 같으면 같은 드로우 콜에 합친다\n//   (머티리얼과 셰이더는 모두 같다고 본다).\n// - 블리딩: 아틀라스의 한 줄만 본다. 밉 레벨 m 의 텍셀 j 는 레벨 0 의 텍셀 [j·2^m, (j+1)·2^m) 을 평균한다(박스 필터).\npublic static class SpriteBatching\n{\n    // textureIdsInDrawOrder: 그리는 순서대로 각 스프라이트가 쓰는 텍스처(또는 아틀라스) id.\n    public static int CountDrawCalls(int[] textureIdsInDrawOrder)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 스프라이트 i 는 아틀라스 한 줄의 텍셀 [starts[i], starts[i] + widths[i]) 을 차지한다(서로 겹치지 않는다).\n    // sprite 의 텍셀이 다른 스프라이트의 텍셀과 같은 밉 텍셀에 처음 섞이는 레벨(1 ~ maxLevel)을 돌려준다.\n    // maxLevel 까지 섞이지 않으면 -1.\n    public static int FirstBleedingMip(int[] starts, int[] widths, int sprite, int maxLevel)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "빈 배열의 드로우 콜은 0, 모두 같은 텍스처면 1 이다.",
+        "아틀라스 두 개가 정렬 순서에서 번갈아 나오면(U P U U P U …) 아틀라스를 썼는데도 드로우 콜이 크게 줄지 않는다.",
+        "패딩 2 텍셀: 카드 A 가 [0, 21), 카드 B 가 [23, 50) 이면 레벨 2 에서 섞인다. 패딩을 4 로 늘려 B 를 [25, 52) 로 옮기면 레벨 4 에서 처음 섞인다.",
+        "정렬 운: 패딩 4 인 A [0, 32), B [36, 64) 는 레벨 6 에서야 섞이지만(경계가 32 의 배수), 같은 패딩이라도 위치에 따라 레벨 3 에서 섞일 수 있다."
+      ],
+      "hints": [
+        "드로우 콜은 \"텍스처가 바뀌는 횟수 + 1\"입니다(빈 배열은 0). `F I1 C F I2 C …` 처럼 이웃한 둘이 모두 다르면 스프라이트 수와 같습니다. 두 아틀라스 U, P 로 바꾸면 `U P U U P U U P U U P U` 가 되는데, 바뀌는 곳을 세어 보세요.",
+        "`FirstBleedingMip` 에서는 레벨 m 에서 스프라이트가 걸치는 밉 텍셀 번호의 범위를 구하면 됩니다. 시작 텍셀 `s` 와 끝 텍셀 `s + w − 1` 을 각각 `2^m` 으로 나눈 몫(`>> m`)이 그 범위의 양 끝입니다. 다른 스프라이트의 범위와 겹치면 그 레벨에서 섞입니다. 레벨 0 은 스프라이트가 겹치지 않으므로 볼 필요가 없습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nCountDrawCalls(ids):\n    calls = 0\n    for i in 0..n-1:\n        if i == 0 or ids[i] != ____: calls++\n    return calls\n\nFirstBleedingMip(starts, widths, s, maxLevel):\n    for m in 1..maxLevel:\n        a0 = starts[s] >> m;  a1 = (starts[s] + widths[s] - 1) >> m\n        for each t != s:\n            b0 = ____;  b1 = ____\n            if ____ : return m\n    return -1\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 택배 합포장과 뽁뽁이\n\n물건마다 상자를 따로 보내면 상자 수만큼 배송(드로우 콜)이 듭니다. 여러 물건을 한 상자(아틀라스)에 담으면 한 번에 보낼 수 있습니다. 그런데 배송 기사가 정해진 순서대로만 상자를 실어야 한다면, 순서가 \"상자 U → 상자 P → 상자 U\" 로 섞일 때마다 다시 다녀와야 합니다. 그리고 상자를 꾹 눌러 작게 만들면(밉맵) 물건끼리 닿아 색이 묻으니, 사이에 뽁뽁이(패딩)를 넣습니다.\n\n### 1. 텍스처가 바뀌면 드로우 콜이 나뉜다\n\n- Unity 6 매뉴얼은 스프라이트마다 텍스처를 따로 쓰면 텍스처마다 드로우 콜을 따로 만들어 GPU 에 보내야 해서 성능이 떨어질 수 있다고 설명합니다.\n- 스프라이트 아틀라스는 여러 텍스처를 텍스처 하나로 합친 것이고, 매뉴얼의 표현으로 Unity 는 아틀라스 안의 모든 스프라이트에 드로우 콜 하나만 만들면 됩니다.\n\n### 2. 그리는 순서가 먼저다\n\n2D 렌더링 순서 문서에 따르면 Unity 는 Sorting Layer → Order in Layer → 머티리얼의 Render Queue → 카메라와의 거리 순서로 무엇을 먼저 그릴지 정하고, 그다음에야 셰이더와 머티리얼 속성이 같은 오브젝트를 묶어 그립니다(묶음끼리의 순서는 보장되지 않습니다). 순서가 앞의 기준으로 이미 정해지면, 서로 다른 아틀라스의 스프라이트가 번갈아 나오는 만큼 묶음이 끊깁니다. 이 문장의 결론(\"번갈아 나오면 끊긴다\")은 문서의 정렬 기준에서 나온 추론이고, 이 연습의 모델이 그것을 숫자로 보여 줍니다.\n\n| 그리는 순서 (카드 4 장) | 드로우 콜 (모델) |\n|---|---|\n| `F I1 C F I2 C F I3 C F I4 C` (텍스처 6 종) | 12 |\n| 프레임·아이콘 → U, 일러스트 → P: `U P U U P U U P U U P U` | 9 |\n| Sorting Layer 를 프레임 → 일러스트 → 아이콘으로 나눔: `U U U U P P P P U U U U` | 3 |\n| 전부 아틀라스 하나: `U × 12` | 1 |\n\n레이어로 순서를 바꾸는 방법은 카드끼리 겹치지 않을 때만 화면이 같습니다. 겹치는 카드라면 앞 카드의 일러스트가 뒤 카드의 아이콘에 가려지는 식으로 보이는 결과가 달라집니다.\n\n### 3. 아틀라스를 나누는 기준 (매뉴얼의 권장)\n\n- 같은 시점에 함께 쓰는 스프라이트끼리 묶습니다(예: 씬마다 아틀라스). 쓰지 않는 스프라이트를 메모리에 올리지 않기 위해서입니다.\n- 압축 설정이 다른 스프라이트(디테일이 높은 캐릭터 대 배경)는 나눕니다.\n- 자주 쓰는 것과 드물게 쓰는 것을 나눕니다.\n- 스프라이트 하나를 여러 아틀라스에 넣으면 런타임에 어느 아틀라스 텍스처를 쓸지 Unity 가 임의로 고릅니다(\"Create a sprite atlas\" 문서의 노트).\n\n### 4. 파이프라인에 따라 숫자가 다르게 보인다\n\n매뉴얼은 SRP Batcher 를 쓰면 드로우 콜 수는 줄지 않을 수 있지만 성능은 비슷하게 좋아진다고 적습니다. 그래서 URP 프로젝트에서는 드로우 콜 수만이 아니라 프로파일러의 CPU 시간도 함께 봐야 합니다.\n\n### 5. 가장자리 번짐(bleeding)\n\n- **왜 생기나:** 밉 레벨이 올라갈 때마다 이웃 텍셀을 평균하므로, 스프라이트 경계 근처의 밉 텍셀에는 옆 스프라이트의 텍셀이 섞일 수 있습니다. 또 바이리니어 필터링은 샘플 위치 주변의 텍셀 네 개를 섞으므로, 스프라이트 가장자리를 샘플링하면 바로 바깥(패딩)의 텍셀도 읽습니다. 이 두 설명은 필터링과 밉맵의 일반적인 동작에서 나온 것입니다.\n- **Padding:** Sprite Atlas 인스펙터의 Padding 은 스프라이트 사이에 두는 픽셀 수로, 한 스프라이트의 픽셀이 이웃 스프라이트에 나타나지 않게 하는 설정이며 기본값은 4 입니다.\n- **Alpha Dilation:** 매뉴얼의 설명으로 스프라이트 가장자리의 색을 이웃한 투명 픽셀로 넓혀 가장자리가 보이는 현상을 막습니다. 필터링이 그 투명 픽셀을 읽더라도 스프라이트 자신의 색이 섞이므로 테두리가 덜 드러난다는 해석은 일반 지식입니다.\n- **Tight Packing / Allow Rotation:** Tight Packing 은 기본 사각형 대신 Custom Outline 의 메시 모양으로 배치하고, Allow Rotation 은 더 잘 맞도록 회전합니다. 매뉴얼은 Canvas UI 를 묶을 때는 UI 가 돌아가지 않도록 Allow Rotation 을 끄라고 합니다.\n- **패딩이 얼마면 충분한가(이 연습의 모델):** Unity 가 아틀라스 밉을 실제로 어떤 필터로 만드는지는 문서에 없으므로, 아래 숫자는 박스 필터 모델 안에서만 성립합니다. 두 스프라이트 사이의 패딩이 p 텍셀이면, `2^m ≤ p + 1` 인 레벨 m 까지는 위치와 상관없이 섞이지 않습니다. 그보다 높은 레벨은 경계가 `2^m` 의 배수에 얼마나 맞는지에 따라 달라집니다. 기본값 4 라면 레벨 2 까지는 보장되고, 위치에 따라 레벨 3 부터 섞일 수 있습니다. 바이리니어가 경계 너머를 더 읽는 만큼 실제로는 여유가 더 필요합니다.",
+      "quiz": [
+        {
+          "question": "시나리오의 전투 화면에서 프레임·아이콘을 아틀라스 U 로, 일러스트를 아틀라스 P 로 묶었더니 드로우 콜이 9 개였습니다. 그리는 순서를 써서 왜 9 개인지 설명하고, 드로우 콜을 3 개로 줄이는 방법과 그 방법이 화면을 바꾸지 않을 조건을 말하세요. URP 에서 SRP Batcher 를 쓰는 경우 숫자를 어떻게 해석해야 하는지도 덧붙이세요.",
+          "answer": "카드마다 프레임(U) → 일러스트(P) → 아이콘(U) 순서로 그리므로 전체 순서는 `U P U U P U U P U U P U` 입니다. 텍스처가 바뀌는 곳이 8 군데라 드로우 콜은 8 + 1 = 9 개입니다. 아틀라스가 둘이어도 정렬 순서에서 번갈아 나오면 묶음이 끊깁니다. Unity 는 Sorting Layer, Order in Layer, Render Queue, 거리로 순서를 먼저 정하고 셰이더·머티리얼이 같은 것끼리의 묶음은 그다음에만 고려하기 때문입니다. 프레임, 일러스트, 아이콘을 각각 다른 Sorting Layer(위에서부터 프레임 → 일러스트 → 아이콘)에 두면 순서가 `U U U U P P P P U U U U` 가 되어 3 개로 줄어듭니다. 카드끼리 겹치지 않을 때만 화면이 그대로이고, 겹친다면 앞 카드의 프레임이 뒤 카드의 아이콘 아래로 들어가는 식으로 결과가 달라집니다. 모든 스프라이트를 아틀라스 하나에 넣으면 1 개지만, 일러스트처럼 크고 압축 설정이 다른 스프라이트까지 한 장에 넣는 것은 매뉴얼의 권장(압축 설정이 다른 스프라이트는 나눈다)과 맞지 않을 수 있습니다. SRP Batcher 를 쓰면 매뉴얼의 설명대로 드로우 콜 수가 줄지 않더라도 성능은 비슷하게 좋아질 수 있으므로, 숫자만 보지 말고 프로파일러의 CPU 시간으로 판단합니다."
+        },
+        {
+          "question": "아틀라스 한 줄에서 카드 A 는 텍셀 [0, 21), 카드 B 는 [23, 50) 을 차지합니다(패딩 2). `FirstBleedingMip` 으로 A 가 처음 섞이는 레벨을 구하고, 패딩을 Unity 기본값 4 로 늘려 B 를 [25, 52) 로 옮기면 어떻게 되는지 보이세요. 패딩 4 가 \"모든 위치에서\" 보장하는 레벨은 어디까지이고, 레벨 3 이상의 번짐을 확실히 막으려면 무엇을 검토하겠습니까?",
+          "answer": "패딩 2 에서 레벨 1 은 A 가 밉 텍셀 0 ~ 10, B 가 11 ~ 24 라 겹치지 않고, 레벨 2 는 A 가 0 ~ 5(20 >> 2 = 5), B 가 5 ~ 12(23 >> 2 = 5)로 텍셀 5 를 함께 써서 섞입니다. 답은 2 입니다. 패딩 4 로 B 를 [25, 52) 로 옮기면 레벨 2 는 A 0 ~ 5, B 6 ~ 12, 레벨 3 은 A 0 ~ 2, B 3 ~ 6 으로 겹치지 않고, 레벨 4 에서 A 0 ~ 1, B 1 ~ 3 이 되어 처음 섞입니다. 답은 4 입니다. 하지만 이것은 위치 운이 따른 결과입니다. 이 모델에서 마지막 텍셀 a 와 다음 스프라이트의 첫 텍셀 b 는 `b − a = p + 1` 만큼 떨어져 있고, 블록 크기 `2^m` 이 그 이하이면 둘은 반드시 다른 블록에 들어갑니다. 그래서 패딩 4 는 `2^m ≤ 5` 인 레벨 2 까지만 보장하고, 위치에 따라 레벨 3 에서 섞일 수 있습니다. 레벨 3 이상까지 막으려면 그 아틀라스에 밉맵이 정말 필요한지부터 봅니다. Unity 매뉴얼은 크기를 바꾸지 않는 UI 텍스처처럼 원래 해상도로만 그리는 텍스처에는 밉맵이 이득이 없고 크기만 33% 늘린다고 적으므로, 그런 아틀라스라면 Sprite Atlas 의 Generate Mip Maps 를 끕니다. 필요하다면 (이 모델 기준으로) 패딩을 `2^m − 1` 이상으로 키우고, Alpha Dilation 으로 패딩에 스프라이트 자신의 색을 채워 섞이더라도 티가 덜 나게 합니다. 바이리니어가 경계 너머를 더 읽는다는 점도 고려해 실제 화면에서 확인합니다."
+        }
+      ],
+      "solutionCode": "using System;\n\n// 이 연습의 단순화한 모델\n// - 드로우 콜: 정렬된 순서대로 그리고, 바로 앞 스프라이트와 텍스처가 같으면 같은 드로우 콜에 합친다\n//   (머티리얼과 셰이더는 모두 같다고 본다).\n// - 블리딩: 아틀라스의 한 줄만 본다. 밉 레벨 m 의 텍셀 j 는 레벨 0 의 텍셀 [j·2^m, (j+1)·2^m) 을 평균한다(박스 필터).\npublic static class SpriteBatching\n{\n    // textureIdsInDrawOrder: 그리는 순서대로 각 스프라이트가 쓰는 텍스처(또는 아틀라스) id.\n    public static int CountDrawCalls(int[] textureIdsInDrawOrder)\n    {\n        int calls = 0;\n        for (int i = 0; i < textureIdsInDrawOrder.Length; i++)\n        {\n            // 앞 스프라이트와 텍스처가 다르면 새 드로우 콜이 필요하다.\n            if (i == 0 || textureIdsInDrawOrder[i] != textureIdsInDrawOrder[i - 1]) calls++;\n        }\n        return calls;\n    }\n\n    // 스프라이트 i 는 아틀라스 한 줄의 텍셀 [starts[i], starts[i] + widths[i]) 을 차지한다(서로 겹치지 않는다).\n    // sprite 의 텍셀이 다른 스프라이트의 텍셀과 같은 밉 텍셀에 처음 섞이는 레벨(1 ~ maxLevel)을 돌려준다.\n    // maxLevel 까지 섞이지 않으면 -1.\n    public static int FirstBleedingMip(int[] starts, int[] widths, int sprite, int maxLevel)\n    {\n        for (int m = 1; m <= maxLevel; m++)\n        {\n            // 레벨 m 에서 sprite 가 걸치는 밉 텍셀 범위 [sFirst, sLast]\n            int sFirst = starts[sprite] >> m, sLast = (starts[sprite] + widths[sprite] - 1) >> m;\n            for (int t = 0; t < starts.Length; t++)\n            {\n                if (t == sprite) continue;\n                int tFirst = starts[t] >> m, tLast = (starts[t] + widths[t] - 1) >> m;\n                if (tFirst <= sLast && sFirst <= tLast) return m; // 같은 밉 텍셀을 나눠 쓴다\n            }\n        }\n        return -1;\n    }\n}\n",
+      "explanation": "**CountDrawCalls.** 모델에서 드로우 콜은 그리는 순서에서 텍스처가 바뀔 때마다 하나씩 늘어나므로, 첫 원소를 포함해 \"앞과 다른 원소\"의 수를 세면 됩니다. 정렬은 하지 않습니다. 그리는 순서는 정렬 규칙(Sorting Layer, Order in Layer, Render Queue, 거리)이 정하는 것이고, 이 함수는 그 결과를 받기만 합니다. 시간 O(n), 추가 메모리 O(1).\n\n**FirstBleedingMip.** 박스 필터 모델에서 레벨 m 의 텍셀 j 는 레벨 0 의 `[j·2^m, (j+1)·2^m)` 을 평균하므로, 스프라이트가 레벨 m 에서 걸치는 밉 텍셀은 `start >> m` 부터 `(start + width − 1) >> m` 까지입니다. 두 스프라이트의 범위가 한 텍셀이라도 겹치면 그 밉 텍셀은 두 스프라이트의 색을 섞습니다. 레벨을 1 부터 올려 가며 처음 겹치는 레벨을 찾습니다. 레벨이 오를수록 범위는 넓어지기만 하므로 한 번 섞이면 그 위 레벨도 섞입니다. 시간 O(maxLevel × 스프라이트 수), 할당 없음.\n\n**보장 범위가 2^m ≤ p + 1 인 이유.** 앞 스프라이트의 마지막 텍셀 a 와 뒤 스프라이트의 첫 텍셀 b 사이에는 패딩 p 개가 있어 `b − a = p + 1` 입니다. 블록 크기 B 가 `b − a` 이하이면 `⌊b/B⌋ ≥ ⌊a/B⌋ + 1` 이라 두 텍셀은 다른 블록에 들어갑니다. B 가 더 크면 경계 위치에 따라 같은 블록에 들어갈 수 있습니다. 패딩 0 ~ 8 마다 시작 위치 64 가지와 너비 39 가지를 모두 넣어 돌려 보면, 처음 섞이는 레벨의 최솟값이 정확히 이 식이 말하는 레벨(2^m > p + 1 인 가장 작은 m)과 같습니다.\n\n**엔진과의 연결.** 매뉴얼 근거는 세 가지입니다. 텍스처가 따로면 드로우 콜도 따로라는 점, 2D 정렬 기준이 셰이더·머티리얼 묶음보다 먼저라는 점, 그리고 Padding 이 이웃 스프라이트의 픽셀이 나타나지 않게 하는 설정(기본 4)이라는 점입니다. 실제 Unity 의 배칭은 이 모델보다 복잡합니다. SRP Batcher 를 쓰면 드로우 콜 수가 줄지 않아도 성능이 비슷하게 좋아질 수 있다고 매뉴얼은 적습니다. Unity 문서는 아틀라스의 밉맵을 어떤 필터로 만드는지 밝히지 않으므로(박스 필터는 이 연습에서 정한 모델입니다), 보장 범위는 모델 안에서의 결론이고 실제 아틀라스에서는 화면으로 확인해야 합니다.\n\n**흔한 실수.**\n- 드로우 콜 수를 \"서로 다른 텍스처의 종류 수\"로 센다. 순서를 무시하면 `U P U U P U …` 도 2 가 된다.\n- 레벨 0 부터 검사해 겹치지 않는 스프라이트도 섞인다고 판정한다.\n- 끝 텍셀을 `start + width` 로 잡아 한 칸 넓게 계산한다. 경계가 블록 경계에 딱 맞을 때 한 레벨 일찍 섞인다고 판정한다.\n- 자기 자신과 비교한다.\n\n이 문제에는 숨은 테스트가 없습니다. 퀴즈의 숫자를 직접 출력해 맞춰 보세요.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "텍스처가 바뀔 때마다 드로우 콜이 나뉘고, 아틀라스는 여러 텍스처를 하나로 합쳐 드로우 콜을 줄인다는 원리를 설명했다.",
+            "points": 12,
+            "sourceId": "unity-sprite-atlas-intro"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "정렬 순서(Sorting Layer → Order in Layer → Render Queue → 거리)가 묶음보다 먼저라서 아틀라스가 번갈아 나오면 드로우 콜이 줄지 않는다는 점을 퀴즈 1 의 순서(9 개 → 3 개)로 보였다.",
+            "points": 12,
+            "sourceId": "unity-2d-render-order"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "CountDrawCalls 와 FirstBleedingMip 이 모델대로 동작한다: 퀴즈 1 의 순서에서 12, 9, 3, 1, 퀴즈 2 에서 패딩 2 → 2, 패딩 4([25, 52)) → 4, A [0, 32)·B [36, 64) → 6.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "CountDrawCalls 가 한 번 훑기(O(n))이고 정렬이나 집합을 쓰지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "FirstBleedingMip 이 밉 체인을 만들지 않고 시프트 연산으로 범위만 계산한다(힙 할당 없음).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "아틀라스를 나누는 기준(함께 쓰는 것끼리, 압축 설정, 사용 빈도)과 쓰지 않는 스프라이트를 메모리에 올리지 않는 이유를 말했다.",
+            "points": 10,
+            "sourceId": "unity-sprite-atlas-intro"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Padding(기본 4), Alpha Dilation, Tight Packing, Allow Rotation(Canvas UI 에서는 끈다)의 역할을 매뉴얼대로 설명했다.",
+            "points": 10,
+            "sourceId": "unity-sprite-atlas-reference"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "SRP Batcher 를 쓰면 드로우 콜 수가 줄지 않아도 성능이 좋아질 수 있다는 점을 짚고 CPU 시간으로 판단한다고 말했다.",
+            "points": 10,
+            "sourceId": "unity-sprite-atlas-intro"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "퀴즈 2 의 보장 범위(2^m ≤ p + 1)를 모델에서 유도했고, 모델의 결론과 문서의 사실을 구분해 말했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "레이어로 순서를 바꿀 때 화면이 같아지는 조건(카드가 겹치지 않음)을 함께 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "드로우 콜을 \"서로 다른 텍스처 수\"로 계산해 그리는 순서의 영향을 놓쳤다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "번짐의 대응으로 패딩·Alpha Dilation 없이 \"해상도를 올린다\"만 제시했거나, 패딩 기본값과 역할을 틀리게 말했다.",
+            "penalty": -15,
+            "sourceId": "unity-sprite-atlas-reference"
+          },
+          {
+            "id": "d3",
+            "description": "2D 정렬 기준의 순서를 틀리게 말했다(예: 머티리얼 묶음이 Sorting Layer 보다 먼저라고 했다).",
+            "penalty": -10,
+            "sourceId": "unity-2d-render-order"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼(Sprite atlases, Sprite Atlas 인스펙터, Create a sprite atlas, 2D 렌더링 순서, Mipmaps) 원문과 대조하고, 퀴즈의 드로우 콜·블리딩 레벨과 패딩 보장 식을 별도 스크립트로 다시 계산했다."
+      },
+      "nextMission": "`CountDrawCalls` 를 확장해 `(textureId, materialId)` 쌍이 모두 같을 때만 합치는 `CountDrawCalls(int[] textureIds, int[] materialIds)` 를 만들고, 카드 4 장 중 1 장만 \"빛나는\" 머티리얼을 쓰면 드로우 콜이 어떻게 바뀌는지 세어 보세요. 그다음 Unity 6 프로젝트에서 카드 4 장을 실제로 배치하고 Frame Debugger 로 아틀라스 도입 전, 두 아틀라스, Sorting Layer 분리 후의 드로우 콜을 확인해 이 모델의 숫자와 비교하세요."
+    },
+    {
+      "id": "t9-debug-banding-quantize-double-gamma",
+      "track": "track9",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "CPU 후처리의 밴딩과 정밀도 버그: 너무 이른 8비트 양자화, 두 번 걸린 감마, 버림",
+      "tags": [
+        "Gfx_Banding",
+        "Gfx_ColorSpace",
+        "Gfx_PostProcess"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-d3d-data-conversion",
+        "wiki-srgb",
+        "wiki-colour-banding",
+        "unity-urp-asset",
+        "d3d11-3-functional-spec"
+      ],
+      "scenario": "모바일 액션 게임의 포토 모드는 캡처한 화면에 노출(밝기)과 비네트(가장자리 어둡게)를 적용해 앨범에 저장합니다. 서버에서 만드는 썸네일과 결과가 같아야 해서 엔진과 무관한 순수 C# 코드 `PhotoModeFilter` 로 처리합니다. QA 제보가 세 건 올라왔습니다.\n\n- \"어두운 동굴 장면을 +2 스톱 밝히면 벽의 부드러운 그라디언트가 계단처럼 끊긴다.\"\n- \"노출과 비네트를 모두 0 으로 두고 저장해도 사진이 원본보다 뿌옇고 밝다.\"\n- \"흰 배경이 255 가 아니라 254 로 저장된다.\"\n\n**규약** (코드 주석에도 적혀 있으며, 이 규약이 정답의 기준입니다)\n\n| 항목 | 규약 |\n|---|---|\n| 입력·출력 | sRGB 로 인코딩된 8비트 회색조 픽셀, 행 우선, 길이 `width × height`. |\n| 연산 공간 | 노출과 비네트는 **선형 공간**에서 곱합니다: `선형 값 × 2^exposureStops × VignetteFactor(x, y)`. |\n| 양자화 | 8비트로 바꾸는 것은 **맨 마지막에 한 번만** 합니다. |\n| 8비트 변환 | `EncodeSrgb8(linear)`: [0, 1] 로 자르고 sRGB 로 인코딩한 뒤 255 를 곱하고 **0.5 를 더해 소수부를 버립니다**(Direct3D 의 FLOAT → SRGB 변환 규칙). |\n| 고칠 대상이 아닌 것 | `SrgbToLinear`, `LinearToSrgb`(sRGB 표준의 구간별 식), `VignetteFactor` 는 맞게 작성되어 있습니다. |\n\nNaN·무한대, 길이가 맞지 않는 배열은 주어지지 않습니다. `exposureStops` 는 −4 ~ 4, `vignetteStrength` 는 0 ~ 1 입니다.\n\n**할 일:** 아래 코드의 버그를 모두 찾아 고치세요. 버그마다 \"수정 전에는 틀리고 수정 후에는 맞는\" 가장 작은 입력을 하나씩 적어 보세요. 공개 시그니처와 규약은 바꾸지 않습니다.",
+      "constraints": [
+        "`Apply` 는 시간 O(픽셀 수), 픽셀마다 상수 시간이다. 중간 버퍼는 픽셀당 `float` 하나까지 허용한다.",
+        "공개 멤버(`SrgbToLinear`, `LinearToSrgb`, `VignetteFactor`, `EncodeSrgb8`, `Apply`)의 이름과 시그니처를 바꾸지 않고, 고칠 대상이 아닌 세 함수의 식도 바꾸지 않는다.",
+        "검사 기준: 고정 사례는 참조 구현과 정확히 같아야 한다(참조 값이 정수 + 0.5 에 아주 가까운 픽셀은 제외). 무작위 사례는 픽셀마다 ±1 코드, 평균 차이 0.02 코드 이하."
+      ],
+      "starterCode": "using System;\n\n// 포토 모드 필터: 캡처한 화면에 노출과 비네트를 적용해 저장한다(CPU 후처리).\n//\n// 규약\n// - 입력과 출력은 sRGB 로 인코딩된 8비트 회색조 픽셀이다(행 우선, 길이 width * height).\n// - 노출과 비네트는 선형 공간에서 곱한다: 선형 값 * 2^exposureStops * VignetteFactor(x, y).\n// - 8비트로 바꾸는 것은 맨 마지막에 한 번만 한다. [0, 1] 로 자르고 sRGB 로 인코딩한 뒤\n//   255 를 곱하고 0.5 를 더해 소수부를 버린다(Direct3D 의 FLOAT -> SRGB 변환 규칙).\n// - SrgbToLinear, LinearToSrgb, VignetteFactor 는 맞게 작성되어 있다.\npublic static class PhotoModeFilter\n{\n    // sRGB(0~1) -> 선형(0~1)\n    public static float SrgbToLinear(float s)\n    {\n        return s <= 0.04045f ? s / 12.92f : MathF.Pow((s + 0.055f) / 1.055f, 2.4f);\n    }\n\n    // 선형(0~1) -> sRGB(0~1)\n    public static float LinearToSrgb(float l)\n    {\n        return l <= 0.0031308f ? l * 12.92f : 1.055f * MathF.Pow(l, 1f / 2.4f) - 0.055f;\n    }\n\n    // 가장자리를 어둡게 하는 배율. 중앙에서 약 1, 모서리에서 약 1 - strength.\n    public static float VignetteFactor(int x, int y, int width, int height, float strength)\n    {\n        float dx = (x + 0.5f - width * 0.5f) / (width * 0.5f);\n        float dy = (y + 0.5f - height * 0.5f) / (height * 0.5f);\n        return 1f - strength * (dx * dx + dy * dy) * 0.5f;\n    }\n\n    // 선형 값 하나를 8비트 sRGB 코드로 바꾼다.\n    public static byte EncodeSrgb8(float linear)\n    {\n        float s = LinearToSrgb(Math.Clamp(linear, 0f, 1f));\n        return (byte)(s * 255f);\n    }\n\n    public static byte[] Apply(byte[] srgb, int width, int height, float exposureStops, float vignetteStrength)\n    {\n        int n = width * height;\n        float gain = MathF.Pow(2f, exposureStops);\n\n        // 1 패스: 노출\n        var exposed = new byte[n];\n        for (int i = 0; i < n; i++)\n        {\n            float linear = SrgbToLinear(srgb[i] / 255f) * gain;\n            exposed[i] = (byte)MathF.Round(Math.Clamp(linear, 0f, 1f) * 255f);\n        }\n\n        // 2 패스: 비네트를 곱하고 저장한다.\n        var output = new byte[n];\n        for (int y = 0; y < height; y++)\n        {\n            for (int x = 0; x < width; x++)\n            {\n                int i = y * width + x;\n                float linear = exposed[i] / 255f * VignetteFactor(x, y, width, height, vignetteStrength);\n                output[i] = EncodeSrgb8(LinearToSrgb(linear));\n            }\n        }\n        return output;\n    }\n}\n",
+      "edgeCases": [
+        "노출 0, 비네트 0: 256 개 코드가 모두 그대로 나와야 한다. 현재 코드는 128 을 187 로, 255 를 254 로 바꾼다.",
+        "어두운 코드: sRGB 코드 1 ~ 6 은 선형으로 0.5/255 보다 작아서, 중간 결과를 8비트 선형으로 보관하면 모두 0 이 된다. 코드 0 ~ 63 을 +2 스톱 밝히면 서로 다른 출력 단계가 64 개여야 하는데, 이 버그만 남기면 46 개, 세 버그가 모두 있는 지금 코드에서는 45 개로 줄어든다(밴딩).",
+        "헤드룸: 코드 230(선형 0.791)을 +1 스톱 밝히면 선형 1.583 이다. 8×8 이미지 모서리(비네트 0.6, 배율 0.541)에서는 0.856, 곧 238 이 되어야 하는데, 비네트 전에 1 로 잘리면 0.541, 곧 194 가 된다.",
+        "흰색: `LinearToSrgb(1f)` 는 float 로 0.99999994 라서 255 를 곱하고 버리면 254 다. 0.5 를 더해 버리면 255 가 된다."
+      ],
+      "hints": [
+        "변수를 하나씩 없애 보세요. (가) `EncodeSrgb8(1f)` 과 `EncodeSrgb8(0.5f)` 를 출력해 보세요. 흰색은 255, 선형 0.5 는 sRGB 로 0.7354 라서 187.5 를 넘는 188 이어야 합니다. (나) 노출 0, 비네트 0 으로 코드 128 하나짜리 이미지를 넣어 보세요. 128 이 나와야 합니다. (다) 노출 0, 비네트 0 으로 코드 1 ~ 10 을 넣어 보세요. 모두 그대로 나와야 합니다.",
+        "버그는 세 군데입니다. 두 패스 사이에 값을 담는 **버퍼의 타입**(그 버퍼에 담긴 값은 선형입니까, sRGB 입니까? 1 을 넘는 값을 담을 수 있습니까?), 2 패스에서 `EncodeSrgb8` 을 **부르는 줄**(sRGB 인코딩이 몇 번 일어납니까?), 그리고 `EncodeSrgb8` 의 **마지막 한 줄**입니다.",
+        "수정 위치의 뼈대입니다. 빈칸은 직접 채우세요.\n```\nEncodeSrgb8(linear):\n    s = LinearToSrgb(clamp(linear, 0, 1))\n    return (byte)(s * 255 + ____)\n\nApply(...):\n    exposed = new ____[n]                       // 선형, 자르지 않음\n    for i: exposed[i] = SrgbToLinear(srgb[i] / 255f) * gain\n    for (x, y):\n        linear = exposed[i] * VignetteFactor(x, y, ...)\n        output[i] = EncodeSrgb8(____)          // 인코딩은 여기서 한 번만\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 포토 모드 필터: 캡처한 화면에 노출과 비네트를 적용해 저장한다(CPU 후처리).\n//\n// 규약\n// - 입력과 출력은 sRGB 로 인코딩된 8비트 회색조 픽셀이다(행 우선, 길이 width * height).\n// - 노출과 비네트는 선형 공간에서 곱한다: 선형 값 * 2^exposureStops * VignetteFactor(x, y).\n// - 8비트로 바꾸는 것은 맨 마지막에 한 번만 한다. [0, 1] 로 자르고 sRGB 로 인코딩한 뒤\n//   255 를 곱하고 0.5 를 더해 소수부를 버린다(Direct3D 의 FLOAT -> SRGB 변환 규칙).\n// - SrgbToLinear, LinearToSrgb, VignetteFactor 는 맞게 작성되어 있다.\npublic static class PhotoModeFilter\n{\n    // sRGB(0~1) -> 선형(0~1)\n    public static float SrgbToLinear(float s)\n    {\n        return s <= 0.04045f ? s / 12.92f : MathF.Pow((s + 0.055f) / 1.055f, 2.4f);\n    }\n\n    // 선형(0~1) -> sRGB(0~1)\n    public static float LinearToSrgb(float l)\n    {\n        return l <= 0.0031308f ? l * 12.92f : 1.055f * MathF.Pow(l, 1f / 2.4f) - 0.055f;\n    }\n\n    // 가장자리를 어둡게 하는 배율. 중앙에서 약 1, 모서리에서 약 1 - strength.\n    public static float VignetteFactor(int x, int y, int width, int height, float strength)\n    {\n        float dx = (x + 0.5f - width * 0.5f) / (width * 0.5f);\n        float dy = (y + 0.5f - height * 0.5f) / (height * 0.5f);\n        return 1f - strength * (dx * dx + dy * dy) * 0.5f;\n    }\n\n    // 선형 값 하나를 8비트 sRGB 코드로 바꾼다.\n    public static byte EncodeSrgb8(float linear)\n    {\n        float s = LinearToSrgb(Math.Clamp(linear, 0f, 1f));\n        return (byte)(s * 255f + 0.5f); // [수정 3] 버림이 아니라 가장 가까운 정수(0.5 를 더하고 소수부를 버린다)\n    }\n\n    public static byte[] Apply(byte[] srgb, int width, int height, float exposureStops, float vignetteStrength)\n    {\n        int n = width * height;\n        float gain = MathF.Pow(2f, exposureStops);\n\n        // 1 패스: 노출. [수정 1] 중간 결과는 자르지도 양자화하지도 않은 선형 float 로 둔다.\n        var exposed = new float[n];\n        for (int i = 0; i < n; i++)\n            exposed[i] = SrgbToLinear(srgb[i] / 255f) * gain;\n\n        // 2 패스: 비네트를 곱하고 저장한다.\n        var output = new byte[n];\n        for (int y = 0; y < height; y++)\n        {\n            for (int x = 0; x < width; x++)\n            {\n                int i = y * width + x;\n                float linear = exposed[i] * VignetteFactor(x, y, width, height, vignetteStrength);\n                output[i] = EncodeSrgb8(linear); // [수정 2] EncodeSrgb8 이 sRGB 인코딩을 하므로 LinearToSrgb 를 또 부르지 않는다\n            }\n        }\n        return output;\n    }\n}\n",
+      "explanation": "**버그 1: 중간 결과를 8비트 선형으로 보관한다 (`Apply` 1 패스).** `exposed` 가 `byte[]` 이고 선형 값에 255 를 곱해 반올림해 넣습니다. 선형 8비트는 어두운 쪽 단계가 매우 거칩니다. sRGB 코드 1 ~ 6 은 선형으로 0.5/255 보다 작아 모두 0 이 되고, 7 ~ 17 은 모두 1/255 가 되어 저장 시 13 이 됩니다(다른 두 버그를 고친 상태의 값). 실패 입력: 노출 0, 비네트 0 에서 코드 1 → 0. +2 스톱 그라디언트(코드 0 ~ 63)는 출력이 0, 4, 8, 12, 15, … 로 64 단계여야 하는데, 이 버그만 남기면 0, 0, 13, 13, 13, 22, … 로 46 단계가 됩니다(세 버그가 모두 있는 원래 코드는 0, 0, 63, 63, 63, 82, … 로 45 단계). 제보 1 의 계단입니다. Wikipedia 는 밴딩을 각 픽셀의 색이 가장 가까운 단계로 반올림되어 생기는 포스터화로 설명하고, 완만한 그라디언트에서 잘 보인다고 적습니다. 이 버그는 범위도 잃습니다. 8비트로 넣기 전에 [0, 1] 로 자르므로 노출로 1 을 넘은 밝은 픽셀이 비네트를 곱하기 전에 잘립니다. 실패 입력: 코드 230, +1 스톱, 비네트 0.6 인 8×8 이미지의 모서리가 238 대신 194(이 버그만 있을 때. 원래 코드는 226). 수정: `float[]` 에 자르지 않은 선형 값을 두고, 양자화는 출력 직전에 한 번만 합니다.\n\n**버그 2: 감마를 두 번 건다 (`Apply` 2 패스).** `EncodeSrgb8` 이 이미 `LinearToSrgb` 로 인코딩하는데 호출하는 쪽이 `LinearToSrgb(linear)` 를 먼저 넘깁니다. sRGB 인코딩은 0 ~ 1 에서 값을 키우므로 두 번 걸면 중간 톤이 들뜹니다. 실패 입력(이 버그만 있을 때): 노출 0, 비네트 0 에서 코드 128 → 188, 코드 1 → 13. 제보 2 입니다. 수정: `EncodeSrgb8(linear)`. `EncodeSrgb8` 안의 인코딩을 지우는 수정은 함수의 계약(선형을 받아 sRGB 코드를 낸다)을 깨므로 틀린 수정입니다.\n\n**버그 3: 반올림 대신 버린다 (`EncodeSrgb8`).** Microsoft 의 Direct3D 데이터 변환 규칙은 이상적인 FLOAT → SRGB 변환을 NaN 은 0, 범위 밖은 [0, 1] 로 자르기, sRGB 로 인코딩, `2ⁿ − 1` 곱하기, 0.5 더하기, 소수부 버리기로 정합니다. 이 문서가 이름으로만 적은 상수의 값은 D3D11.3 기능 사양의 상수 목록(26 장)에 있고(FLOAT → SRGB 는 문턱값 0.0031308, 배율 12.92 와 1.055, 지수 1/2.4, 오프셋 0.055, SRGB → FLOAT 은 문턱값 0.04045), 이 코드의 `LinearToSrgb`, `SrgbToLinear` 와 같습니다. 현재 코드는 0.5 를 더하지 않습니다. 실패 입력: `EncodeSrgb8(1f)` → 254(float 로 `LinearToSrgb(1f)` = 0.99999994), `EncodeSrgb8(0.5f)` → 187. 이 버그만 있을 때 노출 0, 비네트 0 에서도 63 개 코드가 1 씩 어두워집니다(11 → 10). 제보 3 입니다.\n\n**버그끼리의 관계.** 세 버그가 함께 있으면 코드 128 이 187 이 되어, 버그 2 의 밝아짐을 다른 둘이 조금 가립니다. 하나씩 고치며 \"노출 0, 비네트 0 이면 그대로\"를 확인하는 것이 빠릅니다.\n\n**왜 float 인가.** 8비트로 꼭 보관해야 한다면 sRGB 로 인코딩해 담는 편이 어두운 쪽 단계가 촘촘해 낫습니다. 로컬에서 그렇게 바꿔 보면 앞의 그라디언트 검사는 통과합니다. 하지만 1 을 넘는 값을 담지 못하는 문제(헤드룸 검사)는 그대로이고, 양자화도 두 번 일어납니다. GPU 쪽에서도 같은 절충이 있어, URP Asset 의 HDR Precision 은 64 비트가 밴딩을 피하는 대신 대역폭을 더 쓰고 샘플링이 느려질 수 있다고 문서에 적혀 있습니다. Wikipedia 가 드는 밴딩의 해결책은 디더링과 채널당 비트 수 늘리기입니다.\n\n**복잡도.** O(n), 픽셀당 `Pow` 두 번. 중간 버퍼는 `float` n 개(4n 바이트)입니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "버그 1 을 고쳐 중간 결과를 자르지 않은 선형 float 로 둔다: 노출 0 에서 코드 1 → 1, +2 스톱 그라디언트가 64 단계, 코드 230 +1 스톱 모서리가 238.",
+            "points": 12,
+            "sourceId": "wiki-colour-banding"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "버그 2 를 고쳐 sRGB 인코딩이 EncodeSrgb8 안에서 한 번만 일어난다: 노출 0, 비네트 0 에서 코드 128 → 128.",
+            "points": 12,
+            "sourceId": "wiki-srgb"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "버그 3 을 고쳐 0.5 를 더하고 버린다: EncodeSrgb8(1f) → 255, EncodeSrgb8(0.5f) → 188.",
+            "points": 11,
+            "sourceId": "ms-d3d-data-conversion"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Apply 가 O(n) 이고 픽셀당 Pow 호출 수가 상수(두 번)이며, 추가 메모리가 float n 개 이하다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "양자화(byte 변환이나 Round)가 출력 직전 한 곳에만 있다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "중간 버퍼의 정밀도·범위와 메모리(대역폭)의 절충을 설명했다: 8비트 선형 < 8비트 sRGB < float, GPU 의 HDR 정밀도 선택도 같은 절충이다.",
+            "points": 10,
+            "sourceId": "unity-urp-asset"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "EncodeSrgb8 이 FLOAT → SRGB 규칙(자르기 → 인코딩 → × 255 → + 0.5 → 버림)을 그대로 따른다.",
+            "points": 10,
+            "sourceId": "ms-d3d-data-conversion"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "노출과 비네트를 선형 공간에서 곱하는 규약을 지켰다(비네트를 sRGB 값에 곱하는 식으로 바꾸지 않았다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "버그마다 수정 전에는 틀리고 수정 후에는 맞는 가장 작은 입력을 적었다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "버퍼와 변수가 선형인지 sRGB 인지 이름이나 주석으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "중간 결과를 여전히 8비트나 [0, 1] 로 자른 값으로 보관해 어두운 쪽 단계나 헤드룸을 잃는다.",
+            "penalty": -20,
+            "sourceId": "wiki-colour-banding"
+          },
+          {
+            "id": "d2",
+            "description": "감마를 두 번 거는 경로가 남아 있거나, EncodeSrgb8 안의 인코딩을 지워 함수의 계약을 깨는 방식으로 고쳤다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "공개 시그니처나 규약을 바꾸거나, 고칠 대상이 아닌 변환 함수의 식을 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n\n    // ---- 참조 구현(double): 선형에서 노출·비네트를 곱하고 마지막에 한 번만 반올림한다 ----\n    static double RL(double s) { return s <= 0.04045 ? s / 12.92 : System.Math.Pow((s + 0.055) / 1.055, 2.4); }\n    static double LR(double l) { return l <= 0.0031308 ? l * 12.92 : 1.055 * System.Math.Pow(l, 1 / 2.4) - 0.055; }\n    static double RefScaled(double linear) { return LR(System.Math.Min(1.0, System.Math.Max(0.0, linear))) * 255.0; }\n    static double RefPixel(byte code, int x, int y, int w, int h, double stops, double strength)\n    {\n        double dx = (x + 0.5 - w * 0.5) / (w * 0.5), dy = (y + 0.5 - h * 0.5) / (h * 0.5);\n        return RefScaled(RL(code / 255.0) * System.Math.Pow(2.0, stops) * (1 - strength * (dx * dx + dy * dy) * 0.5));\n    }\n    static int Round(double v) { return (int)System.Math.Floor(v + 0.5); }\n    static bool NearHalf(double v) { return System.Math.Abs(v - System.Math.Floor(v) - 0.5) < 0.01; }\n\n    static byte[] Ramp(int from, int count) { var a = new byte[count]; for (int i = 0; i < count; i++) a[i] = (byte)(from + i); return a; }\n    static byte[] Fill(int n, byte v) { var a = new byte[n]; System.Array.Fill(a, v); return a; }\n\n    // 정확히 같아야 하는 비교(참조 값이 .5 근처인 픽셀은 건너뛴다)\n    static string Exact(string what, byte[] input, int w, int h, float stops, float strength)\n    {\n        byte[] got = PhotoModeFilter.Apply(input, w, h, stops, strength);\n        if (got == null || got.Length != input.Length) return what + \": 출력 길이 기대 \" + input.Length + \", 결과 \" + (got == null ? \"null\" : got.Length.ToString());\n        for (int i = 0; i < input.Length; i++)\n        {\n            double r = RefPixel(input[i], i % w, i / w, w, h, stops, strength);\n            if (NearHalf(r)) continue;\n            if (got[i] != Round(r))\n                return what + \" (노출 \" + F(stops) + \"스톱, 비네트 \" + F(strength) + \"): 픽셀 (\" + (i % w) + \", \" + (i / w) + \") 입력 \" + input[i] + \" → 기대 \" + Round(r) + \", 결과 \" + got[i];\n        }\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"encode-rounding\", () =>\n        {\n            float[] xs = { 0f, 1f, 0.5f, 0.2f, 0.0005f, 0.03f, -0.25f, 1.75f };\n            foreach (float x in xs)\n            {\n                double r = RefScaled(x);\n                int got = PhotoModeFilter.EncodeSrgb8(x);\n                if (got != Round(r)) return \"EncodeSrgb8(\" + F(x) + \"): sRGB × 255 = \" + F(r) + \" 이므로 기대 \" + Round(r) + \", 결과 \" + got;\n            }\n            return null;\n        });\n\n        Run(\"identity-roundtrip\", () =>\n        {\n            // 노출 0, 비네트 0 이면 모든 코드가 그대로 나와야 한다\n            var input = Ramp(0, 256);\n            byte[] got = PhotoModeFilter.Apply(input, 16, 16, 0f, 0f);\n            for (int i = 0; i < 256; i++)\n                if (got[i] != i) return \"노출 0, 비네트 0: 입력 \" + i + \" → 기대 \" + i + \", 결과 \" + got[i];\n            return null;\n        });\n\n        Run(\"dark-gradient-exposure-up\", () =>\n        {\n            // 어두운 그라디언트(코드 0~63)를 2 스톱 밝힌다\n            var input = Ramp(0, 64);\n            string e = Exact(\"어두운 그라디언트\", input, 64, 1, 2f, 0f);\n            if (e != null) return e;\n            byte[] got = PhotoModeFilter.Apply(input, 64, 1, 2f, 0f);\n            var seen = new System.Collections.Generic.HashSet<int>(); foreach (byte b in got) seen.Add(b);\n            var refSeen = new System.Collections.Generic.HashSet<int>(); for (int i = 0; i < 64; i++) refSeen.Add(Round(RefPixel((byte)i, i, 0, 64, 1, 2, 0)));\n            return seen.Count == refSeen.Count ? null : \"어두운 그라디언트 +2 스톱: 서로 다른 출력 단계 수 기대 \" + refSeen.Count + \", 결과 \" + seen.Count + \" (밴딩)\";\n        });\n\n        Run(\"exposure-down-full-range\", () =>\n        {\n            return Exact(\"전체 범위 -1.5 스톱\", Ramp(0, 256), 256, 1, -1.5f, 0f) ?? Exact(\"전체 범위 +0.5 스톱\", Ramp(0, 256), 32, 8, 0.5f, 0f);\n        });\n\n        Run(\"highlight-headroom\", () =>\n        {\n            // 노출로 1 을 넘은 밝은 픽셀은 비네트를 곱하기 전에 잘리면 안 된다\n            return Exact(\"밝은 면(230)\", Fill(64, 230), 8, 8, 1f, 0.6f) ?? Exact(\"밝은 면(250)\", Fill(100, 250), 10, 10, 1.5f, 1f);\n        });\n\n        Run(\"vignette-in-linear\", () =>\n        {\n            return Exact(\"균일한 회색(188)\", Fill(81, 188), 9, 9, 0f, 0.8f) ?? Exact(\"균일한 어두운 회색(40)\", Fill(48, 40), 8, 6, 0f, 0.5f);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            long sumDiff = 0, count = 0;\n            for (int it = 0; it < 60; it++)\n            {\n                int w = 24, h = 16;\n                var input = new byte[w * h];\n                for (int i = 0; i < input.Length; i++) input[i] = (byte)rng.Next(256);\n                float stops = rng.Next(-8, 9) / 4f, strength = rng.Next(0, 11) / 10f;\n                byte[] got = PhotoModeFilter.Apply(input, w, h, stops, strength);\n                for (int i = 0; i < input.Length; i++)\n                {\n                    int exp = Round(RefPixel(input[i], i % w, i / w, w, h, stops, strength));\n                    int d = System.Math.Abs(got[i] - exp);\n                    if (d > 1) return \"무작위 #\" + it + \" (노출 \" + F(stops) + \", 비네트 \" + F(strength) + \"): 픽셀 (\" + (i % w) + \", \" + (i / w) + \") 입력 \" + input[i] + \" → 기대 \" + exp + \", 결과 \" + got[i];\n                    sumDiff += d; count++;\n                }\n            }\n            double mean = (double)sumDiff / count;\n            return mean <= 0.02 ? null : \"무작위 이미지: 참조와의 평균 차이가 \" + F(mean) + \" 코드다(반올림 대신 버림을 쓰면 한쪽으로 치우친다)\";\n        });\n    }\n}\n",
+        "cases": [
+          "encode-rounding",
+          "identity-roundtrip",
+          "dark-gradient-exposure-up",
+          "exposure-down-full-range",
+          "highlight-headroom",
+          "vignette-in-linear",
+          "random-vs-reference"
+        ],
+        "note": "EncodeSrgb8 의 반올림(흰색 1 → 255, 0.5 → 188, 범위 밖 값의 자르기), 노출 0·비네트 0 에서 256 개 코드가 그대로 나오는지, 어두운 그라디언트를 +2 스톱 밝힐 때의 값과 출력 단계 수, −1.5·+0.5 스톱의 전체 범위, 노출로 1 을 넘은 밝은 픽셀의 비네트(헤드룸), 비네트를 선형 공간에서 곱하는지, 무작위 이미지에서 double 참조 구현과의 차이(±1 코드, 평균 0.02 이하)를 검사합니다. public static class PhotoModeFilter 의 SrgbToLinear(float), LinearToSrgb(float), VignetteFactor(int, int, int, int, float), EncodeSrgb8(float), Apply(byte[], int, int, float, float) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "해답 통과·스타터 실패를 실행으로 확인하고, 세 버그의 모든 부분 수정 조합과 흔한 잘못된 수정 4 종이 실패하는지, 본문에 적힌 증상 값이 실제 출력과 같은지 로컬에서 실행해 확인했으며, 변환 규칙과 상수는 Direct3D 데이터 변환 문서와 D3D11.3 상수 목록에 대조했다."
+      },
+      "nextMission": "`Apply` 에 순서 있는 디더링을 넣어 보세요. 출력 직전에 4×4 Bayer 행렬의 값 `(M[y % 4, x % 4] + 0.5) / 16 − 0.5` 를 sRGB 값 × 255 에 더한 뒤 반올림합니다. 코드 0 ~ 15 의 아주 어두운 그라디언트를 256×64 이미지로 늘려 +3 스톱 밝혔을 때, 디더링 전후의 \"가로로 같은 값이 이어지는 최대 길이\"를 출력해 밴딩이 줄어드는지 숫자로 확인하세요."
+    },
+    {
+      "id": "t9-interview-post-processing-cost-aa",
+      "track": "track9",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "후처리의 비용: 풀스크린 패스, Bloom, Render Scale, MSAA·FXAA·TAA",
+      "tags": [
+        "Gfx_PostProcess",
+        "Gfx_AntiAliasing",
+        "Gfx_FillRate"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "unity-urp-anti-aliasing",
+        "unity-urp-bloom",
+        "unity-urp-asset",
+        "d3d-rasterization-rules",
+        "unity-urp-perf-config",
+        "unity-urp-post-processing",
+        "unity-post-processing-overview"
+      ],
+      "scenario": "모바일 액션 RPG(Unity 6, URP)의 화면 해상도는 2400×1080 입니다. 아트 팀이 분위기를 살리려고 Bloom, Color Grading, Vignette, Bokeh Depth of Field 와 카메라의 Temporal Anti-aliasing(TAA)을 켰더니, 중급 기기에서 GPU 프레임 시간이 크게 늘고 빠르게 움직이는 캐릭터 뒤에 잔상이 남는다는 제보가 올라왔습니다. 한 팀원은 \"MSAA 8x 로 바꾸면 더 깨끗하고 싸지 않나?\", 다른 팀원은 \"Render Scale 을 0.75 로 내리면 비용이 25% 줄겠다\"고 말합니다.\n\n**질문: 후처리 효과가 왜 비싼지 \"풀스크린 패스\" 관점에서 설명하고, Bloom 설정, Render Scale, 안티에일리어싱 방식(MSAA, FXAA, SMAA, TAA)이 비용과 화질을 어떻게 바꾸는지 비교해 주세요. 두 팀원의 말은 맞습니까? 이 프로젝트에서는 무엇을 어떻게 조정하겠습니까?**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "Render Scale 은 렌더 타깃의 해상도를 배율로 줄이므로 픽셀 수는 배율의 제곱으로 준다. 0.75 면 픽셀 수가 56.25% 로 줄어(43.75% 감소) \"25% 감소\"가 아니다. URP 문서상 UI 는 기기의 원래 해상도로 그린다.",
+        "TAA 는 MSAA, Camera Stacking, Dynamic Resolution 과 함께 쓸 수 없다. 업스케일링 필터로 STP 를 고르면 카메라의 안티에일리어싱이 TAA 로 강제된다.",
+        "MSAA 는 삼각형 가장자리의 에일리어싱에는 강하지만 스페큘러나 텍스처 같은 셰이더 에일리어싱은 고치지 못한다. URP 문서상 대부분의 하드웨어에서 다른 방식보다 비싸지만, 타일 기반 GPU 에서 후처리 안티에일리어싱이나 커스텀 렌더 피처가 없으면 더 싼 선택이다.",
+        "StoreAndResolve 저장 동작을 지원하지 않는 모바일 플랫폼에서 URP Asset 의 Opaque Texture 를 켜면 Unity 는 런타임에 MSAA 설정을 무시한다(꺼진 것처럼 동작한다).",
+        "URP 의 후처리는 Volume 프레임워크를 쓰는 자체 구현이고 Post Processing Stack v2 패키지와 호환되지 않는다. Built-in 파이프라인은 기본 후처리가 없어 Post-Processing Version 2 패키지를 써야 한다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "풀스크린 패스 하나의 비용을 무엇으로 어림합니까? 2400×1080 에서 Render Scale 0.75 는 픽셀 수를 얼마나 줄이고, 화면의 어느 부분은 줄이지 않습니까? 모바일에서 패스가 늘어나면 왜 특히 아픕니까?",
+          "intent": "후처리 비용을 \"화면 픽셀 수 × 패스 수 × 픽셀당 작업 + 렌더 타깃을 읽고 쓰는 대역폭\"으로 분해하고, 해상도 배율이 제곱으로 작용한다는 것을 숫자로 말할 수 있는지, 모바일의 대역폭 문제를 URP 설정과 연결하는지 확인한다.",
+          "keyAnswer": "- **어림식(일반 지식):** 풀스크린 패스는 화면의 모든 픽셀에서 픽셀 셰이더를 한 번씩 실행하고, 이전 결과 텍스처를 읽어 새 렌더 타깃에 씁니다. 그래서 비용은 대략 \"픽셀 수 × 픽셀당 텍스처 읽기·연산\"에, 렌더 타깃을 읽고 쓰는 메모리 대역폭이 더해집니다. 효과에 따라 패스가 따로 늘기도 하고(반복 횟수가 있는 Bloom 처럼) 다른 효과와 한 패스로 합쳐지기도 하므로, 실제 패스 수는 Frame Debugger 로 확인합니다. URP 문서도 후처리 효과가 프레임 시간을 많이 차지할 수 있다고 적습니다.\n- **Render Scale 의 숫자:** URP Asset 의 Render Scale 은 기기 해상도가 아니라 렌더 타깃 해상도를 배율로 줄입니다. 2400×1080 = 2,592,000 픽셀이고, 0.75 면 1800×810 = 1,458,000 픽셀로 56.25% 가 됩니다. 픽셀 수에 비례하는 비용은 43.75% 줄어들 수 있지만, 정점 처리나 CPU 비용은 그대로라 프레임 시간이 그만큼 줄지는 않습니다(추론). 문서상 이 배율은 게임 렌더링에만 적용되고 UI 는 기기의 원래 해상도로 그립니다.\n- **업스케일링:** Render Scale 이 1 보다 작으면 Upscaling Filter 로 원래 해상도로 늘립니다. Automatic 은 정수 배율이면 Nearest-Neighbor, 아니면 Bilinear 를 고르고, FSR 1.0 은 셰이더 모델 4.5 이상에서만, STP 는 컴퓨트 셰이더를 지원하는 비 GLES 기기에서만 동작하며 TAA 를 강제합니다.\n- **모바일 대역폭:** URP 성능 문서는 저사양 모바일에서 Store Actions 를 Auto 나 Discard 로 두어 패스마다 렌더 타깃을 메모리로 복사하는 대역폭을 아끼라고 하고, Vulkan·Metal·DirectX 12 에서는 Native RenderPass 를 켜 렌더 텍스처를 메모리로 오가는 횟수를 줄이라고 합니다. 타일 기반 GPU 는 타일을 칩 안의 메모리에서 처리하다가 패스가 끝나면 메모리로 내보내므로, 패스가 늘수록 이 복사가 늘어난다는 설명은 일반적인 하드웨어 지식입니다."
+        },
+        {
+          "question": "MSAA, FXAA, SMAA, TAA 는 각각 무엇을 고치고 무엇을 못 고칩니까? MSAA 는 왜 픽셀 셰이더를 샘플 수만큼 돌리지 않으며, 그 대신 어디에 비용이 듭니까? 잔상 제보는 어느 방식 때문입니까?",
+          "intent": "하드웨어 방식(MSAA)과 후처리 방식(FXAA, SMAA, TAA)의 원리 차이와 각각의 한계를 문서 근거로 설명하고, 조합 제약을 정확히 아는지 확인한다.",
+          "keyAnswer": "- **MSAA 의 원리(Microsoft 문서):** Direct3D 래스터화 규칙 문서는 MSAA 가 픽셀 안의 여러 샘플 위치에서 커버리지와 깊이·스텐실 테스트를 해 지오메트리 에일리어싱을 줄인다고 설명합니다. 성능을 위해 픽셀 셰이더는 덮인 픽셀마다 한 번 실행되고(속성은 픽셀 중심에서 보간), 그 결과를 덮인 샘플마다 복제해 저장합니다. 같은 문서는 MSAA 가 표면(surface) 에일리어싱은 줄이지 않는다고 적습니다.\n- **MSAA 의 비용:** 셰이더 실행은 거의 늘지 않지만 샘플마다 색·깊이를 저장하고 최종 해상도로 리졸브해야 합니다. URP 성능 문서는 MSAA 를 줄이거나 끄면 프레임 버퍼 첨부물을 메모리로 오가며 복사하는 대역폭과 메모리를 아낄 수 있다고 적습니다. URP 의 안티에일리어싱 문서는 MSAA 가 대부분의 하드웨어에서 다른 방식보다 비싸지만, 타일 GPU 에서 후처리 안티에일리어싱이나 커스텀 렌더 피처를 쓰지 않으면 더 싸다고 설명합니다.\n- **FXAA:** 풀스크린 패스 하나로 픽셀 단위로 가장자리를 부드럽게 합니다. URP 에서 가장 가벼운 방식이고 Unity 는 모바일에 FXAA 를 권합니다. 이미 그려진 이미지만 보므로 화면이 조금 흐려질 수 있다는 점은 일반 지식입니다.\n- **SMAA:** 이미지 경계의 패턴을 찾아 그 패턴에 맞게 경계 픽셀을 섞으며, FXAA 보다 훨씬 선명합니다.\n- **TAA:** 색 히스토리 버퍼의 이전 프레임들을 써서 여러 프레임에 걸쳐 가장자리를 부드럽게 하고 모션 벡터를 씁니다. 시간에 걸쳐 계산하므로 대비가 큰 표면 앞을 빠르게 지나가는 오브젝트에서 잔상(ghosting)이 생길 수 있습니다. 제보된 잔상이 이것입니다.\n- **조합 제약(URP):** MSAA 는 하드웨어 방식이라 후처리 방식과 함께 쓸 수 있지만 TAA 와는 못 씁니다. TAA 는 Camera Stacking, Dynamic Resolution 과도 함께 쓸 수 없습니다. 모바일에서 StoreAndResolve 를 지원하지 않고 Opaque Texture 가 켜져 있으면 MSAA 설정은 런타임에 무시됩니다.\n- **팀원의 말:** \"MSAA 8x 가 더 깨끗하고 싸다\"는 반만 맞습니다. 삼각형 가장자리는 깨끗하지만 스페큘러·텍스처 에일리어싱은 그대로이고, 샘플이 많을수록 저장할 데이터와 대역폭이 늘어납니다(일반 지식). 문서가 말하는 \"타일 GPU 에서 더 싸다\"는 후처리 안티에일리어싱과 커스텀 렌더 피처를 쓰지 않을 때의 이야기라, FXAA·SMAA 를 겹쳐 쓰거나 커스텀 렌더 피처가 있으면 그 전제가 깨집니다. 또 TAA 와는 함께 쓸 수 없으니 둘 중 하나를 고르는 결정입니다."
+        },
+        {
+          "question": "이 프로젝트의 GPU 시간을 줄이는 조정안을 순서대로 말해 주세요. 각 조정으로 무엇을 잃고, 효과는 어떻게 확인합니까?",
+          "intent": "문서가 드는 설정을 비용 구조(패스 수, 해상도, 대역폭, 픽셀당 작업)와 연결해 우선순위를 세우고, 화질 손실과 측정 방법까지 말할 수 있는지 확인한다.",
+          "keyAnswer": "- **먼저 측정:** URP 성능 문서는 Unity Profiler 나 RenderDoc·Xcode 같은 GPU 프로파일러로 설정마다 효과를 재라고 합니다. Frame Debugger 로 후처리 패스가 몇 개이고 어떤 해상도로 그려지는지도 봅니다.\n- **Bloom:** URP 문서상 High Quality Filtering 은 깜빡임을 줄이지만 자원을 더 쓰므로, 성능 문제가 있으면 끄라고 하며 저사양에서 특히 효과가 크다고 적습니다. Downscale 은 초기 블러의 해상도 배율로, 최고 성능에는 Quarter 를 권합니다. Max Iterations(기본 6)를 줄이면 처리량이 줄어 특히 고 DPI 모바일에서 성능이 오릅니다. 잃는 것은 빛 번짐의 부드러움과 반경입니다.\n- **효과 고르기:** URP 문서는 모바일에서 기본적으로 가장 \"모바일 친화적인\" 효과로 Bloom(High Quality Filtering 끔), Chromatic Aberration, Color Grading, Lens Distortion, Vignette 를 들고, 저사양 기기의 피사계 심도는 Gaussian Depth of Field 를 권합니다. 그래서 Bokeh DoF 를 Gaussian 으로 바꾸거나 컷신에서만 켭니다.\n- **안티에일리어싱:** 잔상과 비용을 함께 줄이려면 모바일에서 문서가 권하는 FXAA 로 바꿉니다. 날카로운 가장자리가 중요하면 SMAA 를 비교합니다. TAA 를 유지한다면 STP 업스케일링과 묶어 쓸 수 있는지(컴퓨트 지원, 비 GLES) 확인합니다.\n- **해상도:** Render Scale 을 0.75 ~ 0.85 로 내려 픽셀 수를 줄이고 업스케일링 필터를 정합니다. UI 는 원래 해상도라 글자는 선명하게 남지만 3D 장면은 흐려집니다.\n- **버퍼와 정밀도:** HDR 이 필요 없으면 끄고, 필요하면 HDR Precision 을 32 Bit 로 둡니다. Depth Texture 와 Opaque Texture 는 쓰는 셰이더가 없으면 끕니다. 저사양 모바일에서는 Store Actions 를 Auto 나 Discard 로 둡니다.\n- **순서와 확인(실무 판단):** 화질 손실이 작은 것(Bloom 설정, 불필요한 텍스처·HDR 정밀도)부터, 그다음 효과 교체(DoF, AA), 마지막으로 Render Scale 순서로 적용하고, 단계마다 대상 기기에서 GPU 프레임 시간과 캡처 화면을 비교합니다. 기기 등급별로 URP Asset 과 Volume 프로필을 나누는 방법도 검토합니다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**풀스크린 패스가 비싼 이유.** 후처리 효과는 화면 전체를 덮는 패스로 구현되어, 패스마다 모든 픽셀에서 셰이더를 실행하고 렌더 타깃을 읽고 씁니다. 비용은 \"픽셀 수 × 패스 수 × 픽셀당 작업\"에 대역폭이 더해진 꼴이라, 해상도와 패스 수가 곧 비용입니다(일반 지식). URP 문서도 후처리 효과가 프레임 시간을 많이 차지할 수 있다고 적고, 모바일 친화적인 효과(High Quality Filtering 을 끈 Bloom, Color Grading, Vignette 등)를 따로 듭니다.\n\n**Bloom.** URP 문서는 Bloom 을 밝은 영역의 경계에서 빛이 번지는 효과로 설명하고, 비용과 관련된 설정으로 High Quality Filtering(끄면 성능이 크게 좋아짐), Downscale(초기 블러의 해상도, 최고 성능은 Quarter), Max Iterations(줄이면 처리량 감소, 기본 6)를 듭니다. Intensity 의 기본값 0 은 Bloom 이 꺼진 상태입니다.\n\n**Render Scale.** URP Asset 의 Render Scale 은 렌더 타깃의 해상도를 배율로 줄이고 UI 는 원래 해상도로 둡니다. 픽셀 수는 배율의 제곱이므로 0.75 는 56.25% 입니다. 두 번째 팀원의 \"25%\"는 틀렸고, 픽셀 비용은 최대 43.75% 까지 줄 수 있지만 다른 비용은 그대로입니다.\n\n**안티에일리어싱 비교.**\n\n| 방식 | 원리 | 잘 고치는 것 | 한계·비용 |\n|---|---|---|---|\n| MSAA | 샘플마다 커버리지·깊이 테스트, 셰이더는 픽셀당 한 번 | 삼각형 가장자리 | 셰이더 에일리어싱은 못 고침, 샘플 저장·리졸브의 메모리·대역폭, TAA 와 함께 못 씀 |\n| FXAA | 풀스크린 패스 하나로 가장자리를 부드럽게 | 값싼 전반적 완화 | 가장 가벼움, 모바일 권장, 흐려질 수 있음(일반 지식) |\n| SMAA | 경계의 패턴을 찾아 섞음 | FXAA 보다 선명 | 패스가 더 무거움(일반 지식) |\n| TAA | 히스토리 버퍼와 모션 벡터로 여러 프레임에 걸쳐 섞음 | 가장자리와 시간적 깜빡임 | 빠른 움직임의 잔상, MSAA·Camera Stacking·Dynamic Resolution 과 함께 못 씀 |\n\nMSAA 의 원리는 Microsoft 의 Direct3D 래스터화 규칙 문서가 정확히 설명합니다. 샘플 위치마다 커버리지와 깊이·스텐실을 검사하고, 픽셀 셰이더는 덮인 픽셀마다 한 번 실행해 그 결과를 덮인 샘플에 복제합니다. 그래서 표면 에일리어싱은 줄이지 않습니다. 첫 번째 팀원의 말은 가장자리 품질에 대해서만 맞고, 비용은 저장과 대역폭으로 옮겨 갈 뿐이며 TAA 와 함께 쓸 수도 없습니다.\n\n**이 프로젝트의 답.** 측정 → Bloom 설정(High Quality Filtering 끄기, Downscale Quarter, Max Iterations 줄이기) → Bokeh DoF 를 Gaussian 으로 → TAA 를 FXAA 로(잔상도 해결) → 필요하면 Render Scale 0.75 ~ 0.85 와 업스케일링 순서입니다. 이 순서는 문서 인용이 아닌 실무 판단입니다.\n\n**흔한 오답.**\n- Render Scale 의 효과를 배율에 비례한다고 계산한다.\n- MSAA 가 스페큘러나 텍스처 에일리어싱도 없앤다고 말한다.\n- MSAA 가 픽셀 셰이더를 샘플 수만큼 실행한다고 말한다.\n- TAA 와 MSAA 를 함께 켜면 더 좋아진다고 말한다.\n- Built-in 의 Post Processing v2 설정을 URP 의 Volume 설정처럼 말한다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "풀스크린 패스의 비용 구조(픽셀 수 × 패스 수 × 픽셀당 작업 + 대역폭)를 말하고, Render Scale 0.75 가 픽셀 수를 56.25%(2,592,000 → 1,458,000)로 줄이며 UI 는 줄이지 않는다고 계산했다.",
+            "points": 12,
+            "sourceId": "unity-urp-asset"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "MSAA·FXAA·SMAA·TAA 의 원리와 한계를 정확히 비교했다(MSAA 는 셰이더 에일리어싱을 못 고침, FXAA 는 가장 가벼운 풀스크린 패스, TAA 는 히스토리 버퍼·모션 벡터·잔상).",
+            "points": 12,
+            "sourceId": "unity-urp-anti-aliasing"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Bloom 의 비용 설정(High Quality Filtering, Downscale, Max Iterations)이 무엇을 줄이고 무엇을 잃는지 말했다.",
+            "points": 11,
+            "sourceId": "unity-urp-bloom"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "MSAA 가 픽셀 셰이더를 픽셀당 한 번 실행하고 결과를 샘플에 복제한다는 점과, 그 대신 샘플 저장·리졸브의 메모리와 대역폭이 든다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "d3d-rasterization-rules"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "모바일의 대역폭 비용을 줄이는 설정(MSAA 축소, Store Actions Auto/Discard, Native RenderPass, HDR 끄기 또는 32 Bit, 불필요한 Depth·Opaque Texture 끄기) 중 두 가지 이상을 이유와 함께 들었다.",
+            "points": 10,
+            "sourceId": "unity-urp-perf-config"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "모바일에 가벼운 효과와 무거운 효과를 구분했다(High Quality Filtering 을 끈 Bloom, Color Grading, Vignette 대 Bokeh DoF, 저사양에는 Gaussian DoF).",
+            "points": 10,
+            "sourceId": "unity-urp-post-processing"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "파이프라인을 구분했다: URP 는 Volume 을 쓰는 자체 후처리이고 Post Processing Stack v2 와 호환되지 않으며, Built-in 은 Post-Processing Version 2 패키지를 쓴다.",
+            "points": 10,
+            "sourceId": "unity-post-processing-overview"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "조합 제약을 정확히 말했다: TAA 는 MSAA·Camera Stacking·Dynamic Resolution 과 함께 쓸 수 없고, STP 업스케일링은 TAA 를 강제한다.",
+            "points": 10,
+            "sourceId": "unity-urp-anti-aliasing"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "답변이 비용 구조 → 효과별 설정 → AA 비교 → 두 팀원의 말 평가 → 조정 순서로 이어진다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "조정마다 잃는 화질과 확인 방법(GPU 프로파일러, Frame Debugger, 기기별 캡처)을 함께 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "MSAA 가 셰이더·텍스처 에일리어싱까지 없앤다고 하거나, 픽셀 셰이더를 샘플 수만큼 실행한다고 답했다.",
+            "penalty": -20,
+            "sourceId": "d3d-rasterization-rules"
+          },
+          {
+            "id": "d2",
+            "description": "Render Scale 의 픽셀 비용이 배율에 정비례한다고 계산했거나 UI 도 함께 줄어든다고 답했다.",
+            "penalty": -15,
+            "sourceId": "unity-urp-asset"
+          },
+          {
+            "id": "d3",
+            "description": "TAA 와 MSAA 를 함께 쓸 수 있다고 답했거나, Built-in 과 URP 의 후처리 설정을 섞어 말했다.",
+            "penalty": -10,
+            "sourceId": "unity-urp-anti-aliasing"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 URP 매뉴얼(안티에일리어싱, Bloom, URP 후처리, 성능 설정, URP Asset, 후처리 개요)과 Direct3D 래스터화 규칙 문서의 MSAA 설명 원문과 대조하고 Render Scale 숫자를 다시 계산했다."
+      },
+      "nextMission": "Unity 6 URP 프로젝트에서 같은 장면과 카메라 경로로 (1) 후처리 없음, (2) Bloom 기본값(High Quality Filtering 켬), (3) Bloom 에서 High Quality Filtering 끄고 Downscale Quarter, (4) (3) + FXAA, (5) (3) + TAA, (6) (3) + MSAA 4x, (7) (4) + Render Scale 0.75 의 일곱 설정을 대상 기기에서 GPU 프레임 시간으로 재어 표로 만드세요. Frame Debugger 로 각 설정의 후처리 패스 수를 함께 적고, (5) 에서 캐릭터가 빠르게 지나갈 때의 잔상을 캡처해 (4) 와 비교합니다."
     }
   ]
 }
