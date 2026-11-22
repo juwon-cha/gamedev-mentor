@@ -54,7 +54,7 @@ const PromptBuilder = (() => {
 
   /* 검증 자료 기반 새 문제 JSON 생성 요청 */
   function newProblem(o) {
-    const lang = o.track === 'track2' ? 'cpp' : 'csharp';
+    const lang = o.language || 'csharp';
     const srcs = o.sources || [];
     const srcIds = srcs.length ? srcs.map(s => s.id) : ['sources.json의 id'];
     return [
@@ -88,7 +88,7 @@ const PromptBuilder = (() => {
         mode: o.mode,
         difficulty: o.difficulty,
         title: '문제 제목',
-        tags: ['Prefix_Topic_Detail'],
+        tags: [`${o.tagPrefix || 'Prefix_'}Topic_Detail`],
         language: o.mode === 'interview' ? 'none' : lang,
         sourceRefs: srcIds,
         scenario: '게임 실무 배경과 할 일 (마크다운). 면접 모드는 여기에 메인 질문을 굵게 포함',
@@ -109,8 +109,9 @@ const PromptBuilder = (() => {
       }, null, 2),
       '```',
       '- 모드별 규칙: debugging/implementation은 hints 3개와 followUps 빈 배열, interview는 followUps 정확히 3개(점점 깊어지게)와 hints 빈 배열, tutoring은 concept와 quiz 1~2개를 채워.',
+      '- difficulty는 "Easy"(개념 하나, 10~15분), "Medium"(개념 2~3개 결합 또는 엣지 케이스 중심), "Hard"(성능 제약·설계 트레이드오프·복합 버그) 중 하나.',
       '- category는 "정확성", "메모리·성능", "엔진·언어 규약", "아키텍처·가독성" 네 가지만 써.',
-      '- tags 접두사: 트랙1 CSharp_, 트랙2 Cpp_, 트랙3 Algo_, 트랙4 Unity_.',
+      `- tags 접두사: ${o.tagPrefix || 'Topic_'}`,
     ].join('\n');
   }
 

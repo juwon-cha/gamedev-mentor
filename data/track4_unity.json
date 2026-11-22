@@ -43,6 +43,102 @@
       "title": "Unity Test Framework 1.4 Manual - About Unity Test Framework",
       "url": "https://docs.unity3d.com/Packages/com.unity.test-framework@1.4/manual/index.html",
       "summary": "NUnit 기반으로 Edit Mode와 Play Mode 테스트를 실행하는 Unity Test Framework 소개"
+    },
+    {
+      "id": "unity-onenable-api",
+      "title": "Unity Scripting API (6000.0) - MonoBehaviour.OnEnable",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/monobehaviour/onenable",
+      "summary": "OnEnable이 호출되는 조건과, Play 모드 진입 시 Awake 뒤 Start 앞에 호출된다는 설명"
+    },
+    {
+      "id": "unity-exec-order-2022",
+      "title": "Unity Manual (2022.3) - Order of execution for event functions",
+      "url": "https://docs.unity3d.com/2022.3/Documentation/Manual/ExecutionOrder.html",
+      "summary": "OnEnable은 같은 오브젝트의 Awake 뒤, 모든 Start 앞에 호출된다는 것과 Awake/Start/OnDisable/OnDestroy 시점을 글로 설명한 매뉴얼"
+    },
+    {
+      "id": "ms-csharp-spec-delegates",
+      "title": "Microsoft Learn - C# language specification: Delegates",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/delegates",
+      "summary": "호출 목록은 순서대로 동기 호출되고, 예외가 나면 뒤의 메서드는 호출되지 않으며, 중복 등록된 델리게이트를 제거하면 마지막 항목 하나만 제거된다는 명세"
+    },
+    {
+      "id": "unity-support-missingref",
+      "title": "Unity Support - MissingReferenceException in the Editor and NullReferenceException in builds",
+      "url": "https://support.unity.com/hc/en-us/articles/115000404563-Why-am-I-getting-MissingReferenceException-in-the-Editor-and-a-NullReferenceException-on-mobile-devices-when-running-the-same-piece-of-code",
+      "summary": "파괴된 오브젝트를 사용하면 에디터에서는 MissingReferenceException, 빌드에서는 NullReferenceException이 나며 C# 객체는 남아 있다는 설명"
+    },
+    {
+      "id": "unity-domain-reload",
+      "title": "Unity Manual (6000.0) - Domain reloading",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/code-reload-serialization/code-reloading-editor/domain-reloading",
+      "summary": "도메인 리로드를 끄면 정적 변수 값과 정적 이벤트의 구독자가 Play 모드 세션 사이에 유지된다는 설명"
+    },
+    {
+      "id": "unity-pool-ctor",
+      "title": "Unity Scripting API (6000.0) - ObjectPool<T> constructor",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/pool/objectpool1/ctor",
+      "summary": "createFunc, actionOnDestroy, collectionCheck(에디터에서만 수행), defaultCapacity(미리 생성하지 않음), maxSize 매개변수 설명"
+    },
+    {
+      "id": "unity-support-split-canvas",
+      "title": "Unity Support - Split canvas for dynamic objects",
+      "url": "https://support.unity.com/hc/en-us/articles/115000355466-Split-canvas-for-dynamic-objects",
+      "summary": "요소가 바뀌면 Canvas가 모든 배치를 다시 만들며 프로파일러에 Canvas.BuildBatch로 나타난다는 설명과 Canvas 분리 권고"
+    },
+    {
+      "id": "unity-ugui-canvasupdateregistry",
+      "title": "Unity UI (uGUI 2.0) API - CanvasUpdateRegistry",
+      "url": "https://docs.unity3d.com/Packages/com.unity.ugui@2.0/api/UnityEngine.UI.CanvasUpdateRegistry.html",
+      "summary": "Canvas 요소가 레이아웃 리빌드와 그래픽 리빌드를 위해 등록되는 uGUI C# 클래스"
+    },
+    {
+      "id": "unity-ugui-mask",
+      "title": "Unity UI (uGUI 2.0) Manual - Mask",
+      "url": "https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-Mask.html",
+      "summary": "Mask가 GPU 스텐실 버퍼로 구현된다는 설명"
+    },
+    {
+      "id": "unity-ugui-rectmask2d",
+      "title": "Unity UI (uGUI 2.0) Manual - RectMask2D",
+      "url": "https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-RectMask2D.html",
+      "summary": "RectMask2D는 스텐실 버퍼를 쓰지 않고 추가 드로우콜과 머티리얼 변경이 없지만 2D 공간에서만 동작한다는 설명"
+    },
+    {
+      "id": "unity-profiler-ui",
+      "title": "Unity Manual (2022.3) - UI and UI Details Profiler",
+      "url": "https://docs.unity3d.com/2022.3/Documentation/Manual/ProfilerUI.html",
+      "summary": "UI 모듈의 Layout/Render 시간, UI Details 모듈의 배치 수와 Batch Breaking Reason, Overdraw 미리보기 설명"
+    },
+    {
+      "id": "unity-scene-view-modes",
+      "title": "Unity Manual (6000.0) - Scene view View Options / Draw modes",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/working-with-scenes/scenes-manage-gameobjects/overlays/view-modes",
+      "summary": "Scene 뷰의 Overdraw 모드가 오브젝트를 반투명 실루엣으로 그려 겹침을 보여 준다는 설명"
+    },
+    {
+      "id": "unity-random-value",
+      "title": "Unity Scripting API (6000.0) - Random.value",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/random/value",
+      "summary": "Random.value는 0.0과 1.0을 모두 포함하는 범위의 float를 반환한다는 설명"
+    },
+    {
+      "id": "vcontainer-hello-world",
+      "title": "VContainer Documentation - Hello World",
+      "url": "https://vcontainer.hadashikick.jp/getting-started/hello-world",
+      "summary": "LifetimeScope를 상속한 클래스에 의존성을 등록하며 그곳이 composition root라고 설명하는 공식 문서"
+    },
+    {
+      "id": "ploeh-composition-root",
+      "title": "Mark Seemann - Composition Root",
+      "url": "https://blog.ploeh.dk/2011/07/28/CompositionRoot/",
+      "summary": "Composition Root를 모듈을 조립하는 (가급적) 유일한 위치로 정의하고 진입점에 최대한 가깝게 두라고 설명한 글"
+    },
+    {
+      "id": "unity-blog-custom-null",
+      "title": "Unity Blog - Custom == operator, should we keep it?",
+      "url": "https://unity.com/blog/engine-platform/custom-operator-should-we-keep-it",
+      "summary": "에디터에서 MonoBehaviour의 필드는 실제 null이 아닌 fake null 객체로 채워지고 ?? 연산자는 순수 C# null 검사만 한다는 설명"
     }
   ],
   "problems": [
@@ -50,7 +146,7 @@
       "id": "t4-debug-lifecycle-event-leak",
       "track": "track4",
       "mode": "debugging",
-      "difficulty": "Junior",
+      "difficulty": "Medium",
       "title": "체력바 HUD와 포션 입력: 0 / 100 표시, 씹히는 포션 키, 씬 재로드 후 MissingReferenceException",
       "tags": [
         "Unity_Lifecycle",
@@ -67,7 +163,7 @@
       "starterCode": "using System;\nusing TMPro;\nusing UnityEngine;\nusing UnityEngine.UI;\n\npublic static class GameEvents\n{\n    public static event Action<int, int> PlayerHealthChanged; // (current, max)\n\n    public static void RaisePlayerHealthChanged(int current, int max)\n        => PlayerHealthChanged?.Invoke(current, max);\n}\n\npublic class PlayerHealth : MonoBehaviour\n{\n    [SerializeField] private int maxHp = 100;\n    [SerializeField] private int potionHeal = 30;\n\n    public int MaxHp => maxHp;\n    public int CurrentHp { get; private set; }\n\n    private void Awake() => CurrentHp = maxHp;\n\n    private void FixedUpdate()\n    {\n        if (Input.GetKeyDown(KeyCode.Q)) ChangeHp(potionHeal);\n    }\n\n    public void TakeDamage(int amount) => ChangeHp(-amount);\n\n    private void ChangeHp(int delta)\n    {\n        CurrentHp = Mathf.Clamp(CurrentHp + delta, 0, maxHp);\n        GameEvents.RaisePlayerHealthChanged(CurrentHp, maxHp);\n    }\n}\n\npublic class HealthBarHUD : MonoBehaviour\n{\n    [SerializeField] private PlayerHealth player;\n    [SerializeField] private Slider slider;\n    [SerializeField] private TMP_Text label;\n    [SerializeField] private GameObject lowHpWarning;\n\n    private void Awake()\n    {\n        Refresh(player.CurrentHp, player.MaxHp);\n    }\n\n    private void OnEnable() => GameEvents.PlayerHealthChanged += Refresh;\n\n    private void OnDestroy() => GameEvents.PlayerHealthChanged -= Refresh;\n\n    private void Refresh(int current, int max)\n    {\n        slider.value = (float)current / max;\n        label.text = current + \" / \" + max;\n        lowHpWarning.SetActive(current * 10 <= max * 3);\n    }\n}\n",
       "edgeCases": [
         "HUD가 숨겨진 동안 플레이어가 피해를 받은 뒤 HUD가 다시 켜지는 경우 (놓친 이벤트의 재동기화)",
-        "HUD 오브젝트가 씬에 비활성 상태로 배치되어 있다가 나중에 처음 켜지는 경우 (Awake/OnEnable/Start가 그때 실행됨)",
+        "HUD 오브젝트가 씬에 비활성 상태로 배치되어 있다가 나중에 처음 켜지는 경우 (Awake와 OnEnable은 그때 실행되고, Start는 그 뒤 첫 Update 전에 실행됨)",
         "렌더 프레임이 물리 스텝보다 빠른 경우(FixedUpdate가 0번 도는 프레임)와 느린 경우(한 프레임에 FixedUpdate가 여러 번 도는 경우)",
         "에디터의 Enter Play Mode 옵션에서 도메인 리로드를 끈 경우: 정적 이벤트의 구독자 목록이 플레이 세션 사이에도 남는다",
         "씬 재로드 후 새 HUD와 파괴된 옛 HUD의 핸들러가 같은 이벤트에 함께 등록되어 있을 때의 호출 순서와 예외 전파"
@@ -80,14 +176,26 @@
       "followUps": [],
       "concept": "",
       "quiz": [],
-      "solutionCode": "using TMPro;\nusing UnityEngine;\nusing UnityEngine.UI;\n\n// GameEvents is unchanged.\n\npublic class PlayerHealth : MonoBehaviour\n{\n    [SerializeField] private int maxHp = 100;\n    [SerializeField] private int potionHeal = 30;\n\n    public int MaxHp => maxHp;\n    public int CurrentHp { get; private set; }\n\n    // Initialising ITS OWN state in Awake was already correct.\n    private void Awake() => CurrentHp = maxHp;\n\n    // One-frame input (GetKeyDown) is read in Update, which runs exactly once per rendered frame.\n    // FixedUpdate may run zero, one or several times in a frame.\n    private void Update()\n    {\n        if (Input.GetKeyDown(KeyCode.Q)) ChangeHp(potionHeal);\n    }\n\n    public void TakeDamage(int amount) => ChangeHp(-amount);\n\n    private void ChangeHp(int delta)\n    {\n        CurrentHp = Mathf.Clamp(CurrentHp + delta, 0, maxHp);\n        GameEvents.RaisePlayerHealthChanged(CurrentHp, maxHp);\n    }\n}\n\npublic class HealthBarHUD : MonoBehaviour\n{\n    [SerializeField] private PlayerHealth player;\n    [SerializeField] private Slider slider;\n    [SerializeField] private TMP_Text label;\n    [SerializeField] private GameObject lowHpWarning;\n\n    private bool _started;\n\n    // Subscribe/unsubscribe as a symmetric pair: OnEnable <-> OnDisable.\n    private void OnEnable()\n    {\n        GameEvents.PlayerHealthChanged += Refresh;\n\n        // Events raised while the HUD was hidden were missed, so resync on re-enable.\n        // The very first OnEnable can run before PlayerHealth.Awake, so skip it there\n        // and let Start do the first sync.\n        if (_started) Refresh(player.CurrentHp, player.MaxHp);\n    }\n\n    // Start runs after every Awake of the objects that were active at scene load,\n    // so reading another object's state is safe here.\n    private void Start()\n    {\n        _started = true;\n        Refresh(player.CurrentHp, player.MaxHp);\n    }\n\n    // Called on SetActive(false), on enabled = false, and also when the object\n    // is destroyed or the scene is unloaded.\n    private void OnDisable() => GameEvents.PlayerHealthChanged -= Refresh;\n\n    private void Refresh(int current, int max)\n    {\n        slider.value = (float)current / max;\n        label.text = current + \" / \" + max;\n        lowHpWarning.SetActive(current * 10 <= max * 3);\n    }\n}\n",
-      "explanation": "**버그 1 - Awake에서 다른 오브젝트의 상태를 읽음.** `HealthBarHUD.Awake`가 읽는 `player.CurrentHp`는 `PlayerHealth.Awake`가 채웁니다. Unity 문서는 서로 다른 GameObject의 `Awake` 순서가 결정적이지 않으니 다른 오브젝트의 `Awake`가 만든 상태에 의존하지 말라고 명시합니다. HUD가 먼저 깨어나면 `CurrentHp`는 아직 0이라 `0 / 100`이 표시됩니다(`MaxHp`는 직렬화 값이라 100). 원칙은 **자기 상태는 Awake, 남의 상태는 Start**입니다. `Start`는 모든 `Awake`가 끝난 뒤 호출됩니다. `OnEnable`로 옮기는 것은 해결책이 아닙니다. 씬 로드 시 Unity는 오브젝트 단위로 `Awake` 직후 `OnEnable`을 호출하므로 HUD의 `OnEnable`이 `PlayerHealth.Awake`보다 먼저 실행될 수 있습니다.\n\n**버그 2 - 한 프레임짜리 입력을 FixedUpdate에서 읽음.** `Input.GetKeyDown`은 키를 누르기 시작한 프레임에만 true이고 매 프레임 리셋됩니다. `FixedUpdate`는 프레임당 0번, 1번 또는 여러 번 호출됩니다. 렌더 프레임이 물리 스텝보다 빠르면 키를 누른 프레임에 `FixedUpdate`가 돌지 않아 입력이 사라지고, 프레임이 떨어지면 같은 프레임 안에서 여러 번 돌아 회복이 중복 적용됩니다. 입력은 `Update`에서 읽습니다. (물리 힘 적용이라면 `Update`에서 입력을 저장하고 `FixedUpdate`에서 소비합니다.)\n\n**버그 3 - 구독과 해제의 짝이 맞지 않음.** 구독은 `OnEnable`(켜질 때마다), 해제는 `OnDestroy`(한 번)입니다. `SetActive(false)`는 `OnDisable`만 호출하므로 다시 켜면 같은 핸들러가 중복 등록됩니다. 씬 언로드 시 `-=`는 그중 **하나만** 제거하고, 남은 델리게이트는 정적 이벤트에 붙어 파괴된 HUD를 계속 참조합니다(누수). Unity의 `==`는 파괴된 오브젝트를 `null`처럼 비교하지만 델리게이트는 그대로 호출됩니다. 옛 핸들러가 파괴된 `GameObject`의 `SetActive`를 호출하는 순간 에디터에서 `MissingReferenceException`이 나고, 멀티캐스트 델리게이트는 예외 이후의 핸들러를 호출하지 않으므로 새 HUD도 갱신되지 않습니다.\n\n**수정.** 구독은 `OnEnable`, 해제는 `OnDisable`로 대칭을 맞춥니다. `OnDisable`은 파괴와 씬 언로드 때도 호출됩니다. 숨겨진 동안 놓친 이벤트는 다시 켜질 때 재동기화하되, 첫 `OnEnable`은 `_started` 플래그로 건너뛰고 `Start`에 맡깁니다.",
+      "solutionCode": "using TMPro;\nusing UnityEngine;\nusing UnityEngine.UI;\n\n// GameEvents is unchanged.\n\npublic class PlayerHealth : MonoBehaviour\n{\n    [SerializeField] private int maxHp = 100;\n    [SerializeField] private int potionHeal = 30;\n\n    public int MaxHp => maxHp;\n    public int CurrentHp { get; private set; }\n\n    // Initialising ITS OWN state in Awake was already correct.\n    private void Awake() => CurrentHp = maxHp;\n\n    // One-frame input (GetKeyDown) is read in Update, which runs exactly once per rendered frame.\n    // FixedUpdate may run zero, one or several times in a frame.\n    private void Update()\n    {\n        if (Input.GetKeyDown(KeyCode.Q)) ChangeHp(potionHeal);\n    }\n\n    public void TakeDamage(int amount) => ChangeHp(-amount);\n\n    private void ChangeHp(int delta)\n    {\n        CurrentHp = Mathf.Clamp(CurrentHp + delta, 0, maxHp);\n        GameEvents.RaisePlayerHealthChanged(CurrentHp, maxHp);\n    }\n}\n\npublic class HealthBarHUD : MonoBehaviour\n{\n    [SerializeField] private PlayerHealth player;\n    [SerializeField] private Slider slider;\n    [SerializeField] private TMP_Text label;\n    [SerializeField] private GameObject lowHpWarning;\n\n    private bool _started;\n\n    // Subscribe/unsubscribe as a symmetric pair: OnEnable <-> OnDisable.\n    private void OnEnable()\n    {\n        GameEvents.PlayerHealthChanged += Refresh;\n\n        // Events raised while the HUD was hidden were missed, so resync on re-enable.\n        // OnEnable is only guaranteed to run after Awake of the SAME object, so the very first\n        // OnEnable must not rely on PlayerHealth.Awake having run: skip it and let Start do the first sync.\n        if (_started) Refresh(player.CurrentHp, player.MaxHp);\n    }\n\n    // Start runs after every Awake of the objects that were active at scene load,\n    // so reading another object's state is safe here.\n    private void Start()\n    {\n        _started = true;\n        Refresh(player.CurrentHp, player.MaxHp);\n    }\n\n    // Called on SetActive(false), on enabled = false, and also when the object\n    // is destroyed or the scene is unloaded.\n    private void OnDisable() => GameEvents.PlayerHealthChanged -= Refresh;\n\n    private void Refresh(int current, int max)\n    {\n        slider.value = (float)current / max;\n        label.text = current + \" / \" + max;\n        lowHpWarning.SetActive(current * 10 <= max * 3);\n    }\n}\n",
+      "explanation": "**버그 1 - Awake에서 다른 오브젝트의 상태를 읽음.** `HealthBarHUD.Awake`가 읽는 `player.CurrentHp`는 `PlayerHealth.Awake`가 채웁니다. Unity 문서는 서로 다른 GameObject의 `Awake` 순서가 결정적이지 않으니 다른 오브젝트의 `Awake`가 만든 상태에 의존하지 말라고 명시합니다. HUD가 먼저 깨어나면 `CurrentHp`는 아직 0이라 `0 / 100`이 표시됩니다(`MaxHp`는 직렬화 값이라 100). 원칙은 **자기 상태는 Awake, 남의 상태는 Start**입니다. `Start`는 모든 `Awake`가 끝난 뒤 호출됩니다. `OnEnable`로 옮기는 것은 해결책이 아닙니다. Unity 문서가 보장하는 것은 `OnEnable`이 **같은 오브젝트의** `Awake` 뒤, 모든 `Start` 앞에 호출된다는 것뿐입니다. HUD의 `OnEnable`이 `PlayerHealth.Awake`보다 나중에 실행된다는 보장은 없으므로 `Awake`에서 읽을 때와 같은 문제가 남습니다.\n\n**버그 2 - 한 프레임짜리 입력을 FixedUpdate에서 읽음.** `Input.GetKeyDown`은 키를 누르기 시작한 프레임에만 true이고 매 프레임 리셋됩니다. `FixedUpdate`는 프레임당 0번, 1번 또는 여러 번 호출됩니다. 렌더 프레임이 물리 스텝보다 빠르면 키를 누른 프레임에 `FixedUpdate`가 돌지 않아 입력이 사라지고, 프레임이 떨어지면 같은 프레임 안에서 여러 번 돌아 회복이 중복 적용됩니다. 입력은 `Update`에서 읽습니다. (물리 힘 적용이라면 `Update`에서 입력을 저장하고 `FixedUpdate`에서 소비합니다.)\n\n**버그 3 - 구독과 해제의 짝이 맞지 않음.** 구독은 `OnEnable`(켜질 때마다), 해제는 `OnDestroy`(한 번)입니다. `SetActive(false)`는 `OnDisable`만 호출하므로 다시 켜면 같은 핸들러가 중복 등록됩니다. 씬 언로드 시 `-=`는 그중 **하나만**(마지막으로 등록된 것) 제거하고, 남은 델리게이트는 정적 이벤트에 붙어 파괴된 HUD를 계속 참조합니다(누수). Unity의 `==`는 파괴된 오브젝트를 `null`처럼 비교하지만 델리게이트는 그대로 호출됩니다. 옛 핸들러가 파괴된 오브젝트(`lowHpWarning.SetActive` 등)에 접근하는 순간 에디터에서는 `MissingReferenceException`이, 플레이어 빌드에서는 `NullReferenceException`이 납니다. 옛 핸들러는 새 HUD의 핸들러보다 먼저 등록되어 먼저 호출되고, 멀티캐스트 델리게이트는 예외가 난 뒤의 핸들러를 호출하지 않으므로 새 HUD도 갱신되지 않습니다.\n\n**수정.** 구독은 `OnEnable`, 해제는 `OnDisable`로 대칭을 맞춥니다. `OnDisable`은 파괴와 씬 언로드 때도 호출됩니다. 숨겨진 동안 놓친 이벤트는 다시 켜질 때 재동기화하되, 첫 `OnEnable`은 `_started` 플래그로 건너뛰고 `Start`에 맡깁니다.",
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Awake/OnEnable/Start 순서, OnDisable 호출 조건, FixedUpdate 호출 횟수, GetKeyDown, 델리게이트 예외 전파와 중복 제거, MissingReferenceException 설명을 Unity 스크립팅 레퍼런스/매뉴얼/지원 문서와 C# 언어 명세에서 직접 대조했고 코드는 줄 단위로 읽어 확인했습니다(엔진 실행은 하지 않음)."
+      },
       "nextMission": "`PlayerHealth`를 `DontDestroyOnLoad` 싱글턴으로 바꾸고 이벤트를 인스턴스 이벤트로 옮긴 뒤, HUD가 씬마다 새로 생성되는 구조에서 구독 누수가 없는지 확인하세요. 추가로 `Rigidbody` 넉백을 구현하면서 입력은 `Update`에서 플래그로 저장하고 `AddForce`는 `FixedUpdate`에서 소비하는 패턴을 연습해 보세요.",
       "sourceRefs": [
         "unity-exec-order",
+        "unity-exec-order-2022",
         "unity-awake-api",
+        "unity-onenable-api",
+        "unity-ondisable-api",
         "unity-fixedupdate-api",
-        "unity-getkeydown-api"
+        "unity-getkeydown-api",
+        "ms-csharp-spec-delegates",
+        "unity-support-missingref",
+        "unity-domain-reload"
       ],
       "rubric": {
         "criteria": [
@@ -124,14 +232,14 @@
             "category": "메모리·성능",
             "description": "HUD를 여러 번 껐다 켠 뒤에도 피격 1회당 Refresh가 1번만 호출되고, 씬 재로드 후 이벤트 구독자가 새 HUD 하나뿐이다",
             "points": 10,
-            "sourceId": ""
+            "sourceId": "ms-csharp-spec-delegates"
           },
           {
             "id": "c6",
             "category": "엔진·언어 규약",
             "description": "Script Execution Order, [DefaultExecutionOrder], Fixed Timestep 조정 없이 생명주기 메서드 선택만으로 해결했다",
             "points": 10,
-            "sourceId": "unity-exec-order"
+            "sourceId": "unity-exec-order-2022"
           },
           {
             "id": "c7",
@@ -181,7 +289,7 @@
       "id": "t4-interview-damage-text-canvas-rebuild",
       "track": "track4",
       "mode": "interview",
-      "difficulty": "Mid",
+      "difficulty": "Hard",
       "title": "데미지 텍스트 수백 개와 200칸 인벤토리에서 프레임이 떨어진다: Canvas 리빌드, 배칭, 풀링",
       "tags": [
         "Unity_UI_CanvasRebuild",
@@ -203,7 +311,7 @@
         {
           "question": "데미지 텍스트 하나만 바뀌었는데 왜 체력바와 미니맵이 있는 Canvas 전체가 비용을 치르나요? Canvas를 나누면 정확히 무엇이 줄어들고, 나누는 것의 비용은 무엇인가요?",
           "intent": "Canvas 단위로 배치가 만들어진다는 점, 리빌드(레이아웃/그래픽)와 리배치(배치 재생성)를 구분하는지, 그리고 Canvas 분리를 만능으로 보지 않고 트레이드오프를 아는지 확인합니다.",
-          "keyAnswer": "- Canvas는 자신에게 속한 UI 요소들의 지오메트리를 모아 배치(드로우콜 단위)로 만듭니다. 요소 하나라도 바뀌면(위치, 색, 텍스트, 활성 상태 등) 그 Canvas는 dirty가 되고 **Canvas 전체에 대해 배치를 다시 계산**합니다(프로파일러의 `Canvas.BuildBatch`). 요소가 많은 단일 Canvas에서는 이것만으로 수 ms의 CPU 스파이크가 납니다. 인벤토리 수량 텍스트 하나가 바뀌어도 슬롯 200개와 HUD 전체가 대상이 되는 이유입니다.\n\n- 이것과 별개로 **리빌드**가 있습니다. dirty로 표시된 Layout 컴포넌트의 레이아웃 재계산과 Graphic의 메시/머티리얼 재생성으로, C# 쪽 uGUI 코드에서 일어나며 `Canvas.SendWillRenderCanvases` 아래에 잡힙니다. 텍스트 문자열을 바꾸면 그 텍스트의 메시를 다시 만들어야 합니다.\n\n- 중첩 Canvas(Sub-Canvas)를 포함해 Canvas는 서로 격리된 섬처럼 동작합니다. 자식 Canvas의 요소가 바뀌어도 부모 Canvas의 배치는 다시 만들지 않습니다. 그래서 **정적인 HUD**, **매 프레임 움직이는 데미지 텍스트**, **스크롤되는 인벤토리**를 서로 다른 Canvas에 두면 다시 계산하는 범위가 각자의 Canvas로 줄어듭니다.\n\n- 비용: 서로 다른 Canvas의 요소끼리는 배칭되지 않으므로 Canvas를 잘게 쪼갤수록 드로우콜이 늘 수 있습니다. 기준은 \"갱신 빈도가 비슷한 것끼리 묶기\"입니다. 상호작용이 없는 Canvas에서는 `GraphicRaycaster`를 제거합니다."
+          "keyAnswer": "- Canvas는 자신에게 속한 UI 요소들의 지오메트리를 모아 배치(드로우콜 단위)로 만듭니다. 요소 하나라도 바뀌면(위치, 색, 텍스트, 활성 상태 등) 그 Canvas는 dirty가 되고 **Canvas 전체에 대해 배치를 다시 계산**합니다(프로파일러의 `Canvas.BuildBatch`). Unity 가이드는 요소가 수천 개인 단일 Canvas에서 요소 하나의 변경만으로 수 ms의 CPU 스파이크가 날 수 있다고 설명합니다. 인벤토리 수량 텍스트 하나가 바뀌어도 슬롯 200개와 HUD 전체가 대상이 되는 이유입니다.\n\n- 이것과 별개로 **리빌드**가 있습니다. dirty로 등록된 요소의 레이아웃 재계산(레이아웃 리빌드)과 Graphic의 메시/머티리얼 재생성(그래픽 리빌드)으로, uGUI의 C# 코드가 수행합니다(`CanvasUpdateRegistry`에 등록된 요소가 대상). 프로파일러에서는 보통 `Canvas.SendWillRenderCanvases` 마커 아래에 잡히지만, 마커 표기는 Unity 버전에 따라 다를 수 있으니 직접 확인합니다. 텍스트 문자열을 바꾸면 그 텍스트의 메시를 다시 만들어야 합니다.\n\n- 중첩 Canvas(Sub-Canvas)를 포함해 Canvas는 서로 격리된 섬처럼 동작합니다. 자식 Canvas의 요소가 바뀌어도 부모 Canvas의 배치는 다시 만들지 않습니다. 그래서 **정적인 HUD**, **매 프레임 움직이는 데미지 텍스트**, **스크롤되는 인벤토리**를 서로 다른 Canvas에 두면 다시 계산하는 범위가 각자의 Canvas로 줄어듭니다.\n\n- 비용: 서로 다른 Canvas의 요소끼리는 배칭되지 않으므로 Canvas를 잘게 쪼갤수록 드로우콜이 늘 수 있습니다. 기준은 \"갱신 빈도가 비슷한 것끼리 묶기\"입니다. 상호작용이 없는 Canvas에서는 `GraphicRaycaster`를 제거합니다."
         },
         {
           "question": "풀링으로 바꾸기로 했습니다. Instantiate/Destroy와 비교해 무엇이 좋아지나요? UnityEngine.Pool.ObjectPool<T>를 쓴다면 어떤 특성을 알고 써야 하고, 반납할 때 SetActive(false)를 쓰는 것과 Canvas 컴포넌트를 끄거나 화면 밖으로 옮기는 방식은 비용이 어떻게 다른가요? 200칸 인벤토리에는 같은 생각을 어떻게 적용하겠습니까?",
@@ -213,18 +321,31 @@
         {
           "question": "Canvas를 분리하고 풀링까지 했는데 드로우콜이 여전히 많고 저사양 기기에서 GPU 시간이 깁니다. 무엇이 배칭을 깨고 있을 수 있고, 오버드로, Layout Group, Graphic Raycaster / Raycast Target은 각각 어떤 비용을 만드나요? 개선 전후를 어떤 도구와 지표로 증명하겠습니까?",
           "intent": "배칭이 깨지는 구체적 조건을 아는지, 추측이 아니라 Profiler와 Frame Debugger로 원인을 특정하고 수치로 검증하는 습관이 있는지 확인합니다.",
-          "keyAnswer": "- **배칭이 깨지는 원인**: 같은 Canvas 안에서 머티리얼과 텍스처가 같아야 한 배치로 묶입니다. 스프라이트가 서로 다른 아틀라스에 있거나, TextMeshPro 텍스트들이 서로 다른 폰트 에셋/머티리얼 프리셋을 쓰면 갈라집니다. 또 그리기 순서상 머티리얼이 다른 요소가 겹쳐서 번갈아 쌓이면(슬롯 배경, 아이콘, 텍스트가 옆 슬롯과 겹치는 경우) 중간에 낀 요소 때문에 같은 머티리얼끼리도 합쳐지지 못합니다. `Mask`는 스텐실을 쓰기 때문에 추가 드로우콜을 만들고 마스크 안팎의 요소가 함께 배칭되지 않습니다. 대응: 아이콘과 배경을 한 아틀라스로, 텍스트는 한 폰트 에셋/머티리얼로 통일하고, 슬롯끼리 겹치지 않게 배치하며, 사각형 스크롤 영역에는 스텐실을 쓰지 않는 `RectMask2D`를 검토합니다.\n\n- **오버드로**: UI는 반투명으로 뒤에서 앞으로 그려지므로 겹친 레이어마다 같은 픽셀을 다시 칠합니다. 전체 화면 딤 패널 + 인벤토리 배경 + 슬롯 배경 + 아이콘 + 테두리가 겹치면 GPU 필레이트 비용이 커집니다. 대응: 겹치는 장식 레이어를 한 스프라이트로 합치고, 보이지 않는 Graphic(알파 0 이미지, 가려진 전체 화면 UI)은 그리지 않게 끄며, 불투명 전체 화면 UI가 열려 있을 때는 그 뒤의 월드 렌더링이나 다른 Canvas를 끄는 것을 검토합니다.\n\n- **Layout Group**: dirty가 된 자식마다 부모 방향으로 레이아웃 루트를 찾는 `GetComponent` 호출이 발생하고 중첩될수록 비쌉니다. 모양이 고정된 프리팹은 Layout Group을 빼고 앵커나 직접 계산으로 배치합니다.\n\n- **Graphic Raycaster / Raycast Target**: `GraphicRaycaster`는 입력을 처리할 때 자기 Canvas에서 Raycast Target이 켜진 Graphic을 대상으로 교차 검사를 합니다. 데미지 텍스트 Canvas에서는 `GraphicRaycaster`를 제거하고, 인벤토리 슬롯은 클릭을 받는 루트 하나만 Raycast Target을 켜고 아이콘, 수량 텍스트, 테두리는 끕니다.\n\n- **증명**: 타깃 기기에 Development Build를 올려 Profiler를 붙입니다. CPU 모듈에서 `Canvas.BuildBatch`(리배치)와 `Canvas.SendWillRenderCanvases`(레이아웃/그래픽 리빌드)의 시간, GC Alloc을 문제 프레임에서 개선 전후로 비교합니다. UI / UI Details 프로파일러 모듈과 Frame Debugger로 배치 수와 배치가 갈라진 지점을 확인하고, 오버드로는 Scene 뷰의 오버드로 시각화나 GPU 프레임 시간으로 봅니다. 마커 표기와 도구 위치는 Unity 버전과 렌더 파이프라인에 따라 다를 수 있으므로 사용 중인 버전에서 직접 확인합니다. 한 번에 하나씩 바꾸고 같은 시나리오로 재측정합니다.\n\n- 그래도 부족하면 uGUI를 벗어나는 대안(월드 공간 TextMeshPro 메시 텍스트, 커스텀 메시, 동시 표시 개수 제한과 숫자 합산)을 검토합니다."
+          "keyAnswer": "- **배칭이 깨지는 원인**: 같은 Canvas 안에서 머티리얼과 텍스처가 같아야 한 배치로 묶입니다(Unity 가이드는 Z 값도 같게 두라고 합니다). 스프라이트가 서로 다른 아틀라스(텍스처)에 있거나, TextMeshPro 텍스트들이 서로 다른 폰트 에셋/머티리얼 프리셋을 쓰면 갈라집니다. 또 uGUI는 Hierarchy 순서대로 그리므로, 서로 겹치는 요소들 사이에 머티리얼이나 텍스처가 다른 요소가 끼면(슬롯 배경, 아이콘, 텍스트가 옆 슬롯과 겹치는 경우) 그리기 순서를 지키느라 같은 머티리얼끼리도 한 배치로 합쳐지지 못할 수 있습니다. `Mask`는 스텐실 버퍼로 구현되어 있고, uGUI 문서는 `RectMask2D`의 장점으로 스텐실 버퍼를 쓰지 않고 추가 드로우콜과 머티리얼 변경이 없다는 점을 듭니다(대신 2D 공간의 사각형 클리핑에만 쓸 수 있습니다). 대응: 아이콘과 배경을 한 아틀라스로, 텍스트는 한 폰트 에셋/머티리얼로 통일하고, 슬롯끼리 겹치지 않게 배치하며, 사각형 스크롤 영역에는 `Mask` 대신 `RectMask2D`를 검토합니다. 실제로 어디서 왜 갈라졌는지는 UI Details 프로파일러 모듈의 Batch Breaking Reason과 Frame Debugger로 확인합니다.\n\n- **오버드로**: uGUI 요소는 Hierarchy 순서대로 뒤에서 앞으로 겹쳐 그려지므로, 요소를 여러 겹 쌓으면 같은 픽셀을 여러 번 칠하는 오버드로가 생깁니다. 전체 화면 딤 패널 + 인벤토리 배경 + 슬롯 배경 + 아이콘 + 테두리가 겹치면 GPU 필레이트 비용이 커집니다. 대응: 겹치는 장식 레이어를 한 스프라이트로 합치고, 보이지 않는 Graphic(알파 0 이미지, 가려진 전체 화면 UI)은 그리지 않게 끄며, 불투명 전체 화면 UI가 열려 있을 때는 그 뒤의 월드 렌더링이나 다른 Canvas를 끄는 것을 검토합니다.\n\n- **Layout Group**: dirty가 된 자식마다 부모 방향으로 레이아웃 루트를 찾는 `GetComponent` 호출이 발생하고 중첩될수록 비쌉니다. 모양이 고정된 프리팹은 Layout Group을 빼고 앵커나 직접 계산으로 배치합니다.\n\n- **Graphic Raycaster / Raycast Target**: `GraphicRaycaster`는 입력을 처리할 때 자기 Canvas에서 Raycast Target이 켜진 Graphic을 대상으로 교차 검사를 합니다. 데미지 텍스트 Canvas에서는 `GraphicRaycaster`를 제거하고, 인벤토리 슬롯은 클릭을 받는 루트 하나만 Raycast Target을 켜고 아이콘, 수량 텍스트, 테두리는 끕니다.\n\n- **증명**: 타깃 기기에 Development Build를 올려 Profiler를 붙입니다. CPU 모듈에서 `Canvas.BuildBatch`(리배치)와 레이아웃/그래픽 리빌드 마커(보통 `Canvas.SendWillRenderCanvases`)의 시간, GC Alloc을 문제 프레임에서 개선 전후로 비교합니다. UI 프로파일러 모듈은 Layout과 Render 시간을, UI Details 모듈은 Canvas별 배치 수와 Batch Breaking Reason을 보여 주며, Frame Debugger로 드로우콜이 갈라진 지점을 확인합니다. 오버드로는 UI Details 모듈 미리보기의 Overdraw 모드나 Scene 뷰의 Overdraw 모드, GPU 프레임 시간으로 봅니다. 마커 표기와 도구 위치는 Unity 버전과 렌더 파이프라인에 따라 다를 수 있으므로 사용 중인 버전에서 직접 확인합니다. 한 번에 하나씩 바꾸고 같은 시나리오로 재측정합니다.\n\n- 그래도 부족하면 uGUI를 벗어나는 대안(월드 공간 TextMeshPro 메시 텍스트, 커스텀 메시, 동시 표시 개수 제한과 숫자 합산)을 검토합니다."
         }
       ],
       "concept": "",
       "quiz": [],
       "solutionCode": "",
-      "explanation": "**모범 답안의 뼈대는 \"측정 → 원인 분리 → 싼 것부터 수정 → 재측정\"입니다.**\n\n**1) 진단.** 타깃 기기에서 프로파일러로 문제 프레임을 잡아 후보를 가릅니다. (a) `Instantiate`/`Destroy` 수백 회와 GC, (b) uGUI 리빌드와 리배치, (c) 배치 수 증가, (d) 오버드로. CPU 모듈에서 `Canvas.SendWillRenderCanvases`(dirty가 된 Layout과 Graphic의 리빌드)와 `Canvas.BuildBatch`(Canvas의 배치 재생성), GC Alloc을 보고, Frame Debugger로 드로우콜이 어디서 갈라지는지 확인합니다.\n\n**2) 원인.** Canvas는 자식 요소의 지오메트리를 배치로 묶는 단위이고, 요소가 하나라도 바뀌면 그 Canvas 전체의 배치를 다시 계산합니다. 지금은 HUD, 데미지 텍스트, 슬롯 200개가 한 Canvas에 있어서 텍스트가 움직이는 매 프레임, 스크롤하는 매 프레임, 수량 하나가 바뀔 때마다 전부가 대상입니다. 여기에 Layout Group 재계산, 생성/파괴와 GC, 겹침으로 인한 배치 분리와 오버드로, 불필요한 Raycast Target 검사가 더해집니다.\n\n**3) 수정 순서.** ① 정적 HUD, 데미지 텍스트, 인벤토리를 각각의 Canvas로 분리합니다. ② 데미지 텍스트는 `ObjectPool<T>`(스택 기반, 메인 스레드 사용, `maxSize` 상한, 에디터에서 `collectionCheck`로 이중 반납 검출)로 풀링하고 로딩 때 프리웜합니다. ③ 인벤토리는 보이는 슬롯만 만들어 재사용하는 가상화를 적용하고, 닫을 때는 Canvas 컴포넌트를 끕니다. ④ Layout Group을 제거하고, 상호작용 없는 Canvas의 `GraphicRaycaster`를 제거하며 클릭 대상이 아닌 Graphic의 Raycast Target을 끕니다. ⑤ 폰트/머티리얼과 아틀라스를 통일하고 겹치는 레이어를 줄여 배치 수와 오버드로를 낮춥니다. ⑥ 단계마다 같은 시나리오로 재측정합니다.\n\n**4) 한계를 아는 답.** Canvas를 분리해도 움직이는 요소가 있는 Canvas는 여전히 매 프레임 재배칭됩니다. 분리는 비용을 없애는 것이 아니라 범위를 줄이는 것이고, Canvas가 늘면 드로우콜이 늘 수 있습니다. 수백 개가 상시로 떠야 한다면 uGUI 밖의 방식이나 기획 차원의 개수 제한이 더 근본적일 수 있습니다.",
-      "nextMission": "빈 프로젝트에 \"단일 Canvas + Instantiate/Destroy\" 버전과 \"Canvas 분리 + ObjectPool<T> + Layout Group 제거\" 버전을 만들고, 데미지 텍스트 300개와 인벤토리 200칸 열기에서 `Canvas.BuildBatch`, `Canvas.SendWillRenderCanvases`, GC Alloc, 배치 수를 표로 비교하세요. 그다음 보이는 슬롯만 재사용하는 가상 스크롤을 직접 구현해 보세요.",
+      "explanation": "**모범 답안의 뼈대는 \"측정 → 원인 분리 → 싼 것부터 수정 → 재측정\"입니다.**\n\n**1) 진단.** 타깃 기기에서 프로파일러로 문제 프레임을 잡아 후보를 가릅니다. (a) `Instantiate`/`Destroy` 수백 회와 GC, (b) uGUI 리빌드와 리배치, (c) 배치 수 증가, (d) 오버드로. CPU 모듈에서 `Canvas.BuildBatch`(Canvas의 배치 재생성)와 레이아웃/그래픽 리빌드 마커(보통 `Canvas.SendWillRenderCanvases`로 보이며 표기는 Unity 버전에 따라 다를 수 있음), GC Alloc을 보고, Frame Debugger로 드로우콜이 어디서 갈라지는지 확인합니다.\n\n**2) 원인.** Canvas는 자식 요소의 지오메트리를 배치로 묶는 단위이고, 요소가 하나라도 바뀌면 그 Canvas 전체의 배치를 다시 계산합니다. 지금은 HUD, 데미지 텍스트, 슬롯 200개가 한 Canvas에 있어서 텍스트가 움직이는 매 프레임, 스크롤하는 매 프레임, 수량 하나가 바뀔 때마다 전부가 대상입니다. 여기에 Layout Group 재계산, 생성/파괴와 GC, 겹침으로 인한 배치 분리와 오버드로, 불필요한 Raycast Target 검사가 더해집니다.\n\n**3) 수정 순서.** ① 정적 HUD, 데미지 텍스트, 인벤토리를 각각의 Canvas로 분리합니다. ② 데미지 텍스트는 `ObjectPool<T>`(스택 기반, 메인 스레드 사용, `maxSize` 상한, 에디터에서 `collectionCheck`로 이중 반납 검출)로 풀링하고 로딩 때 프리웜합니다. ③ 인벤토리는 보이는 슬롯만 만들어 재사용하는 가상화를 적용하고, 닫을 때는 Canvas 컴포넌트를 끕니다. ④ Layout Group을 제거하고, 상호작용 없는 Canvas의 `GraphicRaycaster`를 제거하며 클릭 대상이 아닌 Graphic의 Raycast Target을 끕니다. ⑤ 폰트/머티리얼과 아틀라스를 통일하고 겹치는 레이어를 줄여 배치 수와 오버드로를 낮춥니다. ⑥ 단계마다 같은 시나리오로 재측정합니다.\n\n**4) 한계를 아는 답.** Canvas를 분리해도 움직이는 요소가 있는 Canvas는 여전히 매 프레임 재배칭됩니다. 분리는 비용을 없애는 것이 아니라 범위를 줄이는 것이고, Canvas가 늘면 드로우콜이 늘 수 있습니다. 수백 개가 상시로 떠야 한다면 uGUI 밖의 방식이나 기획 차원의 개수 제한이 더 근본적일 수 있습니다.",
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Canvas dirty/리배치, 중첩 Canvas 격리, Layout Group·Raycaster 비용, Canvas 컴포넌트 비활성화, 풀링 순서, ObjectPool<T> 계약, Mask/RectMask2D, UI 프로파일러 설명을 Unity 가이드·매뉴얼·API·지원 문서에서 직접 대조했습니다. Canvas.SendWillRenderCanvases 마커 이름은 현재 공개된 공식 문서에서 확인하지 못해 버전에 따라 다를 수 있다는 단서를 달았습니다."
+      },
+      "nextMission": "빈 프로젝트에 \"단일 Canvas + Instantiate/Destroy\" 버전과 \"Canvas 분리 + ObjectPool<T> + Layout Group 제거\" 버전을 만들고, 데미지 텍스트 300개와 인벤토리 200칸 열기에서 `Canvas.BuildBatch`, 리빌드 마커(`Canvas.SendWillRenderCanvases` 등 사용 중인 버전의 표기), GC Alloc, 배치 수를 표로 비교하세요. 그다음 보이는 슬롯만 재사용하는 가상 스크롤을 직접 구현해 보세요.",
       "sourceRefs": [
         "unity-ui-opt",
         "unity-pool",
-        "unity-ugui-canvas"
+        "unity-pool-ctor",
+        "unity-ugui-canvas",
+        "unity-support-split-canvas",
+        "unity-ugui-canvasupdateregistry",
+        "unity-ugui-mask",
+        "unity-ugui-rectmask2d",
+        "unity-profiler-ui",
+        "unity-scene-view-modes"
       ],
       "rubric": {
         "criteria": [
@@ -245,9 +366,9 @@
           {
             "id": "c3",
             "category": "정확성",
-            "description": "고치기 전에 Profiler(Canvas.BuildBatch, Canvas.SendWillRenderCanvases, GC Alloc)와 Frame Debugger로 원인을 구분해 측정하겠다고 말했다",
+            "description": "고치기 전에 Profiler(Canvas.BuildBatch 같은 UI 리배치/리빌드 마커, GC Alloc)와 Frame Debugger로 원인을 구분해 측정하겠다고 말했다",
             "points": 10,
-            "sourceId": ""
+            "sourceId": "unity-support-split-canvas"
           },
           {
             "id": "c4",
@@ -268,7 +389,7 @@
             "category": "메모리·성능",
             "description": "배칭을 깨는 원인(다른 머티리얼/텍스처/아틀라스, 겹침 순서, Mask) 중 두 가지 이상과 오버드로를 언급했다",
             "points": 8,
-            "sourceId": ""
+            "sourceId": "unity-profiler-ui"
           },
           {
             "id": "c7",
@@ -282,7 +403,7 @@
             "category": "엔진·언어 규약",
             "description": "ObjectPool<T>가 스택 기반이고 백그라운드 스레드에서 쓰면 안 되며 collectionCheck가 이중 반납을 잡아 준다는 점 중 두 가지 이상을 정확히 말했다",
             "points": 10,
-            "sourceId": "unity-pool"
+            "sourceId": "unity-pool-ctor"
           },
           {
             "id": "c9",
@@ -325,7 +446,7 @@
       "id": "t4-impl-battlemanager-singleton-to-di",
       "track": "track4",
       "mode": "implementation",
-      "difficulty": "Mid",
+      "difficulty": "Hard",
       "title": "비대한 BattleManager 싱글턴을 인터페이스와 생성자 주입으로 분리하기",
       "tags": [
         "Unity_DI_Decoupling"
@@ -355,14 +476,24 @@
       "followUps": [],
       "concept": "",
       "quiz": [],
-      "solutionCode": "// ===== BattleCore.cs : plain C#, no UnityEngine reference (unit-testable) =====\nusing System;\n\npublic interface IRandomSource { float NextValue(); } // 0..1\npublic interface IBattleAudio { void PlayHit(bool critical); }\npublic interface IPlayerHud { void ShowHp(int hp); }\npublic interface IPlayerDamageable { void TakeHit(int attack, int defense); }\npublic interface IEnemySpawner { int AliveCount { get; } void SpawnWave(int count); }\npublic interface IProgressStore { int LoadKillCount(); void SaveKillCount(int killCount); }\n\npublic readonly struct DamageResult\n{\n    public readonly int Amount;\n    public readonly bool IsCritical;\n\n    public DamageResult(int amount, bool isCritical)\n    {\n        Amount = amount;\n        IsCritical = isCritical;\n    }\n}\n\n// Pure rule: no sound, no UI, no static Random.\npublic sealed class DamageCalculator\n{\n    private readonly IRandomSource _random;\n\n    public DamageCalculator(IRandomSource random)\n    {\n        _random = random ?? throw new ArgumentNullException(nameof(random));\n    }\n\n    public DamageResult Calculate(int attack, int defense, float critChance)\n    {\n        bool critical = _random.NextValue() < critChance;\n        int amount = Math.Max(1, attack - defense);\n        if (critical) amount *= 2;\n        return new DamageResult(amount, critical);\n    }\n}\n\n// Player HP flow: asks the calculator, then tells audio and HUD through interfaces.\npublic sealed class PlayerCombat : IPlayerDamageable\n{\n    private const float EnemyCritChance = 0.1f;\n\n    private readonly DamageCalculator _calculator;\n    private readonly IPlayerHud _hud;\n    private readonly IBattleAudio _audio;\n\n    public int Hp { get; private set; }\n    public event Action Died;\n\n    public PlayerCombat(DamageCalculator calculator, IPlayerHud hud, IBattleAudio audio, int startHp)\n    {\n        _calculator = calculator ?? throw new ArgumentNullException(nameof(calculator));\n        _hud = hud ?? throw new ArgumentNullException(nameof(hud));\n        _audio = audio ?? throw new ArgumentNullException(nameof(audio));\n        Hp = startHp;\n    }\n\n    public void TakeHit(int attack, int defense)\n    {\n        DamageResult result = _calculator.Calculate(attack, defense, EnemyCritChance);\n        Hp = Math.Max(0, Hp - result.Amount);\n        _audio.PlayHit(result.IsCritical);\n        _hud.ShowHp(Hp);\n        if (Hp == 0) Died?.Invoke();\n    }\n}\n\n// Kill count, saving and \"spawn the next wave when the field is empty\".\npublic sealed class WaveDirector\n{\n    private readonly IEnemySpawner _spawner;\n    private readonly IProgressStore _store;\n    private readonly int _waveSize;\n\n    public int KillCount { get; private set; }\n\n    public WaveDirector(IEnemySpawner spawner, IProgressStore store, int waveSize)\n    {\n        _spawner = spawner ?? throw new ArgumentNullException(nameof(spawner));\n        _store = store ?? throw new ArgumentNullException(nameof(store));\n        _waveSize = waveSize;\n        KillCount = _store.LoadKillCount();\n    }\n\n    public void StartBattle() => _spawner.SpawnWave(_waveSize);\n\n    public void OnEnemyKilled()\n    {\n        KillCount++;\n        SaveProgress();\n        if (_spawner.AliveCount == 0) _spawner.SpawnWave(_waveSize);\n    }\n\n    public void SaveProgress() => _store.SaveKillCount(KillCount);\n}\n\n// ===== BattleUnity.cs : thin Unity adapters (split into one file per MonoBehaviour in a real project) =====\nusing System;\nusing System.Collections.Generic;\nusing TMPro;\nusing UnityEngine;\n\npublic sealed class UnityRandomSource : IRandomSource\n{\n    public float NextValue() => UnityEngine.Random.value;\n}\n\npublic sealed class PlayerPrefsProgressStore : IProgressStore\n{\n    private const string KillsKey = \"kills\";\n\n    public int LoadKillCount() => PlayerPrefs.GetInt(KillsKey, 0);\n\n    public void SaveKillCount(int killCount)\n    {\n        PlayerPrefs.SetInt(KillsKey, killCount);\n        PlayerPrefs.Save();\n    }\n}\n\npublic sealed class BattleAudio : MonoBehaviour, IBattleAudio\n{\n    [SerializeField] private AudioSource sfx;\n    [SerializeField] private AudioClip hitClip;\n    [SerializeField] private AudioClip critClip;\n\n    public void PlayHit(bool critical) => sfx.PlayOneShot(critical ? critClip : hitClip);\n}\n\npublic sealed class PlayerHudView : MonoBehaviour, IPlayerHud\n{\n    [SerializeField] private TMP_Text hpLabel;\n\n    public void ShowHp(int hp) => hpLabel.text = \"HP \" + hp;\n}\n\npublic sealed class Enemy : MonoBehaviour\n{\n    [SerializeField] private int attack = 12;\n\n    private IPlayerDamageable _player;\n\n    public event Action<Enemy> Died;\n\n    // Method injection: MonoBehaviours cannot receive constructor arguments.\n    public void Construct(IPlayerDamageable player) => _player = player;\n\n    private void OnCollisionEnter(Collision collision)\n    {\n        if (collision.gameObject.CompareTag(\"Player\"))\n            _player.TakeHit(attack, 3);\n    }\n\n    public void Die() => Died?.Invoke(this);\n}\n\npublic sealed class EnemySpawner : MonoBehaviour, IEnemySpawner\n{\n    [SerializeField] private Enemy enemyPrefab;\n    [SerializeField] private Transform[] spawnPoints;\n\n    private readonly List<Enemy> _alive = new List<Enemy>();\n    private IPlayerDamageable _player;\n\n    public event Action EnemyKilled;\n    public int AliveCount => _alive.Count;\n\n    public void Construct(IPlayerDamageable player) => _player = player;\n\n    public void SpawnWave(int count)\n    {\n        for (int i = 0; i < count; i++)\n        {\n            Transform point = spawnPoints[i % spawnPoints.Length];\n            Enemy enemy = Instantiate(enemyPrefab, point.position, point.rotation);\n            enemy.Construct(_player); // the spawner is the only place that knows how to build an Enemy\n            enemy.Died += HandleEnemyDied;\n            _alive.Add(enemy);\n        }\n    }\n\n    private void HandleEnemyDied(Enemy enemy)\n    {\n        enemy.Died -= HandleEnemyDied;\n        _alive.Remove(enemy);\n        Destroy(enemy.gameObject);\n        EnemyKilled?.Invoke();\n    }\n}\n\n// Composition root: the ONLY place that knows the concrete types and wires them together.\npublic sealed class BattleInstaller : MonoBehaviour\n{\n    [SerializeField] private PlayerHudView hudView;\n    [SerializeField] private BattleAudio battleAudio;\n    [SerializeField] private EnemySpawner spawner;\n    [SerializeField] private int playerStartHp = 100;\n    [SerializeField] private int waveSize = 3;\n\n    private PlayerCombat _player;\n    private WaveDirector _waves;\n\n    private void Awake()\n    {\n        var calculator = new DamageCalculator(new UnityRandomSource());\n        _player = new PlayerCombat(calculator, hudView, battleAudio, playerStartHp);\n        _waves = new WaveDirector(spawner, new PlayerPrefsProgressStore(), waveSize);\n\n        spawner.Construct(_player);\n        _player.Died += _waves.SaveProgress;\n        spawner.EnemyKilled += _waves.OnEnemyKilled;\n    }\n\n    // Gameplay starts in Start, after every Awake (and therefore all wiring) has finished.\n    private void Start() => _waves.StartBattle();\n\n    private void OnDestroy()\n    {\n        _player.Died -= _waves.SaveProgress;\n        spawner.EnemyKilled -= _waves.OnEnemyKilled;\n    }\n}\n\n// ===== DamageCalculatorTests.cs : EditMode test (NUnit / Unity Test Framework), no scene, no Play mode =====\nusing NUnit.Framework;\n\npublic sealed class FixedRandom : IRandomSource\n{\n    private readonly float _value;\n    public FixedRandom(float value) { _value = value; }\n    public float NextValue() => _value;\n}\n\npublic class DamageCalculatorTests\n{\n    [Test]\n    public void Critical_DoublesDamage()\n    {\n        var calculator = new DamageCalculator(new FixedRandom(0.0f));\n        DamageResult result = calculator.Calculate(10, 4, 0.5f);\n        Assert.IsTrue(result.IsCritical);\n        Assert.AreEqual(12, result.Amount);\n    }\n\n    [Test]\n    public void Damage_IsAtLeastOne_WhenDefenseExceedsAttack()\n    {\n        var calculator = new DamageCalculator(new FixedRandom(0.99f));\n        DamageResult result = calculator.Calculate(3, 50, 0.5f);\n        Assert.IsFalse(result.IsCritical);\n        Assert.AreEqual(1, result.Amount);\n    }\n}\n",
-      "explanation": "**분리 기준.** 책임을 \"규칙\"과 \"세부 구현\"으로 나눴습니다. `DamageCalculator`는 공식만 알고 결과(`DamageResult`)를 반환합니다. 소리와 UI는 결과를 받은 쪽이 인터페이스로 요청합니다. 난수도 `IRandomSource` 뒤에 두어 테스트에서 치명타 여부를 결정적으로 만들 수 있습니다. `PlayerCombat`과 `WaveDirector`는 `UnityEngine`을 참조하지 않는 순수 C# 클래스이고, `AudioSource`, `TMP_Text`, `PlayerPrefs`, `Instantiate`는 얇은 어댑터가 감쌉니다. 코어를 별도 asmdef에 두고 No Engine References를 켜면 실수로 `UnityEngine`을 참조하는 것을 컴파일 단계에서 막을 수 있습니다.\n\n**주입 방식.** 순수 C# 클래스는 생성자 주입으로 필수 의존성 없이는 객체가 만들어지지 않게 했습니다. MonoBehaviour는 Unity가 생성하므로 `Construct` 메서드 주입을 씁니다. 런타임에 생성되는 `Enemy`는 그것을 만드는 `EnemySpawner`가 주입합니다. `Enemy`는 `IPlayerDamageable` 하나만 알기 때문에 `BattleManager`가 없는 테스트 씬에서도 가짜 구현으로 동작합니다.\n\n**컴포지션 루트.** `BattleInstaller.Awake`만 구체 타입을 알고 `new`와 이벤트 연결을 합니다. `Awake`에서는 조립만 하고 게임 시작은 `Start`로 미뤄 다른 오브젝트의 `Awake` 순서에 의존하지 않습니다. 연결한 이벤트는 `OnDestroy`에서 해제합니다. 두 서비스는 서로를 모르고 루트가 이벤트로 이어 주므로 순환 의존이 없습니다.\n\n**MVP와 VContainer.** 이 구조는 MVP의 축소판입니다. `PlayerHudView`는 표시만 하는 View이고, 로직은 `IPlayerHud`라는 View 인터페이스만 압니다. VContainer 같은 DI 컨테이너를 쓰면 `LifetimeScope`를 상속한 클래스의 `Configure(IContainerBuilder)`에 타입을 등록하고 컨테이너가 생성자 주입을 대신 해 주는데, 그 `LifetimeScope`가 여기서 손으로 쓴 `BattleInstaller`와 같은 컴포지션 루트 역할입니다.\n\n**트레이드오프.** 클래스 1개가 인터페이스 6개와 클래스 10여 개가 되었습니다. 간접 참조가 늘어 흐름을 따라가려면 Installer를 먼저 읽어야 하고, Inspector 참조나 `Construct` 호출 누락은 런타임에야 드러납니다. 프로토타입 규모라면 과한 설계입니다. 싱글턴도 항상 나쁜 것은 아닙니다. 앱 수명과 같고 대체 구현이 필요 없으며 게임 규칙이 섞이지 않는 전역 인프라(로깅 등)는 싱글턴이 실용적입니다. 문제는 \"숨은 의존성 + 여러 책임 + 테스트 불가\"의 조합입니다. DI 프레임워크는 필수가 아니며 조립 코드가 관리하기 힘들 만큼 커질 때 도입해도 늦지 않습니다.",
+      "solutionCode": "// ===== BattleCore.cs : plain C#, no UnityEngine reference (unit-testable) =====\nusing System;\n\npublic interface IRandomSource { float NextValue(); } // 0..1\npublic interface IBattleAudio { void PlayHit(bool critical); }\npublic interface IPlayerHud { void ShowHp(int hp); }\npublic interface IPlayerDamageable { void TakeHit(int attack, int defense); }\npublic interface IEnemySpawner { int AliveCount { get; } void SpawnWave(int count); }\npublic interface IProgressStore { int LoadKillCount(); void SaveKillCount(int killCount); }\n\npublic readonly struct DamageResult\n{\n    public readonly int Amount;\n    public readonly bool IsCritical;\n\n    public DamageResult(int amount, bool isCritical)\n    {\n        Amount = amount;\n        IsCritical = isCritical;\n    }\n}\n\n// Pure rule: no sound, no UI, no static Random.\npublic sealed class DamageCalculator\n{\n    private readonly IRandomSource _random;\n\n    public DamageCalculator(IRandomSource random)\n    {\n        _random = random ?? throw new ArgumentNullException(nameof(random));\n    }\n\n    public DamageResult Calculate(int attack, int defense, float critChance)\n    {\n        bool critical = _random.NextValue() < critChance;\n        int amount = Math.Max(1, attack - defense);\n        if (critical) amount *= 2;\n        return new DamageResult(amount, critical);\n    }\n}\n\n// Player HP flow: asks the calculator, then tells audio and HUD through interfaces.\npublic sealed class PlayerCombat : IPlayerDamageable\n{\n    private const float EnemyCritChance = 0.1f;\n\n    private readonly DamageCalculator _calculator;\n    private readonly IPlayerHud _hud;\n    private readonly IBattleAudio _audio;\n\n    public int Hp { get; private set; }\n    public event Action Died;\n\n    public PlayerCombat(DamageCalculator calculator, IPlayerHud hud, IBattleAudio audio, int startHp)\n    {\n        _calculator = calculator ?? throw new ArgumentNullException(nameof(calculator));\n        _hud = hud ?? throw new ArgumentNullException(nameof(hud));\n        _audio = audio ?? throw new ArgumentNullException(nameof(audio));\n        Hp = startHp;\n    }\n\n    public void TakeHit(int attack, int defense)\n    {\n        DamageResult result = _calculator.Calculate(attack, defense, EnemyCritChance);\n        Hp = Math.Max(0, Hp - result.Amount);\n        _audio.PlayHit(result.IsCritical);\n        _hud.ShowHp(Hp);\n        if (Hp == 0) Died?.Invoke();\n    }\n}\n\n// Kill count, saving and \"spawn the next wave when the field is empty\".\npublic sealed class WaveDirector\n{\n    private readonly IEnemySpawner _spawner;\n    private readonly IProgressStore _store;\n    private readonly int _waveSize;\n\n    public int KillCount { get; private set; }\n\n    public WaveDirector(IEnemySpawner spawner, IProgressStore store, int waveSize)\n    {\n        _spawner = spawner ?? throw new ArgumentNullException(nameof(spawner));\n        _store = store ?? throw new ArgumentNullException(nameof(store));\n        _waveSize = waveSize;\n        KillCount = _store.LoadKillCount();\n    }\n\n    public void StartBattle() => _spawner.SpawnWave(_waveSize);\n\n    public void OnEnemyKilled()\n    {\n        KillCount++;\n        SaveProgress();\n        if (_spawner.AliveCount == 0) _spawner.SpawnWave(_waveSize);\n    }\n\n    public void SaveProgress() => _store.SaveKillCount(KillCount);\n}\n\n// ===== BattleUnity.cs : thin Unity adapters (split into one file per MonoBehaviour in a real project) =====\nusing System;\nusing System.Collections.Generic;\nusing TMPro;\nusing UnityEngine;\n\npublic sealed class UnityRandomSource : IRandomSource\n{\n    public float NextValue() => UnityEngine.Random.value;\n}\n\npublic sealed class PlayerPrefsProgressStore : IProgressStore\n{\n    private const string KillsKey = \"kills\";\n\n    public int LoadKillCount() => PlayerPrefs.GetInt(KillsKey, 0);\n\n    public void SaveKillCount(int killCount)\n    {\n        PlayerPrefs.SetInt(KillsKey, killCount);\n        PlayerPrefs.Save();\n    }\n}\n\npublic sealed class BattleAudio : MonoBehaviour, IBattleAudio\n{\n    [SerializeField] private AudioSource sfx;\n    [SerializeField] private AudioClip hitClip;\n    [SerializeField] private AudioClip critClip;\n\n    public void PlayHit(bool critical) => sfx.PlayOneShot(critical ? critClip : hitClip);\n}\n\npublic sealed class PlayerHudView : MonoBehaviour, IPlayerHud\n{\n    [SerializeField] private TMP_Text hpLabel;\n\n    public void ShowHp(int hp) => hpLabel.text = \"HP \" + hp;\n}\n\npublic sealed class Enemy : MonoBehaviour\n{\n    [SerializeField] private int attack = 12;\n\n    private IPlayerDamageable _player;\n\n    public event Action<Enemy> Died;\n\n    // Method injection: MonoBehaviours cannot receive constructor arguments.\n    public void Construct(IPlayerDamageable player) => _player = player;\n\n    private void OnCollisionEnter(Collision collision)\n    {\n        if (collision.gameObject.CompareTag(\"Player\"))\n            _player.TakeHit(attack, 3);\n    }\n\n    public void Die() => Died?.Invoke(this);\n}\n\npublic sealed class EnemySpawner : MonoBehaviour, IEnemySpawner\n{\n    [SerializeField] private Enemy enemyPrefab;\n    [SerializeField] private Transform[] spawnPoints;\n\n    private readonly List<Enemy> _alive = new List<Enemy>();\n    private IPlayerDamageable _player;\n\n    public event Action EnemyKilled;\n    public int AliveCount => _alive.Count;\n\n    public void Construct(IPlayerDamageable player) => _player = player;\n\n    public void SpawnWave(int count)\n    {\n        for (int i = 0; i < count; i++)\n        {\n            Transform point = spawnPoints[i % spawnPoints.Length];\n            Enemy enemy = Instantiate(enemyPrefab, point.position, point.rotation);\n            enemy.Construct(_player); // the spawner is the only place that knows how to build an Enemy\n            enemy.Died += HandleEnemyDied;\n            _alive.Add(enemy);\n        }\n    }\n\n    private void HandleEnemyDied(Enemy enemy)\n    {\n        enemy.Died -= HandleEnemyDied;\n        _alive.Remove(enemy);\n        Destroy(enemy.gameObject);\n        EnemyKilled?.Invoke();\n    }\n}\n\n// Composition root: the ONLY place that knows the concrete types and wires them together.\npublic sealed class BattleInstaller : MonoBehaviour\n{\n    [SerializeField] private PlayerHudView hudView;\n    [SerializeField] private BattleAudio battleAudio;\n    [SerializeField] private EnemySpawner spawner;\n    [SerializeField] private int playerStartHp = 100;\n    [SerializeField] private int waveSize = 3;\n\n    private PlayerCombat _player;\n    private WaveDirector _waves;\n\n    private void Awake()\n    {\n        // An unassigned Inspector reference can be a \"fake null\" object in the Editor, which a plain C#\n        // null check (?? / is null) does not catch, so fail fast here with Unity's == operator.\n        if (hudView == null || battleAudio == null || spawner == null)\n            throw new InvalidOperationException(\"BattleInstaller: assign hudView, battleAudio and spawner in the Inspector.\");\n\n        var calculator = new DamageCalculator(new UnityRandomSource());\n        _player = new PlayerCombat(calculator, hudView, battleAudio, playerStartHp);\n        _waves = new WaveDirector(spawner, new PlayerPrefsProgressStore(), waveSize);\n\n        spawner.Construct(_player);\n        _player.Died += _waves.SaveProgress;\n        spawner.EnemyKilled += _waves.OnEnemyKilled;\n    }\n\n    // Gameplay starts in Start, after every Awake (and therefore all wiring) has finished.\n    private void Start() => _waves.StartBattle();\n\n    private void OnDestroy()\n    {\n        if (_player == null || _waves == null) return; // Awake failed before wiring\n\n        _player.Died -= _waves.SaveProgress;\n        spawner.EnemyKilled -= _waves.OnEnemyKilled;\n    }\n}\n\n// ===== DamageCalculatorTests.cs : EditMode test (NUnit / Unity Test Framework), no scene, no Play mode =====\nusing NUnit.Framework;\n\npublic sealed class FixedRandom : IRandomSource\n{\n    private readonly float _value;\n    public FixedRandom(float value) { _value = value; }\n    public float NextValue() => _value;\n}\n\npublic class DamageCalculatorTests\n{\n    [Test]\n    public void Critical_DoublesDamage()\n    {\n        var calculator = new DamageCalculator(new FixedRandom(0.0f));\n        DamageResult result = calculator.Calculate(10, 4, 0.5f);\n        Assert.IsTrue(result.IsCritical);\n        Assert.AreEqual(12, result.Amount);\n    }\n\n    [Test]\n    public void Damage_IsAtLeastOne_WhenDefenseExceedsAttack()\n    {\n        var calculator = new DamageCalculator(new FixedRandom(0.99f));\n        DamageResult result = calculator.Calculate(3, 50, 0.5f);\n        Assert.IsFalse(result.IsCritical);\n        Assert.AreEqual(1, result.Amount);\n    }\n}\n",
+      "explanation": "**분리 기준.** 책임을 \"규칙\"과 \"세부 구현\"으로 나눴습니다. `DamageCalculator`는 공식만 알고 결과(`DamageResult`)를 반환합니다. 소리와 UI는 결과를 받은 쪽이 인터페이스로 요청합니다. 난수도 `IRandomSource` 뒤에 두어 테스트에서 치명타 여부를 결정적으로 만들 수 있습니다. `PlayerCombat`과 `WaveDirector`는 `UnityEngine`을 참조하지 않는 순수 C# 클래스이고, `AudioSource`, `TMP_Text`, `PlayerPrefs`, `Instantiate`는 얇은 어댑터가 감쌉니다. 코어를 별도 asmdef에 두고 No Engine References를 켜면 실수로 `UnityEngine`을 참조하는 것을 컴파일 단계에서 막을 수 있습니다.\n\n**주입 방식.** 순수 C# 클래스는 생성자 주입으로 필수 의존성 없이는 객체가 만들어지지 않게 했습니다. 다만 Inspector에서 비워 둔 참조는 에디터에서 진짜 `null`이 아닌 \"가짜 null\" 객체일 수 있고 `??`는 순수 C# null 검사만 하므로, Installer가 조립 전에 Unity의 `==`로 따로 검사해 빨리 실패하게 했습니다. MonoBehaviour는 Unity가 생성하므로 `Construct` 메서드 주입을 씁니다. 런타임에 생성되는 `Enemy`는 그것을 만드는 `EnemySpawner`가 주입합니다. `Enemy`는 `IPlayerDamageable` 하나만 알기 때문에 `BattleManager`가 없는 테스트 씬에서도 가짜 구현으로 동작합니다.\n\n**컴포지션 루트.** `BattleInstaller.Awake`만 구체 타입을 알고 `new`와 이벤트 연결을 합니다. `Awake`에서는 조립만 하고 게임 시작은 `Start`로 미뤄 다른 오브젝트의 `Awake` 순서에 의존하지 않습니다. 연결한 이벤트는 `OnDestroy`에서 해제합니다. 두 서비스는 서로를 모르고 루트가 이벤트로 이어 주므로 순환 의존이 없습니다.\n\n**MVP와 VContainer.** 이 구조는 MVP의 축소판입니다. `PlayerHudView`는 표시만 하는 View이고, 로직은 `IPlayerHud`라는 View 인터페이스만 압니다. VContainer 같은 DI 컨테이너를 쓰면 `LifetimeScope`를 상속한 클래스의 `Configure(IContainerBuilder)`에 타입을 등록하고 컨테이너가 생성자 주입을 대신 해 주는데, 그 `LifetimeScope`가 여기서 손으로 쓴 `BattleInstaller`와 같은 컴포지션 루트 역할입니다(VContainer 공식 문서도 `LifetimeScope` 서브클래스를 composition root라고 부릅니다).\n\n**트레이드오프.** 클래스 1개가 인터페이스 6개와 클래스 10여 개가 되었습니다. 간접 참조가 늘어 흐름을 따라가려면 Installer를 먼저 읽어야 하고, Inspector 참조나 `Construct` 호출 누락은 런타임에야 드러납니다. 프로토타입 규모라면 과한 설계입니다. 싱글턴도 항상 나쁜 것은 아닙니다. 앱 수명과 같고 대체 구현이 필요 없으며 게임 규칙이 섞이지 않는 전역 인프라(로깅 등)는 싱글턴이 실용적입니다. 문제는 \"숨은 의존성 + 여러 책임 + 테스트 불가\"의 조합입니다. DI 프레임워크는 필수가 아니며 조립 코드가 관리하기 힘들 만큼 커질 때 도입해도 늦지 않습니다.",
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "풀이 코드를 줄 단위로 읽어 기존 동작 유지와 구독/해지 쌍을 확인했고, No Engine References, Random.value 범위, VContainer LifetimeScope의 composition root 설명, 에디터의 fake null 동작을 각 공식 문서에서 직접 대조했습니다(Unity 컴파일·실행은 하지 않음)."
+      },
       "nextMission": "`FakeHud`, `FakeAudio`, `FakeSpawner`, `FakeStore`를 만들어 `PlayerCombat`과 `WaveDirector`의 EditMode 테스트를 추가하세요: (1) 치명타일 때 `PlayHit(true)`가 한 번 호출되는지, (2) HP가 0이 되면 `Died`가 발생하는지, (3) `AliveCount`가 0일 때만 다음 웨이브가 스폰되는지 검증합니다. 그다음 `IProgressStore`의 JSON 파일 구현을 추가하고 Installer 한 줄만 바꿔 교체해 보세요.",
       "sourceRefs": [
         "unity-patterns-ebook",
+        "ploeh-composition-root",
         "gh-vcontainer",
+        "vcontainer-hello-world",
         "unity-asmdef-inspector",
-        "unity-test-framework"
+        "unity-test-framework",
+        "unity-random-value",
+        "unity-blog-custom-null"
       ],
       "rubric": {
         "criteria": [
@@ -420,7 +551,7 @@
             "category": "아키텍처·가독성",
             "description": "static Instance가 없고, 구체 타입의 new와 연결이 컴포지션 루트 한 곳(런타임 생성 객체는 스포너)에만 있다",
             "points": 8,
-            "sourceId": "unity-patterns-ebook"
+            "sourceId": "ploeh-composition-root"
           },
           {
             "id": "c9",

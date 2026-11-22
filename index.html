@@ -47,6 +47,10 @@
       <div class="chips" id="f-mode"></div>
     </div>
     <div class="filter">
+      <span class="filter-label">난이도</span>
+      <div class="chips" id="f-diff"></div>
+    </div>
+    <div class="filter">
       <span class="filter-label">상태</span>
       <div class="chips" id="f-status"></div>
     </div>
@@ -158,7 +162,7 @@
       <label class="field" for="np-mode">모드<select id="np-mode"></select></label>
     </div>
     <div class="two">
-      <label class="field" for="np-diff">난이도<select id="np-diff"><option>Junior</option><option>Mid</option></select></label>
+      <label class="field" for="np-diff">난이도<select id="np-diff"><option value="Easy">쉬움 (Easy)</option><option value="Medium" selected>보통 (Medium)</option><option value="Hard">어려움 (Hard)</option></select></label>
       <label class="field" for="np-topic">주제<input id="np-topic" type="text" placeholder="예: Unity UI Canvas 리빌드 최적화" autocomplete="off"></label>
     </div>
     <div class="field">참고할 검증 자료 <span class="muted small">여러 개 선택 가능</span>

@@ -1,13 +1,8 @@
 'use strict';
 /* GameDev Mentor — 정적 문제은행 PWA. 외부 AI를 호출하지 않으며, 문제는 data/*.json에서 읽습니다. */
 
-// ---------- 설정: 새 트랙 파일을 추가하면 여기에 한 줄만 더합니다 ----------
-const TRACKS = [
-  { id: 'track1', short: '트랙1: C#·GC', file: './data/track1_csharp.json' },
-  { id: 'track2', short: '트랙2: C++·메모리', file: './data/track2_cpp.json' },
-  { id: 'track3', short: '트랙3: 게임 알고리즘', file: './data/track3_algo.json' },
-  { id: 'track4', short: '트랙4: Unity·아키텍처', file: './data/track4_unity.json' },
-];
+// ---------- 설정: 트랙 목록은 data/tracks.json에서 읽습니다 ----------
+let TRACKS = [];
 const MODES = [
   { id: 'tutoring', name: '과외·개념' },
   { id: 'interview', name: '압박 면접' },
@@ -19,6 +14,8 @@ const STATUSES = [
   { id: 'review', name: '복습 필요(오답)' },
   { id: 'done', name: '완료' },
 ];
+const DIFFS = [{ id: 'Easy', name: '쉬움' }, { id: 'Medium', name: '보통' }, { id: 'Hard', name: '어려움' }];
+const diffName = d => ({ Easy: '쉬움', Medium: '보통', Hard: '어려움', Junior: '보통', Mid: '어려움' }[d] || d || '');
 const STATUS_LABEL = { review: '복습 필요', unsure: '애매함', done: '완료' };
 const HINT_LABELS = ['힌트 1단계: 개념·반례', '힌트 2단계: 문제 지점 축소', '힌트 3단계: 의사코드·핵심 구조'];
 const RUNNERS = {
@@ -131,7 +128,7 @@ const state = {
   problems: [],
   sources: {},
   loadErrors: [],
-  filters: Object.assign({ track: 'all', mode: 'all', status: 'all', tag: '', q: '' }, (Storage.ui.get().filters) || {}),
+  filters: Object.assign({ track: 'all', mode: 'all', diff: 'all', status: 'all', tag: '', q: '' }, (Storage.ui.get().filters) || {}),
   currentId: Storage.ui.get().currentId || null,
 };
 const saveUi = () => Storage.ui.set({ filters: state.filters, currentId: state.currentId });
@@ -143,6 +140,7 @@ function filtered() {
   return state.problems.filter(p => {
     if (f.track !== 'all' && p.track !== f.track) return false;
     if (f.mode !== 'all' && p.mode !== f.mode) return false;
+    if (f.diff !== 'all' && p.difficulty !== f.diff) return false;
     if (f.status !== 'all' && statusBucket(Storage.get(p.id)) !== f.status) return false;
     if (f.tag && !(p.tags || []).includes(f.tag)) return false;
     if (q && !(`${p.title} ${(p.tags || []).join(' ')}`.toLowerCase().includes(q))) return false;
@@ -157,6 +155,11 @@ async function loadData() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     ((await res.json()).sources || []).forEach(s => { state.sources[s.id] = s; });
   } catch (e) { state.loadErrors.push(`./data/sources.json: ${e.message}`); }
+  try {
+    const res = await fetch('./data/tracks.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    TRACKS = (await res.json()).tracks || [];
+  } catch (e) { state.loadErrors.push(`./data/tracks.json: ${e.message}`); }
   const results = await Promise.all(TRACKS.map(async t => {
     try {
       const res = await fetch(t.file, { cache: 'no-cache' });
@@ -165,8 +168,9 @@ async function loadData() {
       // 트랙 파일이 자체 선언한 추가 출처를 레지스트리에 합칩니다.
       (j.extraSources || []).forEach(s => { if (s && s.id && !state.sources[s.id]) state.sources[s.id] = { kind: '레퍼런스', ...s, tracks: [t.id] }; });
       return (j.problems || []).map(p => ({ ...p, track: p.track || t.id, trackName: j.trackName || t.short }));
-    } catch (e) { state.loadErrors.push(`${t.file}: ${e.message}`); return []; }
+    } catch (e) { t.failed = true; if (!/HTTP 404/.test(e.message)) state.loadErrors.push(`${t.file}: ${e.message}`); return []; }
   }));
+  TRACKS = TRACKS.filter(t => !t.failed); // 아직 문제 파일이 없는 트랙은 숨깁니다
   state.problems = results.flat().filter(p => p && p.id && p.title);
 }
 
@@ -177,6 +181,7 @@ function chipRow(el, items, key) {
 function renderFilters() {
   chipRow($('#f-track'), TRACKS, 'track');
   chipRow($('#f-mode'), MODES, 'mode');
+  chipRow($('#f-diff'), DIFFS, 'diff');
   chipRow($('#f-status'), STATUSES, 'status');
   const tags = [...new Set(state.problems.flatMap(p => p.tags || []))].sort();
   $('#f-tag').innerHTML = '<option value="">모든 태그</option>' + tags.map(t => `<option value="${esc(t)}" ${t === state.filters.tag ? 'selected' : ''}>${esc(t)}</option>`).join('');
@@ -189,7 +194,7 @@ function renderList() {
     const e = Storage.get(p.id);
     return `<li><button type="button" class="pitem" data-open="${esc(p.id)}" aria-current="${p.id === state.currentId}">
       <span class="pitem-title"><i class="dot st-${statusBucket(e)}" title="${esc(STATUS_LABEL[e.status] || '미풀이')}"></i>${esc(p.title)}</span>
-      <span class="pitem-meta">${esc(trackOf(p.track).short.split(':')[0])} · ${esc(modeName(p.mode))} · ${esc(p.difficulty || '')}${Judge.can(p) ? ' · 실행 채점' + (e.judge && e.judge.total ? ` ${e.judge.passed}/${e.judge.total}` : '') : ''}${e.rubric ? ` · ${e.rubric.score}점` : ''}</span>
+      <span class="pitem-meta">${esc(trackOf(p.track).short.split(':')[0])} · ${esc(modeName(p.mode))} · ${esc(diffName(p.difficulty))}${Judge.can(p) ? ' · 실행 채점' + (e.judge && e.judge.total ? ` ${e.judge.passed}/${e.judge.total}` : '') : ''}${e.rubric ? ` · ${e.rubric.score}점` : ''}</span>
     </button></li>`;
   }).join('') : `<li class="empty">${state.loadErrors.length ? '문제 파일을 읽지 못했습니다.<br>' + state.loadErrors.map(esc).join('<br>') : '조건에 맞는 문제가 없습니다.'}</li>`;
 }
@@ -233,7 +238,7 @@ function renderProblem() {
   $('#problem').innerHTML = `
     <button type="button" class="btn ghost small only-mobile" data-mnav="list">← 문제 목록</button>
     <header class="phead">
-      <div class="badges"><span class="badge">${esc(trackOf(p.track).short)}</span><span class="badge mode-${esc(p.mode)}">${esc(modeName(p.mode))}</span><span class="badge">${esc(p.difficulty || '')}</span>${e.status ? `<span class="badge st-${statusBucket(e)}">${esc(STATUS_LABEL[e.status])}</span>` : ''}</div>
+      <div class="badges"><span class="badge">${esc(trackOf(p.track).short)}</span><span class="badge mode-${esc(p.mode)}">${esc(modeName(p.mode))}</span><span class="badge diff-${esc(p.difficulty || '')}">${esc(diffName(p.difficulty))}</span>${p.verified ? `<span class="badge st-done" title="${esc(p.verified.note || '')}">${p.verified.level === 'executed' ? '실행 검증됨' : '문서 대조 검수됨'}</span>` : ''}${e.status ? `<span class="badge st-${statusBucket(e)}">${esc(STATUS_LABEL[e.status])}</span>` : ''}</div>
       <h1>${esc(p.title)}</h1>
       <div class="tags">${(p.tags || []).map(t => `<button type="button" class="tag" data-tag="${esc(t)}">#${esc(t)}</button>`).join('')}</div>
       ${refsOf(p).length ? `<div class="srcs"><span class="muted small">검증 출처</span>${refsOf(p).map(id => { const s = srcOf(id); return s ? `<a class="src big" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.title)}</a>` : srcBadge(id); }).join('')}</div>` : ''}
@@ -378,7 +383,7 @@ function applyTheme(t) {
 function newPromptText() {
   const t = trackOf($('#np-track').value);
   const full = state.problems.find(p => p.track === t.id);
-  return PromptBuilder.newProblem({ track: t.id, trackName: (full && full.trackName) || t.short, mode: $('#np-mode').value, difficulty: $('#np-diff').value, topic: $('#np-topic').value.trim(), sources: $$('#np-sources input:checked').map(x => state.sources[x.value]).filter(Boolean) });
+  return PromptBuilder.newProblem({ track: t.id, trackName: (full && full.trackName) || t.short, mode: $('#np-mode').value, difficulty: $('#np-diff').value, language: t.language, tagPrefix: t.tagPrefix, topic: $('#np-topic').value.trim(), sources: $$('#np-sources input:checked').map(x => state.sources[x.value]).filter(Boolean) });
 }
 function renderNpSources() {
   const tid = $('#np-track').value;
@@ -402,7 +407,7 @@ document.addEventListener('click', e => {
   if (d.mnav) return setMobilePane(d.mnav === 'problem' && document.body.dataset.view === 'study' && document.body.dataset.mpane === 'problem' ? 'list' : d.mnav);
   if (d.filter) { state.filters[d.filter] = d.value; saveUi(); renderFilters(); return renderList(); }
   if (d.open) return openProblem(d.open);
-  if (d.tag) { state.filters = { track: 'all', mode: 'all', status: 'all', tag: d.tag, q: '' }; saveUi(); renderFilters(); renderList(); document.body.dataset.drawer = 'open'; return setMobilePane('list'); }
+  if (d.tag) { state.filters = { track: 'all', mode: 'all', diff: 'all', status: 'all', tag: d.tag, q: '' }; saveUi(); renderFilters(); renderList(); document.body.dataset.drawer = 'open'; return setMobilePane('list'); }
   if (d.copyCode !== undefined) return copyText(el.closest('.code').querySelector('code').textContent);
   if (d.rate) {
     const p = current(); if (!p) return;

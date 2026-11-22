@@ -1,0 +1,15 @@
+{
+  "note": "트랙 목록. 새 트랙은 문제 파일을 data/에 두고 여기에 한 줄 추가합니다.",
+  "tracks": [
+    { "id": "track1", "short": "트랙1: C#·GC", "file": "./data/track1_csharp.json", "language": "csharp", "tagPrefix": "CSharp_" },
+    { "id": "track2", "short": "트랙2: C++·메모리", "file": "./data/track2_cpp.json", "language": "cpp", "tagPrefix": "Cpp_" },
+    { "id": "track3", "short": "트랙3: 게임 알고리즘", "file": "./data/track3_algo.json", "language": "csharp", "tagPrefix": "Algo_" },
+    { "id": "track4", "short": "트랙4: Unity·아키텍처", "file": "./data/track4_unity.json", "language": "csharp", "tagPrefix": "Unity_" },
+    { "id": "track5", "short": "트랙5: 자료구조·알고리즘", "file": "./data/track5_dsa.json", "language": "csharp", "tagPrefix": "DSA_" },
+    { "id": "track6", "short": "트랙6: 게임 수학", "file": "./data/track6_math.json", "language": "csharp", "tagPrefix": "Math_" },
+    { "id": "track7", "short": "트랙7: CS 기초", "file": "./data/track7_cs.json", "language": "csharp", "tagPrefix": "CS_" },
+    { "id": "track8", "short": "트랙8: 네트워크", "file": "./data/track8_network.json", "language": "csharp", "tagPrefix": "Net_" },
+    { "id": "track9", "short": "트랙9: 그래픽스", "file": "./data/track9_graphics.json", "language": "csharp", "tagPrefix": "Gfx_" },
+    { "id": "track10", "short": "트랙10: 디자인 패턴", "file": "./data/track10_patterns.json", "language": "csharp", "tagPrefix": "Pattern_" }
+  ]
+}

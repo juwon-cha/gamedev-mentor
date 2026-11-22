@@ -6,9 +6,9 @@
 
 ## 기능
 
-- 트랙 4개: C# 핵심 & 메모리/GC, C++ 기초 & 메모리 모델, 게임 알고리즘·자료구조, Unity 엔진 & 아키텍처
+- 트랙 10개: C#·GC, C++·메모리, 게임 알고리즘, Unity·아키텍처, 자료구조·알고리즘 기초, 게임 수학, CS 기초(OS·동시성), 네트워크·멀티플레이, 그래픽스·렌더링, 디자인 패턴
 - 모드 4개: 과외·개념, 압박 면접(꼬리질문 3단계), 디버깅, 실전 구현
-- 트랙·모드·상태·태그 필터, 검색, 랜덤 문제 뽑기
+- 트랙·모드·난이도·상태·태그 필터, 검색, 랜덤 문제 뽑기
 - 단계별 열기: 힌트 1 → 2 → 3 → 정답 해설 & 공식 채점표(확인 후 공개), 꼬리질문은 의도와 모범 답변을 따로 숨김
 - 실행 채점: 순수 C#/C++ 문제는 숨은 테스트를 붙여 Compiler Explorer에서 실제로 컴파일·실행하고 테스트별 통과/실패를 표시 (Unity API 문제는 대상 아님)
 - 공식 채점표: 100점 만점 자가 채점, 치명적 감점, 등급 자동 산출(Pass 85+ / Borderline 60~84 / Retry ~59)
@@ -32,10 +32,11 @@ js/judge.js          실행 채점(숨은 테스트 실행, 결과 파싱)
 js/storage.js        학습 진도·오답노트 저장, JSON 백업/복원
 js/promptBuilder.js  AI 리뷰 프롬프트, 새 문제 JSON 프롬프트
 data/sources.json    검증 자료 레지스트리
+data/tracks.json     트랙 목록
 data/track1_csharp.json
 data/track2_cpp.json
 data/track3_algo.json
-data/track4_unity.json
+data/track4_unity.json … track10_patterns.json
 tools/check-tests.js 숨은 테스트 검증 스크립트 (Node 18+)
 manifest.json, sw.js, icons/
 ```
@@ -60,10 +61,10 @@ node -e "JSON.parse(require('fs').readFileSync('data/track1_csharp.json','utf8')
 | 필드 | 설명 |
 |---|---|
 | `id` | 고유 ID. 학습 기록의 키이므로 한 번 정하면 바꾸지 않습니다 |
-| `track` | `track1` ~ `track4` |
+| `track` | `data/tracks.json`에 등록된 트랙 id |
 | `mode` | `tutoring` / `interview` / `debugging` / `implementation` |
-| `difficulty` | `Junior` / `Mid` |
-| `title`, `tags` | 제목, 취약 태그 배열 (`CSharp_`, `Cpp_`, `Algo_`, `Unity_` 접두사) |
+| `difficulty` | `Easy` / `Medium` / `Hard` (화면에는 쉬움 / 보통 / 어려움) |
+| `title`, `tags` | 제목, 취약 태그 배열 (트랙별 접두사는 `data/tracks.json`의 `tagPrefix`) |
 | `language` | `csharp` / `cpp` / `none` |
 | `scenario` | 게임 실무 배경 (마크다운). 면접 모드는 메인 질문 포함 |
 | `constraints`, `edgeCases` | 제약 조건, 엣지 케이스 체크리스트 |
@@ -76,6 +77,7 @@ node -e "JSON.parse(require('fs').readFileSync('data/track1_csharp.json','utf8')
 | `rubric.criteria` | `{id, category, description, points, sourceId}` 배열. 배점 합계 100 (정확성 35 / 메모리·성능 30 / 엔진·언어 규약 20 / 아키텍처·가독성 15) |
 | `rubric.criticalDeductions` | `{id, description, penalty, sourceId}` 배열. 실무에서 바로 반려되는 실수, 음수 점수 |
 | `tests` | 실행 채점용 숨은 테스트 또는 `null`. 아래 참고 |
+| `verified` | `{level, date, note}`. 독립 검수를 통과한 문제에 붙음. `executed`(실행 검증) / `reviewed`(문서 대조) |
 | `nextMission` | 다음 복습 미션 |
 
 ### 실행 채점용 테스트 (`tests`)
@@ -101,7 +103,7 @@ node tools/check-tests.js data/track3_algo.json
 
 새 출처는 `data/sources.json`에 추가하거나, 트랙 파일 최상위의 `extraSources` 배열에 `{id, title, url, summary}`로 선언합니다.
 
-새 트랙 파일을 만들면 `js/app.js`의 `TRACKS`와 `sw.js`의 `SHELL`에 한 줄씩 추가합니다.
+새 트랙은 문제 파일을 `data/`에 두고 `data/tracks.json`에 한 줄 추가합니다. 문제 파일은 처음 열 때 자동으로 오프라인 캐시에 들어갑니다.
 
 ## 데이터 보관
 

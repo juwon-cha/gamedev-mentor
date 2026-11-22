@@ -151,6 +151,8 @@ textarea { resize: vertical; line-height: 1.55; display: block; }
 .badge.mode-debugging, .badge.mode-implementation { background: var(--accent-soft); color: var(--accent); }
 .badge.mode-interview { background: var(--danger-soft); color: var(--danger); }
 .badge.mode-tutoring { background: var(--ok-soft); color: var(--ok); }
+.badge.diff-Easy { background: var(--ok-soft); color: var(--ok); }
+.badge.diff-Hard { background: var(--danger-soft); color: var(--danger); }
 .badge.st-review { background: var(--hint-soft); color: var(--hint); }
 .badge.st-done { background: var(--ok-soft); color: var(--ok); }
 .tag { font-family: var(--mono); font-size: .78rem; background: var(--hint-soft); color: var(--hint); border: 0; border-radius: 6px; padding: 3px 8px; cursor: pointer; }
