@@ -481,6 +481,93 @@
         "track8"
       ],
       "summary": "Windows·Xbox 게임 개발 플랫폼 지침."
+    },
+    {
+      "id": "cmu-cslearn",
+      "title": "CMU CS Learn — 무료 강의 영상 목록",
+      "url": "https://www.cs.cmu.edu/learn/",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track7",
+        "track10"
+      ],
+      "summary": "Carnegie Mellon 컴퓨터과학대학이 YouTube에 공개한 정규 강의 영상 목록(2026-11 기준 8과목, 2027년 1월 5과목 추가 예정). 영상은 학습 추천용이며, 문제의 사실 근거로는 강의 슬라이드와 공식 문서를 씁니다."
+    },
+    {
+      "id": "cmu-17214-f2026",
+      "title": "CMU 17-214/514 Agentic Software Development (Fall 2026) — 강의 슬라이드",
+      "url": "https://cmu-17-214.github.io/f2026/",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track7",
+        "track10"
+      ],
+      "summary": "테스트 설계와 테스트 가능성, 변경을 위한 설계, 모듈성과 안티패턴, 리팩터링, 디자인 패턴, API 설계, 동시성, 소프트웨어 아키텍처, 코딩 에이전트 감독과 생성된 코드 검증. 슬라이드 PDF는 GitHub CMU-17-214/f2026에 공개(라이선스 표시 없음: 링크와 요약 인용만)."
+    },
+    {
+      "id": "cmu-yt-17214",
+      "title": "CMU 17-214 Principles of Software Construction (Spring 2026) — 강의 영상",
+      "url": "https://www.youtube.com/playlist?list=PLBDTyW_Uan_k",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track10"
+      ],
+      "summary": "학부 소프트웨어 설계 강의(Hammad Ahmad) 영상 재생목록(CS Learn 공개). 학습 추천용."
+    },
+    {
+      "id": "cmu-yt-17635",
+      "title": "CMU 17-635 Software Architectures (Spring 2026) — 강의 영상",
+      "url": "https://www.youtube.com/playlist?list=PLBXWgYnejeLU",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track8",
+        "track10"
+      ],
+      "summary": "소프트웨어 아키텍처 대학원 강의 영상 재생목록(CS Learn 공개). 시스템 설계 학습 추천용."
+    },
+    {
+      "id": "cmu-yt-17643",
+      "title": "CMU 17-643 Quality Management (Spring 2026) — 강의 영상",
+      "url": "https://www.youtube.com/playlist?list=PLBAcFaUDLxMA",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track10"
+      ],
+      "summary": "소프트웨어 품질 관리 대학원 강의 영상 재생목록(CS Learn 공개). 테스트·리뷰 학습 추천용."
+    },
+    {
+      "id": "cmu-15418",
+      "title": "CMU 15-418/618 Parallel Computer Architecture and Programming (Fall 2026) — 강의 슬라이드",
+      "url": "https://www.cs.cmu.edu/~418/",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track2",
+        "track7",
+        "track9"
+      ],
+      "summary": "병렬성이 필요한 이유, 명령어 수준 병렬성, 멀티코어·SIMD·하드웨어 멀티스레딩, CUDA/GPU 프로그래밍, 성능 최적화, 캐시 일관성, 동기화와 락 프리, 메모리 일관성 모델. 강의 일정 페이지에 슬라이드 PDF 공개."
+    },
+    {
+      "id": "cmu-15362",
+      "title": "CMU 15-362 Computer Graphics (Fall 2026) — 강의 슬라이드",
+      "url": "https://15362.courses.cs.cmu.edu/fall2026/",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track6",
+        "track9"
+      ],
+      "summary": "그래픽스 파이프라인, 좌표 공간과 변환, 원근 투영과 래스터화, 투명도와 텍스처링, 그래픽스 API 구조, 공간 자료구조, 색과 복사 측정, BRDF, 애니메이션·스플라인·운동학, 시뮬레이션, 비디오 게임 그래픽스. 강의별 슬라이드 PDF 공개."
+    },
+    {
+      "id": "cmu-harchol-prob",
+      "title": "Mor Harchol-Balter — Introduction to Probability for Computing (Cambridge University Press, 2024)",
+      "url": "https://www.cs.cmu.edu/~harchol/Probability/book.html",
+      "kind": "대학 강의 (Carnegie Mellon)",
+      "tracks": [
+        "track3",
+        "track6"
+      ],
+      "summary": "CMU 15-259 Probability and Computing 담당 교수의 교재. 분포 중심으로 컴퓨팅에 쓰이는 확률을 다룸. 책 본문은 유료이고 일부 장의 슬라이드만 무료. 15-259 강의 영상은 2027년 1월 CS Learn 공개 예정."
     }
   ]
 }
