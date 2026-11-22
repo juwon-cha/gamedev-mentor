@@ -1,0 +1,483 @@
+{
+  "track": "track3",
+  "trackName": "트랙 3 · 게임 알고리즘·자료구조",
+  "extraSources": [
+    {
+      "id": "gpp-spatial-partition",
+      "title": "Game Programming Patterns — Spatial Partition",
+      "url": "https://gameprogrammingpatterns.com/spatial-partition.html",
+      "summary": "고정 격자 셀에 유닛을 이중 연결 리스트로 담아 근접 질의를 줄이는 공간 분할 패턴 설명."
+    },
+    {
+      "id": "gpp-state",
+      "title": "Game Programming Patterns — State",
+      "url": "https://gameprogrammingpatterns.com/state.html",
+      "summary": "FSM, 계층형 상태 기계(HFSM), 푸시다운 오토마타와 그 한계를 다루는 State 장."
+    },
+    {
+      "id": "wiki-binary-heap",
+      "title": "Wikipedia — Binary heap",
+      "url": "https://en.wikipedia.org/wiki/Binary_heap",
+      "summary": "이진 힙의 배열 표현(0-based: 부모 (i-1)/2, 자식 2i+1·2i+2)과 삽입·추출 연산."
+    },
+    {
+      "id": "ms-learn-priorityqueue",
+      "title": "Microsoft Learn — PriorityQueue<TElement,TPriority> Class",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.priorityqueue-2",
+      "summary": ".NET 6+ 내장 우선순위 큐(4진 최소 힙). 같은 우선순위에 대한 FIFO 순서를 보장하지 않는다고 명시."
+    },
+    {
+      "id": "wiki-topological-sorting",
+      "title": "Wikipedia — Topological sorting",
+      "url": "https://en.wikipedia.org/wiki/Topological_sorting",
+      "summary": "Kahn 알고리즘과 DFS(임시/영구 표시) 기반 위상 정렬, O(V+E) 복잡도와 사이클 검출."
+    }
+  ],
+  "problems": [
+    {
+      "id": "t3-impl-aoe-uniform-grid",
+      "track": "track3",
+      "mode": "implementation",
+      "difficulty": "Junior",
+      "title": "광역 스킬 판정: Uniform Grid로 원 범위 안의 몬스터 찾기",
+      "tags": [
+        "Algo_SpatialGrid"
+      ],
+      "language": "csharp",
+      "scenario": "탑다운 액션 RPG의 던전 방 하나에 몬스터가 최대 **500마리** 등장합니다. 플레이어와 몬스터가 원형 광역 스킬(반지름 2~12m)을 쓸 때마다 \"이 원 안에 있는 몬스터 목록\"이 필요하고, 몬스터끼리 겹치지 않게 밀어내는 로직까지 같은 질의를 쓰기 시작하면서 **프레임당 수백 번** 호출되고 있습니다.\n\n방의 중심이 월드 원점이라 좌표는 `-64 ~ 64` 범위이고 **음수 좌표가 흔합니다**. 넉백으로 벽 밖(월드 범위 밖)까지 밀려난 몬스터도 판정에서 빠지면 안 됩니다.\n\n**할 일:** 균일 격자(Uniform Grid) 기반의 `MonsterGrid`를 완성하세요.\n\n- `Insert / Update / Remove`: 몬스터 등록, 이동 반영, 제거\n- `QueryCircle(cx, cy, radius, results)`: 원 안(경계 **포함**)의 몬스터 id를 호출자가 넘긴 `results` 버퍼에 담고 개수를 반환\n\nUnityEngine 없이 순수 C#으로 작성합니다(`dotnet`으로 컴파일 가능해야 함). 몬스터 id는 `0 .. maxMonsters-1` 범위의 정수입니다.",
+      "constraints": [
+        "Insert / Update / Remove 는 O(1) 이어야 한다 (셀 안을 선형 탐색해서 지우지 않는다).",
+        "QueryCircle 은 원의 바운딩 박스가 걸치는 셀만 순회한다: 걸치는 셀 수 C, 그 셀들에 든 몬스터 수 K 에 대해 O(C + K).",
+        "QueryCircle 안에서 힙 할당 금지 (new, LINQ, 클로저 금지). 결과는 호출자가 재사용하는 List<int> 에 담는다. 버퍼 Capacity 는 호출자가 maxMonsters 이상으로 확보한다고 가정한다.",
+        "셀 단위 후보 수집(broad phase) 뒤에 반드시 제곱 거리로 정확한 원 판정(narrow phase)을 한다. Sqrt 는 쓰지 않는다.",
+        "거리 == 반지름인 몬스터는 맞은 것으로 처리한다 (<=).",
+        "월드 범위 밖 좌표가 들어와도 예외 없이 동작하고, 그 몬스터도 질의에 잡혀야 한다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 몬스터 id는 0 .. maxMonsters-1 범위의 정수라고 가정한다.\npublic sealed class MonsterGrid\n{\n    // 월드 범위 [minX, maxX] x [minY, maxY] 를 cellSize 크기의 셀로 나눈다.\n    public MonsterGrid(float minX, float minY, float maxX, float maxY,\n                       float cellSize, int maxMonsters)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 새 몬스터를 등록한다. 이미 등록된 id면 예외.\n    public void Insert(int id, float x, float y)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 이동한 몬스터의 위치를 갱신한다. 셀이 바뀌면 소속 셀도 옮긴다.\n    public void Update(int id, float x, float y)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 몬스터를 제거한다. 등록되어 있지 않으면 false.\n    public bool Remove(int id)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 중심 (cx, cy), 반지름 radius 인 원 안(경계 포함)의 몬스터 id를\n    // results 에 담고 개수를 반환한다. results 는 호출자가 재사용하는 버퍼이며\n    // 이 함수가 먼저 Clear 한다. 함수 안에서 new 를 하면 안 된다.\n    public int QueryCircle(float cx, float cy, float radius, List<int> results)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "음수 좌표: (int)(-0.5f) 는 0 이지만 MathF.Floor(-0.5f) 는 -1 이다. 좌표 -0.5 는 어느 셀에 속해야 하는가?",
+        "경계 위의 몬스터: 중심 (0,0), 반지름 5 일 때 (3,4) 와 (-3,-4) 는 포함, (3.0001, 4) 는 제외.",
+        "원이 셀 여러 개에 걸치는 경우(반지름 > 셀 크기)와, 반지름이 월드 전체보다 큰 경우.",
+        "몬스터가 셀 경계를 넘어 이동(Update)한 직후: 이전 셀에 남아 있거나 두 셀에 중복 등록되면 안 된다.",
+        "월드 범위 밖 좌표((500, 500) 등)와 반지름 0 / 음수 반지름."
+      ],
+      "hints": [
+        "원점 근처부터 의심해 보세요. cellSize 가 4 일 때 몬스터 (-0.5, -0.5) 는 수학적으로 [-4, 0) 구간의 셀에 속합니다. 그런데 `(int)(-0.5f / 4f)` 는 몇이 나오나요? 그리고 중심 (0,0), 반지름 5 인 원에 (3,4) 가 포함되려면 비교 연산자가 무엇이어야 할까요?",
+        "좌표 → 셀 변환을 함수 하나(예: CellX / CellY)로 모으고 Insert, Update, QueryCircle 이 전부 그 함수만 쓰게 하세요. 범위 밖 좌표 처리도 그 함수 안에서 끝냅니다. QueryCircle 은 (cx - r, cy - r) 와 (cx + r, cy + r) 두 점의 셀 좌표를 구해 그 사각형 범위의 셀만 돌면 됩니다.",
+        "구조만 적으면 다음과 같습니다. 핵심 식은 직접 채우세요.\n```\nCellX(x):\n    c = (x 를 셀 좌표로 내림한 값) - (그리드 0번 열의 셀 좌표)\n    c 를 [0, cols-1] 로 제한   // int 로 바꾸기 전에\n\nUpdate(id, x, y):\n    newCell = CellIndex(x, y)\n    if newCell == 기존 셀: 좌표만 갱신하고 끝\n    기존 셀 목록에서 O(1) 로 떼어내고 새 셀 목록에 O(1) 로 붙인다\n\nQueryCircle(cx, cy, r, results):\n    results.Clear()\n    for 셀 in [CellY(cy-r)..CellY(cy+r)] x [CellX(cx-r)..CellX(cx+r)]:\n        for 그 셀의 각 몬스터:\n            if (정확한 원 판정) results.Add(id)\n```\nO(1) 로 떼어내려면 셀마다 어떤 형태로 몬스터를 연결해 둬야 할지 생각해 보세요."
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\npublic sealed class MonsterGrid\n{\n    private const int None = -1;\n\n    private readonly float _invCell;\n    private readonly int _originCellX, _originCellY; // 0번 열/행의 월드 기준 셀 좌표\n    private readonly int _cols, _rows;\n\n    private readonly int[] _cellHead; // 각 셀의 첫 몬스터 id (없으면 None)\n    private readonly int[] _next;     // 몬스터 id로 인덱싱하는 침습형 이중 연결 리스트\n    private readonly int[] _prev;\n    private readonly int[] _cellOf;   // 몬스터가 속한 셀 인덱스 (미등록이면 None)\n    private readonly float[] _x;\n    private readonly float[] _y;\n\n    public MonsterGrid(float minX, float minY, float maxX, float maxY,\n                       float cellSize, int maxMonsters)\n    {\n        if (!(cellSize > 0f)) throw new ArgumentOutOfRangeException(nameof(cellSize));\n        if (!(maxX > minX) || !(maxY > minY)) throw new ArgumentException(\"empty world bounds\");\n        if (maxMonsters < 0) throw new ArgumentOutOfRangeException(nameof(maxMonsters));\n\n        _invCell = 1f / cellSize;\n        _originCellX = (int)MathF.Floor(minX * _invCell);\n        _originCellY = (int)MathF.Floor(minY * _invCell);\n        _cols = (int)MathF.Floor(maxX * _invCell) - _originCellX + 1;\n        _rows = (int)MathF.Floor(maxY * _invCell) - _originCellY + 1;\n\n        _cellHead = new int[_cols * _rows];\n        Array.Fill(_cellHead, None);\n        _next = new int[maxMonsters];\n        _prev = new int[maxMonsters];\n        _cellOf = new int[maxMonsters];\n        Array.Fill(_cellOf, None);\n        _x = new float[maxMonsters];\n        _y = new float[maxMonsters];\n    }\n\n    public void Insert(int id, float x, float y)\n    {\n        if (_cellOf[id] != None) throw new InvalidOperationException(\"id already inserted\");\n        _x[id] = x;\n        _y[id] = y;\n        Link(id, CellIndex(x, y));\n    }\n\n    public void Update(int id, float x, float y)\n    {\n        int oldCell = _cellOf[id];\n        if (oldCell == None) throw new InvalidOperationException(\"id not inserted\");\n        _x[id] = x;\n        _y[id] = y;\n        int newCell = CellIndex(x, y);\n        if (newCell == oldCell) return; // 대부분의 이동은 같은 셀 안에서 끝난다\n        Unlink(id);\n        Link(id, newCell);\n    }\n\n    public bool Remove(int id)\n    {\n        if (_cellOf[id] == None) return false;\n        Unlink(id);\n        return true;\n    }\n\n    public int QueryCircle(float cx, float cy, float radius, List<int> results)\n    {\n        results.Clear();\n        if (!(radius >= 0f)) return 0; // 음수 또는 NaN 반지름\n\n        // Broad phase: 원의 바운딩 박스가 걸치는 셀 범위 (그리드 범위로 클램프됨)\n        int x0 = CellX(cx - radius), x1 = CellX(cx + radius);\n        int y0 = CellY(cy - radius), y1 = CellY(cy + radius);\n        float r2 = radius * radius;\n\n        for (int gy = y0; gy <= y1; gy++)\n        {\n            int row = gy * _cols;\n            for (int gx = x0; gx <= x1; gx++)\n            {\n                for (int id = _cellHead[row + gx]; id != None; id = _next[id])\n                {\n                    // Narrow phase: 제곱 거리로 정확히 판정 (경계 포함)\n                    float dx = _x[id] - cx;\n                    float dy = _y[id] - cy;\n                    if (dx * dx + dy * dy <= r2) results.Add(id);\n                }\n            }\n        }\n        return results.Count;\n    }\n\n    // (int) 캐스트가 아니라 Floor: (int)(-0.5f) == 0 이지만 -0.5 는 셀 -1 에 속한다.\n    // float 상태에서 먼저 클램프해 아주 먼 좌표나 NaN 이 int 변환에서 넘치지 않게 한다.\n    private int CellX(float x)\n    {\n        float c = MathF.Floor(x * _invCell) - _originCellX;\n        if (!(c > 0f)) return 0;           // 그리드 왼쪽 밖(또는 NaN) -> 가장자리 열\n        if (c >= _cols) return _cols - 1;  // 그리드 오른쪽 밖 -> 가장자리 열\n        return (int)c;\n    }\n\n    private int CellY(float y)\n    {\n        float c = MathF.Floor(y * _invCell) - _originCellY;\n        if (!(c > 0f)) return 0;\n        if (c >= _rows) return _rows - 1;\n        return (int)c;\n    }\n\n    private int CellIndex(float x, float y) => CellY(y) * _cols + CellX(x);\n\n    private void Link(int id, int cell)\n    {\n        int head = _cellHead[cell];\n        _prev[id] = None;\n        _next[id] = head;\n        if (head != None) _prev[head] = id;\n        _cellHead[cell] = id;\n        _cellOf[id] = cell;\n    }\n\n    private void Unlink(int id)\n    {\n        int p = _prev[id], n = _next[id];\n        if (p != None) _next[p] = n;\n        else _cellHead[_cellOf[id]] = n;\n        if (n != None) _prev[n] = p;\n        _cellOf[id] = None;\n    }\n}\n",
+      "explanation": "**구조.** 셀마다 `List<int>` 를 두지 않고 `_cellHead[cell]` 과 `_next / _prev[id]` 배열로 침습형 이중 연결 리스트를 만들었습니다. Game Programming Patterns 의 Spatial Partition 장이 쓰는 \"셀 = 유닛 연결 리스트\" 구조를 인덱스 배열로 옮긴 것입니다. Insert / Remove / Update 는 O(1) 이고 생성자 이후에는 할당이 없습니다. `QueryCircle` 은 걸치는 셀 수 C 와 그 안의 후보 수 K 에 대해 O(C + K) 이며, `results.Add` 는 Capacity 가 충분하면 할당하지 않습니다.\n\n**왜 Floor 인가.** `(int)` 캐스트는 0 쪽으로 자르므로 `(-s, s)` 구간 전체가 셀 0 이 됩니다. 삽입과 질의가 같은 식을 쓰면 변환이 단조 함수라 결과 자체는 우연히 맞지만, 원점을 지나는 행·열만 폭이 두 배가 되고 \"셀 i 는 `[i·s, (i+1)·s)` 를 덮는다\"는 가정에 기대는 코드(셀-원 컬링, 디버그 드로잉, 이웃 셀 계산)가 전부 틀어집니다. 범위 밖 좌표는 가장자리 셀로 클램프합니다. 뒤에 정확 판정이 있으므로 클램프는 결과를 바꾸지 않고 가장자리 셀이 조금 붐빌 뿐입니다. 클램프를 float 상태에서 먼저 하는 이유는, 범위를 벗어난 float → int 변환 결과가 C# 에서 정해져 있지 않기 때문입니다.\n\n**셀 크기.** 한 질의가 축마다 걸치는 셀은 최대 `ceil(2r/s) + 1` 칸입니다. `s = 2r` 이면 최대 2×2 = 4셀, `s = r` 이면 3×3 = 9셀입니다. 셀이 너무 작으면 빈 셀 순회와 셀 간 이동(재연결)이 늘고, 너무 크면 한 셀에 몬스터가 몰려 브루트포스와 같아집니다. 가장 자주 쓰는 질의의 반지름~지름 정도에서 시작해 프로파일러로 조정하세요.\n\n**브루트포스와 비교.** 500마리에 대한 질의 한 번은 거리 계산 500번이고, 연속 배열 순회라 캐시에도 유리합니다. 프레임당 질의가 몇 번뿐이면 그리드는 과설계입니다. 그리드가 이득인 것은 (질의 수 × n) 이 커질 때입니다. 500마리가 각자 주변을 질의하면 프레임당 25만 번의 거리 계산이 되는데, 그리드는 이를 \"질의 수 × 주변 후보 수\"로 줄입니다. 다만 몬스터가 한 점에 뭉치면 최악은 여전히 O(n) 입니다.\n\n**경계 판정.** `<=` 로 경계를 포함하지만 float 연산이므로 반올림 오차 수준(1ulp)의 차이까지 보장하지는 않습니다. 리플레이 결정론이 필요하면 고정소수점 좌표를 검토하세요.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "음수 좌표와 범위 밖 좌표를 섞은 랜덤 데이터에서 QueryCircle 결과(id 집합)가 전수 검사(브루트포스) 결과와 항상 같다.",
+            "points": 15,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "셀 후보 수집 뒤 제곱 거리 `dx*dx + dy*dy <= r*r` 로 판정한다: 중심 (0,0), 반지름 5 에서 (3,4) 는 포함, (3.0001, 4) 는 제외된다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Update 로 셀을 넘어간 몬스터가 새 위치 질의에서만 나오고, Remove 한 몬스터는 어떤 질의에도 나오지 않는다.",
+            "points": 10,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "QueryCircle 안에 new, LINQ, 람다 캡처가 없고 호출자의 버퍼를 Clear 후 재사용한다 (반복 호출 시 할당 0바이트).",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Insert / Update / Remove 가 O(1) 이다: 셀 내부 선형 탐색(List.Remove 등)이 없고, 같은 셀 안의 이동은 재연결을 생략한다.",
+            "points": 10,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "QueryCircle 이 원의 바운딩 박스가 걸치는 셀 범위만 순회한다 (전체 셀이나 전체 몬스터를 돌지 않는다).",
+            "points": 5,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "셀 좌표를 MathF.Floor(또는 Math.Floor)로 계산한다. `(int)(x / cellSize)` 같은 절단 캐스트로 셀을 구하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "범위 밖·매우 큰 좌표가 IndexOutOfRangeException 없이 가장자리 셀로 클램프되고, 클램프가 int 변환보다 먼저 이뤄진다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "좌표 → 셀 변환이 한 함수에만 있고 Insert / Update / QueryCircle 이 모두 그 함수를 공유한다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "broad phase 와 narrow phase 가 코드에서 구분되어 읽히고, 중복 Insert·미등록 id 의 Update/Remove 동작이 예외나 반환값으로 명시되어 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "셀에 들어 있다는 이유만으로 맞은 것으로 처리한다 (정확한 원 판정 누락): 원 밖의 몬스터가 피격된다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "QueryCircle 을 호출할 때마다 새 List 나 배열을 만들어 반환한다: 프레임당 수백 번 호출되는 경로에서 GC 스파이크를 만든다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "범위 밖 좌표에서 예외가 나거나 그 몬스터가 그리드에서 사라져 질의에 잡히지 않는다.",
+            "penalty": -20,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "gh-gpp",
+        "gpp-spatial-partition"
+      ],
+      "nextMission": "같은 인터페이스에 \"셀 AABB 와 원이 겹치지 않으면 그 셀을 건너뛰는\" 셀-원 컬링을 추가하고, 반지름 2 / 8 / 32 에서 브루트포스 · 그리드 · 컬링 그리드의 질의 시간을 Stopwatch 로 비교해 보세요. (가장자리 셀은 범위 밖 몬스터를 품고 있으므로 컬링하면 안 된다는 점에 주의)",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    const int Max = 500;\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    sealed class World\n    {\n        public MonsterGrid G;\n        public float[] X = new float[Max], Y = new float[Max];\n        public bool[] Alive = new bool[Max];\n        public System.Collections.Generic.List<int> Buf = new System.Collections.Generic.List<int>(Max + 16);\n        public World(float cell) { G = new MonsterGrid(-64f, -64f, 64f, 64f, cell, Max); }\n        public void Put(int id, float x, float y)\n        {\n            if (Alive[id]) G.Update(id, x, y); else G.Insert(id, x, y);\n            X[id] = x; Y[id] = y; Alive[id] = true;\n        }\n        // 전수 검사와 비교. 같으면 null, 다르면 사유.\n        public string Query(float cx, float cy, float r)\n        {\n            Buf.Clear();\n            int n = G.QueryCircle(cx, cy, r, Buf);\n            if (n != Buf.Count) return \"반환값(\" + n + \")과 results.Count(\" + Buf.Count + \")가 다름\";\n            var exp = new System.Collections.Generic.List<int>();\n            for (int i = 0; i < Max; i++)\n            {\n                if (!Alive[i]) continue;\n                float dx = X[i] - cx, dy = Y[i] - cy;\n                if (dx * dx + dy * dy <= r * r) exp.Add(i);\n            }\n            Buf.Sort();\n            bool same = exp.Count == Buf.Count;\n            for (int i = 0; same && i < exp.Count; i++) same = exp[i] == Buf[i];\n            if (same) return null;\n            return \"중심 (\" + cx + \", \" + cy + \") 반지름 \" + r + \": 기대 [\" + string.Join(\",\", exp) + \"], 결과 [\" + string.Join(\",\", Buf) + \"]\";\n        }\n    }\n\n    public static void Main()\n    {\n        Run(\"negative-coords\", () =>\n        {\n            var w = new World(4f);\n            w.Put(0, -0.5f, -0.5f); w.Put(1, -3.9f, -0.1f); w.Put(2, -4.1f, -7.9f);\n            w.Put(3, 0.5f, 0.5f); w.Put(4, -63.5f, -63.5f); w.Put(5, -8f, -8f);\n            return w.Query(-2f, -2f, 2.5f) ?? w.Query(-0.5f, -0.5f, 0.25f) ?? w.Query(-5f, -7f, 3.5f)\n                ?? w.Query(-63f, -63f, 1f) ?? w.Query(0.25f, 0.25f, 1.5f);\n        });\n\n        Run(\"radius-boundary\", () =>\n        {\n            var w = new World(4f);\n            w.Put(0, 3f, 4f); w.Put(1, -3f, -4f); w.Put(2, 3.0001f, 4f); w.Put(3, 0f, 5f); w.Put(4, 5.5f, 0f);\n            string e = w.Query(0f, 0f, 5f);\n            if (e != null) return \"거리 == 반지름은 포함, 조금이라도 넘으면 제외여야 함. \" + e;\n            return w.Query(3f, 4f, 0f);\n        });\n\n        Run(\"multi-cell-circle\", () =>\n        {\n            var w = new World(4f);\n            int id = 0;\n            for (int gy = -9; gy <= 9; gy++)\n                for (int gx = -9; gx <= 9; gx++)\n                    w.Put(id++, gx * 6.5f, gy * 6.5f);\n            return w.Query(1f, -2f, 20f) ?? w.Query(-30f, 30f, 37.5f) ?? w.Query(0f, 0f, 100000f) ?? w.Query(60f, 60f, 9f);\n        });\n\n        Run(\"move-across-cells\", () =>\n        {\n            var w = new World(4f);\n            w.Put(0, -0.5f, -0.5f); w.Put(1, 1f, 1f);\n            w.Put(0, -4.5f, -0.5f);\n            string e = w.Query(-4.5f, -0.5f, 0.1f) ?? w.Query(-0.5f, -0.5f, 0.1f) ?? w.Query(0f, 0f, 10f);\n            if (e != null) return \"Update 로 셀을 넘어간 뒤 결과가 틀림. \" + e;\n            w.Put(0, -4.4f, -0.6f);\n            w.Put(0, 30f, -30f);\n            e = w.Query(30f, -30f, 1f) ?? w.Query(0f, 0f, 10f);\n            if (e != null) return \"여러 번 이동한 뒤 결과가 틀림. \" + e;\n            if (!w.G.Remove(1)) return \"등록된 몬스터의 Remove 가 false 를 반환\";\n            w.Alive[1] = false;\n            if (w.G.Remove(1)) return \"이미 제거한 몬스터의 Remove 가 true 를 반환\";\n            return w.Query(0f, 0f, 100f);\n        });\n\n        Run(\"out-of-bounds\", () =>\n        {\n            var w = new World(4f);\n            w.Put(0, 500f, 500f); w.Put(1, -500f, 0f); w.Put(2, 0f, 0f); w.Put(3, 1e15f, -1e15f); w.Put(4, 64f, 64f);\n            return w.Query(499f, 499f, 2f) ?? w.Query(-498f, 0f, 2.5f) ?? w.Query(0f, 0f, 1000f)\n                ?? w.Query(63f, 63f, 2f) ?? w.Query(1e15f, -1e15f, 1f);\n        });\n\n        Run(\"buffer-reuse\", () =>\n        {\n            var w = new World(4f);\n            w.Put(0, 1f, 1f); w.Put(1, 2f, 2f);\n            var buf = new System.Collections.Generic.List<int>(Max + 16);\n            buf.Add(777); buf.Add(888);\n            int n = w.G.QueryCircle(0f, 0f, 5f, buf);\n            if (n != 2 || buf.Count != 2 || buf.Contains(777) || buf.Contains(888))\n                return \"이전 호출의 내용이 results 에 남아 있음 (먼저 Clear 해야 함)\";\n            n = w.G.QueryCircle(50f, 50f, 1f, buf);\n            if (n != 0 || buf.Count != 0) return \"빈 결과일 때 results 가 비워지지 않음\";\n            return null;\n        });\n\n        Run(\"no-alloc-query\", () =>\n        {\n            var w = new World(4f);\n            var rng = new System.Random(42);\n            for (int i = 0; i < Max; i++) w.Put(i, (float)(rng.NextDouble() * 128 - 64), (float)(rng.NextDouble() * 128 - 64));\n            var buf = new System.Collections.Generic.List<int>(Max + 16);\n            for (int i = 0; i < 300; i++) w.G.QueryCircle((i % 100) - 50, (i % 77) - 38, 6f, buf);\n            w.G.QueryCircle(0f, 0f, 1000f, buf);\n            long before = System.GC.GetAllocatedBytesForCurrentThread();\n            for (int i = 0; i < 2000; i++) w.G.QueryCircle((i % 100) - 50, (i % 77) - 38, 6f, buf);\n            long bytes = System.GC.GetAllocatedBytesForCurrentThread() - before;\n            return bytes == 0 ? null : \"QueryCircle 2000회 동안 \" + bytes + \"바이트 할당됨 (질의 중 할당 금지)\";\n        });\n\n        Run(\"random-vs-bruteforce\", () =>\n        {\n            var rng = new System.Random(777);\n            float[] cells = { 1f, 3.7f, 8f, 16f };\n            foreach (float cell in cells)\n            {\n                var w = new World(cell);\n                for (int step = 0; step < 1500; step++)\n                {\n                    int id = rng.Next(Max);\n                    int op = rng.Next(100);\n                    if (w.Alive[id] && op < 20) { w.G.Remove(id); w.Alive[id] = false; }\n                    else\n                    {\n                        int k = rng.Next(100);\n                        float x = k < 75 ? (float)(rng.NextDouble() * 128 - 64) : k < 90 ? rng.Next(-70, 71) : (float)(rng.NextDouble() * 600 - 300);\n                        k = rng.Next(100);\n                        float y = k < 75 ? (float)(rng.NextDouble() * 128 - 64) : k < 90 ? rng.Next(-70, 71) : (float)(rng.NextDouble() * 600 - 300);\n                        w.Put(id, x, y);\n                    }\n                    if (step % 3 != 0) continue;\n                    float cx = (float)(rng.NextDouble() * 160 - 80), cy = (float)(rng.NextDouble() * 160 - 80);\n                    int rk = rng.Next(100);\n                    float r = rk < 10 ? 0f : rk < 70 ? (float)(rng.NextDouble() * 12) : rk < 90 ? rng.Next(0, 30) : (float)(rng.NextDouble() * 400);\n                    string e = w.Query(cx, cy, r);\n                    if (e != null) return \"cellSize \" + cell + \", \" + step + \"번째 연산 후: \" + (e.Length > 160 ? e.Substring(0, 160) + \"...\" : e);\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "negative-coords",
+          "radius-boundary",
+          "multi-cell-circle",
+          "move-across-cells",
+          "out-of-bounds",
+          "buffer-reuse",
+          "no-alloc-query",
+          "random-vs-bruteforce"
+        ],
+        "note": "음수 좌표, 반지름 경계, 여러 셀에 걸친 원, 셀 간 이동/제거, 범위 밖 좌표, 버퍼 재사용과 질의 중 무할당, 그리고 무작위 데이터에서 전수 검사와의 일치를 검사합니다. 클래스 이름 MonsterGrid 와 생성자 (minX, minY, maxX, maxY, cellSize, maxMonsters), Insert / Update / Remove(bool 반환) / QueryCircle(cx, cy, radius, List<int>) 시그니처는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t3-debug-minheap-atb-astar",
+      "track": "track3",
+      "mode": "debugging",
+      "difficulty": "Mid",
+      "title": "ATB 턴 큐와 A* open list 가 함께 쓰는 Min-Heap 디버깅",
+      "tags": [
+        "Algo_Heap_ATB",
+        "Algo_Heap_AStar"
+      ],
+      "language": "csharp",
+      "scenario": "턴제 RPG 의 ATB(액션 게이지) 전투입니다. 각 유닛은 \"게이지가 가득 차는 시각\"을 정수 틱 `ReadyTick` 으로 갖고, **ReadyTick 이 가장 작은 유닛**이 행동합니다. 행동한 유닛은 `now + 10000 / speed` 로 다시 Push 됩니다. 대기 중인 유닛에게 헤이스트/슬로우가 걸리면 `Update` 로 ReadyTick 을 바꿉니다.\n\n팀은 직접 만든 `MinHeap` 하나를 두 군데에서 씁니다.\n\n- ATB 턴 큐: `Id` = 유닛, `Priority` = ReadyTick\n- 전술 맵 A* 의 open list: `Id` = 노드, `Priority` = f = g + h (더 싼 경로를 찾으면 `Update` 로 값을 낮춤)\n\n**요구 스펙**\n\n1. Priority 가 작은 항목이 먼저 나온다.\n2. Priority 가 같으면 먼저 Push 된 항목이 먼저 나온다. `Update` 된 항목은 그 시점에 새로 들어온 것으로 취급한다(동률이면 뒤로 간다).\n3. `Update` 는 값이 커지든 작아지든 올바른 순서를 유지한다.\n\nQA 는 \"전투 순서가 가끔 이상하다\"고 보고했고, A* 쪽 담당자는 \"경로 탐색 테스트는 대체로 통과한다\"고 합니다.\n\n**할 일:** 아래 코드에서 버그를 모두 찾아 고치고, 버그마다 수정 전에는 실패하고 수정 후에는 통과하는 최소 재현 입력을 제시하세요.",
+      "constraints": [
+        "Push / Pop 은 O(log n) 을 유지한다. 매번 정렬하거나 최솟값을 선형 탐색하는 방식으로 바꾸지 않는다.",
+        "Update 의 대상 탐색은 O(n) 이어도 되지만(유닛 수십~수백), 값 변경 후 재정렬은 O(log n) 이어야 한다.",
+        "Push / Pop / Update / Count 의 시그니처는 유지한다. HeapEntry 에 필드를 추가하는 것은 허용.",
+        "Priority 는 정수 틱(long)으로 유지한다. float 시간 누적으로 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\npublic struct HeapEntry { public int Id; public long Priority; }\n// Priority 가 가장 작은 항목이 먼저 나온다. 같은 Id 는 동시에 하나만 들어 있다.\npublic sealed class MinHeap\n{\n    private readonly List<HeapEntry> _heap = new List<HeapEntry>();\n    public int Count => _heap.Count;\n    public void Push(int id, long priority)\n    {\n        _heap.Add(new HeapEntry { Id = id, Priority = priority });\n        SiftUp(_heap.Count - 1);\n    }\n\n    public HeapEntry Pop()\n    {\n        if (_heap.Count == 0) throw new InvalidOperationException(\"heap is empty\");\n        HeapEntry top = _heap[0];\n        int last = _heap.Count - 1;\n        _heap[0] = _heap[last];\n        _heap.RemoveAt(last);\n        if (_heap.Count > 1) SiftDown(0);\n        return top;\n    }\n\n    public bool Update(int id, long newPriority)\n    {\n        for (int i = 0; i < _heap.Count; i++)\n        {\n            if (_heap[i].Id != id) continue;\n            _heap[i] = new HeapEntry { Id = id, Priority = newPriority };\n            SiftUp(i);\n            return true;\n        }\n        return false;\n    }\n\n    private static bool Less(HeapEntry a, HeapEntry b) => a.Priority < b.Priority;\n    private void SiftUp(int i)\n    {\n        while (i > 0)\n        {\n            int parent = (i - 1) / 2;\n            if (!Less(_heap[i], _heap[parent])) break;\n            (_heap[i], _heap[parent]) = (_heap[parent], _heap[i]);\n            i = parent;\n        }\n    }\n\n    private void SiftDown(int i)\n    {\n        while (true)\n        {\n            int child = 2 * i + 1;\n            if (child >= _heap.Count || !Less(_heap[child], _heap[i])) break;\n            (_heap[i], _heap[child]) = (_heap[child], _heap[i]);\n            i = child;\n        }\n    }\n}\n",
+      "edgeCases": [
+        "Priority 가 같은 항목이 3개 이상일 때의 Pop 순서.",
+        "Update 로 값이 커지는 경우(슬로우), 작아지는 경우(헤이스트, A* 의 더 싼 경로), 같은 값으로 갱신하는 경우.",
+        "원소가 1~2개 남았을 때의 Pop, 그리고 왼쪽 자식만 있는 노드에서의 SiftDown.",
+        "힙에 없는 Id 를 Update 하면 false 를 반환하고 힙은 그대로여야 한다."
+      ],
+      "hints": [
+        "손으로 배열 상태를 따라가 보세요. (1) A@1, B@3, C@2, D@4 순으로 Push 한 뒤 전부 Pop 하면 어떤 순서로 나오나요? (2) A@10, B@10, C@10 은요? (3) A@10, B@20, C@30 을 넣고 A 에 슬로우를 걸어 Update(A, 40) 한 뒤 Pop 하면 누가 먼저 나오나요?",
+        "세 군데를 보세요. SiftDown 이 한 노드에서 자식을 몇 개 보는지, Less 가 동률일 때 무엇을 반환하며 동률을 가를 정보가 HeapEntry 에 있기는 한지, Update 가 값을 바꾼 뒤 항목을 어느 방향으로 이동시키는지.",
+        "고친 뒤의 뼈대입니다. 빈칸은 직접 채우세요.\n```\nLess(a, b):\n    Priority 가 다르면 그것으로 결정\n    같으면 ____ 로 결정        // 항목마다 유일해야 전순서가 된다\n\nSiftDown(i):\n    loop:\n        left = 2i + 1; 없으면 끝\n        candidate = (left 와 right 중 ____ )   // right 가 범위 안인지 확인\n        candidate 가 i 보다 앞서지 않으면 끝\n        swap; i = candidate\n\nUpdate(id, newPriority):\n    i = id 의 위치\n    값을 바꾼다\n    if (새 값이 이전 값보다 앞선다) ____ else ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// ATB 턴 큐: Id = 유닛, Priority = 게이지가 가득 차는 틱(ReadyTick)\n// A* open list: Id = 노드, Priority = f = g + h\npublic struct HeapEntry\n{\n    public int Id;\n    public long Priority;\n    public long Seq; // Push/Update 순번: Priority 동률일 때의 타이브레이커\n}\n\npublic sealed class MinHeap\n{\n    private readonly List<HeapEntry> _heap = new List<HeapEntry>();\n    private long _nextSeq;\n\n    public int Count => _heap.Count;\n\n    public void Push(int id, long priority)\n    {\n        _heap.Add(new HeapEntry { Id = id, Priority = priority, Seq = _nextSeq++ });\n        SiftUp(_heap.Count - 1);\n    }\n\n    public HeapEntry Pop()\n    {\n        if (_heap.Count == 0) throw new InvalidOperationException(\"heap is empty\");\n        HeapEntry top = _heap[0];\n        int last = _heap.Count - 1;\n        _heap[0] = _heap[last];\n        _heap.RemoveAt(last);\n        if (_heap.Count > 1) SiftDown(0);\n        return top;\n    }\n\n    // 선형 탐색 O(n) + 재정렬 O(log n). 값이 커졌는지 작아졌는지에 따라 방향이 다르다.\n    public bool Update(int id, long newPriority)\n    {\n        for (int i = 0; i < _heap.Count; i++)\n        {\n            if (_heap[i].Id != id) continue;\n            HeapEntry old = _heap[i];\n            HeapEntry updated = new HeapEntry { Id = id, Priority = newPriority, Seq = _nextSeq++ };\n            _heap[i] = updated;\n            if (Less(updated, old)) SiftUp(i);   // 작아졌다 -> 위로\n            else SiftDown(i);                    // 커졌다(또는 동률) -> 아래로\n            return true;\n        }\n        return false;\n    }\n\n    // (Priority, Seq) 사전식 비교. Seq 는 유일하므로 전순서(total order)가 된다.\n    private static bool Less(HeapEntry a, HeapEntry b)\n    {\n        if (a.Priority != b.Priority) return a.Priority < b.Priority;\n        return a.Seq < b.Seq;\n    }\n\n    private void SiftUp(int i)\n    {\n        while (i > 0)\n        {\n            int parent = (i - 1) / 2;\n            if (!Less(_heap[i], _heap[parent])) break;\n            (_heap[i], _heap[parent]) = (_heap[parent], _heap[i]);\n            i = parent;\n        }\n    }\n\n    private void SiftDown(int i)\n    {\n        int n = _heap.Count;\n        while (true)\n        {\n            int left = 2 * i + 1;\n            if (left >= n) break;\n            int right = left + 1;\n            // 두 자식 중 더 작은 쪽과 비교해야 한다.\n            int smallest = (right < n && Less(_heap[right], _heap[left])) ? right : left;\n            if (!Less(_heap[smallest], _heap[i])) break;\n            (_heap[i], _heap[smallest]) = (_heap[smallest], _heap[i]);\n            i = smallest;\n        }\n    }\n}\n",
+      "explanation": "세 버그 모두 아래 입력으로 재현됩니다(표기: `유닛@Priority`). 각 입력은 해당 버그 하나만 있어도 실패하고, 나머지 두 버그만 있을 때는 통과합니다.\n\n**버그 1 — SiftDown 이 왼쪽 자식만 본다.** `A@1, B@3, C@2, D@4` 를 Push 하면 배열은 `[1, 3, 2, 4]` 입니다. Pop 이 1 을 꺼내고 마지막 원소 4 를 루트로 옮기면 `[4, 3, 2]` 인데, 왼쪽 자식 3 하고만 교환해 `[3, 4, 2]` 가 됩니다. 결과는 `A, B, C, D` (정답 `A, C, B, D`). 부모는 **두 자식 중 더 작은 쪽**과 교환해야 힙 조건이 양쪽 모두에서 성립합니다. `right < n` 검사도 필요합니다.\n\n**버그 2 — 동률 타이브레이커가 없다.** 이진 힙은 안정 정렬이 아닙니다. `A@10, B@10, C@10` 에서 A 를 Pop 하면 마지막 원소 C 가 루트로 올라오고, B 가 C 보다 \"작지\" 않으므로 그대로 `A, C, B` 순서가 됩니다. Push 순번 `Seq` 를 넣고 `(Priority, Seq)` 사전식으로 비교하면 전순서가 되어 결과가 결정적입니다. .NET 의 `PriorityQueue<TElement,TPriority>` 도 문서에 동일 우선순위의 FIFO 를 보장하지 않는다고 명시하므로, 내장 큐로 바꿔도 같은 처리가 필요합니다.\n\n**버그 3 — Update 가 위로만 올린다.** `A@10, B@20, C@30` 뒤 `Update(A, 40)` 을 하면 SiftUp 은 루트에서 할 일이 없어 A 가 루트에 남고 `A@40` 이 먼저 나옵니다(정답 `B, C, A`). 값이 **작아지는** 경우는 SiftUp 만으로 맞기 때문에, 값을 낮추기만 하는 A* 쪽 테스트로는 드러나지 않았습니다. 새 값이 이전보다 앞서면 SiftUp, 아니면 SiftDown 을 합니다.\n\n**설계 메모.** Update 의 선형 탐색은 O(n) 입니다. 노드가 수천 개인 A* 라면 Id → 인덱스 맵을 유지해 O(log n) 으로 만들거나, Red Blob Games 의 의사코드처럼 더 싼 경로를 찾을 때 그냥 다시 Push 하고 꺼낼 때 낡은 항목을 건너뛰는 방식을 씁니다. Priority 를 정수 틱으로 두는 것은 float 누적 오차로 동률이 깨지거나 생기는 일을 막기 위해서입니다.\n\n**A* 와의 관계.** Red Blob Games 에 따르면 휴리스틱이 실제 거리를 과대평가하지 않으면 A* 는 최단 경로를 찾습니다. 과대평가하는 휴리스틱은 이 보장을 잃고, 값이 커질수록 Greedy Best-First 에 가까워져 탐색은 줄지만 경로가 최단이 아닐 수 있습니다. 그리고 이 보장은 open list 가 정말로 최소 f 를 꺼낸다는 전제 위에 있으므로, 힙이 틀리면 휴리스틱이 옳아도 경로 품질이 깨집니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "SiftDown 이 두 자식 중 더 작은 쪽과 비교한다: A@1, B@3, C@2, D@4 를 Push 후 전부 Pop 하면 A, C, B, D 순서로 나온다.",
+            "points": 12,
+            "sourceId": "wiki-binary-heap"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "동일 Priority 항목이 삽입 순서대로 나온다: A@10, B@10, C@10 → A, B, C. 비교가 (Priority, 순번) 기준이다.",
+            "points": 12,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Update 가 값이 커질 때는 아래로, 작아질 때는 위로 재정렬한다: A@10, B@20, C@30 뒤 Update(A, 40) → B, C, A.",
+            "points": 11,
+            "sourceId": "redblob-astar"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Push 와 Pop 이 O(log n) 이다: List.Sort 호출이나 최솟값 선형 탐색, RemoveAt(0) 으로 대체하지 않았다.",
+            "points": 15,
+            "sourceId": "wiki-binary-heap"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Update 의 재정렬이 한 방향 sift 한 번(O(log n))으로 끝난다. 전체 힙을 다시 만들거나 정렬하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "HeapEntry 가 struct 로 유지되고 Push / Pop / Update 에 리스트 증가 외의 추가 힙 할당이 없다.",
+            "points": 5,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "0-based 인덱스 식이 정확하다: 부모 (i - 1) / 2, 자식 2i + 1 과 2i + 2, 오른쪽 자식은 범위(right < n) 확인 후 접근한다.",
+            "points": 10,
+            "sourceId": "wiki-binary-heap"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "Priority 와 순번이 정수(long)이고, 타이브레이크에 float 누적 시간이나 float 동등 비교를 쓰지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "비교 규칙이 Less 한 곳에만 있고 SiftUp / SiftDown / Update 가 모두 그것을 통해 비교한다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "버그 3개 각각에 대해 수정 전 실패 · 수정 후 통과하는 최소 재현 입력(또는 테스트)을 제시했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Pop 이나 Update 때마다 전체를 Sort 해서 \"고쳤다\": 순서는 맞아도 힙을 쓰는 이유(O(log n))가 사라지고, List.Sort 는 불안정 정렬이라 동률 문제도 그대로다.",
+            "penalty": -25,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "타이브레이커 없이 \"힙은 넣은 순서를 지킨다\"고 가정하거나, 스펙에 없는 임의 기준(Id 크기 등)으로 동률을 가른다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "d3",
+            "description": "Update 에서 값만 바꾸고 재정렬하지 않거나 SiftUp 만 남겨 둔다: 슬로우 걸린 유닛이 먼저 행동한다.",
+            "penalty": -20,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "wiki-binary-heap",
+        "ms-learn-priorityqueue",
+        "redblob-astar"
+      ],
+      "nextMission": "Id → 힙 인덱스 Dictionary 를 추가해 Update 를 O(log n) 으로 만들어 보세요(교환할 때마다 두 항목의 인덱스를 갱신). 그런 다음 Push / Update / Pop 을 무작위로 섞은 수천 번의 연산을 \"(Priority, Seq) 로 정렬한 리스트\" 모델과 비교하는 랜덤 테스트로 검증하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // 스크립트: \"P A 10\" = Push, \"U A 40\" = Update, \"O\" = Pop. 끝나면 남은 것을 모두 Pop.\n    // 반환: \"A@10 B@20\" 형태의 Pop 순서\n    static string Play(string script)\n    {\n        var h = new MinHeap();\n        var sb = new System.Text.StringBuilder();\n        foreach (string raw in script.Split(';'))\n        {\n            string[] t = raw.Trim().Split(' ');\n            if (t[0] == \"P\") h.Push(t[1][0] - 'A', long.Parse(t[2]));\n            else if (t[0] == \"U\") h.Update(t[1][0] - 'A', long.Parse(t[2]));\n            else if (t[0] == \"O\") Append(sb, h.Pop());\n        }\n        while (h.Count > 0) Append(sb, h.Pop());\n        return sb.ToString().Trim();\n    }\n\n    static void Append(System.Text.StringBuilder sb, HeapEntry e)\n    {\n        sb.Append((char)('A' + e.Id)).Append('@').Append(e.Priority).Append(' ');\n    }\n\n    static string Expect(string script, string expected)\n    {\n        string got = Play(script);\n        return got == expected ? null : \"입력 [\" + script + \"] 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    public static void Main()\n    {\n        Run(\"basic-order\", () =>\n        {\n            var h = new MinHeap();\n            if (h.Count != 0) return \"빈 힙의 Count 가 0 이 아님\";\n            h.Push(0, 50); h.Push(1, 30);\n            if (h.Count != 2) return \"Push 2회 후 Count 가 2 가 아님\";\n            HeapEntry e = h.Pop();\n            if (e.Id != 1 || e.Priority != 30 || h.Count != 1) return \"Pop 이 최솟값(B@30)을 반환하지 않음\";\n            return Expect(\"P A 50; P B 30; P C 80; P D 10; P E 60\", \"D@10 B@30 A@50 E@60 C@80\")\n                ?? Expect(\"P A 7\", \"A@7\") ?? Expect(\"P A 2; P B 1\", \"B@1 A@2\");\n        });\n\n        Run(\"sift-down-both-children\", () =>\n            Expect(\"P A 1; P B 3; P C 2; P D 4\", \"A@1 C@2 B@3 D@4\")\n            ?? Expect(\"P A 1; P B 9; P C 5; P D 10; P E 11; P F 6; P G 7\", \"A@1 C@5 F@6 G@7 B@9 D@10 E@11\"));\n\n        Run(\"stable-tie-order\", () =>\n            Expect(\"P A 10; P B 10; P C 10\", \"A@10 B@10 C@10\")\n            ?? Expect(\"P A 5; P B 5; P C 5; P D 5; P E 5; P F 5\", \"A@5 B@5 C@5 D@5 E@5 F@5\")\n            ?? Expect(\"P A 20; P B 10; P C 20; P D 10; P E 20\", \"B@10 D@10 A@20 C@20 E@20\"));\n\n        Run(\"atb-requeue-order\", () =>\n            // 꺼낸 유닛을 같은 틱으로 다시 넣으면 기존 동률 유닛 뒤에 선다\n            Expect(\"P A 10; P B 20; P C 20; O; P A 20; O; P B 30\", \"A@10 B@20 C@20 A@20 B@30\"));\n\n        Run(\"update-increase\", () =>\n            Expect(\"P A 10; P B 20; P C 30; U A 40\", \"B@20 C@30 A@40\")\n            ?? Expect(\"P A 1; P B 2; P C 3; P D 4; P E 5; P F 6; P G 7; U B 100; U A 50\", \"C@3 D@4 E@5 F@6 G@7 A@50 B@100\"));\n\n        Run(\"update-decrease\", () =>\n            Expect(\"P A 10; P B 20; P C 30; U C 5\", \"C@5 A@10 B@20\")\n            ?? Expect(\"P A 1; P B 2; P C 3; P D 4; P E 5; P F 6; P G 7; U G 0; U E 1\", \"G@0 A@1 E@1 B@2 C@3 D@4 F@6\"));\n\n        Run(\"update-tie-and-missing\", () =>\n        {\n            string e = Expect(\"P A 10; P B 20; U A 20\", \"B@20 A@20\");\n            if (e != null) return \"Update 된 항목은 동률에서 뒤로 가야 함. \" + e;\n            var h = new MinHeap();\n            h.Push(0, 5); h.Push(1, 6);\n            if (h.Update(9, 1)) return \"힙에 없는 Id 의 Update 가 true 를 반환\";\n            if (!h.Update(1, 4)) return \"힙에 있는 Id 의 Update 가 false 를 반환\";\n            if (h.Count != 2) return \"Update 후 Count 가 변함\";\n            HeapEntry top = h.Pop();\n            return top.Id == 1 && top.Priority == 4 ? null : \"Update(B, 4) 후 Pop 이 B@4 가 아님\";\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(12345);\n            for (int run = 0; run < 60; run++)\n            {\n                var h = new MinHeap();\n                // 기준 모델: (priority, seq, id) 목록에서 사전식 최솟값을 꺼낸다\n                var model = new System.Collections.Generic.List<long[]>();\n                long seq = 0; int nextId = 0;\n                int range = run % 3 == 0 ? 4 : (run % 3 == 1 ? 50 : 1000000);\n                for (int k = 0; k < 300; k++)\n                {\n                    int c = rng.Next(100);\n                    if (model.Count == 0 || c < 40)\n                    {\n                        long p = rng.Next(range);\n                        h.Push(nextId, p); model.Add(new long[] { p, seq++, nextId }); nextId++;\n                    }\n                    else if (c < 65)\n                    {\n                        int j = rng.Next(model.Count); long p = rng.Next(range);\n                        h.Update((int)model[j][2], p);\n                        model[j] = new long[] { p, seq++, model[j][2] };\n                    }\n                    else\n                    {\n                        int best = 0;\n                        for (int j = 1; j < model.Count; j++)\n                            if (model[j][0] < model[best][0] || (model[j][0] == model[best][0] && model[j][1] < model[best][1])) best = j;\n                        long[] m = model[best]; model.RemoveAt(best);\n                        HeapEntry e = h.Pop();\n                        if (e.Id != m[2] || e.Priority != m[0])\n                            return \"무작위 연산 \" + run + \"회차 \" + k + \"번째: 기대 Id \" + m[2] + \"@\" + m[0] + \" / 결과 Id \" + e.Id + \"@\" + e.Priority;\n                    }\n                    if (h.Count != model.Count) return \"Count 불일치: 기대 \" + model.Count + \" / 결과 \" + h.Count;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "basic-order",
+          "sift-down-both-children",
+          "stable-tie-order",
+          "atb-requeue-order",
+          "update-increase",
+          "update-decrease",
+          "update-tie-and-missing",
+          "random-vs-reference"
+        ],
+        "note": "기본 Pop 순서, 두 자식 비교, 동률 시 삽입 순서, Update 로 값이 커질 때/작아질 때/동률이 될 때의 순서, 그리고 무작위 Push·Update·Pop 을 기준 모델과 비교합니다. MinHeap 의 Push(int, long) / Pop() / Update(int, long)(bool 반환) / Count 와 HeapEntry 의 Id, Priority 필드 이름은 바꾸면 안 됩니다(필드 추가는 가능)."
+      }
+    },
+    {
+      "id": "t3-interview-skilltree-dag-boss-ai",
+      "track": "track3",
+      "mode": "interview",
+      "difficulty": "Mid",
+      "title": "스킬 트리 선행 조건 검증(DAG)과 보스 AI 구조 선택(FSM · HFSM · Behaviour Tree)",
+      "tags": [
+        "Algo_Graph_SkillTree",
+        "Algo_FSM_AI"
+      ],
+      "language": "none",
+      "scenario": "액션 RPG 를 만들고 있습니다. 스킬 트리에는 스킬이 약 120개 있고, 각 스킬은 \"선행 스킬 목록(전부 배워야 함)\"을 가집니다. 이 데이터는 기획자가 스프레드시트에서 편집해 JSON 으로 내보냅니다.\n\n같은 팀에서 3페이즈 보스를 만들고 있습니다. 페이즈마다 공격 패턴이 6~8개이고, 어느 순간에든 그로기 · 페이즈 전환 · 사망으로 끊길 수 있습니다.\n\n**질문: 스킬 선행 조건을 어떤 자료구조로 모델링하고, (1) 기획 데이터 자체가 유효한지와 (2) 플레이어가 지금 스킬 X 를 배울 수 있는지를 각각 어떻게 검사하겠습니까? 그리고 이 보스의 AI 를 FSM, HFSM, Behaviour Tree 중 무엇으로 만들지 판단 기준과 함께 설명해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "기획자가 실수로 A → B → C → A 순환을 만든 경우, 자기 자신을 선행으로 지정한 경우.",
+        "존재하지 않는 스킬 ID 를 선행으로 참조하거나 같은 선행을 두 번 적은 경우.",
+        "스킬 되돌리기(리스펙): 되돌리려는 스킬에 의존하는 스킬을 이미 배운 경우.",
+        "공격 모션 도중 그로기나 페이즈 전환이 들어오는 경우."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "기획자가 실수로 A → B → C → A 순환을 넣었습니다. 이걸 어디에서, 어떻게 잡아야 하고, 못 잡으면 게임에서는 어떤 증상이 나옵니까?",
+          "intent": "사이클 검출 알고리즘을 아는지뿐 아니라, 검증을 런타임이 아닌 데이터 파이프라인에 두는 감각과 기획자가 고칠 수 있는 오류 메시지를 설계하는지 확인한다.",
+          "keyAnswer": "- **어디서:** 데이터 임포트/빌드 단계(CI)의 검증기에서 잡고 빌드를 실패시킨다. 편집 툴이 있다면 간선 u → v 를 추가하는 순간 \"v 에서 u 로 갈 수 있는가\"를 DFS 로 확인해 즉시 거절한다. 런타임은 로드 시 1회 방어적 검증(개발 빌드 assert) 정도만 둔다.\n- **어떻게:** Kahn 알고리즘은 진입 차수 0 인 노드를 큐에서 꺼내며 간선을 지워 나가고, 처리한 노드 수가 V 보다 작으면 사이클이 있다. 남은 노드는 \"사이클 위에 있거나 사이클에서 도달 가능한 노드\"라서 범위는 알려 주지만 경로는 직접 주지 않는다. DFS 3색(흰/회/검)은 회색 노드로 가는 간선을 만나는 순간 재귀 스택에서 `A → B → C → A` 경로를 그대로 복원할 수 있어 오류 메시지에 유리하다. 둘 다 O(V + E).\n- **못 잡으면:** 사이클 안의 스킬은 서로를 기다리므로 영원히 배울 수 없고, 선행을 재귀로 따라가는 코드(툴팁의 \"필요 스킬 전체 보기\" 등)는 무한 재귀로 스택 오버플로가 난다.\n- 사이클 외에도 없는 ID 참조, 자기 참조, 중복 간선을 같은 검증기에서 함께 본다."
+        },
+        {
+          "question": "스킬 되돌리기(리스펙)를 넣으려고 합니다. 플레이어가 스킬 X 를 되돌리려는데, X 를 선행으로 요구하는 스킬 Y 를 이미 배운 상태입니다. 어떻게 처리하겠습니까?",
+          "intent": "그래프를 역방향으로도 다뤄야 한다는 점, \"배운 스킬 집합은 선행 관계에 대해 닫혀 있다\"는 불변식을 유지하는 설계를 하는지 확인한다.",
+          "keyAnswer": "- **불변식:** 배운 스킬 집합은 항상 \"어떤 스킬이 들어 있으면 그 선행도 전부 들어 있다\"를 만족해야 한다. 되돌리기는 이 불변식을 깨는 유일한 연산이다.\n- **자료구조:** 선행 목록(정방향)만으로는 \"X 에 의존하는 스킬\"을 찾으려면 전체를 훑어야 한다. 로드 시 역방향 인접 리스트(dependents)를 만들어 둔다.\n- **정책 선택지:** (a) 거절 — 배운 직접 후행이 하나라도 있으면 불가. 직접 후행만 보면 충분하다(불변식 덕분에 간접 후행을 배웠다면 직접 후행도 배운 상태). (b) 연쇄 환불 — X 에서 역방향 간선을 따라 \"배운\" 후행을 BFS/DFS 로 모두 모아 잎 쪽부터(역 위상 순서) 해제하고 포인트를 돌려준다. 실행 전 목록을 보여 주고 확인받는다. (c) 전체 초기화만 허용 — 구현이 가장 단순하다.\n- **실무 포인트:** 여러 스킬 해제와 포인트 환불은 원자적으로 처리하고, 클라이언트 요청은 서버(또는 세이브 로드 시점)에서 다시 검증한다. 선행 조건에 \"A 또는 B\" 같은 OR 가 생기면 단순 후행 검사로는 부족하므로, 제거 후 영향받는 스킬의 조건을 다시 평가하는 방식으로 바꿔야 한다."
+        },
+        {
+          "question": "보스가 3페이즈 × 페이즈당 공격 8개로 커졌고, 어떤 공격 중에도 그로기 · 페이즈 전환 · 사망이 끼어듭니다. 평면 FSM 은 어디서부터 감당이 안 되고, HFSM 이나 Behaviour Tree 로 바꾸면 무엇을 얻고 틱마다 무엇을 지불합니까?",
+          "intent": "상태 폭발을 수치로 설명할 수 있는지, HFSM 과 BT 를 유행이 아니라 비용(틱당 평가, 인터럽트 설계, 디버깅 도구)으로 비교하는지 확인한다.",
+          "keyAnswer": "- **평면 FSM 의 한계:** 상태가 3 × 8 = 24개에 공통 상태가 더해지고, 전이는 최악 상태 수의 제곱까지 늘 수 있다. 더 아픈 것은 \"어느 상태에서든 그로기/페이즈 전환/사망\" 전이를 24개 상태에 복제해야 한다는 점이다. 공격을 하나 추가할 때마다 전이를 빠뜨리는 버그가 난다.\n- **HFSM:** 페이즈를 상위 상태로 두고 공통 전이(그로기, 사망, 다음 페이즈)를 상위 상태에 한 번만 정의한다. 하위 상태가 처리하지 않은 입력은 상위로 올라간다. \"지금 정확히 한 상태\"라는 FSM 의 디버깅 장점은 유지된다.\n- **Behaviour Tree:** 전이를 명시하는 대신 Selector 의 우선순위로 \"다음에 무엇을 할지\"를 표현하므로 공격 추가가 서브트리 하나 추가로 끝나고, 서브트리 재사용과 디자이너용 그래프 툴에 잘 맞는다.\n- **BT 의 틱당 비용:** 단순 구현은 매 틱 루트부터 다시 평가하므로 방문 노드 수에 비례하는 비용이 들고, 조건 노드가 레이캐스트나 범위 검색이면 그 비용이 매 틱 반복된다. 완화책: Running 중인 노드에서 재개하고 상위 우선순위 조건만 감시해 중단(abort)시키는 이벤트 기반 구현, 틱 주기 낮추기, 센서 결과를 블랙보드에 캐시.\n- **인터럽트와 디버깅:** BT 는 \"실행 중인 공격을 무엇이 끊을 수 있는가\"를 abort 규칙으로 따로 설계해야 하고, 틱별 활성 경로를 보여 주는 시각화 도구가 없으면 FSM 보다 추적이 어렵다.\n- **결론 예:** 보스 한 마리라면 CPU 비용보다 편집성과 디버깅이 중요하다. 페이즈와 공통 인터럽트는 HFSM, 페이즈 안의 공격 선택은 BT 나 가중치 테이블로 두는 혼합 구조가 흔한 선택이다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**모델.** 스킬을 정점, \"선행 → 후행\"을 간선으로 하는 방향 그래프로 봅니다. 유효한 스킬 트리는 사이클이 없는 DAG 여야 합니다. 이름은 트리지만 선행이 여러 개일 수 있으므로 자료구조는 트리가 아닙니다.\n\n**(1) 데이터 검증 — 빌드/로드 타임에 한 번.** 사이클 검출은 위상 정렬로 합니다. Kahn 알고리즘은 진입 차수가 0 인 정점을 큐에 넣고, 꺼낼 때마다 그 후행들의 진입 차수를 줄여 0 이 되면 큐에 넣습니다. 끝났을 때 꺼낸 정점 수가 V 보다 작으면 사이클이 있습니다. DFS 3색 방식은 방문 중(회색)인 정점으로 가는 간선을 만나면 사이클이며, 재귀 스택에서 경로를 바로 뽑을 수 있습니다. 둘 다 O(V + E) 입니다. 같은 단계에서 없는 ID 참조, 자기 참조, 중복 간선도 검사합니다.\n\n**(2) \"지금 X 를 배울 수 있나\" — 런타임.** 위상 정렬이 필요 없습니다. X 의 **직접** 선행이 모두 배운 집합에 있는지와 포인트·레벨 조건만 보면 되고, 비용은 O(X 의 선행 수) 입니다. 모든 스킬이 이 검사를 통과해야만 배워졌다면 \"배운 집합은 선행에 대해 닫혀 있다\"는 불변식이 귀납적으로 성립하므로 간접 선행은 볼 필요가 없습니다. 두 질문을 구분하는 것이 이 답의 핵심입니다.\n\n**보스 AI.** FSM 은 상태와 전이가 명시적이고 \"지금 어느 상태인가\"가 하나라 디버깅이 쉽지만, 상태가 늘면 전이가 폭발하고 공통 인터럽트가 상태마다 복제됩니다. HFSM 은 페이즈 같은 상위 상태에 공통 전이를 한 번만 두어 이 중복을 줄입니다. Behaviour Tree 는 루트부터 tick 하며 Selector/Sequence 의 우선순위로 행동을 고르므로 전이를 일일이 그리지 않아도 되고 서브트리 재사용과 디자이너 툴에 유리하지만, 매 틱 재평가 비용과 중단 규칙 설계, 전용 디버깅 도구가 필요합니다.\n\n**판단.** 상태가 적고 흐름이 고정적이면 FSM, 공통 인터럽트가 많아지면 HFSM, 행동 수가 많고 디자이너가 자주 바꾸면 BT 입니다. 이 보스는 페이즈와 그로기·사망을 HFSM 으로, 페이즈 안의 공격 선택을 BT 나 가중치 테이블로 두는 혼합 구조를 제안하겠습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "선행 조건을 DAG 로 모델링하고 Kahn(처리한 정점 수 < V 이면 사이클) 또는 DFS 3색(회색 정점으로 가는 간선) 중 하나를 절차 수준으로 정확히 설명했다.",
+            "points": 12,
+            "sourceId": "wiki-topological-sorting"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "\"지금 X 를 배울 수 있나\"는 X 의 직접 선행만 확인하면 된다고 답하고, 그 이유(배운 집합이 선행에 대해 닫혀 있다는 불변식)를 말했다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "FSM(명시적 전이), HFSM(상위 상태가 공통 전이를 공유), Behaviour Tree(루트부터 tick, 우선순위로 선택)의 차이를 각각 한 문장 이상으로 정확히 구분했다.",
+            "points": 11,
+            "sourceId": "gpp-state"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "복잡도를 명시했다: 데이터 검증 O(V + E), 런타임 습득 가능 검사 O(X 의 선행 수).",
+            "points": 12,
+            "sourceId": "wiki-topological-sorting"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "BT 의 틱당 비용(매 틱 루트 재평가, 비싼 조건 노드)과 완화책을 하나 이상(이벤트 기반 중단, 틱 주기 조절, 블랙보드 캐시) 말했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "그래프 전체 검증을 스킬을 배울 때마다 하지 않고 빌드/로드 타임에 한 번만 수행한다고 답했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "사이클 검증을 데이터 임포트/CI 단계에 두고, 실패 시 기획자가 고칠 수 있도록 사이클 경로를 출력한다고 답했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "사이클 외의 데이터 오류(없는 ID 참조, 자기 참조, 중복 간선)나 습득/되돌리기 요청의 서버 측 재검증 중 하나 이상을 언급했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "FSM / HFSM / BT 선택 기준(상태 수, 공통 인터럽트, 디자이너 편집 빈도)을 제시하고 이 보스에 대한 구체적 결론을 냈다.",
+            "points": 8,
+            "sourceId": "gpp-state"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "답변이 결론 → 근거 → 트레이드오프 순서로 구조화되어 있고, 두 주제(스킬 트리 / 보스 AI)를 섞지 않고 나눠 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "스킬을 배울 때마다 전체 그래프를 위상 정렬해야 한다고 답한다: 데이터 검증과 런타임 검사를 구분하지 못한 것이다.",
+            "penalty": -20,
+            "sourceId": "wiki-topological-sorting"
+          },
+          {
+            "id": "d2",
+            "description": "사이클 검출 없이 선행을 재귀로 따라가는 설계를 내놓거나 \"기획자가 순환을 만들 리 없다\"고 가정한다: 데이터 실수 한 번에 무한 재귀가 난다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "\"Behaviour Tree 가 항상 FSM 보다 낫다\"(또는 그 반대)처럼 비용과 트레이드오프 없이 단정한다.",
+            "penalty": -15,
+            "sourceId": "gpp-state"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "wiki-topological-sorting",
+        "gpp-state",
+        "gh-gpp"
+      ],
+      "nextMission": "스킬 10개짜리 JSON(선행 목록 포함)을 직접 만들고, Kahn 알고리즘으로 검증기를 구현해 보세요. 일부러 A → B → C → A 순환을 넣었을 때 DFS 3색 방식으로 사이클 경로를 문자열로 출력하는 것까지 완성합니다.",
+      "tests": null
+    }
+  ]
+}

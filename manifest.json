@@ -1,7 +1,7 @@
 {
   "name": "GameDev Mentor",
   "short_name": "GD Mentor",
-  "description": "주니어 게임 프로그래머를 위한 클릭형 학습 멘토 (Unity · C# · C++ · 게임 알고리즘)",
+  "description": "주니어 게임 프로그래머를 위한 검증된 문제은행 학습 앱 (Unity · C# · C++ · 게임 알고리즘)",
   "lang": "ko",
   "start_url": "./",
   "scope": "./",

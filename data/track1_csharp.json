@@ -1,0 +1,471 @@
+{
+  "track": "track1",
+  "trackName": "트랙 1 · C# 핵심 & 메모리/GC",
+  "extraSources": [
+    {
+      "id": "unity-ref-types",
+      "title": "Unity 6.0 Manual — Reference type management",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/performance-memory/managed-memory/optimizing-code-managed-memory/reference-types",
+      "summary": "문자열 연결, 클로저·익명 메서드, 박싱을 피하는 방법과 \"Unity GC는 세대별이 아니다\"라는 설명이 있는 페이지"
+    },
+    {
+      "id": "unity-managed-mem-intro",
+      "title": "Unity 6.0 Manual — Managed memory introduction",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/performance-memory/managed-memory/introduction",
+      "summary": "관리 힙의 단편화, 힙 확장 규칙, 힙 메모리가 OS로 반환되는 조건을 설명하는 페이지"
+    },
+    {
+      "id": "unity-profiler-window",
+      "title": "Unity 6.0 Manual — Profiler window reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/profiler/window",
+      "summary": "Profiler 창의 Deep Profile 설정과 GC.Alloc 호출 스택(Call Stacks) 옵션을 설명하는 레퍼런스"
+    },
+    {
+      "id": "unity-deep-profiling",
+      "title": "Unity 6.0 Manual — Instrument all function calls (Deep Profiling)",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/profiler/deep-profiling",
+      "summary": "Deep Profiling이 모든 스크립트 메서드를 계측해 실행이 현저히 느려지고 메모리를 많이 쓴다는 주의 사항"
+    },
+    {
+      "id": "ms-gc-allocated-bytes",
+      "title": "Microsoft Learn — GC.GetAllocatedBytesForCurrentThread",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.gc.getallocatedbytesforcurrentthread",
+      "summary": "현재 스레드가 관리 힙에 할당한 누적 바이트 수를 돌려주는 API로, 구간 전후 차이로 할당량을 측정할 수 있다"
+    },
+    {
+      "id": "ms-loh",
+      "title": "Microsoft Learn — Large object heap (LOH) on Windows",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap",
+      "summary": "85,000바이트 이상 객체가 LOH에 할당되고 Gen2 수집 때 함께 수집되며 평소에는 압축되지 않는다는 설명"
+    }
+  ],
+  "problems": [
+    {
+      "id": "t1-debug-skill-targeting-gc-spike",
+      "track": "track1",
+      "mode": "debugging",
+      "difficulty": "Junior",
+      "title": "SkillTargetingManager.Update의 프레임당 GC 할당 찾아 없애기",
+      "tags": [
+        "CSharp_GC_Boxing",
+        "CSharp_Closure_Alloc"
+      ],
+      "language": "csharp",
+      "scenario": "모바일 액션 RPG에서 플레이어는 \"사거리 안에서 가장 가까운 활성 적\"을 자동으로 조준합니다. 이 계산은 `SkillTargetingManager`가 매 프레임 수행합니다. QA가 \"적이 많은 전투에서 주기적으로 프레임이 튄다\"고 보고했고, Unity Profiler의 CPU Usage 모듈에서 `SkillTargetingManager.Update` 행의 **GC Alloc** 값이 매 프레임 0이 아닌 것을 확인했습니다.\n\n타깃 조건은 나중에 부채꼴, 아군 전용 등으로 늘어날 예정이라 `ITargetFilter` 인터페이스로 추상화되어 있고, 현재는 구조체 `RangeFilter` 하나만 있습니다.\n\n**할 일**\n1. `Update` 한 번에 관리 힙 할당이 일어나는 지점을 모두 찾고, 각 지점에서 *무엇이* 할당되는지 설명하세요.\n2. 선택되는 타깃이 달라지지 않게 유지하면서 할당을 제거하세요.\n3. 할당처럼 보이지만 실제로는 아닌 코드가 있다면 왜 아닌지도 설명하세요.\n\n가정: Unity 6(6000.0) 매뉴얼 기준의 Mono/IL2CPP 스크립팅 백엔드.\n\n**실행 채점**: 편집기의 코드 전체가 채점 대상입니다. 채점기는 Unity 대신 최소한의 스텁(Vector3, Transform, GameObject 등)으로 컴파일하고 .NET 8에서 실행하므로, 할당 0 판정은 .NET 8 기준입니다. Unity에서의 최종 확인은 Profiler로 하세요.",
+      "constraints": [
+        "Update 경로에서 프레임당 0 B 할당 (Profiler의 GC Alloc 열 기준)",
+        "Update 경로에서 LINQ와 지역 변수·매개변수를 캡처하는 람다를 쓰지 않는다",
+        "선택 결과 유지: 활성 상태이고 사거리 안인 적 중 가장 가까운 적, 없으면 null, 거리가 같으면 리스트에서 앞선 적",
+        "ITargetFilter 추상화와 public 멤버(CurrentTarget, RegisterEnemy)는 유지한다"
+      ],
+      "starterCode": "using System.Collections.Generic;\nusing System.Linq;\nusing UnityEngine;\n\npublic interface ITargetFilter\n{\n    bool IsValid(Transform candidate);\n}\n\npublic struct RangeFilter : ITargetFilter\n{\n    public Vector3 Origin;\n    public float Range;\n\n    public bool IsValid(Transform candidate) =>\n        (candidate.position - Origin).sqrMagnitude <= Range * Range;\n}\n\npublic class SkillTargetingManager : MonoBehaviour\n{\n    [SerializeField] private float skillRange = 8f;\n\n    private readonly List<Transform> enemies = new List<Transform>();\n\n    public Transform CurrentTarget { get; private set; }\n\n    public void RegisterEnemy(Transform enemy) => enemies.Add(enemy);\n\n    private void Update()\n    {\n        Vector3 origin = transform.position;\n        RangeFilter filter = new RangeFilter { Origin = origin, Range = skillRange };\n        CurrentTarget = FindNearest(filter, origin);\n    }\n\n    private Transform FindNearest(ITargetFilter filter, Vector3 origin)\n    {\n        int activeCount = 0;\n        foreach (Transform enemy in enemies)\n        {\n            if (enemy.gameObject.activeInHierarchy) activeCount++;\n        }\n        if (activeCount == 0) return null;\n\n        return enemies\n            .Where(e => e.gameObject.activeInHierarchy && filter.IsValid(e))\n            .OrderBy(e => (e.position - origin).sqrMagnitude)\n            .FirstOrDefault();\n    }\n}\n",
+      "edgeCases": [
+        "`foreach (Transform enemy in enemies)`처럼 `List<T>` 타입 변수를 직접 순회하는 코드는 할당 지점인가?",
+        "적이 한 명도 없거나 모두 비활성인 프레임에서도 생성되는 객체가 있는가?",
+        "모든 적이 사거리 밖일 때 CurrentTarget이 null이 되는가?",
+        "거리가 정확히 같은 적이 둘일 때 수정 전과 같은 적이 선택되는가?",
+        "박싱을 없애려고 RangeFilter를 class로 바꾸면 할당이 사라지는가, 자리만 옮겨 가는가?"
+      ],
+      "hints": [
+        "세 가지 규칙을 떠올려 보세요. ① 값 형식을 `object`나 자신이 구현한 인터페이스 타입으로 변환하면 박싱되어 힙에 객체가 생긴다. ② 지역 변수나 매개변수를 캡처한 람다는 그 스코프가 실행될 때마다 클로저 객체와 델리게이트를 새로 만든다. ③ LINQ 연산자는 호출마다 이터레이터 객체를 만든다. 반대로 `List<T>` 타입 변수를 그대로 `foreach` 하면 구조체 열거자를 쓰므로 힙 할당이 없습니다. 의심 목록에서 빼도 됩니다.",
+        "볼 곳은 두 줄입니다. `Update`에서 `FindNearest(filter, origin)`를 호출하는 줄(인자의 타입과 매개변수의 타입을 비교해 보세요)과, `FindNearest`의 `return enemies.Where(...).OrderBy(...).FirstOrDefault()` 문장(두 람다가 각각 어떤 변수를 바깥에서 가져오는지, 연산자 세 개가 각각 무엇을 만들어 내는지)입니다.",
+        "구조만 잡으면 다음과 같습니다. 비어 있는 부분을 채워 보세요.\n```\n// 필터가 \"인터페이스 타입의 값\"이 되는 순간이 없도록 시그니처를 바꾼다\nFindNearest</* ??? */>(/* ??? */ filter, Vector3 origin) where /* ??? */\n    best = null, bestSqr = 아주 큰 값\n    for i in 0..enemies.Count:\n        비활성이면 continue\n        필터를 통과하지 못하면 continue\n        sqr = 거리 제곱\n        if (sqr ??? bestSqr)   // 동률일 때 앞선 적이 유지되려면 어떤 비교?\n            best, bestSqr 갱신\n    return best\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System.Collections.Generic;\nusing UnityEngine;\n\npublic interface ITargetFilter\n{\n    bool IsValid(Transform candidate);\n}\n\npublic struct RangeFilter : ITargetFilter\n{\n    public Vector3 Origin;\n    public float Range;\n\n    public bool IsValid(Transform candidate) =>\n        (candidate.position - Origin).sqrMagnitude <= Range * Range;\n}\n\npublic class SkillTargetingManager : MonoBehaviour\n{\n    [SerializeField] private float skillRange = 8f;\n\n    private readonly List<Transform> enemies = new List<Transform>();\n\n    public Transform CurrentTarget { get; private set; }\n\n    public void RegisterEnemy(Transform enemy) => enemies.Add(enemy);\n\n    private void Update()\n    {\n        Vector3 origin = transform.position;\n        RangeFilter filter = new RangeFilter { Origin = origin, Range = skillRange };\n        CurrentTarget = FindNearest(filter, origin);\n    }\n\n    // The filter stays a struct: a generic type parameter constrained to the interface\n    // is called directly on the value, so no ITargetFilter box is created.\n    private Transform FindNearest<TFilter>(TFilter filter, Vector3 origin)\n        where TFilter : struct, ITargetFilter\n    {\n        Transform best = null;\n        float bestSqrDistance = float.MaxValue;\n\n        // One pass, no LINQ, no lambda: nothing is captured, nothing is allocated.\n        for (int i = 0; i < enemies.Count; i++)\n        {\n            Transform enemy = enemies[i];\n            if (!enemy.gameObject.activeInHierarchy) continue;\n            if (!filter.IsValid(enemy)) continue;\n\n            float sqrDistance = (enemy.position - origin).sqrMagnitude;\n            if (sqrDistance < bestSqrDistance) // strict '<' keeps the earliest enemy on ties\n            {\n                bestSqrDistance = sqrDistance;\n                best = enemy;\n            }\n        }\n        return best;\n    }\n}\n",
+      "explanation": "**버그 1 — 구조체가 인터페이스를 통해 박싱됨 (`FindNearest(filter, origin)` 호출)**\n`RangeFilter`는 구조체인데 매개변수 타입이 `ITargetFilter`입니다. 값 형식을 자신이 구현한 인터페이스 타입으로 변환하면 박싱이 일어나, 호출할 때마다 힙에 상자 객체가 하나 생깁니다. 컴파일러는 경고하지 않습니다. 수정: 메서드를 `FindNearest<TFilter>(TFilter filter, ...) where TFilter : struct, ITargetFilter`로 바꿉니다. 제네릭 형식 매개변수를 통한 호출은 값에 직접 수행되므로 상자가 필요 없고, 추상화도 유지됩니다. 필터를 class로 바꾸고 매 프레임 `new` 하는 것은 할당 위치만 옮기는 것입니다.\n\n**버그 2 — 캡처 람다 (`Where`, `OrderBy`에 넘긴 두 람다)**\n첫 람다는 `filter`를, 둘째 람다는 `origin`을 캡처합니다. 컴파일러는 캡처된 변수를 담는 클로저 객체를 `FindNearest`가 실행될 때마다 만들고, 델리게이트 두 개도 매번 새로 만듭니다. 캡처가 없는 람다였다면 델리게이트가 캐시되지만 이 경우는 아닙니다.\n\n**버그 3 — 프레임당 LINQ 체인**\n`Where`는 이터레이터 객체를, `OrderBy`는 정렬된 시퀀스 객체와 정렬용 버퍼를 만들고, `FirstOrDefault`가 이를 열거합니다. 가장 가까운 하나만 필요하므로 정렬 자체가 불필요합니다. 수정: `for` 루프 한 번으로 최솟값을 추적합니다. `<` 비교를 써서 동률일 때 앞선 적이 유지되므로 안정 정렬인 `OrderBy` + `FirstOrDefault`와 같은 결과가 나옵니다. 버그 2도 함께 사라집니다.\n\n**버그가 아닌 것** — `foreach (Transform enemy in enemies)`는 `List<T>.Enumerator` 구조체를 쓰므로 할당이 없습니다. `IEnumerable<T>` 같은 인터페이스 타입으로 순회할 때만 열거자가 박싱됩니다. 모범 답안에서는 활성 적을 세는 사전 루프가 필요 없어져 삭제했습니다.\n\n**검증** — 수정 전후 코드를 Unity 타입 스텁과 함께 .NET 8에서 실행했습니다. 선택 결과(빈 목록, 동률, 비활성, 사거리 밖)는 동일했고, 적 17명 기준 프레임당 할당은 368 B에서 0 B가 되었습니다. 바이트 수는 런타임마다 다르므로 실제 프로젝트에서는 대상 기기 빌드의 Profiler로 다시 확인하세요.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "할당 지점 세 가지(구조체→인터페이스 박싱, 캡처 람다의 클로저·델리게이트, LINQ 체인의 이터레이터·정렬 버퍼)를 모두 지목하고 각각 무엇이 할당되는지 적었다",
+            "points": 15,
+            "sourceId": "ms-boxing"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "List<T> 변수에 대한 일반 foreach를 할당 원인으로 지목하지 않았다",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "수정 후에도 빈 목록·전원 비활성·전원 사거리 밖이면 null, 거리가 같으면 리스트에서 앞선 적이 선택된다",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "수정 후 SkillTargetingManager.Update의 GC Alloc이 매 프레임 0 B임을 Profiler(또는 동등한 측정)로 확인했다",
+            "points": 20,
+            "sourceId": "unity-profiler-window"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "임시 컬렉션이나 정렬 없이 enemies를 한 번만 순회해 최솟값을 구한다",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "RangeFilter 값이 ITargetFilter 타입의 변수·매개변수·필드로 변환되는 곳이 Update 경로에 없다(제네릭 제약 또는 구체 타입 사용)",
+            "points": 12,
+            "sourceId": "ms-boxing"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Update 경로에 System.Linq 호출과 변수를 캡처하는 람다가 없다",
+            "points": 8,
+            "sourceId": "unity-ref-types"
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "ITargetFilter 추상화가 남아 있어 다른 필터 구조체로 교체해도 FindNearest를 수정할 필요가 없다",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "public 멤버 시그니처를 바꾸지 않았고, 동률 처리 등 의도가 드러나지 않는 부분에 주석이 있다",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Update 경로에 매 프레임 힙 할당이 남아 있다",
+            "penalty": -20,
+            "sourceId": "unity-ref-types"
+          },
+          {
+            "id": "d2",
+            "description": "박싱을 없앤다며 RangeFilter를 class로 바꾸고 매 프레임 new 한다(할당 위치만 옮김)",
+            "penalty": -15,
+            "sourceId": "ms-struct"
+          },
+          {
+            "id": "d3",
+            "description": "List<T>의 foreach를 원인으로 지목해 for로 바꾸기만 하고 실제 할당 지점은 그대로 두었다",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "sourceRefs": [
+        "ms-boxing",
+        "unity-ref-types",
+        "ms-struct",
+        "unity-profiler-window"
+      ],
+      "tests": {
+        "template": "{{USER_CODE}}\n\n// ===== hidden judge =====\npublic static class __Judge\n{\n    private static void Run(string id, System.Func<string> body)\n    {\n        string reason;\n        try { reason = body(); }\n        catch (System.Exception e) { reason = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(reason == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + reason);\n    }\n\n    private static System.Action Updater(SkillTargetingManager manager)\n    {\n        var method = typeof(SkillTargetingManager).GetMethod(\"Update\",\n            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);\n        if (method == null) throw new System.MissingMethodException(\"Update\");\n        return (System.Action)System.Delegate.CreateDelegate(typeof(System.Action), manager, method);\n    }\n\n    private static UnityEngine.Transform Enemy(SkillTargetingManager manager, float x)\n    {\n        var enemy = new UnityEngine.GameObject().transform;\n        enemy.position = new UnityEngine.Vector3(x, 0f, 0f);\n        manager.RegisterEnemy(enemy);\n        return enemy;\n    }\n\n    public static void Main()\n    {\n        Run(\"empty-list-null\", () =>\n        {\n            var m = new SkillTargetingManager(); var update = Updater(m);\n            update();\n            return m.CurrentTarget == null ? null : \"적이 없는데 타깃이 null이 아님\";\n        });\n        Run(\"nearest-in-range\", () =>\n        {\n            var m = new SkillTargetingManager(); var update = Updater(m);\n            Enemy(m, 7f); var near = Enemy(m, 3f); Enemy(m, 5f); Enemy(m, 30f);\n            update();\n            return object.ReferenceEquals(m.CurrentTarget, near) ? null : \"가장 가까운 적이 선택되지 않음\";\n        });\n        Run(\"out-of-range-null\", () =>\n        {\n            var m = new SkillTargetingManager(); var update = Updater(m);\n            Enemy(m, 9f); Enemy(m, -20f);\n            update();\n            return m.CurrentTarget == null ? null : \"사거리(8) 밖의 적이 선택됨\";\n        });\n        Run(\"inactive-skipped\", () =>\n        {\n            var m = new SkillTargetingManager(); var update = Updater(m);\n            var a = Enemy(m, 2f); var b = Enemy(m, 4f);\n            a.gameObject.SetActive(false);\n            update();\n            if (!object.ReferenceEquals(m.CurrentTarget, b)) return \"비활성 적을 건너뛰지 않음\";\n            b.gameObject.SetActive(false);\n            update();\n            return m.CurrentTarget == null ? null : \"전원 비활성인데 타깃이 null이 아님\";\n        });\n        Run(\"tie-keeps-first\", () =>\n        {\n            var m = new SkillTargetingManager(); var update = Updater(m);\n            Enemy(m, 6f); var first = Enemy(m, 5f); Enemy(m, -5f); Enemy(m, 5f);\n            update();\n            return object.ReferenceEquals(m.CurrentTarget, first) ? null : \"거리가 같을 때 리스트에서 앞선 적이 선택되지 않음\";\n        });\n        Run(\"zero-alloc-update\", () =>\n        {\n            var m = new SkillTargetingManager(); var update = Updater(m);\n            for (int i = 0; i < 16; i++) Enemy(m, 20f - i);\n            Enemy(m, -5f);\n            for (int i = 0; i < 300; i++) update(); // warm-up\n            long before = System.GC.GetAllocatedBytesForCurrentThread();\n            for (int i = 0; i < 200; i++) update();\n            long after = System.GC.GetAllocatedBytesForCurrentThread();\n            long perFrame = (after - before) / 200;\n            return after == before ? null : \"Update가 프레임당 약 \" + perFrame + \" B를 할당함\";\n        });\n    }\n}\n\n// ===== minimal Unity stubs (only what this problem needs) =====\nnamespace UnityEngine\n{\n    public class SerializeField : System.Attribute { }\n\n    public struct Vector3\n    {\n        public float x, y, z;\n        public Vector3(float x, float y, float z) { this.x = x; this.y = y; this.z = z; }\n        public static Vector3 zero => default;\n        public float sqrMagnitude => x * x + y * y + z * z;\n        public float magnitude => System.MathF.Sqrt(sqrMagnitude);\n        public static Vector3 operator -(Vector3 a, Vector3 b) => new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);\n        public static Vector3 operator +(Vector3 a, Vector3 b) => new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);\n        public static Vector3 operator *(Vector3 a, float d) => new Vector3(a.x * d, a.y * d, a.z * d);\n        public static float Distance(Vector3 a, Vector3 b) => (a - b).magnitude;\n        public static float SqrMagnitude(Vector3 v) => v.sqrMagnitude;\n        public static float Dot(Vector3 a, Vector3 b) => a.x * b.x + a.y * b.y + a.z * b.z;\n    }\n\n    public static class Mathf\n    {\n        public const float Infinity = float.PositiveInfinity;\n        public static float Sqrt(float f) => System.MathF.Sqrt(f);\n        public static float Abs(float f) => System.MathF.Abs(f);\n        public static float Min(float a, float b) => a < b ? a : b;\n        public static float Max(float a, float b) => a > b ? a : b;\n    }\n\n    public class GameObject\n    {\n        private bool active = true;\n        public Transform transform { get; }\n        public bool activeInHierarchy => active;\n        public bool activeSelf => active;\n        public GameObject() { transform = new Transform(this); }\n        public void SetActive(bool value) { active = value; }\n    }\n\n    public class Component\n    {\n        internal GameObject owner;\n        public GameObject gameObject => owner;\n        public Transform transform => owner.transform;\n    }\n\n    public class Transform : Component\n    {\n        internal Transform(GameObject go) { owner = go; }\n        public Vector3 position { get; set; }\n    }\n\n    public class MonoBehaviour : Component\n    {\n        public bool enabled = true;\n        public MonoBehaviour() { owner = new GameObject(); }\n    }\n\n    public static class Time { public static float deltaTime = 0.016f; public static float time; }\n}\n",
+        "cases": [
+          "empty-list-null",
+          "nearest-in-range",
+          "out-of-range-null",
+          "inactive-skipped",
+          "tie-keeps-first",
+          "zero-alloc-update"
+        ],
+        "note": "최소한의 Unity 스텁 위에서 타깃 선택 결과(빈 목록, 최근접, 사거리 밖, 비활성, 동률)와 Update 200프레임의 관리 힙 할당이 0 B인지 검사합니다. 클래스 이름 SkillTargetingManager, Update(), RegisterEnemy(Transform), CurrentTarget은 바꾸지 마세요. 스텁에 없는 Unity API를 쓰면 빌드가 실패할 수 있습니다."
+      },
+      "nextMission": "수정 전후 코드를 각각 적 50명이 있는 씬에 붙이고 Profiler 창의 Call Stacks 옵션에서 GC.Alloc을 켠 뒤, SkillTargetingManager.Update의 GC Alloc 값과 할당 호출 스택을 캡처해 세 지점이 각각 사라지는 것을 비교 표로 정리해 보세요."
+    },
+    {
+      "id": "t1-impl-zero-alloc-cooldown-unitask-cast",
+      "track": "track1",
+      "mode": "implementation",
+      "difficulty": "Mid",
+      "title": "할당 0의 쿨다운 타이머와 파괴 시 멈추는 UniTask 스킬 시전",
+      "tags": [
+        "CSharp_GC_Boxing",
+        "CSharp_Async_UniTask"
+      ],
+      "language": "csharp",
+      "scenario": "캐릭터마다 스킬 쿨다운을 관리하고, 시전 시간(cast time)이 지난 뒤 스킬을 발동하는 기능을 만듭니다. 한 전투에 캐릭터가 수백 명 나오고 모두 매 프레임 틱을 돌기 때문에 틱 경로의 관리 힙 할당은 곧바로 GC 부담으로 이어집니다. 또 시전 도중 캐릭터가 죽어 GameObject가 파괴되면, 대기 이후의 코드가 파괴된 객체 위에서 실행되어서는 안 됩니다.\n\n과제는 두 부분이고, 스타터 코드 한 파일 안에 구분선 주석으로 나뉘어 있습니다. using 지시문은 파일 맨 위에 한 번만 두세요. 실제 프로젝트에서는 `CooldownTimer.cs`와 `SkillCaster.cs` 두 파일로 분리합니다.\n\n**실행 채점 대상은 Part A(`CooldownTimer`)뿐입니다.** 채점기는 편집기의 코드 전체를 .NET 8에서 컴파일하므로 Part B도 문법 오류 없이 남아 있어야 하지만(UnityEngine과 UniTask는 스텁으로 대체됨), Part B의 동작은 실행되지 않으며 루브릭으로 자가 평가합니다.\n\n**Part A — `CooldownTimer` (Unity 없이 실행되는 순수 C#, 실행 채점 대상)**\n- 저장소는 생성자에서 한 번만 할당하고 이후 절대 늘리지 않습니다.\n- 시간은 `Tick(deltaTime, ...)` 인자로만 들어옵니다. `UnityEngine`에 의존하지 않으므로 일반 .NET 테스트 러너에서 검증할 수 있습니다.\n- 만료된 스킬 ID는 콜백 대신, 호출자가 넘긴 `int[]` 버퍼에 써서 알려 줍니다.\n- 틱 도중 만료된 항목을 제거해도 어떤 항목도 건너뛰거나 두 번 처리하면 안 됩니다.\n\n**Part B — `SkillCaster` (Unity + UniTask 패키지 필요, 실행 채점 제외)**\n- `RequestCast`가 호출되면 `castSeconds` 동안 기다린 뒤 쿨다운을 시작하고 `SkillFired`를 발생시킵니다.\n- 기다리는 동안 GameObject가 파괴되면 대기 이후의 코드는 실행되지 않아야 합니다. GameObject 수명에 묶인 `CancellationToken`을 대기 호출에 전달하세요.\n- 같은 `UniTask` 인스턴스를 두 번 `await` 하지 마세요.\n\npublic 시그니처와 문서 주석에 적힌 계약은 바꾸지 마세요.",
+      "constraints": [
+        "Part A: 생성자 이후 TryStart / Tick / IsOnCooldown / GetRemaining / Cancel 정상 경로에서 0 B 할당",
+        "Part A: 틱 경로에 LINQ, 델리게이트/이벤트, 인터페이스를 통한 열거 금지. List<T>나 Dictionary<TKey, TValue> 사용 금지",
+        "Part A: CooldownTimer 클래스 안에서 UnityEngine·UniTask 형식 사용 금지(System만 사용), 시간은 deltaTime 인자로만 받는다",
+        "Part B: 대기에는 GameObject 수명에 묶인 CancellationToken을 전달한다",
+        "Part B: 같은 UniTask를 두 번 await 하거나 필드에 보관해 재사용하지 않는다"
+      ],
+      "starterCode": "using System;\nusing System.Threading;\nusing Cysharp.Threading.Tasks;\nusing UnityEngine;\n\n// ===== Part A: CooldownTimer — 실행 채점 대상. System 네임스페이스만 사용합니다 (Unity 없이 실행 가능) =====\n/// <summary>\n/// Fixed-capacity skill cooldown timer. No UnityEngine dependency:\n/// the caller passes deltaTime in, so it can be unit-tested anywhere.\n/// </summary>\npublic sealed class CooldownTimer\n{\n    private struct Entry\n    {\n        public int SkillId;\n        public float Remaining;\n    }\n\n    // TODO: choose your storage. It must be allocated once, in the constructor.\n\n    public CooldownTimer(int capacity)\n    {\n        throw new NotImplementedException();\n    }\n\n    /// <summary>Maximum number of skills that can be on cooldown at once.</summary>\n    public int Capacity => throw new NotImplementedException();\n\n    /// <summary>Number of skills currently on cooldown.</summary>\n    public int ActiveCount => throw new NotImplementedException();\n\n    /// <summary>\n    /// Starts a cooldown. Returns false (and changes nothing) when the skill is\n    /// already on cooldown, when the timer is full, or when duration is not greater than 0.\n    /// </summary>\n    public bool TryStart(int skillId, float duration)\n    {\n        throw new NotImplementedException();\n    }\n\n    public bool IsOnCooldown(int skillId)\n    {\n        throw new NotImplementedException();\n    }\n\n    /// <summary>Remaining seconds, or 0 when the skill is not on cooldown.</summary>\n    public float GetRemaining(int skillId)\n    {\n        throw new NotImplementedException();\n    }\n\n    /// <summary>Removes a cooldown early (cooldown-reset item). Returns false if not found.</summary>\n    public bool Cancel(int skillId)\n    {\n        throw new NotImplementedException();\n    }\n\n    /// <summary>\n    /// Advances every cooldown by deltaTime seconds. A cooldown whose remaining time\n    /// reaches 0 or below is removed and its skillId is written to expiredBuffer.\n    /// Returns the number of ids written. expiredBuffer.Length must be at least Capacity.\n    /// A deltaTime that is not greater than 0 (including NaN) does nothing and returns 0.\n    /// The order of the reported ids is unspecified. Must not allocate.\n    /// </summary>\n    public int Tick(float deltaTime, int[] expiredBuffer)\n    {\n        throw new NotImplementedException();\n    }\n}\n\n// ===== Part B: SkillCaster — Unity + UniTask 필요. 실행 채점에서는 스텁으로 컴파일만 됩니다 =====\n/// <summary>\n/// Casts a skill after a cast time, then puts it on cooldown.\n/// Requires Unity and the UniTask package.\n/// </summary>\npublic sealed class SkillCaster : MonoBehaviour\n{\n    [SerializeField] private float castSeconds = 1.5f;\n    [SerializeField] private float cooldownSeconds = 5f;\n\n    public event Action<int> SkillFired;\n\n    private CooldownTimer _cooldowns;\n    private int[] _expiredBuffer;\n\n    private void Awake()\n    {\n        _cooldowns = new CooldownTimer(8);\n        _expiredBuffer = new int[_cooldowns.Capacity];\n        // TODO: obtain a CancellationToken tied to this GameObject's lifetime.\n    }\n\n    private void Update()\n    {\n        _cooldowns.Tick(Time.deltaTime, _expiredBuffer);\n    }\n\n    /// <summary>Called by input. Ignored while another cast is running or the skill is on cooldown.</summary>\n    public void RequestCast(int skillId)\n    {\n        // TODO: guard, then start CastAsync without awaiting it.\n    }\n\n    // TODO: wait castSeconds, then start the cooldown and raise SkillFired.\n    // If the GameObject is destroyed during the wait, nothing after the wait may run.\n    private async UniTaskVoid CastAsync(int skillId, CancellationToken ct)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "남은 시간이 정확히 0이 되는 틱: 그 틱에서 만료로 보고되고, 다음 틱에 다시 보고되지 않아야 한다",
+        "이미 쿨다운 중인 스킬에 TryStart, 또는 용량이 가득 찬 상태의 TryStart: false를 반환하고 기존 상태는 변하지 않아야 한다",
+        "매우 큰 deltaTime(로딩 히치, float.MaxValue)과 0·음수·NaN deltaTime",
+        "순회 중 연속된 두 항목이 동시에 만료될 때(swap-back으로 옮겨 온 항목이 누락되지 않는가)",
+        "시전 대기 중 GameObject가 파괴될 때, 그리고 시전 중에 RequestCast가 다시 호출될 때"
+      ],
+      "hints": [
+        "Part A: 배열 앞쪽 `[0, count)` 구간만 \"활성\"이라고 약속하면, 순서를 포기하는 대신 제거를 O(1)로 만들 수 있습니다. 반례를 먼저 생각해 보세요. 0번부터 순회하다 `i`번을 지우고 그대로 `i++` 하면, 방금 그 자리로 옮겨 온 항목은 이번 틱에 어떻게 되나요? Part B: `await`가 끝나고 돌아왔을 때 `this`가 아직 살아 있다는 보장은 누가 해 주나요?",
+        "Part A에서 실수가 나는 곳은 `Tick` 루프의 \"인덱스를 언제 증가시키는가\"와 만료 판정의 비교 연산자(`<` 대 `<=`)입니다. 부동소수점은 `0.1f`를 열 번 빼도 정확히 0이 되지 않을 수 있습니다. Part B에서는 `Awake`에서 수명 토큰을 얻는 한 줄과, `CastAsync` 안에서 대기 호출에 그 토큰을 넘기는 인자를 확인하세요. 취소되면 대기 호출이 예외를 던지므로 그 아래 줄은 실행되지 않습니다.",
+        "```\nTick(dt, expiredBuffer):\n    버퍼 검증, dt가 양수가 아니면 return 0\n    i = 0, expired = 0\n    while i < count:\n        remaining = entries[i].Remaining - dt\n        if (만료 조건):\n            expiredBuffer[expired++] = entries[i].SkillId\n            마지막 활성 항목을 i 자리로 옮기고 count 감소   // 이때 i는 ???\n        else:\n            entries[i].Remaining = remaining               // 이때 i는 ???\n    return expired\n\nAwake():       token = /* GameObject 수명에 묶인 토큰 */\nRequestCast(): 시전 중이거나 쿨다운 중이면 return; CastAsync(id, token)을 await 없이 시작\nCastAsync(id, ct):\n    isCasting = true\n    try:     await /* castSeconds 대기, ct 전달 */ ; 쿨다운 시작에 성공하면 SkillFired 발생\n    finally: isCasting = false\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Threading;\nusing Cysharp.Threading.Tasks;\nusing UnityEngine;\n\n// ===== Part A: CooldownTimer — 실행 채점 대상. System 네임스페이스만 사용합니다 (Unity 없이 실행 가능) =====\n/// <summary>\n/// Fixed-capacity skill cooldown timer. No UnityEngine dependency:\n/// the caller passes deltaTime in, so it can be unit-tested anywhere.\n/// </summary>\npublic sealed class CooldownTimer\n{\n    private struct Entry\n    {\n        public int SkillId;\n        public float Remaining;\n    }\n\n    // Active entries are packed in [0, _count). Allocated once, never resized.\n    private readonly Entry[] _entries;\n    private int _count;\n\n    public CooldownTimer(int capacity)\n    {\n        if (capacity <= 0) throw new ArgumentOutOfRangeException(nameof(capacity));\n        _entries = new Entry[capacity];\n        _count = 0;\n    }\n\n    /// <summary>Maximum number of skills that can be on cooldown at once.</summary>\n    public int Capacity => _entries.Length;\n\n    /// <summary>Number of skills currently on cooldown.</summary>\n    public int ActiveCount => _count;\n\n    /// <summary>\n    /// Starts a cooldown. Returns false (and changes nothing) when the skill is\n    /// already on cooldown, when the timer is full, or when duration is not greater than 0.\n    /// </summary>\n    public bool TryStart(int skillId, float duration)\n    {\n        if (!(duration > 0f)) return false;          // also rejects NaN\n        if (IndexOf(skillId) >= 0) return false;     // already on cooldown: keep the old timer\n        if (_count == _entries.Length) return false; // full: never grow, never throw\n\n        _entries[_count].SkillId = skillId;\n        _entries[_count].Remaining = duration;\n        _count++;\n        return true;\n    }\n\n    public bool IsOnCooldown(int skillId) => IndexOf(skillId) >= 0;\n\n    /// <summary>Remaining seconds, or 0 when the skill is not on cooldown.</summary>\n    public float GetRemaining(int skillId)\n    {\n        int index = IndexOf(skillId);\n        return index >= 0 ? _entries[index].Remaining : 0f;\n    }\n\n    /// <summary>Removes a cooldown early (cooldown-reset item). Returns false if not found.</summary>\n    public bool Cancel(int skillId)\n    {\n        int index = IndexOf(skillId);\n        if (index < 0) return false;\n        RemoveAtSwapBack(index);\n        return true;\n    }\n\n    /// <summary>\n    /// Advances every cooldown by deltaTime seconds. A cooldown whose remaining time\n    /// reaches 0 or below is removed and its skillId is written to expiredBuffer.\n    /// Returns the number of ids written. expiredBuffer.Length must be at least Capacity.\n    /// A deltaTime that is not greater than 0 (including NaN) does nothing and returns 0.\n    /// The order of the reported ids is unspecified. Does not allocate.\n    /// </summary>\n    public int Tick(float deltaTime, int[] expiredBuffer)\n    {\n        if (expiredBuffer == null) throw new ArgumentNullException(nameof(expiredBuffer));\n        if (expiredBuffer.Length < _entries.Length)\n            throw new ArgumentException(\"expiredBuffer.Length must be >= Capacity.\", nameof(expiredBuffer));\n        if (!(deltaTime > 0f)) return 0;             // 0, negative and NaN do nothing\n\n        int expired = 0;\n        int i = 0;\n        while (i < _count)\n        {\n            float remaining = _entries[i].Remaining - deltaTime;\n            if (remaining <= 0f)\n            {\n                expiredBuffer[expired++] = _entries[i].SkillId;\n                // The last entry moves into slot i and has not been ticked yet,\n                // so do NOT advance i: the same slot is examined again.\n                RemoveAtSwapBack(i);\n            }\n            else\n            {\n                _entries[i].Remaining = remaining;\n                i++;\n            }\n        }\n        return expired;\n    }\n\n    // Linear scan: for a few dozen entries this is cache-friendly and never allocates.\n    private int IndexOf(int skillId)\n    {\n        for (int i = 0; i < _count; i++)\n        {\n            if (_entries[i].SkillId == skillId) return i;\n        }\n        return -1;\n    }\n\n    private void RemoveAtSwapBack(int index)\n    {\n        _count--;\n        _entries[index] = _entries[_count];\n    }\n}\n\n// ===== Part B: SkillCaster — Unity + UniTask 필요. 실행 채점에서는 스텁으로 컴파일만 됩니다 =====\n/// <summary>\n/// Casts a skill after a cast time, then puts it on cooldown.\n/// Requires Unity and the UniTask package.\n/// </summary>\npublic sealed class SkillCaster : MonoBehaviour\n{\n    [SerializeField] private float castSeconds = 1.5f;\n    [SerializeField] private float cooldownSeconds = 5f;\n\n    public event Action<int> SkillFired;\n\n    private CooldownTimer _cooldowns;\n    private int[] _expiredBuffer;\n    private CancellationToken _destroyToken;\n    private bool _isCasting;\n\n    private void Awake()\n    {\n        _cooldowns = new CooldownTimer(8);\n        _expiredBuffer = new int[_cooldowns.Capacity];\n        // Cancelled automatically when this GameObject is destroyed.\n        _destroyToken = this.GetCancellationTokenOnDestroy();\n    }\n\n    private void Update()\n    {\n        _cooldowns.Tick(Time.deltaTime, _expiredBuffer);\n    }\n\n    /// <summary>Called by input. Ignored while another cast is running or the skill is on cooldown.</summary>\n    public void RequestCast(int skillId)\n    {\n        if (_isCasting) return;\n        if (_cooldowns.IsOnCooldown(skillId)) return;\n\n        // Fire-and-forget: every request creates a fresh task, and no UniTask is stored or awaited twice.\n        CastAsync(skillId, _destroyToken).Forget();\n    }\n\n    private async UniTaskVoid CastAsync(int skillId, CancellationToken ct)\n    {\n        _isCasting = true;\n        try\n        {\n            // Throws OperationCanceledException when ct is cancelled (GameObject destroyed),\n            // so the lines below never run on a destroyed object.\n            await UniTask.Delay(TimeSpan.FromSeconds(castSeconds), cancellationToken: ct);\n\n            if (_cooldowns.TryStart(skillId, cooldownSeconds))\n            {\n                SkillFired?.Invoke(skillId);\n            }\n        }\n        finally\n        {\n            _isCasting = false;\n        }\n    }\n}\n",
+      "explanation": "**Part A — 자료 구조.** `Entry`(스킬 ID, 남은 시간) 구조체 배열 하나와 `_count`만 둡니다. 구조체 배열은 요소가 배열 안에 값으로 들어 있어 항목마다 별도 힙 객체가 생기지 않고 지역성이 좋습니다. `Entry`는 8바이트로 작고, 박싱될 일이 없으며, private이라 밖으로 복사되어 나가지 않습니다. 설계 지침은 구조체를 불변으로 권하지만, 여기서는 배열 요소를 인덱스로 제자리 수정하므로 \"복사본을 고치는\" 실수가 생길 경로가 없습니다. 조회는 선형 탐색이며 슬롯이 수십 개 이하일 때 적합합니다.\n\n**순회 중 제거.** 만료된 `i`번 자리에 마지막 활성 항목을 덮어쓰고 `_count`를 줄입니다(swap-back). 옮겨 온 항목은 이번 틱에 아직 처리되지 않았으므로 `i`를 증가시키지 않고 같은 자리를 다시 검사합니다. 대가로 보고 순서는 보장되지 않으며 이를 계약에 명시했습니다.\n\n**경계값.** 만료 판정은 `remaining <= 0f`라서 정확히 0이 되는 틱에 만료되고, 제거되었으므로 다시 보고되지 않습니다. 큰 `deltaTime`은 특별 처리 없이 전부 만료시킵니다. `!(x > 0f)` 검사는 0, 음수, NaN을 한 번에 걸러 냅니다. NaN이 저장되면 어떤 비교도 참이 되지 않아 영원히 만료되지 않습니다. `TryStart`는 실패 시 아무것도 바꾸지 않습니다. 버퍼 길이를 `Capacity` 이상으로 요구해 틱 도중 넘침을 차단합니다.\n\n**Part B — 수명과 취소.** `this.GetCancellationTokenOnDestroy()`는 GameObject가 파괴될 때 취소되는 토큰을 줍니다. 이를 `UniTask.Delay(..., cancellationToken: ct)`에 넘기면 취소 시 `OperationCanceledException`이 발생해 `await` 아래 줄이 실행되지 않습니다. UniTask README에 따르면 이 예외는 미관측 예외 처리에서 조용히 무시되므로 `async UniTaskVoid` + `Forget()` 조합에서 별도 catch가 필요 없습니다. `finally`는 취소 때도 실행되지만 bool 필드만 건드립니다. 토큰 없이 기다리면 파괴 후에도 이어서 실행되어 쿨다운과 이벤트가 죽은 객체에서 발생합니다. `UniTask`는 두 번 `await` 할 수 없으므로 요청마다 새 작업을 만들고 어디에도 보관하지 않습니다.\n\n**검증 범위.** Part A는 .NET 8 콘솔에서 위 엣지 케이스를 모두 통과했고, 워밍업 후 시작/틱/조회/취소 반복 중 `GC.GetAllocatedBytesForCurrentThread()` 차이가 0이었습니다. Part B는 Unity 밖에서 실행할 수 없어 스텁으로 컴파일만 확인하고 README와 대조해 검토했습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Part A 테스트 통과: 정확히 0에서 만료 후 재보고 없음, float.MaxValue deltaTime에서 전부 한 번씩 만료, 0·음수·NaN deltaTime은 무시",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "swap-back 제거 뒤 인덱스를 증가시키지 않아, 연속 만료 상황에서도 누락·중복 보고가 없다",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Part B: 시전 대기 중 GameObject를 파괴하면 쿨다운 시작과 SkillFired 발생이 일어나지 않는다",
+            "points": 10,
+            "sourceId": "gh-unitask"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Part A: 생성자 이후 정상 경로의 할당이 0 B임을 GC.GetAllocatedBytesForCurrentThread 차이 등 측정값으로 보였다",
+            "points": 20,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "틱 경로에 LINQ, 델리게이트 호출, 인터페이스 열거, 배열 재할당이 없다",
+            "points": 10,
+            "sourceId": "unity-ref-types"
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "GetCancellationTokenOnDestroy로 얻은 토큰을 UniTask.Delay의 cancellationToken 인자로 전달하고, 같은 UniTask를 두 번 await 하지 않는다",
+            "points": 12,
+            "sourceId": "gh-unitask"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Entry를 구조체로 둔 근거(작은 크기, 박싱 없음, 배열에 값으로 저장, 외부 비노출)를 설명할 수 있고 Entry가 object나 인터페이스로 변환되는 곳이 없다",
+            "points": 8,
+            "sourceId": "ms-struct"
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "CooldownTimer 클래스 본문이 UnityEngine·UniTask 형식을 하나도 참조하지 않아, 클래스만 떼어 내면 일반 .NET 테스트 프로젝트에서 그대로 컴파일된다",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "실패 시 상태 불변, 보고 순서 미보장, 버퍼 길이 요구 같은 계약이 문서 주석에 적혀 있고 구현과 일치한다",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "틱 경로(Tick 또는 그 호출 경로)에 매 프레임 힙 할당이 남아 있다",
+            "penalty": -20,
+            "sourceId": "ms-gc"
+          },
+          {
+            "id": "d2",
+            "description": "취소 토큰 없이 대기해, 파괴된 GameObject에서 대기 이후 코드가 실행된다",
+            "penalty": -25,
+            "sourceId": "gh-unitask"
+          },
+          {
+            "id": "d3",
+            "description": "같은 UniTask 인스턴스를 두 번 await 하거나 필드에 보관해 재사용한다",
+            "penalty": -15,
+            "sourceId": "gh-unitask"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "ms-struct",
+        "gh-unitask",
+        "ms-gc",
+        "ms-gc-allocated-bytes"
+      ],
+      "tests": {
+        "template": "{{USER_CODE}}\n\n// ===== hidden judge (Part A only) =====\npublic static class __Judge\n{\n    private static void Run(string id, System.Func<string> body)\n    {\n        string reason;\n        try { reason = body(); }\n        catch (System.Exception e) { reason = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(reason == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + reason);\n    }\n\n    public static void Main()\n    {\n        Run(\"exact-zero-expiry\", () =>\n        {\n            var t = new CooldownTimer(4); var buf = new int[4];\n            if (!t.TryStart(1, 0.5f)) return \"TryStart가 false를 반환함\";\n            if (t.Tick(0.25f, buf) != 0 || t.GetRemaining(1) != 0.25f) return \"0.25초 후 남은 시간이 0.25가 아님\";\n            int n = t.Tick(0.25f, buf);\n            if (n != 1 || buf[0] != 1) return \"남은 시간이 정확히 0이 된 틱에 만료 보고되지 않음\";\n            if (t.IsOnCooldown(1) || t.ActiveCount != 0 || t.GetRemaining(1) != 0f) return \"만료 후에도 항목이 남아 있음\";\n            if (t.Tick(0.25f, buf) != 0) return \"이미 만료된 스킬이 다시 보고됨\";\n            return null;\n        });\n        Run(\"restart-rejected\", () =>\n        {\n            var t = new CooldownTimer(4); var buf = new int[4];\n            t.TryStart(2, 3f); t.Tick(1f, buf);\n            if (t.TryStart(2, 10f)) return \"쿨다운 중인 스킬의 TryStart가 true를 반환함\";\n            if (t.GetRemaining(2) != 2f || t.ActiveCount != 1) return \"거부된 TryStart가 상태를 바꿈\";\n            if (t.TryStart(3, 0f) || t.TryStart(3, -1f) || t.TryStart(3, float.NaN)) return \"0 이하 또는 NaN duration이 허용됨\";\n            if (t.ActiveCount != 1) return \"잘못된 duration이 항목을 추가함\";\n            return null;\n        });\n        Run(\"capacity-full\", () =>\n        {\n            var t = new CooldownTimer(3); var buf = new int[3];\n            if (t.Capacity != 3) return \"Capacity가 생성자 인자와 다름\";\n            if (!(t.TryStart(1, 1f) && t.TryStart(2, 2f) && t.TryStart(3, 3f))) return \"용량 이내의 TryStart가 실패함\";\n            if (t.TryStart(4, 1f)) return \"가득 찬 상태의 TryStart가 true를 반환함\";\n            if (t.ActiveCount != 3 || t.IsOnCooldown(4) || t.GetRemaining(2) != 2f) return \"가득 찬 상태의 TryStart가 기존 상태를 바꿈\";\n            if (t.Capacity != 3) return \"용량이 늘어남\";\n            return null;\n        });\n        Run(\"huge-delta-expires-all-once\", () =>\n        {\n            var t = new CooldownTimer(4); var buf = new int[4];\n            t.TryStart(2, 1f); t.TryStart(3, 2f); t.TryStart(4, 3f); t.TryStart(5, 4f);\n            int n = t.Tick(float.MaxValue, buf);\n            if (n != 4) return \"만료 보고 개수가 4가 아님: \" + n;\n            System.Array.Sort(buf, 0, n);\n            if (buf[0] != 2 || buf[1] != 3 || buf[2] != 4 || buf[3] != 5) return \"누락되거나 중복된 ID가 있음\";\n            if (t.ActiveCount != 0) return \"만료 후 ActiveCount가 0이 아님\";\n            if (t.Tick(1f, buf) != 0) return \"다음 틱에 다시 보고됨\";\n            if (!t.TryStart(9, 1f)) return \"만료 후 빈 자리를 재사용하지 못함\";\n            return null;\n        });\n        Run(\"remove-while-iterating\", () =>\n        {\n            var t = new CooldownTimer(4); var buf = new int[4];\n            t.TryStart(10, 1f); t.TryStart(11, 1f); t.TryStart(12, 5f); t.TryStart(13, 1f);\n            int n = t.Tick(1f, buf);\n            if (n != 3) return \"동시에 만료된 3개 중 일부가 누락되거나 중복됨: \" + n;\n            System.Array.Sort(buf, 0, n);\n            if (buf[0] != 10 || buf[1] != 11 || buf[2] != 13) return \"보고된 ID가 잘못됨\";\n            if (t.ActiveCount != 1 || !t.IsOnCooldown(12)) return \"살아남아야 할 항목이 사라짐\";\n            if (t.GetRemaining(12) != 4f) return \"살아남은 항목이 정확히 한 번 틱되지 않음: \" + t.GetRemaining(12);\n            return null;\n        });\n        Run(\"non-positive-delta-ignored\", () =>\n        {\n            var t = new CooldownTimer(2); var buf = new int[2];\n            t.TryStart(1, 4f);\n            if (t.Tick(0f, buf) != 0 || t.Tick(-1f, buf) != 0 || t.Tick(float.NaN, buf) != 0) return \"0·음수·NaN deltaTime에서 만료가 보고됨\";\n            if (t.GetRemaining(1) != 4f) return \"0·음수·NaN deltaTime이 남은 시간을 바꿈\";\n            if (t.Tick(4f, buf) != 1 || buf[0] != 1) return \"이후 정상 틱에서 만료되지 않음\";\n            return null;\n        });\n        Run(\"cancel\", () =>\n        {\n            var t = new CooldownTimer(3); var buf = new int[3];\n            t.TryStart(1, 1f); t.TryStart(2, 2f); t.TryStart(3, 3f);\n            if (!t.Cancel(1)) return \"Cancel이 false를 반환함\";\n            if (t.Cancel(1)) return \"이미 취소된 스킬의 Cancel이 true를 반환함\";\n            if (t.ActiveCount != 2 || t.IsOnCooldown(1)) return \"Cancel 후 상태가 잘못됨\";\n            if (t.GetRemaining(2) != 2f || t.GetRemaining(3) != 3f) return \"Cancel이 다른 항목을 손상시킴\";\n            if (t.Tick(1f, buf) != 0 || t.GetRemaining(3) != 2f) return \"Cancel 후 틱 결과가 잘못됨\";\n            return null;\n        });\n        Run(\"zero-alloc\", () =>\n        {\n            var t = new CooldownTimer(32); var buf = new int[32];\n            long allocated = 0;\n            for (int round = 0; round < 60; round++)\n            {\n                bool measured = round >= 30; // first 30 rounds are warm-up\n                long before = System.GC.GetAllocatedBytesForCurrentThread();\n                for (int i = 0; i < 40; i++) t.TryStart(i, 0.1f + i * 0.01f);\n                t.Cancel(3);\n                for (int f = 0; f < 100; f++) { t.Tick(0.016f, buf); t.IsOnCooldown(f); t.GetRemaining(f); }\n                long after = System.GC.GetAllocatedBytesForCurrentThread();\n                if (measured) allocated += after - before;\n            }\n            return allocated == 0 ? null : \"측정 구간에서 \" + allocated + \" B가 할당됨\";\n        });\n    }\n}\n\n// ===== stubs so that Part B compiles outside Unity (never executed) =====\nnamespace UnityEngine\n{\n    public class SerializeField : System.Attribute { }\n    public class GameObject { }\n    public class MonoBehaviour\n    {\n        public bool enabled = true;\n        public GameObject gameObject = new GameObject();\n        public System.Threading.CancellationToken destroyCancellationToken => default;\n    }\n    public static class Time { public static float deltaTime; public static float time; public static float unscaledDeltaTime; }\n    public static class Debug\n    {\n        public static void Log(object message) { }\n        public static void LogWarning(object message) { }\n        public static void LogError(object message) { }\n        public static void LogException(System.Exception exception) { }\n    }\n}\n\nnamespace Cysharp.Threading.Tasks\n{\n    using System;\n    using System.Runtime.CompilerServices;\n    using System.Threading;\n\n    public enum PlayerLoopTiming { Update }\n\n    public struct __Awaiter : ICriticalNotifyCompletion\n    {\n        public bool IsCompleted => true;\n        public void GetResult() { }\n        public void OnCompleted(Action continuation) { continuation(); }\n        public void UnsafeOnCompleted(Action continuation) { continuation(); }\n    }\n\n    public struct __BoolAwaiter : ICriticalNotifyCompletion\n    {\n        public bool IsCompleted => true;\n        public bool GetResult() => false;\n        public void OnCompleted(Action continuation) { continuation(); }\n        public void UnsafeOnCompleted(Action continuation) { continuation(); }\n    }\n\n    public struct __BoolTask { public __BoolAwaiter GetAwaiter() => default; }\n\n    [AsyncMethodBuilder(typeof(__TaskBuilder))]\n    public struct UniTask\n    {\n        public static UniTask CompletedTask => default;\n        public __Awaiter GetAwaiter() => default;\n        public void Forget() { }\n        public __BoolTask SuppressCancellationThrow() => default;\n        public static UniTask Delay(TimeSpan delayTimeSpan, bool ignoreTimeScale = false, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default, bool cancelImmediately = false) => default;\n        public static UniTask Delay(int millisecondsDelay, bool ignoreTimeScale = false, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default, bool cancelImmediately = false) => default;\n        public static UniTask DelayFrame(int delayFrameCount, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default, bool cancelImmediately = false) => default;\n        public static UniTask WaitForSeconds(float duration, bool ignoreTimeScale = false, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default, bool cancelImmediately = false) => default;\n    }\n\n    [AsyncMethodBuilder(typeof(__VoidBuilder))]\n    public struct UniTaskVoid { public void Forget() { } }\n\n    public struct __TaskBuilder\n    {\n        public static __TaskBuilder Create() => default;\n        public UniTask Task => default;\n        public void SetException(Exception exception) { }\n        public void SetResult() { }\n        public void SetStateMachine(IAsyncStateMachine stateMachine) { }\n        public void Start<TStateMachine>(ref TStateMachine stateMachine) where TStateMachine : IAsyncStateMachine { }\n        public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : INotifyCompletion where TStateMachine : IAsyncStateMachine { }\n        public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine { }\n    }\n\n    public struct __VoidBuilder\n    {\n        public static __VoidBuilder Create() => default;\n        public UniTaskVoid Task => default;\n        public void SetException(Exception exception) { }\n        public void SetResult() { }\n        public void SetStateMachine(IAsyncStateMachine stateMachine) { }\n        public void Start<TStateMachine>(ref TStateMachine stateMachine) where TStateMachine : IAsyncStateMachine { }\n        public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : INotifyCompletion where TStateMachine : IAsyncStateMachine { }\n        public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine) where TAwaiter : ICriticalNotifyCompletion where TStateMachine : IAsyncStateMachine { }\n    }\n\n    public static class __UniTaskExtensions\n    {\n        public static CancellationToken GetCancellationTokenOnDestroy(this UnityEngine.MonoBehaviour component) => default;\n        public static CancellationToken GetCancellationTokenOnDestroy(this UnityEngine.GameObject gameObject) => default;\n    }\n}\n",
+        "cases": [
+          "exact-zero-expiry",
+          "restart-rejected",
+          "capacity-full",
+          "huge-delta-expires-all-once",
+          "remove-while-iterating",
+          "non-positive-delta-ignored",
+          "cancel",
+          "zero-alloc"
+        ],
+        "note": "Part A(CooldownTimer)만 실행해 검사합니다: 정확히 0에서의 만료, 중복 시작·용량 초과 거부, 큰 deltaTime, 순회 중 제거, 0·음수·NaN deltaTime, Cancel, 그리고 정상 경로의 할당 0 B. CooldownTimer의 public 시그니처(생성자, Capacity, ActiveCount, TryStart, IsOnCooldown, GetRemaining, Cancel, Tick)는 바꾸지 마세요. Part B는 스텁으로 컴파일만 되며, 스텁에 없는 UniTask API를 쓰면 빌드가 실패할 수 있습니다."
+      },
+      "nextMission": "Part A에 \"스킬 ID → 슬롯 인덱스\" int 배열을 추가해 IsOnCooldown을 O(1)로 만들고 swap-back 이동 시 조회 배열이 어긋나지 않는지 테스트하세요. 이어서 Part B를 Unity에서 실행해 시전 도중 Destroy(gameObject)를 호출했을 때 SkillFired가 발생하지 않는 것을 Play Mode 테스트로 확인해 보세요."
+    },
+    {
+      "id": "t1-interview-dotnet-gc-vs-unity-boehm",
+      "track": "track1",
+      "mode": "interview",
+      "difficulty": "Mid",
+      "title": ".NET 세대별 GC와 Unity Boehm GC는 무엇이 다른가",
+      "tags": [
+        "CSharp_GC_Boxing"
+      ],
+      "language": "none",
+      "scenario": "서버 팀에서 옮겨 온 동료가 코드 리뷰에서 이렇게 말합니다. \"수명이 짧은 임시 객체는 Gen0에서 금방 치워지니까 거의 공짜예요. 매 프레임 작은 객체 몇 개 만드는 건 신경 쓸 필요 없어요.\" 이 코드는 Unity 클라이언트의 `Update` 경로에 들어갈 예정입니다.\n\n면접관은 이 주장이 어디까지 맞고 어디서부터 틀리는지를 통해, 지원자가 두 런타임의 GC 차이를 구조적으로 이해하고 있는지 확인하려 합니다. (Unity 쪽은 Unity 6 매뉴얼이 설명하는 Mono/IL2CPP의 GC를 기준으로 답하세요.)\n\n**질문: .NET(CoreCLR)의 세대별 GC가 어떻게 동작하는지 Gen0/Gen1/Gen2, LOH, 압축(compaction) 관점에서 설명하고, Unity가 사용하는 Boehm–Demers–Weiser GC는 그것과 무엇이 다른지, 그 차이가 게임 코드 작성 방식에 어떤 영향을 주는지 설명해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "\"85,000바이트\"가 객체 하나의 크기 기준(85,000바이트 이상이면 LOH)이라는 점과 LOH가 Gen2 수집 때 함께 수집된다는 점을 구분해서 말하는가",
+        "\"Unity GC는 세대가 없다\"와 \"Unity GC는 압축하지 않는다\"를 서로 다른 성질로 구분하는가",
+        "Incremental GC를 \"GC가 빨라진다\"로 잘못 설명하지 않는가",
+        "GC를 끄는 전략을 말할 때 힙이 줄지 않고 계속 커질 수 있다는 위험을 함께 말하는가",
+        "어떤 Unity 버전·스크립팅 백엔드·플랫폼 기준의 설명인지 전제를 밝히는가"
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": ".NET에서 Gen0 수집이 싼 이유를 구체적으로 설명해 보세요. 그리고 그 논리가 Unity에는 왜 그대로 적용되지 않습니까?",
+          "intent": "\"임시 객체는 싸다\"는 통념이 세대별 설계라는 전제 위에서만 성립한다는 점을 이해하는지, 수집 비용이 무엇에 비례하는지를 아는지 확인한다.",
+          "keyAnswer": "- .NET은 새 객체를 Gen0에 두고, 수집할 때 힙 전체가 아니라 **Gen0 객체부터** 검사한다. 문서 표현으로 GC는 Gen0 수집마다 Gen1·Gen2 객체를 다시 검사할 필요가 없다. 그래서 비용이 전체 힙 크기가 아니라 젊은 세대에서 살아남은 객체에 좌우된다.\n- 대부분의 객체는 Gen0에서 죽고, 살아남은 것만 압축되어 Gen1로 승격된다. 압축 덕분에 다음 할당은 다시 포인터를 전진시키는 방식으로 빠르게 이뤄진다.\n- Unity의 GC는 **세대 구분이 없다**(Unity 매뉴얼: \"Unity's garbage collector isn't generational\"). 그래서 작고 잦은 임시 할당만 골라 싸게 치울 방법이 없고, 수집이 시작되면 살아 있는 관리 힙 전체가 마킹 대상이다. 수집 비용은 쓰레기의 양이 아니라 **살아 있는 힙의 크기와 참조 수**에 좌우된다.\n- 결론: Unity에서 작은 임시 할당은 \"그 자체로 느려서\"가 아니라 \"전체 힙 수집을 더 자주 일으켜서\" 비싸다. 프레임 경로의 할당 0을 목표로 하는 이유가 여기에 있다."
+        },
+        {
+          "question": "비압축(non-compacting) 수집기에서 단편화는 어떤 문제를 일으킵니까? 그리고 Incremental GC를 켜면 무엇이 해결되고 무엇은 해결되지 않습니까?",
+          "intent": "단편화와 일시 정지 시간을 서로 다른 문제로 구분하는지, Incremental GC가 총 작업량을 줄이지 않는다는 점과 그 부작용(쓰기 장벽, 전체 수집 폴백)을 아는지 확인한다.",
+          "keyAnswer": "- **단편화**: Unity GC는 객체를 옮기지 않으므로 해제된 자리는 살아 있는 객체들 사이의 틈으로 남는다. 틈에는 그 크기 이하의 할당만 들어갈 수 있다. 빈 공간의 총합이 충분해도 연속된 블록이 없으면 GC를 돌리고, 그래도 안 되면 **힙을 확장**한다. Unity 매뉴얼에 따르면 관리 힙의 가상 메모리는 실행 중 늘어나기만 하고, 빈 부분을 OS에 돌려주는 시점은 보장되지 않는다. 대응은 풀링과 버퍼 재사용이다.\n- 비교: .NET도 LOH는 평소 압축하지 않고 빈 공간 목록으로 재사용하므로 LOH에서는 같은 종류의 단편화가 생길 수 있다. 다만 SOH는 압축된다.\n- **Incremental GC가 하는 일**: 수집 작업을 여러 프레임에 나눠 한 번의 긴 정지를 여러 번의 짧은 정지로 바꾼다. Unity의 기본 동작이다.\n- **하지 못하는 일**: 매뉴얼 표현 그대로 GC를 더 빠르게 만들지 않는다. 총 작업량은 줄지 않고, 단편화도 해결하지 않으며, 할당량도 줄여 주지 않는다.\n- **비용과 한계**: 참조가 바뀔 때마다 GC에 알리는 쓰기 장벽(write barrier) 코드가 추가되어 참조 변경에 오버헤드가 생긴다. 마킹 도중 참조 변경이 너무 많으면 마킹이 끝나지 못해 **전체 비증분 수집으로 폴백**한다. 또 Unity 6.1 매뉴얼 기준으로 Web 플랫폼은 Incremental GC를 지원하지 않는다."
+        },
+        {
+          "question": "보스전처럼 프레임 드랍이 치명적인 구간과 로딩 화면이 번갈아 나오는 게임이라면 GC를 수동으로 어떻게 제어하겠습니까? 그리고 그 전략이 실제로 효과가 있는지, 할당이 어디서 생기는지는 어떻게 측정하겠습니까?",
+          "intent": "GC 제어 API를 위험과 함께 이해하는지, 그리고 추측이 아니라 측정으로 할당 지점을 좁히고 검증하는 절차를 갖고 있는지 확인한다.",
+          "keyAnswer": "- **수동 제어**: `GarbageCollector.GCMode`로 런타임에 GC를 끌 수 있다. Unity 매뉴얼은 짧고 성능이 중요한 구간에 한해, 필요한 메모리를 미리 할당해 둔 뒤 끄는 방식을 권한다.\n- **위험**: GC가 꺼진 동안에는 참조가 끊긴 객체도 회수되지 않아 메모리 사용량이 줄지 않는다. 할당이 계속되면 힙이 계속 커져 OS가 앱을 종료할 수 있다. 따라서 해당 구간의 할당이 사실상 0이라는 것이 전제다.\n- **로딩 화면에서의 `System.GC.Collect()`**: 구간이 끝나면 GC를 다시 켜고 다음 레벨을 로드하기 전에 호출해 메모리를 회수한다(매뉴얼이 제시하는 패턴). 전체 수집이라 정지가 길 수 있지만 로딩 화면에서는 사용자가 알아채지 못한다. 반대로 게임플레이 중 매 프레임 또는 주기적으로 호출하는 것은 스파이크를 스스로 만드는 일이다.\n- **할당 찾기**: Profiler CPU Usage 모듈 Hierarchy의 **GC Alloc** 열로 프레임마다 0이 아닌 행을 찾는다. [Profiler 창](https://docs.unity.com/en-us/engine/6000.0/manual/analysis/profiler/window)의 **Call Stacks** 옵션에서 `GC.Alloc`을 켜면 Deep Profile 없이도 관리 할당의 전체 호출 스택이 기록된다.\n- **Deep Profile 주의점**: 모든 스크립트 메서드를 계측하므로 [매뉴얼](https://docs.unity.com/en-us/engine/6000.0/manual/analysis/profiler/deep-profiling)이 밝히듯 자원을 많이 쓰고 애플리케이션이 현저히 느려진다. 이때의 시간 값은 왜곡되어 있으므로 할당 위치를 찾는 용도로만 쓰고 시간은 끈 상태에서 다시 잰다.\n- **검증**: 같은 시나리오에서 수정 전후의 GC Alloc과 GC 관련 프레임 시간을 비교한다. 최종 확인은 에디터가 아니라 대상 기기의 개발 빌드에서 한다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**.NET(CoreCLR)의 GC**는 세대별·압축형입니다. 관리 힙을 Gen0, Gen1, Gen2로 나누고 새 객체는 Gen0에 둡니다. Gen0 수집에서 살아남으면 Gen1로, Gen1에서 살아남으면 Gen2로 승격됩니다. \"새 객체일수록 빨리 죽는다\"는 관찰에 기대어 가장 젊은 세대만 자주 수집하고, 힙 전체를 보는 Gen2 수집(full GC)은 드물게 합니다. 수집 후에는 살아남은 객체를 한쪽으로 모아 압축하므로 빈 공간이 연속됩니다.\n\n**85,000바이트 이상**인 객체는 대개 큰 배열이며 LOH(Large Object Heap)에 따로 할당됩니다. LOH는 Gen2 수집 때 함께 수집되고, 큰 객체를 복사하는 비용 때문에 평소에는 압축하지 않습니다. 따라서 큰 임시 배열은 비싼 Gen2 수집을 유발할 수 있습니다.\n\n**Unity의 GC**는 Boehm–Demers–Weiser 수집기입니다. Unity 매뉴얼이 명시하는 성질은 두 가지입니다. 세대 구분이 없고(non-generational), 객체를 옮겨 틈을 메우지 않습니다(non-compacting). Boehm GC 자체는 포인터일 가능성이 있는 값을 참조로 취급하는 보수적(conservative) 수집기로 설계되었고 이는 객체를 옮기지 않는 설계와 맞물립니다. 이 부분은 Unity 매뉴얼이 아니라 Boehm GC 자체의 설명에 근거합니다.\n\n**실무 영향**은 세 가지입니다. 첫째, 세대가 없으므로 \"임시 객체는 싸다\"가 성립하지 않습니다. 작은 할당이 쌓여 수집이 시작되면 살아 있는 힙 전체가 마킹 대상입니다. 둘째, 압축이 없으므로 단편화가 누적되고 힙이 확장됩니다. 셋째, 기본으로 켜져 있는 Incremental GC는 작업을 여러 프레임에 나눠 스파이크를 줄일 뿐 총 작업량을 줄이지 않습니다. Unity 6.1 매뉴얼 기준으로 Web 플랫폼에서는 지원되지 않습니다.\n\n그래서 서버 코드에서는 허용되는 프레임당 소량 할당도 Unity의 `Update` 경로에서는 제거 대상입니다. 박싱, 캡처 클로저, LINQ, 문자열 조립을 피하고 풀링과 버퍼 재사용을 씁니다. 그래도 남는 수집은 시점을 옮깁니다. 치명적인 짧은 구간에는 `GarbageCollector.GCMode`로 GC를 끄고, 로딩 화면에서 다시 켠 뒤 `System.GC.Collect()`로 회수합니다. 꺼 둔 동안 힙은 줄지 않으므로 그 구간의 할당이 거의 없다는 것을 Profiler로 먼저 확인해야 합니다. 런타임 구성은 버전에 따라 달라질 수 있으니 답변할 때 기준 버전을 밝히는 것이 좋습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "새 객체는 Gen0, 살아남으면 Gen1→Gen2로 승격되고 Gen2 수집이 전체 수집이라는 점을 말했다",
+            "points": 15,
+            "sourceId": "ms-gc"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "LOH에 대해 85,000바이트 이상, Gen2와 함께 수집, 평소 비압축 세 가지를 모두 말했다",
+            "points": 10,
+            "sourceId": "ms-loh"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Unity GC를 Boehm–Demers–Weiser로 지칭하고 non-generational과 non-compacting을 별개의 성질로 말했다",
+            "points": 10,
+            "sourceId": "unity-inc-gc"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Unity에서는 수집 비용이 살아 있는 힙 전체에 좌우되므로 \"임시 객체는 싸다\"가 성립하지 않는다고 이유와 함께 말했다",
+            "points": 15,
+            "sourceId": "unity-ref-types"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Incremental GC는 작업을 여러 프레임에 분산할 뿐 총 작업량을 줄이지 않는다고 말했고, 단편화가 힙 확장으로 이어진다는 점을 말했다",
+            "points": 15,
+            "sourceId": "unity-inc-gc"
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "GarbageCollector.GCMode로 GC를 끄는 전략을 \"힙이 줄지 않는다\"는 위험과 함께 말했고, 로딩 화면에서의 System.GC.Collect()와 게임플레이 중 호출을 구분했다",
+            "points": 12,
+            "sourceId": "unity-inc-gc"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "답변이 전제하는 Unity 버전·스크립팅 백엔드를 밝혔고, Web 플랫폼의 Incremental GC 미지원처럼 플랫폼에 따라 달라지는 점을 하나 이상 말했다",
+            "points": 8,
+            "sourceId": "unity-inc-gc"
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "답변이 \".NET 구조 → Unity 구조 → 차이 → 코드에 미치는 영향\" 순서로 이어져 듣는 사람이 따라갈 수 있다",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "결론을 Profiler의 GC Alloc 열 같은 구체적인 측정·검증 방법으로 맺었다",
+            "points": 7,
+            "sourceId": "unity-profiler-window"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Unity의 Boehm GC를 .NET과 같은 세대별 GC로 설명한다",
+            "penalty": -20,
+            "sourceId": "unity-ref-types"
+          },
+          {
+            "id": "d2",
+            "description": "Incremental GC가 GC를 더 빠르게 하거나 총 작업량을 줄인다고 설명한다",
+            "penalty": -15,
+            "sourceId": "unity-inc-gc"
+          },
+          {
+            "id": "d3",
+            "description": "게임플레이 중 매 프레임 또는 주기적으로 System.GC.Collect()를 호출하는 것을 해결책으로 제시한다",
+            "penalty": -15,
+            "sourceId": "unity-inc-gc"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "ms-gc",
+        "unity-inc-gc",
+        "unity-ref-types",
+        "unity-managed-mem-intro"
+      ],
+      "tests": null,
+      "nextMission": "빈 Unity 프로젝트에서 매 프레임 1 KB 배열을 할당하는 스크립트를 만들고, 살아 있는 객체 수를 1만 개와 100만 개로 바꿔 가며 Incremental GC를 켠 경우와 끈 경우의 GC 관련 프레임 시간을 Profiler로 비교해 \"수집 비용은 살아 있는 힙 크기에 좌우된다\"는 주장을 직접 확인해 보세요."
+    }
+  ]
+}
