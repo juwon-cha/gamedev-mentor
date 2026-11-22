@@ -1,0 +1,1124 @@
+{
+ "track": "track10",
+ "trackName": "트랙 10 · 디자인 패턴·코드 설계",
+ "extraSources": [
+  {
+   "id": "gpp-observer",
+   "title": "Game Programming Patterns — Observer",
+   "url": "https://gameprogrammingpatterns.com/observer.html",
+   "summary": "관찰자 패턴의 비용(동기 호출이라 느린 관찰자가 주체를 막음, 등록·해지 시의 할당), 통지 도중 관찰자가 목록을 바꾸는 경우를 견고한 구현은 막거나 처리해야 한다는 언급, 해지를 잊은 lapsed listener 문제를 다루는 장."
+  },
+  {
+   "id": "gpp-state",
+   "title": "Game Programming Patterns — State",
+   "url": "https://gameprogrammingpatterns.com/state.html",
+   "summary": "FSM, 계층형 상태 기계(HFSM), 푸시다운 오토마타와 그 한계를 다루는 State 장."
+  },
+  {
+   "id": "gpp-command",
+   "title": "Game Programming Patterns — Command",
+   "url": "https://gameprogrammingpatterns.com/command.html",
+   "summary": "버튼에 커맨드 객체를 묶는 입력 설정, 커맨드 스트림, 커맨드 기록을 이용한 리플레이와 실행 취소를 다루는 장."
+  },
+  {
+   "id": "gpp-object-pool",
+   "title": "Game Programming Patterns — Object Pool",
+   "url": "https://gameprogrammingpatterns.com/object-pool.html",
+   "summary": "풀 크기와 고갈 시 정책, 재사용 객체가 자동으로 초기화되지 않는 문제, 프리 리스트를 다루는 장."
+  },
+  {
+   "id": "gpp-singleton",
+   "title": "Game Programming Patterns — Singleton",
+   "url": "https://gameprogrammingpatterns.com/singleton.html",
+   "summary": "싱글턴의 장점과 전역 상태로서의 비용(결합, 초기화 시점 통제 상실), 넘겨주기·기반 클래스·서비스 로케이터 등 대안을 다루는 장."
+  },
+  {
+   "id": "gpp-service-locator",
+   "title": "Game Programming Patterns — Service Locator",
+   "url": "https://gameprogrammingpatterns.com/service-locator.html",
+   "summary": "인터페이스 뒤의 서비스를 전역에서 찾는 패턴과 Null 서비스, 등록 전 접근·숨은 의존성 같은 비용을 다루는 장."
+  },
+  {
+   "id": "ms-idisposable-dispose",
+   "title": "Microsoft Learn — IDisposable.Dispose Method",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.idisposable.dispose?view=net-8.0",
+   "summary": "Dispose 가 여러 번 호출되면 첫 번째 이후의 호출은 무시해야 하고 예외를 던지면 안 된다는 규약."
+  },
+  {
+   "id": "ms-gc-allocated-bytes",
+   "title": "Microsoft Learn — GC.GetAllocatedBytesForCurrentThread",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.gc.getallocatedbytesforcurrentthread",
+   "summary": "현재 스레드가 관리 힙에 할당한 누적 바이트 수를 돌려주는 API로, 구간 전후 차이로 할당량을 측정할 수 있다"
+  },
+  {
+   "id": "ms-list-enumerator-movenext",
+   "title": "Microsoft Learn — List<T>.Enumerator.MoveNext",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.enumerator.movenext?view=net-8.0",
+   "summary": "열거자를 만든 뒤 컬렉션이 수정되면 다음 MoveNext 가 InvalidOperationException 을 던진다는 설명."
+  },
+  {
+   "id": "ms-reference-equality-comparer",
+   "title": "Microsoft Learn — ReferenceEqualityComparer Class",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.referenceequalitycomparer?view=net-8.0",
+   "summary": "Equals 재정의와 무관하게 참조 동일성으로 비교하는 IEqualityComparer (.NET 5 이상)."
+  },
+  {
+   "id": "gaffer-deterministic-lockstep",
+   "title": "Gaffer On Games — Deterministic Lockstep",
+   "url": "https://gafferongames.com/post/deterministic_lockstep/",
+   "summary": "같은 초기 상태와 같은 입력이 비트 단위로 같은 결과를 내는 결정성의 정의와, 부동소수점이 플랫폼 간 결정성을 깨는 문제."
+  },
+  {
+   "id": "unity-objectpool-api",
+   "title": "Unity Scripting API — ObjectPool<T>",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/pool/objectpool1",
+   "summary": "Unity 6 의 ObjectPool<T>: actionOnGet / actionOnRelease 콜백, 이미 풀에 있는 항목의 반납을 잡는 collectionCheck, maxSize 초과 시 파괴."
+  },
+  {
+   "id": "wiki-strategy-pattern",
+   "title": "Wikipedia — Strategy pattern",
+   "url": "https://en.wikipedia.org/wiki/Strategy_pattern",
+   "summary": "알고리즘을 런타임에 선택하게 하는 전략 패턴의 정의와 개방-폐쇄 원칙과의 관계."
+  },
+  {
+   "id": "wiki-solid",
+   "title": "Wikipedia — SOLID",
+   "url": "https://en.wikipedia.org/wiki/SOLID",
+   "summary": "단일 책임, 개방-폐쇄, 리스코프 치환, 인터페이스 분리, 의존성 역전 다섯 원칙의 정의."
+  },
+  {
+   "id": "ms-arch-principles",
+   "title": "Microsoft Learn — Architectural principles",
+   "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles",
+   "summary": "단일 책임, 의존성 역전, 명시적 의존성(필요한 협력 객체를 생성자·매개변수로 드러내라), 가변 전역 상태와 캡슐화의 충돌을 설명하는 문서."
+  },
+  {
+   "id": "unity-dontdestroyonload",
+   "title": "Unity Scripting API — Object.DontDestroyOnLoad",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/object/dontdestroyonload",
+   "summary": "새 씬을 로드해도 대상 오브젝트를 파괴하지 않게 하는 API. 루트 GameObject(또는 그 컴포넌트)에만 동작하며, 예제가 중복 인스턴스 제거를 함께 보여 준다."
+  },
+  {
+   "id": "unity-scriptableobject",
+   "title": "Unity Manual — ScriptableObject",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/manual/scripting/get-started/fundamental-unity-types/class-scriptable-object",
+   "summary": "GameObject 에 붙지 않는 에셋형 데이터 컨테이너. 에디터에서는 저장되지만 스탠드얼론 플레이어에서는 저장된 데이터를 읽기만 할 수 있다."
+  },
+  {
+   "id": "unity-so-architecture",
+   "title": "Unity — Architect your code for efficient changes and debugging with ScriptableObjects",
+   "url": "https://unity.com/how-to/architect-game-code-scriptable-objects",
+   "summary": "ScriptableObject 변수와 GameEvent 에셋으로 시스템 간 직접 참조와 싱글턴을 줄이는 구조를 소개하는 공식 글."
+  },
+  {
+   "id": "unity-domain-reload",
+   "title": "Unity Manual — Domain Reloading",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/code-reload-serialization/code-reloading-editor/domain-reloading",
+   "summary": "도메인 리로드를 끄면 static 변수 값과 static 이벤트의 구독자가 플레이 모드 세션 사이에 유지된다는 설명."
+  },
+  {
+   "id": "ms-delegate",
+   "title": "Microsoft Learn — Delegate Class",
+   "url": "https://learn.microsoft.com/en-us/dotnet/api/system.delegate?view=net-8.0",
+   "summary": "델리게이트는 불변이라 한 번 만들어진 호출 목록은 바뀌지 않으며, Combine·Remove 같은 결합 연산은 기존 델리게이트를 고치지 않고 새 델리게이트를 돌려준다는 설명."
+  },
+  {
+   "id": "unity-monobehaviour",
+   "title": "Unity Manual — MonoBehaviour",
+   "url": "https://docs.unity.com/en-us/engine/6000.0/manual/scripting/get-started/fundamental-unity-types/class-mono-behaviour",
+   "summary": "MonoBehaviour 객체의 생성은 Unity 가 처리하므로 초기화를 생성자가 아니라 Start 등에서 하며, 생성자를 정의하면 Unity 의 정상 동작을 방해할 수 있다는 설명."
+  },
+  {
+   "id": "vcontainer-monobehaviour",
+   "title": "VContainer 문서 — Injecting into MonoBehaviours",
+   "url": "https://vcontainer.hadashikick.jp/resolving/gameobject-injection",
+   "summary": "MonoBehaviour 는 생성자를 지원하지 않으므로 메서드 주입([Inject] 메서드)을 써야 하고, 그 주입은 LifetimeScope 설정이나 컨테이너 API 로 명시적으로 일으켜야 한다는 설명."
+  }
+ ],
+ "problems": [
+  {
+   "id": "t10-impl-observer-event-channel",
+   "track": "track10",
+   "mode": "implementation",
+   "difficulty": "Hard",
+   "title": "타입 이벤트 채널: Publish 도중 구독·해지가 일어나도 안전한 Observer",
+   "tags": [
+    "Pattern_Observer",
+    "Pattern_EventChannel"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "gh-gpp",
+    "gpp-observer",
+    "ms-idisposable-dispose",
+    "ms-gc-allocated-bytes",
+    "ms-list-enumerator-movenext",
+    "ms-delegate"
+   ],
+   "scenario": "액션 RPG 의 전투 코드가 \"몬스터 처치\" 이벤트를 `EventChannel<int>`(값은 몬스터 id)로 알립니다. 구독자는 여럿입니다.\n\n- **퀘스트 트래커**: 목표 수를 채우면 핸들러 안에서 **자기 구독을 해지**합니다.\n- **처치 알림 팝업**: 닫힐 때 핸들러 안에서 **다른 위젯의 구독까지 해지**합니다.\n- **연쇄 폭발 패시브**: 핸들러 안에서 주변 몬스터를 죽이고 **같은 채널에 다시 Publish** 합니다.\n\n기존 구현은 `List<Action<T>>` 를 `foreach` 로 돌다가 \"컬렉션이 수정되었습니다\" 예외로 죽었고, 급히 `ToArray()` 복사본을 돌도록 바꾸자 이번에는 처치마다 배열이 할당되고 **이미 닫힌 팝업의 핸들러가 호출**되기 시작했습니다.\n\n**할 일:** 아래 규칙을 지키는 `EventChannel<T>` 를 완성하세요. 단일 스레드에서만 쓰입니다.\n\n1. **순서**: `Publish` 는 구독한 순서대로 핸들러를 동기 호출한다.\n2. **토큰**: `Subscribe` 는 그 구독 하나만 해지하는 `IDisposable` 을 반환한다. `Dispose` 를 여러 번 불러도 첫 번째만 효과가 있고 예외는 없다. 같은 델리게이트를 두 번 구독하면 별개의 구독 두 개다.\n3. **Publish 중 해지**: 아직 차례가 오지 않은 구독이 해지되면 그 Publish 에서 호출되지 않는다. 이미 호출된 구독이 해지되어도 나머지 구독은 정확히 한 번씩 호출된다.\n4. **Publish 중 구독**: 새 구독은 진행 중인 Publish 에서는 호출되지 않고, 그 뒤에 시작되는 Publish 부터 맨 뒤 순서로 호출된다.\n5. **중첩 Publish**: 핸들러 안의 `Publish` 는 그 자리에서 끝까지 실행된 뒤 바깥 Publish 가 이어진다. 안쪽에도 규칙 1~4 가 그대로 적용된다.\n6. **개수**: `SubscriberCount` 는 해지되지 않은 구독 수이며 `Dispose` 즉시 줄어든다.\n7. **예외**: 핸들러가 던진 예외는 `Publish` 호출자에게 전파되고 남은 핸들러는 호출되지 않는다. 그 뒤에도 채널은 정상 동작해야 한다. (자동 채점 제외)\n\n한 문장으로: **Publish 는 \"자신이 시작될 때 이미 있었고, 차례가 왔을 때 아직 해지되지 않은\" 구독을 구독 순서대로 한 번씩 호출한다.**",
+   "constraints": [
+    "`Publish` 는 구독 수 n 에 대해 O(n) 이고, 구독·해지가 없는 반복 호출에서 힙 할당이 0바이트여야 한다 (`ToArray`, `new List`, LINQ, 캡처 람다 금지).",
+    "`Subscribe` 는 분할상환 O(1). `Dispose` 는 O(n) 까지 허용한다.",
+    "해지된 구독은 핸들러 델리게이트 참조를 놓는다: 누군가 토큰을 오래 들고 있어도 구독자 객체가 토큰 때문에 살아남지 않아야 한다. (자동 채점 제외)",
+    "C# `event` 키워드나 멀티캐스트 델리게이트(`+=`, `Delegate.Combine`)에 구독 목록 관리를 맡기지 않는다.",
+    "`EventChannel<T>` 의 public 시그니처(`SubscriberCount`, `Subscribe`, `Publish`)는 바꾸지 않는다. private 멤버와 중첩 타입은 자유롭게 추가한다.",
+    "단일 스레드 가정이다. `lock` 이나 동시성 컬렉션은 쓰지 않는다."
+   ],
+   "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 타입이 정해진 이벤트 채널. 예: EventChannel<int> hpChanged;\npublic sealed class EventChannel<T>\n{\n    // 현재 살아 있는(해지되지 않은) 구독 수. Dispose 되는 즉시 줄어든다.\n    public int SubscriberCount\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 구독을 추가하고, 그 구독 하나만 해지하는 토큰을 돌려준다.\n    // 같은 델리게이트를 두 번 구독하면 서로 다른 구독 두 개가 된다.\n    // handler 가 null 이면 ArgumentNullException.\n    public IDisposable Subscribe(Action<T> handler)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 구독 순서대로 핸들러를 동기 호출한다.\n    // 핸들러 안에서 구독 / 해지 / Publish 가 일어나도 시나리오의 규칙을 지켜야 한다.\n    public void Publish(T payload)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "구독 [A, B, C, D] 에서 B 가 자기 자신을 해지: 이번 Publish 에서 C 를 건너뛰면 안 되고, 다음 Publish 는 [A, C, D].",
+    "A 가 아직 호출 전인 D 를 해지하면 D 는 이번에 호출되지 않는다. B 가 이미 호출된 A 를 해지해도 C 는 정확히 한 번 호출된다.",
+    "A 가 핸들러 안에서 새 구독 N 을 추가: 이번 Publish 는 [A, B] 만, 다음 Publish 는 [A, B, N].",
+    "A 가 값 1 을 받고 Publish(2) 를 호출하고, 그 안쪽 Publish 에서 B 가 A 를 해지: 호출 순서는 A1 A2 B2 C2 B1 C1.",
+    "같은 델리게이트 h 를 두 번 구독한 뒤 첫 토큰만 세 번 Dispose: 두 번째 구독은 살아 있어야 한다."
+   ],
+   "hints": [
+    "구독 목록이 [A, B, C, D] 이고 `for (i = 0; i < list.Count; i++) list[i](payload)` 로 돈다고 합시다. B(i = 1)가 자기 자신을 `RemoveAt` 하면 목록은 [A, C, D] 가 되고 다음 i = 2 는 D 입니다. C 는 어디로 갔나요? `foreach` 로 바꾸면 예외가 나고, 복사본을 돌면 방금 해지된 D 가 호출됩니다. 세 방법 모두 \"순회 중에 목록의 모양이 바뀐다\"는 같은 문제를 다르게 밟은 것입니다.",
+    "해지를 \"목록에서 빼기\"와 \"더 이상 호출하지 않기\"로 나눠 보세요. 순회 중에는 뒤쪽만 즉시 하고 앞쪽은 미룰 수 있습니다. 그러려면 구독 하나가 \"살아 있는가\"를 스스로 알고 있어야 하고, 채널은 \"지금 Publish 가 몇 겹으로 진행 중인가\"를 알아야 합니다. 새 구독이 이번 Publish 에 끼어들지 않게 하려면 순회 범위를 언제 확정해야 할까요?",
+    "뼈대입니다. 빈칸은 직접 채우세요.\n```\nclass Subscription : IDisposable   // 구독 하나 = 토큰 하나\n    Handler, Active\n    Dispose(): 이미 죽었으면 끝 / Active = false / 채널에 알림\n\nPublish(payload):\n    count = ____                    // 언제의 개수인가?\n    depth++\n    try:\n        for i in 0 .. count-1:\n            s = subs[i]\n            if (____) continue\n            s.Handler(payload)\n    finally:\n        depth--\n        if (____ && 미뤄 둔 제거가 있음) 죽은 구독을 한 번에 제거\n\nOnDisposed(s):\n    liveCount--\n    if (depth > 0) ____             // 목록은 건드리지 않는다\n    else subs.Remove(s)\n```\n압축을 \"안쪽 Publish 가 끝날 때\" 하면 왜 안 되는지 edge case 4번으로 손으로 따라가 보세요."
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Collections.Generic;\n\npublic sealed class EventChannel<T>\n{\n    // 구독 하나 = 객체 하나. 해지 토큰을 겸한다.\n    private sealed class Subscription : IDisposable\n    {\n        public EventChannel<T> Owner;\n        public Action<T> Handler;\n        public bool Active = true;\n\n        public void Dispose()\n        {\n            if (!Active) return;            // 두 번째 Dispose 부터는 무시\n            Active = false;\n            EventChannel<T> owner = Owner;\n            Owner = null;\n            Handler = null;                 // 구독자 객체를 더 붙잡지 않는다\n            owner.OnDisposed(this);\n        }\n    }\n\n    // 캡처가 없는 정적 메서드로 만든 델리게이트를 한 번만 만들어 재사용한다.\n    private static readonly Predicate<Subscription> IsInactive = IsInactiveImpl;\n    private static bool IsInactiveImpl(Subscription s) { return !s.Active; }\n\n    private readonly List<Subscription> _subs = new List<Subscription>();\n    private int _liveCount;\n    private int _publishDepth;              // 진행 중인 Publish 의 중첩 깊이\n    private bool _needsCompaction;          // 순회 중 해지되어 목록에 남은 칸이 있는가\n\n    public int SubscriberCount\n    {\n        get { return _liveCount; }\n    }\n\n    public IDisposable Subscribe(Action<T> handler)\n    {\n        if (handler == null) throw new ArgumentNullException(nameof(handler));\n        Subscription s = new Subscription { Owner = this, Handler = handler };\n        _subs.Add(s);                       // 항상 맨 뒤: 진행 중인 Publish 의 범위(count) 밖\n        _liveCount++;\n        return s;\n    }\n\n    public void Publish(T payload)\n    {\n        int count = _subs.Count;            // 이 Publish 가 시작될 때 있던 구독까지만 본다\n        _publishDepth++;\n        try\n        {\n            for (int i = 0; i < count; i++)\n            {\n                Subscription s = _subs[i];\n                if (!s.Active) continue;    // 자기 차례 전에 해지된 구독은 건너뛴다\n                s.Handler(payload);\n            }\n        }\n        finally\n        {\n            _publishDepth--;\n            if (_publishDepth == 0 && _needsCompaction)\n            {\n                _needsCompaction = false;\n                _subs.RemoveAll(IsInactive);\n            }\n        }\n    }\n\n    private void OnDisposed(Subscription s)\n    {\n        _liveCount--;\n        if (_publishDepth > 0)\n        {\n            _needsCompaction = true;        // 순회 중: 인덱스를 흔들지 않고 표시만 해 둔다\n        }\n        else\n        {\n            _subs.Remove(s);\n        }\n    }\n}\n",
+   "explanation": "**핵심 아이디어.** 구독 하나를 작은 객체(`Subscription`) 하나로 만들고 이 객체가 해지 토큰을 겸하게 합니다. 해지는 \"목록에서 빼기\"가 아니라 \"`Active = false` 로 표시하기\"이고, 실제 제거는 순회가 끝난 뒤로 미룹니다. 순회 중인 목록의 길이와 인덱스가 변하지 않으므로 규칙 3~5 가 한꺼번에 풀립니다.\n\n**왜 맞는가.**\n- `Publish` 는 시작할 때 `count = _subs.Count` 를 잡습니다. 새 구독은 항상 맨 뒤에 붙어 인덱스가 `count` 이상이므로 이번 순회에 들어오지 않습니다(규칙 4).\n- 순회 중 해지된 구독은 자리에 남아 있되 `Active` 가 false 입니다. 차례가 아직 안 왔다면 `continue` 로 건너뛰고(규칙 3), 이미 지나간 자리라면 아무 영향이 없습니다. 원소가 앞으로 당겨지지 않으니 \"B 가 자신을 지웠더니 C 를 건너뛰는\" 버그가 구조적으로 불가능합니다.\n- 중첩은 `_publishDepth` 로 셉니다. 압축(`RemoveAll`)은 깊이가 0 으로 돌아온 가장 바깥 Publish 의 `finally` 에서만 합니다. 안쪽 Publish 가 끝날 때 압축하면 바깥 순회의 인덱스가 어긋납니다.\n- 순회 중이 아닐 때의 해지는 즉시 `Remove` 하므로 죽은 칸이 쌓이지 않습니다.\n\n**복잡도와 할당.** Publish 는 O(n) 이고 지역 변수와 인덱스만 씁니다. 델리게이트 호출 자체는 할당이 없고, `RemoveAll` 에 넘기는 술어는 static 필드에 한 번 만들어 둡니다. Subscribe 는 구독 객체 하나를 할당하고, Dispose 는 순회 밖에서 O(n), 순회 안에서 O(1) 입니다. 채점기는 .NET 8 에서 `GC.GetAllocatedBytesForCurrentThread` 의 전후 차이로 0바이트를 확인합니다.\n\n**흔한 실수.**\n1. `foreach` 도중 목록 수정: 다음 `MoveNext` 에서 `InvalidOperationException`.\n2. `ToArray()` 복사본 순회: 예외는 사라지지만 Publish 마다 배열을 할당하고, 방금 해지된 핸들러(이미 닫힌 UI)가 호출됩니다.\n3. C# `event` / 멀티캐스트 델리게이트: 델리게이트는 불변이라 호출 시점의 목록 그대로 끝까지 호출되므로 2번과 같은 의미가 되고, `+=` / `-=` 마다 새 델리게이트가 만들어집니다. `-=` 는 \"같은 델리게이트\"를 찾아 지우므로 같은 핸들러를 두 번 구독했을 때 토큰별 해지를 표현하기도 어렵습니다.\n4. 역순 순회: 자기 해지에는 안전하지만 구독 순서(규칙 1)를 어깁니다.\n5. `try/finally` 없이 깊이를 올리기: 핸들러 예외 한 번에 채널이 영원히 \"순회 중\"으로 남아 압축이 멈춥니다.\n\n**수명.** 해지 시 `Handler = null` 로 끊어 두면 누군가 토큰을 오래 들고 있어도 구독자 객체가 토큰을 통해 살아남지 않습니다. 반대로 구독자가 Dispose 를 잊으면 채널이 구독자를 계속 붙잡는 lapsed listener 문제가 생깁니다. Unity 라면 OnEnable 에서 구독하고 OnDisable 에서 토큰을 Dispose 하는 짝을 지키세요.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "Publish 가 구독 순서대로 호출하고, 같은 델리게이트를 두 번 구독하면 두 번 호출되며 토큰 하나는 자기 구독 하나만 해지한다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "Publish 도중 해지: 아직 호출 전인 구독은 그 Publish 에서 호출되지 않고, 자기 해지나 앞쪽 구독 해지 뒤에도 나머지가 건너뜀·중복 없이 정확히 한 번씩 호출된다.",
+      "points": 12,
+      "sourceId": "gpp-observer"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "Publish 도중 추가된 구독은 다음 Publish 부터 호출되고, 중첩 Publish 안에서 해지가 일어나도 바깥 Publish 가 올바른 순서로 이어진다 (A1 A2 B2 C2 B1 C1).",
+      "points": 13,
+      "sourceId": ""
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "구독 변화가 없는 Publish 가 힙을 할당하지 않는다: 목록 복사(`ToArray`, `new List`), LINQ, 호출마다 새로 만드는 델리게이트가 없다.",
+      "points": 15,
+      "sourceId": "ms-gc-allocated-bytes"
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "순회 중 해지된 구독의 실제 제거를 가장 바깥 Publish 가 끝날 때 한 번에 하고, 순회 중이 아닐 때의 해지는 즉시 제거해 죽은 칸이 쌓이지 않는다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "해지된 구독이 핸들러 참조를 놓는다(`Handler = null` 등): 토큰을 들고 있어도 구독자 객체가 살아남지 않는다.",
+      "points": 7,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "`Dispose` 가 멱등이다: 두 번째 호출부터는 아무 일도 하지 않고 예외도 없으며 `SubscriberCount` 가 두 번 줄지 않는다.",
+      "points": 8,
+      "sourceId": "ms-idisposable-dispose"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "Publish 의 깊이 증가/감소가 `try/finally` 로 묶여 있어 핸들러가 예외를 던져도 채널 상태가 복구된다.",
+      "points": 7,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "엔진·언어 규약",
+      "description": "`Subscribe(null)` 이 `ArgumentNullException` 을 던진다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "구독을 델리게이트 동등성으로 찾지 않고 구독 객체(토큰) 자체로 식별한다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c11",
+      "category": "아키텍처·가독성",
+      "description": "\"순회 범위 확정\", \"죽은 구독 건너뛰기\", \"지연 압축\" 세 지점이 주석이나 이름으로 구분되어 읽힌다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "Publish 마다 구독 목록을 복사한다: 호출마다 할당이 생기고, 방금 해지된 핸들러가 호출된다.",
+      "penalty": -20,
+      "sourceId": "ms-gc-allocated-bytes"
+     },
+     {
+      "id": "d2",
+      "description": "순회 중인 목록에서 원소를 직접 제거해 핸들러를 건너뛰거나 `InvalidOperationException` 이 난다.",
+      "penalty": -20,
+      "sourceId": "ms-list-enumerator-movenext"
+     },
+     {
+      "id": "d3",
+      "description": "C# `event` 나 멀티캐스트 델리게이트에 목록 관리를 맡겨 구현을 우회했다.",
+      "penalty": -15,
+      "sourceId": "ms-delegate"
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string Expect(System.Collections.Generic.List<string> log, string expected, string what)\n    {\n        string got = string.Join(\" \", log);\n        return got == expected ? null : what + \": 기대 [\" + expected + \"], 결과 [\" + got + \"]\";\n    }\n\n    public static void Main()\n    {\n        Run(\"order-and-count\", () =>\n        {\n            var ch = new EventChannel<int>();\n            var log = new System.Collections.Generic.List<string>();\n            if (ch.SubscriberCount != 0) return \"빈 채널의 SubscriberCount 가 0 이 아님\";\n            ch.Publish(0);\n            var a = ch.Subscribe(v => log.Add(\"A\" + v));\n            var b = ch.Subscribe(v => log.Add(\"B\" + v));\n            var c = ch.Subscribe(v => log.Add(\"C\" + v));\n            ch.Publish(1); ch.Publish(2);\n            string e = Expect(log, \"A1 B1 C1 A2 B2 C2\", \"구독 순서대로 호출되어야 함\");\n            if (e != null) return e;\n            if (ch.SubscriberCount != 3) return \"구독 3개인데 SubscriberCount = \" + ch.SubscriberCount;\n            b.Dispose(); log.Clear(); ch.Publish(3);\n            e = Expect(log, \"A3 C3\", \"B 해지 후 Publish\");\n            if (e != null) return e;\n            if (ch.SubscriberCount != 2) return \"해지 후 SubscriberCount 기대 2, 결과 \" + ch.SubscriberCount;\n            try { ch.Subscribe(null); return \"Subscribe(null) 이 예외를 던지지 않음\"; }\n            catch (System.ArgumentNullException) { }\n            return null;\n        });\n\n        Run(\"dispose-idempotent\", () =>\n        {\n            var ch = new EventChannel<int>();\n            var log = new System.Collections.Generic.List<string>();\n            System.Action<int> h = v => log.Add(\"H\" + v);\n            var t1 = ch.Subscribe(h);\n            var t2 = ch.Subscribe(h);\n            ch.Publish(1);\n            string e = Expect(log, \"H1 H1\", \"같은 델리게이트를 두 번 구독하면 두 번 호출\");\n            if (e != null) return e;\n            t1.Dispose(); t1.Dispose(); t1.Dispose();\n            if (ch.SubscriberCount != 1) return \"토큰 하나를 세 번 Dispose 한 뒤 SubscriberCount 기대 1, 결과 \" + ch.SubscriberCount;\n            log.Clear(); ch.Publish(2);\n            e = Expect(log, \"H2\", \"t1 을 세 번 Dispose 해도 t2 의 구독은 남아야 함\");\n            if (e != null) return e;\n            t2.Dispose(); log.Clear(); ch.Publish(3);\n            if (log.Count != 0 || ch.SubscriberCount != 0) return \"모두 해지했는데 호출되거나 SubscriberCount 가 0 이 아님\";\n            return null;\n        });\n\n        Run(\"self-unsubscribe\", () =>\n        {\n            var ch = new EventChannel<int>();\n            var log = new System.Collections.Generic.List<string>();\n            System.IDisposable tb = null;\n            ch.Subscribe(v => log.Add(\"A\" + v));\n            tb = ch.Subscribe(v => { log.Add(\"B\" + v); tb.Dispose(); });\n            ch.Subscribe(v => log.Add(\"C\" + v));\n            ch.Subscribe(v => log.Add(\"D\" + v));\n            ch.Publish(1);\n            string e = Expect(log, \"A1 B1 C1 D1\", \"B 가 자기 자신을 해지한 Publish (뒤의 C 를 건너뛰면 안 됨)\");\n            if (e != null) return e;\n            if (ch.SubscriberCount != 3) return \"SubscriberCount 기대 3, 결과 \" + ch.SubscriberCount;\n            log.Clear(); ch.Publish(2);\n            return Expect(log, \"A2 C2 D2\", \"그다음 Publish\");\n        });\n\n        Run(\"unsubscribe-other\", () =>\n        {\n            var ch = new EventChannel<int>();\n            var log = new System.Collections.Generic.List<string>();\n            System.IDisposable ta = null, td = null;\n            ta = ch.Subscribe(v => { log.Add(\"A\" + v); if (v == 1) td.Dispose(); });\n            ch.Subscribe(v => { log.Add(\"B\" + v); if (v == 2) ta.Dispose(); });\n            ch.Subscribe(v => log.Add(\"C\" + v));\n            td = ch.Subscribe(v => log.Add(\"D\" + v));\n            ch.Publish(1);\n            string e = Expect(log, \"A1 B1 C1\", \"A 가 아직 호출 전인 D 를 해지: D 는 이번 Publish 에서 호출되면 안 됨\");\n            if (e != null) return e;\n            log.Clear(); ch.Publish(2);\n            e = Expect(log, \"A2 B2 C2\", \"B 가 이미 호출된 A 를 해지: 뒤의 C 는 정확히 한 번 호출\");\n            if (e != null) return e;\n            log.Clear(); ch.Publish(3);\n            e = Expect(log, \"B3 C3\", \"A, D 해지 후\");\n            if (e != null) return e;\n            return ch.SubscriberCount == 2 ? null : \"SubscriberCount 기대 2, 결과 \" + ch.SubscriberCount;\n        });\n\n        Run(\"subscribe-during-publish\", () =>\n        {\n            var ch = new EventChannel<int>();\n            var log = new System.Collections.Generic.List<string>();\n            ch.Subscribe(v => { log.Add(\"A\" + v); if (v == 1) ch.Subscribe(w => log.Add(\"N\" + w)); });\n            ch.Subscribe(v => log.Add(\"B\" + v));\n            ch.Publish(1);\n            string e = Expect(log, \"A1 B1\", \"Publish 도중 추가된 구독은 그 Publish 에서 호출되면 안 됨\");\n            if (e != null) return e;\n            if (ch.SubscriberCount != 3) return \"SubscriberCount 기대 3, 결과 \" + ch.SubscriberCount;\n            log.Clear(); ch.Publish(2);\n            return Expect(log, \"A2 B2 N2\", \"다음 Publish 부터는 맨 뒤 순서로 호출\");\n        });\n\n        Run(\"nested-publish\", () =>\n        {\n            var ch = new EventChannel<int>();\n            var log = new System.Collections.Generic.List<string>();\n            System.IDisposable ta = null;\n            ta = ch.Subscribe(v => { log.Add(\"A\" + v); if (v == 1) ch.Publish(2); });\n            ch.Subscribe(v => { log.Add(\"B\" + v); if (v == 2) ta.Dispose(); });\n            ch.Subscribe(v => log.Add(\"C\" + v));\n            ch.Publish(1);\n            string e = Expect(log, \"A1 A2 B2 C2 B1 C1\", \"중첩 Publish 안에서 A 가 해지된 뒤 바깥 Publish 가 이어지는 순서\");\n            if (e != null) return e;\n            log.Clear(); ch.Publish(3);\n            e = Expect(log, \"B3 C3\", \"중첩 Publish 가 끝난 뒤\");\n            if (e != null) return e;\n            return ch.SubscriberCount == 2 ? null : \"SubscriberCount 기대 2, 결과 \" + ch.SubscriberCount;\n        });\n\n        Run(\"no-alloc-publish\", () =>\n        {\n            var ch = new EventChannel<int>();\n            long sum = 0;\n            var tokens = new System.IDisposable[8];\n            for (int i = 0; i < 8; i++) tokens[i] = ch.Subscribe(v => sum += v);\n            tokens[3].Dispose();\n            for (int i = 0; i < 300; i++) ch.Publish(i);\n            long before = System.GC.GetAllocatedBytesForCurrentThread();\n            for (int i = 0; i < 5000; i++) ch.Publish(1);\n            long bytes = System.GC.GetAllocatedBytesForCurrentThread() - before;\n            if (sum != 7L * (299 * 300 / 2) + 7L * 5000) return \"호출 횟수가 맞지 않음 (합계 \" + sum + \")\";\n            return bytes == 0 ? null : \"구독 변화가 없는 Publish 5000회 동안 \" + bytes + \"바이트 할당됨 (매번 목록을 복사하고 있지 않은가?)\";\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            // 구독 k 는 호출될 때 act[k] 에 따라 행동한다: -1 없음, -2 새 구독 하나 추가(1회), j >= 0 구독 j 해지\n            var rng = new System.Random(20240);\n            for (int round = 0; round < 300; round++)\n            {\n                var ch = new EventChannel<int>();\n                var log = new System.Collections.Generic.List<string>();\n                var refLog = new System.Collections.Generic.List<string>();\n                var tokens = new System.Collections.Generic.List<System.IDisposable>();\n                var act = new System.Collections.Generic.List<int>();\n                System.Action<int> add = null;\n                add = a =>\n                {\n                    int k = tokens.Count;\n                    act.Add(a); tokens.Add(null);\n                    tokens[k] = ch.Subscribe(v =>\n                    {\n                        log.Add(k + \":\" + v);\n                        if (act[k] == -2) { act[k] = -1; add(-1); }\n                        else if (act[k] >= 0) tokens[act[k]].Dispose();\n                    });\n                };\n                int n0 = rng.Next(2, 7);\n                for (int i = 0; i < n0; i++) { int r = rng.Next(10); add(r < 4 ? -1 : r < 6 ? -2 : rng.Next(n0)); }\n                var refAct = new System.Collections.Generic.List<int>(act);\n                var alive = new System.Collections.Generic.List<bool>();\n                for (int i = 0; i < n0; i++) alive.Add(true);\n                for (int p = 0; p < 3; p++)\n                {\n                    ch.Publish(p);\n                    int snapshot = alive.Count;\n                    for (int k = 0; k < snapshot; k++)\n                    {\n                        if (!alive[k]) continue;\n                        refLog.Add(k + \":\" + p);\n                        if (refAct[k] == -2) { refAct[k] = -1; refAct.Add(-1); alive.Add(true); }\n                        else if (refAct[k] >= 0) alive[refAct[k]] = false;\n                    }\n                    int live = 0;\n                    foreach (bool x in alive) if (x) live++;\n                    string got = string.Join(\" \", log), exp = string.Join(\" \", refLog);\n                    if (got != exp) return \"라운드 \" + round + \", Publish(\" + p + \") 뒤 (구독번호:값): 기대 [\" + exp + \"], 결과 [\" + got + \"]\";\n                    if (ch.SubscriberCount != live) return \"라운드 \" + round + \": SubscriberCount 기대 \" + live + \", 결과 \" + ch.SubscriberCount;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "order-and-count",
+     "dispose-idempotent",
+     "self-unsubscribe",
+     "unsubscribe-other",
+     "subscribe-during-publish",
+     "nested-publish",
+     "no-alloc-publish",
+     "random-vs-reference"
+    ],
+    "note": "구독 순서와 SubscriberCount, Dispose 멱등성과 토큰별 해지, Publish 도중의 자기 해지 / 다른 구독 해지 / 새 구독, 중첩 Publish 안의 해지, 구독 변화가 없는 Publish 5000회의 할당 0바이트(.NET 8, GC.GetAllocatedBytesForCurrentThread), 그리고 핸들러가 무작위로 구독·해지하는 시나리오를 참조 모델과 비교합니다. 규칙 7(핸들러 예외)은 채점하지 않습니다. 클래스 이름 EventChannel<T> 와 SubscriberCount, Subscribe(Action<T>)(IDisposable 반환), Publish(T) 시그니처는 바꾸면 안 됩니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "풀이와 숨은 테스트를 실행 서비스에서 돌리고, 구조가 다른 정답 2종(copy-on-write 배열, 슬롯 무효화 후 지연 압축)의 통과와 오답 3종(ToArray 복사, 안쪽 Publish 압축, 멀티캐스트 델리게이트)의 탈락을 로컬 .NET 8 로 확인했으며, 델리게이트 불변성·열거자 무효화·Dispose 규약과 GPP Observer 장 인용을 원문과 대조했습니다."
+   },
+   "nextMission": "이 채널에 `Enqueue(payload)` 와 `Flush()` 를 추가해 \"프레임 끝에 모아서 처리\"하는 이벤트 큐로 확장해 보세요. 핸들러 안에서 Enqueue 한 이벤트를 같은 Flush 에서 처리할지 다음 Flush 로 넘길지 규칙을 먼저 정하고, 그 규칙을 검증하는 테스트를 구현보다 먼저 쓰세요."
+  },
+  {
+   "id": "t10-impl-state-character-fsm",
+   "track": "track10",
+   "mode": "implementation",
+   "difficulty": "Medium",
+   "title": "캐릭터 상태 기계: 전이 테이블과 Enter / Exit / Update 훅",
+   "tags": [
+    "Pattern_State",
+    "Pattern_FSM"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "gh-gpp",
+    "gpp-state"
+   ],
+   "scenario": "액션 게임의 플레이어 캐릭터가 `isAttacking`, `isStunned`, `isMoving` 같은 bool 플래그로 굴러가다가 \"스턴 중인데 공격이 나간다\", \"공격 모션이 끝났는데 히트박스가 켜져 있다\" 같은 버그가 쌓였습니다. 팀은 상태를 **Idle / Move / Attack / Stunned** 객체로 나누고 상태 기계가 전이를 관리하도록 바꾸기로 했습니다.\n\n첫 시도는 상태의 Update 안에서 곧바로 상태를 갈아 끼웠는데, Attack 의 Update 가 전이를 일으킨 뒤 **이미 Exit 된 상태에서 나머지 코드를 계속 실행**해 문제가 더 커졌습니다.\n\n**할 일:** `CharacterFsm` 을 완성하세요.\n\n1. **등록**: `AddState` 로 상태 객체를, `AllowTransition(from, to)` 로 허용 전이를 등록하고 `Start(initial)` 로 시작한다(`Enter(initial)` 한 번). `AllowTransition` 은 상태의 등록 여부를 검사하지 않으며 `AddState` 와의 호출 순서도 상관없다(등록되지 않은 상태가 들어 있어도 예외 없이 테이블에 기록한다).\n2. **수락 조건**: `RequestTransition(to)` 는 `to` 가 등록된 상태이고 (기준 상태 → `to`) 가 전이 테이블에 있을 때만 true 다. 자기 전이(Attack → Attack)도 테이블에 있어야만 허용된다. 거절되면 false 를 반환하고 어떤 훅도 부르지 않는다.\n3. **전이 한 번** = `Exit(이전)` → `Current` 변경 → `Enter(새 상태)`. 각 훅은 전이마다 정확히 한 번.\n4. **훅 밖에서의 요청**은 `RequestTransition` 이 반환하기 전에 전이가 끝나 있다.\n5. **훅(Enter / Exit / Update) 안에서의 요청**은 즉시 실행하지 않는다. 진행 중인 훅이 끝난 뒤 요청된 순서대로 적용하며, 바깥의 `Update` / `RequestTransition` / `Start` 가 반환하기 전에 모두 끝낸다.\n6. **검증 기준 상태**는 \"지금까지 수락된 전이가 모두 적용된 뒤의 상태\"다. 예: Idle 의 Update 가 Move 를 요청해 수락된 뒤 Stunned 를 요청하면 Move → Stunned 로 검사한다. 진행 중인 전이도 이미 수락된 것이므로, Idle → Move 전이의 `Exit(Idle)` 안에서 한 요청은 Move 를 기준으로 검사한다. 훅 밖에서는 `Current` 와 같다.\n7. **Update(dt)** 는 현재 상태의 `Update` 를 정확히 한 번 부른다. 그 안에서 전이가 일어나도 새 상태의 `Update` 는 같은 프레임에 부르지 않는다.\n8. **오용**: `Start` 전의 `Current` / `Update` / `RequestTransition`, 등록되지 않은 상태로의 `Start`, 두 번째 `Start` 는 `InvalidOperationException`. 중복 `AddState` 는 `ArgumentException`, null 상태는 `ArgumentNullException`.\n\n훅이 예외를 던지는 경우, 훅 안에서 `Update` 나 `Start` 를 다시 호출하는 경우, Enter 끼리 서로를 끝없이 요청하는 고리는 이 문제의 범위 밖입니다(채점하지 않음).",
+   "constraints": [
+    "`RequestTransition` 의 허용 검사는 O(1) 이어야 한다 (전이 목록 선형 탐색 금지).",
+    "`CharacterFsm` 안에 상태 종류별 `switch` / `if` 분기를 두지 않는다. 상태별 동작은 `IState` 구현체에만 있다.",
+    "훅 안에서 요청된 전이를 재귀 호출로 즉시 처리하지 않는다 (Enter 가 끝나기 전에 같은 상태의 Exit 가 불리면 안 된다).",
+    "상태 객체는 등록할 때 받은 것을 재사용한다. 전이마다 상태 객체를 새로 만들지 않는다.",
+    "`CharState`, `IState` 와 `CharacterFsm` 의 public 시그니처는 바꾸지 않는다."
+   ],
+   "starterCode": "using System;\nusing System.Collections.Generic;\n\npublic enum CharState { Idle, Move, Attack, Stunned, Dead }\n\n// 상태 하나의 동작. 훅 안에서 fsm.RequestTransition 을 호출할 수 있다.\npublic interface IState\n{\n    void Enter(CharacterFsm fsm);\n    void Update(CharacterFsm fsm, float dt);\n    void Exit(CharacterFsm fsm);\n}\n\npublic sealed class CharacterFsm\n{\n    // 현재 상태. Exit 훅 안에서는 떠나는 상태, Enter 훅 안에서는 새 상태다.\n    // Start 전에 읽으면 InvalidOperationException.\n    public CharState Current\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 상태 객체 등록. state 가 null 이면 ArgumentNullException,\n    // 같은 id 를 두 번 등록하면 ArgumentException.\n    public void AddState(CharState id, IState state)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 전이 테이블에 from -> to 를 허용으로 추가한다. (이미 있으면 그대로)\n    public void AllowTransition(CharState from, CharState to)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 초기 상태로 진입한다: Enter(initial) 을 한 번 호출.\n    // 등록되지 않은 상태이거나 이미 Start 했다면 InvalidOperationException.\n    public void Start(CharState initial)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 전이를 요청한다. 거절되면 false 를 반환하고 아무 훅도 호출하지 않는다.\n    // 훅 밖에서 호출되면 반환 전에 전이가 끝나 있고,\n    // 훅 안에서 호출되면 진행 중인 훅이 끝난 뒤에 요청 순서대로 적용된다.\n    public bool RequestTransition(CharState to)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 현재 상태의 Update 를 정확히 한 번 호출하고,\n    // 그 안에서 요청된 전이를 반환 전에 모두 적용한다.\n    public void Update(float dt)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "Move 의 Update 안에서 Attack 요청: 그 순간 `Current` 는 아직 Move 이고, 기록은 Update:Move → Exit:Move → Enter:Attack 순서여야 한다. Update:Attack 은 이번 프레임에 없다.",
+    "Stunned 의 Update 가 Idle 을 요청하고, Idle 의 Enter 가 다시 Move 를 요청: Enter:Idle 이 완전히 끝난 뒤에 Exit:Idle → Enter:Move 가 이어진다.",
+    "한 Update 안에서 Move, Stunned, Attack 을 차례로 요청: 결과는 true, true, false (Stunned → Attack 은 테이블에 없음)이고 최종 상태는 Stunned.",
+    "Stunned → Idle 전이의 `Exit(Stunned)` 안에서 Idle 을 요청: 검증 기준은 이미 수락된 목적지 Idle 이므로 Idle → Idle(테이블에 없음)로 검사되어 false. `Current` 는 그 순간 아직 Stunned 다.",
+    "테이블에 없는 전이(Stunned → Attack), 테이블에 없는 자기 전이, 테이블에는 있지만 등록되지 않은 상태(Dead)로의 요청: 모두 false 이고 훅 호출 0회.",
+    "`Start` 전에 `Update` 호출, 같은 상태를 두 번 `AddState`, `Start` 두 번."
+   ],
+   "hints": [
+    "Attack 의 Update 가 \"모션이 끝났으면 Idle 로 전이하고, 그다음 히트박스 타이머를 갱신\"한다고 합시다. 전이를 즉시 수행하면 히트박스 갱신 코드는 Exit(Attack) 과 Enter(Idle) 이 모두 끝난 뒤에 실행됩니다. Enter 안에서 즉시 전이하면 더 이상합니다: Enter(Idle) 이 끝나기도 전에 Exit(Idle) 이 불립니다. \"요청\"과 \"수행\"을 떼어 놓아야 하는 이유입니다.",
+    "전이를 실제로 수행하는 코드(Exit → Current 변경 → Enter)를 함수 하나에만 두세요. 훅이 실행 중인지 나타내는 플래그 하나와 대기 중인 목적지를 담는 큐 하나면 됩니다. 요청을 미루기 시작하면 \"두 번째 요청은 어느 상태를 기준으로 검사하나\"가 문제가 됩니다. `Current` 는 아직 안 바뀌었으니 기준이 될 수 없습니다. 무엇을 하나 더 기억해야 할까요?",
+    "뼈대입니다. 빈칸은 직접 채우세요.\n```\nRequestTransition(to):\n    if (to 가 미등록 || (____ , to) 가 테이블에 없음) return false\n    ____ = to                 // 다음 요청의 검증 기준\n    pending.Enqueue(to)\n    if (훅 실행 중이 아님) Drain()\n    return true\n\nUpdate(dt):\n    inHook = true\n    try { states[current].Update(this, dt) } finally { inHook = false }\n    Drain()\n\nDrain():\n    inHook = true\n    try:\n        while (pending 가 비지 않음):\n            to = pending.Dequeue()\n            ____                // 세 줄: 순서가 핵심\n    finally: inHook = false\n```\nDrain 의 while 은 훅 안에서 새로 들어온 요청까지 이어서 처리합니다. 재귀가 필요 없는 이유를 설명해 보세요."
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Collections.Generic;\n\npublic enum CharState { Idle, Move, Attack, Stunned, Dead }\n\npublic interface IState\n{\n    void Enter(CharacterFsm fsm);\n    void Update(CharacterFsm fsm, float dt);\n    void Exit(CharacterFsm fsm);\n}\n\npublic sealed class CharacterFsm\n{\n    private readonly Dictionary<CharState, IState> _states = new Dictionary<CharState, IState>();\n    private readonly HashSet<(CharState, CharState)> _allowed = new HashSet<(CharState, CharState)>();\n    private readonly Queue<CharState> _pending = new Queue<CharState>();\n\n    private bool _started;\n    private bool _inHook;            // Enter / Exit / Update 중 하나가 실행 중인가\n    private CharState _current;\n    private CharState _logical;      // 수락된 요청이 모두 적용된 뒤의 상태\n\n    public CharState Current\n    {\n        get { EnsureStarted(); return _current; }\n    }\n\n    public void AddState(CharState id, IState state)\n    {\n        if (state == null) throw new ArgumentNullException(nameof(state));\n        if (_states.ContainsKey(id)) throw new ArgumentException(\"이미 등록된 상태: \" + id);\n        _states.Add(id, state);\n    }\n\n    public void AllowTransition(CharState from, CharState to)\n    {\n        _allowed.Add((from, to));\n    }\n\n    public void Start(CharState initial)\n    {\n        if (_started) throw new InvalidOperationException(\"이미 시작됨\");\n        if (!_states.ContainsKey(initial)) throw new InvalidOperationException(\"등록되지 않은 상태: \" + initial);\n        _started = true;\n        _current = initial;\n        _logical = initial;\n        _inHook = true;\n        try { _states[initial].Enter(this); }\n        finally { _inHook = false; }\n        Drain();                     // 초기 Enter 안에서 요청된 전이\n    }\n\n    public bool RequestTransition(CharState to)\n    {\n        EnsureStarted();\n        // 검증 기준은 \"이 요청이 적용될 시점의 상태\"다.\n        if (!_states.ContainsKey(to) || !_allowed.Contains((_logical, to))) return false;\n        _logical = to;\n        _pending.Enqueue(to);\n        if (!_inHook) Drain();       // 훅 밖이면 지금 바로, 훅 안이면 그 훅을 부른 쪽이 처리한다\n        return true;\n    }\n\n    public void Update(float dt)\n    {\n        EnsureStarted();\n        if (_inHook) throw new InvalidOperationException(\"훅 안에서 Update 를 다시 호출할 수 없음\");\n        _inHook = true;\n        try { _states[_current].Update(this, dt); }\n        finally { _inHook = false; }\n        Drain();\n    }\n\n    // 대기 중인 전이를 요청 순서대로 하나씩 끝까지 적용한다.\n    // 훅 안에서 새 요청이 들어오면 큐 뒤에 붙고, 이 루프가 이어서 처리한다(재귀 없음).\n    private void Drain()\n    {\n        _inHook = true;\n        try\n        {\n            while (_pending.Count > 0)\n            {\n                CharState to = _pending.Dequeue();\n                _states[_current].Exit(this);\n                _current = to;\n                _states[to].Enter(this);\n            }\n        }\n        finally { _inHook = false; }\n    }\n\n    private void EnsureStarted()\n    {\n        if (!_started) throw new InvalidOperationException(\"Start 를 먼저 호출해야 함\");\n    }\n}\n",
+   "explanation": "**구조.** 상태별 동작은 `IState` 구현체에, \"누가 누구로 갈 수 있는가\"는 `HashSet<(from, to)>` 전이 테이블에, \"언제 전이를 실제로 수행하는가\"는 `CharacterFsm` 에 둡니다. FSM 본체는 상태가 몇 개인지, 각각 무엇을 하는지 모릅니다.\n\n**전이 수행은 한 곳에서.** `Drain()` 이 큐에서 목적지를 하나 꺼내 `Exit(현재) → _current = to → Enter(to)` 를 수행하고 큐가 빌 때까지 반복합니다. 전이를 수행하는 코드가 이 루프 하나뿐이라, Enter 와 Exit 가 전이마다 한 번씩 올바른 순서로 불린다는 것을 이 몇 줄만 보고 확인할 수 있습니다.\n\n**훅 안의 요청을 미루는 이유.** Update 중간에 즉시 전이하면 Update 의 나머지 코드가 이미 Exit 된 상태 위에서 실행됩니다. Enter 안에서 즉시 전이하면 Enter 가 끝나기 전에 같은 상태의 Exit 가 불리는 재진입이 생기고 호출 스택이 전이 횟수만큼 깊어집니다. 그래서 훅이 실행 중이면(`_inHook`) 요청을 큐에 넣기만 하고, 그 훅을 호출한 쪽(`Update`, 바깥 `RequestTransition`, `Start`)이 훅이 끝난 뒤 `Drain()` 합니다. Drain 도중의 훅에서 들어온 요청은 같은 while 루프가 이어서 처리하므로 재귀가 없습니다.\n\n**검증 기준 `_logical`.** 요청을 미루면 \"무엇을 기준으로 허용 여부를 판단하나\"가 문제가 됩니다. Idle 의 Update 가 Move 를 요청한 뒤 Stunned 를 요청했다면 두 번째는 Move → Stunned 로 검사해야, 큐에 쌓인 전이 열이 항상 테이블 위의 경로가 됩니다. `_logical` 은 \"수락된 요청이 모두 적용된 뒤의 상태\"이며 수락할 때마다 갱신합니다. 덕분에 반환값을 요청 시점에 확정할 수 있고, 적용 단계에서는 다시 검사할 필요가 없습니다.\n\n**복잡도.** 요청 검증은 해시 조회 두 번으로 O(1), 전이 한 번은 훅 호출 두 번입니다. 상태 객체는 등록 시 받은 것을 재사용하고 큐도 하나를 계속 쓰므로 전이마다 새로 만드는 객체가 없습니다. 상태 객체에 캐릭터별 데이터(차지 시간 등)를 둔다면 캐릭터마다 자기 상태 객체를 등록해야 합니다. 필드가 없는 상태라면 인스턴스 하나를 여러 캐릭터가 공유해도 됩니다.\n\n**흔한 실수.**\n1. Exit 를 먼저 부른 뒤 허용 여부를 검사한다: 거절된 전이가 상태를 반쯤 망가뜨립니다.\n2. 자기 전이를 무조건 무시하거나 무조건 허용한다: 콤보 재시작(Attack → Attack)처럼 테이블에 있는 것만 허용해야 합니다.\n3. 전이 직후 같은 프레임에 새 상태의 Update 까지 돌린다: 한 프레임에 두 상태가 갱신되어 타이머가 한 프레임씩 어긋납니다.\n4. `try/finally` 없이 `_inHook` 을 세운다: 훅 예외 한 번에 이후 모든 요청이 큐에만 쌓입니다.\n5. Enter 끼리 서로를 요청하는 고리: 이 풀이는 막지 않습니다. 실전에서는 한 번의 Drain 이 처리할 전이 수에 상한을 두고 넘으면 오류로 알리세요.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "전이 한 번에 `Exit(이전)` → `Current` 변경 → `Enter(새 상태)` 가 이 순서로 각각 정확히 한 번 호출된다 (Exit 안에서 Current 는 이전 상태, Enter 안에서는 새 상태).",
+      "points": 12,
+      "sourceId": "gpp-state"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "테이블에 없는 전이, 테이블에 없는 자기 전이, 등록되지 않은 상태로의 요청이 false 를 반환하고 훅을 하나도 부르지 않는다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "훅 안에서 요청한 전이가 그 훅이 끝난 뒤 요청 순서대로 적용되고, 각 요청이 \"앞선 수락분이 적용된 뒤의 상태\"를 기준으로 검증된다 (Move, Stunned, Attack 연속 요청 → true, true, false).",
+      "points": 13,
+      "sourceId": ""
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "허용 검사가 해시 조회나 배열 인덱싱으로 O(1) 이다 (전이 목록을 선형 탐색하지 않는다).",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "상태 객체를 등록 시 받은 인스턴스로 재사용하고, 전이나 Update 마다 상태 객체·컬렉션을 새로 만들지 않는다.",
+      "points": 10,
+      "sourceId": "gpp-state"
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "연쇄 전이를 재귀가 아니라 큐와 루프로 처리해 호출 스택 깊이가 전이 횟수에 비례하지 않는다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "오용 시 예외 타입이 스펙과 같다: Start 전 사용·미등록 Start·이중 Start 는 `InvalidOperationException`, 중복 AddState 는 `ArgumentException`, null 상태는 `ArgumentNullException`.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "\"훅 실행 중\" 플래그를 `try/finally` 로 되돌린다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "엔진·언어 규약",
+      "description": "상태 식별에 `enum` 키를 쓰고 문자열 비교나 타입 검사(`is`, `GetType`)로 상태를 구분하지 않는다.",
+      "points": 5,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "`CharacterFsm` 안에 특정 상태 이름에 대한 분기(`switch (state)`, `if (cur == CharState.Attack)`)가 없다.",
+      "points": 8,
+      "sourceId": "gpp-state"
+     },
+     {
+      "id": "c11",
+      "category": "아키텍처·가독성",
+      "description": "Exit → 변경 → Enter 를 수행하는 코드가 한 함수에만 있고, Start / Update / RequestTransition 이 모두 그 함수를 거친다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "훅 안에서 요청된 전이를 즉시 수행한다: Update 의 나머지 코드가 Exit 된 상태에서 실행되거나 Enter 가 끝나기 전에 Exit 가 불린다.",
+      "penalty": -20,
+      "sourceId": ""
+     },
+     {
+      "id": "d2",
+      "description": "거절해야 할 전이에서 Exit 나 Enter 가 호출되거나, 한 번의 전이에 Enter / Exit 가 두 번 이상 호출된다.",
+      "penalty": -20,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "상태별 동작을 `CharacterFsm` 안의 거대한 `switch` 로 구현했다 (State 패턴이 아니라 enum + switch FSM).",
+      "penalty": -10,
+      "sourceId": "gpp-state"
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // 훅 호출을 기록하고, 테스트가 꽂아 둔 동작을 실행하는 상태\n    sealed class Rec : IState\n    {\n        public CharState Id;\n        public System.Collections.Generic.List<string> Log;\n        public System.Action<CharacterFsm> OnEnter, OnUpdate, OnExit;\n        public void Enter(CharacterFsm f) { Log.Add(\"Enter:\" + Id); if (OnEnter != null) OnEnter(f); }\n        public void Update(CharacterFsm f, float dt) { Log.Add(\"Update:\" + Id); if (OnUpdate != null) OnUpdate(f); }\n        public void Exit(CharacterFsm f) { Log.Add(\"Exit:\" + Id); if (OnExit != null) OnExit(f); }\n    }\n\n    static readonly CharState[] Registered = { CharState.Idle, CharState.Move, CharState.Attack, CharState.Stunned };\n    // 허용 전이 (from, to) 쌍을 평평하게 나열\n    static readonly int[] Table =\n    {\n        0, 1,  0, 2,  1, 0,  1, 2,  2, 0,  2, 2,\n        0, 3,  1, 3,  2, 3,  3, 0,  0, 4\n    };\n\n    sealed class Rig\n    {\n        public CharacterFsm F = new CharacterFsm();\n        public System.Collections.Generic.List<string> Log = new System.Collections.Generic.List<string>();\n        public System.Collections.Generic.Dictionary<CharState, Rec> S = new System.Collections.Generic.Dictionary<CharState, Rec>();\n        public Rig()\n        {\n            foreach (CharState id in Registered) { var r = new Rec { Id = id, Log = Log }; S[id] = r; F.AddState(id, r); }\n            for (int i = 0; i < Table.Length; i += 2) F.AllowTransition((CharState)Table[i], (CharState)Table[i + 1]);\n        }\n        public string Expect(string expected, string what)\n        {\n            string got = string.Join(\" \", Log);\n            return got == expected ? null : what + \": 기대 [\" + expected + \"], 결과 [\" + got + \"]\";\n        }\n    }\n\n    static bool Throws<TEx>(System.Action a) where TEx : System.Exception\n    {\n        try { a(); } catch (TEx) { return true; } catch (System.Exception) { return false; }\n        return false;\n    }\n\n    public static void Main()\n    {\n        Run(\"start-and-update\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            string e = r.Expect(\"Enter:Idle\", \"Start 직후\");\n            if (e != null) return e;\n            if (r.F.Current != CharState.Idle) return \"Current 기대 Idle, 결과 \" + r.F.Current;\n            r.F.Update(0.016f); r.F.Update(0.016f);\n            return r.Expect(\"Enter:Idle Update:Idle Update:Idle\", \"Update 두 번 뒤\");\n        });\n\n        Run(\"transition-order\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            r.S[CharState.Idle].OnExit = f => r.Log.Add(\"cur=\" + f.Current);\n            r.S[CharState.Move].OnEnter = f => r.Log.Add(\"cur=\" + f.Current);\n            r.Log.Clear();\n            if (!r.F.RequestTransition(CharState.Move)) return \"허용된 전이 Idle -> Move 가 false 를 반환\";\n            string e = r.Expect(\"Exit:Idle cur=Idle Enter:Move cur=Move\", \"Idle -> Move (Exit 가 먼저, 훅 안의 Current 확인)\");\n            if (e != null) return e;\n            if (r.F.Current != CharState.Move) return \"전이 후 Current 기대 Move, 결과 \" + r.F.Current;\n            r.Log.Clear();\n            r.F.RequestTransition(CharState.Attack); r.F.RequestTransition(CharState.Attack);\n            return r.Expect(\"Exit:Move Enter:Attack Exit:Attack Enter:Attack\", \"Move -> Attack 뒤 테이블에 있는 자기 전이 Attack -> Attack\");\n        });\n\n        Run(\"invalid-rejected\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            r.F.RequestTransition(CharState.Stunned);\n            r.Log.Clear();\n            if (r.F.RequestTransition(CharState.Attack)) return \"테이블에 없는 Stunned -> Attack 이 true 를 반환\";\n            if (r.F.RequestTransition(CharState.Stunned)) return \"테이블에 없는 자기 전이 Stunned -> Stunned 가 true 를 반환\";\n            if (r.Log.Count != 0) return \"거절된 전이에서 훅이 호출됨: [\" + string.Join(\" \", r.Log) + \"]\";\n            if (r.F.Current != CharState.Stunned) return \"거절 후 Current 가 바뀜: \" + r.F.Current;\n            r.F.RequestTransition(CharState.Idle);\n            r.Log.Clear();\n            if (r.F.RequestTransition(CharState.Dead)) return \"테이블에는 있지만 등록되지 않은 상태(Dead)로의 전이가 true 를 반환\";\n            if (r.Log.Count != 0 || r.F.Current != CharState.Idle) return \"등록되지 않은 상태로의 요청이 상태나 훅에 영향을 줌\";\n            return null;\n        });\n\n        Run(\"deferred-in-update\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            r.F.RequestTransition(CharState.Move);\n            r.S[CharState.Move].OnUpdate = f =>\n            {\n                bool ok = f.RequestTransition(CharState.Attack);\n                r.Log.Add(\"req=\" + ok + \",cur=\" + f.Current);\n            };\n            r.Log.Clear();\n            r.F.Update(0.016f);\n            string e = r.Expect(\"Update:Move req=True,cur=Move Exit:Move Enter:Attack\",\n                \"Update 안에서 요청한 전이는 그 Update 가 끝난 뒤, fsm.Update 반환 전에 적용 (새 상태의 Update 는 이번 프레임에 호출 안 함)\");\n            if (e != null) return e;\n            return r.F.Current == CharState.Attack ? null : \"Update 반환 후 Current 기대 Attack, 결과 \" + r.F.Current;\n        });\n\n        Run(\"chain-from-enter\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            r.F.RequestTransition(CharState.Stunned);\n            r.S[CharState.Stunned].OnUpdate = f => f.RequestTransition(CharState.Idle);\n            r.S[CharState.Idle].OnEnter = f => { f.RequestTransition(CharState.Move); r.Log.Add(\"EnterDone:Idle\"); };\n            r.Log.Clear();\n            r.F.Update(0.5f);\n            string e = r.Expect(\"Update:Stunned Exit:Stunned Enter:Idle EnterDone:Idle Exit:Idle Enter:Move\",\n                \"Enter 안에서 요청한 전이는 그 Enter 가 끝난 뒤에 이어서 적용\");\n            if (e != null) return e;\n            return r.F.Current == CharState.Move ? null : \"Current 기대 Move, 결과 \" + r.F.Current;\n        });\n\n        Run(\"multi-request-validation\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            r.S[CharState.Idle].OnUpdate = f =>\n            {\n                bool a = f.RequestTransition(CharState.Move);      // Idle -> Move : 허용\n                bool b = f.RequestTransition(CharState.Stunned);   // Move -> Stunned : 허용\n                bool c = f.RequestTransition(CharState.Attack);    // Stunned -> Attack : 거절\n                r.Log.Add(a + \",\" + b + \",\" + c);\n            };\n            r.Log.Clear();\n            r.F.Update(0.016f);\n            string e = r.Expect(\"Update:Idle True,True,False Exit:Idle Enter:Move Exit:Move Enter:Stunned\",\n                \"한 훅에서 여러 번 요청: 각 요청은 앞선 요청이 적용된 뒤의 상태를 기준으로 검증\");\n            if (e != null) return e;\n            return r.F.Current == CharState.Stunned ? null : \"Current 기대 Stunned, 결과 \" + r.F.Current;\n        });\n\n        Run(\"api-misuse\", () =>\n        {\n            var f = new CharacterFsm();\n            var log = new System.Collections.Generic.List<string>();\n            f.AddState(CharState.Idle, new Rec { Id = CharState.Idle, Log = log });\n            if (!Throws<System.InvalidOperationException>(() => f.Update(0.1f))) return \"Start 전 Update 가 InvalidOperationException 을 던지지 않음\";\n            if (!Throws<System.InvalidOperationException>(() => f.RequestTransition(CharState.Idle))) return \"Start 전 RequestTransition 이 InvalidOperationException 을 던지지 않음\";\n            if (!Throws<System.ArgumentException>(() => f.AddState(CharState.Idle, new Rec { Id = CharState.Idle, Log = log }))) return \"같은 상태를 두 번 AddState 해도 ArgumentException 이 없음\";\n            if (!Throws<System.ArgumentNullException>(() => f.AddState(CharState.Move, null))) return \"AddState(null) 이 ArgumentNullException 을 던지지 않음\";\n            if (!Throws<System.InvalidOperationException>(() => f.Start(CharState.Attack))) return \"등록되지 않은 상태로 Start 해도 InvalidOperationException 이 없음\";\n            if (log.Count != 0) return \"실패한 호출에서 훅이 불림: [\" + string.Join(\" \", log) + \"]\";\n            f.Start(CharState.Idle);\n            if (!Throws<System.InvalidOperationException>(() => f.Start(CharState.Idle))) return \"Start 를 두 번 호출해도 InvalidOperationException 이 없음\";\n            return string.Join(\" \", log) == \"Enter:Idle\" ? null : \"Enter 는 정확히 한 번이어야 함: [\" + string.Join(\" \", log) + \"]\";\n        });\n\n        Run(\"request-in-exit\", () =>\n        {\n            var r = new Rig();\n            r.F.Start(CharState.Idle);\n            bool asked = false;\n            r.S[CharState.Idle].OnExit = f =>\n            {\n                if (asked) return;\n                asked = true;\n                bool ok = f.RequestTransition(CharState.Idle);     // 기준은 이미 수락된 목적지 Move: Move -> Idle 허용\n                r.Log.Add(\"req=\" + ok + \",cur=\" + f.Current);\n            };\n            r.Log.Clear();\n            r.F.RequestTransition(CharState.Move);\n            string e = r.Expect(\"Exit:Idle req=True,cur=Idle Enter:Move Exit:Move Enter:Idle\",\n                \"Idle -> Move 전이의 Exit(Idle) 안에서 Idle 요청: 검증 기준은 진행 중인 전이의 목적지 Move (Move -> Idle 은 허용)\");\n            if (e != null) return e;\n            if (r.F.Current != CharState.Idle) return \"Current 기대 Idle, 결과 \" + r.F.Current;\n            r.F.RequestTransition(CharState.Stunned);\n            r.S[CharState.Stunned].OnExit = f => r.Log.Add(\"req=\" + f.RequestTransition(CharState.Idle));   // 기준 Idle: Idle -> Idle 은 테이블에 없음\n            r.Log.Clear();\n            r.F.RequestTransition(CharState.Idle);\n            e = r.Expect(\"Exit:Stunned req=False Enter:Idle\",\n                \"Stunned -> Idle 전이의 Exit(Stunned) 안에서 Idle 요청: 기준은 목적지 Idle 이므로 Idle -> Idle (테이블에 없음) 은 거절\");\n            if (e != null) return e;\n            return r.F.Current == CharState.Idle ? null : \"Current 기대 Idle, 결과 \" + r.F.Current;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            // 훅이 불릴 때마다 미리 뽑아 둔 결정 dec[n] 을 차례로 소비한다: -1 요청 없음, 그 외는 요청할 상태\n            var rng = new System.Random(4242);\n            for (int round = 0; round < 200; round++)\n            {\n                int[] dec = new int[400];\n                for (int i = 0; i < dec.Length; i++) dec[i] = rng.Next(100) < 30 ? rng.Next(5) : -1;\n                int[] ops = new int[25];\n                for (int i = 0; i < ops.Length; i++) ops[i] = rng.Next(100) < 50 ? -1 : rng.Next(5);\n\n                var r = new Rig();\n                int n = 0;\n                System.Action<CharacterFsm> hook = f =>\n                {\n                    int d = n < dec.Length ? dec[n] : -1; n++;\n                    if (d >= 0) r.Log.Add((f.RequestTransition((CharState)d) ? \"+\" : \"-\") + (CharState)d);\n                };\n                foreach (var s in r.S.Values) { s.OnEnter = hook; s.OnUpdate = hook; s.OnExit = hook; }\n\n                // 참조 모델\n                var mlog = new System.Collections.Generic.List<string>();\n                var q = new System.Collections.Generic.Queue<int>();\n                int cur = 0, logical = 0, m = 0;\n                System.Func<int, bool> valid = to =>\n                {\n                    if (to == 4) return false;\n                    for (int i = 0; i < Table.Length; i += 2) if (Table[i] == logical && Table[i + 1] == to) return true;\n                    return false;\n                };\n                System.Action<string> mhook = kind =>\n                {\n                    mlog.Add(kind + \":\" + (CharState)cur);\n                    int d = m < dec.Length ? dec[m] : -1; m++;\n                    if (d < 0) return;\n                    bool ok = valid(d);\n                    if (ok) { logical = d; q.Enqueue(d); }\n                    mlog.Add((ok ? \"+\" : \"-\") + (CharState)d);\n                };\n                System.Action drain = () => { while (q.Count > 0) { int to = q.Dequeue(); mhook(\"Exit\"); cur = to; mhook(\"Enter\"); } };\n\n                r.F.Start(CharState.Idle);\n                mhook(\"Enter\"); drain();\n                for (int i = 0; i < ops.Length; i++)\n                {\n                    string opName;\n                    if (ops[i] < 0) { opName = \"Update\"; r.F.Update(0.02f); mhook(\"Update\"); drain(); }\n                    else\n                    {\n                        opName = \"Request(\" + (CharState)ops[i] + \")\";\n                        bool got = r.F.RequestTransition((CharState)ops[i]);\n                        bool exp = valid(ops[i]);\n                        if (exp) { logical = ops[i]; q.Enqueue(ops[i]); drain(); }\n                        if (got != exp) return \"라운드 \" + round + \", \" + (CharState)cur + \" 에서 \" + opName + \" 반환값 기대 \" + exp + \", 결과 \" + got;\n                    }\n                    string a = string.Join(\" \", r.Log), b = string.Join(\" \", mlog);\n                    if (a != b || r.F.Current != (CharState)cur)\n                    {\n                        int from = System.Math.Max(0, mlog.Count - 8);\n                        return \"라운드 \" + round + \", \" + (i + 1) + \"번째 연산 \" + opName + \" 뒤 훅 기록이 다름. 기대(끝부분) [\" +\n                            string.Join(\" \", mlog.GetRange(from, mlog.Count - from)) + \"], 결과(끝부분) [\" +\n                            string.Join(\" \", r.Log.GetRange(System.Math.Max(0, r.Log.Count - 8), System.Math.Min(8, r.Log.Count))) + \"], Current 기대 \" + (CharState)cur + \", 결과 \" + r.F.Current;\n                    }\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "start-and-update",
+     "transition-order",
+     "invalid-rejected",
+     "deferred-in-update",
+     "chain-from-enter",
+     "multi-request-validation",
+     "api-misuse",
+     "request-in-exit",
+     "random-vs-reference"
+    ],
+    "note": "테스트가 훅 호출을 기록하는 상태 객체를 등록해 호출 순서를 문자열로 비교합니다: Start 와 Update, Exit → Enter 순서와 훅 안의 Current, 거절되는 전이의 훅 0회, Update 안에서 요청한 전이의 지연 적용, Enter 안에서 요청한 연쇄 전이, 한 훅 안의 연속 요청 검증, 전이 도중의 Exit 훅 안에서 한 요청의 검증 기준(진행 중인 전이의 목적지), 오용 시 예외 타입, 그리고 무작위 Update / 요청 / 훅 내부 요청을 참조 모델과 비교합니다. enum CharState 의 멤버(Idle, Move, Attack, Stunned, Dead), IState 의 Enter / Update / Exit 시그니처, CharacterFsm 의 Current, AddState, AllowTransition, Start, RequestTransition(bool 반환), Update 는 바꾸면 안 됩니다. 테스트는 등록되지 않은 상태(Dead)가 들어간 전이도 AllowTransition 으로 넣습니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "풀이와 숨은 테스트를 실행 서비스에서 돌리고, 구조가 다른 정답(배열 테이블 + 대기 리스트 + 깊이 카운터)의 통과와 오답 4종(즉시 전이, Current 기준 검증, 같은 프레임 Update, Exit 훅 기준 상태 오류)의 탈락을 로컬 .NET 8 로 확인했으며, Exit 훅 안 요청의 기준 상태와 AllowTransition 의 미등록 상태 허용을 시나리오에 명시하고 GPP State 장 인용을 원문과 대조했습니다."
+   },
+   "nextMission": "어느 상태에서든 갈 수 있는 전이(`AllowFromAny(to)`: 피격 시 Stunned, 사망 시 Dead)를 추가하고, 한 번의 Drain 에서 전이가 8회를 넘으면 지나온 상태 경로를 메시지에 담아 예외를 던지는 고리 감지를 넣어 보세요. 그다음 Attack 상태에 \"선입력 버퍼\"(공격 중 들어온 다음 공격 입력을 Exit 직전에 소비)를 구현해 훅 순서 규칙이 왜 필요한지 확인하세요."
+  },
+  {
+   "id": "t10-impl-command-rebind-replay",
+   "track": "track10",
+   "mode": "implementation",
+   "difficulty": "Medium",
+   "title": "입력을 커맨드로: 키 리바인딩과 프레임 단위 결정적 리플레이",
+   "tags": [
+    "Pattern_Command",
+    "Pattern_Replay"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "gh-gpp",
+    "gpp-command",
+    "gaffer-deterministic-lockstep"
+   ],
+   "scenario": "대전 액션 게임에 **키 설정 화면**과 **훈련 모드 리플레이**를 넣으려 합니다. 지금 입력 코드는 \"J 키가 눌리면 공격 함수 호출\" 식으로 키와 동작이 한 줄에 붙어 있습니다. 급히 만든 리플레이는 **눌린 키를 프레임별로 저장**했는데, 플레이어가 키 설정을 바꾸자 예전 리플레이가 전혀 다른 행동을 재생했습니다.\n\n팀은 입력을 커맨드 객체로 바꾸기로 했습니다. 시뮬레이션 상태 `GameState` 는 이미 결정적으로 만들어져 있습니다(정수만 사용, 난수는 상태 안의 시드에서만 생성, 프레임마다 `Tick()` 으로 쿨다운 감소와 스태미나 회복). `GameState`, `ICommand`, `RecordedCommand` 는 완성되어 있으니 **`CommandInput` 만 구현**하세요.\n\n1. **등록**: `Register(command)` 로 커맨드를 id 로 등록한다.\n2. **바인딩**: `Bind(key, commandId)` 는 키를 커맨드 id 에 묶는다(기존 바인딩은 교체). 여러 키가 같은 커맨드를 가리킬 수 있다. 등록되지 않은 id 면 false 이고 기존 바인딩은 그대로다.\n3. **입력**: `Press(key)` 는 그 시점의 바인딩으로 커맨드를 정해 이번 프레임 버퍼에 넣기만 한다. 바인딩이 없으면 false. 누른 뒤 `AdvanceFrame` 전에 그 키의 바인딩을 바꾸거나 지워도 이미 버퍼에 든 커맨드는 바뀌지 않는다.\n4. **프레임 진행**: `AdvanceFrame(state)` 는 버퍼의 커맨드를 눌린 순서대로 실행하며 `(실행 시점의 state.Frame, 커맨드 id)` 를 `Recording` 에 추가하고, 버퍼를 비운 뒤 `state.Tick()` 을 한 번 호출한다.\n5. **리플레이**: `Replay(fresh, stream, totalFrames)` 는 `fresh.Frame` 이 `totalFrames` 가 될 때까지 \"그 프레임의 기록을 순서대로 실행 → `fresh.Tick()`\" 을 반복한다. `stream` 은 프레임 오름차순이라고 가정한다. `Frame` 이 `totalFrames` 이상인 기록은 실행하지 않는다.\n6. **리플레이의 독립성**: Replay 는 현재 키 바인딩과 무관하고, `Recording` 과 입력 버퍼를 읽거나 바꾸지 않는다. 같은 커맨드들이 등록된 다른 `CommandInput` 인스턴스로 재생해도 결과가 같다.\n7. **검증**: `stream` 에 등록되지 않은 id 가 있으면 상태를 하나도 바꾸기 전에 `InvalidOperationException` 을 던진다.\n\n**목표:** 같은 시드의 새 `GameState` 에 `Recording` 을 재생하면 `Snapshot()` 이 라이브와 완전히 같아야 합니다. 녹화 도중이나 이후에 키를 다시 묶어도 마찬가지입니다.",
+   "constraints": [
+    "기록에는 키가 아니라 커맨드 id 를 남긴다. Replay 는 키 바인딩 테이블을 조회하지 않는다.",
+    "`Bind` / `GetBinding` / `Press` 는 평균 O(1), `AdvanceFrame` 은 O(그 프레임의 커맨드 수).",
+    "`Replay` 는 기록 수 N, 프레임 수 F 에 대해 O(N + F): 프레임마다 스트림 전체를 다시 훑지 않는다.",
+    "입력이 없는 프레임의 `AdvanceFrame` 은 힙을 할당하지 않는다 (버퍼를 매 프레임 새로 만들지 않는다).",
+    "`GameState`, `ICommand`, `RecordedCommand` 와 `CommandInput` 의 public 시그니처는 바꾸지 않는다."
+   ],
+   "starterCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 아래 세 타입은 완성되어 있습니다. 수정하지 마세요. -----\n\n// 결정적 시뮬레이션 상태: 정수만 쓰고, 난수도 상태 안의 시드에서만 나온다.\npublic sealed class GameState\n{\n    public int Frame;\n    public int X, Y;\n    public int Stamina = 100;\n    public int Cooldown;\n    public int EnemyHp = 1000;\n    public uint RngState;\n\n    public GameState(uint seed) { RngState = seed; }\n\n    public int NextRandom(int maxExclusive)\n    {\n        RngState = RngState * 1664525u + 1013904223u;\n        return (int)((RngState >> 16) % (uint)maxExclusive);\n    }\n\n    // 한 프레임 진행: 쿨다운 감소, 스태미나 회복\n    public void Tick()\n    {\n        Frame++;\n        if (Cooldown > 0) Cooldown--;\n        if (Stamina < 100) Stamina++;\n    }\n\n    public string Snapshot()\n    {\n        return \"F\" + Frame + \" P(\" + X + \",\" + Y + \") ST\" + Stamina + \" CD\" + Cooldown + \" HP\" + EnemyHp + \" R\" + RngState;\n    }\n}\n\npublic interface ICommand\n{\n    string Id { get; }                 // 기록과 리플레이에 쓰이는 고유 id (예: \"attack\")\n    void Execute(GameState state);\n}\n\npublic readonly struct RecordedCommand\n{\n    public readonly int Frame;         // 실행된 프레임 (실행 시점의 state.Frame)\n    public readonly string CommandId;\n    public RecordedCommand(int frame, string commandId) { Frame = frame; CommandId = commandId; }\n}\n\n// ----- 여기부터 구현하세요. -----\n\npublic sealed class CommandInput\n{\n    // 지금까지 실행된 커맨드 스트림 (실행 순서대로).\n    public IReadOnlyList<RecordedCommand> Recording\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 커맨드를 id 로 등록한다. null 이면 ArgumentNullException, 같은 id 가 이미 있으면 ArgumentException.\n    public void Register(ICommand command)\n    {\n        throw new NotImplementedException();\n    }\n\n    // key 를 commandId 에 묶는다. key 에 기존 바인딩이 있으면 교체한다.\n    // 등록되지 않은 commandId 면 false 를 반환하고 기존 바인딩을 그대로 둔다.\n    public bool Bind(string key, string commandId)\n    {\n        throw new NotImplementedException();\n    }\n\n    // key 의 바인딩을 지운다. 바인딩이 없었으면 false.\n    public bool Unbind(string key)\n    {\n        throw new NotImplementedException();\n    }\n\n    // key 에 묶인 commandId. 없으면 null.\n    public string GetBinding(string key)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 이번 프레임에 key 가 눌렸다. 묶인 커맨드를 \"이번 프레임 버퍼\"에 넣기만 한다(실행은 AdvanceFrame).\n    // 바인딩이 없으면 false 를 반환하고 아무것도 넣지 않는다.\n    public bool Press(string key)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 버퍼의 커맨드를 눌린 순서대로 실행하고 (frame, id) 를 Recording 에 추가한 뒤 state.Tick() 을 한 번 호출한다.\n    public void AdvanceFrame(GameState state)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 기록된 스트림을 새 상태에 재생한다: fresh.Frame 이 totalFrames 가 될 때까지\n    // \"그 프레임의 커맨드를 기록 순서대로 실행 -> fresh.Tick()\" 을 반복한다.\n    // 현재 키 바인딩과 무관해야 하고, Recording 과 입력 버퍼를 건드리지 않는다.\n    // 등록되지 않은 CommandId 가 있으면 상태를 바꾸기 전에 InvalidOperationException.\n    public void Replay(GameState fresh, IReadOnlyList<RecordedCommand> stream, int totalFrames)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "녹화 10프레임째에 J 를 attack 에서 dash 로 다시 묶고, 녹화가 끝난 뒤 모든 키를 지워도 리플레이 결과는 같아야 한다.",
+    "같은 프레임에 dash 와 attack 이 함께 눌린 경우: 스태미나 때문에 실행 순서가 결과를 바꾼다. 기록 순서 그대로 재생해야 한다.",
+    "마지막 입력 뒤에 입력 없는 프레임이 이어진 경우: 그 프레임들의 Tick(스태미나 회복, 쿨다운 감소)도 재생되어야 한다.",
+    "attack 은 쿨다운 3프레임에 걸려 있다. 리플레이가 한 프레임만 어긋나도 \"무시된 공격\"이 \"명중\"이 되고 난수 소비 횟수가 달라진다.",
+    "바인딩 없는 키 입력은 기록되지 않는다. 스트림에 등록되지 않은 id 가 섞여 있으면 재생 전에 예외."
+   ],
+   "hints": [
+    "녹화 중에 \"0프레임: J\" 라고 적어 두었다고 합시다. 녹화할 때 J 는 attack 이었는데 재생할 때는 dash 로 묶여 있다면 이 기록은 무엇을 뜻하나요? 기록이 의미를 가지려면 \"무엇을 눌렀는가\"가 아니라 \"무엇을 했는가\"가 남아야 합니다. 그리고 attack 은 쿨다운이 0 일 때만 들어갑니다. 2프레임에 한 공격을 3프레임에 재생하면 그 뒤의 공격들은 어떻게 될까요?",
+    "키가 등장하는 곳을 `Bind` / `Unbind` / `GetBinding` / `Press` 네 함수로 제한하세요. `Press` 가 키를 커맨드로 바꿔 버퍼에 넣고 나면 `AdvanceFrame` 과 `Replay` 는 커맨드만 봅니다. Replay 는 라이브의 한 프레임(\"커맨드 실행 → Tick\")과 연산 순서가 똑같아야 하고, 스트림이 프레임 오름차순이라는 점을 쓰면 \"다음에 실행할 기록\"을 가리키는 인덱스 하나로 충분합니다.",
+    "뼈대입니다. 빈칸은 직접 채우세요.\n```\nPress(key):\n    id = bindings[key] (없으면 return false)\n    buffer.Add(____)              // 키가 아니라 무엇을 넣나?\n    return true\n\nAdvanceFrame(state):\n    for cmd in buffer (눌린 순서):\n        recording.Add( (____, cmd.Id) )\n        cmd.Execute(state)\n    buffer.Clear()\n    state.Tick()\n\nReplay(fresh, stream, totalFrames):\n    stream 의 모든 id 가 등록되어 있는지 먼저 확인 (아니면 예외)\n    next = 0\n    while (fresh.Frame < totalFrames):\n        while (next < stream.Count && ____):\n            commands[stream[next].CommandId].Execute(fresh); next++\n        ____\n```\nReplay 에서 Tick 을 호출하는 위치가 라이브와 같은지 확인하세요."
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 아래 세 타입은 완성되어 있습니다. 수정하지 마세요. -----\n\n// 결정적 시뮬레이션 상태: 정수만 쓰고, 난수도 상태 안의 시드에서만 나온다.\npublic sealed class GameState\n{\n    public int Frame;\n    public int X, Y;\n    public int Stamina = 100;\n    public int Cooldown;\n    public int EnemyHp = 1000;\n    public uint RngState;\n\n    public GameState(uint seed) { RngState = seed; }\n\n    public int NextRandom(int maxExclusive)\n    {\n        RngState = RngState * 1664525u + 1013904223u;\n        return (int)((RngState >> 16) % (uint)maxExclusive);\n    }\n\n    // 한 프레임 진행: 쿨다운 감소, 스태미나 회복\n    public void Tick()\n    {\n        Frame++;\n        if (Cooldown > 0) Cooldown--;\n        if (Stamina < 100) Stamina++;\n    }\n\n    public string Snapshot()\n    {\n        return \"F\" + Frame + \" P(\" + X + \",\" + Y + \") ST\" + Stamina + \" CD\" + Cooldown + \" HP\" + EnemyHp + \" R\" + RngState;\n    }\n}\n\npublic interface ICommand\n{\n    string Id { get; }                 // 기록과 리플레이에 쓰이는 고유 id (예: \"attack\")\n    void Execute(GameState state);\n}\n\npublic readonly struct RecordedCommand\n{\n    public readonly int Frame;         // 실행된 프레임 (실행 시점의 state.Frame)\n    public readonly string CommandId;\n    public RecordedCommand(int frame, string commandId) { Frame = frame; CommandId = commandId; }\n}\n\npublic sealed class CommandInput\n{\n    private readonly Dictionary<string, ICommand> _commands = new Dictionary<string, ICommand>();\n    private readonly Dictionary<string, string> _bindings = new Dictionary<string, string>();   // key -> commandId\n    private readonly List<ICommand> _buffer = new List<ICommand>();                             // 이번 프레임에 실행할 커맨드\n    private readonly List<RecordedCommand> _recording = new List<RecordedCommand>();\n\n    public IReadOnlyList<RecordedCommand> Recording\n    {\n        get { return _recording; }\n    }\n\n    public void Register(ICommand command)\n    {\n        if (command == null) throw new ArgumentNullException(nameof(command));\n        if (_commands.ContainsKey(command.Id)) throw new ArgumentException(\"이미 등록된 커맨드 id: \" + command.Id);\n        _commands.Add(command.Id, command);\n    }\n\n    public bool Bind(string key, string commandId)\n    {\n        if (commandId == null || !_commands.ContainsKey(commandId)) return false;\n        _bindings[key] = commandId;         // 있으면 교체, 없으면 추가\n        return true;\n    }\n\n    public bool Unbind(string key)\n    {\n        return _bindings.Remove(key);\n    }\n\n    public string GetBinding(string key)\n    {\n        string id;\n        return _bindings.TryGetValue(key, out id) ? id : null;\n    }\n\n    public bool Press(string key)\n    {\n        string id;\n        if (!_bindings.TryGetValue(key, out id)) return false;\n        _buffer.Add(_commands[id]);         // 키는 여기서 끝난다. 이후로는 커맨드만 흐른다.\n        return true;\n    }\n\n    public void AdvanceFrame(GameState state)\n    {\n        for (int i = 0; i < _buffer.Count; i++)\n        {\n            ICommand cmd = _buffer[i];\n            _recording.Add(new RecordedCommand(state.Frame, cmd.Id));\n            cmd.Execute(state);\n        }\n        _buffer.Clear();\n        state.Tick();\n    }\n\n    public void Replay(GameState fresh, IReadOnlyList<RecordedCommand> stream, int totalFrames)\n    {\n        // 1) 먼저 전부 검증한다: 중간까지 재생하다가 멈춘 상태를 남기지 않는다.\n        for (int i = 0; i < stream.Count; i++)\n        {\n            if (stream[i].CommandId == null || !_commands.ContainsKey(stream[i].CommandId))\n                throw new InvalidOperationException(\"등록되지 않은 커맨드 id: \" + stream[i].CommandId);\n        }\n\n        // 2) 라이브와 같은 순서: 그 프레임의 커맨드 실행 -> Tick. 스트림은 한 번만 훑는다.\n        int next = 0;\n        while (next < stream.Count && stream[next].Frame < fresh.Frame) next++;\n        while (fresh.Frame < totalFrames)\n        {\n            while (next < stream.Count && stream[next].Frame == fresh.Frame)\n            {\n                _commands[stream[next].CommandId].Execute(fresh);\n                next++;\n            }\n            fresh.Tick();\n        }\n    }\n}\n",
+   "explanation": "**핵심.** 키는 `Press` 에서 커맨드로 바뀌는 순간 사라지고 그 뒤로는 커맨드만 흐릅니다. 실행(`AdvanceFrame`)도, 기록도, 리플레이도 키를 모릅니다. 그래서 리바인딩은 `Dictionary<string, string>` 의 값 하나를 바꾸는 일이 되고, 녹화 도중이나 이후에 키 설정이 바뀌어도 이미 기록된 `(프레임, 커맨드 id)` 는 영향을 받지 않습니다. 시나리오의 버그는 \"한 일\" 대신 \"누른 키\"를 기록했기 때문에 생겼습니다.\n\n**결정성의 조건.** 리플레이가 같은 상태에 도달하려면 (1) 같은 초기 상태(시드 포함)에서 (2) 같은 커맨드가 (3) 같은 프레임에 (4) 같은 순서로 실행되어야 하고 (5) 커맨드와 Tick 이 상태 바깥의 값(현재 시각, 공유 난수 생성기, 가변 dt)을 읽지 않아야 합니다. `GameState` 가 정수와 자체 난수만 쓰는 이유입니다. attack 은 쿨다운 3프레임과 스태미나에 걸려 있어 한 프레임만 어긋나도 \"무시됨\"이 \"명중\"으로 바뀌고, 난수 소비 횟수가 달라져 그 뒤가 전부 달라집니다.\n\n**Replay 가 맞는 이유.** 라이브의 한 프레임은 \"버퍼의 커맨드를 순서대로 실행 → Tick\" 이고, 기록의 Frame 은 실행 시점의 `state.Frame` 입니다. Replay 는 `fresh.Frame == f` 인 동안 Frame 이 f 인 기록을 순서대로 실행한 뒤 Tick 하므로 프레임마다 라이브와 같은 연산 열을 만듭니다. 입력 없는 프레임도 Tick 은 해야 하므로 `totalFrames` 를 따로 받습니다. 스트림만 보고 \"마지막 기록의 프레임까지\"만 돌리면 그 뒤의 회복과 쿨다운 감소가 빠집니다.\n\n**복잡도.** 스트림이 프레임 오름차순이므로 인덱스 하나(`next`)만 전진시켜 O(N + F) 입니다. 프레임마다 스트림 전체에서 해당 프레임을 찾으면 O(N·F) 가 됩니다. 바인딩과 커맨드 조회는 해시로 평균 O(1) 이고, 버퍼 리스트는 `Clear` 로 재사용합니다. `RecordedCommand` 는 struct 라 기록 하나마다 객체가 따로 생기지 않고 리스트의 내부 배열이 커질 때만 할당됩니다.\n\n**흔한 실수.**\n1. 키 이름을 기록한다.\n2. `Press` 에서 바로 실행한다: 프레임 경계가 흐려지고 라이브와 리플레이의 실행 경로가 달라집니다.\n3. Replay 가 현재 바인딩을 거쳐 커맨드를 찾거나 `_recording` 에 다시 기록한다.\n4. 미등록 id 를 만난 지점에서 예외를 던져 절반만 재생된 상태를 남긴다: 먼저 전부 검증합니다.\n5. Tick 을 커맨드 실행 앞에 두어 한 프레임씩 밀린다.\n\n**실전과의 거리.** 여기서는 정수 연산이라 결정성을 쉽게 얻었습니다. float 물리를 쓰는 시뮬레이션은 컴파일러, CPU 아키텍처, 빌드 설정에 따라 결과 비트가 달라질 수 있어 훨씬 어렵습니다. 같은 커맨드 스트림을 네트워크로 보내면 입력만 동기화하는 락스텝 방식의 출발점이 됩니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "`Press` 는 버퍼에 넣기만 하고, `AdvanceFrame` 이 눌린 순서대로 실행한 뒤 `state.Tick()` 을 정확히 한 번 호출한다. 입력 없는 프레임에 이전 버퍼가 다시 실행되지 않는다.",
+      "points": 10,
+      "sourceId": "gpp-command"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "`Recording` 에 (실행 시점의 state.Frame, 커맨드 id) 가 실행 순서대로 쌓이고, 바인딩 없는 키 입력은 기록되지 않는다.",
+      "points": 10,
+      "sourceId": "gpp-command"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "같은 시드의 새 상태에 재생한 `Snapshot()` 이 라이브와 같다: 녹화 중·후의 리바인딩, 같은 프레임의 여러 커맨드, 입력 없는 꼬리 프레임을 포함해서.",
+      "points": 15,
+      "sourceId": "gaffer-deterministic-lockstep"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "`Replay` 가 스트림을 인덱스 하나로 한 번만 훑는다 (O(N + F)). 프레임마다 스트림 전체를 검색하지 않는다.",
+      "points": 12,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "키 → 커맨드 id, id → 커맨드 조회가 Dictionary 로 평균 O(1) 이다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "프레임 버퍼를 필드 하나로 두고 `Clear` 로 재사용한다. 프레임마다 리스트나 배열을 새로 만들지 않는다.",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "`Register` 의 null / 중복 id 예외와 `Replay` 의 미등록 id 예외가 스펙의 타입과 같고, Replay 는 상태를 바꾸기 전에 스트림 전체를 검증한다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "`Recording` 을 `IReadOnlyList<RecordedCommand>` 로만 노출해 외부에서 기록을 수정할 수 없다.",
+      "points": 6,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "엔진·언어 규약",
+      "description": "기록과 조회에 쓰는 식별자가 `ICommand.Id` 다. 키 이름이나 `GetType().Name` 을 쓰지 않는다.",
+      "points": 6,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "키가 등장하는 코드가 Bind / Unbind / GetBinding / Press 뿐이고, AdvanceFrame 과 Replay 는 커맨드만 다룬다.",
+      "points": 8,
+      "sourceId": "gpp-command"
+     },
+     {
+      "id": "c11",
+      "category": "아키텍처·가독성",
+      "description": "`Replay` 가 바인딩, 입력 버퍼, `Recording` 필드를 읽거나 쓰지 않는다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "커맨드가 아니라 눌린 키를 기록한다: 리바인딩 뒤의 리플레이가 다른 행동을 재생한다.",
+      "penalty": -25,
+      "sourceId": "gpp-command"
+     },
+     {
+      "id": "d2",
+      "description": "Replay 가 프레임을 무시하고 커맨드를 한꺼번에 실행하거나 입력 없는 프레임의 Tick 을 생략한다.",
+      "penalty": -20,
+      "sourceId": "gaffer-deterministic-lockstep"
+     },
+     {
+      "id": "d3",
+      "description": "Replay 의 시간복잡도가 O(N·F) 다 (프레임마다 스트림 전체를 훑는다).",
+      "penalty": -15,
+      "sourceId": ""
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    sealed class Cmd : ICommand\n    {\n        readonly string _id; readonly System.Action<GameState> _run;\n        public Cmd(string id, System.Action<GameState> run) { _id = id; _run = run; }\n        public string Id { get { return _id; } }\n        public void Execute(GameState s) { _run(s); }\n    }\n\n    static readonly string[] Ids = { \"up\", \"right\", \"attack\", \"dash\", \"rest\" };\n\n    static void Apply(string id, GameState s)\n    {\n        switch (id)\n        {\n            case \"up\": s.Y += 1; break;\n            case \"right\": s.X += 1; break;\n            case \"attack\":\n                if (s.Cooldown == 0 && s.Stamina >= 20) { s.Stamina -= 20; s.Cooldown = 3; s.EnemyHp -= 10 + s.NextRandom(6); }\n                break;\n            case \"dash\":\n                if (s.Stamina >= 30) { s.Stamina -= 30; s.X += 3; }\n                break;\n            case \"rest\": s.Stamina = System.Math.Min(100, s.Stamina + 5); break;\n        }\n    }\n\n    static CommandInput NewInput()\n    {\n        var input = new CommandInput();\n        foreach (string id in Ids) { string captured = id; input.Register(new Cmd(captured, s => Apply(captured, s))); }\n        return input;\n    }\n\n    static string Rec(System.Collections.Generic.IReadOnlyList<RecordedCommand> r)\n    {\n        var parts = new System.Collections.Generic.List<string>();\n        for (int i = 0; i < r.Count; i++) parts.Add(r[i].Frame + \":\" + r[i].CommandId);\n        return string.Join(\" \", parts);\n    }\n\n    public static void Main()\n    {\n        Run(\"press-buffer-execute\", () =>\n        {\n            var input = NewInput(); var s = new GameState(7);\n            if (!input.Bind(\"W\", \"up\") || !input.Bind(\"D\", \"right\") || !input.Bind(\"Shift\", \"dash\")) return \"등록된 커맨드에 대한 Bind 가 false\";\n            if (!input.Press(\"D\") || !input.Press(\"Shift\") || !input.Press(\"W\")) return \"바인딩된 키의 Press 가 false\";\n            if (input.Press(\"Q\")) return \"바인딩 없는 키의 Press 가 true\";\n            if (s.Snapshot() != new GameState(7).Snapshot()) return \"Press 만으로 상태가 바뀜 (실행은 AdvanceFrame 에서): \" + s.Snapshot();\n            input.AdvanceFrame(s);\n            if (s.X != 4 || s.Y != 1 || s.Frame != 1 || s.Stamina != 71) return \"D, Shift, W 를 누른 프레임 뒤 기대 F1 P(4,1) ST71, 결과 \" + s.Snapshot();\n            input.AdvanceFrame(s);\n            if (s.X != 4 || s.Y != 1 || s.Frame != 2) return \"입력 없는 프레임에서 이전 버퍼가 다시 실행됨: \" + s.Snapshot();\n            return null;\n        });\n\n        Run(\"rebind\", () =>\n        {\n            var input = NewInput(); var s = new GameState(7);\n            input.Bind(\"J\", \"attack\"); input.Bind(\"K\", \"attack\");\n            if (input.GetBinding(\"J\") != \"attack\" || input.GetBinding(\"K\") != \"attack\") return \"두 키를 같은 커맨드에 묶을 수 있어야 함\";\n            if (!input.Bind(\"J\", \"dash\")) return \"재바인딩이 false\";\n            if (input.GetBinding(\"J\") != \"dash\") return \"재바인딩 후 GetBinding(J) 기대 dash, 결과 \" + input.GetBinding(\"J\");\n            if (input.Bind(\"J\", \"teleport\")) return \"등록되지 않은 커맨드 id 에 대한 Bind 가 true\";\n            if (input.GetBinding(\"J\") != \"dash\") return \"실패한 Bind 가 기존 바인딩을 지움\";\n            input.Press(\"J\"); input.AdvanceFrame(s);\n            if (s.X != 3 || s.EnemyHp != 1000) return \"J 는 dash 로 바뀌었는데 결과가 다름: \" + s.Snapshot();\n            if (!input.Unbind(\"K\") || input.Unbind(\"K\")) return \"Unbind 반환값이 틀림 (첫 번째 true, 두 번째 false)\";\n            if (input.GetBinding(\"K\") != null || input.Press(\"K\")) return \"Unbind 한 키가 여전히 동작\";\n            if (input.GetBinding(\"없는키\") != null) return \"바인딩 없는 키의 GetBinding 이 null 이 아님\";\n            return null;\n        });\n\n        Run(\"record-frames\", () =>\n        {\n            var input = NewInput(); var s = new GameState(1);\n            input.Bind(\"W\", \"up\"); input.Bind(\"J\", \"attack\");\n            input.Press(\"W\"); input.Press(\"J\"); input.AdvanceFrame(s);\n            input.AdvanceFrame(s);\n            input.Press(\"Q\"); input.AdvanceFrame(s);\n            input.Press(\"J\"); input.Press(\"W\"); input.Press(\"W\"); input.AdvanceFrame(s);\n            string got = Rec(input.Recording);\n            return got == \"0:up 0:attack 3:attack 3:up 3:up\" ? null\n                : \"기록 (프레임:id) 기대 [0:up 0:attack 3:attack 3:up 3:up], 결과 [\" + got + \"]\";\n        });\n\n        Run(\"replay-identical\", () =>\n        {\n            var input = NewInput(); var s = new GameState(12345);\n            input.Bind(\"J\", \"attack\"); input.Bind(\"D\", \"right\"); input.Bind(\"Shift\", \"dash\");\n            for (int f = 0; f < 40; f++)\n            {\n                if (f % 2 == 0) input.Press(\"J\");\n                if (f % 5 == 0) input.Press(\"D\");\n                if (f == 7 || f == 8 || f == 30) input.Press(\"Shift\");\n                if (f == 9) { input.Press(\"J\"); input.Press(\"J\"); }\n                input.AdvanceFrame(s);\n            }\n            for (int f = 0; f < 6; f++) input.AdvanceFrame(s);\n            var fresh = new GameState(12345);\n            input.Replay(fresh, input.Recording, s.Frame);\n            if (fresh.Snapshot() != s.Snapshot()) return \"리플레이 결과가 라이브와 다름. 라이브 \" + s.Snapshot() + \", 리플레이 \" + fresh.Snapshot();\n            if (s.EnemyHp == 1000) return \"테스트 전제 오류: 공격이 한 번도 적용되지 않음\";\n            return null;\n        });\n\n        Run(\"replay-after-rebind\", () =>\n        {\n            var input = NewInput(); var s = new GameState(99);\n            input.Bind(\"J\", \"attack\"); input.Bind(\"K\", \"dash\");\n            for (int f = 0; f < 30; f++)\n            {\n                if (f == 10) { input.Bind(\"J\", \"dash\"); input.Bind(\"K\", \"attack\"); }\n                if (f == 20) { input.Unbind(\"K\"); input.Bind(\"L\", \"rest\"); }\n                if (f % 3 == 0) input.Press(\"J\");\n                if (f % 4 == 1) input.Press(\"K\");\n                if (f % 2 == 0) input.Press(\"L\");\n                input.AdvanceFrame(s);\n            }\n            input.Unbind(\"J\"); input.Unbind(\"L\"); input.Bind(\"J\", \"up\");\n            var fresh = new GameState(99);\n            input.Replay(fresh, input.Recording, s.Frame);\n            return fresh.Snapshot() == s.Snapshot() ? null\n                : \"녹화 도중과 이후에 키를 다시 묶었더니 리플레이가 달라짐 (키가 아니라 커맨드를 기록해야 함). 라이브 \" + s.Snapshot() + \", 리플레이 \" + fresh.Snapshot();\n        });\n\n        Run(\"replay-is-pure\", () =>\n        {\n            var input = NewInput(); var s = new GameState(5);\n            input.Bind(\"J\", \"attack\"); input.Bind(\"W\", \"up\");\n            for (int f = 0; f < 12; f++) { if (f % 4 == 0) input.Press(\"J\"); input.Press(\"W\"); input.AdvanceFrame(s); }\n            int count = input.Recording.Count;\n            string before = Rec(input.Recording);\n            input.Press(\"W\");\n            var a = new GameState(5); input.Replay(a, input.Recording, s.Frame);\n            var b = new GameState(5); input.Replay(b, input.Recording, s.Frame);\n            if (input.Recording.Count != count || Rec(input.Recording) != before) return \"Replay 가 Recording 을 변경함 (\" + count + \"개 -> \" + input.Recording.Count + \"개)\";\n            if (a.Snapshot() != s.Snapshot() || b.Snapshot() != s.Snapshot()) return \"같은 스트림을 두 번 재생한 결과가 라이브와 다름: \" + a.Snapshot() + \" / \" + b.Snapshot() + \" / 라이브 \" + s.Snapshot();\n            if (input.GetBinding(\"J\") != \"attack\") return \"Replay 가 바인딩을 변경함\";\n            int y = s.Y; input.AdvanceFrame(s);\n            if (s.Y != y + 1) return \"Replay 가 라이브 입력 버퍼를 건드림 (Replay 전에 누른 W 가 사라지거나 중복 실행됨)\";\n            var other = NewInput();\n            var c = new GameState(5); other.Replay(c, input.Recording, 12);\n            var d = new GameState(5); input.Replay(d, input.Recording, 12);\n            return c.Snapshot() == d.Snapshot() ? null : \"바인딩이 하나도 없는 다른 CommandInput 으로 재생한 결과가 다름: \" + c.Snapshot() + \" vs \" + d.Snapshot();\n        });\n\n        Run(\"invalid-input\", () =>\n        {\n            var input = NewInput();\n            try { input.Register(new Cmd(\"attack\", s => { })); return \"같은 id 를 두 번 Register 해도 ArgumentException 이 없음\"; }\n            catch (System.ArgumentException) { }\n            try { input.Register(null); return \"Register(null) 이 ArgumentNullException 을 던지지 않음\"; }\n            catch (System.ArgumentNullException) { }\n            var stream = new System.Collections.Generic.List<RecordedCommand>\n            {\n                new RecordedCommand(0, \"right\"), new RecordedCommand(1, \"teleport\"), new RecordedCommand(2, \"right\")\n            };\n            var fresh = new GameState(3);\n            try { input.Replay(fresh, stream, 5); return \"등록되지 않은 id 가 든 스트림을 재생해도 InvalidOperationException 이 없음\"; }\n            catch (System.InvalidOperationException) { }\n            return fresh.Snapshot() == new GameState(3).Snapshot() ? null : \"예외 전에 상태가 일부 바뀜: \" + fresh.Snapshot();\n        });\n\n        Run(\"press-time-binding\", () =>\n        {\n            var input = NewInput(); var s = new GameState(7);\n            input.Bind(\"J\", \"dash\"); input.Bind(\"K\", \"up\");\n            input.Press(\"J\"); input.Press(\"K\");\n            input.Bind(\"J\", \"up\"); input.Unbind(\"K\");      // 누른 뒤, AdvanceFrame 전에 바인딩을 바꾼다\n            input.AdvanceFrame(s);\n            if (s.X != 3 || s.Y != 1) return \"Press 시점의 바인딩(J = dash, K = up)으로 실행되어야 함. 기대 P(3,1), 결과 \" + s.Snapshot();\n            string got = Rec(input.Recording);\n            return got == \"0:dash 0:up\" ? null : \"기록 기대 [0:dash 0:up], 결과 [\" + got + \"]\";\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(31337);\n            string[] keys = { \"A\", \"B\", \"C\", \"D\", \"E\", \"F\" };\n            for (int round = 0; round < 60; round++)\n            {\n                uint seed = (uint)rng.Next(1, 1000000);\n                var input = NewInput(); var live = new GameState(seed); var reference = new GameState(seed);\n                var map = new System.Collections.Generic.Dictionary<string, string>();\n                int frames = rng.Next(1, 120);\n                for (int f = 0; f < frames; f++)\n                {\n                    if (rng.Next(100) < 25)\n                    {\n                        string k = keys[rng.Next(keys.Length)];\n                        if (rng.Next(4) == 0) { input.Unbind(k); map.Remove(k); }\n                        else { string id = Ids[rng.Next(Ids.Length)]; input.Bind(k, id); map[k] = id; }\n                    }\n                    int presses = rng.Next(0, 4);\n                    for (int p = 0; p < presses; p++)\n                    {\n                        string k = keys[rng.Next(keys.Length)];\n                        bool ok = input.Press(k);\n                        if (ok != map.ContainsKey(k)) return \"라운드 \" + round + \": Press(\" + k + \") 반환값 기대 \" + map.ContainsKey(k) + \", 결과 \" + ok;\n                        if (ok) Apply(map[k], reference);\n                    }\n                    input.AdvanceFrame(live);\n                    reference.Tick();\n                    if (live.Snapshot() != reference.Snapshot()) return \"라운드 \" + round + \", 프레임 \" + f + \": 라이브 상태 기대 \" + reference.Snapshot() + \", 결과 \" + live.Snapshot();\n                }\n                var fresh = new GameState(seed);\n                input.Replay(fresh, input.Recording, frames);\n                if (fresh.Snapshot() != reference.Snapshot()) return \"라운드 \" + round + \" (\" + frames + \"프레임, 커맨드 \" + input.Recording.Count + \"개): 리플레이 기대 \" + reference.Snapshot() + \", 결과 \" + fresh.Snapshot();\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "press-buffer-execute",
+     "rebind",
+     "record-frames",
+     "replay-identical",
+     "replay-after-rebind",
+     "replay-is-pure",
+     "invalid-input",
+     "press-time-binding",
+     "random-vs-reference"
+    ],
+    "note": "테스트가 직접 만든 커맨드(up, right, attack, dash, rest)를 등록해 검사합니다: Press 의 버퍼링과 실행 순서, 리바인딩 / Unbind / GetBinding, 기록의 프레임 번호, Press 뒤 AdvanceFrame 전에 바인딩을 바꿔도 누른 시점의 커맨드가 실행되는지, 쿨다운과 난수가 걸린 46프레임 세션의 리플레이 일치, 녹화 도중과 이후에 키를 다시 묶은 뒤의 리플레이 일치, Replay 가 Recording·바인딩·입력 버퍼를 건드리지 않는지, 중복 Register 와 미등록 id 스트림의 예외, 그리고 무작위 세션 60개를 참조 시뮬레이션과 비교합니다. Replay 의 O(N + F) 여부는 채점하지 않습니다(루브릭). GameState, ICommand, RecordedCommand 는 수정하면 안 되고, CommandInput 의 Recording, Register, Bind, Unbind, GetBinding, Press, AdvanceFrame, Replay 시그니처도 그대로 두어야 합니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "풀이와 숨은 테스트를 실행 서비스에서 돌리고, 구조가 다른 정답(id 큐 버퍼 + 프레임별 묶음 재생)의 통과와 오답 3종(꼬리 프레임 Tick 누락, Tick 선행, 키를 버퍼에 넣고 실행 시점에 해석)의 탈락을 로컬 .NET 8 로 확인했으며, 마지막 오답을 잡는 테스트를 추가하고 GPP Command 장과 Gaffer On Games 의 결정성 설명을 원문과 대조했습니다."
+   },
+   "nextMission": "`Recording` 을 \"프레임 번호 + 커맨드 인덱스\" 형식의 `byte[]` 로 저장하고 복원하는 직렬화를 만들고, 60프레임마다 `Snapshot()` 의 해시를 함께 기록해 리플레이가 어느 구간에서 어긋났는지(desync) 찾아 주는 검증기를 붙여 보세요. 일부러 커맨드 하나가 `DateTime.Now` 를 읽게 만들어 검증기가 그 구간을 짚어 내는지 확인하세요."
+  },
+  {
+   "id": "t10-debug-object-pool-bullets",
+   "track": "track10",
+   "mode": "debugging",
+   "difficulty": "Medium",
+   "title": "탄환 오브젝트 풀 디버깅: 한 탄환을 둘이 쓰고, 관통이 옮겨 붙고, 한도를 넘는다",
+   "tags": [
+    "Pattern_ObjectPool"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "gh-gpp",
+    "gpp-object-pool",
+    "unity-pool",
+    "unity-objectpool-api"
+   ],
+   "scenario": "탑다운 슈터에서 탄환을 매번 `new` 하다가 GC 스파이크가 생겨 제네릭 `ObjectPool<T>` 와 `BulletSpawner` 를 도입했습니다. 도입 후 QA 가 세 가지를 보고했습니다.\n\n- \"탄환 하나가 적에게 맞아 사라질 때 **화면 반대편의 다른 탄환도 같이 사라지는** 경우가 있다. 충돌과 수명 만료가 겹치는 프레임 뒤에 주로 나온다.\"\n- \"관통탄을 쏜 뒤로 **일반탄이 가끔 적을 관통**한다. 어떤 적은 맞았는데 데미지가 0 이다.\"\n- \"최대 탄환 수를 64로 설정했는데 메모리 프로파일러에는 **Bullet 이 그보다 많이** 잡힌다.\"\n\n**요구 스펙**\n\n1. `Get()` 은 대기 중인 객체가 있으면 그것을, 없으면 새로 만들어 반환한다. 이 풀이 만든 전체 객체 수(`CountAll`, 미리 만든 것 포함)는 `maxTotal` 을 넘지 않으며, 한도에 도달했고 대기 중인 객체도 없으면 null 을 반환한다.\n2. `Release(item)` 은 **지금 이 풀에서 빌려 나가 있는 객체**만 받는다. 받으면 `onRelease` 콜백을 한 번 호출하고 true. 이미 반납된 객체나 이 풀이 내준 적 없는 객체면 아무것도 바꾸지 않고(콜백도 호출하지 않고) false. null 이면 `ArgumentNullException`.\n3. 항상 `CountAll == CountActive + CountInactive` 이고 세 값 모두 0 이상이다.\n4. `Fire(damage, frames, piercing)` 가 돌려준 탄환은 **새로 만든 탄환과 구별할 수 없어야** 한다: 인자로 준 값 외에 이전 사용의 흔적이 없어야 한다.\n5. `Despawn(b)` 은 실제로 회수했을 때만 true 다. 같은 탄환에 두 번 호출되면 두 번째는 false 이고 아무 영향이 없다.\n\n**할 일:** 버그를 모두 찾아 고치고, 버그마다 \"수정 전에는 실패하고 수정 후에는 통과하는\" 최소 재현 입력을 적으세요.",
+   "constraints": [
+    "`ObjectPool<T>.Get` / `Release` 는 평균 O(1) 을 유지한다. `Stack.Contains` 같은 선형 탐색으로 중복 반납을 검사하지 않는다.",
+    "풀을 없애고 매번 `new Bullet()` 하는 식으로 문제를 피하지 않는다. 정상 상태(풀이 충분히 커진 뒤)의 Get / Release 는 힙을 할당하지 않아야 한다.",
+    "기존 public 멤버의 이름과 시그니처는 유지한다. 멤버를 추가하는 것은 허용한다. `ObjectPool<T>` 의 제네릭 제약(`where T : class`)도 그대로 둔다: 채점기는 자기 쪽에서 만든 임의의 클래스로 풀을 만들며, 풀이에서 추가한 멤버는 호출하지 않는다.",
+    "`T` 가 `Equals` 를 재정의했더라도 \"같은 인스턴스인가\"로 판단한다."
+   ],
+   "starterCode": "using System;\nusing System.Collections.Generic;\n\npublic sealed class Bullet\n{\n    public int Damage;\n    public int FramesLeft;\n    public bool Piercing;                                   // 관통탄: 맞혀도 사라지지 않는다\n    public readonly List<int> HitIds = new List<int>();     // 이미 맞힌 적 id (같은 적 중복 타격 방지)\n\n    public void Reset()\n    {\n        Damage = 0;\n        FramesLeft = 0;\n    }\n}\n\npublic sealed class ObjectPool<T> where T : class\n{\n    private readonly Stack<T> _free = new Stack<T>();\n    private readonly Func<T> _create;\n    private readonly Action<T> _onRelease;\n    private readonly int _maxTotal;\n    private int _created;\n\n    // initialSize 개를 미리 만들어 두고, 전체 객체 수는 maxTotal 을 넘지 않는다.\n    public ObjectPool(Func<T> create, Action<T> onRelease, int initialSize, int maxTotal)\n    {\n        if (create == null) throw new ArgumentNullException(nameof(create));\n        if (initialSize < 0 || maxTotal < 1 || initialSize > maxTotal) throw new ArgumentOutOfRangeException(nameof(initialSize));\n        _create = create;\n        _onRelease = onRelease;\n        _maxTotal = maxTotal;\n        for (int i = 0; i < initialSize; i++) _free.Push(_create());\n    }\n\n    public int CountAll { get { return _created; } }                    // 이 풀이 만든 객체 수\n    public int CountInactive { get { return _free.Count; } }            // 풀 안에서 대기 중\n    public int CountActive { get { return _created - _free.Count; } }   // 빌려 나간 수\n\n    // 대기 중인 객체가 있으면 그것을, 없으면 새로 만들어 돌려준다.\n    // 전체 수가 maxTotal 에 도달했고 대기 중인 객체도 없으면 null.\n    public T Get()\n    {\n        if (_free.Count > 0) return _free.Pop();\n        if (_created >= _maxTotal) return null;\n        _created++;\n        return _create();\n    }\n\n    // 객체를 풀에 돌려놓는다. 돌려놓았으면 true.\n    public bool Release(T item)\n    {\n        if (item == null) throw new ArgumentNullException(nameof(item));\n        if (_onRelease != null) _onRelease(item);\n        _free.Push(item);\n        return true;\n    }\n}\n\npublic sealed class BulletSpawner\n{\n    private readonly ObjectPool<Bullet> _pool;\n    private readonly List<Bullet> _live = new List<Bullet>();\n\n    public BulletSpawner(int initialSize, int maxBullets)\n    {\n        _pool = new ObjectPool<Bullet>(() => new Bullet(), b => b.Reset(), initialSize, maxBullets);\n    }\n\n    public ObjectPool<Bullet> Pool { get { return _pool; } }\n    public IReadOnlyList<Bullet> Live { get { return _live; } }\n\n    // 탄환을 발사한다. 풀이 바닥났으면 null (이번 발사는 생략).\n    public Bullet Fire(int damage, int frames, bool piercing)\n    {\n        Bullet b = _pool.Get();\n        if (b == null) return null;\n        b.Damage = damage;\n        b.FramesLeft = frames;\n        if (piercing) b.Piercing = true;\n        _live.Add(b);\n        return b;\n    }\n\n    // 탄환 b 가 적 enemyId 에 닿았다. 입힌 데미지를 반환한다(이미 맞힌 적이면 0).\n    // 관통탄이 아니면 맞힌 즉시 사라진다.\n    public int Hit(Bullet b, int enemyId)\n    {\n        if (b.HitIds.Contains(enemyId)) return 0;\n        b.HitIds.Add(enemyId);\n        int damage = b.Damage;\n        if (!b.Piercing) Despawn(b);\n        return damage;\n    }\n\n    // 한 프레임 진행: 수명이 다한 탄환을 회수한다.\n    public void Tick()\n    {\n        for (int i = _live.Count - 1; i >= 0; i--)\n        {\n            Bullet b = _live[i];\n            b.FramesLeft--;\n            if (b.FramesLeft <= 0) Despawn(b);\n        }\n    }\n\n    // 탄환을 회수한다. 실제로 회수했으면 true.\n    public bool Despawn(Bullet b)\n    {\n        _live.Remove(b);\n        return _pool.Release(b);\n    }\n}\n",
+   "edgeCases": [
+    "`a = Get(); Release(a); Release(a);` 뒤에 `Get()` 을 두 번 호출하면 서로 다른 객체가 나와야 한다.",
+    "관통탄으로 적 3 을 맞힌 뒤 회수하고, 같은 객체가 일반탄으로 재사용되어 다시 적 3 을 맞히는 경우.",
+    "`initialSize = 2, maxTotal = 3` 으로 만든 풀에서 반납 없이 `Get()` 을 5번 호출하는 경우.",
+    "이 풀이 만들지 않은 객체를 `Release` 하는 경우, null 을 `Release` 하는 경우.",
+    "충돌 처리와 수명 만료가 같은 탄환에 `Despawn` 을 각각 한 번씩 호출하는 경우."
+   ],
+   "hints": [
+    "풀 버그는 객체의 **두 번째 사용**에서만 드러납니다. 새로 만든 객체는 모든 필드가 기본값이라 멀쩡해 보입니다. 재현할 때는 항상 \"Get → 값을 더럽힌다 → Release → 다시 Get\" 한 바퀴를 돌린 객체를 들여다보세요. 그리고 `Release(a)` 를 두 번 부른 직후 스택 안에 무엇이 몇 개 들어 있는지 종이에 그려 보세요.",
+    "세 증상은 서로 다른 세 곳에서 나옵니다. (1) `Release` 는 넘겨받은 객체에 대해 무엇을 확인하나요? (2) `Bullet` 의 필드 네 개 각각에 대해 \"회수될 때 지워지는가\", \"발사될 때 **항상** 덮어써지는가\"를 표로 만들어 보세요. (3) `_created` 가 증가하는 곳을 전부 찾고, 객체가 실제로 만들어지는 곳(`_create()` 호출)과 개수가 맞는지 세어 보세요.",
+    "고친 뒤의 뼈대입니다. 빈칸은 직접 채우세요.\n```\nObjectPool:\n    free   : Stack<T>\n    active : ____                     // 빌려 나간 객체 집합, 참조 비교, O(1)\n\n    생성자: initialSize 번 { free.Push(create()); ____ }\n\n    Get():\n        free 에서 꺼내거나, 한도 안이면 새로 만든다 (아니면 null)\n        ____                          // 빌려 나갔음을 기록\n        return item\n\n    Release(item):\n        if (____) return false        // 빌려 나간 적 없는 객체 / 이미 반납된 객체\n        onRelease(item); free.Push(item); return true\n\nBullet.Reset(): 필드 ____ 개 전부\nFire(): Piercing 을 ____ 대입\nDespawn(b): 풀이 받아 준 경우에만 live 목록에서 제거\n```"
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Collections.Generic;\n\npublic sealed class Bullet\n{\n    public int Damage;\n    public int FramesLeft;\n    public bool Piercing;                                   // 관통탄: 맞혀도 사라지지 않는다\n    public readonly List<int> HitIds = new List<int>();     // 이미 맞힌 적 id (같은 적 중복 타격 방지)\n\n    // 풀로 돌아갈 때 호출된다. 필드를 추가하면 여기에도 반드시 추가한다.\n    public void Reset()\n    {\n        Damage = 0;\n        FramesLeft = 0;\n        Piercing = false;\n        HitIds.Clear();\n    }\n}\n\npublic sealed class ObjectPool<T> where T : class\n{\n    private readonly Stack<T> _free = new Stack<T>();\n    // 지금 빌려 나가 있는 객체들. Equals 재정의와 무관하게 '같은 인스턴스인가'로만 비교한다.\n    private readonly HashSet<T> _active = new HashSet<T>(ReferenceEqualityComparer.Instance);\n    private readonly Func<T> _create;\n    private readonly Action<T> _onRelease;\n    private readonly int _maxTotal;\n    private int _created;\n\n    // initialSize 개를 미리 만들어 두고, 전체 객체 수는 maxTotal 을 넘지 않는다.\n    public ObjectPool(Func<T> create, Action<T> onRelease, int initialSize, int maxTotal)\n    {\n        if (create == null) throw new ArgumentNullException(nameof(create));\n        if (initialSize < 0 || maxTotal < 1 || initialSize > maxTotal) throw new ArgumentOutOfRangeException(nameof(initialSize));\n        _create = create;\n        _onRelease = onRelease;\n        _maxTotal = maxTotal;\n        for (int i = 0; i < initialSize; i++)\n        {\n            _free.Push(_create());\n            _created++;                 // 미리 만든 객체도 '만든 객체'다\n        }\n    }\n\n    public int CountAll { get { return _created; } }                    // 이 풀이 만든 객체 수\n    public int CountInactive { get { return _free.Count; } }            // 풀 안에서 대기 중\n    public int CountActive { get { return _active.Count; } }            // 빌려 나간 수\n\n    // 대기 중인 객체가 있으면 그것을, 없으면 새로 만들어 돌려준다.\n    // 전체 수가 maxTotal 에 도달했고 대기 중인 객체도 없으면 null.\n    public T Get()\n    {\n        T item;\n        if (_free.Count > 0)\n        {\n            item = _free.Pop();\n        }\n        else\n        {\n            if (_created >= _maxTotal) return null;\n            item = _create();\n            _created++;\n        }\n        _active.Add(item);\n        return item;\n    }\n\n    // item 이 지금 이 풀에서 빌려 나가 있는 객체인가.\n    public bool IsActive(T item)\n    {\n        return item != null && _active.Contains(item);\n    }\n\n    // 객체를 풀에 돌려놓는다. 돌려놓았으면 true.\n    // 이미 반납된 객체나 이 풀이 내준 적 없는 객체면 아무것도 하지 않고 false.\n    public bool Release(T item)\n    {\n        if (item == null) throw new ArgumentNullException(nameof(item));\n        if (!_active.Remove(item)) return false;\n        if (_onRelease != null) _onRelease(item);\n        _free.Push(item);\n        return true;\n    }\n}\n\npublic sealed class BulletSpawner\n{\n    private readonly ObjectPool<Bullet> _pool;\n    private readonly List<Bullet> _live = new List<Bullet>();\n\n    public BulletSpawner(int initialSize, int maxBullets)\n    {\n        _pool = new ObjectPool<Bullet>(() => new Bullet(), b => b.Reset(), initialSize, maxBullets);\n    }\n\n    public ObjectPool<Bullet> Pool { get { return _pool; } }\n    public IReadOnlyList<Bullet> Live { get { return _live; } }\n\n    // 탄환을 발사한다. 풀이 바닥났으면 null (이번 발사는 생략).\n    public Bullet Fire(int damage, int frames, bool piercing)\n    {\n        Bullet b = _pool.Get();\n        if (b == null) return null;\n        b.Damage = damage;\n        b.FramesLeft = frames;\n        b.Piercing = piercing;\n        _live.Add(b);\n        return b;\n    }\n\n    // 탄환 b 가 적 enemyId 에 닿았다. 입힌 데미지를 반환한다(이미 맞힌 적이면 0).\n    // 관통탄이 아니면 맞힌 즉시 사라진다.\n    public int Hit(Bullet b, int enemyId)\n    {\n        if (!_pool.IsActive(b)) return 0;           // 이미 회수된 탄환을 가리키는 낡은 참조\n        if (b.HitIds.Contains(enemyId)) return 0;\n        b.HitIds.Add(enemyId);\n        int damage = b.Damage;\n        if (!b.Piercing) Despawn(b);\n        return damage;\n    }\n\n    // 한 프레임 진행: 수명이 다한 탄환을 회수한다.\n    public void Tick()\n    {\n        for (int i = _live.Count - 1; i >= 0; i--)\n        {\n            Bullet b = _live[i];\n            b.FramesLeft--;\n            if (b.FramesLeft <= 0) Despawn(b);\n        }\n    }\n\n    // 탄환을 회수한다. 실제로 회수했으면 true.\n    public bool Despawn(Bullet b)\n    {\n        if (!_pool.Release(b)) return false;        // 중복 회수: 풀이 거절했으면 여기서 끝\n        _live.Remove(b);\n        return true;\n    }\n}\n",
+   "explanation": "QA 의 증상 세 개는 서로 다른 버그 세 개입니다.\n\n**버그 1: Release 가 무엇이든 받는다 (한 탄환을 둘이 쓴다).** `Release` 는 item 이 지금 빌려 나간 객체인지 확인하지 않고 스택에 넣습니다.\n- 재현: `a = Get(); Release(a); Release(a);` 뒤에 `Get()` 두 번이 같은 인스턴스를 반환합니다. 스포너에서는 충돌 처리와 수명 만료가 같은 탄환에 `Despawn` 을 두 번 부를 때 일어나고, 그 뒤 발사된 두 탄환이 한 객체를 공유합니다.\n- 수정: 빌려 나간 객체를 참조 비교 `HashSet<T>` 로 추적하고, `_active.Remove(item)` 이 false 면 아무것도 하지 않고 false 를 반환합니다. 풀이 만든 적 없는 외부 객체도 같은 검사로 걸러집니다. `Stack.Contains` 로 검사하면 Release 가 O(n) 이 되므로 쓰지 않습니다. `Despawn` 도 풀이 받아 준 경우에만 `_live` 에서 빼도록 순서를 바꿉니다. Unity 의 `ObjectPool<T>` 는 같은 실수를 collectionCheck 옵션으로 검사해 오류로 알립니다.\n\n**버그 2: 초기화가 불완전하다 (관통이 옮겨 붙는다).** `Reset` 이 Damage 와 FramesLeft 만 지우고, `Fire` 는 `if (piercing) b.Piercing = true;` 라서 false 를 대입하는 경로가 없습니다.\n- 재현: `Fire(10, 5, true)` → `Hit(b, 3)` → `Despawn(b)` → `c = Fire(7, 9, false)`. c 는 Piercing 이 true 이고 HitIds 에 3 이 남아 `Hit(c, 3)` 이 0 을 반환합니다.\n- 수정: `Reset` 이 모든 필드를 되돌리고(`HitIds.Clear()` 는 내부 배열을 유지하므로 할당이 없음), `Fire` 는 조건 없이 `b.Piercing = piercing` 을 대입합니다. 새로 만든 객체는 필드가 기본값이라 이 누락이 재사용 때까지 숨습니다.\n\n**버그 3: 미리 만든 객체를 세지 않는다 (한도 초과).** 생성자가 initialSize 개를 만들면서 `_created` 를 올리지 않습니다.\n- 재현: `new ObjectPool<T>(create, null, 2, 3)` 직후 CountAll 이 0, CountActive 가 -2 이고, `Get()` 을 5번 부르면 null 없이 객체 5개(initialSize + maxTotal)가 나갑니다.\n- 수정: 프리웜 루프에서 `_created++`. CountActive 도 뺄셈 대신 `_active.Count` 로 바꿔 한 가지 사실을 한 곳에서만 셉니다.\n\n**복잡도.** Get / Release 에 해시 연산 하나가 추가될 뿐 평균 O(1) 그대로입니다. HashSet 과 Stack 은 한 번 커진 뒤에는 내부 저장소를 재사용하므로 정상 상태에서 할당이 없습니다. 참조 비교에 쓴 `ReferenceEqualityComparer` 는 .NET 5 이상에 있습니다.\n\n**남는 위험.** 풀은 이미 반납된 탄환을 가리키는 낡은 참조를 막아 주지 못합니다. 풀이의 `Hit` 은 `IsActive` 로 한 번 더 거르지만(채점 대상 아님), 그 객체가 이미 재사용된 뒤라면 구분할 수 없습니다. 이 문제는 세대 번호가 붙은 핸들로 풉니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "이미 반납된 객체와 풀이 내준 적 없는 객체의 `Release` 가 false 를 반환하고 풀 상태·콜백 호출 횟수를 바꾸지 않는다. 그 뒤 `Get()` 두 번은 서로 다른 인스턴스를 준다.",
+      "points": 13,
+      "sourceId": "unity-objectpool-api"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "재사용된 탄환에 이전 사용의 Piercing 과 HitIds 가 남지 않는다 (관통탄 → 회수 → 일반탄으로 같은 적을 맞혀도 정상 데미지).",
+      "points": 12,
+      "sourceId": "gpp-object-pool"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "미리 만든 객체를 포함해 전체 객체 수가 maxTotal 을 넘지 않고, 항상 CountAll == CountActive + CountInactive 이며 음수가 없다.",
+      "points": 10,
+      "sourceId": "gpp-object-pool"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "중복 반납 검사가 평균 O(1) 이다 (참조 비교 HashSet / Dictionary 등 해시 기반 추적). `Stack.Contains` / `List.Contains` 로 검사하지 않는다.",
+      "points": 12,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "풀이 충분히 커진 뒤의 Get / Release 가 힙을 할당하지 않는다: 풀을 우회해 new 하거나 호출마다 컬렉션을 만들지 않는다.",
+      "points": 10,
+      "sourceId": "unity-pool"
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "`Reset` 이 `HitIds.Clear()` 로 리스트를 재사용한다 (`new List<int>()` 로 교체하지 않는다).",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "\"같은 객체인가\"를 참조 동일성으로 판단한다 (`ReferenceEqualityComparer` 또는 동등한 방법). T 의 Equals 재정의에 의존하지 않는다.",
+      "points": 7,
+      "sourceId": "ms-reference-equality-comparer"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "`Release(null)` 의 `ArgumentNullException` 을 유지하고, 거절된 Release 에서는 `onRelease` 콜백을 호출하지 않는다.",
+      "points": 6,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "엔진·언어 규약",
+      "description": "`Fire` 가 Piercing 을 조건 없이 대입한다: 풀에서 나온 객체의 모든 필드가 Reset 또는 Fire 중 한 곳에서 반드시 덮어써진다.",
+      "points": 7,
+      "sourceId": "gpp-object-pool"
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "초기화 책임이 한 곳(`Bullet.Reset`)에 모여 있어 필드를 추가할 때 고칠 위치가 하나다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c11",
+      "category": "아키텍처·가독성",
+      "description": "버그 3개 각각에 대해 수정 전 실패 / 수정 후 통과하는 최소 재현 입력을 적었고, `Despawn` 이 풀의 반환값에 따라 동작한다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "풀을 사실상 없앴다: Get 이 매번 new 하거나 Release 가 객체를 버린다.",
+      "penalty": -20,
+      "sourceId": "unity-pool"
+     },
+     {
+      "id": "d2",
+      "description": "중복 반납을 `Stack.Contains` 등 O(n) 탐색으로 검사한다.",
+      "penalty": -15,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "원인을 고치지 않고 증상만 가렸다 (예: Fire 에서 Live 목록 중복 검사, 예외를 try/catch 로 삼킴, Reset 대신 Hit 에서 HitIds 를 지움).",
+      "penalty": -15,
+      "sourceId": ""
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    sealed class Item { public int Serial; public int Resets; }\n\n    // Equals 를 재정의해 모든 인스턴스가 서로 \"같다\"고 답하는 타입\n    sealed class Twin\n    {\n        public override bool Equals(object obj) { return obj is Twin; }\n        public override int GetHashCode() { return 1; }\n    }\n\n    static string Counts(ObjectPool<Item> p)\n    {\n        return \"All=\" + p.CountAll + \" Active=\" + p.CountActive + \" Inactive=\" + p.CountInactive;\n    }\n\n    public static void Main()\n    {\n        Run(\"basic-reuse\", () =>\n        {\n            int made = 0;\n            var p = new ObjectPool<Item>(() => new Item { Serial = made++ }, it => it.Resets++, 0, 4);\n            Item a = p.Get(), b = p.Get();\n            if (a == null || b == null || ReferenceEquals(a, b)) return \"Get 두 번이 서로 다른 객체를 주지 않음\";\n            if (Counts(p) != \"All=2 Active=2 Inactive=0\") return \"Get 두 번 뒤 기대 All=2 Active=2 Inactive=0, 결과 \" + Counts(p);\n            if (!p.Release(a)) return \"빌려 간 객체의 Release 가 false\";\n            if (a.Resets != 1) return \"Release 때 onRelease 콜백이 정확히 한 번 호출되어야 함 (호출 \" + a.Resets + \"회)\";\n            if (Counts(p) != \"All=2 Active=1 Inactive=1\") return \"Release 뒤 기대 All=2 Active=1 Inactive=1, 결과 \" + Counts(p);\n            Item c = p.Get();\n            if (!ReferenceEquals(c, a) || made != 2) return \"대기 중인 객체가 있는데 재사용하지 않고 새로 만듦 (생성 \" + made + \"회)\";\n            return null;\n        });\n\n        Run(\"double-release\", () =>\n        {\n            int made = 0;\n            var p = new ObjectPool<Item>(() => new Item { Serial = made++ }, it => it.Resets++, 0, 8);\n            Item a = p.Get();\n            if (!p.Release(a)) return \"첫 Release 가 false\";\n            if (p.Release(a)) return \"같은 객체의 두 번째 Release 가 true 를 반환\";\n            if (a.Resets != 1) return \"거절된 Release 에서도 onRelease 가 호출됨 (총 \" + a.Resets + \"회)\";\n            if (Counts(p) != \"All=1 Active=0 Inactive=1\") return \"중복 반납 뒤 기대 All=1 Active=0 Inactive=1, 결과 \" + Counts(p);\n            Item x = p.Get(), y = p.Get();\n            if (ReferenceEquals(x, y)) return \"Release(a) 두 번 뒤 Get 두 번이 같은 인스턴스를 반환 (두 사용자가 한 객체를 공유)\";\n            return null;\n        });\n\n        Run(\"foreign-release\", () =>\n        {\n            var p = new ObjectPool<Item>(() => new Item(), it => it.Resets++, 1, 4);\n            var stranger = new Item();\n            if (p.Release(stranger)) return \"이 풀이 내준 적 없는 객체의 Release 가 true 를 반환\";\n            if (stranger.Resets != 0 || Counts(p) != \"All=1 Active=0 Inactive=1\") return \"외부 객체 Release 가 풀 상태를 바꿈: \" + Counts(p);\n            Item a = p.Get();\n            if (ReferenceEquals(a, stranger)) return \"풀이 외부 객체를 내줌\";\n            try { p.Release(null); return \"Release(null) 이 ArgumentNullException 을 던지지 않음\"; }\n            catch (System.ArgumentNullException) { }\n            return null;\n        });\n\n        Run(\"capacity-with-prewarm\", () =>\n        {\n            int made = 0;\n            var p = new ObjectPool<Item>(() => new Item { Serial = made++ }, null, 2, 3);\n            if (Counts(p) != \"All=2 Active=0 Inactive=2\") return \"initialSize 2 로 만든 직후 기대 All=2 Active=0 Inactive=2, 결과 \" + Counts(p);\n            var got = new System.Collections.Generic.List<Item>();\n            for (int i = 0; i < 5; i++) got.Add(p.Get());\n            int nonNull = 0;\n            foreach (Item it in got) if (it != null) nonNull++;\n            if (nonNull != 3 || made != 3) return \"initialSize 2, maxTotal 3 에서 Get 5번: 객체 3개 뒤로는 null 이어야 함 (받은 객체 \" + nonNull + \"개, 생성 \" + made + \"회)\";\n            if (got[3] != null || got[4] != null) return \"한도에 도달한 뒤의 Get 이 null 이 아님\";\n            if (Counts(p) != \"All=3 Active=3 Inactive=0\") return \"기대 All=3 Active=3 Inactive=0, 결과 \" + Counts(p);\n            p.Release(got[1]);\n            if (!ReferenceEquals(p.Get(), got[1])) return \"반납된 객체가 있는데 Get 이 그것을 주지 않음\";\n            return null;\n        });\n\n        Run(\"reset-on-reuse\", () =>\n        {\n            var sp = new BulletSpawner(0, 1);\n            Bullet b = sp.Fire(10, 5, true);\n            if (sp.Hit(b, 3) != 10 || sp.Hit(b, 3) != 0 || sp.Hit(b, 4) != 10) return \"관통탄 명중 처리가 틀림 (적 3: 10, 다시 적 3: 0, 적 4: 10)\";\n            if (sp.Live.Count != 1) return \"관통탄이 명중 후 사라짐\";\n            sp.Despawn(b);\n            Bullet c = sp.Fire(7, 9, false);\n            if (c == null) return \"회수 후 Fire 가 null\";\n            if (c.Piercing) return \"재사용된 탄환이 이전 탄환의 Piercing = true 를 그대로 가지고 있음\";\n            if (c.HitIds.Count != 0) return \"재사용된 탄환의 HitIds 에 이전 기록이 남음: [\" + string.Join(\",\", c.HitIds) + \"]\";\n            if (c.Damage != 7 || c.FramesLeft != 9) return \"Fire(7, 9) 인데 Damage=\" + c.Damage + \", FramesLeft=\" + c.FramesLeft;\n            int dmg = sp.Hit(c, 3);\n            if (dmg != 7) return \"새 일반탄이 적 3 을 맞혔는데 데미지 \" + dmg + \" (이전 탄환의 명중 기록 때문에 무효 처리됨)\";\n            if (sp.Live.Count != 0 || sp.Pool.CountInactive != 1) return \"일반탄이 명중 후 회수되지 않음\";\n            return null;\n        });\n\n        Run(\"spawner-double-despawn\", () =>\n        {\n            var sp = new BulletSpawner(0, 8);\n            Bullet a = sp.Fire(5, 10, false);\n            if (!sp.Despawn(a)) return \"첫 Despawn 이 false\";\n            if (sp.Despawn(a)) return \"같은 탄환의 두 번째 Despawn 이 true 를 반환\";\n            Bullet b = sp.Fire(1, 10, false), c = sp.Fire(2, 10, false);\n            if (ReferenceEquals(b, c)) return \"Despawn 을 두 번 호출한 뒤 Fire 두 번이 같은 Bullet 을 반환\";\n            if (b.Damage != 1 || c.Damage != 2) return \"두 탄환의 데미지가 섞임: \" + b.Damage + \", \" + c.Damage;\n            if (sp.Live.Count != 2 || sp.Pool.CountActive != 2 || sp.Pool.CountAll != 2) return \"기대 Live=2 Active=2 All=2, 결과 Live=\" + sp.Live.Count + \" Active=\" + sp.Pool.CountActive + \" All=\" + sp.Pool.CountAll;\n            return null;\n        });\n\n        Run(\"tick-expiry\", () =>\n        {\n            var sp = new BulletSpawner(2, 3);\n            Bullet a = sp.Fire(1, 1, false), b = sp.Fire(2, 3, true), c = sp.Fire(3, 2, false);\n            if (a == null || b == null || c == null) return \"한도 3 안에서 Fire 가 null\";\n            if (sp.Fire(4, 5, false) != null) return \"initialSize 2, maxBullets 3 인데 네 번째 탄환이 발사됨\";\n            sp.Tick();\n            if (sp.Live.Count != 2) return \"1프레임 뒤 살아 있는 탄환 기대 2, 결과 \" + sp.Live.Count;\n            sp.Tick(); sp.Tick();\n            if (sp.Live.Count != 0 || sp.Pool.CountInactive != 3 || sp.Pool.CountActive != 0) return \"모두 만료된 뒤 기대 Live=0 Inactive=3 Active=0, 결과 Live=\" + sp.Live.Count + \" Inactive=\" + sp.Pool.CountInactive + \" Active=\" + sp.Pool.CountActive;\n            Bullet d = sp.Fire(9, 4, false);\n            return d != null && !d.Piercing && d.HitIds.Count == 0 && d.Damage == 9 ? null : \"만료 후 재사용된 탄환의 상태가 깨끗하지 않음\";\n        });\n\n        Run(\"reference-identity\", () =>\n        {\n            var p = new ObjectPool<Twin>(() => new Twin(), null, 0, 4);\n            Twin a = p.Get(), b = p.Get();\n            if (a == null || b == null || ReferenceEquals(a, b)) return \"Get 두 번이 서로 다른 인스턴스를 주지 않음\";\n            if (p.CountActive != 2) return \"Equals 가 같다고 답하는 서로 다른 인스턴스 2개를 빌렸는데 CountActive = \" + p.CountActive;\n            if (!p.Release(a)) return \"빌려 간 a 의 Release 가 false\";\n            if (p.Release(a)) return \"이미 반납한 a 를 다시 Release 했는데 true (Equals 가 같은 b 와 혼동하고 있지 않은가?)\";\n            if (p.CountActive != 1 || p.CountInactive != 1) return \"기대 Active=1 Inactive=1, 결과 Active=\" + p.CountActive + \" Inactive=\" + p.CountInactive;\n            if (p.Release(new Twin())) return \"풀이 내준 적 없는 인스턴스(Equals 로는 b 와 같음)의 Release 가 true\";\n            if (!p.Release(b)) return \"아직 빌려 나가 있는 b 의 Release 가 false\";\n            return p.CountActive == 0 && p.CountInactive == 2 && p.CountAll == 2 ? null\n                : \"기대 All=2 Active=0 Inactive=2, 결과 All=\" + p.CountAll + \" Active=\" + p.CountActive + \" Inactive=\" + p.CountInactive;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(8086);\n            for (int round = 0; round < 200; round++)\n            {\n                int max = rng.Next(1, 7), init = rng.Next(0, max + 1), made = 0;\n                var p = new ObjectPool<Item>(() => new Item { Serial = made++ }, it => it.Resets++, init, max);\n                var held = new System.Collections.Generic.List<Item>();\n                var returned = new System.Collections.Generic.List<Item>();\n                for (int step = 0; step < 60; step++)\n                {\n                    int op = rng.Next(100);\n                    if (op < 50)\n                    {\n                        Item it = p.Get();\n                        bool expectNull = held.Count == max;\n                        if ((it == null) != expectNull) return \"라운드 \" + round + \" (init \" + init + \", max \" + max + \"): 빌려 나간 수 \" + held.Count + \" 에서 Get 이 \" + (it == null ? \"null\" : \"객체\") + \" 를 반환\";\n                        if (it == null) continue;\n                        if (held.Contains(it)) return \"라운드 \" + round + \": 아직 사용 중인 객체(#\" + it.Serial + \")를 다시 내줌\";\n                        held.Add(it); returned.Remove(it);\n                    }\n                    else if (op < 80 && held.Count > 0)\n                    {\n                        Item it = held[rng.Next(held.Count)];\n                        if (!p.Release(it)) return \"라운드 \" + round + \": 사용 중인 객체의 Release 가 false\";\n                        held.Remove(it); returned.Add(it);\n                    }\n                    else if (returned.Count > 0)\n                    {\n                        Item it = returned[rng.Next(returned.Count)];\n                        if (p.Release(it)) return \"라운드 \" + round + \": 이미 반납된 객체(#\" + it.Serial + \")의 Release 가 true\";\n                    }\n                    if (made > max || p.CountAll != made) return \"라운드 \" + round + \": 생성 \" + made + \"회, CountAll \" + p.CountAll + \" (maxTotal \" + max + \")\";\n                    if (p.CountActive != held.Count || p.CountInactive != made - held.Count)\n                        return \"라운드 \" + round + \": 기대 Active=\" + held.Count + \" Inactive=\" + (made - held.Count) + \", 결과 \" + Counts(p);\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "basic-reuse",
+     "double-release",
+     "foreign-release",
+     "capacity-with-prewarm",
+     "reset-on-reuse",
+     "spawner-double-despawn",
+     "tick-expiry",
+     "reference-identity",
+     "random-vs-reference"
+    ],
+    "note": "풀의 기본 재사용과 개수, 같은 객체를 두 번 Release 한 뒤 Get 두 번이 서로 다른 객체를 주는지, 외부 객체와 null 의 Release, Equals 를 재정의한 타입에서도 인스턴스 단위로 구분하는지, initialSize 를 포함한 maxTotal 한도, 관통탄을 재사용한 일반탄의 Piercing / HitIds 초기화, Despawn 두 번 뒤의 Fire, 수명 만료 회수, 그리고 무작위 Get / Release / 중복 Release 를 \"사용 중인 객체를 다시 내주지 않는다\"는 참조 모델과 비교합니다. Bullet 의 필드 이름(Damage, FramesLeft, Piercing, HitIds), ObjectPool<T> 의 생성자 (create, onRelease, initialSize, maxTotal), Get, Release(bool 반환), CountAll / CountActive / CountInactive, BulletSpawner 의 생성자 (initialSize, maxBullets), Pool, Live, Fire, Hit, Tick, Despawn(bool 반환)은 바꾸면 안 됩니다(멤버 추가는 가능)."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "시작 코드의 버그 3개가 설명대로 재현되는 것과 풀이·숨은 테스트를 실행 서비스에서 확인하고, IsActive 없이 구조가 다른 정답(참조 비교 Dictionary)의 통과와 오답 4종의 탈락을 로컬 .NET 8 로 확인했으며, 기본 비교자 HashSet 오답을 잡는 테스트를 추가하고 GPP Object Pool 장과 Unity ObjectPool 문서 인용을 원문과 대조했습니다."
+   },
+   "nextMission": "탄환을 참조 대신 `BulletHandle { int Index; int Generation; }` 로 가리키도록 바꿔 보세요. 풀은 슬롯마다 세대 번호를 두고 회수할 때마다 1 올립니다. 핸들의 세대가 슬롯의 세대와 다르면 \"이미 죽은 탄환\"으로 판정해, 재사용된 뒤의 낡은 참조까지 걸러 내는지 테스트로 확인하세요."
+  },
+  {
+   "id": "t10-impl-strategy-skill-effects",
+   "track": "track10",
+   "mode": "implementation",
+   "difficulty": "Easy",
+   "title": "스킬 효과 레지스트리: switch 없이 데이터 id 로 전략 고르기",
+   "tags": [
+    "Pattern_Strategy",
+    "Pattern_Factory"
+   ],
+   "language": "csharp",
+   "sourceRefs": [
+    "wiki-strategy-pattern",
+    "wiki-solid",
+    "unity-patterns-ebook"
+   ],
+   "scenario": "턴제 RPG 의 스킬은 기획 테이블에서 옵니다. 스킬 하나는 효과 목록이고, 효과 한 줄은 `(효과 id, 세기, 지속 틱)` 입니다. 예: 파이어볼 = `damage 30` + `dot 5 x 3틱`.\n\n지금 `SkillCaster.Cast` 에는 `switch (effectId)` 가 있고 case 가 14개입니다. 효과를 하나 추가할 때마다 모두가 이 함수를 고치느라 머지 충돌이 나고, 지난주에는 흡혈 효과를 넣다가 옆 case 의 회복 로직이 깨졌습니다.\n\n**할 일:** 효과를 `ISkillEffect` 전략 객체로 분리하고, id 로 전략을 찾는 `EffectRegistry` 와 그것을 쓰는 `SkillCaster` 를 구현하세요. `Unit`, `EffectSpec`, `SkillData`, `ISkillEffect` 는 완성되어 있습니다.\n\n1. `EffectRegistry.Register(id, effect)`: id 는 대소문자를 구분한다. id 가 null / 빈 문자열이거나 effect 가 null 이거나 이미 등록된 id 면 `ArgumentException`(파생 예외 포함)이고 기존 등록은 그대로다.\n2. `TryGet(id, out effect)`: 있으면 true. 없거나 id 가 null 이면 false 이고 effect 는 null.\n3. `EffectRegistry.CreateDefault()`: 기본 효과 `\"damage\"`(`target.TakeDamage(Power)`), `\"heal\"`(`target.Heal(Power)`), `\"dot\"`(`target.AddDot(Power, Duration)`)이 등록된 **새** 레지스트리. `new EffectRegistry()` 는 비어 있다. 레지스트리끼리는 등록을 공유하지 않는다.\n4. `SkillCaster.Cast(skill, caster, target)`: `skill.Effects` 를 데이터 순서대로 적용하고 true. 효과가 없는 스킬도 true.\n5. **미등록 id**: 스킬에 등록되지 않은 id 가 하나라도 있으면 **어떤 효과도 적용하지 않고** false.\n6. **확장**: `SkillCaster` 를 만든 뒤에 레지스트리에 등록한 효과도 다음 Cast 부터 쓸 수 있어야 한다. 새 효과를 추가할 때 `SkillCaster` 는 한 줄도 바뀌지 않아야 한다.\n\n채점기는 채점기 쪽에서 만든 효과(흡혈)를 등록해 6번을 확인합니다.",
+   "constraints": [
+    "`SkillCaster` 와 `EffectRegistry.TryGet` 안에 효과 id 문자열에 대한 `switch` / `if` 분기를 두지 않는다. id 문자열 리터럴은 `CreateDefault` 의 등록 코드에만 나온다.",
+    "`TryGet` 은 평균 O(1), `Cast` 는 효과 수 k 에 대해 O(k).",
+    "`Cast` 는 힙을 할당하지 않는다: 효과 객체는 등록할 때 한 번 만들고, 시전마다 새 효과 객체나 임시 리스트를 만들지 않는다.",
+    "레지스트리 저장소를 `static` 으로 두지 않는다. 리플렉션(`Activator`, `Type.GetType`)으로 효과를 찾지 않는다.",
+    "완성되어 있는 타입과 `EffectRegistry` / `SkillCaster` 의 public 시그니처는 바꾸지 않는다. 효과 클래스는 자유롭게 추가한다."
+   ],
+   "starterCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 아래 타입들은 완성되어 있습니다. 수정하지 마세요. -----\n\npublic sealed class Unit\n{\n    private readonly List<int[]> _dots = new List<int[]>();   // { 틱당 데미지, 남은 틱 }\n\n    public string Name { get; }\n    public int MaxHp { get; }\n    public int Hp { get; private set; }\n    public bool IsDead { get { return Hp == 0; } }\n    public int DotCount { get { return _dots.Count; } }\n\n    public Unit(string name, int maxHp) { Name = name; MaxHp = maxHp; Hp = maxHp; }\n\n    public void TakeDamage(int amount)\n    {\n        if (amount <= 0 || IsDead) return;\n        Hp = Math.Max(0, Hp - amount);\n    }\n\n    // 죽은 유닛은 회복되지 않는다.\n    public void Heal(int amount)\n    {\n        if (amount <= 0 || IsDead) return;\n        Hp = Math.Min(MaxHp, Hp + amount);\n    }\n\n    public void AddDot(int damagePerTick, int ticks)\n    {\n        if (damagePerTick <= 0 || ticks <= 0 || IsDead) return;\n        _dots.Add(new[] { damagePerTick, ticks });\n    }\n\n    // 턴(틱) 하나 진행: 걸려 있는 지속 피해를 한 번씩 적용한다.\n    public void Tick()\n    {\n        for (int i = _dots.Count - 1; i >= 0; i--)\n        {\n            TakeDamage(_dots[i][0]);\n            if (--_dots[i][1] <= 0) _dots.RemoveAt(i);\n        }\n        if (IsDead) _dots.Clear();\n    }\n}\n\n// 스킬 데이터 한 줄: \"어떤 효과를, 얼마의 세기로, 몇 틱 동안\"\npublic readonly struct EffectSpec\n{\n    public readonly string EffectId;\n    public readonly int Power;\n    public readonly int Duration;\n    public EffectSpec(string effectId, int power, int duration) { EffectId = effectId; Power = power; Duration = duration; }\n}\n\npublic sealed class SkillData\n{\n    public readonly string Name;\n    public readonly EffectSpec[] Effects;\n    public SkillData(string name, params EffectSpec[] effects) { Name = name; Effects = effects; }\n}\n\n// 효과 하나의 동작(전략). 상태를 갖지 않고, 수치는 spec 에서 읽는다.\npublic interface ISkillEffect\n{\n    void Apply(Unit caster, Unit target, EffectSpec spec);\n}\n\n// ----- 여기부터 구현하세요. -----\n\npublic sealed class EffectRegistry\n{\n    // id 에 효과를 등록한다. id 는 대소문자를 구분한다.\n    // id 가 null 또는 빈 문자열이거나, effect 가 null 이거나, 이미 등록된 id 면 ArgumentException(파생 예외 포함).\n    public void Register(string id, ISkillEffect effect)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 등록된 효과를 찾는다. 없으면 false, effect 는 null.\n    public bool TryGet(string id, out ISkillEffect effect)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 기본 효과 세 개가 등록된 새 레지스트리를 만든다. 호출할 때마다 서로 독립된 인스턴스다.\n    //   \"damage\": target.TakeDamage(spec.Power)\n    //   \"heal\"  : target.Heal(spec.Power)\n    //   \"dot\"   : target.AddDot(spec.Power, spec.Duration)\n    public static EffectRegistry CreateDefault()\n    {\n        throw new NotImplementedException();\n    }\n}\n\npublic sealed class SkillCaster\n{\n    public SkillCaster(EffectRegistry registry)\n    {\n        throw new NotImplementedException();\n    }\n\n    // skill.Effects 를 데이터 순서대로 적용하고 true 를 반환한다.\n    // 등록되지 않은 EffectId 가 하나라도 있으면 아무 효과도 적용하지 않고 false 를 반환한다.\n    public bool Cast(SkillData skill, Unit caster, Unit target)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+   "edgeCases": [
+    "효과 목록이 `[damage 30, dot 5x3, teleport]` 이고 teleport 가 미등록: 대상의 HP 와 도트가 그대로여야 한다.",
+    "HP 30 인 대상에게 `[damage 30, heal 15]` 는 HP 0(죽은 뒤에는 회복되지 않음), `[heal 15, damage 30]` 는 HP 10: 데이터 순서가 결과를 바꾼다.",
+    "`SkillCaster` 를 만든 뒤에 `lifesteal` 을 등록하는 경우, 이미 있는 `\"damage\"` 를 다시 등록하는 경우.",
+    "`\"Damage\"`(대문자), null id, 효과가 0개인 스킬.",
+    "빈 레지스트리에 `\"damage\"` 라는 id 로 다른 효과 객체를 등록한 경우: 캐스터는 그 객체를 호출해야 한다."
+   ],
+   "hints": [
+    "지금 구조에서 \"흡혈(입힌 피해의 절반만큼 시전자 회복)\"을 추가하려면 어떤 파일을 열어야 하나요? `SkillCaster` 를 열어야 한다면, 캐스터가 \"효과를 순서대로 적용한다\"는 자기 일 말고 \"효과마다 무엇을 하는지\"까지 알고 있다는 뜻입니다. 그리고 `[damage, dot, teleport]` 를 한 루프에서 \"찾는 즉시 적용\"하면 teleport 에서 실패했을 때 대상은 어떤 상태로 남나요?",
+    "캐스터가 알아야 하는 것은 \"id 를 주면 `ISkillEffect` 를 돌려주는 무언가\"뿐입니다. 그 무언가가 `Dictionary<string, ISkillEffect>` 를 감싼 레지스트리입니다. 수치(Power, Duration)는 `EffectSpec` 으로 넘어오므로 효과 객체는 필드 없이 id 당 하나면 충분합니다. 캐스터는 레지스트리의 사본이 아니라 참조를 들고 있어야 나중에 등록된 효과가 보입니다. 미등록 id 처리는 루프를 두 번 도는 것으로 풀립니다.",
+    "뼈대입니다. 빈칸은 직접 채우세요.\n```\nclass DamageEffect : ISkillEffect\n    Apply(caster, target, spec): target.TakeDamage(spec.Power)\n// heal, dot 도 같은 모양\n\nEffectRegistry:\n    effects : Dictionary<string, ISkillEffect>   // 인스턴스 필드\n    Register(id, effect): 인자 검증 -> 중복이면 예외 -> 추가\n    CreateDefault(): 새 레지스트리에 세 효과를 ____ 해서 반환\n\nSkillCaster.Cast(skill, caster, target):\n    for spec in skill.Effects:          // 1) 검증만\n        if (____) return false\n    for spec in skill.Effects:          // 2) 적용만\n        ____.Apply(caster, target, spec)\n    return true\n```\nCast 안에 \"damage\" 라는 글자가 한 번도 나오지 않는지 확인하세요."
+   ],
+   "followUps": [],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// ----- 아래 타입들은 완성되어 있습니다. 수정하지 마세요. -----\n\npublic sealed class Unit\n{\n    private readonly List<int[]> _dots = new List<int[]>();   // { 틱당 데미지, 남은 틱 }\n\n    public string Name { get; }\n    public int MaxHp { get; }\n    public int Hp { get; private set; }\n    public bool IsDead { get { return Hp == 0; } }\n    public int DotCount { get { return _dots.Count; } }\n\n    public Unit(string name, int maxHp) { Name = name; MaxHp = maxHp; Hp = maxHp; }\n\n    public void TakeDamage(int amount)\n    {\n        if (amount <= 0 || IsDead) return;\n        Hp = Math.Max(0, Hp - amount);\n    }\n\n    // 죽은 유닛은 회복되지 않는다.\n    public void Heal(int amount)\n    {\n        if (amount <= 0 || IsDead) return;\n        Hp = Math.Min(MaxHp, Hp + amount);\n    }\n\n    public void AddDot(int damagePerTick, int ticks)\n    {\n        if (damagePerTick <= 0 || ticks <= 0 || IsDead) return;\n        _dots.Add(new[] { damagePerTick, ticks });\n    }\n\n    // 턴(틱) 하나 진행: 걸려 있는 지속 피해를 한 번씩 적용한다.\n    public void Tick()\n    {\n        for (int i = _dots.Count - 1; i >= 0; i--)\n        {\n            TakeDamage(_dots[i][0]);\n            if (--_dots[i][1] <= 0) _dots.RemoveAt(i);\n        }\n        if (IsDead) _dots.Clear();\n    }\n}\n\n// 스킬 데이터 한 줄: \"어떤 효과를, 얼마의 세기로, 몇 틱 동안\"\npublic readonly struct EffectSpec\n{\n    public readonly string EffectId;\n    public readonly int Power;\n    public readonly int Duration;\n    public EffectSpec(string effectId, int power, int duration) { EffectId = effectId; Power = power; Duration = duration; }\n}\n\npublic sealed class SkillData\n{\n    public readonly string Name;\n    public readonly EffectSpec[] Effects;\n    public SkillData(string name, params EffectSpec[] effects) { Name = name; Effects = effects; }\n}\n\n// 효과 하나의 동작(전략). 상태를 갖지 않고, 수치는 spec 에서 읽는다.\npublic interface ISkillEffect\n{\n    void Apply(Unit caster, Unit target, EffectSpec spec);\n}\n\npublic sealed class DamageEffect : ISkillEffect\n{\n    public void Apply(Unit caster, Unit target, EffectSpec spec) { target.TakeDamage(spec.Power); }\n}\n\npublic sealed class HealEffect : ISkillEffect\n{\n    public void Apply(Unit caster, Unit target, EffectSpec spec) { target.Heal(spec.Power); }\n}\n\npublic sealed class DotEffect : ISkillEffect\n{\n    public void Apply(Unit caster, Unit target, EffectSpec spec) { target.AddDot(spec.Power, spec.Duration); }\n}\n\npublic sealed class EffectRegistry\n{\n    // 인스턴스 필드다. static 으로 두면 테스트와 모드(PvE / PvP)가 서로의 등록을 오염시킨다.\n    private readonly Dictionary<string, ISkillEffect> _effects = new Dictionary<string, ISkillEffect>(StringComparer.Ordinal);\n\n    public void Register(string id, ISkillEffect effect)\n    {\n        if (string.IsNullOrEmpty(id)) throw new ArgumentException(\"효과 id 가 비어 있음\", nameof(id));\n        if (effect == null) throw new ArgumentNullException(nameof(effect));\n        if (_effects.ContainsKey(id)) throw new ArgumentException(\"이미 등록된 효과 id: \" + id, nameof(id));\n        _effects.Add(id, effect);\n    }\n\n    public bool TryGet(string id, out ISkillEffect effect)\n    {\n        if (id == null) { effect = null; return false; }\n        return _effects.TryGetValue(id, out effect);\n    }\n\n    public static EffectRegistry CreateDefault()\n    {\n        EffectRegistry registry = new EffectRegistry();\n        registry.Register(\"damage\", new DamageEffect());\n        registry.Register(\"heal\", new HealEffect());\n        registry.Register(\"dot\", new DotEffect());\n        return registry;\n    }\n}\n\npublic sealed class SkillCaster\n{\n    private readonly EffectRegistry _registry;\n\n    public SkillCaster(EffectRegistry registry)\n    {\n        if (registry == null) throw new ArgumentNullException(nameof(registry));\n        _registry = registry;       // 복사하지 않고 참조만 든다: 나중에 등록된 효과도 보인다\n    }\n\n    public bool Cast(SkillData skill, Unit caster, Unit target)\n    {\n        if (skill == null) throw new ArgumentNullException(nameof(skill));\n        EffectSpec[] specs = skill.Effects;\n        ISkillEffect effect;\n\n        // 1) 검증: 하나라도 모르는 id 가 있으면 아무것도 적용하지 않는다.\n        for (int i = 0; i < specs.Length; i++)\n        {\n            if (!_registry.TryGet(specs[i].EffectId, out effect)) return false;\n        }\n\n        // 2) 적용: 데이터 순서 그대로. 시전자는 효과의 종류를 전혀 모른다.\n        for (int i = 0; i < specs.Length; i++)\n        {\n            _registry.TryGet(specs[i].EffectId, out effect);\n            effect.Apply(caster, target, specs[i]);\n        }\n        return true;\n    }\n}\n",
+   "explanation": "**구조.** 역할이 셋으로 나뉩니다. `ISkillEffect` 구현체는 \"효과 하나가 무엇을 하는가\"(전략), `EffectRegistry` 는 \"이 id 에는 어떤 전략을 쓰는가\"(선택), `SkillCaster` 는 \"스킬의 효과들을 어떤 순서로 적용하는가\"(흐름)만 압니다. 캐스터 코드에는 `\"damage\"` 라는 문자열도 `DamageEffect` 라는 타입도 없습니다. 새 효과는 클래스 하나와 `Register` 한 줄이면 되고 캐스터는 건드리지 않습니다. 채점기가 바깥에서 흡혈 효과를 등록해 쓰는 것이 그 증명입니다. 확장에는 열려 있고 수정에는 닫혀 있어야 한다는 개방-폐쇄 원칙을 그대로 적용한 형태입니다.\n\n**왜 상태 없는 전략인가.** 수치를 효과 객체가 아니라 `EffectSpec` 으로 넘기므로 효과 객체에는 필드가 없고, id 하나당 인스턴스 하나를 모든 스킬과 모든 시전이 공유합니다. Cast 는 딕셔너리 조회와 인터페이스 호출뿐이라 힙 할당이 없습니다. 레지스트리가 \"id → 생성 함수\"를 들고 시전마다 효과 객체를 만들어 주는 팩토리 형태도 가능하고, 효과가 시전별 상태(누적 피해 등)를 가져야 한다면 그쪽이 맞습니다. 지금 요구에는 불필요한 할당이라 공유 인스턴스를 택했습니다.\n\n**원자적 실패.** 검증 루프와 적용 루프를 나눕니다. 한 루프에서 찾는 즉시 적용하면 `[damage, dot, teleport]` 에서 피해와 도트는 들어간 채 false 가 반환되는 \"반쯤 시전된 스킬\"이 생깁니다. 조회를 두 번 하는 비용은 O(k) 의 해시 조회로, 찾은 효과를 임시 리스트에 모으는 것보다 쌉니다. 실전에서는 이 검증을 스킬 테이블 로드 시점에 한 번 해서 오타를 미리 잡고, 런타임 Cast 의 false 는 마지막 방어선으로만 둡니다.\n\n**세부 선택.**\n- 레지스트리는 인스턴스입니다. static 딕셔너리로 만들면 테스트끼리, 모드별 규칙끼리 등록이 섞이고 \"누가 먼저 등록했나\"라는 초기화 순서 문제가 생깁니다.\n- 캐스터는 레지스트리를 복사하지 않고 참조만 들기 때문에 나중에 등록된 효과도 보입니다.\n- 키 비교자를 `StringComparer.Ordinal` 로 명시했습니다. string 키의 기본 비교도 서수 비교이지만, 의도를 드러내고 나중에 대소문자 무시로 바꿀 자리를 표시해 둡니다.\n- 중복 등록은 조용히 덮어쓰지 않고 예외로 알립니다. 두 사람이 같은 id 를 쓴 실수가 가장 빨리 드러납니다.\n\n**복잡도.** TryGet 평균 O(1), Cast 는 O(k), 추가 메모리는 등록된 효과 수에 비례합니다.\n\n**흔한 실수.**\n1. 캐스터에 `switch` 를 남겨 두고 default 에서만 레지스트리를 본다: 기본 효과를 교체할 수 없고 분기가 다시 자랍니다.\n2. 클래스 이름과 id 를 리플렉션으로 연결한다: 이름을 바꾸는 순간 조용히 깨집니다.\n3. 공유되는 효과 객체에 지난 시전의 값을 필드로 남긴다: 다음 시전에 그 값이 샙니다.\n4. 미등록 id 를 조용히 건너뛰고 true 를 반환한다: 데이터 오타가 \"가끔 효과가 안 나가는 스킬\"이 됩니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "기본 효과 damage / heal / dot 가 스펙대로 동작한다 (fireball: damage 30 + dot 5x3 → 직후 70/100, 4틱 뒤 55/100).",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "효과가 데이터 순서대로 적용되고, 미등록 id(대소문자 다름, null 포함)가 하나라도 있으면 아무 효과도 적용하지 않고 false 를 반환한다.",
+      "points": 13,
+      "sourceId": ""
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "바깥에서 등록한 새 효과가 `SkillCaster` 수정 없이 동작하고, 캐스터를 만든 뒤에 등록한 효과도 다음 Cast 에서 쓰인다.",
+      "points": 12,
+      "sourceId": "wiki-strategy-pattern"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "id → 효과 조회가 Dictionary 로 평균 O(1) 이다 (목록 선형 탐색이나 if 사슬이 아니다).",
+      "points": 10,
+      "sourceId": ""
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "`Cast` 가 힙을 할당하지 않는다: 효과 객체는 등록 시 한 번 만든 것을 공유하고, 시전마다 new 하지 않는다.",
+      "points": 12,
+      "sourceId": ""
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "미등록 id 검증을 모두 끝낸 뒤에 적용하고(효과 수 k 에 O(k)), 그 과정에서 시전마다 임시 컬렉션을 새로 만들지 않는다 (두 번 순회하거나 재사용 버퍼를 쓴다).",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "`Register` 가 null / 빈 id, null 효과, 중복 id 에 `ArgumentException` 계열 예외를 던지고 기존 등록을 바꾸지 않는다.",
+      "points": 8,
+      "sourceId": ""
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "문자열 키 비교 방식을 명시했거나(`StringComparer.Ordinal`) 기본이 서수 비교임을 알고 있다. 문화권 의존 비교나 `ToLower` 를 쓰지 않는다.",
+      "points": 6,
+      "sourceId": ""
+     },
+     {
+      "id": "c9",
+      "category": "엔진·언어 규약",
+      "description": "\"없을 수 있는 조회\"를 `TryGet`(bool + out)으로 처리하고, 정상 흐름에서 예외를 던졌다 잡는 방식으로 제어하지 않는다.",
+      "points": 6,
+      "sourceId": ""
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "`SkillCaster` 안에 효과 종류에 대한 분기나 구체 효과 타입 이름이 없다 (새 효과 추가 시 수정 지점 0).",
+      "points": 8,
+      "sourceId": "wiki-solid"
+     },
+     {
+      "id": "c11",
+      "category": "아키텍처·가독성",
+      "description": "레지스트리가 인스턴스이고 생성자로 캐스터에 주입된다 (static 전역 저장소가 아니다).",
+      "points": 7,
+      "sourceId": "ms-arch-principles"
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "`Cast` 안에 효과 id 에 대한 `switch` / `if-else` 분기가 남아 있다 (새 효과마다 캐스터를 고쳐야 한다).",
+      "penalty": -25,
+      "sourceId": "wiki-strategy-pattern"
+     },
+     {
+      "id": "d2",
+      "description": "효과 저장소가 `static` 이라 레지스트리 인스턴스끼리 등록이 섞인다.",
+      "penalty": -15,
+      "sourceId": ""
+     },
+     {
+      "id": "d3",
+      "description": "미등록 id 를 만나기 전의 효과가 이미 적용된 채 false 를 반환하거나, 미등록 id 를 건너뛰고 true 를 반환한다.",
+      "penalty": -15,
+      "sourceId": ""
+     }
+    ]
+   },
+   "tests": {
+    "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // 테스트 쪽에서 추가하는 효과: 입힌 피해의 절반만큼 시전자를 회복\n    sealed class Lifesteal : ISkillEffect\n    {\n        public void Apply(Unit caster, Unit target, EffectSpec spec)\n        {\n            int before = target.Hp;\n            target.TakeDamage(spec.Power);\n            caster.Heal((before - target.Hp) / 2);\n        }\n    }\n\n    sealed class Counting : ISkillEffect\n    {\n        public int Calls;\n        public void Apply(Unit caster, Unit target, EffectSpec spec) { Calls++; }\n    }\n\n    static EffectSpec E(string id, int power, int duration = 0) { return new EffectSpec(id, power, duration); }\n\n    static string St(Unit u) { return u.Name + \" \" + u.Hp + \"/\" + u.MaxHp + \" dot\" + u.DotCount; }\n\n    static bool ThrowsArg(System.Action a)\n    {\n        try { a(); } catch (System.ArgumentException) { return true; } catch (System.Exception) { return false; }\n        return false;\n    }\n\n    // 참조 구현: 일부러 switch 로 쓴 \"정답 계산기\"\n    static bool RefCast(SkillData skill, Unit caster, Unit target, bool lifestealKnown)\n    {\n        foreach (EffectSpec s in skill.Effects)\n        {\n            bool known = s.EffectId == \"damage\" || s.EffectId == \"heal\" || s.EffectId == \"dot\" || (lifestealKnown && s.EffectId == \"lifesteal\");\n            if (!known) return false;\n        }\n        foreach (EffectSpec s in skill.Effects)\n        {\n            switch (s.EffectId)\n            {\n                case \"damage\": target.TakeDamage(s.Power); break;\n                case \"heal\": target.Heal(s.Power); break;\n                case \"dot\": target.AddDot(s.Power, s.Duration); break;\n                case \"lifesteal\": new Lifesteal().Apply(caster, target, s); break;\n            }\n        }\n        return true;\n    }\n\n    public static void Main()\n    {\n        Run(\"builtin-effects\", () =>\n        {\n            var caster = new SkillCaster(EffectRegistry.CreateDefault());\n            var mage = new Unit(\"mage\", 80); var orc = new Unit(\"orc\", 100);\n            if (!caster.Cast(new SkillData(\"fireball\", E(\"damage\", 30), E(\"dot\", 5, 3)), mage, orc)) return \"기본 효과만 쓴 스킬의 Cast 가 false\";\n            if (St(orc) != \"orc 70/100 dot1\") return \"fireball(damage 30 + dot 5x3) 직후 기대 orc 70/100 dot1, 결과 \" + St(orc);\n            orc.Tick(); orc.Tick(); orc.Tick(); orc.Tick();\n            if (St(orc) != \"orc 55/100 dot0\") return \"4틱 뒤 기대 orc 55/100 dot0, 결과 \" + St(orc);\n            caster.Cast(new SkillData(\"mend\", E(\"heal\", 20)), mage, orc);\n            if (St(orc) != \"orc 75/100 dot0\") return \"heal 20 뒤 기대 orc 75/100, 결과 \" + St(orc);\n            if (!caster.Cast(new SkillData(\"empty\"), mage, orc) || St(orc) != \"orc 75/100 dot0\") return \"효과가 없는 스킬은 true 를 반환하고 아무것도 바꾸지 않아야 함\";\n            return St(mage) == \"mage 80/80 dot0\" ? null : \"시전자 상태가 바뀜: \" + St(mage);\n        });\n\n        Run(\"data-order\", () =>\n        {\n            var caster = new SkillCaster(EffectRegistry.CreateDefault());\n            var a = new Unit(\"a\", 100); var t1 = new Unit(\"t1\", 40); var t2 = new Unit(\"t2\", 40);\n            t1.TakeDamage(10); t2.TakeDamage(10);\n            caster.Cast(new SkillData(\"smite-then-mend\", E(\"damage\", 30), E(\"heal\", 15)), a, t1);\n            caster.Cast(new SkillData(\"mend-then-smite\", E(\"heal\", 15), E(\"damage\", 30)), a, t2);\n            if (t1.Hp != 0) return \"HP 30 에 damage 30 -> heal 15 순서: 죽은 뒤에는 회복되지 않으므로 기대 0, 결과 \" + t1.Hp;\n            if (t2.Hp != 10) return \"HP 30 에 heal 15 -> damage 30 순서: 기대 10, 결과 \" + t2.Hp;\n            return null;\n        });\n\n        Run(\"unknown-id-atomic\", () =>\n        {\n            var caster = new SkillCaster(EffectRegistry.CreateDefault());\n            var a = new Unit(\"a\", 100); var t = new Unit(\"t\", 100);\n            bool ok = caster.Cast(new SkillData(\"broken\", E(\"damage\", 30), E(\"dot\", 5, 3), E(\"teleport\", 1)), a, t);\n            if (ok) return \"등록되지 않은 id(teleport)가 있는데 Cast 가 true\";\n            if (St(t) != \"t 100/100 dot0\") return \"실패한 Cast 가 앞쪽 효과를 이미 적용함: \" + St(t);\n            if (caster.Cast(new SkillData(\"case\", E(\"Damage\", 30)), a, t) || t.Hp != 100) return \"id 는 대소문자를 구분해야 함 (\\\"Damage\\\" 는 미등록)\";\n            if (caster.Cast(new SkillData(\"null-id\", E(null, 30)), a, t) || t.Hp != 100) return \"EffectId 가 null 인 스펙은 미등록으로 처리해 false 여야 함\";\n            return null;\n        });\n\n        Run(\"custom-effect-from-test\", () =>\n        {\n            var reg = EffectRegistry.CreateDefault();\n            reg.Register(\"lifesteal\", new Lifesteal());\n            var caster = new SkillCaster(reg);\n            var vamp = new Unit(\"vamp\", 100); var t = new Unit(\"t\", 50);\n            vamp.TakeDamage(60);\n            if (!caster.Cast(new SkillData(\"drain\", E(\"lifesteal\", 40), E(\"damage\", 5)), vamp, t)) return \"테스트가 등록한 효과 id 로 Cast 했는데 false\";\n            if (St(t) != \"t 5/50 dot0\" || vamp.Hp != 60) return \"drain(lifesteal 40 + damage 5) 뒤 기대 t 5/50, vamp 60, 결과 \" + St(t) + \", vamp \" + vamp.Hp;\n            return null;\n        });\n\n        Run(\"register-after-caster\", () =>\n        {\n            var reg = EffectRegistry.CreateDefault();\n            var caster = new SkillCaster(reg);\n            var a = new Unit(\"a\", 100); var t = new Unit(\"t\", 100);\n            a.TakeDamage(50);\n            var drain = new SkillData(\"drain\", E(\"lifesteal\", 20));\n            if (caster.Cast(drain, a, t)) return \"아직 등록되지 않은 효과인데 Cast 가 true\";\n            reg.Register(\"lifesteal\", new Lifesteal());\n            if (!caster.Cast(drain, a, t)) return \"SkillCaster 를 만든 뒤에 등록한 효과가 보이지 않음 (생성 시점에 목록을 복사했는가?)\";\n            return t.Hp == 80 && a.Hp == 60 ? null : \"기대 t 80, a 60, 결과 t \" + t.Hp + \", a \" + a.Hp;\n        });\n\n        Run(\"register-validation\", () =>\n        {\n            var reg = EffectRegistry.CreateDefault();\n            if (!ThrowsArg(() => reg.Register(\"damage\", new Lifesteal()))) return \"이미 있는 id 를 다시 Register 해도 ArgumentException 이 없음\";\n            if (!ThrowsArg(() => reg.Register(\"x\", null))) return \"effect 가 null 인데 ArgumentException(파생 포함)이 없음\";\n            if (!ThrowsArg(() => reg.Register(null, new Lifesteal()))) return \"id 가 null 인데 ArgumentException(파생 포함)이 없음\";\n            if (!ThrowsArg(() => reg.Register(\"\", new Lifesteal()))) return \"id 가 빈 문자열인데 ArgumentException 이 없음\";\n            ISkillEffect found;\n            if (!reg.TryGet(\"heal\", out found) || found == null) return \"TryGet(\\\"heal\\\") 이 기본 효과를 찾지 못함\";\n            if (reg.TryGet(\"x\", out found) || found != null) return \"실패한 Register 가 등록을 남김 (TryGet(\\\"x\\\") 는 false, effect 는 null 이어야 함)\";\n            var t = new Unit(\"t\", 100);\n            new SkillCaster(reg).Cast(new SkillData(\"hit\", E(\"damage\", 10)), t, t);\n            return t.Hp == 90 ? null : \"중복 Register 시도 뒤 기존 damage 효과가 바뀜 (HP \" + t.Hp + \")\";\n        });\n\n        Run(\"registries-independent\", () =>\n        {\n            var empty = new EffectRegistry();\n            ISkillEffect found;\n            if (empty.TryGet(\"damage\", out found)) return \"new EffectRegistry() 는 비어 있어야 함 (기본 효과는 CreateDefault 에서만)\";\n            var t = new Unit(\"t\", 100);\n            if (new SkillCaster(empty).Cast(new SkillData(\"hit\", E(\"damage\", 10)), t, t) || t.Hp != 100) return \"빈 레지스트리로 damage 가 적용됨\";\n            var counting = new Counting();\n            empty.Register(\"damage\", counting);\n            new SkillCaster(empty).Cast(new SkillData(\"hit\", E(\"damage\", 10), E(\"damage\", 10)), t, t);\n            if (counting.Calls != 2 || t.Hp != 100) return \"레지스트리에 등록된 객체가 아닌 다른 경로로 damage 가 처리됨 (호출 \" + counting.Calls + \"회, HP \" + t.Hp + \")\";\n            var r1 = EffectRegistry.CreateDefault(); var r2 = EffectRegistry.CreateDefault();\n            r1.Register(\"lifesteal\", new Lifesteal());\n            if (r2.TryGet(\"lifesteal\", out found)) return \"한 레지스트리에 등록한 효과가 다른 레지스트리에도 보임 (static 저장소를 공유하고 있음)\";\n            return null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(555);\n            string[] ids = { \"damage\", \"heal\", \"dot\", \"lifesteal\", \"teleport\" };\n            for (int round = 0; round < 300; round++)\n            {\n                bool withLifesteal = rng.Next(2) == 0;\n                var reg = EffectRegistry.CreateDefault();\n                if (withLifesteal) reg.Register(\"lifesteal\", new Lifesteal());\n                var caster = new SkillCaster(reg);\n                var a = new Unit(\"a\", 120); var t = new Unit(\"t\", 90);\n                var ra = new Unit(\"a\", 120); var rt = new Unit(\"t\", 90);\n                for (int step = 0; step < 12; step++)\n                {\n                    int n = rng.Next(0, 4);\n                    var specs = new EffectSpec[n];\n                    for (int i = 0; i < n; i++)\n                    {\n                        int pick = rng.Next(100);\n                        string id = pick < 30 ? ids[0] : pick < 50 ? ids[1] : pick < 70 ? ids[2] : pick < 93 ? ids[3] : ids[4];\n                        specs[i] = E(id, rng.Next(0, 35), rng.Next(0, 4));\n                    }\n                    var skill = new SkillData(\"s\", specs);\n                    bool swap = rng.Next(4) == 0;\n                    bool got = swap ? caster.Cast(skill, t, a) : caster.Cast(skill, a, t);\n                    bool exp = swap ? RefCast(skill, rt, ra, withLifesteal) : RefCast(skill, ra, rt, withLifesteal);\n                    if (rng.Next(3) == 0) { a.Tick(); t.Tick(); ra.Tick(); rt.Tick(); }\n                    if (got != exp || St(a) != St(ra) || St(t) != St(rt))\n                    {\n                        var names = new System.Collections.Generic.List<string>();\n                        foreach (EffectSpec s in specs) names.Add(s.EffectId + \"(\" + s.Power + \",\" + s.Duration + \")\");\n                        return \"라운드 \" + round + \", 스킬 [\" + string.Join(\" \", names) + \"]\" + (withLifesteal ? \" (lifesteal 등록됨)\" : \" (lifesteal 미등록)\") +\n                            \": 기대 \" + exp + \" / \" + St(ra) + \" / \" + St(rt) + \", 결과 \" + got + \" / \" + St(a) + \" / \" + St(t);\n                    }\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+    "cases": [
+     "builtin-effects",
+     "data-order",
+     "unknown-id-atomic",
+     "custom-effect-from-test",
+     "register-after-caster",
+     "register-validation",
+     "registries-independent",
+     "random-vs-reference"
+    ],
+    "note": "기본 효과 세 개의 수치, 데이터 순서에 따른 결과 차이, 미등록 id(대소문자 다름·null 포함)에서의 전부-아니면-전무, 채점기 쪽에서 만든 흡혈 효과의 등록과 시전, SkillCaster 생성 뒤의 등록, Register 의 인자 검증과 TryGet, 빈 레지스트리와 레지스트리 간 독립성(\"damage\" id 에 다른 객체를 등록하면 그 객체가 호출되는지 포함), 그리고 무작위 스킬 3600회를 참조 계산과 비교합니다. Cast 의 무할당 여부는 채점하지 않습니다(루브릭). Unit, EffectSpec, SkillData, ISkillEffect 는 수정하면 안 되고, EffectRegistry 의 Register / TryGet / CreateDefault 와 SkillCaster 의 생성자 (EffectRegistry) / Cast(bool 반환) 시그니처도 그대로 두어야 합니다."
+   },
+   "verified": {
+    "level": "executed",
+    "date": "2026-11-22",
+    "note": "풀이와 숨은 테스트를 실행 서비스에서 돌리고, 구조가 다른 정답(델리게이트를 감싼 전략 + 재사용 버퍼 캐스터)의 통과와 오답 2종(static 저장소, 대소문자 무시)의 탈락을 로컬 .NET 8 로 확인했으며, 전략 패턴·개방-폐쇄 원칙·명시적 의존성 인용을 원문과 대조했습니다."
+   },
+   "nextMission": "다른 효과를 감싸는 합성 효과를 캐스터 수정 없이 추가해 보세요. 예: `\"repeat\"` 는 레지스트리에서 `\"damage\"` 를 찾아 Duration 번 적용합니다(레지스트리를 생성자로 받는 효과). 그다음 스킬 테이블 전체를 받아 미등록 id 를 모두 모아 한 번에 보고하는 `Validate(IEnumerable<SkillData>)` 를 만들어 로드 시점 검증으로 옮기세요."
+  },
+  {
+   "id": "t10-interview-singleton-solid",
+   "track": "track10",
+   "mode": "interview",
+   "difficulty": "Hard",
+   "title": "3,000줄짜리 GameManager.Instance: 싱글턴의 편리함과 비용, 대안, 그리고 SOLID",
+   "tags": [
+    "Pattern_Singleton",
+    "Pattern_SOLID",
+    "Pattern_DependencyInjection"
+   ],
+   "language": "none",
+   "sourceRefs": [
+    "gpp-singleton",
+    "gpp-service-locator",
+    "wiki-solid",
+    "ms-arch-principles",
+    "unity-monobehaviour",
+    "vcontainer-monobehaviour",
+    "unity-exec-order",
+    "unity-dontdestroyonload",
+    "unity-scriptableobject",
+    "unity-domain-reload",
+    "unity-so-architecture"
+   ],
+   "scenario": "Unity 로 만든 모바일 RPG 입니다. `GameManager` 는 `DontDestroyOnLoad` 로 씬 사이에 유지되는 싱글턴이고 3,000줄입니다. 세이브/로드, 재화, 사운드 재생, 씬 전환, 전투 결과 정산, 팝업 관리가 모두 들어 있고, 프로젝트 전체에서 `GameManager.Instance.xxx` 가 400군데 넘게 호출됩니다.\n\n최근 일들:\n- 전투 씬만 에디터에서 바로 실행하면 `NullReferenceException` 으로 시작한다.\n- 재화 계산 버그를 고치려는데 유닛 테스트를 붙일 수가 없다.\n- 신입이 새 기능을 위해 \"`QuestManager` 싱글턴을 하나 더 만들겠다\"는 PR 을 올렸다.\n\n리드가 묻습니다.\n\n**\"Unity 프로젝트에서 싱글턴이 왜 이렇게 자주 쓰이는지, 지금 이 구조가 실제로 치르고 있는 비용이 무엇인지 설명해 주세요. 그리고 대안들(의존성 주입, 서비스 로케이터, ScriptableObject 참조, 이벤트 채널)이 각각 무엇을 해결하고 무엇을 새로 지불하게 하는지, 이 GameManager 가 SOLID 중 어떤 원칙을 어기는지도 함께 말해 주세요.\"**",
+   "constraints": [],
+   "starterCode": "",
+   "edgeCases": [
+    "부트 씬을 거치지 않고 전투 씬을 에디터에서 바로 실행: `Instance` 가 아직 없다.",
+    "타이틀 → 게임 → 타이틀 → 게임: `DontDestroyOnLoad` 객체가 둘이 되거나, 이전 판의 재화·퀘스트 상태가 남아 있다.",
+    "다른 오브젝트의 `Awake` 가 `GameManager` 의 `Awake` 보다 먼저 실행되는 경우.",
+    "테스트 A 가 바꾼 static 상태가 테스트 B 에 남는 경우, 도메인 리로드를 끈 에디터에서 static 값이 플레이 세션 사이에 유지되는 경우."
+   ],
+   "hints": [],
+   "followUps": [
+    {
+     "question": "전투 씬만 바로 실행하면 `NullReferenceException` 이 나고, 타이틀과 게임을 두 번 오가면 BGM 이 겹쳐 재생됩니다. 각각의 원인과 해결책을 설명해 주세요.",
+     "intent": "싱글턴의 추상적인 단점이 아니라 Unity 에서 실제로 겪는 초기화 순서 문제와 수명 문제를 원인 수준에서 구분하고 고칠 수 있는지 확인한다.",
+     "keyAnswer": "- **NRE 의 원인은 초기화 순서다.** `Instance` 는 `GameManager` 의 `Awake` 에서 채워지는데, 전투 씬에는 그 오브젝트가 없거나(부트 씬에만 있음) 있어도 다른 오브젝트의 `Awake` 가 먼저 돌 수 있다. Unity 매뉴얼은 서로 다른 GameObject 사이에서 같은 이벤트 함수가 불리는 순서를, 명시적으로 문서화되었거나 설정 가능한 경우가 아니면 믿지 말라고 한다.\n- **해결.** (a) 규칙: 자기 참조는 `Awake` 에서 채우고, 남의 것은 `Start` 이후에만 쓴다. (b) 어떤 씬에서 시작하든 공용 서비스를 먼저 올리는 부트스트랩 단계를 둔다. (c) Script Execution Order 로 매니저를 앞당기는 것은 가능하지만 \"숨은 순서 의존\"을 설정 창으로 옮긴 것뿐이다. (d) 처음 접근할 때 만드는 지연 초기화는 NRE 는 없애지만 언제 초기화될지 통제할 수 없게 되어, 무거운 초기화가 전투 중 첫 접근 시점에 일어날 수 있다.\n- **BGM 중복의 원인은 수명이다.** `DontDestroyOnLoad` 로 살아남은 오브젝트가 있는 씬을 다시 로드하면 씬 파일에 들어 있던 사본이 또 만들어진다. `Awake` 에서 \"이미 인스턴스가 있고 그것이 내가 아니면 나를 파괴\"하는 검사가 필요하다. Unity 의 DontDestroyOnLoad 예제도 중복을 제거하는 코드를 함께 보여 준다.\n- **더 근본적인 수명 문제.** 중복을 막아도 \"새 게임을 시작하면 누가 재화와 퀘스트 상태를 초기화하나\"는 남는다. 앱과 수명이 같은 것(오디오 장치, 설정)과 게임 한 판과 수명이 같은 것(전투 상태, 런 진행도)을 한 객체에 넣었기 때문이다. 수명이 다른 것은 다른 객체로 나누고, 한 판짜리 객체는 판이 끝날 때 버린다."
+    },
+    {
+     "question": "GameManager 에서 재화(지갑)와 세이브를 떼어 내 유닛 테스트가 가능하게 만들려고 합니다. 생성자 주입, 서비스 로케이터, ScriptableObject 참조 중 무엇을 어디에 쓰겠습니까? MonoBehaviour 는 생성자로 인자를 받을 수 없다는 제약을 포함해 답해 주세요.",
+     "intent": "대안을 이름만 아는 것이 아니라 Unity 의 제약 안에서 각각의 적용 지점과 비용을 비교해 선택할 수 있는지 확인한다.",
+     "keyAnswer": "- **도메인 로직은 순수 C# 클래스 + 생성자 주입.** `Wallet` 과 세이브 로직을 MonoBehaviour 가 아닌 클래스로 빼고, 필요한 것(`ISaveStorage` 등)을 생성자 매개변수로 받는다. 필요한 협력 객체가 시그니처에 드러나고(명시적 의존성), 테스트에서는 메모리에만 쓰는 가짜 저장소를 넣으면 된다. 이것만으로 재화 버그에 테스트를 붙일 수 있다.\n- **MonoBehaviour 쪽.** 객체 생성을 Unity 가 처리하므로 생성자로 인자를 넘길 수 없고, Unity 매뉴얼은 MonoBehaviour 에 생성자를 정의하면 Unity 의 정상 동작을 방해한다고 경고한다. 선택지는 (a) 생성 직후 호출하는 `Init(...)` 메서드 주입, (b) `[SerializeField]` 로 인스펙터에서 꽂는 참조, (c) VContainer 같은 DI 컨테이너의 메서드 주입(`[Inject]` 를 붙인 메서드를 컨테이너가 호출). 어느 쪽이든 \"객체들을 만들고 서로 이어 주는\" 조립 지점(composition root)이 한 곳 필요하다.\n- **주입의 비용.** 배선 코드와 조립 지점을 관리해야 하고, 깊은 곳까지 참조를 전달하느라 생성자 인자가 늘어난다. 컨테이너를 쓰면 배선은 줄지만 등록 누락이 컴파일 오류가 아닌 런타임 오류가 되고 팀이 도구를 배워야 한다.\n- **서비스 로케이터.** 호출부는 인터페이스만 보므로 구현을 바꾸거나(테스트용, Null 서비스) 감쌀 수 있다. 하지만 여전히 전역 접근이라 의존성이 시그니처에 드러나지 않고, 등록 전에 조회되는 순서 문제도 그대로다. 로그나 오디오처럼 거의 모든 곳에서 쓰여 일일이 전달하기 과한 서비스에만 제한적으로 쓴다.\n- **ScriptableObject 참조.** 에셋을 인스펙터에서 꽂으므로 코드 결합 없이 여러 씬과 프리팹이 같은 데이터를 공유하고, 테스트용 에셋으로 바꿔 끼울 수 있다. 비용: 참조가 에셋에 묻혀 코드 검색으로 흐름을 따라가기 어렵고, 에디터에서는 플레이 중 바꾼 값이 에셋에 남을 수 있는 반면 스탠드얼론 플레이어에서는 저장된 데이터를 읽을 수만 있다. 세이브 데이터 저장소로 쓰면 안 된다.\n- **선택 예.** 지갑과 세이브는 순수 클래스 + 생성자 주입, 화면 쪽 MonoBehaviour 는 Init 또는 인스펙터 주입, 오디오는 로케이터나 기존 싱글턴 유지. 400군데를 한 번에 바꾸지 않고, `GameManager.Instance.Wallet` 이 새 클래스로 위임하게 한 뒤 호출부를 점진적으로 옮긴다."
+    },
+    {
+     "question": "리팩터링 뒤 이벤트 채널이 40개로 늘었고 \"이 이벤트를 누가 쏘는지 모르겠다\", \"닫힌 UI 가 계속 반응한다\"는 버그가 나옵니다. 어디까지 이벤트로 풀고 어디서 직접 호출로 돌아가야 합니까? SOLID 를 과하게 적용했다는 신호는 무엇입니까?",
+     "intent": "결합을 줄이는 도구에도 비용이 있다는 것을 알고, 원칙을 기계적으로 적용하지 않고 변경 가능성과 추적 가능성 사이에서 판단 기준을 제시하는지 확인한다.",
+     "keyAnswer": "- **이벤트가 맞는 곳.** \"일어난 일을 알린다\"는 통지이고, 발행자가 수신자의 수와 종류를 몰라도 되며, 수신자 사이의 순서가 중요하지 않을 때. 예: 플레이어 사망 → UI, 카메라, 음악이 각자 반응.\n- **직접 호출이 맞는 곳.** 결과가 필요하거나(성공/실패 반환), 순서가 계약의 일부이거나(재화 차감 → 아이템 지급 → 저장), 수신자가 정확히 하나일 때. 이런 흐름을 이벤트로 쪼개면 순서가 구독 순서라는 우연에 맡겨지고 실패 처리 경로가 사라진다. 인터페이스를 주입받아 메서드로 호출하는 편이 낫다.\n- **이벤트의 비용.** (1) 흐름이 코드에 드러나지 않아 \"누가 쏘고 누가 받는지\"를 정적 탐색으로 찾기 어렵다. ScriptableObject 이벤트 에셋이면 더 그렇다. (2) 해지를 잊은 구독자가 계속 호출되고 발행자가 구독자를 붙잡아 수거도 막는다(lapsed listener). (3) 동기 통지라 느린 수신자가 발행자를 막고, 수신자가 다시 이벤트를 쏘면 재진입이 생긴다. (4) 도메인 리로드를 끈 에디터에서는 static 이벤트의 구독자가 플레이 세션 사이에 남는다.\n- **완화.** 구독과 해지를 OnEnable / OnDisable 짝으로 고정, 채널마다 소유자(발행 주체)를 하나로 정해 문서화, 개발 빌드에서 발행 로그, 비슷한 채널 통합.\n- **과적용의 신호.** 구현이 하나뿐이고 테스트 대역도 없는 인터페이스가 늘어난다. 기능 하나를 고치는데 파일 다섯 개를 연다. 메서드 하나짜리 클래스가 서로를 부르기만 한다. 단일 책임의 기준은 메서드 개수가 아니라 \"변경 이유\"다. 같은 이유로 함께 바뀌는 코드는 한 클래스에 있어도 되고, 실제로 교체되거나 테스트에서 대체될 경계에만 추상화를 둔다."
+    }
+   ],
+   "concept": "",
+   "quiz": [],
+   "solutionCode": "",
+   "explanation": "**왜 편한가.** 싱글턴은 \"어디서든 한 줄로 접근\"과 \"인스턴스가 하나\"를 함께 줍니다. Unity 에서는 이 편리함이 더 커 보입니다. MonoBehaviour 는 엔진이 만들기 때문에 생성자로 의존성을 넘길 수 없고, 씬과 프리팹 사이의 참조를 인스펙터로 일일이 이어 주기는 번거로우며, 씬이 바뀌어도 살아 있어야 하는 객체(오디오, 세이브)가 실제로 있기 때문입니다.\n\n**실제 비용.**\n- **숨은 의존성.** 클래스의 생성자와 메서드 시그니처만 봐서는 무엇이 필요한지 알 수 없습니다. 필요한 전역 요소가 준비되어 있어야만 동작하는 클래스는 자신의 요구 사항을 숨기고 있는 셈입니다. 400군데의 호출부가 3,000줄 전체에 묶입니다.\n- **초기화 순서.** `Instance` 가 채워지기 전에 접근하면 NRE 입니다. 서로 다른 오브젝트의 `Awake` 순서는 일반적으로 믿을 수 없고, 지연 초기화는 초기화 시점의 통제를 포기하는 대가를 치릅니다.\n- **테스트.** 전역 가변 상태는 테스트 사이에 남고, 가짜로 바꿔 끼울 틈이 없습니다. 재화 로직 하나를 검증하려 해도 GameManager 전체와 씬이 필요합니다.\n- **수명.** 앱 수명의 것과 한 판 수명의 것이 한 객체에 섞여, 씬 재로드 시 중복 생성과 \"지난 판의 상태가 남는\" 버그가 납니다.\n\n**대안과 그 값.**\n- **의존성 주입**(순수 클래스는 생성자, MonoBehaviour 는 Init 메서드·인스펙터·컨테이너): 의존성이 드러나고 테스트에서 대체할 수 있습니다. 대신 조립 지점과 배선 코드가 필요하고, 컨테이너를 쓰면 학습 비용과 런타임 등록 오류가 따라옵니다.\n- **서비스 로케이터**: 인터페이스 뒤로 구현을 숨겨 교체할 수 있지만 전역 접근과 숨은 의존성, 등록 전 조회 문제는 남습니다. 로그·오디오처럼 어디서나 쓰는 서비스에 한정합니다.\n- **ScriptableObject 참조**: 에셋을 꽂아 씬 간에 공유하고 디자이너가 교체할 수 있습니다. 대신 흐름이 에셋에 묻혀 추적이 어렵고, 빌드에서는 런타임에 저장되지 않습니다.\n- **이벤트 채널**: 발행자가 수신자를 몰라도 됩니다. 대신 흐름 추적이 어려워지고, 해지 누락과 호출 순서의 암묵성이라는 새 문제가 생깁니다.\n\n**SOLID.** 이 GameManager 는 변경 이유가 여섯 가지라 **단일 책임**을, 기능을 추가할 때마다 같은 클래스를 고쳐야 하므로 **개방-폐쇄**를, 사운드만 필요한 호출자도 세이브와 재화 멤버까지 딸려 오는 거대한 표면에 의존하므로 **인터페이스 분리**를, 모든 호출부가 추상화가 아닌 구체 클래스 `GameManager` 에 직접 의존하므로 **의존성 역전**을 어깁니다. 리스코프 치환은 상속 관계의 원칙이라 여기서는 직접적인 쟁점이 아닙니다.\n\n**결론.** 싱글턴 자체를 금지할 일은 아닙니다. 정말 하나뿐이고 앱과 수명이 같으며 거의 모든 곳에서 쓰는 서비스에는 여전히 실용적인 선택입니다. 문제는 \"접근하기 편하다\"는 이유로 책임을 계속 얹는 것입니다. 신입의 QuestManager 는 한 판과 수명이 같고 테스트가 필요한 로직이므로, 순수 클래스로 만들어 필요한 곳에 넘겨주도록 안내하겠습니다.",
+   "rubric": {
+    "criteria": [
+     {
+      "id": "c1",
+      "category": "정확성",
+      "description": "싱글턴이 Unity 에서 자주 쓰이는 이유를 두 가지 이상 말했다 (어디서든 접근, MonoBehaviour 는 생성자 주입 불가, 씬 간 유지 필요, 인스펙터 배선 회피 중).",
+      "points": 8,
+      "sourceId": "gpp-singleton"
+     },
+     {
+      "id": "c2",
+      "category": "정확성",
+      "description": "비용 네 가지(숨은 의존성, 초기화 순서, 테스트 어려움, 수명) 중 세 가지 이상을 이 GameManager 의 구체적 증상과 연결해 설명했다.",
+      "points": 12,
+      "sourceId": "ms-arch-principles"
+     },
+     {
+      "id": "c3",
+      "category": "정확성",
+      "description": "위반 원칙을 세 개 이상 근거와 함께 짚었다: 단일 책임(변경 이유 여럿), 개방-폐쇄(기능마다 수정), 인터페이스 분리(쓰지 않는 멤버에 의존), 의존성 역전(구체 클래스에 직접 의존).",
+      "points": 15,
+      "sourceId": "wiki-solid"
+     },
+     {
+      "id": "c4",
+      "category": "메모리·성능",
+      "description": "수명 문제를 구체적으로 설명했다: 씬 재로드 시 DontDestroyOnLoad 객체의 중복 생성 또는 이전 판 상태의 잔존, 그리고 수명이 다른 것을 분리해야 한다는 점.",
+      "points": 10,
+      "sourceId": "unity-dontdestroyonload"
+     },
+     {
+      "id": "c5",
+      "category": "메모리·성능",
+      "description": "초기화 순서 문제의 원인(오브젝트 간 Awake 순서를 믿을 수 없음)과 해결책 하나 이상(Awake/Start 규칙, 부트스트랩, 지연 초기화와 그 대가)을 말했다.",
+      "points": 10,
+      "sourceId": "unity-exec-order"
+     },
+     {
+      "id": "c6",
+      "category": "메모리·성능",
+      "description": "대안의 런타임 쪽 비용을 하나 이상 말했다: 이벤트의 해지 누락(lapsed listener)·동기 호출, 지연 초기화의 시점 통제 상실, 서비스 로케이터의 등록 전 조회, 도메인 리로드를 끈 에디터에서 남는 static 이벤트 구독자.",
+      "points": 10,
+      "sourceId": "unity-domain-reload"
+     },
+     {
+      "id": "c7",
+      "category": "엔진·언어 규약",
+      "description": "MonoBehaviour 는 엔진이 생성하므로 생성자 주입이 안 된다는 제약과 그 우회(Init 메서드, 인스펙터 참조, DI 컨테이너)를 말했다.",
+      "points": 10,
+      "sourceId": "vcontainer-monobehaviour"
+     },
+     {
+      "id": "c8",
+      "category": "엔진·언어 규약",
+      "description": "Unity 고유의 사실을 하나 이상 정확히 말했다: DontDestroyOnLoad 는 루트 오브젝트에만 동작, ScriptableObject 는 스탠드얼론 빌드에서 런타임 저장이 안 됨, 도메인 리로드를 끄면 static 값이 유지됨 중.",
+      "points": 10,
+      "sourceId": "unity-scriptableobject"
+     },
+     {
+      "id": "c9",
+      "category": "아키텍처·가독성",
+      "description": "대안을 세 가지 이상 들고 각각 \"얻는 것\"과 \"지불하는 것\"을 모두 말했다.",
+      "points": 8,
+      "sourceId": "unity-so-architecture"
+     },
+     {
+      "id": "c10",
+      "category": "아키텍처·가독성",
+      "description": "\"언제 싱글턴을 써도 되는가\"의 기준(하나뿐, 앱 수명, 어디서나 사용)과 점진적 이전 방법을 결론으로 제시했다.",
+      "points": 7,
+      "sourceId": ""
+     }
+    ],
+    "criticalDeductions": [
+     {
+      "id": "d1",
+      "description": "\"싱글턴은 안티패턴이라 쓰면 안 된다\"고만 답하고 왜 쓰이는지와 언제 타당한지를 말하지 않았다.",
+      "penalty": -15,
+      "sourceId": "gpp-singleton"
+     },
+     {
+      "id": "d2",
+      "description": "대안을 나열했지만 그 대안이 치르는 비용을 하나도 말하지 않았다.",
+      "penalty": -15,
+      "sourceId": "gpp-service-locator"
+     },
+     {
+      "id": "d3",
+      "description": "SOLID 다섯 글자의 뜻만 풀이하고 이 GameManager 의 어느 부분이 어떤 원칙을 어기는지 연결하지 않았다.",
+      "penalty": -10,
+      "sourceId": "wiki-solid"
+     }
+    ]
+   },
+   "tests": null,
+   "verified": {
+    "level": "reviewed",
+    "date": "2026-11-22",
+    "note": "실행 코드가 없는 면접 문제로, GPP Singleton·Service Locator 장, Unity 매뉴얼(이벤트 함수 실행 순서, MonoBehaviour, DontDestroyOnLoad, ScriptableObject, 도메인 리로드), VContainer 문서, Microsoft Learn 아키텍처 원칙, SOLID 정의를 원문과 대조해 본문·꼬리 질문·채점표의 사실 진술을 확인했습니다."
+   },
+   "nextMission": "자신의 프로젝트(또는 공개된 Unity 샘플)에서 가장 큰 Manager 클래스 하나를 골라 public 멤버를 \"변경 이유\"별로 묶은 표를 만드세요. 그중 엔진 API 를 쓰지 않는 묶음 하나를 순수 C# 클래스와 인터페이스로 떼어 내 생성자 주입으로 연결하고, EditMode 테스트 하나를 붙여 \"씬 없이 검증 가능해졌다\"를 확인하세요."
+  }
+ ]
+}
