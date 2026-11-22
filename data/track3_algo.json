@@ -247,6 +247,120 @@
       "title": "Microsoft Learn — List<T>.Sort Method (.NET 8)",
       "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=net-8.0",
       "summary": "List<T>.Sort 는 Array.Sort 를 쓰는 불안정 정렬이라 같은 값의 순서가 보존되지 않을 수 있다고 명시한다."
+    },
+    {
+      "id": "wiki-tile-matching",
+      "title": "Wikipedia · Tile-matching video game",
+      "url": "https://en.wikipedia.org/wiki/Tile-matching_video_game",
+      "summary": "같은 종류의 타일을 이어 붙여 없애는 퍼즐 장르. 그 개수가 흔히 3이라 match-three 라 부르고, 지운 자리를 위 조각이 떨어져 채우면 추가 매치(연쇄)가 생길 수 있다는 설명."
+    },
+    {
+      "id": "ms-learn-csharp-arrays",
+      "title": "Microsoft Learn · Arrays (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays",
+      "summary": "1차원·다차원·가변 배열의 선언, 배열이 참조 형식이라 메서드에 넘긴 배열의 원소를 메서드가 바꿀 수 있다는 점, GetLength 로 차원별 길이를 얻는 예."
+    },
+    {
+      "id": "ms-learn-array-getlength",
+      "title": "Microsoft Learn · Array.GetLength(Int32)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.array.getlength?view=net-8.0",
+      "summary": "지정한 차원(0부터)의 원소 개수를 돌려주는 메서드. 차원이 음수이거나 Rank 이상이면 IndexOutOfRangeException."
+    },
+    {
+      "id": "wiki-procedural-generation",
+      "title": "Wikipedia · Procedural generation",
+      "url": "https://en.wikipedia.org/wiki/Procedural_generation",
+      "summary": "절차적 생성과 맵 시드: 시드만으로 원래 맵을 다시 만들거나 공유할 수 있고, 시드는 생성 알고리즘 안에서만 의미가 있어 알고리즘이 바뀌면 같은 시드의 맵도 바뀐다는 설명(Minecraft 의 청크 경계 예)."
+    },
+    {
+      "id": "ms-gh-runtime-random-net8",
+      "title": "dotnet/runtime (release/8.0) · System/Random.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Random.cs",
+      "summary": ".NET 8 의 Random 구현 소스. Random 클래스를 그대로 쓸 때 시드를 준 생성자는 예전 알고리즘을 따르는 호환 구현(Net5CompatSeedImpl)을, 시드 없는 생성자는 xoshiro 구현을 고른다. 구현 세부일 뿐 보장 사항은 아니다."
+    },
+    {
+      "id": "ms-learn-best-practices-strings",
+      "title": "Microsoft Learn — Best practices for comparing strings in .NET",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings",
+      "summary": "문화권과 무관한 문자열 비교에는 StringComparison.Ordinal / OrdinalIgnoreCase 를 안전한 기본값으로 쓰라고 권하고, String.CompareTo · 비교 방식을 받지 않는 String.Compare · 기본 StartsWith(String) 가 현재 문화권 규칙을 쓰며 비교자 없는 Array.Sort 결과가 문화권마다 다르다는 예를 보인다."
+    },
+    {
+      "id": "ms-learn-array-sort",
+      "title": "Microsoft Learn — Array.Sort Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-8.0",
+      "summary": "Array.Sort 비고: introsort 를 쓰며 구간이 16개 이하이면 삽입 정렬, 분할 횟수가 2 * LogN 을 넘으면 힙 정렬, 그 밖에는 퀵 정렬을 쓰고, 전체는 O(n log n) 연산이라고 명시."
+    },
+    {
+      "id": "ms-learn-list-add",
+      "title": "Microsoft Learn — List<T>.Add(T) Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.add?view=net-8.0",
+      "summary": "Count 가 Capacity 와 같으면 내부 배열을 재할당·복사한다. Count < Capacity 이면 O(1), 용량을 늘려야 하면 O(n) 이라고 명시."
+    },
+    {
+      "id": "ms-learn-dictionary-add",
+      "title": "Microsoft Learn — Dictionary<TKey,TValue>.Add Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.add?view=net-8.0",
+      "summary": "Count 가 용량과 같으면 내부 배열을 재할당하고 기존 원소를 복사한다. Count 가 용량보다 작으면 O(1) 에 가깝고, 용량을 늘려야 하면 O(n) 이라고 명시."
+    },
+    {
+      "id": "ms-gh-perf-microbenchmark-guidelines",
+      "title": "dotnet/performance · Microbenchmark Design Guidelines",
+      "url": "https://github.com/dotnet/performance/blob/main/docs/microbenchmark-design-guidelines.md",
+      "summary": ".NET 팀의 벤치마크 작성 지침. 결과는 평균·표준편차·최소·최대로 기술되는 분포이고, 입력은 매번 같아야 하며, 부작용이 없고 결과를 반환해야 한다. BenchmarkDotNet 은 반복 횟수를 스스로 정하고 별도 프로세스에서 실행하며 오버헤드를 빼고 기본으로 이상값을 제거한다. 호출마다 List 가 자라는 잘못된 벤치마크 예(배열이 차면 두 배 크기로 새로 할당하고 복사)."
+    },
+    {
+      "id": "vigna-splitmix64",
+      "title": "Sebastiano Vigna · splitmix64.c (prng.di.unimi.it)",
+      "url": "https://prng.di.unimi.it/splitmix64.c",
+      "summary": "SplitMix64 원본 C 코드(2015, 퍼블릭 도메인). Java 8 SplittableRandom(Steele · Lea · Flood 2014 논문)을 증분이 고정된 형태로 만든 것이라고 밝힌다. next() 는 상태에 0x9e3779b97f4a7c15 를 더한 값 z 를 (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9, (z ^ (z >> 27)) * 0x94d049bb133111eb, z ^ (z >> 31) 로 섞어 돌려주고, 연속 출력으로 다른 생성기의 상태를 채우면 상태가 모두 0 이 되지 않아 시드를 펼치는 데 알맞다고 설명한다."
+    },
+    {
+      "id": "ms-checked-unchecked",
+      "title": "Microsoft Learn · checked and unchecked statements (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/checked-and-unchecked",
+      "summary": "정수 산술·변환의 넘침 검사 문맥. checked 문맥에서는 OverflowException 이 나고, unchecked 문맥에서는 대상 형식에 들어가지 않는 상위 비트를 버린다. 문맥을 적지 않으면 상수가 아닌 식의 기본 문맥은 CheckForOverflowUnderflow 컴파일러 옵션이 정하며, 옵션을 정하지 않으면 unchecked 다."
+    },
+    {
+      "id": "ms-learn-csharp-arithmetic",
+      "title": "Microsoft Learn · Arithmetic operators (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators",
+      "summary": "정수 산술 넘침: checked 문맥에서는 실행 중 OverflowException 이 나고, unchecked 문맥에서는 대상 형식에 들어가지 않는 상위 비트를 버린 값이 결과이며, 산술 연산의 기본은 unchecked 문맥이라는 설명."
+    },
+    {
+      "id": "wiki-big-o",
+      "title": "Wikipedia — Big O notation",
+      "url": "https://en.wikipedia.org/wiki/Big_O_notation",
+      "summary": "함수를 증가율로 분류하는 표기법. 큰 x 에서 가장 빨리 자라는 항만 남기고 나머지 항을 버리며, x 에 의존하지 않는 상수 계수도 버리는 단순화 규칙을 설명한다(예: 6x⁴ − 2x³ + 5 는 O(x⁴))."
+    },
+    {
+      "id": "wiki-dynamic-array",
+      "title": "Wikipedia — Dynamic array",
+      "url": "https://en.wikipedia.org/wiki/Dynamic_array",
+      "summary": "동적 배열의 기하급수적 확장과 맨 뒤 삽입의 분할 상환 상수 시간: 용량을 일정 비율로 키우면 n 개를 넣는 전체 시간이 O(n) 이고, 재할당이 일어나는 삽입 한 번은 Θ(n) 으로 느리다는 설명."
+    },
+    {
+      "id": "ms-gh-runtime-list-cs-net8",
+      "title": "dotnet/runtime (release/8.0) — List.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Collections/Generic/List.cs",
+      "summary": ".NET 8 의 List<T> 구현. Add 가 용량이 찼을 때 부르는 Grow 는 배열이 비어 있으면 기본 용량 4, 아니면 현재 길이의 두 배를 새 용량으로 정해 배열을 새로 잡는다(구현 세부이며 계약은 아니다)."
+    },
+    {
+      "id": "ms-gh-runtime-globalization-invariant-net8",
+      "title": "dotnet/runtime (release/8.0) · docs/design/features/globalization-invariant-mode.md",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/docs/design/features/globalization-invariant-mode.md",
+      "summary": ".NET 의 세계화 고정 모드(globalization invariant mode) 설계 문서. 이 모드에서는 Compare · IndexOf · LastIndexOf 같은 문자열 연산이 넘긴 비교 옵션과 상관없이 언어 규칙이 아니라 서수로 수행된다고 설명한다."
+    },
+    {
+      "id": "ms-learn-array-length",
+      "title": "Microsoft Learn · Array.Length Property (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.array.length?view=net-8.0",
+      "summary": "배열의 모든 차원에 있는 원소의 총수를 돌려준다(원소가 없으면 0). 다차원 배열에서 차원별 길이는 Length 가 아니라 GetLength 나 GetUpperBound 로 얻는다는 예를 보인다."
+    },
+    {
+      "id": "ms-gh-bdn-engineresolver-v0158",
+      "title": "dotnet/BenchmarkDotNet (v0.15.8) · src/BenchmarkDotNet/Engines/EngineResolver.cs",
+      "url": "https://github.com/dotnet/BenchmarkDotNet/blob/v0.15.8/src/BenchmarkDotNet/Engines/EngineResolver.cs",
+      "summary": "BenchmarkDotNet v0.15.8 의 기본값 해석. 실행 전략의 기본값은 Throughput 이고, 이상값 처리는 메모리 무작위화를 켜면 DontRemove, Throughput 전략이면 RemoveUpper(위쪽 이상값 제거), ColdStart · Monitoring 이면 DontRemove 로 정한다(구현 세부이며 버전에 따라 바뀔 수 있다)."
     }
   ],
   "problems": [
@@ -3437,6 +3551,810 @@
         ],
         "note": "`RemainingAt` 의 표 전체를 기대값과 비교하고 `CanStopAt` 이 그와 일치하는지 확인합니다. 평지의 마름모 범위, 걸음 수와 비용이 엇갈리는 지형(너비 우선 탐색은 여기서 실패), 이동력을 정확히 다 쓰는 칸과 시작 칸 비용, 아군 칸의 통과와 정지 불가, 적 칸과 돌아가는 길, 진입 불가 지형과 이동력 0, 1 × 1 맵을 고정 입력으로 검사합니다. `PathTo` 는 정답 경로와 비교하지 않고 규칙으로 검증합니다. 시작 칸에서 출발해 도착 칸에서 끝나는지, 이웃한 칸끼리 이어지는지, 적이나 진입 불가 지형을 지나지 않는지, 비용 합이 최소 비용과 같은지를 보므로 최소 비용 경로가 여러 개면 어느 것이든 통과합니다. 마지막으로 무작위 맵 400개(최대 7 × 7, 아군·적·진입 불가 지형 포함)에서 \"더 줄어드는 칸이 없을 때까지 전체를 반복 완화하는\" 기준 구현과 표와 경로를 비교합니다. 결과만 검사하므로 탐색을 한 번만 하는지, 질의가 O(1) / O(경로 길이)인지, 이동력을 넘는 칸을 큐에 넣지 않는지는 채점표로 확인하세요. `MoveRange(int[,] terrain, int[,] units, int startX, int startY, int movePoints)`, `CanStopAt(int, int)`, `RemainingAt(int, int)`, `PathTo(int, int)`(`List<(int x, int y)>` 반환)의 시그니처와 상수 `Empty = 0`, `Ally = 1`, `Enemy = 2` 의 값, `terrain[x, y]` 인덱스 순서는 바꾸면 안 됩니다."
       }
+    },
+    {
+      "id": "t3-impl-match3-clear-and-gravity",
+      "track": "track3",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "매치-3 퍼즐 보드: 가로·세로로 3개 이상 이어진 보석을 지우고 떨어뜨리기",
+      "tags": [
+        "Algo_Match3_RunDetection",
+        "Algo_GridGravity"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-tile-matching",
+        "ms-learn-csharp-arrays",
+        "ms-learn-array-getlength",
+        "ms-learn-array-length"
+      ],
+      "scenario": "모바일 매치-3 퍼즐 게임의 보드 처리 코드입니다. 플레이어가 보석 두 개를 맞바꾸면 게임 루프가 **① 이어진 줄을 찾아 지우고 → ② 빈칸 위의 보석을 떨어뜨리고 → ③ 위쪽 빈칸을 새 보석으로 채운 뒤 → 다시 ①** 을 반복합니다. 단계마다 연출(터지는 이펙트, 떨어지는 애니메이션)이 끼어야 하므로 단계는 함수 하나씩으로 나눕니다.\n\n이 문제에서는 ① `ClearMatches` 와 ② `ApplyGravity` 를 구현합니다. **③ 새 보석 채우기와 연쇄 반복은 게임 루프가 맡으므로 두 함수 안에서 하지 않습니다.**\n\n**보드**\n\n- `int[,] board` 이고 `board[row, col]` 로 씁니다. `row 0` 이 맨 위이고 row 가 커질수록 아래입니다.\n- `0` 은 빈칸, `1` 이상은 보석의 색입니다. 보드는 1×1 이상의 직사각형이고, 이미 빈칸이 섞여 있을 수 있습니다.\n\n**`ClearMatches(board)` 규칙**\n\n1. 같은 색 보석이 **가로(같은 행) 또는 세로(같은 열)로 3개 이상 연속**하면 줄입니다. 4개, 5개가 이어져도 하나의 줄이고 전부 지웁니다. 대각선과 2×2 덩어리는 줄이 아닙니다.\n2. 빈칸(`0`)은 줄을 이루지 않습니다. 빈칸이 세 칸 이어져도 줄이 아닙니다.\n3. **호출한 시점의 보드에서 모든 줄을 한꺼번에 찾습니다.** 가로 줄과 세로 줄이 칸을 공유하면(L, T, + 모양) 두 줄을 모두 지우고, 공유한 칸은 **한 번만** 지운 것으로 셉니다. L·T 모양에 대한 특수 보석 같은 추가 규칙은 없습니다.\n4. 지운 칸은 `0` 이 됩니다. 반환값은 지운 칸의 수입니다. `ClearMatches` 는 보석을 떨어뜨리거나 채우지 않습니다.\n\n**`ApplyGravity(board)` 규칙**\n\n5. 열마다 보석을 **아래쪽(row 가 큰 쪽)으로** 떨어뜨려 빈틈 없이 쌓습니다. 한 열 안에서 보석의 위아래 순서는 그대로이고, 빈칸은 그 열의 위쪽에 모입니다. 보석이 다른 열로 옮겨 가지는 않습니다.\n6. 새 보석을 채우지 않고(위쪽 빈칸은 `0` 으로 남고, 무엇으로 채울지는 게임 루프가 정합니다), 줄을 지우지도 않습니다. 떨어진 결과 새 줄이 생겨도 그대로 둡니다(다음 `ClearMatches` 호출이 처리합니다).\n\n| 보드(행을 `/` 로 구분, 위 → 아래) | `ClearMatches` 반환 | 지운 뒤 |\n|---|---|---|\n| `122/133/111` (L 모양) | 5 | `022/033/000` |\n| `213/111/415` (+ 모양) | 5 | `203/000/405` |\n| `1112222` | 7 | `0000000` |\n| `000/121/000` | 0 | 그대로 |\n\n`ApplyGravity` 예: 한 열이 위에서부터 `3, 0, 0, 1, 0, 2` 이면 `0, 0, 0, 3, 1, 2` 가 됩니다.",
+      "constraints": [
+        "`ClearMatches` 는 O(R × C) 이다(R = 행 수, C = 열 수). 각 행과 각 열을 한 번씩 훑어 줄을 찾고, 칸마다 양옆과 위아래를 처음부터 다시 세지 않는다.",
+        "`ClearMatches` 의 추가 메모리는 R × C 크기의 표시 배열 하나까지다. `ApplyGravity` 는 추가 배열이나 리스트 없이 보드 안에서 O(R × C) 로 처리한다.",
+        "LINQ 를 쓰지 않는다. 두 메서드는 인자로 받은 보드를 직접 고치며, `Match3.ClearMatches(int[,])`(int 반환)와 `Match3.ApplyGravity(int[,])` 의 시그니처를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// 매치-3 보드 한 단계 처리. board[row, col], row 0 이 맨 위다.\n// 0 은 빈칸, 1 이상은 보석 색이다.\npublic static class Match3\n{\n    // 가로나 세로로 같은 색이 3개 이상 이어진 칸을 모두 0 으로 바꾸고,\n    // 지운 칸의 수(겹치는 칸은 한 번)를 반환한다.\n    public static int ClearMatches(int[,] board)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 열마다 보석을 아래(row 가 큰 쪽)로 떨어뜨린다. 보석의 위아래 순서는 그대로, 빈칸은 위로 간다.\n    public static void ApplyGravity(int[,] board)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "가로 줄과 세로 줄이 칸을 공유하는 L · T · + 모양: 공유 칸은 한 번만 센다(`122/133/111` → 5).",
+        "빈칸이 세 칸 이상 이어진 행이나 열: 줄이 아니다(`000/121/000` → 0).",
+        "4개 · 5개짜리 줄과, 한 행에 색이 다른 줄 두 개가 붙어 있는 경우(`1112222` → 7).",
+        "한 열에 빈칸이 여러 군데 떨어져 있는 경우, 열이 꽉 찼거나 완전히 빈 경우, 1 × N 이나 N × 1 보드.",
+        "떨어뜨린 결과 새 줄이 생기는 경우: `ApplyGravity` 는 그 줄을 지우지 않는다."
+      ],
+      "hints": [
+        "L 모양 보드 `122/133/111` 을 손으로 따라가 보세요. 아래 행의 가로 줄을 **찾자마자 지우면**, 그다음 세로 줄을 찾을 때 왼쪽 아래 칸이 이미 `0` 이라 왼쪽 열에는 `1` 이 두 개만 남고 세로 줄을 놓칩니다(반환 3). 반대로 가로 줄 3칸과 세로 줄 3칸을 각각 세어 더하면 6 이 됩니다. 정답은 5 입니다.",
+        "찾기와 지우기를 두 단계로 나누세요. 먼저 R × C 크기의 `bool` 표에 \"이 칸은 어떤 줄에 속한다\"를 표시만 하고(행 훑기, 열 훑기), 다 찾은 뒤에 표시된 칸을 `0` 으로 바꾸면서 세면 공유 칸이 한 번만 셉니다. 행을 훑을 때는 \"같은 색이 이어진 구간의 시작 위치\"를 들고 가다가, 색이 바뀌거나 행이 끝나는 곳에서 구간의 길이를 재면 됩니다. 구간의 색이 `0` 이면 길이와 상관없이 건너뜁니다. 중력은 열마다 아래에서 위로 읽으면서 \"다음 보석이 내려앉을 자리\"를 가리키는 인덱스를 따로 하나 두면 됩니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nClearMatches(board):\n    marked = bool[R, C]\n    for 각 행 r:\n        start = 0\n        for c = 1 .. C:                       // c == C 는 \"행이 끝났다\"는 뜻\n            if c < C and board[r][c] == board[r][start]: continue\n            if board[r][start] != ____ and c - start >= ____:\n                marked[r][start .. c-1] = true\n            start = c\n    (열도 같은 방식으로 훑는다)\n    cleared = 0\n    for 모든 칸: if marked: 칸 = 0; cleared += 1\n    return cleared\n\nApplyGravity(board):\n    for 각 열 c:\n        write = R - 1\n        for read = R - 1 down to 0:\n            if board[read][c] != 0:\n                board[write][c] = board[read][c];  write = ____\n        write 부터 0 까지: ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 매치-3 보드 한 단계 처리. board[row, col], row 0 이 맨 위다.\n// 0 은 빈칸, 1 이상은 보석 색이다.\npublic static class Match3\n{\n    // 가로나 세로로 같은 색이 3개 이상 이어진 칸을 모두 0 으로 바꾸고,\n    // 지운 칸의 수(겹치는 칸은 한 번)를 반환한다.\n    public static int ClearMatches(int[,] board)\n    {\n        int rows = board.GetLength(0), cols = board.GetLength(1);\n\n        // 1단계: 지우기 전의 보드에서 모든 줄을 찾아 표시만 한다.\n        // 찾는 도중에 지우면 가로 줄과 세로 줄이 겹치는 칸(L·T·+ 모양)에서 세로 줄을 놓친다.\n        var marked = new bool[rows, cols];\n\n        for (int r = 0; r < rows; r++)\n        {\n            int start = 0;                       // 지금 보고 있는 같은 색 구간의 시작 열\n            for (int c = 1; c <= cols; c++)\n            {\n                // 구간이 끝나는 곳: 보드 끝이거나 색이 바뀌었을 때\n                if (c < cols && board[r, c] == board[r, start]) continue;\n                if (board[r, start] != 0 && c - start >= 3)\n                    for (int k = start; k < c; k++) marked[r, k] = true;\n                start = c;\n            }\n        }\n\n        for (int c = 0; c < cols; c++)\n        {\n            int start = 0;\n            for (int r = 1; r <= rows; r++)\n            {\n                if (r < rows && board[r, c] == board[start, c]) continue;\n                if (board[start, c] != 0 && r - start >= 3)\n                    for (int k = start; k < r; k++) marked[k, c] = true;\n                start = r;\n            }\n        }\n\n        // 2단계: 표시한 칸을 한 번씩만 지우고 센다.\n        int cleared = 0;\n        for (int r = 0; r < rows; r++)\n            for (int c = 0; c < cols; c++)\n                if (marked[r, c]) { board[r, c] = 0; cleared++; }\n        return cleared;\n    }\n\n    // 열마다 보석을 아래(row 가 큰 쪽)로 떨어뜨린다. 보석의 위아래 순서는 그대로, 빈칸은 위로 간다.\n    public static void ApplyGravity(int[,] board)\n    {\n        int rows = board.GetLength(0), cols = board.GetLength(1);\n        for (int c = 0; c < cols; c++)\n        {\n            int write = rows - 1;                // 다음 보석이 내려앉을 자리(아래부터 채운다)\n            for (int read = rows - 1; read >= 0; read--)\n            {\n                if (board[read, c] == 0) continue;\n                board[write, c] = board[read, c];  // write >= read 이므로 아직 읽지 않은 칸을 덮지 않는다\n                write--;\n            }\n            for (int r = write; r >= 0; r--) board[r, c] = 0; // 남은 위쪽은 빈칸\n        }\n    }\n}\n",
+      "explanation": "**접근.** 한 번의 `ClearMatches` 는 \"지금 보드에 있는 줄 전부\"를 지워야 합니다. 그래서 **찾기와 지우기를 나눕니다.** 행마다, 열마다 한 번씩 훑으며 같은 색이 이어진 구간을 재고, 길이가 3 이상이면서 색이 `0` 이 아닌 구간의 칸을 `bool` 표에 표시합니다. 다 훑은 뒤 표시된 칸만 `0` 으로 바꾸며 셉니다. 표는 칸마다 한 번 \"참\"이 될 뿐이므로 가로 줄과 세로 줄이 공유하는 칸(L, T, + 모양)도 한 번만 지우고 한 번만 셉니다. Wikipedia 의 Tile-matching video game 문서는 같은 종류의 타일을 정해진 개수만큼 이어 붙이는 규칙에서 그 개수가 흔히 셋이고, 그런 게임을 match-three 라고 부른다고 설명합니다. 가로·세로만 보고 대각선은 제외한다는 세부 규칙은 이 문제의 명세입니다.\n\n**왜 맞는가.** 행 훑기는 `start` 를 구간의 첫 칸으로 유지하다가 색이 바뀌거나 행이 끝나는 곳에서 구간 `[start, c)` 를 닫습니다. 모든 칸은 정확히 하나의 가로 구간과 하나의 세로 구간에 속하므로, \"가로 또는 세로로 3개 이상 이어진 구간에 속한 칸\"이 빠짐없이 표시됩니다. 찾는 동안 보드를 바꾸지 않으므로 행을 먼저 보든 열을 먼저 보든 결과가 같습니다.\n\n**중력.** 열마다 아래에서 위로 읽으며(`read`), 보석을 만나면 `write` 자리에 쓰고 `write` 를 한 칸 올립니다. `write` 는 언제나 `read` 이상이라 아직 읽지 않은 칸을 덮어쓰지 않고, 아래에서부터 채우므로 보석의 위아래 순서도 유지됩니다(안정적인 압축). 마지막에 `write` 위쪽을 `0` 으로 채웁니다. 같은 Wikipedia 문서는 지운 자리를 위의 조각이 떨어져 채우면 추가 매치가 생길 수 있다고 적는데, 이 연쇄를 함수 안에서 처리하지 않는 것은 단계마다 연출을 넣기 위한 이 문제의 설계입니다.\n\n**복잡도와 언어 규칙.** 두 함수 모두 O(R × C) 입니다. `ClearMatches` 는 R × C 크기의 표 하나를 쓰고, `ApplyGravity` 는 추가 메모리가 없습니다. 각 차원의 길이는 `GetLength(0)`(행), `GetLength(1)`(열)로 얻습니다. Microsoft Learn 의 배열 문서대로 배열은 참조 형식이어서, 인자로 받은 보드의 칸을 고치면 호출한 쪽의 보드가 바로 바뀝니다. 그래서 새 보드를 만들어 돌려줄 필요가 없습니다.\n\n**흔한 실수.**\n- 줄을 찾자마자 지운다: 공유 칸이 먼저 `0` 이 되어 세로 줄을 놓친다(`122/133/111` 에서 3).\n- 줄마다 길이를 더한다: 공유 칸을 두 번 센다(같은 보드에서 6).\n- 빈칸끼리 같은 색으로 본다: `000/121/000` 에서 6.\n- 빈칸을 바로 위 칸과 한 번씩만 바꾼다: 빈칸이 두 칸 이상이면 구멍이 남는다.\n- \"더 움직일 것이 없을 때까지 한 칸씩 내리기\"를 반복한다: 결과는 맞지만 O(R² × C) 이다.\n\n### 흔한 오해\n- **\"`int[,]` 를 인자로 넘기면 값으로 복사되니, 메서드 안에서 고친 보드는 새로 만들어 돌려줘야 호출한 쪽에 반영된다\"** — 배열은 참조 형식이라 인자로 넘어가는 것은 배열에 대한 참조이고, Microsoft Learn 의 예제대로 배열을 값으로 넘겨도 메서드가 원소를 바꾸는 것은 막지 못합니다 [ms-learn-csharp-arrays]. 호출한 쪽에 보이지 않는 것은 매개변수에 새 배열을 대입한 경우뿐입니다(`b = new int[1, 1]` 뒤의 변경은 호출한 쪽 보드에 반영되지 않음, 로컬 .NET 8 에서 실행해 확인).\n- **\"`board.Length` 가 행 수다\"** — 가변 배열 `int[][]` 에서는 바깥 배열의 길이가 행 수이지만, 다차원 배열 `int[,]` 의 `Length` 는 모든 차원의 원소 총수입니다 [ms-learn-array-length]. 3 × 4 보드에서 `Length` 는 12 이고, 행 수와 열 수는 `GetLength(0)` = 3, `GetLength(1)` = 4 로 얻습니다 [ms-learn-array-getlength] (로컬 .NET 8 에서 실행해 확인).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "가로 줄과 세로 줄이 칸을 공유하는 모양을 모두 지우고 공유 칸은 한 번만 센다: `122/133/111` 은 5 를 반환하고 `022/033/000` 이 된다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "4개 이상 이어진 줄을 전부 지우고, 한 행에 붙은 두 줄을 각각 처리한다: `1112222` 는 7. 대각선 세 칸과 2 × 2 덩어리는 지우지 않는다.",
+            "points": 8,
+            "sourceId": "wiki-tile-matching"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "빈칸(0)은 줄을 이루지 않는다: `000/121/000` 은 0 을 반환하고 보드가 그대로다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "ApplyGravity 가 열마다 보석을 순서대로 빈틈 없이 아래로 쌓고 빈칸을 위로 보낸다: 위에서부터 `3,0,0,1,0,2` 인 열은 `0,0,0,3,1,2` 가 된다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "ClearMatches 가 각 행과 각 열을 한 번씩 훑어 이어진 구간의 길이를 잰다(O(R × C)). 칸마다 양옆·위아래를 처음부터 다시 세지 않는다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "ApplyGravity 가 열마다 읽는 인덱스와 쓰는 인덱스 두 개로 한 번에 압축한다. \"더 움직일 것이 없을 때까지 한 칸씩 내리기\"를 반복하지 않는다(O(R² × C) 금지).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "추가 메모리가 ClearMatches 의 R × C 표시 배열 하나뿐이다. ApplyGravity 는 열마다 리스트나 새 배열을 만들지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "행 수와 열 수를 `GetLength(0)`, `GetLength(1)` 로 얻고 `board[row, col]` 순서와 일관되게 써서, 정사각형이 아닌 보드(1 × 5, 6 × 1)에서도 맞게 동작한다.",
+            "points": 10,
+            "sourceId": "ms-learn-array-getlength"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "시그니처를 바꾸지 않고 인자로 받은 보드를 직접 고친다(새 보드를 만들어 돌려주지 않는다). LINQ 를 쓰지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-csharp-arrays"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"찾기(표시)\"와 \"지우기\" 단계가 코드에서 분리되어 있고, 왜 나눴는지(공유 칸) 주석이나 이름으로 드러난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "두 함수가 한 단계씩만 처리한다: 함수 안에서 새 보석을 채우거나 줄 찾기를 반복(연쇄)하지 않아, 게임 루프가 단계 사이에 연출을 넣을 수 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "줄을 찾는 도중에 바로 지워서, 이미 지운 칸과 공유하는 세로(또는 가로) 줄을 놓친다: L · T · + 모양의 일부가 남는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "ApplyGravity 가 반복 교환이나 열마다 새 리스트를 만드는 방식이라 O(R × C) · 제자리 처리 제약을 넘는다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "ClearMatches 나 ApplyGravity 안에서 새 보석을 채우거나 줄 찾기를 반복해, 시나리오가 정한 \"한 번에 한 단계\" 계약을 어긴다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // \"122/133/111\" 처럼 행을 '/' 로 나눈 숫자열을 보드로 만든다. 맨 앞 행이 row 0(맨 위)이다.\n    static int[,] B(string s)\n    {\n        string[] rows = s.Split('/');\n        var b = new int[rows.Length, rows[0].Length];\n        for (int r = 0; r < rows.Length; r++)\n            for (int c = 0; c < rows[0].Length; c++) b[r, c] = rows[r][c] - '0';\n        return b;\n    }\n\n    static string D(int[,] b)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int r = 0; r < b.GetLength(0); r++)\n        {\n            if (r > 0) sb.Append('/');\n            for (int c = 0; c < b.GetLength(1); c++) sb.Append((char)('0' + b[r, c]));\n        }\n        return sb.ToString();\n    }\n\n    // ClearMatches 한 번의 반환값과 그 뒤의 보드를 확인한다.\n    static string Clear(string before, int expectedCount, string expectedAfter)\n    {\n        var b = B(before);\n        int got = Match3.ClearMatches(b);\n        if (got != expectedCount) return \"ClearMatches(\" + before + \") 반환값 기대 \" + expectedCount + \" / 결과 \" + got;\n        string after = D(b);\n        return after == expectedAfter ? null : \"ClearMatches(\" + before + \") 뒤 보드 기대 \" + expectedAfter + \" / 결과 \" + after;\n    }\n\n    static string Drop(string before, string expectedAfter)\n    {\n        var b = B(before);\n        Match3.ApplyGravity(b);\n        string after = D(b);\n        return after == expectedAfter ? null : \"ApplyGravity(\" + before + \") 뒤 보드 기대 \" + expectedAfter + \" / 결과 \" + after;\n    }\n\n    // 기준 구현: 칸마다 좌우·상하로 같은 색이 몇 칸 이어지는지 직접 센다.\n    static int RefClear(int[,] b)\n    {\n        int rows = b.GetLength(0), cols = b.GetLength(1), n = 0;\n        var hit = new bool[rows, cols];\n        for (int r = 0; r < rows; r++)\n            for (int c = 0; c < cols; c++)\n            {\n                int v = b[r, c];\n                if (v == 0) continue;\n                int h = 1, w = 1;\n                for (int k = c - 1; k >= 0 && b[r, k] == v; k--) h++;\n                for (int k = c + 1; k < cols && b[r, k] == v; k++) h++;\n                for (int k = r - 1; k >= 0 && b[k, c] == v; k--) w++;\n                for (int k = r + 1; k < rows && b[k, c] == v; k++) w++;\n                hit[r, c] = h >= 3 || w >= 3;\n            }\n        for (int r = 0; r < rows; r++)\n            for (int c = 0; c < cols; c++)\n                if (hit[r, c]) { b[r, c] = 0; n++; }\n        return n;\n    }\n\n    static void RefDrop(int[,] b)\n    {\n        int rows = b.GetLength(0), cols = b.GetLength(1);\n        for (int c = 0; c < cols; c++)\n        {\n            var gems = new System.Collections.Generic.List<int>();\n            for (int r = 0; r < rows; r++) if (b[r, c] != 0) gems.Add(b[r, c]);\n            for (int r = 0; r < rows; r++)\n            {\n                int fromBottom = rows - 1 - r;\n                b[r, c] = fromBottom < gems.Count ? gems[gems.Count - 1 - fromBottom] : 0;\n            }\n        }\n    }\n\n    public static void Main()\n    {\n        Run(\"separate-runs\", () =>\n            Clear(\"2134/1114/3234/2324\", 7, \"2130/0000/3230/2320\")\n            ?? Clear(\"1112222/3331333/4545454\", 13, \"0000000/0001000/4545454\"));\n\n        Run(\"no-match-untouched\", () =>\n            Clear(\"121/212/331\", 0, \"121/212/331\")        // 대각선 세 칸과 두 칸짜리 줄\n            ?? Clear(\"11/11\", 0, \"11/11\")                  // 2x2 덩어리\n            ?? Clear(\"12121\", 0, \"12121\"));\n\n        Run(\"l-t-plus-count-once\", () =>\n            Clear(\"122/133/111\", 5, \"022/033/000\")          // L\n            ?? Clear(\"111/213/314\", 5, \"000/203/304\")       // T\n            ?? Clear(\"213/111/415\", 5, \"203/000/405\")       // +\n            ?? Clear(\"32123/11111/42153\", 7, \"32023/00000/42053\"));\n\n        Run(\"empty-cells-never-match\", () =>\n            Clear(\"000/121/000\", 0, \"000/121/000\")\n            ?? Clear(\"0001/0001/2221\", 6, \"0000/0000/0000\"));\n\n        Run(\"gravity-gaps-keep-order\", () =>\n            Drop(\"10/04/20/05/06/30\", \"00/00/00/14/25/36\")\n            ?? Drop(\"102/203/301\", \"102/203/301\")\n            ?? Drop(\"010/000/000\", \"000/000/010\")\n            ?? Drop(\"3/0/0/1/0/2\", \"0/0/0/3/1/2\"));\n\n        Run(\"one-step-no-cascade\", () =>\n        {\n            var b = B(\"234/245/111/253\");\n            int n = Match3.ClearMatches(b);\n            if (n != 3 || D(b) != \"234/245/000/253\") return \"첫 ClearMatches 기대 3, 234/245/000/253 / 결과 \" + n + \", \" + D(b);\n            Match3.ApplyGravity(b);\n            if (D(b) != \"000/234/245/253\") return \"ApplyGravity 뒤 기대 000/234/245/253(새로 생긴 세로 줄은 그대로 남아야 함) / 결과 \" + D(b);\n            n = Match3.ClearMatches(b);\n            if (n != 3 || D(b) != \"000/034/045/053\") return \"두 번째 ClearMatches 기대 3, 000/034/045/053 / 결과 \" + n + \", \" + D(b);\n            return null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint s = 31337u;\n            System.Func<int, int> rnd = m => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)m); };\n            for (int t = 0; t < 2000; t++)\n            {\n                int rows = 1 + rnd(7), cols = 1 + rnd(7);\n                var b = new int[rows, cols];\n                for (int r = 0; r < rows; r++)\n                    for (int c = 0; c < cols; c++) b[r, c] = rnd(100) < 15 ? 0 : 1 + rnd(3);\n                string before = D(b);\n                var want = (int[,])b.Clone();\n                int wantN = RefClear(want);\n                int gotN = Match3.ClearMatches(b);\n                if (gotN != wantN || D(b) != D(want)) return \"ClearMatches(\" + before + \") 기대 \" + wantN + \", \" + D(want) + \" / 결과 \" + gotN + \", \" + D(b);\n                before = D(b);\n                RefDrop(want);\n                Match3.ApplyGravity(b);\n                if (D(b) != D(want)) return \"ApplyGravity(\" + before + \") 기대 \" + D(want) + \" / 결과 \" + D(b);\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "separate-runs",
+          "no-match-untouched",
+          "l-t-plus-count-once",
+          "empty-cells-never-match",
+          "gravity-gaps-keep-order",
+          "one-step-no-cascade",
+          "random-vs-reference"
+        ],
+        "note": "`ClearMatches` 의 반환값과 그 뒤의 보드 전체를 기대값과 비교합니다. 떨어져 있는 줄 여러 개와 4개 · 5개 줄, 줄이 없는 보드(대각선, 2 × 2, 두 칸짜리)가 그대로인지, L · T · + 모양과 긴 십자 모양에서 공유 칸을 한 번만 세는지, 빈칸이 이어진 줄을 지우지 않는지, `ApplyGravity` 가 빈칸이 여러 군데인 열을 순서대로 빈틈 없이 쌓는지, 두 함수가 한 단계만 처리하고 떨어져서 생긴 새 줄을 남겨 두는지, 그리고 무작위 보드 2,000개(1 × 1 ~ 7 × 7, 빈칸 포함)에서 칸마다 직접 세는 기준 구현과 일치하는지를 확인합니다. 결과만 검사하므로 O(R × C) 여부와 추가 메모리 제약은 채점표로 확인하세요. `Match3.ClearMatches(int[,])`(int 반환)와 `Match3.ApplyGravity(int[,])` 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Compiler Explorer(.NET 8)와 로컬 .NET 8 에서 모범 답안 전부 통과 · 스타터 실패를 확인하고, 로컬에서 찾자마자 지우기 · 줄 길이 합산 · 빈칸끼리 매치 · 한 번만 훑는 중력 · 순서를 뒤집는 중력 · 함수 안의 연쇄나 채우기 변형이 각각 실패하고 칸마다 직접 세는 다른 정답은 통과함을 확인했으며, 매치-3 · 낙하 설명을 Wikipedia 원문, 배열 전달과 GetLength 를 Microsoft Learn 과 대조했고, 흔한 오해 두 항목은 Microsoft Learn 원문과 로컬 .NET 8 실행으로 확인했다."
+      },
+      "nextMission": "`ClearMatches` 가 지운 칸 수 대신 \"모양\" 목록을 돌려주도록 바꿔 보세요. 공유 칸으로 이어진 가로 줄과 세로 줄을 하나의 모양으로 묶고(BFS 나 유니온-파인드), 4개짜리 일자 줄은 줄무늬 보석, L · T 모양은 폭탄 보석을 그 자리에 남기는 규칙을 넣습니다. 특수 보석이 놓일 칸을 정하는 규칙(플레이어가 옮긴 칸인가, 교차 칸인가)을 먼저 명세로 적고, 그 명세대로 테스트를 쓰세요."
+    },
+    {
+      "id": "t3-debug-match3-cascade-resolver",
+      "track": "track3",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "매치-3 연쇄 디버깅: L·T자 매치 점수가 한 칸 더 나오고, 맨 아래 세로 줄을 지우면 위 보석이 바닥까지 내려오지 않고, 특정 시드에서 게임이 멈춘다",
+      "tags": [
+        "Algo_Match3_Cascade",
+        "Algo_GridGravity",
+        "Algo_DeterministicRng"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-tile-matching",
+        "wiki-xorshift",
+        "ms-learn-random"
+      ],
+      "scenario": "매치-3 퍼즐 게임의 `Match3Board` 는 플레이어가 보석을 맞바꾼 뒤 연쇄를 끝까지 처리합니다. 스테이지마다 시드가 있고, 같은 시드에서 같은 순서로 수를 두면 결과가 똑같아야 합니다(리플레이 저장, 서버의 점수 검증).\n\n보드는 `cells[row, col]` 이고 `row 0` 이 맨 위입니다. `0` 은 빈칸, `1 .. colors` 는 보석 색입니다. 보드는 빈칸 없이 시작하고, `Swap` 은 빈칸을 만들지 않으며, `colors` 는 3 이상입니다.\n\n**요구 스펙**\n\n1. **줄.** 같은 색 보석이 가로나 세로로 3개 이상 연속하면 줄입니다(대각선은 아님). 한 단계의 줄은 **그 단계를 시작할 때의 보드에서 한꺼번에** 찾습니다. 가로 줄과 세로 줄이 칸을 공유하면(L, T, + 모양) 둘 다 지우고, 공유 칸은 **한 번만** 셉니다. 단계마다 지운 칸의 수가 그 단계의 점수 기준입니다.\n2. **떨어뜨리기.** 열마다 남은 보석을 아래(row 가 큰 쪽)로 빈틈 없이 쌓습니다. 한 열 안의 순서는 그대로이고 빈칸은 위로 모입니다.\n3. **채우기.** 빈칸을 **열은 왼쪽부터, 한 열 안에서는 아래 칸부터** 차례로 `GemRng.NextColor(colors)` 의 값으로 채웁니다. 생성기는 보드를 만들 때 시드로 **한 번** 만들고, 그 보드가 살아 있는 동안 여러 단계와 여러 번의 `ResolveCascades` 호출에 걸쳐 **이어서** 씁니다. 채운 보석이 줄을 만들면 다음 단계에서 지웁니다(연쇄).\n4. **`ResolveCascades()`** 는 1 ~ 3 을 한 단계로 하여 지울 줄이 없을 때까지 반복하고, 단계마다 지운 칸의 수를 차례로 담은 리스트를 돌려줍니다. 처음부터 줄이 없으면 빈 리스트를 돌려주고 보드와 생성기는 그대로입니다.\n\n**QA 제보**\n\n- \"L자나 T자로 맞추면 5칸이 터지는데 점수는 6칸으로 계산된다.\"\n- \"맨 아래에서 세로로 세 개를 맞추면 위의 보석이 바닥까지 떨어지지 않고, 새 보석이 보드 중간에서 생겨난다.\"\n- \"시드 20267013 스테이지(아래 보드)를 열면 연쇄가 끝나지 않고 게임이 멈춘다. 다른 스테이지에서는 두 번째 수부터 새로 채워지는 보석 색이 첫 수 때와 똑같은 순서로 나온다는 제보도 있다.\"\n\n```\n1 1 1 2 3\n2 3 4 1 2\n3 4 1 2 4\n4 1 2 3 1\n1 2 3 4 2\n```\n\n**할 일:** 아래 코드에서 버그를 모두 찾아 고치고, 버그마다 수정 전에는 실패하고 수정 후에는 통과하는 가장 작은 입력(보드, 시드, 수)을 제시하세요.",
+      "constraints": [
+        "`GemRng` 의 알고리즘(시프트 13 · 17 · 5, 색으로 바꾸는 식, 시드 0 처리)은 바꾸지 않는다. `System.Random` 으로 대체하지 않는다.",
+        "한 단계(줄 찾기, 떨어뜨리기, 채우기)는 O(R × C) 다. 떨어뜨리기를 \"더 움직일 것이 없을 때까지 한 칸씩 내리기\"로 반복하지 않는다.",
+        "고친 코드는 단계나 채우기마다 생성기나 R × C 크기의 배열을 새로 만들지 않는다. 생성기는 보드마다 하나이고, 표시용 배열을 쓴다면 보드마다 한 번 만들어 재사용한다.",
+        "연쇄 횟수에 상한을 두는 것은 안전장치로 덧붙일 수는 있지만 그것만으로는 수정이 아니다. 스펙대로 줄이 없어질 때까지 처리해야 한다.",
+        "`GemRng(uint)`, `NextColor(int)`, `Match3Board(int[,], int, uint)`, `Rows`, `Cols`, 인덱서, `Swap`, `ResolveCascades()`(`List<int>` 반환)의 이름과 시그니처는 유지한다. LINQ 는 쓰지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 새 보석의 색을 정하는 시드 고정 난수 생성기(xorshift32). 같은 시드면 같은 색 순서가 나온다.\npublic sealed class GemRng\n{\n    private uint _state;\n\n    public GemRng(uint seed) { _state = seed == 0 ? 0x9E3779B9u : seed; } // xorshift 의 상태는 0 이면 안 된다\n\n    // 1 .. colors 중 하나를 돌려준다.\n    public int NextColor(int colors)\n    {\n        uint x = _state;\n        x ^= x << 13;\n        x ^= x >> 17;\n        x ^= x << 5;\n        _state = x;\n        return 1 + (int)(((ulong)x * (ulong)colors) >> 32);\n    }\n}\n\n// 매치-3 보드. cells[row, col], row 0 이 맨 위다. 0 은 빈칸, 1 .. colors 는 보석 색이다.\npublic sealed class Match3Board\n{\n    private readonly int[,] _cells;\n    private readonly int _colors;\n    private readonly uint _seed;\n\n    public Match3Board(int[,] cells, int colors, uint seed)\n    {\n        _cells = (int[,])cells.Clone();\n        _colors = colors;\n        _seed = seed;\n    }\n\n    public int Rows => _cells.GetLength(0);\n    public int Cols => _cells.GetLength(1);\n    public int this[int row, int col] => _cells[row, col];\n\n    // 두 칸의 보석을 맞바꾼다. 이웃인지, 매치가 생기는지는 호출하는 쪽이 이미 확인했다.\n    public void Swap(int r1, int c1, int r2, int c2)\n    {\n        int t = _cells[r1, c1];\n        _cells[r1, c1] = _cells[r2, c2];\n        _cells[r2, c2] = t;\n    }\n\n    // 지우기 → 떨어뜨리기 → 채우기를, 지울 줄이 없을 때까지 반복한다.\n    // 단계마다 지운 칸의 수를 차례로 담아 돌려준다.\n    public List<int> ResolveCascades()\n    {\n        var perStep = new List<int>();\n        while (true)\n        {\n            int cleared = ClearMatches();\n            if (cleared == 0) return perStep;\n            perStep.Add(cleared);\n            ApplyGravity();\n            Refill();\n        }\n    }\n\n    private int ClearMatches()\n    {\n        var runs = new List<(int row, int col, int dRow, int dCol, int length)>();\n        for (int r = 0; r < Rows; r++)\n        {\n            int start = 0;\n            for (int c = 1; c <= Cols; c++)\n            {\n                if (c < Cols && _cells[r, c] == _cells[r, start]) continue;\n                if (_cells[r, start] != 0 && c - start >= 3) runs.Add((r, start, 0, 1, c - start));\n                start = c;\n            }\n        }\n        for (int c = 0; c < Cols; c++)\n        {\n            int start = 0;\n            for (int r = 1; r <= Rows; r++)\n            {\n                if (r < Rows && _cells[r, c] == _cells[start, c]) continue;\n                if (_cells[start, c] != 0 && r - start >= 3) runs.Add((start, c, 1, 0, r - start));\n                start = r;\n            }\n        }\n\n        int cleared = 0;\n        foreach (var run in runs)\n        {\n            for (int i = 0; i < run.length; i++)\n                _cells[run.row + run.dRow * i, run.col + run.dCol * i] = 0;\n            cleared += run.length;\n        }\n        return cleared;\n    }\n\n    private void ApplyGravity()\n    {\n        for (int c = 0; c < Cols; c++)\n            for (int r = Rows - 1; r > 0; r--)\n                if (_cells[r, c] == 0)\n                {\n                    _cells[r, c] = _cells[r - 1, c];\n                    _cells[r - 1, c] = 0;\n                }\n    }\n\n    private void Refill()\n    {\n        var rng = new GemRng(_seed);\n        for (int c = 0; c < Cols; c++)\n            for (int r = Rows - 1; r >= 0; r--)\n                if (_cells[r, c] == 0) _cells[r, c] = rng.NextColor(_colors);\n    }\n}\n",
+      "edgeCases": [
+        "가로 줄과 세로 줄이 칸을 공유하는 L · T · + 모양: 그 단계에서 지운 수는 5 다.",
+        "보석이 위에 남아 있는 열에서 세로로 3칸 이상이 한꺼번에 비는 경우: 위 보석이 바닥까지 내려와야 한다.",
+        "채운 보석이 다시 줄을 만드는 연쇄, 그리고 한 보드에서 `ResolveCascades` 를 여러 번 부르는 경우: 색 순서가 처음으로 돌아가지 않고 이어져야 한다.",
+        "처음부터 줄이 없는 보드: 빈 리스트를 돌려주고 생성기를 쓰지 않는다.",
+        "같은 시드로 만든 보드 두 개에 같은 수를 두는 경우: 단계별 지운 수와 보드가 똑같아야 한다."
+      ],
+      "hints": [
+        "세 가지를 손으로 따라가 보세요. (1) L 모양 보드 `1112/1234/1342/2423`(행을 `/` 로 구분, 위 → 아래)에서 `ClearMatches` 가 모은 줄은 몇 개이고 `cleared` 는 얼마가 되나요? (2) 한 열이 위에서부터 `2, 3, 0, 0, 0` 일 때 `ApplyGravity` 의 루프를 `r = 4` 부터 `1` 까지 돌려 보세요. 2 와 3 은 어느 행에서 멈추고, 어느 칸이 빈 채로 채우기 단계로 넘어가나요? (3) 시드 20267013 의 처음 세 색은 3, 3, 3 입니다. 시나리오의 보드에서 첫 채우기가 맨 윗줄에 3, 3, 3 을 넣은 뒤, 두 번째 채우기는 같은 세 칸에 무슨 색을 넣나요?",
+        "버그는 세 메서드에 하나씩 있습니다. `ClearMatches` 는 줄을 빠짐없이 찾지만 지운 칸의 **수를 세는 방식**이 공유 칸을 고려하지 않습니다. `ApplyGravity` 는 한 번 훑을 때 보석을 **한 칸씩만** 내리므로 빈칸이 두 칸 이상 연달아 있으면 끝까지 내려가지 못합니다. `Refill` 은 난수 생성기가 **언제, 몇 번 만들어지는지** 보세요. 단계 수에 상한을 두거나 단계마다 시드를 바꾸는 것은 수정이 아닙니다. 스펙 3 의 \"한 번 만들고 이어서 쓴다\"를 지키는지가 기준입니다.",
+        "고친 뒤의 뼈대입니다. 빈칸은 직접 채우세요.\n```\n필드:  rng = new GemRng(seed)          // ____ 에서 한 번만\n       marked = bool[R, C]\n\nClearMatches():\n    marked 를 모두 false 로\n    가로·세로로 훑으며 길이 3 이상인 구간의 칸을 marked 에 표시\n    cleared = 0\n    for 모든 칸: if marked: 칸 = 0; cleared += ____   // 공유 칸도 표에서는 한 칸\n    return cleared\n\nApplyGravity():\n    for 각 열:\n        write = R - 1\n        for read = R - 1 down to 0:\n            if 칸[read] != 0: 칸[write] = 칸[read]; write = ____\n        write 부터 0 까지 0 으로\n\nRefill():\n    for 열 = 왼쪽부터, 행 = 아래부터: if 빈칸: 칸 = ____.NextColor(colors)\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 새 보석의 색을 정하는 시드 고정 난수 생성기(xorshift32). 같은 시드면 같은 색 순서가 나온다.\npublic sealed class GemRng\n{\n    private uint _state;\n\n    public GemRng(uint seed) { _state = seed == 0 ? 0x9E3779B9u : seed; } // xorshift 의 상태는 0 이면 안 된다\n\n    // 1 .. colors 중 하나를 돌려준다.\n    public int NextColor(int colors)\n    {\n        uint x = _state;\n        x ^= x << 13;\n        x ^= x >> 17;\n        x ^= x << 5;\n        _state = x;\n        return 1 + (int)(((ulong)x * (ulong)colors) >> 32);\n    }\n}\n\n// 매치-3 보드. cells[row, col], row 0 이 맨 위다. 0 은 빈칸, 1 .. colors 는 보석 색이다.\npublic sealed class Match3Board\n{\n    private readonly int[,] _cells;\n    private readonly int _colors;\n    private readonly GemRng _rng;   // 보드마다 하나. 시드에서 한 번 만들고 게임 내내 이어서 쓴다\n    private readonly bool[,] _marked;\n\n    public Match3Board(int[,] cells, int colors, uint seed)\n    {\n        _cells = (int[,])cells.Clone();\n        _colors = colors;\n        _rng = new GemRng(seed);\n        _marked = new bool[_cells.GetLength(0), _cells.GetLength(1)];\n    }\n\n    public int Rows => _cells.GetLength(0);\n    public int Cols => _cells.GetLength(1);\n    public int this[int row, int col] => _cells[row, col];\n\n    // 두 칸의 보석을 맞바꾼다. 이웃인지, 매치가 생기는지는 호출하는 쪽이 이미 확인했다.\n    public void Swap(int r1, int c1, int r2, int c2)\n    {\n        int t = _cells[r1, c1];\n        _cells[r1, c1] = _cells[r2, c2];\n        _cells[r2, c2] = t;\n    }\n\n    // 지우기 → 떨어뜨리기 → 채우기를, 지울 줄이 없을 때까지 반복한다.\n    // 단계마다 지운 칸의 수를 차례로 담아 돌려준다.\n    public List<int> ResolveCascades()\n    {\n        var perStep = new List<int>();\n        while (true)\n        {\n            int cleared = ClearMatches();\n            if (cleared == 0) return perStep;\n            perStep.Add(cleared);\n            ApplyGravity();\n            Refill();\n        }\n    }\n\n    // 줄에 속한 칸을 표에 표시만 한 뒤, 표시된 칸을 한 번씩 지우고 센다.\n    // 가로 줄과 세로 줄이 공유하는 칸도 표에서는 한 칸이므로 한 번만 센다.\n    private int ClearMatches()\n    {\n        Array.Clear(_marked);\n        for (int r = 0; r < Rows; r++)\n        {\n            int start = 0;\n            for (int c = 1; c <= Cols; c++)\n            {\n                if (c < Cols && _cells[r, c] == _cells[r, start]) continue;\n                if (_cells[r, start] != 0 && c - start >= 3)\n                    for (int k = start; k < c; k++) _marked[r, k] = true;\n                start = c;\n            }\n        }\n        for (int c = 0; c < Cols; c++)\n        {\n            int start = 0;\n            for (int r = 1; r <= Rows; r++)\n            {\n                if (r < Rows && _cells[r, c] == _cells[start, c]) continue;\n                if (_cells[start, c] != 0 && r - start >= 3)\n                    for (int k = start; k < r; k++) _marked[k, c] = true;\n                start = r;\n            }\n        }\n\n        int cleared = 0;\n        for (int r = 0; r < Rows; r++)\n            for (int c = 0; c < Cols; c++)\n                if (_marked[r, c]) { _cells[r, c] = 0; cleared++; }\n        return cleared;\n    }\n\n    // 열마다 아래에서 위로 읽으며 보석을 \"다음 빈 바닥\"에 내려 쓴다. 빈칸이 몇 개 연달아 있어도 한 번에 끝난다.\n    private void ApplyGravity()\n    {\n        for (int c = 0; c < Cols; c++)\n        {\n            int write = Rows - 1;\n            for (int read = Rows - 1; read >= 0; read--)\n            {\n                if (_cells[read, c] == 0) continue;\n                _cells[write, c] = _cells[read, c];\n                write--;\n            }\n            for (int r = write; r >= 0; r--) _cells[r, c] = 0;\n        }\n    }\n\n    // 열은 왼쪽부터, 한 열 안에서는 아래쪽 빈칸부터 채운다. 난수는 보드의 생성기에서 이어서 뽑는다.\n    private void Refill()\n    {\n        for (int c = 0; c < Cols; c++)\n            for (int r = Rows - 1; r >= 0; r--)\n                if (_cells[r, c] == 0) _cells[r, c] = _rng.NextColor(_colors);\n    }\n}\n",
+      "explanation": "**버그 1 — 공유 칸을 두 번 센다.** `ClearMatches` 는 지우기 전의 보드에서 가로 줄과 세로 줄을 모두 모으므로 줄을 놓치지는 않습니다. 그러나 줄마다 길이를 더해 L · T · + 모양의 공유 칸이 두 번 셉니다. 재현: 보드 `1112/1234/1342/2423`, 시드 20261122 에서 `[5]` 가 아니라 `[6]` 입니다. 수정은 R × C 표에 표시만 하고 표시된 칸을 한 번씩 지우며 세는 것입니다(이미 `0` 인 칸을 세지 않는 방식도 같은 결과입니다).\n\n**버그 2 — 빈칸이 연달아 있으면 보석이 덜 떨어진다.** `ApplyGravity` 는 아래에서 위로 한 번 훑으며 빈칸과 바로 위 칸을 바꿉니다. 이 방식은 한 번에 한 칸씩만 내려 주므로 빈칸이 하나면 맞지만, 세로 줄처럼 여러 칸이 연달아 비면 보석이 중간에 멈추고 그 아래의 빈칸이 채우기 단계에서 새 보석으로 채워집니다. 재현: 보드 `213/324/132/143/124`, 시드 20261122 의 결과가 `313/424/132/243/324` 가 아니라 `313/224/332/443/124` 입니다. 수정은 읽는 인덱스와 쓰는 인덱스를 따로 두는 한 번의 압축입니다. \"움직일 것이 없을 때까지 반복\"도 결과는 맞지만 열마다 O(R²) 입니다.\n\n**버그 3 — 채울 때마다 생성기를 새로 만든다.** `Refill` 이 매번 `new GemRng(_seed)` 를 만들어 색 순서가 처음으로 돌아갑니다. 첫 채우기가 줄을 만들었다면 다음 채우기도 같은 칸에 같은 색을 넣어 같은 줄을 만들고, 연쇄가 끝나지 않습니다. 재현: 시나리오의 보드와 시드 20267013 은 `[3,3]` 에서 끝나야 하는데 멈추지 않습니다. 멈추지 않는 경우에도 두 번째 수부터 색이 반복됩니다(보드 `1121/2342/3423/4244` 에 수 두 개). 수정은 생성기를 생성자에서 한 번 만들어 필드로 두는 것입니다. Wikipedia 의 Xorshift 문서가 보여 주듯 xorshift32 는 상태 하나를 갱신하며 다음 값을 내므로, 생성기를 새로 만들면 그 상태를 버리고 시드의 첫 값으로 돌아갑니다. Microsoft Learn 의 `System.Random` 문서도 같은 시드의 객체는 같은 수열을 낸다고 적고, 객체를 여러 개 만들기보다 하나를 만들어 필요한 난수를 모두 그것에서 얻으라고 권합니다.\n\n**틀린 수정.** 단계 수에 상한을 두면 멈추지는 않지만 보드는 여전히 틀리고, 단계마다 `seed + 단계 번호` 로 새로 만들면 스펙의 수열과 달라 리플레이가 맞지 않습니다. 생성기를 `static` 으로 두면 같은 시드의 보드 두 개가 수열을 나눠 써서 리플레이가 깨집니다.\n\n**복잡도.** 고친 코드의 한 단계는 O(R × C) 이고, 표시 배열은 보드마다 한 번만 만듭니다. 이 생성기를 직접 둔 이유는 Microsoft Learn 이 `Random` 의 구현이 .NET 의 주 버전 사이에 같게 유지된다고 보장하지 않는다고 명시하기 때문입니다.\n\n### 흔한 오해\n- **\"같은 시드로 생성기를 다시 만들면 결과가 결정적이니 리플레이에는 문제가 없다\"** — 결정적이기는 하지만 매번 시드의 첫 값부터 다시 읽으므로 채울 때마다 같은 칸에 같은 색이 들어갑니다. xorshift32 는 지금 상태 하나로 다음 값을 만들므로 생성기를 새로 만들면 그때까지의 상태를 버립니다 [wiki-xorshift]. 이 문제의 스타터는 시나리오 보드(시드 20267013)에서 연쇄가 끝나지 않고, 두 번째 수의 채우기 색이 첫 수와 같은 순서로 나옵니다(로컬 .NET 8 과 채점기에서 실행해 확인). 리플레이에 필요한 것은 \"같은 시드\"만이 아니라 \"같은 수열을 같은 순서로 이어서 읽기\"입니다.\n- **\"xorshift 에는 아무 시드나 넣어도 된다. 0 도 시드 값 중 하나일 뿐이다\"** — 상태가 0 이면 시프트와 XOR 를 몇 번 거쳐도 0 이라 영원히 0 만 나옵니다(로컬 .NET 8 에서 상태 0 으로 다섯 번 돌려 모두 0 임을 확인). Wikipedia 의 Xorshift 예제 코드도 상태를 0 이 아닌 값으로 초기화해야 한다고 적습니다 [wiki-xorshift]. 그래서 `GemRng` 는 시드 0 을 다른 상수로 바꿉니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "L · T · + 모양에서 공유 칸을 한 번만 센다: 보드 `1112/1234/1342/2423`, 시드 20261122 의 ResolveCascades 가 [5] 를 돌려준다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "빈칸이 연달아 있어도 보석이 바닥까지 내려온다: 보드 `213/324/132/143/124`, 시드 20261122 의 결과가 `313/424/132/243/324` 다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "시드 20267013 의 시나리오 보드에서 연쇄가 [3,3] 으로 끝나고, 한 보드에서 수를 여러 번 두어도 채우는 색 순서가 처음으로 돌아가지 않는다.",
+            "points": 10,
+            "sourceId": "wiki-xorshift"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "버그 세 개 각각에 대해 수정 전에는 실패하고 수정 후에는 통과하는 입력(보드, 시드, 수)을 제시했다.",
+            "points": 5,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "떨어뜨리기가 열마다 읽는 인덱스와 쓰는 인덱스로 한 번에 끝난다(O(R × C)). 반복 교환으로 고치지 않았다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "생성기를 보드마다 한 번만 만들고, 표시용 배열을 쓴다면 그것도 보드마다 한 번 만들어 재사용한다. 단계나 채우기마다 생성기나 R × C 배열을 새로 할당하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "한 단계가 줄 찾기 · 떨어뜨리기 · 채우기 모두 O(R × C) 이고, 공유 칸 처리를 위해 줄 목록을 서로 비교하는 O(줄 수²) 작업이 없다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "생성기를 보드의 필드로 한 번 만들어 이어서 쓴다. `static` 으로 공유하거나 단계마다 시드를 바꿔 새로 만들지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-random"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "GemRng 의 알고리즘과 public 시그니처를 바꾸지 않았고 System.Random 으로 대체하지 않았으며, 그 이유(.NET 주 버전 사이에 Random 의 구현이 같다는 보장이 없음)를 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "ms-learn-random"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "줄 찾기와 지우기(표시 → 지우기), 떨어뜨리기, 채우기가 각각 한 메서드에서 한 가지 일을 하고, 채우는 순서(왼쪽 열부터, 아래 칸부터)가 주석이나 코드로 드러난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "연쇄 상한을 넣었다면 안전장치임이 드러나 있고(로그나 예외), 정상 동작이 상한에 의존하지 않는다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "멈춤을 연쇄 횟수 상한만으로 막았다: 생성기가 여전히 매번 처음부터 시작해 보드와 리플레이가 틀린다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "생성기를 System.Random 으로 바꾸거나 static 으로 두어, 같은 시드 · 같은 수의 결과가 보드마다 또는 런타임 버전마다 달라질 수 있다.",
+            "penalty": -20,
+            "sourceId": "ms-learn-random"
+          },
+          {
+            "id": "d3",
+            "description": "떨어뜨리기를 \"움직일 것이 없을 때까지 반복\"으로 고쳐 한 단계가 O(R² × C) 가 된다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    // 케이스마다 별도 스레드에서 돌리고 제한 시간을 둔다. 연쇄가 끝나지 않아도 나머지 케이스는 계속된다.\n    static void Run(string id, System.Func<string> body)\n    {\n        string err = null;\n        var t = new System.Threading.Thread(() =>\n        {\n            try { err = body(); }\n            catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        });\n        t.IsBackground = true;\n        t.Start();\n        if (!t.Join(1500)) err = \"1.5초 안에 끝나지 않음(연쇄가 멈추지 않는 것으로 보임)\";\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static int[,] B(string s)\n    {\n        string[] rows = s.Split('/');\n        var b = new int[rows.Length, rows[0].Length];\n        for (int r = 0; r < rows.Length; r++)\n            for (int c = 0; c < rows[0].Length; c++) b[r, c] = rows[r][c] - '0';\n        return b;\n    }\n\n    static string D(Match3Board m)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int r = 0; r < m.Rows; r++)\n        {\n            if (r > 0) sb.Append('/');\n            for (int c = 0; c < m.Cols; c++) sb.Append((char)('0' + m[r, c]));\n        }\n        return sb.ToString();\n    }\n\n    static string L(System.Collections.Generic.List<int> steps) => steps == null ? \"null\" : \"[\" + string.Join(\",\", steps) + \"]\";\n\n    // ResolveCascades 한 번의 단계별 지운 수와 그 뒤의 보드를 확인한다.\n    static string Resolve(Match3Board m, string when, string expectedSteps, string expectedBoard)\n    {\n        string before = D(m);\n        string steps = L(m.ResolveCascades()), after = D(m);\n        if (steps != expectedSteps) return when + \" 보드 \" + before + \" 의 ResolveCascades 단계별 지운 수 기대 \" + expectedSteps + \" / 결과 \" + steps;\n        return after == expectedBoard ? null : when + \" 보드 \" + before + \" 의 ResolveCascades 뒤 보드 기대 \" + expectedBoard + \" / 결과 \" + after;\n    }\n\n    // 기준 구현: 칸마다 이어진 길이를 직접 세어 표시 → 리스트로 열을 다시 쌓기 → 같은 xorshift 로 채우기.\n    sealed class Ref\n    {\n        public int[,] Cells; public int Colors; public uint State;\n        public int Next() { uint x = State; x ^= x << 13; x ^= x >> 17; x ^= x << 5; State = x; return 1 + (int)(((ulong)x * (ulong)Colors) >> 32); }\n        public string Resolve()\n        {\n            int rows = Cells.GetLength(0), cols = Cells.GetLength(1);\n            var steps = new System.Collections.Generic.List<int>();\n            while (true)\n            {\n                var hit = new bool[rows, cols]; int n = 0;\n                for (int r = 0; r < rows; r++)\n                    for (int c = 0; c < cols; c++)\n                    {\n                        int v = Cells[r, c]; if (v == 0) continue;\n                        int h = 1, w = 1;\n                        for (int k = c - 1; k >= 0 && Cells[r, k] == v; k--) h++;\n                        for (int k = c + 1; k < cols && Cells[r, k] == v; k++) h++;\n                        for (int k = r - 1; k >= 0 && Cells[k, c] == v; k--) w++;\n                        for (int k = r + 1; k < rows && Cells[k, c] == v; k++) w++;\n                        if (h >= 3 || w >= 3) { hit[r, c] = true; n++; }\n                    }\n                if (n == 0) return L(steps);\n                steps.Add(n);\n                for (int c = 0; c < cols; c++)\n                {\n                    var gems = new System.Collections.Generic.List<int>();\n                    for (int r = 0; r < rows; r++) if (!hit[r, c]) gems.Add(Cells[r, c]);\n                    int empty = rows - gems.Count;\n                    for (int r = 0; r < rows; r++) Cells[r, c] = r < empty ? 0 : gems[r - empty];\n                    for (int r = empty - 1; r >= 0; r--) Cells[r, c] = Next();\n                }\n            }\n        }\n    }\n\n    public static void Main()\n    {\n        Run(\"l-t-plus-score-once\", () =>\n            Resolve(new Match3Board(B(\"1112/1234/1342/2423\"), 4, 20261122u), \"L 모양\", \"[5]\", \"3322/4234/1342/2423\")\n            ?? Resolve(new Match3Board(B(\"3331/1324/2341/4123\"), 4, 20261122u), \"T 모양\", \"[5]\", \"1321/1324/2441/4123\")\n            ?? Resolve(new Match3Board(B(\"1243/2221/3214/4132\"), 4, 20261122u), \"+ 모양\", \"[5]\", \"1323/1341/3414/4132\"));\n\n        Run(\"vertical-clear-falls-to-bottom\", () =>\n            Resolve(new Match3Board(B(\"213/324/132/143/124\"), 4, 20261122u), \"맨 아래 세로 줄\", \"[3]\", \"313/424/132/243/324\"));\n\n        Run(\"refill-sequence-continues\", () =>\n        {\n            var m = new Match3Board(B(\"1121/2342/3423/4244\"), 4, 20261122u);\n            string e = Resolve(m, \"줄이 없는 처음\", \"[]\", \"1121/2342/3423/4244\");\n            if (e != null) return e;\n            m.Swap(0, 2, 0, 3);\n            e = Resolve(m, \"첫 수 (0,2)<->(0,3) 뒤\", \"[3]\", \"1432/2342/3423/4244\");\n            if (e != null) return e;\n            m.Swap(2, 1, 3, 1);\n            return Resolve(m, \"두 번째 수 (2,1)<->(3,1) 뒤(두 번째 채우기는 색 순서를 이어서 써야 함)\", \"[4]\", \"3243/1432/2342/3223\");\n        });\n\n        Run(\"same-seed-same-replay\", () =>\n        {\n            var a = new Match3Board(B(\"1121/2342/3423/4244\"), 4, 777u);\n            var b = new Match3Board(B(\"1121/2342/3423/4244\"), 4, 777u);\n            a.Swap(0, 2, 0, 3); b.Swap(0, 2, 0, 3);\n            string sa = L(a.ResolveCascades()), sb = L(b.ResolveCascades());\n            return sa == sb && D(a) == D(b) ? null : \"같은 시드 · 같은 수인데 결과가 다름: \" + sa + \" \" + D(a) + \" / \" + sb + \" \" + D(b);\n        });\n\n        Run(\"cascade-ends\", () =>\n            Resolve(new Match3Board(B(\"11123/23412/34124/41231/12342\"), 4, 20267013u), \"시드 20267013(처음 세 색이 3,3,3)\", \"[3,3]\", \"11323/23412/34124/41231/12342\"));\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint s = 4242u;\n            System.Func<int, int> rnd = n => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)n); };\n            for (int t = 0; t < 400; t++)\n            {\n                int rows = 3 + rnd(5), cols = 3 + rnd(5);\n                var cells = new int[rows, cols];\n                for (int r = 0; r < rows; r++) for (int c = 0; c < cols; c++) cells[r, c] = 1 + rnd(4);\n                uint seed = 1u + (uint)rnd(1000000);\n                var m = new Match3Board(cells, 4, seed);\n                var re = new Ref { Cells = (int[,])cells.Clone(), Colors = 4, State = seed };\n                for (int move = 0; move < 4; move++)\n                {\n                    string before = D(m);\n                    string want = re.Resolve(), got = L(m.ResolveCascades());\n                    var wb = new System.Text.StringBuilder();\n                    for (int r = 0; r < rows; r++) { if (r > 0) wb.Append('/'); for (int c = 0; c < cols; c++) wb.Append((char)('0' + re.Cells[r, c])); }\n                    if (got != want || D(m) != wb.ToString())\n                        return \"무작위 \" + t + \"번(시드 \" + seed + \") \" + move + \"번째 수, 보드 \" + before + \": 기대 \" + want + \" \" + wb + \" / 결과 \" + got + \" \" + D(m);\n                    int r1 = rnd(rows), c1 = rnd(cols - 1);   // 가로로 이웃한 두 칸을 맞바꾼다\n                    m.Swap(r1, c1, r1, c1 + 1);\n                    int tmp = re.Cells[r1, c1]; re.Cells[r1, c1] = re.Cells[r1, c1 + 1]; re.Cells[r1, c1 + 1] = tmp;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "l-t-plus-score-once",
+          "vertical-clear-falls-to-bottom",
+          "refill-sequence-continues",
+          "same-seed-same-replay",
+          "cascade-ends",
+          "random-vs-reference"
+        ],
+        "note": "`ResolveCascades` 가 돌려준 단계별 지운 수와 그 뒤의 보드 전체를 기대값과 비교합니다. L · T · + 모양에서 공유 칸을 한 번만 세는지, 보석이 위에 있는 열의 맨 아래 세로 줄을 지운 뒤 보석이 바닥까지 내려오는지, 줄이 없는 보드에서 빈 리스트를 돌려주고 생성기를 쓰지 않는지, 수를 두 번 둘 때 두 번째 채우기가 색 순서를 이어서 쓰는지, 같은 시드 · 같은 수의 보드 두 개가 같은 결과를 내는지, 시나리오의 시드 20267013 보드에서 연쇄가 `[3,3]` 으로 끝나는지, 그리고 무작위 보드 400개(3 × 3 ~ 7 × 7, 보드마다 수 네 번)를 스펙대로 다시 구현한 기준과 비교합니다. 케이스마다 1.5초 제한이 있어 연쇄가 끝나지 않아도 나머지 케이스는 실행됩니다. 세 버그는 서로 다른 케이스에서 따로 실패하고, 일부만 고치면 남은 케이스가 실패합니다. 결과만 검사하므로 떨어뜨리기를 반복 교환으로 고쳤는지(O(R²))는 채점표로 확인하세요. `GemRng(uint)`, `NextColor(int)`, `Match3Board(int[,], int, uint)`, `Rows`, `Cols`, 인덱서 `[row, col]`, `Swap(int, int, int, int)`, `ResolveCascades()`(`List<int>` 반환)는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Compiler Explorer(.NET 8)와 로컬 .NET 8 에서 모범 답안 전부 통과 · 스타터 실패를 확인하고, 로컬에서 세 버그의 7가지 조합(하나만 · 둘만 남긴 부분 수정)이 모두 실패하며 연쇄가 끝나지 않는 코드는 해당 케이스만 1.5초 제한으로 [FAIL] 이 남고, 상한만 둔 수정 · static 생성기 · 단계마다 시드를 바꾸는 수정이 실패하고 다르게 쓴 정답은 통과함을 확인했으며, xorshift32 와 Random 설명을 Wikipedia 와 Microsoft Learn 원문과 대조했고, 흔한 오해 두 항목은 Wikipedia 원문과 로컬 · 채점기 실행으로 확인했다."
+      },
+      "nextMission": "리플레이 검증기를 만들어 보세요. 스테이지 시드와 수의 목록(맞바꾼 두 칸)만 저장하고, 검증기가 같은 `Match3Board` 로 수를 다시 두어 단계별 지운 수의 합이 클라이언트가 보고한 점수와 같은지 확인합니다. 그런 다음 \"연출용 반짝이 이펙트도 같은 `GemRng` 에서 난수를 뽑는다\"는 변경을 넣어 리플레이가 어떻게 깨지는지 테스트로 보이고, 생성기를 용도별로 나눠 고치세요."
+    },
+    {
+      "id": "t3-tutor-seeded-rng-replay-roguelike",
+      "track": "track3",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "시드와 결정적 난수: 리플레이와 로그라이크 층 생성을 같은 결과로 재현하기",
+      "tags": [
+        "Algo_DeterministicRng",
+        "Algo_SeedDerivation",
+        "Algo_ProceduralGeneration"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-procedural-generation",
+        "wiki-xorshift",
+        "ms-learn-random",
+        "ms-gh-runtime-random-net8",
+        "vigna-splitmix64",
+        "ms-checked-unchecked",
+        "ms-learn-csharp-arithmetic"
+      ],
+      "scenario": "로그라이크 게임을 만들고 있습니다. 런(한 판)을 시작할 때 시드 하나를 정하고, 던전의 모든 층을 그 시드로 만듭니다. 요구 사항은 세 가지입니다.\n\n- 같은 런 시드를 입력하면 친구도 **똑같은 던전**을 받아야 합니다(시드 공유, 데일리 챌린지).\n- 플레이어가 1층에서 무엇을 했든, 3층을 먼저 미리 보기로 만들었든, **3층은 늘 같은 모양**이어야 합니다.\n- 게임 버전이 올라가도 저장된 리플레이(런 시드 + 입력 기록)가 같은 결과로 재생되어야 합니다.\n\n**해야 할 일**\n1. 아래 개념 카드를 읽습니다.\n2. `starterCode` 의 `DungeonRun.FloorSeed` 와 `GenerateRow` 를 구현합니다. `XorShift32` 와 `SplitMix64` 는 주어진 그대로 씁니다. 다 만들었으면 아래 값으로 스스로 확인하세요.\n\n| 호출 (런 시드 20261122) | 결과 |\n|---|---|\n| `FloorSeed(1)` | `150640291` |\n| `GenerateRow(1, 16)` | `.m..#$.###..#...` |\n| `GenerateRow(2, 16)` | `$#.##m.##.....m$` |\n| `GenerateRow(3, 16)` | `..m..###m$m.##m.` |\n\n`GenerateRow(3, 16)` 을 먼저 부르든 나중에 부르든, 몇 번을 부르든 결과가 같아야 합니다.\n\n3. 퀴즈 2문제에 답합니다.",
+      "constraints": [
+        "`System.Random` 과 시간 기반 시드를 쓰지 않는다. 주어진 `XorShift32` 와 `SplitMix64` 는 고치지 않는다.",
+        "`FloorSeed` 는 O(1) 이다. SplitMix64 를 floor 번 돌려서 구하지 않는다.",
+        "`GenerateRow` 는 칸마다 `NextInt(100)` 을 정확히 한 번, 왼쪽 칸부터 뽑는다. `DungeonRun` 은 런 시드 외의 상태(공유 생성기, 이미 만든 층의 캐시)를 두지 않는다."
+      ],
+      "starterCode": "using System;\n\n// xorshift32: 시프트 13, 17, 5. 상태가 0 이 되면 영원히 0 만 나오므로 시드 0 은 다른 값으로 바꾼다.\npublic sealed class XorShift32\n{\n    private uint _state;\n\n    public XorShift32(uint seed) { _state = seed != 0 ? seed : 0x6D2B79F5u; }\n\n    public uint NextUInt()\n    {\n        uint x = _state;\n        x ^= x << 13;\n        x ^= x >> 17;\n        x ^= x << 5;\n        return _state = x;\n    }\n\n    // 0 .. n-1. 나머지 대신 곱셈으로 범위를 줄인다(상위 비트를 쓴다).\n    public int NextInt(int n) => (int)(((ulong)NextUInt() * (ulong)n) >> 32);\n}\n\n// SplitMix64: 상태에 Gamma 를 더한 뒤 Mix 로 섞은 값이 다음 출력이다.\npublic static class SplitMix64\n{\n    public const ulong Gamma = 0x9E3779B97F4A7C15UL;\n\n    // 곱셈은 2^64 를 넘치며 계산해야 하므로 unchecked 로 감싼다(프로젝트에서 넘침 검사를 켜도 같은 결과).\n    public static ulong Mix(ulong z)\n    {\n        unchecked\n        {\n            z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9UL;\n            z = (z ^ (z >> 27)) * 0x94D049BB133111EBUL;\n            return z ^ (z >> 31);\n        }\n    }\n}\n\n// 로그라이크 런 하나의 던전 생성기.\n// 같은 런 시드라면 어떤 층을 어떤 순서로, 몇 번 만들든 같은 층은 같은 모양이어야 한다.\npublic sealed class DungeonRun\n{\n    private readonly ulong _runSeed;\n\n    public DungeonRun(ulong runSeed) { _runSeed = runSeed; }\n\n    // floor 층(1 이상)의 시드: runSeed 로 시작한 SplitMix64 수열의 floor 번째 출력(1부터)의 상위 32비트.\n    public uint FloorSeed(int floor)\n    {\n        throw new NotImplementedException();\n    }\n\n    // floor 층 첫 줄의 타일 width 개.\n    // 그 층 전용 XorShift32(FloorSeed(floor)) 에서 왼쪽 칸부터 NextInt(100) 을 하나씩 뽑아 바꾼다.\n    // 0..59 '.'(바닥), 60..84 '#'(벽), 85..94 'm'(몬스터), 95..99 '$'(보물)\n    public string GenerateRow(int floor, int width)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "층을 만드는 순서가 바뀌거나 같은 층을 두 번 만드는 경우: 결과가 같아야 한다.",
+        "런 시드 0 이나 `ulong.MaxValue` 같은 극단값: `runSeed + floor × Gamma` 는 2^64 를 법으로 넘치며 계산된다.",
+        "층 시드의 상위 32비트가 0 인 경우: `XorShift32` 생성자가 0 을 다른 값으로 바꾼다.",
+        "너비만 다르게 같은 층을 만드는 경우: 짧은 줄은 긴 줄의 앞부분과 같다(`GenerateRow(1, 8)` 은 `.m..#$.#`)."
+      ],
+      "hints": [
+        "생성기 하나를 런 전체가 공유하면 무슨 일이 생기는지 보세요. `new XorShift32(20261122)` 하나로 1층, 2층, 3층 줄(16칸)을 차례로 만들면 2층은 `.........#..m...`, 3층은 `#.###.....###...` 입니다. 그런데 1층과 2층 사이에 반짝이 이펙트가 난수를 **하나** 더 뽑으면 2층은 `........#..m...#`(한 칸씩 밀림), 3층은 `.###.....###...$` 가 됩니다. 층마다 자기 시드로 새 생성기를 만들면 이런 밀림이 층 경계를 넘지 못합니다.",
+        "SplitMix64 의 상태는 출력할 때마다 `Gamma` 만큼 커지고, 출력은 그 상태를 `Mix` 로 섞은 값입니다. 그러면 floor 번째 출력을 만들 때의 상태는 앞의 출력을 만들지 않아도 `runSeed + floor × Gamma` 로 바로 알 수 있습니다. `ulong` 의 곱셈과 덧셈은 2^64 를 넘치며 계산해야 하므로, 주어진 `Mix` 처럼 `unchecked` 로 감싸 두면 프로젝트에서 넘침 검사를 켜도 예외가 나지 않습니다. `GenerateRow` 는 생성기를 필드로 두지 말고 호출할 때마다 그 층의 시드로 만드세요.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nFloorSeed(floor):\n    state = unchecked(runSeed + (ulong)floor * ____)\n    return (uint)(SplitMix64.Mix(state) >> ____)\n\nGenerateRow(floor, width):\n    rng = new XorShift32(____)\n    tiles = char[width]\n    for x = 0 .. width-1:\n        roll = rng.NextInt(100)\n        tiles[x] = roll < 60 ? '.' : roll < ____ ? '#' : roll < ____ ? 'm' : '$'\n    return new string(tiles)\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 미리 적어 둔 주사위 두루마리\n\n의사 난수 생성기(PRNG)는 진짜로 주사위를 굴리지 않습니다. 주사위 결과가 끝없이 적힌 두루마리를 한 칸씩 읽는 기계에 가깝습니다. **시드는 어느 두루마리를 쓸지**를 정하고, `Next` 를 부를 때마다 다음 칸을 읽습니다. 다음 값은 지금 상태만으로 계산되므로 같은 시드에서 출발하면 같은 수열이 나옵니다. Microsoft Learn 의 `System.Random` 문서도 같은 시드의 객체는 같은 수열을 내며, 이것이 난수로 데이터를 만드는 게임의 리플레이에 쓸모 있다고 적습니다.\n\n### 재현을 깨는 것: 읽는 순서와 개수\n\n두루마리가 같아도 **몇 칸을, 어떤 순서로** 읽는지가 달라지면 결과가 달라집니다. 연출용 이펙트가 같은 생성기에서 난수 하나를 더 읽으면 그 뒤의 모든 결과가 한 칸씩 밀립니다. 그래서 (1) 재현해야 하는 용도(지형, 전리품, 전투)와 재현할 필요가 없는 용도(반짝이 이펙트)의 생성기를 나누고, (2) 로그라이크의 층처럼 독립적인 단위마다 **자기 시드를 따로 파생**합니다. 층 시드가 (런 시드, 층 번호)만으로 정해지면, 다른 층에서 난수를 몇 개 썼는지와 무관하게 그 층을 언제든 다시 만들 수 있습니다. Wikipedia 의 Procedural generation 문서는 맵 시드만 알려 주면 수정되지 않은 원래 맵으로 되돌리거나 다른 플레이어와 맵을 주고받을 수 있다고 설명합니다.\n\n### 시드를 섞어서 쓰는 이유\n\n`XorShift32` 를 시드 1, 2, 3 으로 바로 만들면 첫 출력이 270,369 · 540,738 · 811,107 로 2^32 에 비해 아주 작아서, 첫 `NextInt(100)` 이 셋 다 0 입니다. Wikipedia 의 Xorshift 문서 초기화 절은 xoshiro 논문의 권고를 소개합니다. 초기화할 생성기와 근본적으로 다르고 모두 0 인 상태를 만들지 않는 생성기로 상태를 채우라는 것이고, 구체적으로 SplitMix64 를 추천합니다. 모두 0 인 상태는 시프트 레지스터 생성기가 빠져나올 수 없는 상태입니다. 같은 문서의 SplitMix64 코드는 Sebastiano Vigna 가 공개한 원본 `splitmix64.c` 와 상수 · 시프트가 같고, 출력할 때마다 상태에 상수 γ = `0x9E3779B97F4A7C15` 를 더한 뒤 그 상태를 섞어 내보내므로, k 번째 출력은 `Mix(시드 + k × γ)` 로 바로 계산됩니다. 이 문제의 `FloorSeed` 가 이 성질을 씁니다.\n\n### 알고리즘도 데이터다\n\n같은 시드라도 **생성 알고리즘이 바뀌면** 결과가 바뀝니다. Procedural generation 문서는 맵 시드가 그 맵을 만든 알고리즘 안에서만 의미가 있다고 적고, Minecraft 가 버전을 올린 뒤 새로 탐험한 청크만 새 알고리즘으로 만들어 경계가 어긋난 예를 듭니다. Microsoft Learn 은 `Random` 의 구현이 .NET 주 버전 사이에 같게 유지된다고 보장하지 않으니, 다른 버전에서 같은 시드가 같은 수열을 낸다고 가정하지 말라고 명시합니다. 실제로 .NET 8 의 소스(dotnet/runtime `release/8.0` 의 `Random.cs`)를 보면, `Random` 클래스를 그대로 쓸 때 시드를 준 `new Random(seed)` 는 예전과 같은 알고리즘을 따르는 호환 구현을 고르고, 시드 없는 `new Random()` 은 xoshiro 구현을 씁니다. 하지만 이것은 구현일 뿐 약속이 아닙니다. 리플레이와 시드 공유가 필요한 게임은 알고리즘이 고정된 작은 생성기를 직접 두고, 저장 데이터에 생성기 버전을 함께 남기는 편이 안전합니다(뒤 문장은 실무 권고입니다).",
+      "quiz": [
+        {
+          "question": "생성기 하나를 런 전체가 공유하던 버전에서, 2층 상자를 열 때 반짝이 이펙트가 같은 생성기에서 난수를 하나 더 뽑도록 바뀌었습니다. 같은 런 시드로 리플레이를 돌리면 무엇이 달라지나요? `FloorSeed` 로 층마다 생성기를 따로 만드는 구조로 바꾸면 3층은 어떻게 되고, 2층에서 상자 이후에 그 층의 생성기로 만드는 몬스터 배치는 어떻게 되나요?",
+          "answer": "공유 생성기에서는 그 뒤에 읽는 모든 값이 한 칸씩 밀리므로 2층의 나머지와 3층 이후가 전부 달라집니다(힌트 1 의 예처럼 줄이 한 칸씩 밀립니다). 층마다 `FloorSeed` 로 새 생성기를 만들면 3층은 그대로입니다. 3층의 생성기는 (런 시드, 3)만으로 정해지기 때문입니다. 하지만 이펙트가 **2층의 생성기**에서 값을 읽는다면 2층 안에서 그 뒤의 몬스터 배치는 여전히 밀립니다. 시드 파생은 밀림이 층 경계를 넘지 못하게 할 뿐이므로, 재현이 필요 없는 연출은 처음부터 별도의 생성기를 쓰게 해야 합니다."
+        },
+        {
+          "question": "`new XorShift32(1)`, `new XorShift32(2)`, `new XorShift32(3)` 의 첫 `NextInt(100)` 은 모두 0 입니다. 왜 그런가요? `FloorSeed` 처럼 SplitMix64 의 `Mix` 를 거치면 무엇이 달라지나요?",
+          "answer": "`NextInt(100)` 은 `(x × 100) >> 32` 이므로 첫 출력 x 가 2^32 / 100 ≈ 42,949,673 이상이어야 1 이상이 나옵니다. 시드 1 의 첫 출력은 1 ^ (1 << 13) 을 거쳐 270,369 이고, 시드 2 와 3 은 540,738 과 811,107 입니다. 켜진 비트가 적은 작은 시드는 첫 몇 번의 시프트·XOR 로는 비트가 상위 쪽까지 퍼지지 않아 출력이 작게 시작합니다. `Mix` 를 거치면 사정이 달라집니다. 런 시드 1 의 층 시드를 계산해 보면 2,433,363,436 · 3,203,108,257 · 4,170,425,070 으로, 작은 런 시드에서도 32비트 범위의 위쪽까지 퍼져 있습니다. Wikipedia 의 Xorshift 문서가 소개하는, SplitMix64 처럼 성격이 다른 생성기로 상태를 채우라는 권고가 이 문제를 피하는 방법입니다."
+        }
+      ],
+      "solutionCode": "using System;\n\n// xorshift32: 시프트 13, 17, 5. 상태가 0 이 되면 영원히 0 만 나오므로 시드 0 은 다른 값으로 바꾼다.\npublic sealed class XorShift32\n{\n    private uint _state;\n\n    public XorShift32(uint seed) { _state = seed != 0 ? seed : 0x6D2B79F5u; }\n\n    public uint NextUInt()\n    {\n        uint x = _state;\n        x ^= x << 13;\n        x ^= x >> 17;\n        x ^= x << 5;\n        return _state = x;\n    }\n\n    // 0 .. n-1. 나머지 대신 곱셈으로 범위를 줄인다(상위 비트를 쓴다).\n    public int NextInt(int n) => (int)(((ulong)NextUInt() * (ulong)n) >> 32);\n}\n\n// SplitMix64: 상태에 Gamma 를 더한 뒤 Mix 로 섞은 값이 다음 출력이다.\npublic static class SplitMix64\n{\n    public const ulong Gamma = 0x9E3779B97F4A7C15UL;\n\n    // 곱셈은 2^64 를 넘치며 계산해야 하므로 unchecked 로 감싼다(프로젝트에서 넘침 검사를 켜도 같은 결과).\n    public static ulong Mix(ulong z)\n    {\n        unchecked\n        {\n            z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9UL;\n            z = (z ^ (z >> 27)) * 0x94D049BB133111EBUL;\n            return z ^ (z >> 31);\n        }\n    }\n}\n\n// 로그라이크 런 하나의 던전 생성기.\n// 같은 런 시드라면 어떤 층을 어떤 순서로, 몇 번 만들든 같은 층은 같은 모양이어야 한다.\npublic sealed class DungeonRun\n{\n    private readonly ulong _runSeed;\n\n    public DungeonRun(ulong runSeed) { _runSeed = runSeed; }\n\n    // floor 층(1 이상)의 시드: runSeed 로 시작한 SplitMix64 수열의 floor 번째 출력(1부터)의 상위 32비트.\n    // SplitMix64 의 상태는 출력마다 Gamma 씩 늘어날 뿐이므로, floor 번째 상태는 앞의 출력을 만들지 않고도\n    // runSeed + floor * Gamma 로 바로 구할 수 있다(2^64 를 법으로 넘치며 계산한다).\n    public uint FloorSeed(int floor)\n    {\n        ulong state = unchecked(_runSeed + (ulong)floor * SplitMix64.Gamma);\n        return (uint)(SplitMix64.Mix(state) >> 32);\n    }\n\n    // floor 층 첫 줄의 타일 width 개.\n    // 그 층 전용 XorShift32(FloorSeed(floor)) 에서 왼쪽 칸부터 NextInt(100) 을 하나씩 뽑아 바꾼다.\n    // 0..59 '.'(바닥), 60..84 '#'(벽), 85..94 'm'(몬스터), 95..99 '$'(보물)\n    public string GenerateRow(int floor, int width)\n    {\n        var rng = new XorShift32(FloorSeed(floor)); // 층마다 새 생성기: 다른 층에서 난수를 몇 개 썼는지와 무관하다\n        var tiles = new char[width];\n        for (int x = 0; x < width; x++)\n        {\n            int roll = rng.NextInt(100);             // 칸마다 정확히 한 번, 왼쪽부터\n            tiles[x] = roll < 60 ? '.' : roll < 85 ? '#' : roll < 95 ? 'm' : '$';\n        }\n        return new string(tiles);\n    }\n}\n",
+      "explanation": "**FloorSeed.** SplitMix64 의 원본 코드(Sebastiano Vigna 의 `splitmix64.c`, Java 8 `SplittableRandom` 을 증분이 고정된 형태로 만든 것)와 Wikipedia 의 Xorshift 문서에 실린 코드는 호출할 때마다 상태에 `0x9E3779B97F4A7C15`(γ)를 더하고, 더한 값을 30 · 27 · 31 비트 시프트와 `0xBF58476D1CE4E5B9` · `0x94D049BB133111EB` 곱셈으로 섞어 출력합니다. 주어진 `Mix` 도 같은 상수와 시프트를 씁니다. 상태가 등차수열이므로 floor 번째 출력의 상태는 `runSeed + floor × γ` 이고, 출력은 `Mix(runSeed + floor × γ)` 입니다. 앞의 출력을 만들 필요가 없어 O(1) 이고, 어떤 순서로 층을 만들어도 같은 값이 나옵니다. 이 계산은 2^64 를 법으로 넘쳐야 하므로 `unchecked` 로 감쌉니다. Microsoft Learn 의 checked and unchecked 문서(산술 연산자 문서의 정수 넘침 절도 같은 내용)에 따르면 unchecked 문맥에서는 대상 형식에 들어가지 않는 상위 비트를 버리고(2^64 로 나눈 나머지가 남습니다), checked 문맥에서는 `OverflowException` 이 나며, 문맥을 적지 않은 식은 `CheckForOverflowUnderflow` 컴파일러 옵션이 정한 문맥(정하지 않으면 unchecked)을 따릅니다. 그래서 `unchecked` 로 감싸 두면 프로젝트에서 넘침 검사를 켜도 예외 없이 같은 값이 나옵니다. 상위 32비트(`>> 32`)를 취해 `XorShift32` 의 시드로 씁니다. 그 값이 0 이면 `XorShift32` 생성자가 다른 값으로 바꿉니다(상태가 0 이면 xorshift 는 0 만 냅니다).\n\n**GenerateRow.** 호출마다 그 층의 시드로 새 `XorShift32` 를 만들고, 칸마다 `NextInt(100)` 을 한 번씩 왼쪽부터 뽑아 구간으로 바꿉니다. 0 ~ 59 는 바닥(60%), 60 ~ 84 는 벽(25%), 85 ~ 94 는 몬스터(10%), 95 ~ 99 는 보물(5%)입니다. 생성기를 필드로 두면 두 번째 호출이 첫 호출이 남긴 상태에서 이어 읽어 같은 층이 다르게 나오고, 층을 만드는 순서에 따라 결과가 바뀝니다. 칸마다 정확히 하나씩 읽으므로 짧은 줄은 긴 줄의 앞부분과 같습니다.\n\n**왜 이 구조인가.** 재현성은 \"같은 시드\"만으로는 생기지 않고, 같은 알고리즘이 같은 순서로 같은 개수의 값을 읽을 때 생깁니다. 층마다 시드를 파생하면 한 층에서 생긴 소비량 차이가 다른 층으로 번지지 않습니다. 알고리즘을 게임 코드에 고정해 두는 이유는 Microsoft Learn 이 `System.Random` 의 구현이 주 버전 사이에 같다고 보장하지 않기 때문입니다. .NET 8 소스에서 시드를 준 `Random` 이 예전 알고리즘을 유지하는 것은 호환을 위한 구현 선택이지 약속이 아닙니다.\n\n**흔한 실수.** (1) 런 전체가 생성기 하나를 공유한다. (2) 연출용 난수를 같은 생성기에서 뽑는다. (3) `runSeed + floor` 를 섞지 않고 바로 시드로 써서, 작은 시드에서 첫 값들이 한쪽으로 몰린다. (4) `DateTime.Now` 나 시드 없는 `Random` 을 섞는다. (5) 생성 규칙을 바꾸면서 저장 데이터에 생성기 버전을 남기지 않는다.\n\n### 흔한 오해\n- **\"`new Random(42)` 처럼 시드만 고정하면 어느 .NET 버전에서든 같은 수열이 나온다\"** — Microsoft Learn 은 `Random` 의 난수 생성기 구현이 .NET 주 버전 사이에 같게 유지된다고 보장하지 않으며, 다른 버전에서 같은 시드가 같은 수열을 낸다고 가정하지 말라고 적습니다 [ms-learn-random]. .NET 8 의 구현은 `Random` 을 그대로 쓸 때 시드를 준 생성자에 예전 알고리즘의 호환 구현을 고르지만 [ms-gh-runtime-random-net8], 이것은 구현이지 약속이 아닙니다.\n- **\"SplitMix64 는 같은 출력을 두 번 내지 않으니, 거기서 뽑은 층 시드도 층마다 모두 다르다\"** — 64비트 출력은 주기 2^64 동안 2^64 개 정수를 한 번씩 내는 순열이라 반복되지 않지만 [vigna-splitmix64], `FloorSeed` 는 그중 상위 32비트만 쓰므로 서로 다른 층이 같은 시드를 받을 수 있습니다. 런 시드 20261122 에서는 16,913층과 110,021층의 `FloorSeed` 가 1,571,826,118 로 같습니다(Python 과 로컬 .NET 8 에서 계산해 확인). 층 수가 적은 게임에서는 드문 일이지만 \"층 시드는 겹치지 않는다\"를 가정하면 안 됩니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "FloorSeed 가 SplitMix64 수열의 floor 번째 출력의 상위 32비트다: 런 시드 20261122 에서 FloorSeed(1) = 150640291.",
+            "points": 12,
+            "sourceId": "vigna-splitmix64"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "GenerateRow 가 표의 값과 같다(런 시드 20261122, 1 ~ 3층, 16칸). 층을 만드는 순서를 바꾸거나 같은 층을 두 번 만들어도 결과가 같다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "퀴즈에서 난수 하나의 추가 소비가 그 뒤 결과를 모두 민다는 점, 층 시드 파생이 층 경계 너머의 밀림만 막는다는 점, 작은 시드의 첫 출력이 42,949,673 보다 작아 0 이 나온다는 점을 답했다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "FloorSeed 가 `runSeed + floor × Gamma` 로 상태를 바로 구해 O(1) 이다. SplitMix64 를 floor 번 돌리지 않는다.",
+            "points": 12,
+            "sourceId": "wiki-xorshift"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "GenerateRow 가 칸마다 NextInt(100) 을 정확히 한 번 뽑아 O(width) 이고, 결과 문자열(과 그것을 만들 버퍼) 외에는 작은 생성기 하나만 할당한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "재현을 위해 이미 만든 층을 저장해 두지 않고 (런 시드, 층)만으로 다시 만든다는 점을 설명할 수 있다.",
+            "points": 8,
+            "sourceId": "wiki-procedural-generation"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "System.Random 을 쓰지 않았고, 그 이유(구현이 주 버전 사이에 같다는 보장이 없음)와 .NET 8 에서 시드를 준 Random 이 예전 알고리즘을 유지하는 것은 구현일 뿐 약속이 아니라는 점을 구분해 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "ms-learn-random"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "층 시드 계산을 `unchecked` 로 감싸 2^64 를 법으로 넘치게 하고 `>> 32` 로 상위 비트를 취하며, 상태 0 은 XorShift32 생성자가 처리한다는 점을 안다.",
+            "points": 10,
+            "sourceId": "ms-checked-unchecked"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "DungeonRun 이 런 시드 외의 상태를 두지 않고, 재현이 필요한 용도와 연출용 난수의 생성기를 나눠야 한다는 점을 코드나 설명에 반영했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "시드만으로는 부족하고 생성 알고리즘의 버전도 저장 데이터와 함께 관리해야 한다는 점을 말할 수 있다.",
+            "points": 7,
+            "sourceId": "wiki-procedural-generation"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "생성기 하나를 여러 층이 공유하거나 필드에 두고 GenerateRow 호출 사이에 이어 써서, 층의 모양이 만드는 순서와 횟수에 따라 달라진다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "System.Random 이나 시간 기반 시드를 써서 같은 런 시드로 같은 던전이 보장되지 않는다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-random"
+          },
+          {
+            "id": "d3",
+            "description": "FloorSeed 를 SplitMix64 를 floor 번 돌려 구하거나(O(floor)), 섞지 않은 `runSeed + floor` 를 그대로 시드로 써서 명세와 다른 값을 낸다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "표 · 힌트 · 개념 · 퀴즈에 나온 모든 수(층 시드, 세 층의 줄, 공유 생성기의 밀림, 시드 1·2·3 의 첫 출력, 런 시드 1 의 층 시드)를 Python 으로 따로 구현해 다시 계산하고 로컬 .NET 8(넘침 검사를 켠 빌드 포함)에서 모범 답안을 돌려 일치를 확인했으며, SplitMix64 상수와 시프트를 Vigna 의 splitmix64.c 원본, Random 설명을 Microsoft Learn 과 dotnet/runtime release/8.0 의 Random.cs 와 대조했고, 흔한 오해 두 항목은 Microsoft Learn · Random.cs · splitmix64.c 원문과 Python · 로컬 .NET 8 계산으로 확인했다."
+      },
+      "nextMission": "`DungeonRun` 에 `LootSeed(floor, chestIndex)` 를 추가해 보세요. 같은 층의 상자라도 상자마다 시드가 달라야 하고, 지형 생성과 전리품 생성이 서로의 난수 소비에 영향을 주면 안 됩니다. SplitMix64 수열에서 지형과 겹치지 않는 출력을 고르는 규칙(예: 용도마다 런 시드를 한 번 섞은 값을 시작점으로 쓰기)을 정해 명세로 적고, \"1층 지형 생성 코드를 바꿔도 1층 상자의 전리품은 그대로\"임을 테스트로 보이세요."
+    },
+    {
+      "id": "t3-impl-console-autocomplete-topn",
+      "track": "track3",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "개발자 콘솔 명령 자동 완성: 정렬된 이름에서 접두사 구간을 찾고 많이 쓴 순서로 상위 N 개 고르기",
+      "tags": [
+        "Algo_Autocomplete_PrefixRange",
+        "Algo_TopK_Heap",
+        "Algo_BinarySearch"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-binary-search",
+        "wiki-partial-sorting",
+        "ms-learn-priorityqueue",
+        "ms-learn-best-practices-strings",
+        "ms-learn-array-sort",
+        "ms-gh-runtime-globalization-invariant-net8"
+      ],
+      "scenario": "온라인 게임의 개발자 콘솔에는 엔진, 에디터 플러그인, 콘텐츠 팀이 등록한 명령이 2만 개 가까이 있습니다. 입력창에 글자를 하나 칠 때마다 \"지금 입력으로 시작하는 명령\" 중 **많이 쓴 것부터 n 개**(보통 8개)를 추천 목록에 다시 그립니다. 명령 목록은 게임을 켤 때 한 번 정해지고, 사용 횟수는 명령을 실행할 때마다 늘어납니다.\n\n`CommandAutocomplete` 를 구현하세요.\n\n**규칙**\n\n1. 명령 이름은 서로 다르고 1글자 이상이며 소문자 `a`–`z`, 숫자, `_`, `.` 로만 되어 있습니다(콘솔이 입력을 소문자로 바꿔 넘깁니다). `prefix` 도 같은 글자들로 되어 있고 빈 문자열일 수 있습니다.\n2. 이름이 `prefix` 로 **시작**하면(앞에서부터 글자 하나하나가 정확히 같으면) 맞는 것입니다. 빈 `prefix` 는 모든 이름과 맞습니다.\n3. 추천 순서는 **사용 횟수 내림차순**, 횟수가 같으면 **이름의 서수(ordinal) 오름차순**(`string.CompareOrdinal` 의 순서)입니다. 서수 순서는 글자 코드를 비교하므로 `give` < `give.gold` < `give_all` 입니다(`.` 은 U+002E, `_` 는 U+005F). 문화권과 무관해야 하는 비교이므로, Microsoft Learn 의 문자열 비교 모범 사례 문서가 안전한 기본값으로 권하는 서수 비교(`StringComparison.Ordinal`, `StringComparer.Ordinal`)를 씁니다. 비교자 없는 `Array.Sort`, `string.Compare(a, b)`, `CompareTo`, `StartsWith(string)` 는 현재 문화권 규칙을 쓰므로 `tp2` 와 `tp_home` 같은 이름이 서수 순서와 반대로 정렬될 수 있습니다. 채점 템플릿은 실행 전에 현재 문화권을 en-US 로 고정합니다.\n4. `Suggest(prefix, n)` 은 맞는 이름 중 앞의 순서로 최대 `n` 개를 담은 **새 리스트**를 돌려줍니다. `n` 은 0 이상이고, 0 이면 빈 리스트입니다.\n5. `RecordUse(name)` 은 **정확히 같은 이름**이 있을 때만 사용 횟수를 1 늘리고 `true` 를 돌려줍니다. 없는 이름(접두사만 같은 것 포함)이면 아무것도 바꾸지 않고 `false` 입니다.\n6. `CountWithPrefix(prefix)` 는 맞는 이름의 수입니다.\n7. 생성자는 받은 배열을 복사해서 씁니다. 호출한 쪽 배열의 내용과 순서를 바꾸지 않고, 나중에 호출한 쪽이 배열을 고쳐도 영향을 받지 않습니다. 명령이 0개일 수도 있습니다.\n\n예: 명령 12개와 사용 횟수\n\n| 이름 | give | give.gold | give_all | god | goto | gravity | heal | help | spawn | spawn.wave | spawn_boss | speed |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| 횟수 | 5 | 5 | 2 | 9 | 0 | 1 | 4 | 4 | 7 | 3 | 0 | 1 |\n\n| 호출 | 결과 |\n|---|---|\n| `Suggest(\"g\", 3)` | `god, give, give.gold` |\n| `Suggest(\"sp\", 10)` | `spawn, spawn.wave, speed, spawn_boss` |\n| `Suggest(\"he\", 1)` | `heal` |\n| `Suggest(\"helpme\", 3)` | (빈 리스트) |\n| `CountWithPrefix(\"give\")` | 3 |\n| `RecordUse(\"goto\")` 를 10번 한 뒤 `Suggest(\"g\", 3)` | `goto, god, give` |",
+      "constraints": [
+        "M = 명령 수, L = `prefix` 의 길이, R = `prefix` 와 맞는 명령 수. 생성자는 O(M log M) 이고, 서수 비교자를 넘긴 `Array.Sort` 는 써도 된다.",
+        "`CountWithPrefix` 는 O(L log M), `Suggest` 는 O(L log M + R log n) 이다. 질의마다 명령 전체를 훑지 않고, 맞는 구간 전체를 정렬하지 않는다.",
+        "`RecordUse` 는 정렬을 다시 하지 않는다(평균 O(L) 또는 O(L log M)).",
+        "문자열 비교는 모두 서수 비교다. 문화권 규칙을 기본값으로 쓰는 `Array.Sort(string[])`(비교자 없이), `string.Compare(a, b)`, `a.CompareTo(b)`, `StartsWith(string)` 를 쓰지 않는다. LINQ 를 쓰지 않는다.",
+        ".NET 8 의 `PriorityQueue<TElement, TPriority>` 는 써도 되지만, 횟수가 같은 명령의 순서를 큐가 꺼내는 순서에 맡기지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 개발자 콘솔의 명령 자동 완성. 입력한 접두사로 시작하는 명령을 많이 쓴 순서로 추천한다.\npublic sealed class CommandAutocomplete\n{\n    // names: 서로 다른 명령 이름. uses[i]: names[i] 의 지금까지 사용 횟수(0 이상). 두 배열의 길이는 같다(0 이상).\n    // 받은 배열은 복사해서 쓰고, 호출한 쪽의 배열은 바꾸지 않는다.\n    public CommandAutocomplete(string[] names, int[] uses)\n    {\n        throw new NotImplementedException();\n    }\n\n    // name 을 한 번 사용했다: 사용 횟수를 1 늘리고 true. 없는 이름이면 아무것도 바꾸지 않고 false.\n    public bool RecordUse(string name)\n    {\n        throw new NotImplementedException();\n    }\n\n    // prefix 로 시작하는 명령의 수. 빈 prefix 는 모든 명령과 맞는다.\n    public int CountWithPrefix(string prefix)\n    {\n        throw new NotImplementedException();\n    }\n\n    // prefix 로 시작하는 명령 중 사용 횟수가 많은 순서로 최대 n 개(n >= 0).\n    // 사용 횟수가 같으면 이름의 서수(ordinal) 오름차순.\n    public List<string> Suggest(string prefix, int n)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "접두사보다 긴 이름이 구간 끝에 붙는 경우: `give` 의 구간에는 `give.gold`, `give_all` 도 들어간다.",
+        "사용 횟수가 같은 이름이 여럿인 경우: 서수 오름차순(`tp` < `tp.home` < `tp2` < `tp_home` < `tphome`).",
+        "빈 `prefix`, 이름 전체와 같은 `prefix`(`help`), 어떤 이름보다 긴 `prefix`, 모든 이름보다 앞이나 뒤에 오는 `prefix`(`a`, `zz`).",
+        "`n = 0`, `n` 이 맞는 이름 수보다 큰 경우, 명령이 0개인 사전.",
+        "`RecordUse` 로 순위가 바뀌는 경우와 없는 이름 · 접두사만 같은 이름(`go`)의 `RecordUse`."
+      ],
+      "hints": [
+        "서수로 정렬하면 이름이 `give, give.gold, give_all, god, goto, gravity, …` 순서가 되어 `give` 로 시작하는 이름이 한 덩어리로 붙습니다. 그런데 구간의 끝을 \"`prefix` 보다 큰 첫 이름\"으로 잡으면 `give.gold` 가 `give` 보다 크므로 `\"give\"` 의 구간이 `give` 하나로 끝나 버리고, `\"g\"` 의 구간은 아예 비어 버립니다(`give` 가 이미 `g` 보다 큽니다). 그리고 `Suggest(\"give\", 5)` 에서 `give` 와 `give.gold` 는 둘 다 5번 썼습니다. 누가 먼저여야 하나요?",
+        "구간의 양 끝은 \"이름의 앞 L 글자를 `prefix` 와 비교한 결과\"로 찾습니다. 이 결과는 정렬된 순서를 따라 음수 → 0 → 양수로만 바뀌므로, 처음으로 0 이상이 되는 위치와 처음으로 양수가 되는 위치를 각각 이분 탐색으로 구하면 `[lo, hi)` 가 됩니다. 이름이 `prefix` 보다 짧고 `prefix` 의 앞부분과 같으면 음수로 칩니다. 구간 안의 상위 n 개는 크기 n 인 최소 힙으로 고르고, 동률 순서는 우선순위 안에 넣으세요. 이름이 이미 서수로 정렬되어 있으므로 정렬된 **위치**가 곧 서수 순서입니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\n생성자: 배열 복사 → Array.Sort(names, uses, ____) → 이름 -> 위치 사전\n\nComparePrefix(name, prefix):          // 음수 / 0 / 양수\n    for i = 0 .. prefix.Length-1:\n        if i == name.Length: return ____\n        if name[i] != prefix[i]: return name[i] < prefix[i] ? -1 : 1\n    return 0\n\nFirstIndex(prefix, strict):            // strict 이면 \"> 0\", 아니면 \">= 0\" 인 첫 위치\n    lo = 0; hi = M\n    while lo < hi:\n        mid = lo + (hi - lo) / 2\n        if 조건(ComparePrefix(names[mid], prefix)): hi = mid  else: lo = ____\n\nSuggest(prefix, n):\n    [lo, hi) = (FirstIndex(prefix, false), FirstIndex(prefix, true))\n    heap = 최소 힙, 우선순위 (uses[i], ____)     // 루트 = 가장 약한 후보\n    for i in [lo, hi):\n        if heap.Count < n: 넣기\n        else if (uses[i], ____) > 루트의 우선순위: 루트를 빼고 넣기\n    heap 에서 약한 것부터 꺼내 결과의 ____ 부터 채운다\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 개발자 콘솔의 명령 자동 완성. 입력한 접두사로 시작하는 명령을 많이 쓴 순서로 추천한다.\npublic sealed class CommandAutocomplete\n{\n    // 이름은 서수 오름차순으로 정렬해 둔다. 그러면 같은 접두사로 시작하는 이름들이 연속 구간을 이룬다.\n    private readonly string[] _names;\n    private readonly int[] _uses;                       // _uses[i] = _names[i] 의 사용 횟수(바뀌는 값)\n    private readonly Dictionary<string, int> _indexOf;  // 이름 -> 정렬된 위치\n\n    public CommandAutocomplete(string[] names, int[] uses)\n    {\n        _names = (string[])names.Clone();               // 호출한 쪽 배열은 건드리지 않는다\n        _uses = (int[])uses.Clone();\n        Array.Sort(_names, _uses, StringComparer.Ordinal); // 기본 비교자는 현재 문화권 규칙이므로 서수 비교자를 명시한다\n        _indexOf = new Dictionary<string, int>(_names.Length, StringComparer.Ordinal);\n        for (int i = 0; i < _names.Length; i++) _indexOf.Add(_names[i], i);\n    }\n\n    public bool RecordUse(string name)\n    {\n        if (!_indexOf.TryGetValue(name, out int i)) return false;\n        _uses[i]++;                                     // 정렬 순서는 이름만 보므로 횟수가 바뀌어도 그대로다\n        return true;\n    }\n\n    public int CountWithPrefix(string prefix)\n    {\n        FindRange(prefix, out int lo, out int hi);\n        return hi - lo;\n    }\n\n    public List<string> Suggest(string prefix, int n)\n    {\n        var result = new List<string>();\n        if (n <= 0) return result;\n        FindRange(prefix, out int lo, out int hi);\n\n        // 크기 n 의 최소 힙. 루트 = 지금까지 고른 후보 중 가장 약한 것.\n        // 우선순위 (사용 횟수, -위치): 횟수가 적을수록, 같으면 위치가 뒤일수록(= 이름이 서수로 클수록) 약하다.\n        // 위치가 모두 다르므로 동률이 없고, PriorityQueue 의 동률 처리에 기대지 않는다.\n        var heap = new PriorityQueue<int, (int uses, int negIndex)>(Math.Min(n, hi - lo) + 1);\n        for (int i = lo; i < hi; i++)\n        {\n            var p = (_uses[i], -i);\n            if (heap.Count < n) { heap.Enqueue(i, p); continue; }\n            heap.TryPeek(out _, out var weakest);\n            if (p.CompareTo(weakest) > 0) heap.EnqueueDequeue(i, p); // 더 강하면 가장 약한 것과 바꾼다\n        }\n\n        // 약한 것부터 나오므로 뒤에서부터 채운다.\n        var picked = new string[heap.Count];\n        for (int k = picked.Length - 1; k >= 0; k--) picked[k] = _names[heap.Dequeue()];\n        result.AddRange(picked);\n        return result;\n    }\n\n    // [lo, hi) = prefix 로 시작하는 이름의 구간. 이분 탐색 두 번.\n    private void FindRange(string prefix, out int lo, out int hi)\n    {\n        lo = FirstIndex(prefix, strict: false); // ComparePrefix >= 0 인 첫 위치\n        hi = FirstIndex(prefix, strict: true);  // ComparePrefix > 0 인 첫 위치\n    }\n\n    private int FirstIndex(string prefix, bool strict)\n    {\n        int lo = 0, hi = _names.Length;         // 답은 [lo, hi] 안에 있다(hi = \"없음\")\n        while (lo < hi)\n        {\n            int mid = lo + (hi - lo) / 2;\n            int c = ComparePrefix(_names[mid], prefix);\n            if (strict ? c > 0 : c >= 0) hi = mid;\n            else lo = mid + 1;\n        }\n        return lo;\n    }\n\n    // name 의 앞 prefix.Length 글자를 prefix 와 글자(UTF-16 코드 단위) 단위로 비교한다.\n    // 음수: name 이 구간보다 앞, 0: name 이 prefix 로 시작, 양수: 구간보다 뒤.\n    // 이름이 서수로 정렬되어 있으면 이 값은 앞에서 뒤로 줄어들지 않으므로 이분 탐색할 수 있다.\n    private static int ComparePrefix(string name, string prefix)\n    {\n        for (int i = 0; i < prefix.Length; i++)\n        {\n            if (i == name.Length) return -1;   // name 이 prefix 의 앞부분이다: prefix 보다 앞\n            if (name[i] != prefix[i]) return name[i] < prefix[i] ? -1 : 1;\n        }\n        return 0;\n    }\n}\n",
+      "explanation": "**접근.** 이름을 서수로 정렬하면 같은 접두사로 시작하는 이름은 연속 구간을 이룹니다. \"이름의 앞 L 글자와 `prefix` 의 비교 결과\"가 정렬 순서를 따라 음수 → 0 → 양수로만 바뀌기 때문입니다. 그래서 그 결과가 처음 0 이상이 되는 위치 `lo` 와 처음 양수가 되는 위치 `hi` 를 이분 탐색으로 찾으면 `[lo, hi)` 가 답의 구간이고 `CountWithPrefix` 는 `hi - lo` 입니다. Wikipedia 의 Binary search 문서가 설명하는 leftmost 절차(찾는 값보다 작은 원소의 수 = rank)와, 두 rank 의 차이로 범위 안의 원소 수를 세는 range query 를 접두사에 적용한 것입니다. 비교 한 번이 O(L) 이므로 O(L log M) 입니다. 같은 문서는 해시는 \"다음으로 큰 키\" 같은 근사 질의에 쓸모가 없다고 적는데, 접두사 질의를 `Dictionary` 만으로 풀 수 없는 이유와 같습니다.\n\n**상위 n 개.** 구간 안에서 크기 n 인 최소 힙을 유지하며 한 번 훑습니다. 루트는 지금까지 고른 것 중 가장 약한 후보이고, 더 강한 후보가 오면 루트와 바꿉니다. Wikipedia 의 Partial sorting 문서가 설명하는 힙 기반 방법이고, 삽입마다 O(log n) 이라 O(R log n) 입니다. 문서는 가장 작은 k 개를 최대 힙으로 고르는 예로 설명하므로, 여기서는 방향을 뒤집어 가장 강한 n 개를 최소 힙으로 고릅니다. Microsoft Learn 은 `PriorityQueue` 가 우선순위 값이 가장 낮은 원소를 먼저 꺼내며 우선순위가 같은 원소의 선입선출을 보장하지 않는다고 명시합니다. 그래서 우선순위를 `(사용 횟수, -위치)` 로 둡니다. 위치는 서수 순서이므로 횟수가 같으면 이름이 서수로 큰 쪽이 약하고, 모든 우선순위가 달라 결과가 하나로 정해집니다.\n\n**서수 비교.** Microsoft Learn 의 문자열 모범 사례 문서는 문화권과 무관한 비교의 안전한 기본값으로 `StringComparison.Ordinal` 을 권하고, `String.CompareTo`, 비교 방식을 받지 않는 `String.Compare`, 기본 `StartsWith(String)` 이 현재 문화권 규칙을 쓴다고 적습니다. 같은 문서의 예제는 비교자 없는 `Array.Sort` 의 결과가 en-US 와 sv-SE 에서 다릅니다. 같은 문서는 `Array.BinarySearch` 가 배열이 이미 정렬되어 있다고 가정하므로 정렬할 때와 탐색할 때의 비교 규칙이 달라지면(문화권이 바뀌는 경우) 위험하다고 경고하고, `StringComparer.Ordinal` 로 정렬하고 탐색하는 예를 보입니다. 정렬은 문화권 순서로 하고 접두사 구간은 서수로 찾는 것도 같은 어긋남이라, 이분 탐색이 가정하는 순서가 깨집니다.\n\n**RecordUse.** 정렬 기준이 이름뿐이므로 횟수가 바뀌어도 위치는 그대로입니다. 사전으로 위치를 찾아 1 을 더하면 됩니다.\n\n**흔한 실수.** (1) 구간 끝을 \"`prefix` 보다 큰 첫 이름\"으로 잡아 긴 이름을 놓친다. (2) 동률 순서를 큐에 맡긴다. (3) 매 질의 구간 전체를 정렬하거나 명령 전체를 훑는다. (4) 생성자가 호출한 쪽 배열을 그대로 정렬해 버린다.\n\n### 흔한 오해\n- **\"`Array.Sort(names)` 는 문자열을 글자 코드(서수) 순서로 정렬한다\"** — Microsoft Learn 의 문자열 비교 모범 사례 문서에 따르면 `Array.Sort` 의 기본 해석은 `StringComparison.CurrentCulture` 입니다 [ms-learn-best-practices-strings]. 현재 문화권이 고정 문화권(InvariantCulture)인 채점기에서도 비교자 없이 정렬하면 `tp_home` 이 `tp2` 보다 앞에 오지만, 서수 순서에서는 `tp2`(`2` = U+0032) 가 `tp_home`(`_` = U+005F) 보다 앞입니다(채점기에서 실행해 확인). 서수 순서가 필요하면 `StringComparer.Ordinal` 을 넘깁니다.\n- **\"`PriorityQueue` 는 우선순위가 같으면 넣은 순서대로 꺼내 준다\"** — Microsoft Learn 은 같은 우선순위의 원소에 대해 선입선출을 보장하지 않는다고 명시합니다 [ms-learn-priorityqueue]. 우선순위가 모두 1 인 a ~ g 를 차례로 넣고 꺼내면 a, g, f, e, d, c, b 순서로 나옵니다(로컬 .NET 8 에서 실행해 확인). 동률 순서가 중요하면 이 문제처럼 그 기준을 우선순위 안에 넣습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "접두사보다 긴 이름까지 구간에 넣는다: `Suggest(\"give\", 5)` 는 give, give.gold, give_all 이고 `CountWithPrefix(\"g\")` 는 6 이다.",
+            "points": 10,
+            "sourceId": "wiki-binary-search"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "사용 횟수 내림차순, 같으면 서수 오름차순이다: 횟수가 모두 같은 tphome, tp_home, tp2, tp, tp.home 의 `Suggest(\"tp\", 10)` 은 tp, tp.home, tp2, tp_home, tphome.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "빈 접두사, 이름 전체와 같은 접두사, 더 긴 접두사, 범위 밖 접두사, n = 0, n 이 맞는 수보다 큰 경우, 명령 0개를 모두 맞게 처리한다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "RecordUse 가 정확히 같은 이름만 1 늘리고(없는 이름과 `go` 는 false), 생성자가 배열을 복사해 호출한 쪽 배열을 바꾸지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "CountWithPrefix 와 Suggest 가 이분 탐색 두 번으로 구간을 찾는다(O(L log M)). 질의마다 명령 전체를 훑지 않는다.",
+            "points": 12,
+            "sourceId": "wiki-binary-search"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "구간 안의 상위 n 개를 크기 n 인 힙으로 한 번 훑어 고른다(O(R log n)). 구간 전체를 정렬하지 않는다.",
+            "points": 10,
+            "sourceId": "wiki-partial-sorting"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "RecordUse 가 다시 정렬하지 않고 위치를 찾아 값만 바꾼다. 질의마다 사전이나 배열을 새로 만들지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "정렬과 비교가 모두 서수다(`StringComparer.Ordinal`, `string.CompareOrdinal`, 글자 단위 비교). 비교자 없는 `Array.Sort`, `string.Compare(a, b)`, `StartsWith(string)` 를 쓰지 않는다.",
+            "points": 10,
+            "sourceId": "ms-learn-best-practices-strings"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "동률 순서를 PriorityQueue 의 내부 순서에 맡기지 않고 우선순위(예: 사용 횟수와 정렬 위치)나 비교자에 넣었다.",
+            "points": 10,
+            "sourceId": "ms-learn-priorityqueue"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "구간 찾기가 CountWithPrefix 와 Suggest 에서 함께 쓰는 한 곳에 있고, 접두사 비교의 음수 / 0 / 양수 의미가 주석이나 이름으로 드러난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "이름과 사용 횟수를 같은 위치로 묶어 정렬하고(`Array.Sort(keys, items, comparer)` 나 이름 · 횟수 구조체 배열), RecordUse 는 정렬된 위치를 (사전이나 이분 탐색으로) 찾아 그 횟수만 고친다.",
+            "points": 7,
+            "sourceId": "ms-learn-array-sort"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "질의마다 명령 전체를 훑어 접두사를 검사한다: 시간 복잡도가 제약(O(L log M + R log n))을 넘는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "질의마다 맞는 구간 전체를 정렬하거나 LINQ(OrderBy 등)로 정렬한다.",
+            "penalty": -15,
+            "sourceId": "wiki-partial-sorting"
+          },
+          {
+            "id": "d3",
+            "description": "문화권 규칙으로 정렬하거나 비교한다(비교자 없는 Array.Sort, string.Compare(a, b), StartsWith(string)): 결과가 실행 환경의 문화권에 따라 달라질 수 있다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-best-practices-strings"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string J(System.Collections.Generic.List<string> list) => list == null ? \"null\" : \"[\" + string.Join(\" \", list) + \"]\";\n\n    static string Sug(CommandAutocomplete a, string prefix, int n, string expected)\n    {\n        string got = J(a.Suggest(prefix, n));\n        return got == expected ? null : \"Suggest(\\\"\" + prefix + \"\\\", \" + n + \") 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Cnt(CommandAutocomplete a, string prefix, int expected)\n    {\n        int got = a.CountWithPrefix(prefix);\n        return got == expected ? null : \"CountWithPrefix(\\\"\" + prefix + \"\\\") 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static string Use(CommandAutocomplete a, string name, bool expected)\n    {\n        bool got = a.RecordUse(name);\n        return got == expected ? null : \"RecordUse(\\\"\" + name + \"\\\") 기대 \" + expected + \" / 결과 \" + got;\n    }\n\n    static readonly string[] Names = { \"speed\", \"give\", \"god\", \"give_all\", \"help\", \"spawn_boss\", \"goto\", \"give.gold\", \"heal\", \"spawn\", \"gravity\", \"spawn.wave\" };\n    static readonly int[] Uses = { 1, 5, 9, 2, 4, 0, 0, 5, 4, 7, 1, 3 };\n    static CommandAutocomplete Console12() => new CommandAutocomplete((string[])Names.Clone(), (int[])Uses.Clone());\n\n    // 기준 구현: 전부 훑어 접두사가 맞는 이름을 모으고 (횟수 내림차순, 서수 오름차순)으로 정렬한다.\n    static string RefSuggest(string[] names, int[] uses, string prefix, int n)\n    {\n        var hits = new System.Collections.Generic.List<int>();\n        for (int i = 0; i < names.Length; i++) if (names[i].StartsWith(prefix, System.StringComparison.Ordinal)) hits.Add(i);\n        hits.Sort((x, y) => uses[x] != uses[y] ? uses[y].CompareTo(uses[x]) : string.CompareOrdinal(names[x], names[y]));\n        var top = new System.Collections.Generic.List<string>();\n        for (int k = 0; k < hits.Count && k < n; k++) top.Add(names[hits[k]]);\n        return J(top);\n    }\n\n    static int RefCount(string[] names, string prefix)\n    {\n        int c = 0;\n        foreach (var s in names) if (s.StartsWith(prefix, System.StringComparison.Ordinal)) c++;\n        return c;\n    }\n\n    public static void Main()\n    {\n        // 채점 결과가 채점기의 문화권 설정에 좌우되지 않도록 현재 문화권을 en-US 로 고정한다.\n        // 문화권 데이터를 쓸 수 없는 환경(세계화 고정 모드)이면 고정 문화권(InvariantCulture)을 쓴다.\n        try { System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo(\"en-US\"); }\n        catch (System.Globalization.CultureNotFoundException) { System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture; }\n\n        Run(\"prefix-and-ranking\", () =>\n        {\n            var a = Console12();\n            return Sug(a, \"g\", 3, \"[god give give.gold]\") ?? Sug(a, \"give\", 5, \"[give give.gold give_all]\")\n                ?? Sug(a, \"sp\", 10, \"[spawn spawn.wave speed spawn_boss]\") ?? Sug(a, \"he\", 1, \"[heal]\")\n                ?? Sug(a, \"\", 4, \"[god spawn give give.gold]\");\n        });\n\n        Run(\"ties-by-ordinal-name\", () =>\n        {\n            var a = new CommandAutocomplete(new[] { \"tphome\", \"tp_home\", \"tp2\", \"tp\", \"tp.home\", \"tq\" }, new[] { 1, 1, 1, 1, 1, 1 });\n            return Sug(a, \"tp\", 10, \"[tp tp.home tp2 tp_home tphome]\") ?? Sug(a, \"tp\", 2, \"[tp tp.home]\") ?? Sug(a, \"t\", 6, \"[tp tp.home tp2 tp_home tphome tq]\");\n        });\n\n        Run(\"edge-prefixes-and-n\", () =>\n        {\n            var a = Console12();\n            string e = Sug(a, \"help\", 3, \"[help]\") ?? Sug(a, \"helpme\", 3, \"[]\") ?? Sug(a, \"x\", 3, \"[]\") ?? Sug(a, \"a\", 3, \"[]\")\n                ?? Sug(a, \"zz\", 3, \"[]\") ?? Sug(a, \"g\", 0, \"[]\") ?? Sug(a, \"gr\", 99, \"[gravity]\");\n            if (e != null) return e;\n            var empty = new CommandAutocomplete(new string[0], new int[0]);\n            return Sug(empty, \"\", 5, \"[]\") ?? Cnt(empty, \"\", 0) ?? Use(empty, \"god\", false);\n        });\n\n        Run(\"count-with-prefix\", () =>\n        {\n            var a = Console12();\n            return Cnt(a, \"\", 12) ?? Cnt(a, \"g\", 6) ?? Cnt(a, \"give\", 3) ?? Cnt(a, \"spawn\", 3) ?? Cnt(a, \"h\", 2)\n                ?? Cnt(a, \"spawn_boss_x\", 0) ?? Cnt(a, \"a\", 0) ?? Cnt(a, \"zz\", 0) ?? Cnt(a, \"speed\", 1);\n        });\n\n        Run(\"record-use-reorders\", () =>\n        {\n            var a = Console12();\n            for (int i = 0; i < 10; i++) { string e0 = Use(a, \"goto\", true); if (e0 != null) return e0; }\n            return Sug(a, \"g\", 3, \"[goto god give]\") ?? Use(a, \"nope\", false) ?? Use(a, \"go\", false)\n                ?? Cnt(a, \"go\", 2) ?? Use(a, \"give_all\", true) ?? Use(a, \"give_all\", true) ?? Use(a, \"give_all\", true)\n                ?? Sug(a, \"give\", 3, \"[give give.gold give_all]\") ?? Use(a, \"give_all\", true) ?? Sug(a, \"give\", 2, \"[give_all give]\");\n        });\n\n        Run(\"input-arrays-not-shared\", () =>\n        {\n            var names = (string[])Names.Clone();\n            var uses = (int[])Uses.Clone();\n            var a = new CommandAutocomplete(names, uses);\n            for (int i = 0; i < names.Length; i++)\n                if (names[i] != Names[i] || uses[i] != Uses[i]) return \"생성자가 호출한 쪽 배열을 바꿨다: names[\" + i + \"] = \" + names[i] + \", uses[\" + i + \"] = \" + uses[i];\n            names[2] = \"zzz\"; uses[9] = 100;                 // 나중에 바꿔도 자동 완성은 영향을 받지 않아야 한다\n            return Sug(a, \"g\", 1, \"[god]\") ?? Sug(a, \"\", 2, \"[god spawn]\") ?? Cnt(a, \"z\", 0);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            uint s = 8086u;\n            System.Func<int, int> rnd = m => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)m); };\n            const string alphabet = \"ab_.1\";\n            System.Func<int, string> word = len => { var c = new char[len]; for (int i = 0; i < len; i++) c[i] = alphabet[rnd(alphabet.Length)]; return new string(c); };\n            for (int t = 0; t < 300; t++)\n            {\n                var set = new System.Collections.Generic.HashSet<string>();\n                int want = rnd(41);\n                while (set.Count < want) set.Add(word(1 + rnd(4)));\n                var names = new string[set.Count]; set.CopyTo(names);\n                var uses = new int[names.Length];\n                for (int i = 0; i < uses.Length; i++) uses[i] = rnd(4);\n                var a = new CommandAutocomplete((string[])names.Clone(), (int[])uses.Clone());\n                for (int op = 0; op < 60; op++)\n                {\n                    int kind = rnd(3);\n                    string when = \"무작위 \" + t + \"번 \" + op + \"번째 호출: \";\n                    if (kind == 0)\n                    {\n                        string name = names.Length > 0 && rnd(4) > 0 ? names[rnd(names.Length)] : word(1 + rnd(4));\n                        int idx = System.Array.IndexOf(names, name);\n                        if (idx >= 0) uses[idx]++;\n                        string e = Use(a, name, idx >= 0);\n                        if (e != null) return when + e;\n                    }\n                    else\n                    {\n                        string prefix = word(rnd(4));\n                        int n = rnd(6);\n                        string e = kind == 1 ? Sug(a, prefix, n, RefSuggest(names, uses, prefix, n)) : Cnt(a, prefix, RefCount(names, prefix));\n                        if (e != null) return when + e;\n                    }\n                }\n            }\n            return null;\n        });\n\n        Run(\"large-dictionary\", () =>\n        {\n            uint s = 2026u;\n            System.Func<int, int> rnd = m => { s = s * 1664525u + 1013904223u; return (int)((s >> 8) % (uint)m); };\n            const string alphabet = \"abcdefgh_.\";\n            var set = new System.Collections.Generic.HashSet<string>();\n            while (set.Count < 60000)\n            {\n                int len = 3 + rnd(6); var c = new char[len];\n                for (int i = 0; i < len; i++) c[i] = alphabet[rnd(alphabet.Length)];\n                set.Add(new string(c));\n            }\n            var names = new string[set.Count]; set.CopyTo(names);\n            var uses = new int[names.Length];\n            for (int i = 0; i < uses.Length; i++) uses[i] = rnd(1000);\n            var a = new CommandAutocomplete((string[])names.Clone(), (int[])uses.Clone());\n            string[] prefixes = { \"\", \"a\", \"h_\", \"bad\", \"ce.\", \"gggg\", \"zz\", \"._\" };\n            for (int round = 0; round < 3; round++)\n            {\n                foreach (string p in prefixes)\n                {\n                    string e = Sug(a, p, 10, RefSuggest(names, uses, p, 10)) ?? Cnt(a, p, RefCount(names, p));\n                    if (e != null) return \"6만 개 사전 \" + round + \"회차: \" + e;\n                }\n                for (int k = 0; k < 200; k++) { int i = rnd(names.Length); uses[i] += 2; a.RecordUse(names[i]); a.RecordUse(names[i]); }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "prefix-and-ranking",
+          "ties-by-ordinal-name",
+          "edge-prefixes-and-n",
+          "count-with-prefix",
+          "record-use-reorders",
+          "input-arrays-not-shared",
+          "random-vs-reference",
+          "large-dictionary"
+        ],
+        "note": "`Suggest` 가 돌려준 이름의 목록을 순서까지, `CountWithPrefix` 와 `RecordUse` 의 반환값을 기대값과 비교합니다. 접두사보다 긴 이름이 구간에 들어가는지, 사용 횟수 내림차순과 동률일 때의 서수 오름차순(`.` · 숫자 · `_` · 글자가 섞인 이름), 빈 접두사 · 이름 전체와 같은 접두사 · 더 긴 접두사 · 범위 밖 접두사, `n = 0` 과 `n` 이 맞는 수보다 큰 경우, 명령이 0개인 사전, `RecordUse` 로 순위가 바뀌는지와 없는 이름 · 접두사만 같은 이름의 처리, 생성자가 호출한 쪽 배열을 바꾸지 않고 복사해 쓰는지를 확인합니다. 그리고 무작위 사전 300개에서 호출 18,000번을 \"전부 훑어 정렬하는\" 기준 구현과 비교하고, 명령 6만 개 사전에서 접두사 여덟 개를 사용 기록 사이사이에 세 번씩 비교합니다. 결과만 검사하므로 이분 탐색 · 크기 n 힙 사용(복잡도)은 채점표로 확인하세요. 채점 템플릿은 실행 전에 현재 문화권을 en-US 로 고정합니다(문화권 데이터를 쓸 수 없는 환경이면 고정 문화권). 동률 · 무작위 · 대형 사전 케이스에는 `tp2` 와 `tp_home` 처럼 서수 순서와 문화권 순서가 반대인 이름이 들어 있어, 비교자 없는 `Array.Sort` 나 `string.Compare(a, b)` · `CompareTo` · `StartsWith(string)` 로 정렬하거나 비교한 코드는 en-US, sv-SE, tr-TR, ja-JP, ko-KR, 고정 문화권(InvariantCulture) 중 어느 것으로 고정해도 실패합니다. 다만 .NET 의 세계화 고정 모드(InvariantGlobalization)에서는 문화권 비교도 서수로 수행되어 이 차이가 사라지므로, 서수 비교 여부는 채점표로도 확인하세요. `CommandAutocomplete(string[], int[])`, `RecordUse(string)`(bool), `CountWithPrefix(string)`(int), `Suggest(string, int)`(`List<string>`)의 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Compiler Explorer(.NET 8)와 로컬 .NET 8 에서 모범 답안 전부 통과 · 스타터 실패를 확인하고, 문화권을 en-US 로 고정한 템플릿에서 문화권 정렬 · 문화권 동률 비교 변형이 채점기에서 실패하고 로컬에서는 문화권 접두사 비교 변형까지 en-US · sv-SE · tr-TR · ja-JP · ko-KR · 고정 문화권 모두에서 실패함을, 구간 끝 오류 · 동률을 큐에 맡김 · 호출한 쪽 배열 정렬 · 접두사로 RecordUse · 구간 전체 정렬 변형도 실패하고 구조체 배열로 다르게 쓴 정답은 통과함을 확인했으며, 이분 탐색 · 부분 정렬 · PriorityQueue · 문자열 비교 설명을 각 원문과 대조했고, 흔한 오해 두 항목은 Microsoft Learn 원문과 채점기 · 로컬 .NET 8 실행으로 확인했다."
+      },
+      "nextMission": "같은 기능을 트라이로 만들어 비교해 보세요. 노드마다 \"그 접두사의 상위 8개\"를 캐시하면 `Suggest` 는 O(L) 이 되지만, `RecordUse` 가 루트까지의 모든 노드 캐시를 고쳐야 합니다. 명령 2만 개(길이 4 ~ 20)로 두 구현의 메모리 사용량(`GC.GetTotalMemory` 전후 차이)과 키 입력 1만 번 · 사용 기록 1만 번의 시간을 Stopwatch 로 재고, 어느 쪽이 이 콘솔에 맞는지 측정값으로 설명하세요. 마지막으로 게임 실행 중에 명령이 추가되는 경우 정렬 배열 방식에서 무엇을 바꿔야 하는지 적으세요."
+    },
+    {
+      "id": "t3-interview-big-o-frame-budget",
+      "track": "track3",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "Big-O 를 실제 프레임 예산에 적용하기: n = 100 의 O(n²), 캐시, 분할 상환과 한 프레임의 최악",
+      "tags": [
+        "Algo_BigO_InPractice",
+        "Algo_FrameBudget",
+        "Algo_Amortized"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "ms-learn-array-sort",
+        "gpp-data-locality",
+        "ms-learn-list-add",
+        "ms-gh-perf-microbenchmark-guidelines",
+        "wiki-big-o",
+        "ms-learn-dictionary-add",
+        "wiki-dynamic-array",
+        "ms-gh-runtime-list-cs-net8",
+        "ms-gh-bdn-engineresolver-v0158"
+      ],
+      "scenario": "목표 60 fps 인 모바일 디펜스 게임의 전투 코드를 리뷰하고 있습니다. 리뷰에서 세 가지 논쟁이 붙었습니다.\n\n1. **유닛 겹침 방지.** 아군 유닛은 최대 100기이고, 매 프레임 모든 쌍(4,950쌍)의 거리를 검사합니다. 위치는 구조체 배열에 연속으로 들어 있습니다. 팀원 A: \"O(n²) 은 나쁜 코드다. 쿼드트리로 바꿔야 한다.\"\n2. **웨이브 시작 프레임의 스파이크.** 웨이브가 시작되면 적 500기를 만들어 `List<Enemy>` 에 `Add` 하고, id 로 찾으려고 `Dictionary<int, Enemy>` 에도 넣습니다. 두 컬렉션은 빈 상태로 만들어 둔 것입니다. 프로파일러를 보면 그 프레임만 튑니다. 팀원 B: \"`List.Add` 는 O(1) 이니 원인일 리 없다.\"\n3. **장비 슬롯 조회.** 캐릭터마다 장비 8칸을 배열로 들고, 슬롯 종류로 앞에서부터 찾습니다. 팀원 C: \"`Dictionary` 는 O(1) 이니 바꾸자.\"\n\n**질문: Big-O 가 실제 프레임 시간에 대해 알려 주는 것과 알려 주지 않는 것을 설명하고, 세 논쟁 각각을 어떻게 판단하겠습니까? 특히 분할 상환(amortized) O(1) 과 \"이번 프레임의 최악\"이 왜 다른 문제인지, 그리고 자기 주장을 무엇으로 증명하겠는지 말해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "n 이 작아서 증가율보다 상수와 메모리 접근이 시간을 정하는 경우.",
+        "평균 프레임 시간은 예산 안인데 특정 프레임(웨이브 시작)만 예산을 넘는 경우.",
+        "마이크로벤치마크의 결과와 실제 기기에서의 프레임 시간이 다른 경우.",
+        "기획 변경으로 n 이 10배가 되어 지금의 선택이 뒤집히는 경우."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "기획이 아군 상한을 1,000기로 올리겠다고 합니다. 모든 쌍 검사의 일은 몇 배가 되고, 균일 격자나 쿼드트리로 바꿀 시점을 어떤 실험으로 정하겠습니까? 결과는 무엇으로 보고하겠습니까?",
+          "intent": "증가율을 숫자로 계산할 수 있는지, 움직이는 객체의 구조 갱신 비용까지 포함해 비교하는지, 교차점을 측정으로 찾고 결과를 분포로 보고하는지 확인한다.",
+          "keyAnswer": "- **일의 양:** 쌍의 수는 n(n−1)/2 라서 100기의 4,950쌍이 1,000기에서는 499,500쌍, 약 101배다. 다른 조건이 같다면 이 비율로 늘 것이라고 예상할 수 있지만, 실제 시간의 배수는 캐시 상태 등에 따라 달라질 수 있으므로 측정으로 확인한다(추론).\n- **비교 대상:** 모든 쌍 / 매 프레임 다시 만드는 균일 격자 / 쿼드트리. 유닛이 계속 움직이므로 구조를 갱신하거나 다시 만드는 비용까지 한 프레임의 비용에 넣는다. 질의 비용만 비교하면 구조 쪽이 유리하게 보인다(추론).\n- **실험:** n = 50, 100, 200, 500, 1,000 과 배치 두 종류(고르게 퍼짐 / 한곳에 뭉침)로 세 구현의 프레임당 시간을 잰다. dotnet/performance 의 마이크로벤치마크 지침이 요구하듯 매번 정확히 같은 입력 데이터(고정 시드)를 쓴다.\n- **보고:** 같은 지침은 벤치마크 결과가 하나의 값이 아니라 평균, 표준편차, 최소, 최대로 기술되는 분포라고 설명한다. 그래서 n 별 분포를 표와 그래프로 내고, 곡선이 교차하는 n 을 표시한다.\n- **결정 규칙:** 기획 상한에 여유를 더한 n 에서 예산 안에 드는 가장 단순한 구조를 고른다. 1,000기에서 모든 쌍이 예산을 넘는다면 그때 바꾸고, 바꾼 뒤에도 같은 실험으로 확인한다."
+        },
+        {
+          "question": "웨이브 스파이크를 조사해 보니 `List<Enemy>` 와 `Dictionary<int, Enemy>` 가 빈 상태에서 한 프레임 안에 500개까지 자라고 있었습니다. B 의 말에서 무엇이 틀렸는지 설명하고, 어떻게 고치겠습니까? 고친 뒤 스파이크가 사라졌음을 어떻게 보이겠습니까?",
+          "intent": "분할 상환 비용과 호출 한 번의 비용, 프레임 단위 최악을 구분하는지, 재할당·복사가 한 프레임에 몰리는 구조를 설명하는지, 수정과 검증을 평균이 아닌 최악 프레임으로 하는지 확인한다.",
+          "keyAnswer": "- **틀린 점:** Microsoft Learn 에 따르면 `List<T>.Add` 는 `Count` 가 `Capacity` 보다 작을 때만 O(1) 이다. 용량이 차면 내부 배열을 다시 할당하고 기존 원소를 새 배열에 복사하므로 그 호출은 O(n) 이다. dotnet/performance 지침도 List<T> 의 내부 동작을 배열이 차면 두 배 크기 배열을 새로 할당하고 모든 원소를 복사하는 것으로 설명한다(구현에 대한 설명이지 문서화된 보장은 아니다). .NET 8 의 소스(dotnet/runtime `release/8.0` 의 `List.cs`)도 빈 리스트는 용량 4 로, 그 뒤로는 두 배로 키운다(이것도 구현이다). `Dictionary.Add` 도 Microsoft Learn 에 같은 형태로 적혀 있다: Count 가 용량과 같으면 내부 배열을 재할당하고 기존 원소를 복사하며, Count 가 용량보다 작으면 O(1) 에 가깝고 용량을 늘려야 하면 O(n) 이다.\n- **분할 상환과 프레임:** 두 배씩(일정 비율로) 키우면 500개를 넣는 동안의 복사 총량은 O(n) 이라 한 번당 평균은 O(1) 이다(Wikipedia 의 Dynamic array 문서). 하지만 그 재할당이 **모두 웨이브 시작 프레임 안에서** 일어나므로 그 프레임이 비용을 몰아서 낸다. 프레임 예산(60 fps 면 1000 / 60 ≈ 16.7 ms)은 평균이 아니라 매 프레임에 걸린다. 버려진 옛 배열은 나중에 GC 가 거둬야 할 쓰레기이기도 하다(뒤 문장은 추론).\n- **수정:** 스테이지를 불러올 때 최대 웨이브 크기만큼 용량을 미리 잡는다(용량을 받는 생성자). 적 객체는 풀에서 꺼내 쓰고, 500기를 한 프레임에 만들지 말고 여러 프레임에 나눠 생성한다(실무 기법, 추론).\n- **검증:** 실제 기기에서 웨이브 시작 전후 여러 프레임의 시간을 기록해 수정 전후의 **최댓값과 상위 백분위**를 비교한다. 평균만 비교하면 스파이크가 묻힌다. 같은 웨이브 데이터와 시드로 여러 번 반복한다."
+        },
+        {
+          "question": "C 의 제안을 검증하려고 동료가 이런 벤치마크를 만들었습니다. `[Benchmark] public void Find() { _log.Add(slotType); FindSlot(slotType); }` — 호출마다 리스트에 기록을 추가하고 결과는 버리며, 평균 하나만 보고 \"선형 탐색이 3배 느리다\"고 결론 냈습니다. 이 실험의 문제를 짚고 다시 설계해 주세요. 그리고 마이크로벤치마크로는 답할 수 없는 질문은 무엇입니까?",
+          "intent": "벤치마크 설계의 함정(부작용, 죽은 코드 제거, 단일 값)을 출처에 근거해 짚는지, 도구가 무엇을 재고 무엇을 버리는지 알고 게임의 최악 프레임과 기기 차이를 별도로 측정하는지 확인한다.",
+          "keyAnswer": "- **부작용:** dotnet/performance 의 마이크로벤치마크 지침은 호출마다 `List` 가 자라는 벤치마크를 예로 들며, 내부 배열이 차면 두 배 크기로 새로 할당해 복사하므로 다음 `Add` 가 점점 더 오래 걸리고 언젠가 `OutOfMemoryException` 이 날 수도 있다고 경고한다. 이 벤치마크는 조회가 아니라 리스트 증가를 재고 있다. \"벤치마크에는 부작용이 없어야 한다\"가 지침의 규칙이다.\n- **결과를 버림:** 지침은 죽은 코드 제거를 막으려면 벤치마크가 결과를 **반환**해야 한다고 한다.\n- **평균 하나:** 지침대로 결과는 분포(평균, 표준편차, 최소, 최대)로 봐야 한다.\n- **다시 설계:** 슬롯 8칸 배열과 `Dictionary` 를 `GlobalSetup` 같은 준비 단계에서 만들고, 매번 같은 입력(같은 슬롯 종류 순서)으로 `FindSlot` 만 호출해 결과를 반환한다. 지침이 말하듯 BenchmarkDotNet 은 반복 횟수를 스스로 정하므로 벤치마크 안에 반복문을 넣지 않는다. 실제 게임과 같은 크기(8칸)와 같은 키 분포를 쓴다.\n- **도구의 한계:** 같은 지침에 따르면 BenchmarkDotNet 은 벤치마크마다 별도 프로세스에서 실행하고 빈 메서드의 오버헤드를 빼며, **기본으로 이상값을 제거한다**. 정상 상태의 비용을 재는 도구라는 뜻이다. 그래서 (1) 한 프레임의 최악, (2) 다른 시스템과 섞여 돌 때의 캐시 상태, (3) 다른 기기에서의 결과에는 답하지 못한다. Game Programming Patterns 의 Data Locality 장도 기기마다 캐시 구성이 달라 측정 결과가 다를 수 있다고 단서를 단다. 이 세 가지는 대상 기기에서 프로파일러와 프레임 시간 기록으로 확인한다.\n- **결론 기준:** 차이가 있어도 \"호출 횟수 × 차이\"가 프레임 예산에서 의미 있는 크기인지 본다. 아니라면 더 단순하고 할당이 없는 쪽(8칸 배열)을 유지한다(판단 기준은 추론)."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**Big-O 가 말하는 것.** Wikipedia 의 Big O notation 문서대로, 입력이 커질 때 일이 얼마나 빨리 늘어나는지(증가율)를 나타내며 가장 빨리 자라는 항만 남기고 상수 계수와 나머지 항은 버립니다. 그래서 \"n = 100 에서 몇 ms 인가\"에는 답하지 않습니다. 모든 쌍 검사는 n(n−1)/2 라서 100기면 4,950쌍, 1,000기면 499,500쌍(약 101배)입니다. 증가율은 n 이 커질 때 무엇이 먼저 무너질지 알려 주지만, 지금의 n 에서 어느 쪽이 빠른지는 상수(트리 갱신, 노드 순회, 할당)와 메모리 접근이 정합니다.\n\n**작은 n 에서는 단순한 알고리즘이 이길 수 있다.** Microsoft Learn 에 따르면 .NET 의 `Array.Sort` 는 introsort 를 쓰고, 구간이 16개 이하이면 삽입 정렬로 처리합니다. 표준 라이브러리도 작은 입력에서는 증가율이 더 나쁜 O(n²) 알고리즘을 고르는 예입니다.\n\n**캐시.** Game Programming Patterns 의 Data Locality 장은 캐시 미스가 나면 CPU 가 데이터를 기다리며 멈추고, 포인터를 따라가는 접근(엔티티 포인터 → 컴포넌트 포인터)이 미스를 부른다고 설명합니다. 저자는 같은 계산을 캐시 미스 수만 다르게 한 두 프로그램에서 50배 차이를 봤다고 적으면서도, 기기마다 캐시 구성이 달라 결과가 다를 수 있다고 단서를 답니다. 연속 배열을 차례로 훑는 4,950번의 비교와 힙에 흩어진 노드를 따라가는 트리 질의 중 무엇이 빠른지는 그래서 **측정할 문제**입니다.\n\n**분할 상환과 한 프레임.** Microsoft Learn 은 `List<T>.Add` 가 `Count < Capacity` 이면 O(1) 이고, 용량을 늘려야 하면 내부 배열을 재할당·복사하므로 O(n) 이라고 명시합니다. Wikipedia 의 Dynamic array 문서는 용량을 일정 비율로 키우면 n 개를 넣는 전체 시간이 O(n) 이라 한 번은 분할 상환 상수 시간이라고 설명하고, .NET 8 의 구현(dotnet/runtime `release/8.0` 의 `List.cs`)은 빈 리스트를 용량 4 로, 그 뒤로는 두 배씩 키웁니다(구현일 뿐 보장은 아닙니다). 분할 상환 O(1) 은 긴 연산열의 평균이고, 프레임 예산(60 fps 면 약 16.7 ms)은 매 프레임에 걸립니다. 빈 컬렉션에 500기를 한 프레임에 넣으면 재할당이 그 프레임에 몰립니다.\n\n**증명 방법.** .NET 팀의 dotnet/performance 마이크로벤치마크 지침은 결과가 평균·표준편차·최소·최대로 기술되는 분포이고, 입력은 매번 같아야 하며, 벤치마크에 부작용이 없어야 하고 결과를 반환해야 한다고 말합니다. 같은 지침은 BenchmarkDotNet 이 기본으로 이상값을 제거한다고 적으므로, 정상 상태 비교는 BenchmarkDotNet 으로 하고 스파이크 같은 최악 프레임은 실제 기기의 프레임 시간 기록으로 봅니다.\n\n**판단.** (1) 100기 쌍 검사는 측정해서 예산 안이면 유지하고, 기획 상한에서 다시 잰다. (2) B 는 평균과 한 프레임의 최악을 혼동했다. (3) 8칸 선형 탐색을 바꿀 근거는 측정 전에는 없다.\n\n### 흔한 오해\n- **\"`Dictionary` 조회는 O(1) 이니 원소 8개짜리 배열을 앞에서부터 찾는 O(n) 보다 항상 빠르다\"** — Big-O 는 큰 입력에서의 증가율을 나타내며 상수 계수를 버리므로 [wiki-big-o], n = 8 에서 두 방법의 순위를 정해 주지 않습니다. .NET 의 `Array.Sort` 도 16개 이하 구간에는 O(n²) 인 삽입 정렬을 씁니다 [ms-learn-array-sort]. 이 크기에서 어느 쪽이 빠른지는 같은 입력으로 측정해 분포로 비교해야 합니다 [ms-gh-perf-microbenchmark-guidelines].\n- **\"BenchmarkDotNet 의 Mean 은 모든 반복의 평균이니 가끔 튀는 GC 스파이크도 그대로 들어간다\"** — dotnet/performance 지침에 따르면 BenchmarkDotNet 은 기본으로 이상값을 제거하고 [ms-gh-perf-microbenchmark-guidelines], BenchmarkDotNet v0.15.8 의 구현은 기본 실행 전략(Throughput, 메모리 무작위화 끔)에서 위쪽 이상값을 제거하도록 정합니다 [ms-gh-bdn-engineresolver-v0158]. 튀는 측정값이 통계에서 빠질 수 있으므로 한 프레임의 최악은 대상 기기의 프레임 시간 기록으로 따로 봐야 합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Big-O 가 상수와 낮은 차수 항을 버린 증가율이라 특정 n 에서의 시간을 말해 주지 않는다는 점을 설명하고, 쌍 수 4,950 → 499,500(약 101배)을 계산했다.",
+            "points": 12,
+            "sourceId": "wiki-big-o"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "분할 상환 O(1) 과 호출 한 번의 최악을 구분했다: List<T>.Add 는 용량이 차면 재할당·복사로 O(n) 이고, 그 비용이 웨이브 시작 프레임에 몰린다.",
+            "points": 12,
+            "sourceId": "ms-learn-list-add"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "작은 n 에서 증가율이 나쁜 알고리즘이 이길 수 있다는 근거(예: Array.Sort 가 16개 이하 구간에 삽입 정렬을 씀)를 들고, Big-O 만으로 쿼드트리 교체를 결정하지 않았다.",
+            "points": 11,
+            "sourceId": "ms-learn-array-sort"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "연속 배열 순회와 포인터를 따라가는 트리 질의의 캐시 차이를 설명하고, 그 크기가 기기마다 달라 측정해야 한다는 단서를 붙였다.",
+            "points": 12,
+            "sourceId": "gpp-data-locality"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "웨이브 스파이크의 구체적 대응을 말했다: 용량 미리 확보, 객체 풀, 생성을 여러 프레임에 나누기.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "움직이는 유닛의 공간 구조를 비교할 때 매 프레임 갱신·재구성 비용을 질의 비용과 함께 넣었다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "벤치마크를 dotnet/performance 지침대로 설계했다: 같은 입력, 부작용 없음, 결과 반환, 결과를 분포로 보기.",
+            "points": 10,
+            "sourceId": "ms-gh-perf-microbenchmark-guidelines"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "BenchmarkDotNet 이 정상 상태를 재고 기본으로 이상값을 제거한다는 점을 알고, 한 프레임의 최악은 대상 기기의 프레임 시간 기록(최댓값, 상위 백분위)으로 확인한다.",
+            "points": 10,
+            "sourceId": "ms-gh-perf-microbenchmark-guidelines"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "결정 규칙을 제시했다: 기획 상한에 여유를 더한 n 에서 예산 안에 드는 가장 단순한 구조를 고르고, n 이 바뀌면 다시 잰다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "팀원을 Big-O 구호가 아니라 측정값(수정 전후, 교차점)으로 설득하는 방식을 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "\"O(n²) 은 항상 나쁘다\", \"O(1) 이 항상 빠르다\"처럼 Big-O 만으로 결론을 내리고 측정을 제안하지 않는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "출처나 측정 없이 구체적인 성능 수치(예: \"캐시 미스 한 번에 몇 사이클\", \"Dictionary 가 몇 배 빠르다\")를 사실처럼 말한다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "분할 상환 O(1) 을 호출마다의 상한으로 착각해 List.Add 가 스파이크의 원인일 수 없다고 답한다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-list-add"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Big-O 단순화 규칙, Array.Sort 의 16개 이하 삽입 정렬, List.Add · Dictionary.Add 의 O(1)/O(n) 비고, 동적 배열의 분할 상환, .NET 8 List.cs 의 두 배 확장, dotnet/performance 벤치마크 지침(분포 · 같은 입력 · 부작용 없음 · 결과 반환 · 반복문 없음 · 이상값 제거)과 Data Locality 장의 50배 실험 · 기기별 단서를 각 원문과 대조했고, 나머지 수치는 문제 안의 산술(쌍 수, 1000/60)뿐임을 확인했으며, 흔한 오해 두 항목은 Wikipedia · Microsoft Learn · dotnet/performance 지침과 BenchmarkDotNet v0.15.8 의 EngineResolver.cs 원문으로 확인했다."
+      },
+      "nextMission": "세 구현(모든 쌍, 매 프레임 다시 만드는 균일 격자, 쿼드트리)의 유닛 겹침 검사를 BenchmarkDotNet 으로 n = 50, 100, 200, 500, 1,000 과 두 가지 배치(고르게 / 뭉침)에서 재고, 고정 시드로 만든 같은 입력을 쓰세요. 결과를 분포(평균, 표준편차, 최소, 최대)로 표에 정리하고 교차하는 n 을 찾습니다. 이어서 게임 안에 프레임 시간 기록기를 넣어 웨이브 시작 전후 300프레임의 최댓값과 상위 1% 프레임 시간을 수정 전후로 비교하고, 두 측정이 서로 다른 질문에 답한다는 점을 한 문단으로 설명하세요."
     }
   ]
 }
