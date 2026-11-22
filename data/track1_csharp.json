@@ -643,6 +643,198 @@
       "title": "Enter Play mode with domain reload disabled (Unity 6 Manual)",
       "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/code-reload-serialization/code-reloading-editor/domain-reloading",
       "summary": "도메인 리로드를 끄면 static 변수와 static 이벤트 구독자가 플레이 모드 세션 사이에 유지된다"
+    },
+    {
+      "id": "ms-ref-returns",
+      "title": "C# 레퍼런스: 점프 문 — ref 반환(Ref returns)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/jump-statements#ref-returns",
+      "summary": "ref 반환의 정의, 호출자가 ref 변수로 받아야 수정이 반영된다는 규칙, ref safe context와 CS8168, ref readonly 반환"
+    },
+    {
+      "id": "ms-ref-locals",
+      "title": "C# 레퍼런스: 선언문 — 참조 변수(ref 지역 변수)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/declarations#reference-variables",
+      "summary": "ref 지역 변수가 다른 변수의 별칭이라는 정의, ref 재할당, ref readonly 지역 변수"
+    },
+    {
+      "id": "ms-array-resize",
+      "title": "Array.Resize<T> 메서드 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.array.resize?view=net-8.0",
+      "summary": "새 배열을 할당해 원소를 복사한 뒤 기존 배열 변수를 새 배열로 바꾼다는 설명"
+    },
+    {
+      "id": "unity-csharp-compiler",
+      "title": "Unity 6.0 매뉴얼: C# compiler and language version reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/overview-of-dot-net-in-unity/csharp-compiler",
+      "summary": "Unity 6.0이 Roslyn과 C# 9.0을 쓰고, Mono와 IL2CPP 백엔드 모두 Boehm-Demers-Weiser GC를 쓴다는 명시"
+    },
+    {
+      "id": "ms-weak-references",
+      "title": "Weak References (.NET 가비지 수집 문서)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/weak-references",
+      "summary": "강한 참조와 약한 참조의 정의, 약한 참조가 유효한 기간, 짧은/긴 약한 참조, 사용 지침(작은 객체 금지, 캐시 정책 설계)"
+    },
+    {
+      "id": "ms-weakreference-trygettarget",
+      "title": "WeakReference<T>.TryGetTarget(T) 메서드 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.weakreference-1.trygettarget?view=net-8.0",
+      "summary": "대상을 꺼내는 데 성공하면 true와 대상을, 아니면 false를 돌려준다"
+    },
+    {
+      "id": "ms-weakreference-settarget",
+      "title": "WeakReference<T>.SetTarget(T) 메서드 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.weakreference-1.settarget?view=net-8.0",
+      "summary": "기존 WeakReference<T>가 가리키는 대상을 바꾼다"
+    },
+    {
+      "id": "ms-gc-collect",
+      "title": "GC.Collect 메서드 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.gc.collect?view=net-8.0",
+      "summary": "접근할 수 없는 메모리 회수를 \"시도\"하며, 세대 지정 오버로드는 그 세대의 접근 불가 메모리 전부의 회수를 보장하지 않는다"
+    },
+    {
+      "id": "ms-gh-runtime8-weakreference-t",
+      "title": "dotnet/runtime release/8.0: WeakReference.T.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/WeakReference.T.cs",
+      "summary": ".NET 8 구현: 생성자가 GC 핸들을 할당하고 SetTarget은 기존 핸들을 갱신, TryGetTarget을 노출한 이유를 적은 주석"
+    },
+    {
+      "id": "ms-learn-dictionary-remove",
+      "title": "Dictionary<TKey,TValue>.Remove 메서드 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2.remove?view=net-8.0",
+      "summary": ".NET Core 3.0 이상에서는 열거 중 Remove가 열거자를 무효화하지 않는다는 명시"
+    },
+    {
+      "id": "cmu-17214-03-testability",
+      "title": "CMU 17-214/514 (Fall 2026) 03 Testing and Testability 슬라이드",
+      "url": "https://github.com/CMU-17-214/f2026/blob/main/slides/03-testing-and-testability.pdf",
+      "summary": "테스트 가능성은 설계 속성이며, 시계·무작위 같은 비결정적 의존성을 주입해 테스트가 통제하게 하라는 강의"
+    },
+    {
+      "id": "unity-scripting-backends-intro",
+      "title": "Unity 6.0 매뉴얼: Introduction to scripting back ends",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/intro",
+      "summary": "Mono(JIT)와 IL2CPP(AOT)의 정의, 플랫폼 지원, 같은 기본 클래스 라이브러리, 실행 모델·빌드 시간·시작 시간·메모리·리플렉션·제네릭 비교표"
+    },
+    {
+      "id": "unity-mono-backend",
+      "title": "Unity 6.0 매뉴얼: Mono scripting back end",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/mono",
+      "summary": "Unity의 Mono 포크, JIT 컴파일, Boehm-Demers-Weiser 가비지 컬렉터"
+    },
+    {
+      "id": "unity-il2cpp-intro",
+      "title": "Unity 6.0 매뉴얼: Introduction to IL2CPP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/il2cpp/il2cpp-introduction",
+      "summary": "IL2CPP 빌드 단계(Roslyn → 관리 코드 스트리핑 → C++ 변환 → 네이티브 컴파일)와 Code Generation 옵션"
+    },
+    {
+      "id": "unity-il2cpp-limitations",
+      "title": "Unity 6.0 매뉴얼: IL2CPP limitations",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/il2cpp/scripting-restrictions",
+      "summary": "AOT에서의 리플렉션·직렬화 주의, Reflection.Emit 불가, 제네릭 인스턴스와 범용 공유 코드, UsedOnlyForAOTCodeGeneration"
+    },
+    {
+      "id": "unity-managed-code-stripping",
+      "title": "Unity 6.0 매뉴얼: Managed code stripping",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/script-compilation/managed-code-stripping",
+      "summary": "Unity linker의 정적 분석으로 도달할 수 없는 코드를 제거하며 런타임에 생성되는 코드는 분석에 포함되지 않는다"
+    },
+    {
+      "id": "unity-memory-overview",
+      "title": "Unity 6.0 매뉴얼: Memory in Unity introduction",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/performance-memory/overview",
+      "summary": "관리 메모리, C# 비관리 메모리, 네이티브 메모리의 세 층과 각각을 누가 관리하는지"
+    },
+    {
+      "id": "unity-gc-overview",
+      "title": "Unity 6.0 매뉴얼: Garbage collector overview",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/performance-memory/managed-memory/garbage-collector",
+      "summary": "임시 할당의 영향과 프레임당 관리 힙 할당을 0 B에 가깝게 줄이라는 권고"
+    },
+    {
+      "id": "unity-track-gc-alloc",
+      "title": "Unity 6.0 매뉴얼: Tracking garbage collection allocations",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/performance-memory/managed-memory/track-garbage-collection",
+      "summary": "GC.Alloc 열이 선택한 프레임·스레드의 관리 힙 할당 바이트라는 정의, GC allocated in frame과의 차이, 기기 개발 빌드에서 프로파일하라는 권고"
+    },
+    {
+      "id": "unity-profiler-cpu",
+      "title": "Unity 6.0 매뉴얼: CPU Usage Profiler module reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/profiler/visualizing-data/cpu/cpu",
+      "summary": "Hierarchy 뷰의 GC Alloc 열 정의와 EditorOnly 샘플 접기 옵션"
+    },
+    {
+      "id": "unity-memory-profiler-module",
+      "title": "Unity 6.0 매뉴얼: Memory Profiler module reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/profiler/visualizing-data/memory/memory",
+      "summary": "Texture Memory·Object Count·GC Allocated In Frame 차트, Tracked/Untracked Memory(형식 메타데이터 포함), Total Memory Breakdown"
+    },
+    {
+      "id": "mp-managed-shells",
+      "title": "Memory Profiler 1.2: Analyzing Unity object memory leaks (managed shell objects)",
+      "url": "https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.2/manual/managed-shell-objects.html",
+      "summary": "네이티브 객체의 C# 래퍼(관리 셸), Destroy 뒤 남는 셸과 == null처럼 보이는 동작"
+    },
+    {
+      "id": "ms-csharp-spec-arg-eval",
+      "title": "C# 명세 §12.6.2.3 인자 목록의 런타임 평가",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12623-run-time-evaluation-of-argument-lists",
+      "summary": "인자는 호출 전에 왼쪽부터 평가되고, params를 펼친 형태로 부르면 호출이 배열을 만들어 넘긴다"
+    },
+    {
+      "id": "ms-interpolated-strings",
+      "title": "C# 레퍼런스: 문자열 보간($)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated",
+      "summary": "형식이 string인 보간 문자열은 DefaultInterpolatedStringHandler가 처리한다는 컴파일 설명, 문화권 지정 서식"
+    },
+    {
+      "id": "ms-interpolated-string-handler",
+      "title": "Tutorial: Write a custom string interpolation handler",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/performance/interpolated-string-handler",
+      "summary": "로그 레벨이 꺼져 있으면 out bool로 문자열 생성을 건너뛰는 사용자 지정 보간 처리기(C# 10 이상)"
+    },
+    {
+      "id": "ms-conditionalattribute",
+      "title": "ConditionalAttribute 클래스 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=net-8.0",
+      "summary": "조건부 컴파일 기호가 없으면 그 메서드 호출을 IL에 넣지 않는다"
+    },
+    {
+      "id": "ms-icomparable-t",
+      "title": "IComparable<T> 인터페이스 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.icomparable-1?view=net-8.0",
+      "summary": "같은 형식끼리 강한 형식으로 비교하는 CompareTo(T)"
+    },
+    {
+      "id": "ms-gh-runtime8-arraysorthelper",
+      "title": "dotnet/runtime release/8.0: ArraySortHelper.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Collections/Generic/ArraySortHelper.cs",
+      "summary": ".NET 8 구현: IComparer<T>를 받는 Sort가 comparer.Compare로 Comparison<T>를 만들어 정렬한다"
+    },
+    {
+      "id": "varghese-lauck-timing-wheels",
+      "title": "Varghese & Lauck, Hashed and Hierarchical Timing Wheels (IEEE/ACM ToN, 1997)",
+      "url": "https://www.cs.columbia.edu/~nahum/w6998/papers/ton97-timing-wheels.pdf",
+      "summary": "타이밍 휠의 O(1) 시작·중지, 해시 휠(Scheme 6)과 계층형 휠(Scheme 7), 틱당 평균 작업량 분석"
+    },
+    {
+      "id": "ms-gh-runtime8-timer",
+      "title": "dotnet/runtime release/8.0: Timer.cs (TimerQueue)",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Threading/Timer.cs",
+      "summary": ".NET 8 구현: 정렬하지 않은 이중 연결 리스트(삽입·삭제 O(1), 탐색 O(N))와 short/long 두 리스트"
+    },
+    {
+      "id": "ms-priorityqueue",
+      "title": "PriorityQueue<TElement,TPriority> 클래스 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.priorityqueue-2?view=net-8.0",
+      "summary": "배열 기반 4진 최소 힙이며 우선순위가 같은 요소의 선입선출을 보장하지 않는다"
+    },
+    {
+      "id": "ms-dotnet9-priorityqueue-remove",
+      "title": "What's new in .NET 9 libraries: PriorityQueue.Remove()",
+      "url": "https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/libraries#priorityqueueremove-method",
+      "summary": "PriorityQueue에 임의 요소 제거(Remove)가 .NET 9에서 추가됨"
     }
   ],
   "problems": [
@@ -4474,6 +4666,811 @@
         "note": "로컬 .NET 8.0.8과 채점기에서 정답·스타터를 실행하고 static 필드 하나씩만 남긴 변형, Dispose에서 static을 비우는 수정, 레벨 이름을 키에 넣은 캐시가 실패하고 Dispose가 비어 있는 인스턴스 필드 정답이 통과하는 것을 확인했으며, C# 표준 §15.3.8·§15.5.3, readonly 키워드 문서, GC 기본 문서, Unity 6 도메인 리로드 문서와 대조했다."
       },
       "nextMission": "레벨과 무관하게 프로세스 전체에서 공유해도 되는 데이터(예: 종류별 기본 골드 표)와 레벨마다 달라지는 데이터(배율이 적용된 표)를 나눠, 앞의 것은 불변 객체 하나를 주입받고 뒤의 것만 세션이 소유하도록 바꿔 보세요. 그런 다음 Unity 6 프로젝트에서 Project Settings > Editor의 Enter Play Mode Settings로 도메인 리로드를 끈 채(예: Reload Scene only) 정적 카운터를 만들어, 플레이 모드를 다시 시작해도 값이 남는지 확인하고 `[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]`로 초기화하는 방법을 매뉴얼에서 찾아 적용하세요."
+    },
+    {
+      "id": "t1-tutor-ref-returns-in-readonly-members",
+      "track": "track1",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "ref 반환·in 매개변수·readonly 멤버: 64바이트 탄환을 복사하지 않고 고치고 읽기",
+      "tags": [
+        "CSharp_RefReturn",
+        "CSharp_InParam",
+        "CSharp_ReadonlyMember"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-ref-returns",
+        "ms-ref-locals",
+        "ms-csharp-spec-fn-invocation",
+        "ms-avoid-alloc"
+      ],
+      "scenario": "탄막 슈팅 게임에서 화면의 탄환 수천 개를 `Bullet` struct 배열로 관리합니다. `Bullet`은 float 8개와 int 8개, 64바이트입니다. 처음에는 `pool.Get(i).Life -= dt;`라고 썼다가 CS1612로 컴파일이 되지 않자, 동료가 `Bullet b = pool.Get(i); b.Life -= dt;`로 바꿨습니다. 이제 컴파일은 되지만 탄환이 움직이지도, 사라지지도 않습니다. 위협도 계산(`TotalThreat`)은 탄환 하나마다 64바이트 복사본을 두 번(`Get`의 반환값, `ThreatOf`의 인자) 만듭니다.\n\n**해야 할 일**\n1. 아래 개념 카드를 읽으세요.\n2. 스타터 코드의 `BulletPool`에 `ref Bullet GetRef(int index)`와 `ref readonly Bullet Peek(int index)`를 추가하세요(인덱스가 0 미만이거나 `Count` 이상이면 `ArgumentOutOfRangeException`). 그리고 `BulletSystem.Tick`이 배열 안의 탄환을 직접 고치도록, `TotalThreat`와 `ThreatOf`가 64바이트를 복사하지 않고 읽도록 바꾸세요. `Bullet`은 struct로 둡니다.\n3. 퀴즈 2문제에 답하세요.\n\n이 문제에는 실행 채점이 없습니다. 직접 실행해 확인하세요. 탄환 세 개 `(Vx 10, Life 1, Damage 5)`, `(Vy -2, Life 0.25, Damage 7)`, `(Vx 1, Vy 1, Life 2, Damage 3)`이 든 풀에서 `TotalThreat(pool, 1f)`는 15이고, `Tick(pool, 0.5f)` 뒤에는 두 번째 탄환의 수명이 다해 8이 되어야 합니다. 첫 탄환은 X 5, Life 0.5, Age 0.5가 됩니다. 스타터 코드는 `Tick` 뒤에도 15이고 첫 탄환도 그대로입니다(.NET 8에서 실행해 확인).",
+      "constraints": [
+        "`Bullet`은 struct로 유지한다(class로 바꾸지 않는다)",
+        "`Tick`, `TotalThreat`, `ThreatOf` 안에서 `Bullet` 값을 복사하는 지역 변수나 값 매개변수를 만들지 않는다: ref 지역 변수, `ref readonly`, `in`을 쓴다",
+        "`GetRef`와 `Peek`은 0 미만이거나 `Count` 이상인 인덱스에 `ArgumentOutOfRangeException`을 던진다(배열 길이가 아니라 `Count`가 기준)",
+        "`unsafe`, 포인터, `System.Runtime.CompilerServices.Unsafe` 금지. 시간 복잡도는 O(탄환 수) 그대로"
+      ],
+      "starterCode": "using System;\n\n// 탄환 하나: float 8개 + int 8개 = 64바이트짜리 struct\npublic struct Bullet\n{\n    public float X, Y, Vx, Vy;\n    public float Life, Radius, Spin, Age;\n    public int Damage, OwnerId, ColorRgba, Flags;\n    public int PatternId, Reserved0, Reserved1, Reserved2;\n\n    public float SpeedSq() => Vx * Vx + Vy * Vy;\n}\n\npublic sealed class BulletPool\n{\n    private Bullet[] _items;\n    private int _count;\n\n    public BulletPool(int capacity) { _items = new Bullet[capacity]; }\n\n    public int Count => _count;\n\n    public int Add(Bullet bullet)\n    {\n        if (_count == _items.Length) Array.Resize(ref _items, _items.Length * 2);\n        _items[_count] = bullet;\n        return _count++;\n    }\n\n    // 값으로 반환한다: 호출할 때마다 64바이트 복사본이 나간다\n    public Bullet Get(int index)\n    {\n        if ((uint)index >= (uint)_count) throw new ArgumentOutOfRangeException(nameof(index));\n        return _items[index];\n    }\n}\n\npublic static class BulletSystem\n{\n    // 모든 탄환을 dt초만큼 이동시키고 수명을 줄인다\n    public static void Tick(BulletPool pool, float dt)\n    {\n        for (int i = 0; i < pool.Count; i++)\n        {\n            Bullet b = pool.Get(i);\n            b.X += b.Vx * dt;\n            b.Y += b.Vy * dt;\n            b.Life -= dt;\n            b.Age += dt;\n        }\n    }\n\n    // 살아 있고(Life > 0) 충분히 빠른(속력² >= minSpeedSq) 탄환의 피해 합\n    public static int TotalThreat(BulletPool pool, float minSpeedSq)\n    {\n        int sum = 0;\n        for (int i = 0; i < pool.Count; i++) sum += ThreatOf(pool.Get(i), minSpeedSq);\n        return sum;\n    }\n\n    private static int ThreatOf(Bullet b, float minSpeedSq)\n    {\n        return b.Life > 0f && b.SpeedSq() >= minSpeedSq ? b.Damage : 0;\n    }\n}\n",
+      "edgeCases": [
+        "`Count` 이상 `_items.Length` 미만의 인덱스: 배열 안이지만 아직 탄환이 아닌 칸이므로 `GetRef`와 `Peek`이 예외를 던져야 한다",
+        "`var b = pool.GetRef(i);`처럼 `ref` 없이 받으면 다시 복사본이 된다",
+        "`GetRef`로 받은 ref를 들고 있는 동안 `Add`가 배열을 키우면 그 ref는 옛 배열을 가리킨다",
+        "`in`으로 받은 탄환에서 readonly가 아닌 메서드를 부르면 컴파일러가 방어적 복사본을 만든다"
+      ],
+      "hints": [
+        "`Bullet b = pool.Get(i);`에서 `b`는 배열 칸이 아니라 그 칸의 64바이트를 복사해 담은 새 지역 변수입니다. `b.Life -= dt`가 바꾸는 것은 이 복사본이고, 반복이 끝나면 버려집니다. 손으로 따라가 보세요. `Life 1`인 탄환에 `Tick(pool, 0.5f)`를 두 번 하면 배열 안의 `Life`는 몇입니까? 필요한 것은 '배열 칸 자체'를 부르는 다른 이름입니다. C#에서 변수의 별칭을 만드는 문법이 무엇이었는지 떠올려 보세요.",
+        "고칠 곳은 세 군데입니다. (1) `BulletPool`: 배열 원소의 별칭을 돌려주는 메서드와, 같은 일을 읽기 전용으로 하는 메서드. 범위 검사의 기준은 배열 길이가 아니라 `Count`입니다. (2) `Tick`: 그 별칭을 받는 지역 변수. 선언과 대입 양쪽에 같은 키워드가 필요합니다. (3) `ThreatOf`의 매개변수 한정자와 `Bullet.SpeedSq`의 선언. (3)에서 메서드 쪽을 그대로 두면 무슨 일이 생기는지는 개념 카드의 '방어적 복사'를 보세요.",
+        "```\npublic ref Bullet GetRef(int index):\n    if (index가 0 .. Count-1 밖) throw ArgumentOutOfRangeException\n    return /* ??? 배열 원소의 별칭 */\n\npublic /* ??? */ Bullet Peek(int index):   // 위와 같되 호출자가 고칠 수 없다\n\nTick(pool, dt):\n    for i in 0 .. Count-1:\n        /* ??? */ b = /* ??? */ pool.GetRef(i)\n        b.X += b.Vx * dt; ... b.Life -= dt; b.Age += dt   // 이제 배열이 바뀐다\n\nTotalThreat: sum += ThreatOf(/* ??? */ pool.Peek(i), minSpeedSq)\nThreatOf(/* ??? */ Bullet b, float minSpeedSq)          // 복사 없이, 읽기 전용으로\nBullet: public /* ??? */ float SpeedSq() => Vx * Vx + Vy * Vy   // 상태를 바꾸지 않는다고 선언\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 상자를 복제해 건네지 말고 '선반 위치표'를 건네기\n\n창고 선반(배열)에 탄환 상자(struct)가 줄지어 있습니다. `Get(i)`는 상자를 통째로 복제해 창구로 내주는 방식입니다. 받은 사람이 복제품에 \"수명 -0.5\"라고 적어도 선반 위 원본은 그대로입니다. **ref 반환**은 복제품 대신 \"12번 칸\"이라는 위치표를 건네는 방식입니다. 위치표를 든 사람이 고치면 선반 위 상자가 바뀌고, 64바이트를 옮겨 담는 일도 없습니다.\n\n### ref 반환과 ref 지역 변수\n\n```csharp\npublic ref Bullet GetRef(int index) => ref _items[index];   // 배열 칸 자체의 별칭을 돌려준다\n\nref Bullet b = ref pool.GetRef(3);   // b는 _items[3]의 별칭(ref 지역 변수)\nb.Life -= 0.5f;                       // 배열 안의 탄환이 바뀐다\n```\n\n- Microsoft Learn의 설명대로 ref 반환은 값 대신 **변수에 대한 참조(별칭)** 를 호출자에게 돌려주고, 호출자가 그것을 고치면 메서드 쪽 객체의 상태에 반영됩니다. 선언에는 반환 형식 앞에 `ref`, 모든 `return` 문에도 `ref`를 씁니다.\n- **받는 쪽이 고릅니다.** 같은 문서는 호출자가 반환된 변수를 값으로 받을지 참조로 받을지 선택할 수 있고, 상태를 고치려면 **명시적으로 ref로 선언한 변수**에 받아야 한다고 적습니다. `var b = pool.GetRef(3);`은 컴파일되지만 `b`는 복사본입니다. `ref var b = ref pool.GetRef(3);`처럼 선언과 대입 양쪽에 `ref`가 있어야 별칭입니다.\n- **무엇을 ref로 돌려줄 수 있는가.** 메서드가 끝난 뒤에도 살아 있는 변수만 됩니다. Learn의 \"ref safe context\" 표로 보면 클래스 필드와 ref/in 매개변수는 호출자까지, 일반 지역 변수는 그 블록까지만 안전합니다. 배열은 필드에 있으므로 `ref _items[index]`는 돌려줄 수 있고, 지역 변수를 ref로 돌려주면 CS8168입니다.\n- **`ref readonly` 반환.** 복사 없이 읽게 하되 고치지는 못하게 합니다. `ref readonly var c = ref pool.Peek(0);`로 받은 뒤 `c.Life = 0f;`는 CS0131, `ref Bullet d = ref pool.Peek(0);`은 CS8329 오류입니다(.NET 8 SDK로 컴파일해 확인).\n\n### in 매개변수\n\n`static int ThreatOf(in Bullet b, float minSpeedSq)`는 인자를 참조로 받고, 메서드 안에서 `b`에 새 값을 대입할 수 없습니다. 호출하는 쪽의 `in`은 생략할 수 있습니다. 인자가 변수가 아니거나(리터럴, 속성의 반환값) 변환이 필요하면 컴파일러가 임시 변수를 만들어 그 참조를 넘깁니다. Learn의 성능 문서는 3워드 이하의 작은 struct는 복사 비용이 무시할 만하지만 그보다 큰 타입에서는 측정 가능한 영향이 있다고 설명합니다. 64비트에서 64바이트 `Bullet`은 8워드입니다. 작은 struct까지 기계적으로 `in`으로 바꿀 이유는 없고, 바꿨다면 재서 확인합니다.\n\n### 방어적 복사와 readonly 멤버\n\n`in` 매개변수, `readonly` 필드, `ref readonly` 변수는 \"고치면 안 되는\" 변수입니다. 그런데 그 위에서 `b.SpeedSq()` 같은 메서드를 부르면 컴파일러는 그 메서드가 필드를 바꾸지 않는다는 것을 모를 수 있습니다. C# 명세(§12.6.6.1)는 이 경우를 정해 둡니다. struct가 `readonly struct`가 아니고 호출하는 멤버도 readonly 멤버가 아니면, **임시 지역 변수를 만들어 값을 복사한 뒤 그 복사본 위에서 메서드를 부릅니다.** 원본은 지켜지지만 `in`으로 아낀 복사가 호출마다 되살아납니다.\n\n- 필드가 생성 후 바뀌지 않는 타입(예: 탄환 패턴 설정)은 `readonly struct`로 선언합니다. 모든 필드가 readonly여야 하고, 생성자를 뺀 인스턴스 멤버는 암시적으로 readonly입니다.\n- `Bullet`처럼 매 프레임 바뀌는 struct는 readonly struct가 될 수 없습니다. 대신 상태를 바꾸지 않는 멤버에 `readonly`를 붙입니다: `public readonly float SpeedSq() => Vx * Vx + Vy * Vy;`. readonly 멤버 안에서 필드에 대입하면 컴파일 오류이므로, 컴파일러가 복사 없이 불러도 안전하다는 것을 압니다.\n\n### 한눈에 보기: 어디서 64바이트가 복사되는가\n\n| 코드 | 복사 |\n|---|---|\n| `Bullet b = pool.Get(i);` | 있음(값 반환) |\n| `var b = pool.GetRef(i);` | 있음(ref 없이 받음) |\n| `ref var b = ref pool.GetRef(i);` | 없음 |\n| `ref readonly var b = ref pool.Peek(i);` | 없음(읽기 전용) |\n| `ThreatOf(in b, …)` 안에서 readonly `SpeedSq()` 호출 | 없음 |\n| `ThreatOf(in b, …)` 안에서 readonly가 아닌 `SpeedSq()` 호출 | 호출마다 방어적 복사 |\n\n### ref는 '변수'를 가리킨다, '몇 번 칸'을 가리키지 않는다\n\n`ref Bullet first = ref pool.GetRef(0);`의 `first`는 \"지금 `_items`가 가리키는 배열의 0번 원소\"라는 변수 하나에 묶입니다. 그 뒤 `Add`가 용량을 넘겨 `Array.Resize`를 부르면, 문서대로 새 배열이 할당되고 원소가 복사된 뒤 필드가 새 배열로 바뀝니다. `first`는 여전히 **옛 배열**의 원소를 가리키므로 그 뒤의 쓰기는 풀에 반영되지 않습니다. `CollectionsMarshal.AsSpan(list)` 문서가 Span을 쓰는 동안 리스트에 항목을 추가하거나 제거하지 말라고 적는 것도 같은 이유입니다. ref는 짧게 받아 쓰고, 컬렉션을 바꾸는 호출 너머로 들고 가지 않습니다.",
+      "quiz": [
+        {
+          "question": "모범 답안의 `BulletPool`(`GetRef`, `Peek`)을 쓰는 아래 코드에서 (D) 줄은 컴파일되지 않습니다. 이유를 말하고, (D)를 지운 뒤 무엇이 출력되는지 (A), (B), (C) 각각이 원본을 바꾸는지 복사본을 바꾸는지와 함께 설명해 보세요.\n\n```csharp\nvar pool = new BulletPool(4);\npool.Add(new Bullet { Life = 3f });\n\nvar a = pool.GetRef(0);          // (A)\na.Life = 1f;\n\nref var b = ref pool.GetRef(0);  // (B)\nb.Life -= 0.5f;\n\npool.GetRef(0).Damage = 7;       // (C)\n\nref readonly var c = ref pool.Peek(0);\nc.Life = 0f;                     // (D)\n\nConsole.WriteLine(pool.Peek(0).Life + \" \" + pool.Peek(0).Damage);\n```",
+          "answer": "**(D)는 CS0131 오류**입니다. `c`는 `ref readonly` 지역 변수라서 그 변수를 통해서는 필드에 대입할 수 없습니다(.NET 8 SDK로 컴파일해 확인). 읽기 전용으로 열어 둔 경로로는 고칠 수 없다는 것이 `Peek`을 따로 둔 이유입니다. `ref Bullet d = ref pool.Peek(0);`처럼 읽기 전용 별칭을 쓰기 가능한 별칭으로 바꾸려 해도 CS8329로 막힙니다.\n\n(D)를 지우면 **`2.5 7`** 이 출력됩니다(실행해 확인).\n\n- **(A) 복사본.** `GetRef`는 별칭을 돌려주지만, 받는 쪽이 `ref` 없이 `var a`로 받았으므로 그 순간 64바이트가 `a`로 복사됩니다. `a.Life = 1f`는 원본에 닿지 않습니다. Learn이 \"상태를 고치려면 ref로 선언한 변수에 받아야 한다\"고 적은 경우가 바로 이것입니다.\n- **(B) 원본.** `ref var b = ref …`는 배열 0번 원소의 별칭이므로 3에서 0.5를 빼 2.5가 됩니다.\n- **(C) 원본.** ref 반환 호출식은 그 자체로 변수로 취급되므로 `pool.GetRef(0).Damage = 7`이 컴파일되고 배열 원소를 바로 고칩니다. 값으로 반환하는 `Get(0).Damage = 7`이 CS1612인 것과 대비됩니다."
+        },
+        {
+          "question": "아래 코드는 무엇을 출력할까요? `first.Life = 0f;`가 왜 풀에 반영되지 않는지 설명하고, 이런 실수를 구조적으로 막으려면 `BulletPool`과 그 사용 규칙을 어떻게 정하겠습니까?\n\n```csharp\nvar pool = new BulletPool(2);\npool.Add(new Bullet { Life = 5f });\n\nref Bullet first = ref pool.GetRef(0);\npool.Add(new Bullet { Life = 5f });\npool.Add(new Bullet { Life = 5f });   // 용량 2를 넘는다\n\nfirst.Life = 0f;\nConsole.WriteLine(pool.Peek(0).Life);\n```",
+          "answer": "**`5`** 가 출력됩니다(.NET 8에서 실행해 확인. 같은 시점에 `first.Life`를 읽으면 0입니다).\n\n**이유.** `first`는 \"그때 `_items`가 가리키던 배열의 0번 원소\"라는 **변수**의 별칭입니다. 세 번째 `Add`에서 용량이 모자라 `Array.Resize(ref _items, 4)`가 불리면, Learn 문서의 설명대로 새 배열을 할당하고 원소를 복사한 뒤 `_items`가 새 배열로 바뀝니다. `first`는 계속 옛 배열의 0번 원소를 가리키고, 풀이 읽는 것은 새 배열이라 0을 쓴 결과가 보이지 않습니다. 예외도 경고도 없어서 \"가끔 피해가 사라지는\" 버그로 나타납니다.\n\n**막는 방법.**\n- **ref는 짧게.** 받아서 그 자리에서 고치고 끝냅니다. 풀을 바꾸는 호출(`Add`, 제거, 정렬) 너머로 ref나 Span을 들고 가지 않습니다. `CollectionsMarshal.AsSpan` 문서가 Span을 쓰는 동안 리스트에 추가·제거하지 말라고 하는 것과 같은 규칙입니다[ms-collectionsmarshal-asspan].\n- **용량을 고정.** 탄환처럼 상한이 분명한 풀은 처음에 최대 크기로 만들고 `Add`가 배열을 키우지 않게 합니다(가득 차면 false 반환 등). 배열이 바뀌지 않으면 ref가 옛 배열을 가리킬 일도 없습니다.\n- **오래 들고 있어야 하면 인덱스(나 세대 검사 핸들)를 보관하고, 쓸 때마다 `GetRef(index)`로 다시 받습니다.**\n- ref 지역 변수는 클래스 필드에 담을 수 없으므로(ref 필드는 ref struct에만 둘 수 있습니다), 문제는 대개 이 예제처럼 한 메서드 안에서 \"받기 → 컬렉션 변경 → 쓰기\" 순서로 생깁니다. 코드 리뷰에서 이 순서를 찾으면 됩니다."
+        }
+      ],
+      "solutionCode": "using System;\n\n// 탄환 하나: float 8개 + int 8개 = 64바이트짜리 struct.\n// Life·위치가 매 프레임 바뀌므로 readonly struct로는 만들 수 없다. 대신 상태를 바꾸지 않는 멤버에 readonly를 붙인다.\npublic struct Bullet\n{\n    public float X, Y, Vx, Vy;\n    public float Life, Radius, Spin, Age;\n    public int Damage, OwnerId, ColorRgba, Flags;\n    public int PatternId, Reserved0, Reserved1, Reserved2;\n\n    // readonly 멤버: in 매개변수나 ref readonly 변수에서 불러도 방어적 복사가 생기지 않는다\n    public readonly float SpeedSq() => Vx * Vx + Vy * Vy;\n}\n\npublic sealed class BulletPool\n{\n    private Bullet[] _items;\n    private int _count;\n\n    public BulletPool(int capacity) { _items = new Bullet[capacity]; }\n\n    public int Count => _count;\n\n    public int Add(in Bullet bullet)\n    {\n        if (_count == _items.Length) Array.Resize(ref _items, _items.Length * 2);\n        _items[_count] = bullet;\n        return _count++;\n    }\n\n    // 배열 원소 자체의 별칭을 돌려준다. 배열은 필드에 있으므로 메서드가 끝나도 살아 있다(ref safe context = 호출자).\n    // 주의: Add가 배열을 키우면(Array.Resize) 예전에 받은 ref는 옛 배열을 가리킨다. ref를 Add 너머로 들고 있지 말 것.\n    public ref Bullet GetRef(int index)\n    {\n        if ((uint)index >= (uint)_count) throw new ArgumentOutOfRangeException(nameof(index));\n        return ref _items[index];\n    }\n\n    // 읽기 전용 별칭: 복사 없이 읽되, 호출자가 고칠 수는 없다\n    public ref readonly Bullet Peek(int index)\n    {\n        if ((uint)index >= (uint)_count) throw new ArgumentOutOfRangeException(nameof(index));\n        return ref _items[index];\n    }\n}\n\npublic static class BulletSystem\n{\n    public static void Tick(BulletPool pool, float dt)\n    {\n        for (int i = 0; i < pool.Count; i++)\n        {\n            ref Bullet b = ref pool.GetRef(i);   // 'ref'를 빼고 var b = pool.GetRef(i)로 받으면 다시 복사본이 된다\n            b.X += b.Vx * dt;\n            b.Y += b.Vy * dt;\n            b.Life -= dt;\n            b.Age += dt;\n        }\n    }\n\n    public static int TotalThreat(BulletPool pool, float minSpeedSq)\n    {\n        int sum = 0;\n        for (int i = 0; i < pool.Count; i++) sum += ThreatOf(in pool.Peek(i), minSpeedSq);\n        return sum;\n    }\n\n    // in: 64바이트를 복사하지 않고 읽기 전용 참조로 받는다. SpeedSq가 readonly 멤버라 방어적 복사도 없다.\n    private static int ThreatOf(in Bullet b, float minSpeedSq)\n    {\n        return b.Life > 0f && b.SpeedSq() >= minSpeedSq ? b.Damage : 0;\n    }\n}\n",
+      "explanation": "**접근.** 스타터의 문제는 하나입니다. 배열 칸을 고치고 싶은데, 손에 쥔 것이 칸이 아니라 칸의 **복사본**입니다. `Get(i)`는 값을 반환하므로 C# 의미로 64바이트가 반환값으로 복사되고, `Bullet b = …`가 그 복사본을 지역 변수에 담습니다. `b.Life -= dt`는 이 지역 변수만 바꾸고, 반복이 끝나면 사라집니다. 모범 답안은 배열 원소의 별칭을 돌려주는 `ref Bullet GetRef(int)`를 만들고 `Tick`에서 `ref Bullet b = ref pool.GetRef(i);`로 받습니다. 읽기만 하는 `TotalThreat`는 `ref readonly Bullet Peek(int)`와 `in` 매개변수로 복사 없이 읽고, `SpeedSq`에 `readonly`를 붙여 방어적 복사를 없앴습니다.\n\n**왜 맞는가.** `_items`는 필드이므로 그 원소는 메서드가 끝난 뒤에도 살아 있는 변수이고, Learn의 ref safe context 규칙으로 호출자에게 ref로 돌려줄 수 있습니다[ms-ref-returns]. `ref` 지역 변수는 그 원소의 별칭이라 쓰기가 곧 배열에 대한 쓰기입니다[ms-ref-locals]. 범위 검사는 `_items.Length`가 아니라 `Count`로 합니다. `Count`와 배열 길이 사이의 칸은 아직 탄환이 아니므로 그 별칭을 내주면 안 됩니다. 예제의 세 탄환에서 `Tick(0.5f)` 뒤 `TotalThreat`가 15에서 8로 바뀌는 것을 실행해 확인했습니다.\n\n**방어적 복사.** `in` 매개변수 위에서 readonly가 아닌 메서드를 부르면 C# 명세 §12.6.6.1에 따라 임시 복사본 위에서 불립니다[ms-csharp-spec-fn-invocation]. 필드를 1 늘리는 메서드를 `in` 매개변수에서 불러 보면 원본도, 메서드 안에서 다시 읽은 값도 그대로였습니다(.NET 8에서 실행해 확인). 그래서 `ThreatOf`를 `in`으로 바꾸는 것만으로는 부족하고, `SpeedSq`를 readonly 멤버로 선언해야 합니다. `Bullet`은 매 프레임 바뀌므로 `readonly struct`가 될 수 없고, 상태를 바꾸지 않는 멤버에만 `readonly`를 붙이는 것이 맞는 수단입니다[ms-struct-ref].\n\n**복잡도와 비용.** 시간 복잡도는 O(탄환 수) 그대로입니다. 바뀌는 것은 탄환 하나당 의미상 복사 횟수입니다. `Tick`은 1회(+ 쓰기가 사라지는 버그)에서 0회로, `TotalThreat`는 2회에서 0회로 줄어듭니다. 실제로 기계어에서 복사가 몇 번 남는지는 JIT 최적화에 달려 있으므로, 성능 이득은 Learn 성능 문서의 조언대로 기준을 재고 바꾼 뒤 다시 재서 확인합니다[ms-avoid-alloc]. 같은 문서는 3워드 이하의 작은 struct는 복사 비용이 무시할 만하다고 하므로, `Vector2`만 한 타입까지 `in`으로 바꾸는 것은 이득이 없을 수 있습니다.\n\n**흔한 실수.** (1) `var b = pool.GetRef(i);`로 받아 여전히 복사본을 고친다. (2) 범위 검사를 배열 길이로 해서 빈 칸의 별칭을 내준다. (3) `in`만 붙이고 readonly가 아닌 메서드를 불러 복사를 되살린다. (4) `GetRef`로 받은 ref를 `Add` 너머로 들고 있다가 배열이 커진 뒤 옛 배열에 쓴다(퀴즈 2). (5) 문제를 피하려고 `Bullet`을 class로 바꾼다. 수천 개의 힙 객체와 포인터 추적이 생기므로 이 연습의 목표와 반대입니다.\n\n**Unity에서.** ref 지역 변수와 ref 반환은 C# 7.0, `ref readonly` 반환은 7.2, readonly 멤버는 8.0 기능입니다[ms-csharp-version-history]. Unity 6.0은 C# 9.0을 쓰므로 이 코드를 그대로 쓸 수 있습니다[unity-csharp-compiler].\n\n### 흔한 오해\n- **\"ref 반환 메서드를 부르면 받는 쪽도 자동으로 참조가 된다\"** — 받는 쪽이 고릅니다. Learn은 호출자가 반환된 변수를 값으로도 참조로도 다룰 수 있고, 상태를 고치려면 명시적으로 ref로 선언한 변수에 받아야 한다고 적습니다[ms-ref-returns]. `var a = pool.GetRef(0); a.Life = 1f;`는 원본을 바꾸지 않습니다(퀴즈 1, .NET 8에서 실행해 확인).\n- **\"한 번 받아 둔 ref는 배열이 커져도 같은 칸을 가리킨다\"** — ref는 '그 배열의 그 원소'라는 변수에 묶입니다. `Array.Resize`는 새 배열을 할당해 원소를 복사한 뒤 필드를 새 배열로 바꾸므로[ms-array-resize], 그 전에 받은 ref로 쓴 값은 풀에 보이지 않습니다. 용량 2 풀에서 실행하면 `first.Life = 0f` 뒤에도 `Peek(0).Life`는 5였습니다(.NET 8에서 실행해 확인).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "`Tick` 뒤 배열 안 탄환의 X, Y, Life, Age가 바뀐다: 예제 풀에서 `TotalThreat(pool, 1f)`가 15에서 `Tick(pool, 0.5f)` 뒤 8이 되고 첫 탄환은 X 5, Life 0.5, Age 0.5다.",
+            "points": 12,
+            "sourceId": "ms-ref-locals"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "`GetRef`와 `Peek`이 0 미만과 `Count` 이상(배열 길이 미만 포함)의 인덱스에 `ArgumentOutOfRangeException`을 던진다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "`TotalThreat`가 스타터와 같은 규칙(Life > 0이고 속력² >= 기준)으로 같은 값을 낸다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "퀴즈 1에서 (A)는 복사본, (B)와 (C)는 원본을 바꾸고 (D)는 컴파일 오류이며 출력이 `2.5 7`임을 맞혔다.",
+            "points": 7,
+            "sourceId": "ms-ref-returns"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "`Tick`이 `ref Bullet b = ref pool.GetRef(i);`(또는 `ref var`)로 받아 탄환을 복사하지 않는다.",
+            "points": 12,
+            "sourceId": "ms-ref-locals"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "`ThreatOf`가 `in`(또는 `ref readonly`) 매개변수로 받고, `TotalThreat`가 `Peek`의 `ref readonly` 결과를 복사 없이 넘긴다.",
+            "points": 10,
+            "sourceId": "ms-method-params"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "`SpeedSq`를 readonly 멤버로 선언해 `in` 매개변수에서 부를 때의 방어적 복사를 없앴다.",
+            "points": 8,
+            "sourceId": "ms-csharp-spec-fn-invocation"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "ref로 돌려주는 대상이 필드(배열)의 원소처럼 메서드가 끝난 뒤에도 유효한 변수다. 지역 변수를 ref로 반환하지 않는다(CS8168).",
+            "points": 10,
+            "sourceId": "ms-ref-returns"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "읽기만 하는 경로는 `ref`가 아니라 `ref readonly`나 `in`으로 열어 호출자가 고칠 수 없게 했다.",
+            "points": 10,
+            "sourceId": "ms-avoid-alloc"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "`GetRef`로 받은 ref를 `Add` 같은 풀 변경 호출 너머로 들고 있으면 안 되는 이유를 주석이나 퀴즈 2 답에서 설명했다.",
+            "points": 8,
+            "sourceId": "ms-array-resize"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "쓰기 경로(`GetRef`)와 읽기 경로(`Peek`)를 이름으로 구분해 각 호출 지점의 의도가 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "`var b = pool.GetRef(i);`처럼 ref 없이 받아 여전히 복사본을 고친다(예제에서 `Tick` 뒤에도 15).",
+            "penalty": -20,
+            "sourceId": "ms-ref-returns"
+          },
+          {
+            "id": "d2",
+            "description": "`Bullet`을 class로 바꿔 복사 문제를 우회했다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "`unsafe`·포인터로 우회하거나 지역 변수를 ref로 반환하려 했다.",
+            "penalty": -10,
+            "sourceId": "ms-ref-returns"
+          }
+        ]
+      },
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "예제(15→8, 첫 탄환 X 5·Life 0.5·Age 0.5)와 퀴즈 출력(2.5 7, 5), CS1612·CS0131·CS8329·CS8168 오류를 로컬 .NET 8 SDK로 컴파일·실행해 확인하고, ref 반환·ref safe context 표·in 매개변수의 임시 변수·readonly 멤버·§12.6.6.1 방어적 복사·Array.Resize 설명을 Microsoft Learn 문서, C# 명세, Unity 6.0 C# 컴파일러 페이지와 대조했다."
+      },
+      "nextMission": "`BulletPool`에 죽은 탄환을 없애는 `Compact()`를 넣으세요: 앞에서부터 보다가 Life <= 0인 칸을 마지막 탄환으로 덮어쓰고 `Count`를 줄입니다(swap-remove). 원소를 옮길 때 `ref` 지역 변수 두 개를 쓰세요. 그다음 `Span<Bullet> AsSpan() => _items.AsSpan(0, _count);`를 추가해 `Tick`을 `foreach (ref Bullet b in pool.AsSpan())`로 다시 쓰고, `Compact`나 `Add` 뒤에 예전 Span을 계속 쓰면 무엇이 보이는지 직접 실행해 기록하세요.",
+      "tests": null
+    },
+    {
+      "id": "t1-impl-weak-reference-config-cache",
+      "track": "track1",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "약한 참조 설정 캐시: 쓰는 동안은 한 인스턴스, 아무도 안 쓰면 GC에게 (WeakReference<T>)",
+      "tags": [
+        "CSharp_WeakReference",
+        "CSharp_Cache",
+        "CSharp_Testability"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-weak-references",
+        "ms-weakreference-trygettarget",
+        "ms-gc-collect",
+        "cmu-17214-03-testability"
+      ],
+      "scenario": "오픈 월드 RPG 클라이언트는 몬스터 종류마다 설정(`MonsterConfig`: 스킬 표, 드롭 표, AI 파라미터)을 JSON에서 읽어 객체로 만듭니다. 파싱 비용이 크고 객체도 큽니다. 요구는 두 가지입니다.\n\n- 같은 종류의 고블린 30마리가 스폰되면 **설정 인스턴스는 하나**여야 합니다. 30번 파싱하지 않고, 밸런스 핫픽스를 적용할 때 모두가 같은 객체를 봐야 합니다.\n- 고블린 지역을 떠나 고블린이 모두 사라지면 **캐시가 그 설정을 붙잡고 있으면 안 됩니다.** 지금 구현은 `Dictionary<string, MonsterConfig>`라서 지역을 돌아다닐수록 메모리가 늘기만 합니다.\n\n`ConfigCache<T>`를 `WeakReference<T>`로 구현하세요.\n\n- `Get(key)`: 그 키의 설정이 아직 살아 있으면 그 인스턴스를 그대로 반환합니다(loader 호출 없음). 처음 보는 키면 `loader(key)`로 만들고, `createWeak(config)`로 약한 참조를 **한 번** 만들어 저장합니다. 저장된 약한 참조의 대상이 이미 수거됐으면 다시 로드해 **그 약한 참조에 `SetTarget`** 합니다(약한 참조를 새로 만들지 않습니다). `key`가 null이면 `ArgumentNullException`, loader가 null을 반환하면 `InvalidOperationException`을 던지고 아무것도 저장하지 않습니다.\n- `TryGetLoaded(key, out config)`: 로드하지 않고, 살아 있는 설정이 있을 때만 true.\n- `EntryCount`: 사전에 든 항목 수(대상이 수거된 항목 포함). `PurgeDead()`: 대상이 수거된 항목을 지우고 지운 개수를 반환합니다.\n\n| 호출 순서 | 기대 |\n|---|---|\n| `a = Get(\"goblin\")`, `b = Get(\"goblin\")` | 같은 인스턴스, loader 1회 |\n| (아무도 goblin 설정을 쓰지 않아 GC가 수거) `Get(\"goblin\")` | loader 2회, 기존 약한 참조 재사용 |\n| `TryGetLoaded(\"orc\", out c)` | false, loader 호출 없음 |\n\n**테스트 가능성.** GC가 언제 돌지는 테스트가 정할 수 없습니다. 그래서 두 번째 생성자는 약한 참조를 만드는 함수 `createWeak`를 받습니다(게임 코드는 첫 번째 생성자를 씁니다). 채점기는 이 함수로 만들어진 약한 참조에 `SetTarget(null)`을 불러 'GC가 수거한 뒤'의 상태를 결정적으로 재현합니다. 실제 GC는 \"강한 참조가 남아 있는 동안에는 수거되지 않는다\"는, 문서가 보장하는 방향에서만 씁니다.",
+      "constraints": [
+        "캐시는 `T`를 강하게 참조하지 않는다: `Dictionary<string, T>`, `List<T>`, \"마지막으로 반환한 설정\" 필드 등 금지. 보관하는 것은 `WeakReference<T>`뿐이다",
+        "캐시 적중 경로(`Get`, `TryGetLoaded`)는 사전 조회 한 번(평균 O(1))이고 힙 할당 0 B다",
+        "대상은 `TryGetTarget` 한 번으로 꺼내 그 out 값을 쓴다. \"살아 있나 확인\"과 \"꺼내기\"를 나누지 않는다",
+        "`GC.Collect`, 종료자(`~ConfigCache`), `ConditionalWeakTable` 사용 금지",
+        "생성자 두 개와 `Get`, `TryGetLoaded`, `EntryCount`, `PurgeDead`의 시그니처는 바꾸지 않는다"
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 몬스터 종류별 설정처럼 크고, 필요하면 다시 만들 수 있는 데이터를 키로 캐시한다.\n// 누군가 쓰고 있는 동안에는 같은 인스턴스를 돌려주고, 아무도 쓰지 않으면 GC가 수거할 수 있어야 한다.\npublic sealed class ConfigCache<T> where T : class\n{\n    // 실제 게임에서 쓰는 생성자: 약한 참조를 평범하게 만든다.\n    public ConfigCache(Func<string, T> loader)\n        : this(loader, target => new WeakReference<T>(target))\n    {\n    }\n\n    // 테스트용 생성자: 약한 참조를 만드는 방법을 주입받는다.\n    // 새 키를 처음 저장할 때만 createWeak(config)를 한 번 호출해야 한다.\n    public ConfigCache(Func<string, T> loader, Func<T, WeakReference<T>> createWeak)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 살아 있는 설정이 있으면 그대로 반환하고, 없거나 수거됐으면 loader(key)로 다시 만든다.\n    public T Get(string key)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 로드하지 않고, 지금 살아 있는 설정이 있는지만 확인한다.\n    public bool TryGetLoaded(string key, out T config)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 사전에 들어 있는 항목 수(대상이 이미 수거된 항목 포함).\n    public int EntryCount\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // 대상이 수거된 항목을 사전에서 지우고, 지운 개수를 반환한다.\n    public int PurgeDead()\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "수거된 키를 다시 `Get`: loader를 다시 부르고 기존 WeakReference에 `SetTarget`한다(`createWeak` 재호출 없음)",
+        "`TryGetLoaded`는 처음 보는 키와 수거된 키에서 false이고 loader를 부르지 않는다",
+        "`PurgeDead`로 지운 키를 다시 `Get`하면 새 항목으로 저장된다(`createWeak` 다시 호출)",
+        "loader가 null을 반환: `InvalidOperationException`, 사전에 아무것도 남지 않는다. `Get(null)`: `ArgumentNullException`"
+      ],
+      "hints": [
+        "반례 두 개를 생각해 보세요. (1) 설정을 `Dictionary<string, MonsterConfig>`에 넣으면, 고블린이 다 사라져도 사전이 강한 참조를 들고 있으므로 GC는 그 설정을 수거할 수 없습니다. (2) 반대로 아무것도 저장하지 않으면 30마리가 30개를 파싱하고 서로 다른 객체를 봅니다. Microsoft Learn은 약한 참조를 \"강한 참조가 없을 때, 객체가 수거될 때까지의 정해지지 않은 시간 동안만 유효한\" 참조라고 설명합니다. 사전의 값 형식을 무엇으로 바꾸면 두 요구를 함께 만족할까요?",
+        "`Get`은 세 갈래입니다. ① `TryGetValue`로 항목을 찾았고 `TryGetTarget`도 성공: 그 대상을 반환. ② 항목은 있는데 `TryGetTarget`이 실패: 다시 로드해 **그 WeakReference**에 `SetTarget`. ③ 항목이 없음: 로드해 `createWeak`로 만든 것을 `Add`. ①에서 `TryGetTarget`의 out 변수를 그대로 반환해야 \"살아 있나 확인\"과 \"꺼내기\" 사이에 수거되는 틈이 없습니다. `PurgeDead`는 지울 키를 재사용하는 리스트에 모았다가 지우면 열거 중 수정 규칙에 기대지 않아도 됩니다.",
+        "```\nGet(key):\n    key가 null이면 ArgumentNullException\n    if (_entries.TryGetValue(key, out weak) && weak./* ??? */(out alive)) return alive\n    loaded = _loader(key)\n    loaded가 null이면 InvalidOperationException     // 아무것도 저장하지 않는다\n    if (weak != null) /* ??? 기존 약한 참조 재사용 */\n    else _entries.Add(key, /* ??? */)\n    return loaded\n\nTryGetLoaded(key, out config): 로드하지 않는다. 항목이 있고 대상이 살아 있을 때만 true\n\nPurgeDead():\n    _deadKeys.Clear()\n    foreach (key, weak) in _entries: 대상이 없으면 _deadKeys에 key 추가\n    _deadKeys의 키를 모두 Remove\n    return /* ??? */\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 몬스터 종류별 설정처럼 크고, 필요하면 다시 만들 수 있는 데이터를 키로 캐시한다.\n// 누군가 쓰고 있는 동안에는 같은 인스턴스를 돌려주고, 아무도 쓰지 않으면 GC가 수거할 수 있어야 한다.\npublic sealed class ConfigCache<T> where T : class\n{\n    private readonly Func<string, T> _loader;\n    private readonly Func<T, WeakReference<T>> _createWeak;\n    // 캐시는 WeakReference만 들고 있다. T를 강하게 가리키는 필드나 컬렉션은 없다.\n    private readonly Dictionary<string, WeakReference<T>> _entries = new Dictionary<string, WeakReference<T>>();\n    // PurgeDead에서 지울 키를 모아 두는 재사용 버퍼(열거 중 Remove를 피한다).\n    private readonly List<string> _deadKeys = new List<string>();\n\n    public ConfigCache(Func<string, T> loader)\n        : this(loader, target => new WeakReference<T>(target))\n    {\n    }\n\n    public ConfigCache(Func<string, T> loader, Func<T, WeakReference<T>> createWeak)\n    {\n        _loader = loader ?? throw new ArgumentNullException(nameof(loader));\n        _createWeak = createWeak ?? throw new ArgumentNullException(nameof(createWeak));\n    }\n\n    public T Get(string key)\n    {\n        if (key == null) throw new ArgumentNullException(nameof(key));\n\n        // TryGetTarget은 한 번만 부르고 그 결과(강한 참조)를 그대로 반환한다.\n        // \"살아 있나 확인\"과 \"꺼내기\"를 따로 하면 그 사이에 GC가 수거할 수 있다.\n        if (_entries.TryGetValue(key, out WeakReference<T> weak) && weak.TryGetTarget(out T alive))\n            return alive;\n\n        T loaded = _loader(key);\n        if (loaded == null) throw new InvalidOperationException(\"loader returned null for key '\" + key + \"'\");\n\n        if (weak != null)\n            weak.SetTarget(loaded);              // 수거된 항목: 약한 참조 객체(와 그 GC 핸들)를 재사용\n        else\n            _entries.Add(key, _createWeak(loaded));   // 새 키: 이때 한 번만 만든다\n\n        return loaded;                           // 지역 변수 loaded가 반환 순간까지 강한 참조다\n    }\n\n    public bool TryGetLoaded(string key, out T config)\n    {\n        if (key == null) throw new ArgumentNullException(nameof(key));\n        if (_entries.TryGetValue(key, out WeakReference<T> weak) && weak.TryGetTarget(out config))\n            return true;\n        config = null;\n        return false;\n    }\n\n    public int EntryCount => _entries.Count;\n\n    public int PurgeDead()\n    {\n        _deadKeys.Clear();\n        foreach (KeyValuePair<string, WeakReference<T>> pair in _entries)\n        {\n            if (!pair.Value.TryGetTarget(out _)) _deadKeys.Add(pair.Key);\n        }\n        for (int i = 0; i < _deadKeys.Count; i++) _entries.Remove(_deadKeys[i]);\n        int removed = _deadKeys.Count;\n        _deadKeys.Clear();\n        return removed;\n    }\n}\n",
+      "explanation": "**접근.** 사전의 값을 `MonsterConfig`에서 `WeakReference<MonsterConfig>`로 바꾸는 것이 전부입니다. Learn의 설명대로 GC는 애플리케이션 코드가 도달할 수 있는(강한 참조가 있는) 객체를 수거할 수 없고, 약한 참조는 객체에 접근할 길을 남겨 두면서도 GC가 수거하는 것을 허용합니다[ms-weak-references]. 그래서 몬스터 30마리가 설정을 들고 있는 동안에는 `TryGetTarget`이 같은 인스턴스를 돌려주고, 마지막 몬스터가 사라진 뒤에는 캐시만 남은 설정을 GC가 가져갈 수 있습니다. 같은 문서가 약한 참조를 \"메모리를 많이 쓰지만 수거되면 쉽게 다시 만들 수 있는 객체\"에 쓰라고 하는데, JSON에서 다시 읽을 수 있는 큰 설정이 정확히 그 경우입니다.\n\n**Get의 세 갈래.** ① 항목이 있고 `TryGetTarget`이 성공하면 그 out 변수를 그대로 반환합니다. `TryGetTarget`은 \"대상을 꺼내는 데 성공했는가\"를 한 번에 답하는 API이고[ms-weakreference-trygettarget], .NET 8 소스의 주석도 `Target`을 확인한 뒤 다시 읽는 코드를 막으려고 이 형태로 노출했다고 설명합니다[ms-gh-runtime8-weakreference-t]. 확인과 꺼내기를 따로 하면 그 사이에 GC가 돌 수 있습니다. ② 항목은 있는데 대상이 없으면 다시 로드해 기존 약한 참조에 `SetTarget`합니다. .NET 8 구현에서 `WeakReference<T>` 생성자는 GC 핸들을 새로 할당하고, `SetTarget`은 이미 가진 핸들의 대상만 바꿉니다(구현이며 계약은 아님)[ms-gh-runtime8-weakreference-t]. 채점기에서 `new WeakReference<T>(x)` 하나는 24 B였으므로 재로드마다 새로 만들면 그만큼의 객체와 핸들이 매번 생깁니다. ③ 새 키면 `createWeak`로 한 번 만듭니다. 반환 직전까지 지역 변수 `loaded`가 강한 참조이므로 반환값이 수거될 걱정은 없습니다.\n\n**PurgeDead가 필요한 이유.** 약한 참조는 대상만 놓아줄 뿐, 사전의 항목(키 문자열과 `WeakReference` 객체)은 남습니다. 몬스터 종류가 수천 개인 게임에서 지역을 돌수록 죽은 항목이 쌓이므로, 지역 전환 같은 시점에 정리합니다. .NET Core 3.0 이상에서는 `Dictionary.Remove`를 열거 중에 불러도 열거자가 무효가 되지 않는다고 문서가 명시하지만[ms-learn-dictionary-remove], 모범 답안은 재사용 리스트에 키를 모았다가 지웁니다. 런타임 버전에 따라 달라지는 규칙에 기대지 않기 위해서입니다.\n\n**왜 이렇게 테스트하는가.** \"아무도 안 쓰면 수거된다\"를 실제 GC로 검사하면 결과가 환경에 따라 바뀝니다(아래 흔한 오해 참고). CMU 17-214의 테스트 가능성 강의는 시계나 무작위 같은 비결정적 의존성을 주입해 테스트가 통제하게 만들고, 경계만 가짜로 바꾸고 논리는 진짜로 테스트하라고 정리합니다[cmu-17214-03-testability]. 여기서 비결정적인 경계는 \"언제 수거되는가\"이므로 약한 참조 생성을 주입받고, 테스트는 `SetTarget(null)`로 수거된 상태를 만듭니다. 실제 GC는 \"강하게 붙잡고 있는 동안에는 `GC.Collect()` 뒤에도 같은 인스턴스\"라는, 문서가 보장하는 방향만 검사합니다.\n\n**복잡도.** 적중 경로는 사전 조회 한 번과 `TryGetTarget` 한 번으로 평균 O(1)이고 할당이 없습니다(채점기에서 1만 회 0 B). `PurgeDead`는 O(항목 수)입니다.\n\n**흔한 실수.** (1) \"마지막으로 쓴 설정\" 같은 필드에 강한 참조를 남겨 캐시가 다시 누수된다. (2) 재로드 때 약한 참조를 새로 만든다. (3) 게임 코드에서 `GC.Collect()`로 수거를 앞당기려 한다. (4) 작은 객체까지 약한 참조로 감싼다. Learn은 참조 자체가 대상만큼 클 수 있으니 작은 객체에는 쓰지 말고, 약한 참조를 메모리 문제의 자동 해법으로 삼지 말고 캐시 정책을 설계하라고 권합니다[ms-weak-references]. 실제 게임이라면 다음 웨이브에서 곧 다시 쓸 설정이 그 사이의 GC 한 번에 사라져 재파싱 끊김이 생길 수 있으므로, 현재 레벨에서 쓰는 설정은 강하게 고정하는 정책을 함께 둡니다(다음 미션).\n\n### 흔한 오해\n- **\"WeakReference에 넣어 두면 메모리가 부족할 때만 비워지는 캐시가 된다\"** — .NET의 약한 참조에는 메모리 압박 조건이 없습니다. 문서는 약한 참조가 강한 참조가 없을 때 객체가 수거될 때까지의 정해지지 않은 시간 동안만 유효하다고만 말합니다[ms-weak-references]. 채점기(Linux, .NET 8.0.24)에서 약한 참조로만 가리키는 새 객체는 메모리 여유가 충분한 상태의 `GC.Collect(0)`(0세대 수집) 한 번에 사라졌습니다.\n- **\"참조를 버리고 `GC.Collect()`를 부른 뒤 `TryGetTarget`이 false인지 보면 수거를 테스트할 수 있다\"** — 문서는 `GC.Collect()`를 접근할 수 없는 메모리를 회수하려고 '시도'하는 메서드로 설명하고, 세대를 지정하는 오버로드는 그 세대의 접근 불가능한 메모리가 모두 회수된다고 보장하지 않는다고 적습니다[ms-gc-collect]. 실제로 '더는 쓰지 않지만 아직 범위 안에 있는 지역 변수'가 가리키는 객체는 로컬 Windows .NET 8.0.8의 Debug·Release(기본 설정) 빌드에서는 `GC.Collect()` 뒤에도 살아 있었지만, 같은 Release 빌드를 `DOTNET_TieredCompilation=0`으로 실행하면 수거됐고 채점기(Linux, .NET 8.0.24)에서도 수거됐습니다. JIT가 그 메서드를 얼마나 최적화했는지에 따라 결과가 바뀌므로, 수거 시점에 기대는 테스트는 환경마다 결과가 달라집니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "강한 참조가 남아 있는 동안 같은 키의 `Get`이 같은 인스턴스를 돌려주고 loader는 한 번만 불린다.",
+            "points": 10,
+            "sourceId": "ms-weak-references"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "대상이 수거된 키를 `Get`하면 다시 로드해 그 키의 기존 `WeakReference`에 `SetTarget`한다.",
+            "points": 10,
+            "sourceId": "ms-weakreference-settarget"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "`TryGetLoaded`가 loader를 부르지 않고, 대상이 살아 있을 때만 true와 그 인스턴스를 낸다.",
+            "points": 8,
+            "sourceId": "ms-weakreference-trygettarget"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "`PurgeDead`가 대상이 수거된 항목만 지우고 그 개수를 반환하며, `Get(null)`과 null을 반환하는 loader를 명세대로 처리한다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "캐시 안에 `T`를 강하게 가리키는 필드나 컬렉션이 하나도 없다.",
+            "points": 12,
+            "sourceId": "ms-weak-references"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "적중 경로가 사전 조회 한 번과 `TryGetTarget` 한 번이며, 워밍업 뒤 반복 호출의 `GC.GetAllocatedBytesForCurrentThread` 차이가 0이다.",
+            "points": 10,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "수거 후 재로드할 때 `WeakReference`를 새로 만들지 않고 기존 것을 재사용한다.",
+            "points": 8,
+            "sourceId": "ms-gh-runtime8-weakreference-t"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "`TryGetTarget`을 한 번만 부르고 그 out 변수를 그대로 반환한다(확인 뒤 다시 꺼내지 않는다).",
+            "points": 10,
+            "sourceId": "ms-weakreference-trygettarget"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "`GC.Collect`와 종료자를 쓰지 않고, `PurgeDead`가 열거 중 수정 규칙에 기대지 않거나 그 근거(.NET Core 3.0 이상의 `Dictionary.Remove`)를 주석에 밝혔다.",
+            "points": 10,
+            "sourceId": "ms-learn-dictionary-remove"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "약한 참조 생성을 생성자로 주입받아, 테스트가 GC 없이 \"수거된 뒤\" 상태를 재현할 수 있다.",
+            "points": 8,
+            "sourceId": "cmu-17214-03-testability"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "적중 / 수거됨 / 새 키의 세 갈래가 코드에서 구분되어 읽힌다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "설정을 `Dictionary<string, T>` 같은 강한 참조로 보관해 약한 참조 캐시가 아니다.",
+            "penalty": -25,
+            "sourceId": "ms-weak-references"
+          },
+          {
+            "id": "d2",
+            "description": "`TryGetTarget`을 두 번 불러 확인과 꺼내기를 나눠, 그 사이 수거되면 null을 반환할 수 있다.",
+            "penalty": -15,
+            "sourceId": "ms-gh-runtime8-weakreference-t"
+          },
+          {
+            "id": "d3",
+            "description": "게임 코드나 테스트에서 `GC.Collect()`로 수거를 기다리거나 앞당긴다.",
+            "penalty": -10,
+            "sourceId": "ms-gc-collect"
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "실제 GC가 결과를 바꿀 수 있던 두 케이스(동시 강제 GC 스트레스에서 원래 테스트는 정답을 15회 중 15회 실패시킴)에 GC.KeepAlive를 넣어 결정적으로 만들고, 채점기에서 모범 답안 전부 통과·스타터 실패, 로컬에서 오답 4종의 실패를 확인했으며, 24 B·GC.Collect(0)·범위 안 지역 변수 수거를 채점기(Linux .NET 8.0.24)와 로컬에서 재측정해 WeakReference·GC.Collect·Dictionary.Remove 문서, .NET 8 WeakReference.T.cs, CMU 17-214 슬라이드와 대조했다."
+      },
+      "nextMission": "레벨 단위 고정을 추가하세요. `IDisposable Pin(string key)`는 설정을 로드해 강하게 붙잡는 토큰을 돌려주고, 같은 키의 토큰이 모두 Dispose되면 다시 약한 참조만 남습니다(키별 참조 카운트). 테스트는 이번처럼 나누세요: 실제 GC로는 \"Pin이 살아 있는 동안 `GC.Collect()` 뒤에도 같은 인스턴스\"만 검사하고, \"토큰을 모두 해제한 뒤 수거되면 다시 로드한다\"는 `createWeak` 주입과 `SetTarget(null)`로 검사합니다. 토큰을 두 번 Dispose해도 카운트가 두 번 줄지 않아야 합니다.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic sealed class __Cfg\n{\n    public readonly string Name; public readonly int Serial;\n    public __Cfg(string name, int serial) { Name = name; Serial = serial; }\n}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name + \" \" + e.Message; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // 로더 호출 횟수를 세는 가짜 로더와, 만들어진 약한 참조를 기록하는 팩터리\n    sealed class Rig\n    {\n        public int Loads, Weaks;\n        public readonly System.Collections.Generic.Dictionary<string, System.WeakReference<__Cfg>> Made = new System.Collections.Generic.Dictionary<string, System.WeakReference<__Cfg>>();\n        public ConfigCache<__Cfg> Cache;\n        public Rig(bool seam)\n        {\n            System.Func<string, __Cfg> loader = k => new __Cfg(k, ++Loads);\n            if (!seam) { Cache = new ConfigCache<__Cfg>(loader); return; }\n            Cache = new ConfigCache<__Cfg>(loader, c => { Weaks++; var w = new System.WeakReference<__Cfg>(c); Made[c.Name] = w; return w; });\n        }\n        // \"GC가 이 설정을 수거했다\"를 재현한다: 캐시가 가진 약한 참조의 대상을 지운다.\n        public string Kill(string key)\n        {\n            if (!Made.TryGetValue(key, out var w)) return \"키 \\\"\" + key + \"\\\"를 저장할 때 createWeak 팩터리를 호출하지 않았다(캐시가 약한 참조를 쓰지 않음)\";\n            w.SetTarget(null); return null;\n        }\n    }\n\n    public static void Main()\n    {\n        Run(\"same-instance-while-held\", () =>\n        {\n            var r = new Rig(false);\n            var a = r.Cache.Get(\"goblin\");\n            System.GC.Collect(); System.GC.WaitForPendingFinalizers(); System.GC.Collect();\n            var b = r.Cache.Get(\"goblin\");\n            if (!object.ReferenceEquals(a, b)) return \"강한 참조(a)를 들고 있는 동안 Get(\\\"goblin\\\")이 다른 인스턴스를 반환\";\n            if (r.Loads != 1) return \"같은 키 두 번 Get: loader 호출 기대 1 / 결과 \" + r.Loads;\n            var c = r.Cache.Get(\"orc\");\n            if (object.ReferenceEquals(a, c) || r.Loads != 2) return \"다른 키 Get(\\\"orc\\\"): 새 인스턴스와 loader 2회를 기대 / loader \" + r.Loads;\n            System.GC.KeepAlive(a); System.GC.KeepAlive(c);\n            return null;\n        });\n\n        Run(\"weak-factory-once-per-key\", () =>\n        {\n            var r = new Rig(true);\n            var a = r.Cache.Get(\"goblin\");\n            string e = r.Weaks == 1 ? null : \"새 키 저장 시 createWeak 호출 기대 1 / 결과 \" + r.Weaks;\n            if (e != null) return e;\n            if (!r.Made[\"goblin\"].TryGetTarget(out var t) || !object.ReferenceEquals(t, a)) return \"createWeak에 넘긴 대상이 Get이 반환한 설정과 다름\";\n            r.Cache.Get(\"goblin\"); var o1 = r.Cache.Get(\"orc\"); var o2 = r.Cache.Get(\"orc\");\n            if (r.Weaks != 2 || r.Loads != 2) return \"goblin 2회·orc 2회 Get 후 createWeak 기대 2, loader 기대 2 / 결과 \" + r.Weaks + \", \" + r.Loads;\n            if (r.Cache.EntryCount != 2) return \"EntryCount 기대 2 / 결과 \" + r.Cache.EntryCount;\n            System.GC.KeepAlive(a); System.GC.KeepAlive(o1); System.GC.KeepAlive(o2); // 강한 참조를 끝까지 들고 있어 실제 GC가 결과를 바꾸지 못한다\n            return null;\n        });\n\n        Run(\"reload-after-collected\", () =>\n        {\n            var r = new Rig(true);\n            var a = r.Cache.Get(\"goblin\");\n            string e = r.Kill(\"goblin\"); if (e != null) return e;\n            var b = r.Cache.Get(\"goblin\");\n            if (object.ReferenceEquals(a, b)) return \"약한 참조가 비었는데 Get이 예전 인스턴스를 반환(캐시가 강한 참조를 따로 들고 있음)\";\n            if (r.Loads != 2) return \"수거 뒤 Get: loader 호출 기대 2 / 결과 \" + r.Loads;\n            if (r.Weaks != 1) return \"수거 뒤 다시 로드할 때 기존 WeakReference를 SetTarget으로 재사용해야 함: createWeak 호출 기대 1 / 결과 \" + r.Weaks;\n            if (!r.Made[\"goblin\"].TryGetTarget(out var t) || !object.ReferenceEquals(t, b)) return \"다시 로드한 설정이 기존 약한 참조에 들어 있지 않음\";\n            var c = r.Cache.Get(\"goblin\");\n            if (!object.ReferenceEquals(b, c) || r.Loads != 2) return \"다시 로드한 뒤의 Get이 같은 인스턴스를 반환하지 않음\";\n            return r.Cache.EntryCount == 1 ? null : \"EntryCount 기대 1 / 결과 \" + r.Cache.EntryCount;\n        });\n\n        Run(\"try-get-loaded-never-loads\", () =>\n        {\n            var r = new Rig(true);\n            if (r.Cache.TryGetLoaded(\"goblin\", out var none) || none != null) return \"처음 보는 키에 TryGetLoaded가 true 또는 null 아닌 값\";\n            if (r.Loads != 0) return \"TryGetLoaded가 loader를 호출함\";\n            var a = r.Cache.Get(\"goblin\");\n            if (!r.Cache.TryGetLoaded(\"goblin\", out var got) || !object.ReferenceEquals(got, a)) return \"살아 있는 설정에 TryGetLoaded가 false 또는 다른 인스턴스\";\n            string e = r.Kill(\"goblin\"); if (e != null) return e;\n            if (r.Cache.TryGetLoaded(\"goblin\", out var dead)) return \"수거된 설정에 TryGetLoaded가 true(캐시가 강한 참조를 들고 있음)\";\n            return r.Loads == 1 ? null : \"TryGetLoaded가 loader를 호출함: loader 기대 1 / 결과 \" + r.Loads;\n        });\n\n        Run(\"purge-dead-entries\", () =>\n        {\n            var r = new Rig(true);\n            var a = r.Cache.Get(\"a\"); var b = r.Cache.Get(\"b\"); var c = r.Cache.Get(\"c\");\n            if (r.Cache.PurgeDead() != 0) return \"모두 살아 있는데 PurgeDead가 0이 아님\";\n            System.GC.KeepAlive(a); System.GC.KeepAlive(c); // 첫 PurgeDead까지는 a, c를 강하게 붙잡는다\n            string e = r.Kill(\"a\") ?? r.Kill(\"c\"); if (e != null) return e;\n            int removed = r.Cache.PurgeDead();\n            if (removed != 2) return \"a, c 수거 후 PurgeDead 반환 기대 2 / 결과 \" + removed;\n            if (r.Cache.EntryCount != 1) return \"PurgeDead 후 EntryCount 기대 1 / 결과 \" + r.Cache.EntryCount;\n            if (!r.Cache.TryGetLoaded(\"b\", out var bb) || !object.ReferenceEquals(bb, b)) return \"살아 있는 b가 PurgeDead로 사라짐\";\n            var a2 = r.Cache.Get(\"a\");\n            if (r.Loads != 4 || r.Weaks != 4 || r.Cache.EntryCount != 2) return \"지워진 키 a를 다시 Get: loader 4, createWeak 4, EntryCount 2 기대 / 결과 \" + r.Loads + \", \" + r.Weaks + \", \" + r.Cache.EntryCount;\n            int again = r.Cache.PurgeDead();\n            System.GC.KeepAlive(a2); System.GC.KeepAlive(b); // 살아 있어야 할 설정은 끝까지 강하게 붙잡는다\n            return again == 0 ? null : \"두 번째 PurgeDead가 0이 아님: \" + again;\n        });\n\n        Run(\"hit-path-zero-alloc\", () =>\n        {\n            var r = new Rig(false);\n            var a = r.Cache.Get(\"goblin\");\n            for (int i = 0; i < 100; i++) { r.Cache.Get(\"goblin\"); r.Cache.TryGetLoaded(\"goblin\", out _); }\n            long before = System.GC.GetAllocatedBytesForCurrentThread();\n            for (int i = 0; i < 10000; i++) { r.Cache.Get(\"goblin\"); r.Cache.TryGetLoaded(\"goblin\", out _); }\n            long used = System.GC.GetAllocatedBytesForCurrentThread() - before;\n            System.GC.KeepAlive(a);\n            return used == 0 ? null : \"캐시 적중 Get + TryGetLoaded 1만 회에 힙 할당 \" + used + \" B (0 B 기대)\";\n        });\n\n        Run(\"null-key-and-null-load\", () =>\n        {\n            var r = new Rig(true);\n            try { r.Cache.Get(null); return \"Get(null)이 예외 없이 반환\"; } catch (System.ArgumentNullException) { }\n            var bad = new ConfigCache<__Cfg>(k => null, c => new System.WeakReference<__Cfg>(c));\n            try { bad.Get(\"ghost\"); return \"loader가 null을 반환했는데 예외가 없음\"; } catch (System.InvalidOperationException) { }\n            return bad.EntryCount == 0 ? null : \"loader가 null을 반환한 키가 사전에 남음: EntryCount \" + bad.EntryCount;\n        });\n    }\n}\n",
+        "cases": [
+          "same-instance-while-held",
+          "weak-factory-once-per-key",
+          "reload-after-collected",
+          "try-get-loaded-never-loads",
+          "purge-dead-entries",
+          "hit-path-zero-alloc",
+          "null-key-and-null-load"
+        ],
+        "note": "실제 GC는 \"a를 들고 있는 동안 `GC.Collect()` 뒤에도 같은 인스턴스\"처럼 문서가 보장하는 방향에서만 쓰고(살아 있어야 할 설정은 케이스 끝까지 `GC.KeepAlive`로 붙잡습니다), 수거된 상황은 `createWeak`로 받은 `WeakReference`에 `SetTarget(null)`을 불러 재현합니다. 같은 키의 인스턴스 동일성과 loader 횟수, 새 키마다 `createWeak` 한 번, 재로드 때 기존 약한 참조 재사용, `TryGetLoaded`가 로드하지 않음, `PurgeDead` 개수와 재저장, 적중 경로 1만 회 0 B, null 키와 null 로드를 확인합니다. 생성자 `ConfigCache(Func<string, T>)`, `ConfigCache(Func<string, T>, Func<T, WeakReference<T>>)`와 `Get(string)`, `TryGetLoaded(string, out T)`, `EntryCount`, `PurgeDead()` 시그니처는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t1-interview-unity-backends-managed-native-memory",
+      "track": "track1",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "Mono와 IL2CPP, 관리 메모리와 네이티브 메모리, 그리고 Profiler의 GC Alloc이 세는 것",
+      "tags": [
+        "CSharp_ScriptingBackend",
+        "CSharp_ManagedVsNative",
+        "CSharp_Profiler_GCAlloc"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "unity-scripting-backends-intro",
+        "unity-managed-mem-intro",
+        "unity-memory-overview",
+        "unity-track-gc-alloc"
+      ],
+      "scenario": "모바일 수집형 RPG의 출시 빌드를 준비하고 있습니다(Unity 6.0). Android 빌드는 지금 Mono 스크립팅 백엔드이고, iOS는 IL2CPP입니다. 메모리 점검 회의에서 이런 말이 나왔습니다.\n\n- 팀원 A: \"Android도 IL2CPP로 바꾸면 C#이 C++로 바뀌니까 GC 스파이크는 사라질 거예요.\"\n- 팀원 B: \"에디터 Play 모드에서 CPU Usage 모듈의 GC Alloc 열을 0으로 만들었으니 메모리 문제는 끝났어요.\"\n- QA: \"가챠 연출 화면을 열고 닫을 때마다 앱 메모리가 수십 MB씩 늘어요. 그런데 프로파일러의 GC Alloc은 거의 0이에요.\"\n\n**질문: Unity 6 기준으로 Mono와 IL2CPP 스크립팅 백엔드는 무엇이 다르고 무엇이 같습니까? Unity에서 관리 메모리와 네이티브 메모리는 각각 무엇을 담고, 무엇이 해제합니까? CPU Usage 모듈의 GC Alloc 열은 정확히 무엇을 셉니까? 이를 근거로 세 사람의 말을 하나씩 판정하고, QA의 증상을 어떻게 조사하겠습니까?** (Unity 매뉴얼에 있는 내용으로만 답하고, 매뉴얼에 없는 수치는 측정해서 정한다고 말하세요.)",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "IL2CPP로 바꿔도 관리 힙과 GC는 그대로다: 관리 메모리 시스템은 Mono 또는 IL2CPP 가상 머신이 제공한다",
+        "GC Alloc 열은 선택한 프레임과 스레드의 관리 힙 할당 바이트만 보여 준다: 다른 스레드와 텍스처 같은 네이티브 할당은 빠진다",
+        "에디터에서 잰 할당은 빌드와 다르다(예: `GetComponent`는 에디터에서만 할당한다)",
+        "C# 참조를 지워도 `Texture2D`·`RenderTexture`의 네이티브 메모리는 `Destroy`나 `Resources.UnloadUnusedAssets` 전까지 남는다"
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "가챠 화면은 연출마다 `new Texture2D`와 `RenderTexture`를 만들고, 화면을 닫을 때 그 참조를 담은 리스트를 `Clear()`합니다. 닫은 뒤 `GC.Collect()`를 불러 봐도 메모리가 돌아오지 않습니다. 왜 그렇고, 어떻게 고치고, 무엇으로 확인하겠습니까?",
+          "intent": "C# 쪽 객체와 엔진 쪽 네이티브 객체의 수명이 다르다는 것을 알고, Unity가 네이티브 메모리를 해제하는 조건을 매뉴얼 수준으로 말하는지 확인한다.",
+          "keyAnswer": "- **원인:** 가비지 컬렉터는 네이티브 메모리 객체나 다른 네이티브 할당을 치우지 않습니다. Unity 매뉴얼은 네이티브 메모리가 해제되는 경우를 두 가지로 적습니다. `Resources.UnloadUnusedAssets`가 불릴 때(직접 부르거나, `LoadSceneMode.Single`로 새 씬을 로드하며 씬을 내릴 때 Unity가 자동으로 부름)와 객체에 `Destroy`를 부를 때입니다[unity-managed-mem-intro]. 리스트를 비우는 것은 C# 참조만 없앨 뿐입니다.\n- **수정:** 화면을 닫을 때 직접 만든 `Texture2D`와 `RenderTexture`에 `Destroy`를 부릅니다. 같은 문서가 저사양 기기의 전체 화면 `RenderTexture`처럼 메모리를 일찍 돌려받아야 하면 `Destroy`를 부르라고 적습니다.\n- **`UnloadUnusedAssets`를 쓸 때의 조건:** 참조가 남지 않은 네이티브 객체만 내리므로, static 필드나 이벤트처럼 의도치 않게 관리 참조를 쥔 곳이 없어야 합니다. 또 `UnloadUnusedAssets`와 `GC.Collect`는 CPU를 많이 쓰고 큰 프로젝트에서는 몇 초가 걸릴 수 있다고 매뉴얼이 경고합니다[unity-managed-mem-intro]. 화면을 닫을 때마다 부르는 해법이 아닙니다.\n- **반대 방향의 누수:** `Destroy`했는데 C# 참조가 남아 있으면 관리 셸(managed shell)만 남습니다. `UnityEngine.Object`의 `==` 오버로드 때문에 null처럼 보이지만 메모리에는 남아 있고, MonoBehaviour·ScriptableObject 파생 클래스라면 셸이 붙잡은 큰 배열 등도 함께 남을 수 있습니다. Memory Profiler 패키지가 이런 셸을 찾아 줍니다[mp-managed-shells].\n- **확인:** 개발 빌드에서 Memory Profiler 모듈의 Texture Memory·Object Count 차트를 화면 열기 전·닫은 뒤로 보고[unity-memory-profiler-module], 자세히는 Memory Profiler 패키지 스냅숏 두 개를 비교합니다. 수정 뒤 같은 절차로 다시 재서 돌아왔는지 봅니다."
+        },
+        {
+          "question": "같은 전투 장면에서 에디터 Play 모드의 Hierarchy 뷰 GC Alloc은 프레임당 1.2 KB인데, Android 개발 빌드에 프로파일러를 붙이면 0.3 KB입니다. Memory 모듈의 GC allocated in frame은 둘 다 Hierarchy 값보다 큽니다. 어느 숫자로 판단하고, 왜 숫자가 다릅니까?",
+          "intent": "에디터와 빌드의 차이, Hierarchy 뷰가 한 번에 한 스레드만 보여 주고 EditorOnly 샘플을 접는다는 것, 두 통계가 세는 범위의 차이를 매뉴얼 근거로 설명하는지 확인한다.",
+          "keyAnswer": "- **판단 기준:** 매뉴얼은 가장 정확한 정보를 얻으려면 대상 플랫폼·기기의 개발 빌드를 프로파일하라고 하고, 에디터는 빌드와 다르게 동작해 프로파일 데이터에 영향을 준다고 적습니다. 예로 `GetComponent`는 에디터에서는 실행할 때마다 메모리를 할당하지만 빌드에서는 그렇지 않습니다[unity-track-gc-alloc]. 결정은 기기 개발 빌드의 숫자로 합니다.\n- **Hierarchy의 GC.Alloc 열:** 선택한 프레임과 **선택한 스레드**에서 Unity가 관리 힙에 할당한 바이트입니다[unity-track-gc-alloc]. 할당은 어느 스레드에서나 일어날 수 있으므로 스레드 선택 드롭다운으로 메인 스레드 밖도 봐야 합니다.\n- **EditorOnly 샘플:** Hierarchy 뷰는 기본으로 EditorOnly 샘플(에디터 전용 안전 검사 때문에만 생기는 샘플)을 접어 두고, 접힌 샘플의 GC.Alloc 값은 감싸는 샘플의 값에 더해지지 않습니다[unity-profiler-cpu].\n- **GC allocated in frame이 더 큰 이유:** 이 통계는 모든 스레드의 할당과 Editor-only 샘플, `EditorLoop` 안의 할당까지 포함하므로 Hierarchy 뷰의 GC.Alloc보다 클 수 있습니다[unity-track-gc-alloc].\n- **어디서 할당하는지:** Call Stacks 모드를 켜면 `GC.Alloc` 샘플의 전체 호출 스택을 Deep Profiling 없이 볼 수 있습니다. Deep Profiling은 성능에 영향을 줄 수 있습니다[unity-track-gc-alloc].\n- **정리:** 에디터 숫자는 같은 코드의 전후 비교에만 쓰고, \"0이 됐다\"는 판정은 기기 개발 빌드에서 모든 관련 스레드를 보고 내립니다."
+        },
+        {
+          "question": "Android도 IL2CPP로 바꿨더니 (1) 리플렉션으로 타입을 찾는 JSON 라이브러리가 일부 DTO에서 런타임에 실패하고, (2) `MakeGenericType`으로 만드는 `Handler<SomeStruct>` 경로가 Mono 때보다 느려졌고, (3) 앱 크기와 Memory 모듈의 Untracked Memory가 늘었습니다. 각각의 원인과 대응을 설명해 주세요.",
+          "intent": "AOT의 제약(관리 코드 스트리핑, 제네릭 인스턴스, 동적 코드 생성)과 백엔드가 바이너리 크기·네이티브 쪽 메모리에 미치는 영향을 매뉴얼 근거로 연결해, 증상별로 원인과 대응을 말하는지 확인한다.",
+          "keyAnswer": "- **(1) 스트리핑과 리플렉션:** IL2CPP 빌드는 관리 어셈블리를 C++로 바꾸기 전에 관리 코드 스트리핑을 적용합니다[unity-il2cpp-intro]. Unity linker는 빌드 시점의 정적 분석으로 도달할 수 없는 코드를 지우므로[unity-managed-code-stripping], 리플렉션으로만 쓰는 타입이나 멤버는 런타임에 없을 수 있습니다. 매뉴얼은 직렬화처럼 리플렉션으로만 쓰는 타입은 AOT 컴파일러가 코드가 필요하다는 것을 알 수 없다고 경고합니다[unity-il2cpp-limitations]. `link.xml`이나 `[Preserve]`로 보존합니다. 라이브러리가 `System.Reflection.Emit`으로 코드를 만든다면 AOT 플랫폼에서는 구현될 수 없습니다.\n- **(2) 제네릭:** IL2CPP는 컴파일 시점에 어떤 제네릭 인스턴스가 쓰이는지 알아야 합니다. 참조 형식 인스턴스끼리는 코드를 공유하지만(`List<object>`와 `List<string>`), `MakeGenericType`처럼 런타임에야 정해지는 인스턴스에는 어떤 형식 인자에도 동작하는 범용 코드를 쓰고, 이 코드는 형식의 크기나 값·참조 여부를 몰라 더 느립니다[unity-il2cpp-limitations]. 대응은 매뉴얼의 세 가지입니다. 항상 참조 형식이면 `where T : class`(참조 형식 공유 코드라 성능 저하 없음), 항상 값 형식이면 `where T : struct`(일부 최적화는 되지만 값 형식마다 크기가 달라 여전히 느림) 제약을 붙이거나, 호출되지 않는 `UsedOnlyForAOTCodeGeneration` 메서드에서 `Handler<SomeStruct>`를 직접 참조해 그 인스턴스를 미리 생성하게 합니다. `Handler<SomeStruct>`처럼 값 형식 인자라면 마지막 방법이 확실합니다.\n- **(3) 크기와 Untracked Memory:** 백엔드 비교표는 IL2CPP의 메모리 사용을 \"더 큰 네이티브 바이너리, 추가로 생성된 C++와 메타데이터\"로 적습니다[unity-scripting-backends-intro]. Memory 모듈의 Untracked Memory 예시에는 Mono 또는 IL2CPP 형식 메타데이터와 실행 코드·DLL이 쓰는 메모리가 있습니다[unity-memory-profiler-module]. 빌드 크기와 빌드 시간을 줄이려면 IL2CPP Code Generation을 \"Optimize for code size and build time\"으로 바꿀 수 있지만, 매뉴얼대로 런타임 성능이 떨어질 수 있습니다[unity-il2cpp-intro].\n- **결론:** IL2CPP는 보통 더 빠른 시작 시간과 예측 가능한 성능을 주지만, 빌드 시간·바이너리 크기와 동적 코드 제약이라는 대가가 있습니다[unity-scripting-backends-intro]. 어느 쪽이 나은지는 같은 장면을 두 백엔드로 빌드해 시작 시간, 프레임 시간, Untracked Memory, 앱 크기를 재서 정합니다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**백엔드: 다른 것은 '언제 기계어가 되는가', 같은 것은 '관리 메모리 모델'.** Unity 매뉴얼은 스크립팅 백엔드를 C# 스크립트를 컴파일하고 실행하는 런타임 기술이라고 정의합니다. Mono는 Unity가 포크한 Mono 런타임으로 런타임에 JIT 컴파일하고, Boehm-Demers-Weiser 가비지 컬렉터로 관리 객체를 수거합니다[unity-mono-backend]. IL2CPP는 빌드 때 IL을 C++로 바꾸고 플랫폼 C++ 컴파일러로 네이티브 코드를 만드는 AOT 백엔드입니다[unity-il2cpp-intro]. 비교표의 차이는 시작 시간(IL2CPP가 보통 빠름, JIT 워밍업 없음), 빌드 시간(IL2CPP가 느림), 메모리 사용(IL2CPP는 더 큰 네이티브 바이너리와 생성된 C++·메타데이터), 리플렉션(`Reflection.Emit` 불가), 제네릭(AOT 제네릭 공유)입니다. 같은 것은 C#/.NET API 표면입니다. 매뉴얼은 두 백엔드에서 쓸 수 있는 API 표면이 거의 같고, 둘 다 같은 기본 클래스 라이브러리를 쓴다고 적습니다(일부 IL2CPP·AOT 제약은 예외)[unity-scripting-backends-intro]. 플랫폼도 정해져 있습니다. Mono는 Windows, macOS, Linux x64, Android Armv7에서만 지원되고 나머지는 IL2CPP 전용이며, 둘 다 되는 플랫폼의 기본값은 Mono입니다.\n\n**관리 메모리와 네이티브 메모리.** 관리 메모리 시스템은 Mono나 IL2CPP 가상 머신이 제공하며 관리 힙(가비지 컬렉터가 관리), 스크립팅 스택, 네이티브 VM 메모리로 나뉩니다. null이 아닌 모든 참조 형식 객체와 박싱된 값 형식 객체는 관리 힙에 할당됩니다[unity-managed-mem-intro]. 네이티브 메모리는 엔진의 C/C++ 코어가 쓰는 메모리로 씬, 에셋, 그래픽스 API와 드라이버, 하위 시스템, 플러그인 버퍼를 담으며, 매뉴얼은 이것이 보통 앱 메모리 사용량에서 가장 큰 덩어리라고 적습니다. `NativeArray`나 `UnsafeUtility.Malloc` 같은 C# 비관리 메모리는 GC가 추적하지 않으므로 `Dispose`나 `Free`로 직접 해제해야 하고, Memory Profiler는 이를 네이티브 메모리와 함께 묶어 보여 줍니다[unity-memory-overview]. 해제 규칙도 다릅니다. GC는 네이티브 객체를 치우지 않고, 네이티브 메모리는 `Destroy`나 `Resources.UnloadUnusedAssets`로 해제됩니다[unity-managed-mem-intro].\n\n**GC Alloc 열이 세는 것.** CPU Usage 모듈 Hierarchy 뷰의 GC Alloc은 Unity가 그 프레임에 할당한 스크립팅 힙 메모리입니다[unity-profiler-cpu]. GC 추적 문서는 더 정확히 \"선택한 프레임과 스레드에서 관리 힙에 할당한 바이트 수\"라고 씁니다[unity-track-gc-alloc]. 따라서 텍스처·메시·RenderTexture 같은 네이티브 할당은 들어가지 않고, 다른 스레드의 할당은 그 스레드를 골라야 보입니다.\n\n**판정.**\n- **A는 틀렸습니다.** IL2CPP로 바꿔도 관리 힙과 GC는 그대로이고(Unity 6.0 매뉴얼은 Mono와 IL2CPP 백엔드 모두 Boehm-Demers-Weiser 가비지 컬렉터를 쓴다고 적습니다[unity-csharp-compiler]), 매 프레임 관리 힙에 할당하는 코드는 두 백엔드 모두에서 GC 부담이 됩니다. 매뉴얼의 GC 개요는 프레임당 관리 힙 할당을 0 B나 그에 가깝게 줄이라고 권합니다[unity-gc-overview].\n- **B는 조건부로만 맞습니다.** 에디터는 빌드와 다르게 동작하므로(에디터에서만 할당하는 `GetComponent` 등) 판정은 기기 개발 빌드에서 해야 하고, Hierarchy는 한 스레드만 보여 주며, 네이티브 메모리는 이 열에 나오지 않습니다[unity-track-gc-alloc].\n- **QA의 관찰은 모순이 아닙니다.** GC Alloc이 0에 가까워도 네이티브 메모리는 늘 수 있습니다. 먼저 Memory Profiler 모듈의 Texture Memory, Mesh Memory, Object Count 차트, Simple 뷰의 Tracked/Untracked Memory와 Total Memory Breakdown(Managed Heap, Graphics & Graphics Driver 등)을 화면 열기 전·닫은 뒤로 비교해 어느 쪽이 느는지 봅니다[unity-memory-profiler-module]. 늘어난 항목이 텍스처라면 Memory Profiler 패키지 스냅숏 비교로 어떤 객체가 남는지 찾고, 직접 만든 객체에 `Destroy`를 넣은 뒤 같은 절차로 다시 잽니다.\n\n**면접관이 보는 것.** 숫자를 외우는 것이 아니라 \"이 도구가 무엇을 세는가\"와 \"이 메모리를 누가 해제하는가\"를 구분하는지, 그리고 결론을 기기 측정으로 확인하겠다고 말하는지입니다. 매뉴얼에 없는 수치(백엔드별 GC 시간, 몇 MB가 정상인지)는 프로젝트에서 재서 정해야 합니다.\n\n### 흔한 오해\n- **\"IL2CPP는 C#을 C++로 바꾸니까 GC가 없어지고 GC Alloc도 사라진다\"** — 매뉴얼은 관리 메모리 시스템이 Mono 또는 IL2CPP 가상 머신이 제공하는 것이고 관리 힙은 가비지 컬렉터가 관리한다고 적습니다[unity-managed-mem-intro]. 같은 문서는 백엔드를 가리지 않고 null이 아닌 모든 참조 형식 객체와 박싱된 값 형식 객체가 관리 힙에 할당된다고 하고, Unity 6.0은 Mono와 IL2CPP 모두 Boehm-Demers-Weiser GC를 쓴다고 적습니다[unity-csharp-compiler]. 그래서 박싱이나 클로저 객체처럼 관리 힙에 만드는 할당은 IL2CPP에서도 GC의 몫입니다. 바뀌는 것은 코드가 기계어가 되는 시점(JIT 대 AOT)입니다.\n- **\"Profiler의 GC Alloc이 0이면 그 프레임에 메모리를 하나도 쓰지 않은 것이다\"** — GC Alloc은 선택한 프레임과 스레드에서 관리 힙에 할당한 바이트만 셉니다[unity-track-gc-alloc]. 텍스처나 RenderTexture 같은 네이티브 메모리는 GC가 해제하지 않고 `Destroy`나 `UnloadUnusedAssets` 전까지 남으므로[unity-managed-mem-intro], GC Alloc 0과 앱 메모리 증가는 동시에 일어날 수 있습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Mono는 JIT, IL2CPP는 AOT(IL → C++ → 네이티브)이고, 두 백엔드가 같은 기본 클래스 라이브러리와 관리 힙·GC를 쓴다고 말했다.",
+            "points": 12,
+            "sourceId": "unity-scripting-backends-intro"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "GC Alloc 열이 선택한 프레임·스레드에서 관리 힙에 할당한 바이트이고, 네이티브 할당과 다른 스레드는 보이지 않는다고 말했다.",
+            "points": 12,
+            "sourceId": "unity-track-gc-alloc"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "GC는 네이티브 메모리를 치우지 않으며 `Destroy`와 `Resources.UnloadUnusedAssets`가 해제 경로라고 말했다.",
+            "points": 11,
+            "sourceId": "unity-managed-mem-intro"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "QA 증상을 네이티브(텍스처·RenderTexture) 쪽으로 의심하고, Memory 모듈의 Texture Memory·Object Count나 Memory Profiler 스냅숏 비교로 확인하겠다고 했다.",
+            "points": 10,
+            "sourceId": "unity-memory-profiler-module"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "관리 메모리의 구성(관리 힙, 스크립팅 스택, 네이티브 VM 메모리)과 \"null이 아닌 참조 형식 객체와 박싱된 값은 관리 힙에 할당된다\"를 설명했다.",
+            "points": 10,
+            "sourceId": "unity-managed-mem-intro"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "IL2CPP의 대가(빌드 시간, 더 큰 네이티브 바이너리와 메타데이터)와 이점(시작 시간, 예측 가능한 성능)을 매뉴얼 비교표 수준으로 말했다.",
+            "points": 10,
+            "sourceId": "unity-scripting-backends-intro"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "판정은 대상 기기의 개발 빌드에서 해야 하며 에디터는 다르게 동작한다고 근거(예: `GetComponent`)와 함께 말했다.",
+            "points": 10,
+            "sourceId": "unity-track-gc-alloc"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "IL2CPP의 AOT 제약(관리 코드 스트리핑과 `link.xml`/`[Preserve]`, `Reflection.Emit` 불가, 런타임 제네릭 인스턴스) 중 하나 이상을 정확히 말했다.",
+            "points": 10,
+            "sourceId": "unity-il2cpp-limitations"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "세 사람의 말을 각각 맞음 / 틀림 / 조건부로 판정하고 근거를 붙였다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "조사를 측정 → 가설 → 수정 → 같은 절차로 재측정의 순서로 제시하고, 매뉴얼에 없는 수치는 재서 정한다고 했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "\"IL2CPP로 바꾸면 GC가 없어진다\" 또는 \"GC Alloc이 사라진다\"고 답한다.",
+            "penalty": -20,
+            "sourceId": "unity-managed-mem-intro"
+          },
+          {
+            "id": "d2",
+            "description": "GC Alloc 열이 텍스처를 포함한 프레임의 모든 메모리 사용을 센다고 답한다.",
+            "penalty": -20,
+            "sourceId": "unity-track-gc-alloc"
+          },
+          {
+            "id": "d3",
+            "description": "네이티브 메모리를 돌려받는 해법으로 `GC.Collect()`를 제시한다.",
+            "penalty": -15,
+            "sourceId": "unity-managed-mem-intro"
+          }
+        ]
+      },
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6.0 매뉴얼(스크립팅 백엔드 소개·Mono·IL2CPP 소개와 제약·관리 코드 스트리핑·관리 메모리 소개·메모리 개요·GC 개요·GC 할당 추적·CPU Usage와 Memory 모듈·C# 컴파일러)과 Memory Profiler 관리 셸 페이지를 받아 문장별로 대조하고, API 표면이 \"거의\" 같다는 표현, where T : struct의 한계, 두 백엔드 모두 Boehm GC라는 근거를 바로잡았다."
+      },
+      "nextMission": "자기 프로젝트의 화면 하나(상점, 가챠 등)를 골라 Android 개발 빌드에서 화면을 열기 전과 닫은 뒤에 Memory Profiler 스냅숏을 찍어 비교하세요. 늘어난 항목을 관리 힙 / 네이티브(텍스처, 메시, RenderTexture) / Untracked로 나눠 표로 만들고, 항목마다 해제 코드(`Destroy`, 이벤트 해지, static 참조 제거)를 넣은 뒤 같은 절차로 다시 재 보세요. 같은 장면을 Mono와 IL2CPP로 각각 빌드해 시작 시간, 프레임당 GC Alloc, Untracked Memory, 앱 크기를 표로 비교합니다.",
+      "tests": null
+    },
+    {
+      "id": "t1-debug-hidden-allocations-targeting",
+      "track": "track1",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "꺼진 로그가 메모리를 쓴다: params 배열·보간 문자열, 비교 람다의 클로저, 비제네릭 IComparable의 박싱",
+      "tags": [
+        "CSharp_Hidden_Alloc",
+        "CSharp_Closure_Alloc",
+        "CSharp_GC_Boxing"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-csharp-spec-arg-eval",
+        "ms-gh-runtime8-arraysorthelper",
+        "ms-lambda-expressions",
+        "ms-icomparable-t"
+      ],
+      "scenario": "액션 게임의 타기팅 시스템은 매 프레임 적 목록을 플레이어와 가까운 순으로 정렬하고(`SortByDistance`), HUD의 위협 목록을 위협도 순으로 정렬합니다(`RankThreats`). 전투 디버그 로그(`CombatLog`)는 출시 빌드에서 `Enabled = false`로 꺼 둡니다. 그런데 출시 후보 빌드를 프로파일하니 타기팅 시스템이 프레임마다 수 KB를 할당하고, 몇 초마다 GC가 돌며 프레임이 튑니다. 담당자는 \"로그는 꺼져 있고, 정렬은 `List.Sort`라서 할당이 없다\"고 말합니다.\n\n채점기와 같은 64비트 .NET 8에서 로그를 끈 채 재면 이렇습니다.\n\n| 호출 | 호출당 할당 |\n|---|---|\n| `SortByDistance`, 적 16명 | 160 B |\n| `SortByDistance`, 적 0명이나 1명(정렬하지 않고 반환) | 96 B |\n| `RankThreats`, 1개 | 88 B |\n| `RankThreats`, 24개(채점기 테스트의 입력) | 3,856 B |\n\n**할 일:** 할당의 원인을 모두 찾아 없애세요. 로그가 꺼져 있으면 위의 모든 호출이 **0 B**여야 합니다. 동작은 그대로 둡니다. 정렬 결과(거리² 오름차순, 같으면 Id 오름차순 / 위협도 내림차순, 같으면 EnemyId 오름차순의 안정 정렬)와, 로그가 켜져 있을 때 기록되는 문자열이 지금과 같아야 합니다. 원인마다 그것만 남겼을 때 할당이 생기는 가장 작은 입력과, 그 할당이 **호출하는 쪽과 불리는 쪽 중 어디서** 만들어지는지 설명하세요.",
+      "constraints": [
+        "로그가 꺼져 있으면 `SortByDistance`(적 0·1·16명)와 `RankThreats`(1·24개)는 호출당 힙 할당 0 B",
+        "`CombatLog.Enabled`는 실행 중에 바뀌는 플래그다. 켜면 지금과 똑같은 문자열이 기록되어야 하므로 `[Conditional]`로 호출을 지우는 방식은 요구를 만족하지 않는다",
+        "`List<T>.Sort`를 직접 짠 정렬로 바꾸지 않는다. `SmallSort.InsertionSort`는 안정 삽입 정렬로 유지한다",
+        "기준점을 static 필드로 넘기지 않는다(`TargetingSystem` 인스턴스가 여러 개일 수 있다)",
+        "`Enemy`, `ThreatEntry`(struct), `CombatLog`, `SmallSort.InsertionSort<T>(T[], int)`, `TargetingSystem`의 public 멤버 이름과 매개변수는 유지한다. 제네릭 제약과 구현하는 인터페이스는 바꿔도 된다"
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\nusing System.Globalization;\n\npublic sealed class Enemy\n{\n    public readonly int Id;\n    public float X, Y;\n    public Enemy(int id, float x, float y) { Id = id; X = x; Y = y; }\n}\n\n// HUD 위협 목록의 한 줄. 위협도 높은 순, 같으면 EnemyId 작은 순.\npublic struct ThreatEntry : IComparable\n{\n    public int EnemyId;\n    public int Threat;\n    public ThreatEntry(int enemyId, int threat) { EnemyId = enemyId; Threat = threat; }\n\n    public int CompareTo(object obj)\n    {\n        var other = (ThreatEntry)obj;\n        if (Threat != other.Threat) return other.Threat.CompareTo(Threat);\n        return EnemyId.CompareTo(other.EnemyId);\n    }\n}\n\n// 전투 디버그 로그. 출시 빌드에서는 Enabled = false로 돈다.\npublic sealed class CombatLog\n{\n    public bool Enabled;\n    public readonly List<string> Lines = new List<string>();\n\n    public void Write(string message)\n    {\n        if (!Enabled) return;\n        Lines.Add(message);\n    }\n\n    public void Write(string format, params object[] args)\n    {\n        if (!Enabled) return;\n        Lines.Add(string.Format(CultureInfo.InvariantCulture, format, args));\n    }\n}\n\npublic static class SmallSort\n{\n    // 안정 삽입 정렬. 원소가 수십 개 이하인 HUD 목록에 쓴다. items[0..count)만 정렬한다.\n    public static void InsertionSort<T>(T[] items, int count) where T : IComparable\n    {\n        for (int i = 1; i < count; i++)\n        {\n            T key = items[i];\n            int j = i - 1;\n            while (j >= 0 && items[j].CompareTo(key) > 0)\n            {\n                items[j + 1] = items[j];\n                j--;\n            }\n            items[j + 1] = key;\n        }\n    }\n}\n\n// 매 프레임 호출되는 타기팅 시스템\npublic sealed class TargetingSystem\n{\n    private readonly CombatLog _log;\n\n    public TargetingSystem(CombatLog log) { _log = log; }\n\n    // (px, py)에서 가까운 순. 거리가 같으면 Id 작은 순.\n    public void SortByDistance(List<Enemy> enemies, float px, float py)\n    {\n        _log.Write($\"[Target] sort {enemies.Count} enemies\");\n        if (enemies.Count < 2) return;\n        enemies.Sort((a, b) =>\n        {\n            int c = DistSq(a, px, py).CompareTo(DistSq(b, px, py));\n            return c != 0 ? c : a.Id.CompareTo(b.Id);\n        });\n    }\n\n    // entries[0..count)를 위협도 순으로 정렬하고 1위를 로그에 남긴다.\n    public void RankThreats(ThreatEntry[] entries, int count)\n    {\n        SmallSort.InsertionSort(entries, count);\n        _log.Write(\"[Target] rank {0} threats, top {1}\", count, count > 0 ? entries[0].Threat : -1);\n    }\n\n    private static float DistSq(Enemy e, float px, float py)\n    {\n        float dx = e.X - px, dy = e.Y - py;\n        return dx * dx + dy * dy;\n    }\n}\n",
+      "edgeCases": [
+        "적이 0명이나 1명이라 정렬하지 않고 반환하는 경로도 0 B여야 한다(람다가 실행되지 않아도 생기는 할당)",
+        "로그가 꺼진 상태의 `params object[]` 호출: 배열과 int 박싱이 `Write`가 불리기 전에 만들어진다",
+        "`IComparer<Enemy>` 객체를 캐시해 `List.Sort(IComparer<T>)`로 넘기는 수정은 .NET 8에서 여전히 호출당 64 B",
+        "켜진 로그에서 `RankThreats(new ThreatEntry[0], 0)`은 `[Target] rank 0 threats, top -1`을 기록한다"
+      ],
+      "hints": [
+        "로그가 꺼져 있을 때 `_log.Write($\"[Target] sort {enemies.Count} enemies\");`가 실행되는 순서를 따라가 보세요. C# 명세는 함수 멤버를 호출할 때 인자 목록을 먼저 왼쪽부터 평가한다고 정합니다. `Write` 첫 줄의 `if (!Enabled) return;`에 도착했을 때 문자열은 이미 만들어져 있을까요? `Write(\"[Target] rank {0} threats, top {1}\", count, …)`도 같은 질문을 해 보세요. 그리고 적이 1명이라 `Sort`까지 가지도 않는 호출이 왜 96 B인지 생각해 보세요. 그중 72 B는 로그 문자열이고, 나머지 24 B는 로그와 무관합니다.",
+        "원인은 세 군데입니다. (1) 로그 호출 두 곳: 인자를 만드는 쪽(호출하는 쪽)에서 막아야 합니다. (2) `SortByDistance`의 비교 람다: 매개변수 `px`, `py`를 캡처합니다. 캡처한 변수를 담는 객체가 메서드의 어느 시점에 만들어지는지, 람다에서 만든 델리게이트가 호출마다 새로 만들어지는지 보세요. `IComparer<Enemy>` 객체를 한 번 만들어 `Sort(comparer)`로 넘기는 것만으로는 0 B가 되지 않습니다. .NET 8의 `ArraySortHelper<T>.Sort(Span<T>, IComparer<T>)`가 무엇을 하는지 확인하세요. (3) `SmallSort.InsertionSort`의 제약 `where T : IComparable`: `CompareTo(object)`에 struct를 넘기면 무엇이 생깁니까?",
+        "```\nTargetingSystem:\n    private readonly Comparison<Enemy> _byDistance   // 생성자에서 /* ??? */ 한 번만 만든다\n    private float _px, _py                           // 비교 기준점(인스턴스 필드)\n\n    SortByDistance(enemies, px, py):\n        if (/* ??? */) _log.Write($\"[Target] sort {enemies.Count} enemies\")   // 꺼져 있으면 문자열을 만들지 않는다\n        if (enemies.Count < 2) return\n        _px = px; _py = py\n        enemies.Sort(/* ??? */)                       // Comparison<T>를 받는 오버로드\n\n    CompareByDistance(a, b): 거리² 비교, 같으면 Id 비교   // 람다가 아니라 인스턴스 메서드\n\n    RankThreats(entries, count):\n        SmallSort.InsertionSort(entries, count)\n        if (/* ??? */) _log.Write(\"[Target] rank {0} threats, top {1}\", …)\n\nThreatEntry : /* ??? 제네릭 비교 인터페이스 */\nSmallSort.InsertionSort<T>(T[] items, int count) where T : /* ??? */\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\nusing System.Globalization;\n\npublic sealed class Enemy\n{\n    public readonly int Id;\n    public float X, Y;\n    public Enemy(int id, float x, float y) { Id = id; X = x; Y = y; }\n}\n\n// HUD 위협 목록의 한 줄. 위협도 높은 순, 같으면 EnemyId 작은 순.\n// [버그 3 수정] 제네릭 IComparable<ThreatEntry>로 비교한다. 비제네릭 CompareTo(object)는 인자를 박싱한다.\npublic struct ThreatEntry : IComparable<ThreatEntry>\n{\n    public int EnemyId;\n    public int Threat;\n    public ThreatEntry(int enemyId, int threat) { EnemyId = enemyId; Threat = threat; }\n\n    public int CompareTo(ThreatEntry other)\n    {\n        if (Threat != other.Threat) return other.Threat.CompareTo(Threat);\n        return EnemyId.CompareTo(other.EnemyId);\n    }\n}\n\n// 전투 디버그 로그. 출시 빌드에서는 Enabled = false로 돈다.\npublic sealed class CombatLog\n{\n    public bool Enabled;\n    public readonly List<string> Lines = new List<string>();\n\n    public void Write(string message)\n    {\n        if (!Enabled) return;\n        Lines.Add(message);\n    }\n\n    public void Write(string format, params object[] args)\n    {\n        if (!Enabled) return;\n        Lines.Add(string.Format(CultureInfo.InvariantCulture, format, args));\n    }\n}\n\npublic static class SmallSort\n{\n    // [버그 3 수정] where T : IComparable<T>. 값 형식 T에서도 CompareTo(T)가 박싱 없이 불린다.\n    public static void InsertionSort<T>(T[] items, int count) where T : IComparable<T>\n    {\n        for (int i = 1; i < count; i++)\n        {\n            T key = items[i];\n            int j = i - 1;\n            while (j >= 0 && items[j].CompareTo(key) > 0)\n            {\n                items[j + 1] = items[j];\n                j--;\n            }\n            items[j + 1] = key;\n        }\n    }\n}\n\n// 매 프레임 호출되는 타기팅 시스템\npublic sealed class TargetingSystem\n{\n    private readonly CombatLog _log;\n    // [버그 2 수정] 비교 델리게이트는 생성자에서 한 번만 만든다. 기준점은 필드로 넘긴다.\n    private readonly Comparison<Enemy> _byDistance;\n    private float _px, _py;\n\n    public TargetingSystem(CombatLog log)\n    {\n        _log = log;\n        _byDistance = CompareByDistance;\n    }\n\n    public void SortByDistance(List<Enemy> enemies, float px, float py)\n    {\n        // [버그 1 수정] 보간 문자열은 호출 전에 만들어지므로, 꺼져 있으면 아예 만들지 않는다.\n        if (_log.Enabled) _log.Write($\"[Target] sort {enemies.Count} enemies\");\n        if (enemies.Count < 2) return;\n        _px = px;\n        _py = py;\n        enemies.Sort(_byDistance);   // List<T>.Sort(Comparison<T>)는 델리게이트를 그대로 쓴다\n    }\n\n    public void RankThreats(ThreatEntry[] entries, int count)\n    {\n        SmallSort.InsertionSort(entries, count);\n        // [버그 1 수정] params object[] 배열과 int 박싱도 호출하는 쪽에서 생기므로 같은 방식으로 막는다.\n        if (_log.Enabled) _log.Write(\"[Target] rank {0} threats, top {1}\", count, count > 0 ? entries[0].Threat : -1);\n    }\n\n    private int CompareByDistance(Enemy a, Enemy b)\n    {\n        int c = DistSq(a, _px, _py).CompareTo(DistSq(b, _px, _py));\n        return c != 0 ? c : a.Id.CompareTo(b.Id);\n    }\n\n    private static float DistSq(Enemy e, float px, float py)\n    {\n        float dx = e.X - px, dy = e.Y - py;\n        return dx * dx + dy * dy;\n    }\n}\n",
+      "explanation": "세 원인을 하나씩 남겨 두고 재면 할당이 깔끔하게 나뉩니다(채점기와 로컬 .NET 8, 로그 꺼짐, 호출당).\n\n| 남겨 둔 원인 | 적 0·1명 | 적 16명 | 위협 1개 | 위협 24개 |\n|---|---|---|---|---|\n| 1. 꺼진 로그의 인자 | 72 B | 72 B | 88 B | 88 B |\n| 2. 비교 람다의 클로저 | 24 B | 88 B | 0 | 0 |\n| 3. 비제네릭 `IComparable` | 0 | 0 | 0 | 3,768 B |\n\n**버그 1: 꺼진 로그도 인자는 만든다(호출하는 쪽).** 함수 멤버를 호출할 때 인자 목록은 호출 전에 왼쪽부터 평가됩니다. params 매개변수를 펼친 형태로 부르면, 호출이 인자 개수만큼의 배열을 만들어 값을 채운 뒤 그 배열을 실제 인자로 넘깁니다[ms-csharp-spec-arg-eval]. 그래서 `Write(\"[Target] rank {0} threats, top {1}\", count, top)`은 `Enabled`를 검사하기도 전에 `object[2]`와 박싱된 `int` 두 개, 합쳐 88 B를 만듭니다(가장 작은 입력: 위협 1개). 보간 문자열도 형식이 `string`이면 `DefaultInterpolatedStringHandler`가 처리해[ms-interpolated-strings] 호출 지점에서 완성된 문자열이 만들어집니다. `\"[Target] sort 0 enemies\"`가 72 B입니다(적 0명). 고치는 곳은 불리는 쪽이 아니라 **호출하는 쪽**입니다. 모범 답안은 `if (_log.Enabled)`로 감쌌습니다. `Write<T0, T1>(string, T0, T1)` 같은 제네릭 오버로드도 정답입니다. 제네릭 인자는 박싱되지 않고, 켜졌을 때만 `string.Format`에서 박싱됩니다. 참고로 인자 없는 params 호출은 0 B였습니다.\n\n**버그 2: 비교 람다가 매 호출 클로저와 델리게이트를 만든다(호출하는 쪽).** 람다가 바깥 변수를 캡처하면 그 변수를 람다가 쓸 수 있도록 보관해 둡니다[ms-lambda-expressions]. 측정해 보면 `px`, `py`를 담는 객체(24 B)와 델리게이트(64 B)가 호출마다 생깁니다. 눈여겨볼 점은 적이 0·1명이라 람다에 닿지도 않는 경로에서도 24 B가 생긴다는 것입니다. 캡처된 것이 매개변수라서 Roslyn이 메서드 진입 시점에 그 객체를 만들기 때문입니다(언어 규칙이 아니라 컴파일러 구현이고, 측정으로 확인했습니다). 모범 답안은 생성자에서 인스턴스 메서드 그룹으로 `Comparison<Enemy>`를 한 번 만들고, 기준점은 인스턴스 필드로 넘깁니다. .NET 8의 `List<T>.Sort(Comparison<T>)`는 받은 델리게이트를 그대로 `ArraySortHelper<T>.Sort`에 넘기므로 추가 할당이 없습니다[ms-gh-runtime-list-cs-net8]. 기준점을 static 필드로 넘기면 0 B는 되지만, 타기팅 시스템이 둘 이상이거나 다른 스레드에서 정렬하면 서로 덮어씁니다.\n\n**버그 3: `where T : IComparable`이 비교마다 박싱한다(불리는 쪽 메서드 안).** 비제네릭 `CompareTo(object)`에 struct `key`를 넘기면 비교 한 번마다 박싱이 일어납니다. 채점기 테스트의 24개 입력을 정렬하는 동안 비교가 157번 일어나 3,768 B였습니다(가장 작은 입력: 2개 이상. 비교 횟수는 입력 순서에 따라 달라집니다). `IComparable<T>`는 같은 형식끼리의 강한 형식 비교 메서드를 제공하는 인터페이스이므로[ms-icomparable-t], `ThreatEntry : IComparable<ThreatEntry>`와 `where T : IComparable<T>`로 바꾸면 박싱이 사라집니다. `int`와 `string`도 `IComparable<T>`를 구현하므로 다른 호출자는 그대로 동작합니다.\n\n**복잡도와 동작.** 정렬 알고리즘과 비교 규칙은 그대로라 결과와 시간 복잡도는 바뀌지 않습니다. 켜진 로그는 같은 문자열을 기록합니다. 로그가 켜진 디버그 빌드에서는 문자열과 박싱이 여전히 생기지만, 그것은 요구 범위 밖입니다.\n\n**고르지 말아야 할 수정.** `[Conditional(\"COMBAT_LOG\")]`는 기호가 정의되지 않으면 호출을 IL에 넣지 않으므로 인자 평가까지 사라집니다[ms-conditionalattribute]. 하지만 컴파일 시점의 기호라서 실행 중에 `Enabled`로 켜고 끄는 이 게임의 요구를 만족하지 않습니다. C# 10의 사용자 지정 보간 문자열 처리기는 `out bool` 매개변수로 꺼진 로그의 문자열 생성을 건너뛸 수 있지만[ms-interpolated-string-handler], Unity 6.0의 C# 언어 버전은 C# 9.0이라[unity-csharp-compiler] 이 문법을 그대로 쓸 수 없습니다. 델리게이트 캐시도 같은 이유로 컴파일러에 맡기지 말고 필드에 직접 둡니다(아래 흔한 오해).\n\n**Unity에서.** 표의 수치는 64비트 .NET 8 CoreCLR 기준입니다. Unity 6 매뉴얼도 params 배열, 클로저와 메서드 참조, 박싱을 관리 힙 할당 원인으로 들고, 정렬 비교 람다가 바깥 변수를 캡처하면 클로저 객체를 할당한다는 예를 듭니다[unity-ref-types]. 하지만 바이트 수, 적 0·1명 경로의 클로저(Roslyn이 메서드 진입 시점에 만드는 구현 세부라 Unity의 Roslyn도 같을 것으로 추론), `IComparer` 경로의 64 B(.NET 8 BCL 구현)는 Unity Mono·IL2CPP에서 직접 재지 않았습니다. Unity에서는 기기 개발 빌드의 Profiler GC.Alloc으로 같은 실험을 해 확인합니다.\n\n### 흔한 오해\n- **\"Comparison 람다 대신 IComparer<T> 객체를 한 번 만들어 재사용하면 Sort는 할당이 없다\"** — .NET 8 구현에서 `ArraySortHelper<T>.Sort(Span<T>, IComparer<T>)`는 `IntrospectiveSort(keys, comparer.Compare)`를 불러, 호출마다 `comparer.Compare`로 새 `Comparison<T>` 델리게이트를 만듭니다[ms-gh-runtime8-arraysorthelper]. 64비트 .NET 8(로컬 8.0.8)에서 캐시한 `IComparer<Enemy>`로 적 16명 `List.Sort`를 부르면 호출당 64 B였고, 같은 비교를 캐시한 `Comparison<Enemy>`로 넘기면 0 B였습니다. 이것은 계약이 아니라 .NET 8의 구현이므로 버전이 바뀌면 다시 재야 하고, Unity의 Mono·IL2CPP 클래스 라이브러리에서는 확인하지 않았습니다.\n- **\"람다 대신 메서드 이름을 넘기면(메서드 그룹) 델리게이트를 만들지 않으니 할당이 없다\"** — 명세는 메서드 그룹 변환이 기존 델리게이트 인스턴스를 재사용하는 것을 허용할 뿐 요구하지 않고, 재사용하지 않으면 새 인스턴스를 만든다고 정합니다[ms-csharp-spec-method-group-conversions]. 컴파일러가 실제로 재사용하기 시작한 것은 C# 11의 '메서드 그룹 변환 개선'부터이고[ms-csharp-version-history], 64비트 .NET 8 SDK로 재 보니 그것도 정적 메서드뿐이었습니다. `list.Sort(StaticCompare)`는 기본 언어 버전(C# 12)에서 호출당 0 B, `LangVersion 9`(Unity 6.0의 C# 버전)로 컴파일하면 64 B였고, 인스턴스 메서드 그룹 `list.Sort(CompareByDistance)`는 두 버전 모두 호출당 64 B였습니다(실행해 확인). Unity 매뉴얼도 메서드 참조는 관리 힙에 할당되는 참조 형식이라, 익명 메서드든 미리 정의한 메서드든 인자로 넘기면 임시 할당이 생길 수 있다고 적습니다[unity-ref-types]. 그래서 모범 답안은 생성자에서 델리게이트를 한 번 만들어 필드에 둡니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "정렬 결과가 그대로다: 거리² 오름차순·같으면 Id 오름차순, 위협도 내림차순·같으면 EnemyId 오름차순의 안정 정렬(`count` 뒤 칸은 그대로).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "로그가 켜져 있으면 네 종류의 문자열(`sort N enemies`, `rank N threats, top T`, 빈 목록의 `top -1` 포함)이 이전과 똑같이 기록된다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "세 원인 각각에 대해 그것만 남겼을 때 할당이 생기는 가장 작은 입력을 제시했다(예: 적 0명 + 로그 꺼짐 → 로그 문자열 72 B, 클로저 24 B).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "각 할당이 호출하는 쪽(인자 평가, 클로저)에서 생기는지 불리는 쪽 메서드 안(비교마다의 박싱)에서 생기는지 구분해 설명했다.",
+            "points": 7,
+            "sourceId": "ms-csharp-spec-arg-eval"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "로그가 꺼져 있으면 보간 문자열, params 배열, int 박싱이 만들어지지 않는다(호출하는 쪽 검사나 제네릭 오버로드).",
+            "points": 10,
+            "sourceId": "ms-csharp-spec-arg-eval"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "비교 델리게이트를 한 번만 만들어 `List<T>.Sort(Comparison<T>)`에 넘기고, 적 0·1명 경로에도 클로저가 생기지 않는다.",
+            "points": 10,
+            "sourceId": "ms-gh-runtime8-arraysorthelper"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "`InsertionSort`가 `where T : IComparable<T>`로 박싱 없이 비교하고 `ThreatEntry`가 `IComparable<ThreatEntry>`를 구현한다.",
+            "points": 10,
+            "sourceId": "ms-icomparable-t"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "워밍업 뒤 반복 호출 구간의 `GC.GetAllocatedBytesForCurrentThread` 차이로 0 B를 직접 확인했다.",
+            "points": 10,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "Unity(C# 9.0)에서도 쓸 수 있는 수정을 골랐고, 보간 문자열 처리기처럼 C# 10 이상이 필요한 대안을 언급했다면 그 제약을 밝혔다.",
+            "points": 10,
+            "sourceId": "unity-csharp-compiler"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "기준점을 static이 아니라 인스턴스 필드로 넘겨 `TargetingSystem` 여러 개가 서로 간섭하지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "로그 검사 방식이 한 가지로 일관되고, 각 수정 이유(무엇이 어디서 할당되는지)가 주석에 남아 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "로그가 꺼진 상태에서도 문자열이나 params 배열이 만들어진다(0 B 요구 위반).",
+            "penalty": -20,
+            "sourceId": "ms-csharp-spec-arg-eval"
+          },
+          {
+            "id": "d2",
+            "description": "정렬을 직접 짠 정렬로 바꾸거나, 동률 처리가 달라져 정렬 결과가 바뀐다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "`[Conditional]`로 로그 호출을 지워 실행 중에 로그를 켤 수 없게 만들었다.",
+            "penalty": -15,
+            "sourceId": "ms-conditionalattribute"
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 64비트 .NET 8에서 스타터(160·96·88·3,856 B)와 원인별 할당(로그 72·88 B, 클로저 24·88 B, 박싱 3,768 B=비교 157회), 캐시한 IComparer 경로 64 B, LangVersion 9의 정적 메서드 그룹 64 B를 재측정하고 채점기에서 모범 답안 통과·스타터 실패를 확인했으며, 보간 문자열 설명을 현재 Learn 문서에 맞게 고치고 Unity 쪽 주장은 Unity 6 매뉴얼 근거와 미측정·추론 부분을 나눠 적었다."
+      },
+      "nextMission": "프로젝트의 로그 래퍼에 `Log<T0>(LogLevel, string, T0)`부터 `Log<T0, T1, T2>`까지 제네릭 오버로드를 만들어, 꺼진 레벨에서 호출당 0 B임을 `GC.GetAllocatedBytesForCurrentThread`로 증명하세요. 그다음 Unity 개발 빌드에서 같은 호출을 Profiler의 Call Stacks 모드로 보고 GC.Alloc 샘플이 사라졌는지 확인합니다. 순수 .NET 도구라면 Learn의 사용자 지정 보간 문자열 처리기 튜토리얼대로 `out bool isEnabled`를 받는 처리기를 만들어 `$\"...\"`를 그대로 쓰면서 0 B가 되는지 비교해 보세요(C# 10 이상).",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name + \" \" + e.Message; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static uint s_seed = 20261122u;\n    static int Rnd(int n) { s_seed = s_seed * 1664525u + 1013904223u; return (int)((s_seed >> 8) % (uint)n); }\n\n    static System.Collections.Generic.List<Enemy> MakeEnemies(int n)\n    {\n        var list = new System.Collections.Generic.List<Enemy>(n);\n        for (int i = 0; i < n; i++) list.Add(new Enemy(100 + Rnd(1000), Rnd(9) - 4, Rnd(9) - 4)); // 좁은 격자: 거리 동률이 자주 나온다\n        return list;\n    }\n\n    static string Ids(System.Collections.Generic.List<Enemy> list)\n    {\n        var sb = new System.Text.StringBuilder();\n        for (int i = 0; i < list.Count; i++) { if (i > 0) sb.Append(','); sb.Append(list[i].Id); }\n        return sb.ToString();\n    }\n\n    // 워밍업 뒤 action을 calls번 실행하는 동안의 이 스레드 힙 할당 바이트\n    static long Measure(System.Action action, int calls)\n    {\n        for (int i = 0; i < 50; i++) action();\n        long before = System.GC.GetAllocatedBytesForCurrentThread();\n        for (int i = 0; i < calls; i++) action();\n        return System.GC.GetAllocatedBytesForCurrentThread() - before;\n    }\n\n    public static void Main()\n    {\n        Run(\"sort-order-matches-reference\", () =>\n        {\n            var sys = new TargetingSystem(new CombatLog());\n            for (int run = 0; run < 300; run++)\n            {\n                var list = MakeEnemies(1 + Rnd(24));\n                float px = Rnd(5) - 2, py = Rnd(5) - 2;\n                var expected = new System.Collections.Generic.List<Enemy>(list);\n                for (int i = 1; i < expected.Count; i++) // 기준: (거리², Id) 순 삽입 정렬\n                {\n                    var k = expected[i]; float dk = (k.X - px) * (k.X - px) + (k.Y - py) * (k.Y - py); int j = i - 1;\n                    while (j >= 0) { var e = expected[j]; float de = (e.X - px) * (e.X - px) + (e.Y - py) * (e.Y - py); if (de < dk || (de == dk && e.Id <= k.Id)) break; expected[j + 1] = e; j--; }\n                    expected[j + 1] = k;\n                }\n                string before = Ids(list);\n                sys.SortByDistance(list, px, py);\n                if (Ids(list) != Ids(expected)) return \"입력 [\" + before + \"] 기준점 (\" + px + \",\" + py + \"): 기대 [\" + Ids(expected) + \"] / 결과 [\" + Ids(list) + \"]\";\n            }\n            return null;\n        });\n\n        Run(\"rank-order-matches-reference\", () =>\n        {\n            var sys = new TargetingSystem(new CombatLog());\n            for (int run = 0; run < 300; run++)\n            {\n                int len = 1 + Rnd(20), count = Rnd(len + 1);\n                var a = new ThreatEntry[len];\n                for (int i = 0; i < len; i++) a[i] = new ThreatEntry(Rnd(30), Rnd(6) * 10);\n                var exp = (ThreatEntry[])a.Clone();\n                for (int i = 1; i < count; i++)\n                {\n                    var k = exp[i]; int j = i - 1;\n                    while (j >= 0 && (exp[j].Threat < k.Threat || (exp[j].Threat == k.Threat && exp[j].EnemyId > k.EnemyId))) { exp[j + 1] = exp[j]; j--; }\n                    exp[j + 1] = k;\n                }\n                sys.RankThreats(a, count);\n                for (int i = 0; i < len; i++)\n                    if (a[i].EnemyId != exp[i].EnemyId || a[i].Threat != exp[i].Threat)\n                        return \"len \" + len + \", count \" + count + \": \" + i + \"번 칸 기대 (id \" + exp[i].EnemyId + \", 위협 \" + exp[i].Threat + \") / 결과 (id \" + a[i].EnemyId + \", 위협 \" + a[i].Threat + \")\";\n            }\n            return null;\n        });\n\n        Run(\"log-lines-when-enabled\", () =>\n        {\n            var log = new CombatLog { Enabled = true };\n            var sys = new TargetingSystem(log);\n            sys.SortByDistance(new System.Collections.Generic.List<Enemy> { new Enemy(1, 3, 0), new Enemy(2, 1, 0), new Enemy(3, 2, 0) }, 0, 0);\n            sys.SortByDistance(new System.Collections.Generic.List<Enemy> { new Enemy(9, 0, 0) }, 0, 0);\n            sys.RankThreats(new[] { new ThreatEntry(4, 30), new ThreatEntry(5, 90), new ThreatEntry(6, 50), new ThreatEntry(7, 90) }, 4);\n            sys.RankThreats(new ThreatEntry[0], 0);\n            string[] expected = { \"[Target] sort 3 enemies\", \"[Target] sort 1 enemies\", \"[Target] rank 4 threats, top 90\", \"[Target] rank 0 threats, top -1\" };\n            if (log.Lines.Count != expected.Length) return \"켜진 로그 줄 수 기대 \" + expected.Length + \" / 결과 \" + log.Lines.Count;\n            for (int i = 0; i < expected.Length; i++) if (log.Lines[i] != expected[i]) return i + \"번 줄 기대 \\\"\" + expected[i] + \"\\\" / 결과 \\\"\" + log.Lines[i] + \"\\\"\";\n            var off = new CombatLog();\n            new TargetingSystem(off).RankThreats(new[] { new ThreatEntry(1, 1) }, 1);\n            return off.Lines.Count == 0 ? null : \"꺼진 로그에 줄이 기록됨\";\n        });\n\n        Run(\"sort-zero-alloc-when-log-off\", () =>\n        {\n            var sys = new TargetingSystem(new CombatLog());\n            var list = MakeEnemies(16);\n            int frame = 0;\n            long used = Measure(() => { frame++; sys.SortByDistance(list, frame % 7 - 3, frame % 5 - 2); }, 1000);\n            return used == 0 ? null : \"로그가 꺼진 상태로 적 16명 SortByDistance 1,000회: 힙 할당 \" + used + \" B (호출당 \" + used / 1000 + \" B, 0 B 기대)\";\n        });\n\n        Run(\"early-return-zero-alloc\", () =>\n        {\n            var sys = new TargetingSystem(new CombatLog());\n            var one = new System.Collections.Generic.List<Enemy> { new Enemy(1, 0, 0) };\n            var none = new System.Collections.Generic.List<Enemy>();\n            long used = Measure(() => { sys.SortByDistance(one, 1, 1); sys.SortByDistance(none, 1, 1); }, 1000);\n            return used == 0 ? null : \"정렬할 필요가 없는 0명·1명 목록(로그 꺼짐) 1,000쌍: 힙 할당 \" + used + \" B (쌍당 \" + used / 1000 + \" B, 0 B 기대)\";\n        });\n\n        Run(\"rank-zero-alloc-when-log-off\", () =>\n        {\n            var sys = new TargetingSystem(new CombatLog());\n            var source = new ThreatEntry[24];\n            for (int i = 0; i < source.Length; i++) source[i] = new ThreatEntry(i, (i * 37) % 11 * 10);\n            var work = new ThreatEntry[24];\n            long used = Measure(() => { System.Array.Copy(source, work, 24); sys.RankThreats(work, 24); }, 1000);\n            return used == 0 ? null : \"로그가 꺼진 상태로 24개 RankThreats 1,000회: 힙 할당 \" + used + \" B (호출당 \" + used / 1000 + \" B, 0 B 기대)\";\n        });\n\n        Run(\"insertion-sort-other-types\", () =>\n        {\n            var ints = new[] { 5, 3, 9, 1, 7, 0 };\n            SmallSort.InsertionSort(ints, 4);\n            if (string.Join(\",\", ints) != \"1,3,5,9,7,0\") return \"int[] {5,3,9,1,7,0}을 count 4로 정렬: 기대 1,3,5,9,7,0 / 결과 \" + string.Join(\",\", ints);\n            var words = new[] { \"orc\", \"bat\", \"imp\" };\n            SmallSort.InsertionSort(words, 3);\n            return string.Join(\",\", words) == \"bat,imp,orc\" ? null : \"string[] 정렬 결과 \" + string.Join(\",\", words);\n        });\n    }\n}\n",
+        "cases": [
+          "sort-order-matches-reference",
+          "rank-order-matches-reference",
+          "log-lines-when-enabled",
+          "sort-zero-alloc-when-log-off",
+          "early-return-zero-alloc",
+          "rank-zero-alloc-when-log-off",
+          "insertion-sort-other-types"
+        ],
+        "note": "정렬 결과(무작위 300회, 좁은 격자라 거리 동률이 자주 나옴)와 위협도 정렬(무작위 300회, count가 배열 길이보다 작은 경우 포함), 로그가 켜졌을 때의 네 줄, 로그가 꺼졌을 때 `SortByDistance`(16명)·0명과 1명 경로·`RankThreats`(24개)를 워밍업 뒤 1,000회 부르는 동안의 할당이 0 B인지, `InsertionSort`가 `int[]`·`string[]`에도 동작하는지 확인합니다. `Enemy(int, float, float)`·`Id`·`X`·`Y`, `ThreatEntry(int, int)`·`EnemyId`·`Threat`, `CombatLog.Enabled`·`Lines`, `SmallSort.InsertionSort<T>(T[], int)`, `TargetingSystem(CombatLog)`·`SortByDistance(List<Enemy>, float, float)`·`RankThreats(ThreatEntry[], int)` 시그니처는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t1-impl-timer-wheel-zero-alloc",
+      "track": "track1",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "할당 없는 타이머 휠: struct 항목, 미리 등록한 콜백 id, 같은 틱 안의 취소와 재예약",
+      "tags": [
+        "CSharp_TimerWheel",
+        "CSharp_ZeroAlloc",
+        "CSharp_Handle_Generation"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "varghese-lauck-timing-wheels",
+        "gpp-object-pool",
+        "ms-gh-runtime8-timer",
+        "ms-gc-allocated-bytes"
+      ],
+      "scenario": "액션 MMO의 전투 코드에는 \"3틱 뒤 폭발\", \"10틱마다 도트 피해\", \"버프 600틱 뒤 해제\" 같은 지연 콜백이 동시에 수천 개 걸립니다. 지금은 예약마다 람다 클로저와 타이머 객체를 만들어 GC가 자주 돌고, 같은 틱의 발동 순서가 실행마다 달라 리플레이가 어긋납니다. 고정 틱(예: 30 Hz)으로 도는 **해시 타이밍 휠** `TimerWheel`을 구현하세요. 시간은 `Advance(ticks)`로만 흐릅니다.\n\n**규칙**\n- 슬롯 수 `wheelSize`(2 이상의 2의 거듭제곱, 아니면 `ArgumentException`), 동시에 대기할 수 있는 타이머 수 `capacity`, 콜백 표 크기 `maxCallbacks`는 생성자에서 정합니다. 생성자 이후에는 힙 할당이 없어야 합니다.\n- 콜백은 초기화 때 `RegisterCallback(Action<int>)`로 등록하고 id(0, 1, 2, …)를 받습니다. 타이머는 `(callbackId, int payload)`로 예약하므로 예약마다 클로저가 생기지 않습니다.\n- `TrySchedule(delayTicks, callbackId, payload, out handle)`: `CurrentTick + delayTicks` 틱에 발동합니다. `delayTicks < 1`이나 등록되지 않은 id는 `ArgumentOutOfRangeException`. 대기 중인 타이머가 `capacity`개면 false와 `default` 핸들. **지연이 `wheelSize`보다 길어도** 정확한 틱에 발동해야 합니다.\n- `Advance(ticks)`: 한 틱마다 `CurrentTick`을 1 올리고, 그 틱에 만기인 타이머를 **예약한 순서대로** 발동합니다. `ticks < 0`이면 `ArgumentOutOfRangeException`, 콜백 안에서 부르면 `InvalidOperationException`.\n- 타이머의 핸들은 **콜백이 불리기 직전에** 무효가 되고, 그 자리는 곧바로 재사용할 수 있습니다(용량 1 휠에서 콜백이 자기 자신을 다시 예약할 수 있어야 합니다).\n- 콜백 안에서 `TrySchedule`과 `Cancel`을 불러도 됩니다. 같은 틱에 만기인 다른 타이머를 `Cancel`하면 그 타이머는 발동하지 않고 `Cancel`은 true입니다. 콜백 안에서 예약한 타이머는 지연이 `wheelSize`의 배수여도 그 틱에 발동하지 않습니다.\n- `Cancel`과 `IsPending`은 이미 발동했거나 취소된 타이머, 자리가 재사용된 뒤의 **옛 핸들**, `default` 핸들에 false입니다.\n- 콜백은 예외를 던지지 않는다고 가정합니다.\n\n예: 크기 8 휠에 지연 3(p=1), 1(p=2), 3(p=3), 5(p=4)를 차례로 예약하면 `Advance(1)` → `1:2`, `Advance(2)` → `3:1`, `3:3`, `Advance(10)` → `5:4`이고 `CurrentTick`은 13입니다(`틱:payload`).",
+      "constraints": [
+        "`TrySchedule`, `Cancel`, `IsPending`은 O(1)이다",
+        "`Advance`의 한 틱은 O(1 + 그 틱 슬롯의 항목 수 + 발동 수)다. 대기 중인 타이머 전체를 훑거나 정렬하지 않는다",
+        "생성자 이후 `TrySchedule`, `Cancel`, `Advance`는 힙 할당 0 B다. 항목은 미리 잡은 struct 배열에 두고, 예약마다 class 노드·`List<T>`·`LinkedList<T>`·`Dictionary`·`PriorityQueue`·클로저를 만들지 않는다",
+        "실제 시계(`DateTime`, `Stopwatch`, `Environment.TickCount`)와 `Thread.Sleep`, `Task.Delay`를 쓰지 않는다",
+        "`TimerHandle(Index, Generation)`과 `TimerWheel`의 public 시그니처는 바꾸지 않는다"
+      ],
+      "starterCode": "using System;\n\n// 예약한 타이머를 가리키는 값. default(TimerHandle)은 어떤 타이머도 가리키지 않는다.\npublic readonly struct TimerHandle\n{\n    public readonly int Index;\n    public readonly int Generation;\n    public TimerHandle(int index, int generation) { Index = index; Generation = generation; }\n}\n\n// 해시 타이밍 휠: 지연 콜백을 틱 단위로 예약한다. 시간은 Advance로만 흐른다(실제 시계를 읽지 않는다).\npublic sealed class TimerWheel\n{\n    // wheelSize: 2의 거듭제곱(2 이상). capacity: 동시에 대기할 수 있는 타이머 수. maxCallbacks: 등록할 수 있는 콜백 수.\n    public TimerWheel(int wheelSize, int capacity, int maxCallbacks)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 지금까지 진행한 틱 수(처음 0).\n    public long CurrentTick => throw new NotImplementedException();\n\n    // 아직 발동하지도 취소되지도 않은 타이머 수.\n    public int PendingCount => throw new NotImplementedException();\n\n    // 초기화 때 콜백을 등록하고 id(0, 1, 2, ...)를 받는다. 타이머는 이 id와 int payload로 예약한다.\n    public int RegisterCallback(Action<int> callback)\n    {\n        throw new NotImplementedException();\n    }\n\n    // CurrentTick + delayTicks 틱에 callbacks[callbackId](payload)를 부르도록 예약한다.\n    // 대기 중인 타이머가 capacity개면 false와 default 핸들을 돌려준다.\n    public bool TrySchedule(int delayTicks, int callbackId, int payload, out TimerHandle handle)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 대기 중인 타이머를 취소하면 true. 이미 발동했거나 취소됐거나 낡은 핸들이면 false.\n    public bool Cancel(TimerHandle handle)\n    {\n        throw new NotImplementedException();\n    }\n\n    public bool IsPending(TimerHandle handle)\n    {\n        throw new NotImplementedException();\n    }\n\n    // ticks 틱만큼 시간을 진행하며, 틱마다 그 틱에 만기인 타이머를 예약한 순서대로 발동한다.\n    public void Advance(int ticks)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "크기 4 휠에 지연 2·6·10·14: 모두 같은 슬롯이지만 2, 6, 10, 14틱에 하나씩 발동한다",
+        "같은 틱의 A가 B를 취소: B가 이미 이번 틱 발동 목록에 있어도 발동하지 않고 `Cancel`은 true",
+        "용량 1 휠에서 콜백이 자기 자신을 다시 예약: 콜백 안에서 자기 핸들의 `IsPending`·`Cancel`은 false",
+        "자리가 재사용된 뒤 옛 핸들로 `Cancel`: false이고 새 타이머는 그대로 발동",
+        "콜백 안의 `Advance`: `InvalidOperationException`, 바깥 `Advance`는 계속 진행"
+      ],
+      "hints": [
+        "반례 두 개. (1) 크기 8 휠에 지연 3과 11을 예약하면 둘 다 3번 슬롯에 들어갑니다. 3틱에 그 슬롯의 항목을 전부 발동하면 11틱짜리가 8틱 일찍 터집니다. 슬롯을 방문했을 때 무엇을 비교해야 할까요? (2) 슬롯 리스트를 앞에서부터 돌며 콜백을 바로 부르고, 다음 항목은 루프 시작 때 `next`에 저장해 둔다고 합시다. A의 콜백이 바로 뒤의 B를 취소하고 새 타이머를 예약해 B가 쓰던 자리를 재사용하면, 저장해 둔 `next`는 지금 무엇을 가리킵니까?",
+        "항목 배열 하나에 모든 리스트를 인덱스로 엮으세요. 슬롯마다 머리·꼬리를 두는 이중 연결 리스트(꼬리에 붙여 예약 순서를 유지), 빈 항목끼리 같은 `Next` 필드로 엮은 free list, 그리고 \"이번 틱 발동 목록\" 하나입니다. `Advance`의 한 틱은 두 단계로 나눕니다. ① 콜백을 부르지 않고 슬롯을 훑어 만기 틱이 지금인 항목만 떼어 발동 목록 꼬리로 옮긴다. ② 발동 목록의 **머리를 매번 다시 읽어** 하나씩 꺼내고, 항목을 반납(세대 +1, free list에 넣기)한 **다음에** 콜백을 부른다. `Cancel`은 항목이 슬롯에 있든 발동 목록에 있든 떼어 낼 수 있어야 하므로 항목의 상태를 기록해 둡니다.",
+        "```\nstruct Entry { long DueTick; int CallbackId, Payload; int Prev, Next; int Generation; byte State }  // Free / InSlot / InDue\n\nTrySchedule(delay, cb, payload, out h):\n    인자 검사, free list가 비면 false와 default\n    i = free list 머리에서 꺼냄; DueTick = now + delay; State = InSlot\n    slot = /* ??? */; 그 슬롯 꼬리에 붙임\n    h = (i, Generation)\n\nIsPending(h): 인덱스 범위, Generation != 0, 세대 일치, State != Free\n\nCancel(h): IsPending이 아니면 false\n    State에 따라 슬롯 리스트 또는 /* ??? */ 에서 떼어 냄; Release(i); true\n\nAdvance(ticks):\n    콜백 안이면 InvalidOperationException\n    repeat ticks:\n        now++; s = now & mask\n        슬롯 s를 훑으며 /* ??? 조건 */ 인 항목만 발동 목록 꼬리로 옮김 (여기서 콜백 금지)\n        while (발동 목록이 비지 않음):\n            k = 머리; 떼어 냄; callbackId, payload를 지역 변수로 복사\n            /* ??? 콜백 전에 할 일 */\n            callbacks[callbackId](payload)\n\nRelease(i): State = Free; Generation++; free list 머리에 넣음\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 예약한 타이머를 가리키는 값. default(TimerHandle)은 어떤 타이머도 가리키지 않는다(세대는 1부터 시작).\npublic readonly struct TimerHandle\n{\n    public readonly int Index;\n    public readonly int Generation;\n    public TimerHandle(int index, int generation) { Index = index; Generation = generation; }\n}\n\n// 해시 타이밍 휠(Varghese & Lauck의 Scheme 6): 슬롯 = 만기 틱 mod wheelSize, 슬롯마다 정렬하지 않은 이중 연결 리스트.\n// 항목은 미리 잡아 둔 struct 배열에 있고, 리스트 연결은 배열 인덱스로 한다(침투형 연결 리스트). 실행 중 할당 없음.\npublic sealed class TimerWheel\n{\n    private const byte Free = 0, InSlot = 1, InDue = 2;\n\n    private struct Entry\n    {\n        public long DueTick;\n        public int CallbackId;\n        public int Payload;\n        public int Prev;        // 같은 리스트의 앞 항목(-1 = 없음)\n        public int Next;        // 같은 리스트의 뒤 항목. 빈 항목이면 free list의 다음(-1 = 없음)\n        public int Generation;  // 항목을 반납할 때마다 1 증가: 낡은 핸들을 걸러 낸다\n        public byte State;\n    }\n\n    private readonly Entry[] _entries;\n    private readonly int[] _slotHead, _slotTail;\n    private readonly Action<int>[] _callbacks;\n    private readonly int _mask;\n    private int _callbackCount;\n    private int _freeHead;\n    private int _dueHead = -1, _dueTail = -1;   // 이번 틱에 발동할 항목들(예약 순서 유지)\n    private long _now;\n    private int _pending;\n    private bool _advancing;\n\n    public TimerWheel(int wheelSize, int capacity, int maxCallbacks)\n    {\n        if (wheelSize < 2 || (wheelSize & (wheelSize - 1)) != 0) throw new ArgumentException(\"wheelSize must be a power of two (>= 2)\", nameof(wheelSize));\n        if (capacity < 1) throw new ArgumentOutOfRangeException(nameof(capacity));\n        if (maxCallbacks < 1) throw new ArgumentOutOfRangeException(nameof(maxCallbacks));\n\n        _mask = wheelSize - 1;\n        _slotHead = new int[wheelSize];\n        _slotTail = new int[wheelSize];\n        for (int s = 0; s < wheelSize; s++) { _slotHead[s] = -1; _slotTail[s] = -1; }\n\n        _entries = new Entry[capacity];\n        for (int i = 0; i < capacity; i++)\n        {\n            _entries[i].Generation = 1;\n            _entries[i].Next = i + 1 < capacity ? i + 1 : -1;\n            _entries[i].Prev = -1;\n        }\n        _freeHead = 0;\n        _callbacks = new Action<int>[maxCallbacks];\n    }\n\n    public long CurrentTick => _now;\n    public int PendingCount => _pending;\n\n    public int RegisterCallback(Action<int> callback)\n    {\n        if (callback == null) throw new ArgumentNullException(nameof(callback));\n        if (_callbackCount == _callbacks.Length) throw new InvalidOperationException(\"callback table is full\");\n        _callbacks[_callbackCount] = callback;\n        return _callbackCount++;\n    }\n\n    public bool TrySchedule(int delayTicks, int callbackId, int payload, out TimerHandle handle)\n    {\n        if (delayTicks < 1) throw new ArgumentOutOfRangeException(nameof(delayTicks));\n        if ((uint)callbackId >= (uint)_callbackCount) throw new ArgumentOutOfRangeException(nameof(callbackId));\n        if (_freeHead < 0) { handle = default; return false; }\n\n        int i = _freeHead;\n        ref Entry e = ref _entries[i];          // _entries는 크기가 바뀌지 않으므로 ref를 들고 있어도 안전하다\n        _freeHead = e.Next;\n        e.DueTick = _now + delayTicks;\n        e.CallbackId = callbackId;\n        e.Payload = payload;\n        e.State = InSlot;\n        int s = (int)(e.DueTick & _mask);\n        Append(ref _slotHead[s], ref _slotTail[s], i);\n        _pending++;\n        handle = new TimerHandle(i, e.Generation);\n        return true;\n    }\n\n    public bool IsPending(TimerHandle handle)\n    {\n        return (uint)handle.Index < (uint)_entries.Length\n            && handle.Generation != 0\n            && _entries[handle.Index].Generation == handle.Generation\n            && _entries[handle.Index].State != Free;\n    }\n\n    public bool Cancel(TimerHandle handle)\n    {\n        if (!IsPending(handle)) return false;\n        int i = handle.Index;\n        if (_entries[i].State == InSlot)\n        {\n            int s = (int)(_entries[i].DueTick & _mask);\n            Unlink(ref _slotHead[s], ref _slotTail[s], i);\n        }\n        else\n        {\n            Unlink(ref _dueHead, ref _dueTail, i);   // 이번 틱에 발동을 기다리던 항목도 취소된다\n        }\n        Release(i);\n        return true;\n    }\n\n    public void Advance(int ticks)\n    {\n        if (ticks < 0) throw new ArgumentOutOfRangeException(nameof(ticks));\n        if (_advancing) throw new InvalidOperationException(\"Advance cannot be called from a timer callback\");\n        _advancing = true;\n        try\n        {\n            for (int t = 0; t < ticks; t++)\n            {\n                _now++;\n                int s = (int)(_now & _mask);\n\n                // 1단계: 이번 틱 만기 항목만 슬롯에서 떼어 발동 목록으로 옮긴다(같은 슬롯의 다음 바퀴 항목은 남는다).\n                //        이 단계에서는 콜백을 부르지 않으므로 미리 읽어 둔 next가 무효해질 일이 없다.\n                int i = _slotHead[s];\n                while (i >= 0)\n                {\n                    int next = _entries[i].Next;\n                    if (_entries[i].DueTick == _now)\n                    {\n                        Unlink(ref _slotHead[s], ref _slotTail[s], i);\n                        _entries[i].State = InDue;\n                        Append(ref _dueHead, ref _dueTail, i);\n                    }\n                    i = next;\n                }\n\n                // 2단계: 발동 목록의 머리에서 하나씩 꺼내 부른다. 콜백이 목록을 바꿔도(취소) 매번 머리를 다시 읽으므로 안전하다.\n                while (_dueHead >= 0)\n                {\n                    int k = _dueHead;\n                    Unlink(ref _dueHead, ref _dueTail, k);\n                    int callbackId = _entries[k].CallbackId;\n                    int payload = _entries[k].Payload;\n                    Release(k);   // 콜백 전에 반납: 핸들은 무효가 되고, 콜백이 이 자리를 재예약에 쓸 수 있다\n                    _callbacks[callbackId](payload);\n                }\n            }\n        }\n        finally\n        {\n            _advancing = false;\n        }\n    }\n\n    private void Release(int i)\n    {\n        ref Entry e = ref _entries[i];\n        e.State = Free;\n        e.Generation = e.Generation == int.MaxValue ? 1 : e.Generation + 1;\n        e.Prev = -1;\n        e.Next = _freeHead;\n        _freeHead = i;\n        _pending--;\n    }\n\n    private void Append(ref int head, ref int tail, int i)\n    {\n        _entries[i].Prev = tail;\n        _entries[i].Next = -1;\n        if (tail >= 0) _entries[tail].Next = i; else head = i;\n        tail = i;\n    }\n\n    private void Unlink(ref int head, ref int tail, int i)\n    {\n        int prev = _entries[i].Prev, next = _entries[i].Next;\n        if (prev >= 0) _entries[prev].Next = next; else head = next;\n        if (next >= 0) _entries[next].Prev = prev; else tail = prev;\n        _entries[i].Prev = -1;\n        _entries[i].Next = -1;\n    }\n}\n",
+      "explanation": "**접근: Varghese와 Lauck의 Scheme 6.** 이 논문은 원형 버퍼(타이밍 휠)를 쓰면 휠 범위 안의 타이머를 O(1)에 시작·중지·유지할 수 있고, 휠보다 긴 간격은 타이머 값을 슬롯으로 해시해서 다룰 수 있다고 설명합니다. 그중 Scheme 6은 슬롯마다 **정렬하지 않은 리스트**를 두어 예약을 최악에도 O(1)로 만들고, 틱마다 포인터가 가리키는 슬롯 하나만 처리합니다. 논문의 분석으로 한 틱의 평균 작업량은 (대기 타이머 수 ÷ 슬롯 수) 정도이고, 해시 분포는 평균이 아니라 틱별 편차에만 영향을 줍니다. 저자들은 범용 타이머 모듈에 Scheme 6이나 계층형 휠(Scheme 7)을 권합니다[varghese-lauck-timing-wheels]. 모범 답안의 슬롯은 `DueTick & (wheelSize - 1)`이고, 슬롯을 방문할 때 `DueTick == 현재 틱`인 항목만 발동합니다. 같은 슬롯에 있는 다음 바퀴의 항목(지연 3과 11)은 남겨 두므로 휠보다 긴 지연도 정확한 틱에 발동합니다.\n\n**데이터 배치.** 항목은 생성자에서 만든 `Entry[]`(struct 배열)에 있고, 슬롯 리스트·발동 목록·free list를 모두 배열 인덱스로 엮습니다. 빈 항목은 쓰지 않는 `Next` 필드를 free list 연결에 빌려 씁니다. Game Programming Patterns의 오브젝트 풀 장이 설명하는 free list와 같은 발상으로, 별도 포인터 배열 없이 빈 항목을 O(1)에 찾습니다[gpp-object-pool]. 슬롯 리스트가 이중 연결이라 `Cancel`이 리스트 중간의 항목을 O(1)에 뗍니다. 생성자 이후에는 `new`가 없고 콜백은 미리 등록한 델리게이트를 id로 부르므로, 채점기에서 예약·취소·진행 2만 회 동안 할당이 0 B였습니다.\n\n**한 틱을 두 단계로 나누는 이유.** 콜백은 무엇이든 할 수 있습니다. 같은 틱의 다른 타이머를 취소하고, 새 타이머를 예약해 방금 빈 자리를 재사용합니다. 슬롯을 돌면서 콜백을 바로 부르고 미리 저장한 `next`로 넘어가면, 콜백이 그 `next`를 취소·재사용한 뒤 엉뚱한 항목을 방문합니다. 이 버그를 넣은 변형은 \"A가 같은 틱의 B를 취소\" 케이스에서 B를 발동하고 A를 두 번 발동했습니다. 모범 답안은 ① 콜백 없이 만기 항목을 발동 목록으로 옮기고, ② 발동 목록의 머리를 매번 다시 읽습니다. 콜백 안의 `Cancel`이 발동 목록에서 항목을 떼어 내도 다음 반복은 새 머리부터 시작하므로 안전합니다. 콜백 안에서 예약한 타이머는 `delay >= 1`이라 언제나 슬롯으로 가고, 이번 틱의 발동 목록에는 들어가지 않습니다.\n\n**반납 시점과 세대.** 콜백 **전에** 항목을 반납하므로 핸들은 그 순간 무효가 되고(자기 자신의 `Cancel`은 false), 용량 1 휠에서도 콜백이 자기 자신을 다시 예약할 수 있습니다. 반납할 때마다 세대를 1 올리므로, 자리가 재사용된 뒤의 옛 핸들은 세대가 맞지 않아 새 타이머를 건드리지 못합니다. 세대 검사를 뺀 변형은 옛 핸들로 새 타이머를 취소했고, 무작위 비교에서도 걸렸습니다. 세대가 1부터 시작하므로 `default(TimerHandle)`은 어떤 타이머도 가리키지 않습니다.\n\n**결정적인 시간.** 휠은 실제 시계를 읽지 않고 `Advance`로만 진행합니다. CMU 17-214의 테스트 가능성 강의가 시계 같은 비결정적 의존성을 주입해 테스트가 통제하게 하라고 하는 것과 같은 설계이고[cmu-17214-03-testability], 그래서 같은 입력은 언제나 같은 발동 순서를 냅니다. 리플레이와 서버·클라이언트 동기화에 필요한 성질입니다.\n\n**복잡도.** `TrySchedule`·`Cancel`·`IsPending`은 O(1), 한 틱은 O(1 + 그 슬롯의 항목 수 + 발동 수)입니다. 대가는 지연이 아주 긴 타이머가 많으면 같은 슬롯을 여러 바퀴 방문하며 건너뛴다는 점이고, 그때는 계층형 휠을 고려합니다.\n\n**다른 선택지와 비교.** .NET 8의 `System.Threading` 타이머 구현은 휠이 아니라 정렬하지 않은 이중 연결 리스트에 활성 타이머를 두고(삽입·삭제 O(1), 만기 탐색 O(N)), 곧 발동할 타이머와 나머지를 333 ms 기준으로 두 리스트로 나눕니다[ms-gh-runtime8-timer]. 이것은 구현 세부이며 계약이 아닙니다. `PriorityQueue<TElement, TPriority>`는 배열 기반의 4진 최소 힙이라[ms-priorityqueue] 넣고 꺼내는 비용이 대기 수에 따라 늘고, .NET 8에는 임의 항목 제거가 없어 취소를 지연 삭제로 처리해야 합니다(`Remove`는 .NET 9에 추가)[ms-dotnet9-priorityqueue-remove].\n\n**흔한 실수.** (1) 슬롯 방문 때 만기 틱을 비교하지 않아 다음 바퀴 항목을 일찍 발동한다. (2) 슬롯에 앞쪽부터 붙여 같은 틱의 순서가 뒤집힌다. (3) 콜백 후에 반납해 자기 재예약이 실패하거나 자기 `Cancel`이 true가 된다(이 변형은 무작위 비교에서 리스트가 끊겨 무한 루프에 빠졌습니다). (4) `Cancel`이 발동 목록에 있는 항목을 처리하지 못해 리스트가 깨진다. (5) 예약마다 class 노드나 클로저를 만든다.\n\n### 흔한 오해\n- **\"타이밍 휠은 슬롯 수 × 틱 길이보다 긴 지연을 다룰 수 없어서, 길면 계층형 휠이 꼭 필요하다\"** — 범위가 휠 크기로 제한되는 것은 해시를 쓰지 않는 기본 휠입니다. 논문의 첫 번째 확장은 타이머 간격을 휠의 슬롯으로 해시해 더 큰 값을 다루고(Scheme 5·6), 계층형 휠(Scheme 7)은 메모리와 처리 방식이 다른 또 하나의 선택지입니다[varghese-lauck-timing-wheels]. 이 문제의 크기 4 휠은 지연 14와 37을 정확한 틱에 발동합니다(채점기에서 실행해 확인).\n- **\"PriorityQueue에 만기 틱을 우선순위로 넣으면 같은 틱의 타이머는 넣은 순서대로 나온다\"** — 문서는 이 형식이 우선순위가 같은 요소에 대해 선입선출을 보장하지 않는다고 명시합니다[ms-priorityqueue]. 우선순위 큐를 쓰려면 `(만기 틱, 예약 순번)`처럼 동률이 없는 우선순위를 써야 하고, .NET 8에는 `Remove`도 없습니다[ms-dotnet9-priorityqueue-remove].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "만기 틱에 정확히 발동하고 같은 틱은 예약 순서대로이며, `wheelSize`보다 긴 지연(크기 4 휠의 지연 14, 37)도 정확한 틱에 발동한다.",
+            "points": 9,
+            "sourceId": "varghese-lauck-timing-wheels"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "콜백이 같은 틱 발동 목록의 다른 타이머를 취소하면 그 타이머는 발동하지 않는다.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "핸들이 콜백 직전에 무효가 되고, 콜백 안에서 그 자리를 재예약에 쓸 수 있다(용량 1 자기 재예약).",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "옛 핸들, `default` 핸들, 발동·취소된 핸들에 `Cancel`과 `IsPending`이 false다(세대 검사).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "생성자 이후 할당이 0 B다: struct 배열, 인덱스 연결, free list(빈 항목의 필드를 연결에 재사용).",
+            "points": 12,
+            "sourceId": "gpp-object-pool"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "`TrySchedule`과 `Cancel`이 O(1)이다(이중 연결이라 리스트 중간의 항목도 바로 뗀다).",
+            "points": 10,
+            "sourceId": "varghese-lauck-timing-wheels"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "`Advance` 한 틱이 그 틱의 슬롯 하나만 훑고, 대기 중인 전체 타이머를 훑거나 정렬하지 않는다.",
+            "points": 8,
+            "sourceId": "varghese-lauck-timing-wheels"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "예약에 클로저 대신 미리 등록한 콜백 id와 `int` payload를 쓴다.",
+            "points": 10,
+            "sourceId": "ms-lambda-expressions"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "실제 시계나 Sleep 없이 `Advance`로만 시간이 흐르고, 콜백 안의 `Advance`를 막는다.",
+            "points": 10,
+            "sourceId": "cmu-17214-03-testability"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "한 틱을 \"만기 항목 떼기\"와 \"발동\" 두 단계로 나누어, 콜백이 리스트를 바꿔도 순회가 깨지지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "연결 리스트 조작(붙이기, 떼기, 반납)이 보조 메서드에 모여 있어 상태를 바꾸는 곳이 한 군데씩이다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "슬롯을 돌며 콜백을 바로 부르고 미리 저장한 `next`로 진행해, 콜백의 취소·재예약 뒤 반납된 항목을 방문한다.",
+            "penalty": -25,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "예약마다 class 노드, 컬렉션 원소, 클로저를 만들어 할당 0 요구를 어긴다.",
+            "penalty": -20,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "d3",
+            "description": "`Advance` 한 틱마다 대기 중인 모든 타이머를 훑거나 정렬한다.",
+            "penalty": -15,
+            "sourceId": "varghese-lauck-timing-wheels"
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기(2코어, 약 20초 벽시계 제한)에서 스레드 생성과 케이스별 1.5초 제한이 동작하고 모범 답안 케이스가 최대 25 ms에 끝남을 확인했으며(전부 멈춰도 약 12초), 로컬에서 오답 6종(만기 틱 비교 누락, 콜백 중 저장한 next 사용, 콜백 뒤 반납, 세대 검사 누락, 앞쪽 삽입, 발동 목록 취소 누락)이 모두 실패함을 확인하고 Varghese·Lauck 논문, GPP Object Pool, .NET 8 Timer.cs, PriorityQueue 문서와 대조했다."
+      },
+      "nextMission": "이 휠 위에 계층형 휠(Scheme 7)을 만들어 보세요. 1틱 단위 64칸 휠과 64틱 단위 64칸 휠을 두고, 64틱보다 먼 타이머는 위 휠에 넣었다가 그 칸에 도달하면 아래 휠로 내려 보냅니다. 이번 문제의 무작위 기준 모델 테스트를 그대로 돌려 발동 순서가 같은지 확인하고, 대기 타이머 10,000개(지연 1 ~ 100,000틱)에서 한 틱당 방문하는 항목 수를 두 구현에서 세어 비교하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    // 케이스마다 별도 스레드에서 실행하고 1.5초 안에 끝나지 않으면 시간 초과로 처리한다(끊어진 연결 리스트의 무한 루프 대비).\n    static void Run(string id, System.Func<string> body)\n    {\n        string err = null;\n        var worker = new System.Threading.Thread(() =>\n        {\n            try { err = body(); }\n            catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name + \" \" + e.Message; }\n        });\n        worker.IsBackground = true;\n        worker.Start();\n        if (!worker.Join(1500)) err = \"1.5초 안에 끝나지 않음(무한 루프: 연결 리스트나 free list가 끊겼거나 순환하는지 확인)\";\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string Expect(string what, string expected, string actual)\n    {\n        return expected == actual ? null : what + \": 기대 [\" + expected + \"] / 결과 [\" + actual + \"]\";\n    }\n\n    static string Join(System.Collections.Generic.List<string> xs) { return string.Join(\",\", xs); }\n\n    // 기준 모델: 대기 중인 타이머를 예약 순서대로 들고 있다가 틱마다 전부 훑는다(느리지만 명백히 맞다).\n    sealed class RefTimer { public long Due; public int Payload; public bool Alive; }\n\n    public static void Main()\n    {\n        Run(\"fires-on-due-tick-fifo\", () =>\n        {\n            var w = new TimerWheel(8, 16, 4);\n            var log = new System.Collections.Generic.List<string>();\n            int cb = w.RegisterCallback(p => log.Add(w.CurrentTick + \":\" + p));\n            w.TrySchedule(3, cb, 1, out _); w.TrySchedule(1, cb, 2, out _); w.TrySchedule(3, cb, 3, out _); w.TrySchedule(5, cb, 4, out _);\n            if (w.PendingCount != 4) return \"예약 4개 뒤 PendingCount 기대 4 / 결과 \" + w.PendingCount;\n            w.Advance(1);\n            string e = Expect(\"Advance(1) 뒤 발동 기록(틱:payload)\", \"1:2\", Join(log)); if (e != null) return e;\n            w.Advance(2);\n            e = Expect(\"Advance(2) 뒤(같은 틱은 예약 순서)\", \"1:2,3:1,3:3\", Join(log)); if (e != null) return e;\n            w.Advance(10);\n            e = Expect(\"Advance(10) 뒤\", \"1:2,3:1,3:3,5:4\", Join(log)); if (e != null) return e;\n            if (w.CurrentTick != 13 || w.PendingCount != 0) return \"CurrentTick 13, PendingCount 0 기대 / 결과 \" + w.CurrentTick + \", \" + w.PendingCount;\n            return null;\n        });\n\n        Run(\"long-delay-wraps-wheel\", () =>\n        {\n            var w = new TimerWheel(4, 16, 1);\n            var log = new System.Collections.Generic.List<string>();\n            int cb = w.RegisterCallback(p => log.Add(w.CurrentTick + \":\" + p));\n            foreach (int d in new[] { 14, 2, 10, 6, 3, 4, 8 }) w.TrySchedule(d, cb, d, out _); // 2·6·10·14는 같은 슬롯\n            for (int t = 0; t < 15; t++) { w.Advance(1); w.Advance(0); }\n            string e = Expect(\"크기 4 휠, 지연 14·2·10·6·3·4·8을 한 틱씩 진행\", \"2:2,3:3,4:4,6:6,8:8,10:10,14:14\", Join(log)); if (e != null) return e;\n            log.Clear();\n            w.TrySchedule(37, cb, 37, out _);\n            w.Advance(100);\n            return Expect(\"틱 15에서 지연 37 예약 뒤 Advance(100)\", \"52:37\", Join(log)) ?? (w.CurrentTick == 115 ? null : \"CurrentTick 기대 115 / 결과 \" + w.CurrentTick);\n        });\n\n        Run(\"cancel-and-stale-handles\", () =>\n        {\n            var w = new TimerWheel(8, 1, 1);\n            var log = new System.Collections.Generic.List<string>();\n            int cb = w.RegisterCallback(p => log.Add(w.CurrentTick + \":\" + p));\n            if (!w.TrySchedule(5, cb, 1, out var h1)) return \"빈 휠(용량 1)에 TrySchedule이 false\";\n            if (w.TrySchedule(1, cb, 2, out var full)) return \"용량 1이 찼는데 TrySchedule이 true\";\n            if (w.IsPending(full) || w.Cancel(full) || w.Cancel(default(TimerHandle))) return \"실패한 예약의 핸들이나 default 핸들이 대기 중으로 취급됨\";\n            if (!w.Cancel(h1)) return \"대기 중인 타이머 Cancel이 false\";\n            if (w.IsPending(h1) || w.Cancel(h1)) return \"취소한 핸들이 여전히 대기 중이거나 두 번째 Cancel이 true\";\n            if (w.PendingCount != 0) return \"취소 뒤 PendingCount 기대 0 / 결과 \" + w.PendingCount;\n            if (!w.TrySchedule(2, cb, 3, out var h2)) return \"취소로 빈 자리에 TrySchedule이 false\";\n            if (w.Cancel(h1)) return \"같은 자리를 재사용한 뒤 옛 핸들 h1으로 Cancel이 true(세대 검사 없음): 새 타이머가 취소됨\";\n            if (!w.IsPending(h2)) return \"새 타이머 h2가 대기 중이 아님\";\n            w.Advance(10);\n            string e = Expect(\"발동 기록\", \"2:3\", Join(log)); if (e != null) return e;\n            return w.Cancel(h2) || w.IsPending(h2) ? \"이미 발동한 타이머의 핸들이 대기 중으로 취급됨\" : null;\n        });\n\n        Run(\"cancel-inside-callback-same-tick\", () =>\n        {\n            var w = new TimerWheel(8, 8, 1);\n            var log = new System.Collections.Generic.List<string>();\n            TimerHandle hB = default, hD = default;\n            int cb = w.RegisterCallback(p =>\n            {\n                log.Add(w.CurrentTick + \":\" + p);\n                if (p == 1) log.Add(\"pendingB=\" + w.IsPending(hB) + \",cancelB=\" + w.Cancel(hB) + \",cancelD=\" + w.Cancel(hD));\n            });\n            w.TrySchedule(2, cb, 1, out _); w.TrySchedule(2, cb, 2, out hB); w.TrySchedule(2, cb, 3, out _); w.TrySchedule(6, cb, 4, out hD);\n            w.Advance(10);\n            string e = Expect(\"A(1)가 같은 틱의 B(2)와 나중의 D(4)를 취소\", \"2:1,pendingB=True,cancelB=True,cancelD=True,2:3\", Join(log)); if (e != null) return e;\n            return w.PendingCount == 0 ? null : \"PendingCount 기대 0 / 결과 \" + w.PendingCount;\n        });\n\n        Run(\"reschedule-inside-callback\", () =>\n        {\n            var w = new TimerWheel(4, 1, 2);\n            var log = new System.Collections.Generic.List<string>();\n            TimerHandle self = default;\n            int cb = -1;\n            cb = w.RegisterCallback(p =>\n            {\n                log.Add(w.CurrentTick + \":\" + p + (w.IsPending(self) || w.Cancel(self) ? \"!\" : \"\"));\n                if (p < 3 && !w.TrySchedule(3, cb, p + 1, out self)) log.Add(\"재예약실패\");\n            });\n            w.TrySchedule(3, cb, 0, out self);\n            w.Advance(20);\n            string e = Expect(\"용량 1 휠에서 콜백이 자기 자신을 3틱 뒤로 재예약('!' = 자기 핸들이 아직 대기 중으로 보임)\", \"3:0,6:1,9:2,12:3\", Join(log)); if (e != null) return e;\n            var w2 = new TimerWheel(4, 4, 1);\n            log.Clear();\n            int cb2 = -1;\n            cb2 = w2.RegisterCallback(p => { log.Add(w2.CurrentTick + \":\" + p); if (p == 100) w2.TrySchedule(4, cb2, 101, out _); });\n            w2.TrySchedule(3, cb2, 100, out _);\n            w2.Advance(10);\n            return Expect(\"크기 4 휠, 틱 3의 콜백이 지연 4(같은 슬롯)로 예약\", \"3:100,7:101\", Join(log));\n        });\n\n        Run(\"arguments-and-reentrancy\", () =>\n        {\n            try { new TimerWheel(6, 4, 1); return \"wheelSize 6(2의 거듭제곱 아님)이 예외 없이 생성됨\"; } catch (System.ArgumentException) { }\n            var w = new TimerWheel(8, 4, 2);\n            var log = new System.Collections.Generic.List<string>();\n            int cb = w.RegisterCallback(p =>\n            {\n                log.Add(w.CurrentTick + \":\" + p);\n                if (p == 1) { try { w.Advance(1); log.Add(\"중첩Advance허용\"); } catch (System.InvalidOperationException) { log.Add(\"IOE\"); } }\n            });\n            try { w.TrySchedule(0, cb, 9, out _); return \"delayTicks 0이 예외 없이 예약됨\"; } catch (System.ArgumentOutOfRangeException) { }\n            try { w.TrySchedule(-3, cb, 9, out _); return \"delayTicks -3이 예외 없이 예약됨\"; } catch (System.ArgumentOutOfRangeException) { }\n            try { w.TrySchedule(1, 1, 9, out _); return \"등록되지 않은 callbackId 1이 예외 없이 예약됨\"; } catch (System.ArgumentOutOfRangeException) { }\n            try { w.Advance(-1); return \"Advance(-1)이 예외 없이 반환\"; } catch (System.ArgumentOutOfRangeException) { }\n            if (w.PendingCount != 0) return \"실패한 예약이 PendingCount에 남음: \" + w.PendingCount;\n            w.TrySchedule(2, cb, 1, out _); w.TrySchedule(2, cb, 2, out _); w.TrySchedule(3, cb, 3, out _);\n            w.Advance(5);\n            string e = Expect(\"콜백 안의 Advance는 InvalidOperationException, 바깥 진행은 계속\", \"2:1,IOE,2:2,3:3\", Join(log)); if (e != null) return e;\n            return w.CurrentTick == 5 ? null : \"CurrentTick 기대 5 / 결과 \" + w.CurrentTick;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            const int W = 8, CAP = 24;\n            uint seed = 4242u;\n            System.Func<int, int> rnd = n => { seed = seed * 1664525u + 1013904223u; return (int)((seed >> 8) % (uint)n); };\n            var ops = new System.Collections.Generic.List<int[]>(); // {종류, 값}: 0 예약(지연), 1 취소(발급 번호 시드), 2 진행(틱)\n            for (int i = 0; i < 600; i++) { int k = rnd(10); ops.Add(k < 5 ? new[] { 0, 1 + rnd(3 * W) } : k < 7 ? new[] { 1, rnd(1 << 20) } : new[] { 2, rnd(2 * W) }); }\n\n            // 실제 휠 실행\n            var w = new TimerWheel(W, CAP, 1);\n            var got = new System.Collections.Generic.List<string>();\n            var handles = new System.Collections.Generic.List<TimerHandle>();\n            int next = 0, cb = -1;\n            cb = w.RegisterCallback(p =>\n            {\n                got.Add(\"F\" + w.CurrentTick + \":\" + p);\n                if (p % 4 == 0) { bool ok = w.TrySchedule(1 + p % 19, cb, next++, out var h); handles.Add(h); got.Add(\"s\" + ok); }\n                if (p % 6 == 1 && handles.Count > 0) got.Add(\"c\" + w.Cancel(handles[p % handles.Count]));\n            });\n            var states = new System.Collections.Generic.List<string>();\n            foreach (var op in ops)\n            {\n                if (op[0] == 0) { bool ok = w.TrySchedule(op[1], cb, next++, out var h); handles.Add(h); got.Add(\"S\" + ok); }\n                else if (op[0] == 1) { if (handles.Count > 0) got.Add(\"C\" + w.Cancel(handles[op[1] % handles.Count])); }\n                else w.Advance(op[1]);\n                states.Add(w.CurrentTick + \"/\" + w.PendingCount);\n            }\n\n            // 기준 모델 실행\n            var exp = new System.Collections.Generic.List<string>();\n            var all = new System.Collections.Generic.List<RefTimer>();\n            long now = 0; int pending = 0, rnext = 0;\n            System.Func<int, bool> sched = null;\n            System.Action<int> body = null;\n            sched = delay =>\n            {\n                var t = new RefTimer { Due = now + delay, Payload = rnext++, Alive = pending < CAP };\n                all.Add(t); if (t.Alive) pending++; return t.Alive;\n            };\n            System.Func<int, bool> cancel = j => { var t = all[j]; if (!t.Alive) return false; t.Alive = false; pending--; return true; };\n            body = p =>\n            {\n                exp.Add(\"F\" + now + \":\" + p);\n                if (p % 4 == 0) exp.Add(\"s\" + sched(1 + p % 19));\n                if (p % 6 == 1 && all.Count > 0) exp.Add(\"c\" + cancel(p % all.Count));\n            };\n            var expStates = new System.Collections.Generic.List<string>();\n            foreach (var op in ops)\n            {\n                if (op[0] == 0) exp.Add(\"S\" + sched(op[1]));\n                else if (op[0] == 1) { if (all.Count > 0) exp.Add(\"C\" + cancel(op[1] % all.Count)); }\n                else\n                {\n                    for (int t = 0; t < op[1]; t++)\n                    {\n                        now++;\n                        var due = new System.Collections.Generic.List<RefTimer>();\n                        foreach (var x in all) if (x.Alive && x.Due == now) due.Add(x);\n                        foreach (var x in due) { if (!x.Alive) continue; x.Alive = false; pending--; body(x.Payload); }\n                    }\n                }\n                expStates.Add(now + \"/\" + pending);\n            }\n\n            for (int i = 0; i < System.Math.Min(got.Count, exp.Count); i++)\n                if (got[i] != exp[i]) return \"기록 \" + i + \"번째 기대 \" + exp[i] + \" / 결과 \" + got[i] + \" (F=발동 틱:payload, S/s=예약 결과, C/c=취소 결과; 소문자는 콜백 안)\";\n            if (got.Count != exp.Count) return \"기록 길이 기대 \" + exp.Count + \" / 결과 \" + got.Count;\n            for (int i = 0; i < ops.Count; i++)\n                if (states[i] != expStates[i]) return \"연산 \" + i + \" 뒤 CurrentTick/PendingCount 기대 \" + expStates[i] + \" / 결과 \" + states[i];\n            return null;\n        });\n\n        Run(\"zero-alloc-steady-state\", () =>\n        {\n            var w = new TimerWheel(64, 256, 2);\n            var handles = new TimerHandle[256];\n            long fired = 0;\n            int cbA = w.RegisterCallback(p => { fired++; });\n            int cbB = w.RegisterCallback(p => { fired++; if (w.TrySchedule(1 + (p & 63), cbA, p + 1, out var h)) handles[p & 255] = h; });\n            uint s = 7u;\n            long used = 0;\n            for (int round = 0; round < 2; round++) // 0회차는 워밍업\n            {\n                long before = System.GC.GetAllocatedBytesForCurrentThread();\n                for (int i = 0; i < 20000; i++)\n                {\n                    s = s * 1664525u + 1013904223u;\n                    int r = (int)(s >> 8);\n                    switch (r % 4)\n                    {\n                        case 0:\n                        case 1:\n                            if (w.TrySchedule(1 + (r >> 4) % 200, (r & 1) == 0 ? cbA : cbB, r & 1023, out var h)) handles[(r >> 3) & 255] = h;\n                            break;\n                        case 2: w.Cancel(handles[(r >> 5) & 255]); break;\n                        default: w.Advance(1 + (r >> 6) % 3); break;\n                    }\n                }\n                used = System.GC.GetAllocatedBytesForCurrentThread() - before;\n            }\n            if (fired == 0) return \"타이머가 한 번도 발동하지 않음\";\n            return used == 0 ? null : \"워밍업 뒤 예약·취소·진행 2만 회에 힙 할당 \" + used + \" B (0 B 기대)\";\n        });\n    }\n}\n",
+        "cases": [
+          "fires-on-due-tick-fifo",
+          "long-delay-wraps-wheel",
+          "cancel-and-stale-handles",
+          "cancel-inside-callback-same-tick",
+          "reschedule-inside-callback",
+          "arguments-and-reentrancy",
+          "random-vs-reference",
+          "zero-alloc-steady-state"
+        ],
+        "note": "발동 틱과 같은 틱의 예약 순서, `wheelSize`보다 긴 지연(크기 4 휠에 지연 14와 37), 취소와 옛 핸들·`default` 핸들, 콜백 안에서 같은 틱 타이머 취소, 용량 1에서 자기 재예약과 자기 핸들 무효, 인자 예외와 콜백 안 `Advance`, 무작위 연산 600개(콜백 안 예약·취소 포함)를 느리지만 명백한 기준 모델과 비교, 워밍업 뒤 예약·취소·진행 2만 회 0 B를 확인합니다. 케이스마다 별도 스레드에서 1.5초 제한으로 돌므로 끊어진 리스트의 무한 루프는 시간 초과 실패로 나옵니다. `TimerHandle(int index, int generation)`·`Index`·`Generation`과 `TimerWheel(int, int, int)`, `CurrentTick`, `PendingCount`, `RegisterCallback(Action<int>)`, `TrySchedule(int, int, int, out TimerHandle)`, `Cancel(TimerHandle)`, `IsPending(TimerHandle)`, `Advance(int)` 시그니처는 바꾸면 안 됩니다. 한 틱의 비용(O(슬롯 항목 수))은 실행 시간으로 판정하지 않으므로 채점표로 확인하세요."
+      }
     }
   ]
 }
