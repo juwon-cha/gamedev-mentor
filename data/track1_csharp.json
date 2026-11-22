@@ -289,6 +289,192 @@
       "title": "Microsoft Learn — Object.Finalize Method",
       "url": "https://learn.microsoft.com/en-us/dotnet/api/system.object.finalize",
       "summary": "두 객체의 종료자는 서로 참조하고 있어도 정해진 순서로 실행된다는 보장이 없고, Finalize가 예외를 던지면(호스트가 기본 정책을 바꾸지 않은 한) 런타임이 프로세스를 종료한다는 설명"
+    },
+    {
+      "id": "ms-csharp-spec-async-functions",
+      "title": "C# language specification §15.14 Async functions",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/classes#1514-async-functions",
+      "summary": "컴파일러가 작업 빌더(Create·Start·SetResult·SetException·AwaitOnCompleted)로 일시 중단·재개를 구현하는 규칙, 처리되지 않은 OperationCanceledException은 반환 작업을 canceled로, 다른 예외는 faulted로 만든다는 규정(§15.14.3), void 반환 async 함수는 완료와 예외를 동기화 컨텍스트에 알린다는 규정(§15.14.4)."
+    },
+    {
+      "id": "ms-csharp-spec-await",
+      "title": "C# language specification §12.9.9 Await expressions",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#1299-await-expressions",
+      "summary": "await t의 실행 순서: GetAwaiter() → IsCompleted 확인 → 완료면 바로 GetResult(), 아니면 OnCompleted/UnsafeOnCompleted에 재개 델리게이트를 등록하고 호출자에게 돌아간다는 규정과 awaitable 패턴의 요건."
+    },
+    {
+      "id": "ms-await-operator",
+      "title": "await operator (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/await",
+      "summary": "await는 피연산자가 완료될 때까지 바깥 async 메서드의 실행을 중단할 뿐 스레드를 막지 않으며, 이미 완료된 작업이면 중단 없이 결과를 바로 돌려준다는 설명."
+    },
+    {
+      "id": "ms-async-return-types",
+      "title": "Async return types (C#)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-return-types",
+      "summary": "void 반환은 이벤트 핸들러에만 쓰고, async void의 예외는 호출자가 잡을 수 없으며 Task를 반환하면 예외가 작업에 저장되었다가 await할 때 다시 던져진다는 설명, ValueTask<TResult>로 할당을 줄이는 일반화된 반환 형식."
+    },
+    {
+      "id": "ms-valuetask1",
+      "title": "ValueTask<TResult> Struct (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.valuetask-1?view=net-8.0",
+      "summary": "ValueTask는 한 번만 await할 수 있고 완료 전에 Result를 읽으면 안 되며(여러 번 await, AsTask 여러 번, 완료 전 .Result 금지, 위반 시 결과 미정), 기본 선택은 Task이고 성능 분석이 정당화할 때만 ValueTask를 쓰라는 비고."
+    },
+    {
+      "id": "ms-async-best-practices",
+      "title": "Async/Await - Best Practices in Asynchronous Programming (MSDN Magazine, 2013)",
+      "url": "https://learn.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming",
+      "summary": "async void의 예외는 시작 시점의 SynchronizationContext에서 직접 발생해 catch로 잡을 수 없다는 점, 한 번에 하나만 실행하는 컨텍스트에서 Task.Wait/Result로 막으면 교착이 생기는 원리, Wait/Result는 예외를 AggregateException으로 감싼다는 점, ConfigureAwait 지침."
+    },
+    {
+      "id": "ms-tap",
+      "title": "Task-based asynchronous pattern (TAP)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap",
+      "summary": "취소 요청이 작업을 일찍 끝내면 Canceled 상태로 끝나고, 실행 중의 취소 요청은 받아들이지 않을 수도 있으며 그 경우 결과나 예외로 끝난다는 TAP 규칙, 사용 오류가 아닌 예외는 반환 작업에 담으라는 규칙."
+    },
+    {
+      "id": "ms-configureawait",
+      "title": "Task.ConfigureAwait(Boolean) Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.configureawait?view=net-8.0",
+      "summary": "continueOnCapturedContext가 true면 캡처한 원래 컨텍스트로 연속을 돌려보내려 시도하고, false면 그렇게 하지 않는다는 API 설명."
+    },
+    {
+      "id": "unity-awaitable-continuations",
+      "title": "Unity Manual: Awaitable completion and continuation (Unity 6.0)",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/scripting/programming-distribute-work-threads/async-await-support/async-awaitable-continuations",
+      "summary": "대부분의 Unity API는 스레드 안전하지 않아 메인 스레드에서만 호출할 수 있고, 메인 스레드에서 호출한 Task 반환 메서드의 연속은 UnitySynchronizationContext로 게시되어 다음 프레임 Update 틱에 메인 스레드에서 실행되며 백그라운드 스레드에서 호출하면 스레드 풀에서 완료된다는 설명. 이 페이지는 .Result·교착·ConfigureAwait를 다루지 않는다."
+    },
+    {
+      "id": "ms-cs4014-async-errors",
+      "title": "Resolve errors and warnings with async, await and the Task-asynchronous protocol (CS4014 등)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/async-await-errors",
+      "summary": "CS4014 경고의 의미와 해결: Task를 반환하는 호출에는 await를 붙이거나 정말 의도한 경우에만 _ = 로 버리라고 하며, await하지 않으면 비동기 작업의 예외가 조용히 사라진다고 설명."
+    },
+    {
+      "id": "ms-task1-result",
+      "title": "Task<TResult>.Result Property (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1.result?view=net-8.0",
+      "summary": "Result의 get 접근자는 비동기 작업이 끝날 때까지 호출 스레드를 막으며 Wait를 부르는 것과 같다는 설명."
+    },
+    {
+      "id": "ms-cancellation-managed-threads",
+      "title": "Cancellation in managed threads",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads",
+      "summary": ".NET의 협조적 취소 모델: 요청은 토큰 소유자가 하고 각 작업이 알아서 응답하며, 여러 토큰을 연결할 수 있고, 다 쓴 CancellationTokenSource는 Dispose하라는 설명. 예외의 토큰을 보고 협조적 취소인지 다른 예외인지 가릴 수 있다는 점."
+    },
+    {
+      "id": "ms-task-whenany",
+      "title": "Task.WhenAny Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.whenany?view=net-8.0",
+      "summary": "반환 Task는 넘긴 작업 중 하나가 끝나면 완료되고, 먼저 끝난 작업이 취소·실패로 끝났더라도 항상 RanToCompletion 상태로 그 작업을 결과로 돌려준다는 설명."
+    },
+    {
+      "id": "ms-task-waitasync",
+      "title": "Task.WaitAsync Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.waitasync?view=net-8.0",
+      "summary": "원래 작업이 끝나거나, 시간이 지나거나, 토큰이 취소되면 끝나는 Task를 돌려주며, 시간이 지나면 TimeoutException으로 실패하고 취소되면 OperationCanceledException이 저장된다는 설명. TimeProvider를 받는 오버로드 포함."
+    },
+    {
+      "id": "ms-timeprovider",
+      "title": "TimeProvider Class (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.timeprovider?view=net-8.0",
+      "summary": ".NET 8에서 추가된 시간 추상화. 시간에 의존하는 코드를 테스트하려면 Microsoft.Extensions.Time.Testing의 FakeTimeProvider를 쓸 수 있다는 비고."
+    },
+    {
+      "id": "ms-unobserved-task-exception",
+      "title": "TaskScheduler.UnobservedTaskException Event (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.taskscheduler.unobservedtaskexception?view=net-8.0",
+      "summary": "관찰되지 않은 실패 작업의 예외가 예외 에스컬레이션 정책을 일으키기 직전에 발생하는 이벤트이며, 기본적으로는 프로세스를 끝내지 않는다는 설명."
+    },
+    {
+      "id": "ms-gh-runtime8-taskcache",
+      "title": "dotnet/runtime (release/8.0) — TaskCache.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Threading/Tasks/TaskCache.cs",
+      "summary": ".NET 8 구현에서 async 메서드와 Task.FromResult가 재사용하는 완료 Task 캐시: true/false, [-1, 9) 범위의 Int32. 구현 세부이며 보장 사항이 아님."
+    },
+    {
+      "id": "ms-learn-equalitycomparer-default",
+      "title": "Microsoft Learn — EqualityComparer<T>.Default Property (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.equalitycomparer-1.default?view=net-8.0",
+      "summary": "T 가 IEquatable<T> 를 구현하면 그 구현을 쓰고, 아니면 T 가 재정의한 Object.Equals / Object.GetHashCode 를 쓰는 비교자를 돌려준다."
+    },
+    {
+      "id": "ms-generics-constraints",
+      "title": "Constraints on type parameters (C# programming guide)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters",
+      "summary": "where T : struct는 nullable이 아닌 값 형식만 허용하고, 제약 없는 형식 매개변수에는 형식 인수가 지원한다는 보장이 없어 ==와 !=를 쓸 수 없으며, 값 같음 비교가 필요하면 IEquatable<T>나 IComparable<T> 제약을 쓰라는 설명."
+    },
+    {
+      "id": "ms-iequatable",
+      "title": "IEquatable<T> Interface (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=net-8.0",
+      "summary": "Dictionary·List·LinkedList가 Contains·IndexOf·Remove에서 같음을 판단할 때 IEquatable<T>를 쓰며, 값 형식은 Equals(Object)가 박싱하므로 항상 IEquatable<T>를 구현하고 Equals(Object)·GetHashCode·==/!=를 일관되게 재정의하라는 구현자 지침."
+    },
+    {
+      "id": "ms-csharp-spec-ref-equality",
+      "title": "C# language specification §12.15.7 Reference type equality operators",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12157-reference-type-equality-operators",
+      "summary": "미리 정의된 참조 같음 연산자는 두 참조가 같은 인스턴스를 가리킬 때만 true이며, 새로 할당한 박싱 인스턴스에 대한 참조는 다른 모든 참조와 반드시 다르다는 주석. 형식 매개변수는 null 리터럴과의 비교만 특별히 허용된다."
+    },
+    {
+      "id": "ms-memoryextensions-contains",
+      "title": "MemoryExtensions.Contains Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.memoryextensions.contains?view=net-8.0",
+      "summary": "Span·ReadOnlySpan에 값이 있는지 확인하는 확장 메서드. Contains<T>(this ReadOnlySpan<T> span, T value)가 where T : IEquatable<T> 제약으로 선언되어 있다."
+    },
+    {
+      "id": "ms-gh-runtime8-comparerhelpers",
+      "title": "dotnet/runtime (release/8.0) — ComparerHelpers.cs (CoreCLR)",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/coreclr/System.Private.CoreLib/src/System/Collections/Generic/ComparerHelpers.cs",
+      "summary": ".NET 8 구현에서 EqualityComparer<T>.Default를 고르는 코드: T가 IEquatable<T>면 GenericEqualityComparer<T>, Nullable이면 NullableEqualityComparer, 열거형이면 EnumEqualityComparer, 그 밖에는 Object.Equals를 쓰는 ObjectEqualityComparer<T>. 구현 세부이며 보장 사항이 아님."
+    },
+    {
+      "id": "ms-learn-dictionary",
+      "title": "Microsoft Learn — Dictionary<TKey,TValue> Class (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-8.0",
+      "summary": "해시 테이블로 구현되어 키 조회가 O(1) 에 가깝고, 속도는 TKey 의 해시 품질에 달려 있다. 키로 쓰는 동안 해시 값이 바뀌면 안 되며 열거 순서는 정의되지 않는다."
+    },
+    {
+      "id": "ms-learn-csharp-arithmetic",
+      "title": "Microsoft Learn — Arithmetic operators (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators",
+      "summary": "정수 나눗셈의 결과는 0 쪽으로 반올림(버림)된 몫이고, 산술 연산은 기본적으로 unchecked 문맥이라 정수 오버플로가 예외 없이 상위 비트를 버린다는 설명."
+    },
+    {
+      "id": "ms-object-gethashcode",
+      "title": "Object.GetHashCode Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-8.0",
+      "summary": "같다고 판정되는 두 객체는 같은 해시를 내야 하고 같음을 정하는 상태가 바뀌지 않는 한 해시도 같아야 하며, 해시를 저장하거나 프로세스 밖으로 보내지 말라는 규칙. x ^ y는 (n1, n2)와 (n2, n1)이 같은 값이라 충돌이 많아질 수 있으니 .NET 5 이상에서는 HashCode.Combine을 쓰라는 예제."
+    },
+    {
+      "id": "ms-hashcode",
+      "title": "HashCode Struct (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.hashcode?view=net-8.0",
+      "summary": "여러 값의 해시를 하나로 섞는 HashCode.Combine. 정적 무작위 시드를 써서 해시가 한 프로세스 안에서만 일정하므로 디스크 등에 저장하지 말라는 비고."
+    },
+    {
+      "id": "ms-record",
+      "title": "Records (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record",
+      "summary": "record struct는 선언된 데이터 멤버로 같음을 비교하며, 컴파일러가 Equals(Object) 재정의, IEquatable<T>를 구현하는 Equals(R), GetHashCode 재정의, ==/!= 연산자를 합성한다. 일반 struct의 같음은 ValueType.Equals(Object)에 있고 리플렉션에 기댄다는 설명."
+    },
+    {
+      "id": "ms-iequalitycomparer",
+      "title": "IEqualityComparer<T> Interface (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iequalitycomparer-1?view=net-8.0",
+      "summary": "컬렉션에 형식 T의 같음 정의를 따로 정해 넘기는 인터페이스. Dictionary 생성자가 받으며, 기본 구현은 EqualityComparer<T>.Default이고, 직접 구현하기보다 EqualityComparer<T>를 상속하라는 권고."
+    },
+    {
+      "id": "ms-gh-runtime8-poolingbuilder",
+      "title": "dotnet/runtime (release/8.0) — PoolingAsyncValueTaskMethodBuilderT.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Runtime/CompilerServices/PoolingAsyncValueTaskMethodBuilderT.cs",
+      "summary": ".NET 8 구현에서 풀링 빌더의 상태 기계 상자 캐시: 스레드당 하나([ThreadStatic] t_tlsCache, 주석 \"only ever stores one\")와 코어당 하나(s_perCoreCache)만 보관하고, 결과를 꺼내는 GetResult의 finally에서 상자를 돌려놓는다. 구현 세부이며 보장 사항이 아님."
+    },
+    {
+      "id": "ms-gh-runtime8-valuetype-hash",
+      "title": "dotnet/runtime (release/8.0) — comutilnative.cpp (ValueTypeHelper::GetHashCode)",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/coreclr/vm/comutilnative.cpp",
+      "summary": ".NET 8 CoreCLR 구현에서 기본 ValueType.GetHashCode: 형식 ID로 만든 값에, 참조가 없고 빈틈없이 채워진 struct면 인스턴스 바이트를 4바이트씩 XOR하고(빠른 경로), 아니면 null이 아닌 첫 필드의 해시를 섞는다. 구현 세부이며 보장 사항이 아님."
     }
   ],
   "problems": [
@@ -2534,6 +2720,800 @@
         "note": "채점기(.NET 8)에서 모범 답안 7/7·스타터 실패를 확인하고, 버그를 하나씩만 고친 코드와 플래그+종료자 유지·SuppressFinalize만 추가·예외 삼키기 오답이 각각 걸리는지, Dispose(bool) 패턴과 try/finally 정답이 통과하는지, 예외를 던지는 종료자가 프로세스를 종료시키는지 실행했으며, using·IDisposable.Dispose·Dispose 구현 지침·Finalizers·Object.Finalize 문서 원문을 대조했습니다."
       },
       "nextMission": "`SaveWriter`가 임시 파일에 쓰고 `Dispose` 직전에 `Commit()`이 호출된 경우에만 진짜 세이브 파일로 교체하도록 확장해 보세요(`Commit` 없이 Dispose되면 임시 파일을 지웁니다). 메모리 스트림 두 개와 \"교체\" 콜백으로 파일 시스템을 흉내 내어, 저장 중 예외가 났을 때 기존 세이브가 그대로 남는지, `Commit` 뒤 `Dispose`를 두 번 호출해도 교체가 한 번만 일어나는지 테스트를 작성하세요."
+    },
+    {
+      "id": "t1-interview-async-await-fundamentals",
+      "track": "track1",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "async/await의 정체: 상태 기계, Task와 ValueTask, async void의 예외, 취소, 그리고 UniTask",
+      "tags": [
+        "CSharp_Async",
+        "CSharp_ValueTask",
+        "CSharp_Cancellation"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "ms-csharp-spec-async-functions",
+        "ms-async-best-practices",
+        "ms-valuetask1",
+        "gh-unitask",
+        "ms-blog-async-internals",
+        "ms-gh-runtime8-poolingbuilder"
+      ],
+      "scenario": "모바일 RPG 클라이언트에서 코루틴으로 짜 둔 네트워크·로딩 코드를 async/await로 옮기는 PR을 리뷰하고 있습니다. 작성자는 PR 설명에 \"`await`는 그 작업을 백그라운드 스레드에서 기다렸다가 돌아오는 문법이라 메인 스레드를 막지 않는다\"고 적었습니다.\n\n```csharp\n// (1) 퀘스트 보상 창의 [받기] 버튼 클릭 핸들러\npublic async void OnClaimClicked()\n{\n    Reward reward = await _api.ClaimRewardAsync(_questId);   // 서버 왕복 수백 ms\n    _inventory.Add(reward);\n    _rewardPopup.Show(reward);                               // 보상 창의 UI\n}\n\n// (2) 아이콘 캐시: 호출의 대부분은 캐시에서 바로 끝난다\npublic async ValueTask<Sprite> GetIconAsync(int id)\n{\n    if (_icons.TryGetValue(id, out Sprite icon)) return icon;\n    icon = await _loader.LoadIconAsync(id);\n    _icons[id] = icon;\n    return icon;\n}\n\n// (3) \"설정이 바뀌었다\"는 푸시를 받으면 다음 프레임에 다시 받는다\nvoid Update()\n{\n    if (_configDirty) { _config = _api.LoadConfigAsync().Result; _configDirty = false; }\n}\n```\n\nQA 보고는 세 가지입니다.\n\n1. 서버 점검 중에 [받기]를 누르면 오류 안내가 뜨지 않는다. 버튼을 호출하는 쪽을 try/catch로 감쌌는데도 예외가 잡히지 않는다.\n2. 응답이 오기 전에 보상 창을 닫으면, 응답이 온 뒤 닫힌 창의 UI를 건드리다 예외가 난다.\n3. 설정 푸시를 받은 순간 화면이 멈추고 다시 움직이지 않는다.\n\n**질문: async 메서드는 컴파일되면 무엇이 되고, `await` 한 줄에서는 어떤 일이 어떤 순서로 일어납니까? 이를 바탕으로 (a) Task와 ValueTask를 고르는 기준, (b) async void에서 던져진 예외가 가는 곳, (c) 취소를 전달하고 받는 방법을 설명하고, QA 보고 1·2·3을 각각 어떻게 고치겠습니까?**\n\n(.NET 8 / C# 12 기준으로 답하고, 언어 명세가 정한 것과 런타임·라이브러리 구현이 하는 일을 구분해 주세요. Unity와 UniTask에 대해서는 Unity 매뉴얼과 UniTask README에 적힌 범위에서만 답합니다.)",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "\"await는 백그라운드 스레드에서 기다린다\"를 바로잡고, await가 IsCompleted를 먼저 확인해 이미 끝난 작업이면 멈추지 않는다는 점을 말하는가",
+        "ValueTask가 줄이는 것은 동기 완료 경로의 할당뿐이고, 한 번만 소비해야 한다는 제약이 따른다는 점을 함께 말하는가",
+        "보고 1의 예외가 사라진 것이 아니라 호출자가 아닌 동기화 컨텍스트로 간다는 점, 그래서 수정 위치가 핸들러 안의 try/catch라는 점을 짚는가",
+        "보고 2에서 취소를 요청해도 결과가 올 수 있으므로 await 뒤에 다시 확인해야 한다는 점, 그리고 서버가 이미 지급한 보상과 닫힌 창의 UI를 구분하는가",
+        "보고 3에서 프레임 멈춤과 교착을 구분하고, ConfigureAwait(false)나 Task.Run으로 감싸는 것이 근본 해결이 아님을 아는가"
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "보고 1과 2를 함께 고친 `OnClaimClicked`를 코드로 보여 주세요. 창을 닫으면 창에 대한 일은 멈춰야 하지만, 서버가 이미 지급한 보상을 잃어서도 안 되고 취소를 오류로 안내해서도 안 됩니다. 토큰을 몇 개 두고 각각 어디에 쓰겠습니까?",
+          "intent": "취소가 협조적이라는 것(요청해도 결과가 올 수 있음)과 canceled 상태가 예외로 전달되는 경로를 알고, 취소의 범위를 \"서버 상태를 바꾸는 요청\"과 \"화면 갱신\"으로 나눠 설계할 수 있는지 확인한다.",
+          "keyAnswer": "- **토큰은 두 개, 역할이 다르다.**\n  - 보상 지급 요청은 서버의 상태를 바꾼다. 창을 닫았다고 이 요청의 응답을 버리면, 서버는 지급했는데 클라이언트 인벤토리에는 없는 상태가 된다. 그래서 요청에는 창이 아니라 **세션(로그인) 수명** 토큰을 넘긴다.\n  - 창 토큰은 **닫힌 창의 UI를 건드리지 않기 위한 것**이다. 창을 열 때 `CancellationTokenSource`를 만들고, 닫을 때 `Cancel()`한 뒤 `Dispose()`한다. 문서도 다 쓴 소스는 Dispose하라고 한다.\n- **await 뒤에 다시 확인한다.** TAP 문서에 따르면 실행 중에 취소를 요청해도 작업은 그 요청을 받아들이지 않을 수 있고, 그러면 결과나 예외로 끝난다. 그래서 \"토큰을 넘겼으니 됐다\"가 아니라, 응답을 받은 뒤 UI를 만지기 직전에 창 토큰을 본다.\n\n```csharp\npublic async void OnClaimClicked()                 // 이벤트 핸들러만 async void, 본문은 얇게\n{\n    CancellationToken popupToken = _popupCts.Token;\n    try\n    {\n        await ClaimAsync(popupToken);\n    }\n    catch (OperationCanceledException) when (popupToken.IsCancellationRequested)\n    {\n        // 창이 닫혀서 멈춘 것: 오류가 아니므로 안내하지 않는다\n    }\n    catch (Exception e)\n    {\n        if (!popupToken.IsCancellationRequested) _errorDialog.Show(e.Message);\n    }\n}\n\nprivate async Task ClaimAsync(CancellationToken popupToken)\n{\n    Reward reward = await _api.ClaimRewardAsync(_questId, _sessionToken);\n    _inventory.Add(reward);                        // 데이터는 창과 상관없이 반영\n    popupToken.ThrowIfCancellationRequested();     // 닫힌 창의 UI만 건너뛴다\n    _rewardPopup.Show(reward);\n}\n```\n\n- **왜 이렇게 동작하는가.**\n  - `ThrowIfCancellationRequested`가 던진 예외를 `ClaimAsync` 안에서 잡지 않으면, 반환 작업은 canceled 상태가 된다(명세 §15.14.3). 그 작업을 await한 핸들러는 `OperationCanceledException`(또는 파생 예외)을 받는다(TAP 문서).\n  - `when (popupToken.IsCancellationRequested)` 필터를 붙이면 **내가 요청한 취소만** 조용히 넘긴다. 라이브러리 내부 사정으로 생긴 취소 예외까지 삼키지 않는다. 취소 문서도 예외의 토큰을 보고 협조적 취소인지 다른 예외 상황인지 가리라고 설명한다.\n  - 진짜 오류(점검 중 등)는 핸들러의 `catch`에서 한 번만 안내한다. 보고 1이 고쳐진다.\n  - async void를 남긴 이유: 버튼 이벤트는 void를 요구하고, 문서도 async void를 이벤트 핸들러 용도로 둔다. 핸들러 바깥으로 예외가 새지 않도록 핸들러 안에서 모두 처리했다.\n- **UniTask라면(README).** `async UniTaskVoid` 핸들러에 `.Forget()`을 쓰고, 토큰은 `GetCancellationTokenOnDestroy()`(Unity 2022.2 이상은 `destroyCancellationToken`)로 얻을 수 있다. README의 예제처럼 `catch (Exception ex) when (!(ex is OperationCanceledException))`로 취소를 걸러 내거나, `SuppressCancellationThrow()`로 예외 대신 `(IsCanceled, Result)` 튜플을 받을 수 있다. README는 이 방법이 취소 예외를 던지고 잡는 비용을 피하는 용도라고 설명한다."
+        },
+        {
+          "question": "(2)의 `GetIconAsync`를 ValueTask로 둔 판단은 맞습니까? 호출부의 다음 두 코드는 어떻습니까? 그리고 ValueTask로 바꾸면 할당이 항상 0이 됩니까? Unity 에디터 프로파일러에서 async 메서드를 부를 때마다 작은 할당이 보이는 이유는 무엇입니까?\n\n```csharp\nValueTask<Sprite> t = GetIconAsync(id);\n_slot.icon = await t;\n_tooltip.icon = await t;                                   // (가)\n\nawait Task.WhenAll(ids.Select(i => GetIconAsync(i).AsTask()));   // (나)\n```",
+          "intent": "ValueTask의 이득이 어느 경로에 있는지 수치로 말할 수 있는지, 소비 규칙(한 번만 await)을 정확히 아는지, 빌드 설정에 따라 상태 기계 할당이 달라진다는 구현 세부를 측정과 연결하는지 확인한다.",
+          "keyAnswer": "- **판단은 맞다.** 호출 대부분이 캐시에서 동기적으로 끝나고 자주 불리는 경로다. ValueTask 문서가 ValueTask를 쓸 만하다고 말하는 바로 그 경우다. 다음은 64비트 Release 빌드로 채점기와 같은 .NET 8.0.24(계층형 컴파일 끔)와 로컬 .NET 8.0.8(SDK 8.0.400)에서 잰 값이며, 두 곳의 값이 같았다(구현 세부라서 런타임 버전과 메서드 모양에 따라 달라질 수 있다).\n  - 동기 완료: `async Task<int>`가 42를 돌려주면 호출마다 72 B, `async ValueTask<int>`는 0 B였다. 단, 결과가 -1~8인 `Task<int>`, `Task<bool>`, 결과 없는 `Task`는 런타임이 캐시해 둔 완료 작업을 다시 써서 0 B였다. .NET 8 런타임 소스의 `TaskCache.cs`(주석: \"Provides a cache of tasks for async methods\")에 true/false와 [-1, 9) 범위 int의 완료 Task가 미리 만들어져 있다. 측정값이 결과 값에 따라 달라지는 이유가 이것이다. 구현 세부이지 보장은 아니다.\n  - 실제로 한 번 멈추는 경로: 매개변수로 받은 `Task<int>` 하나를 await하는 메서드에서 `async Task<int>`는 104 B, `async ValueTask<int>`는 112 B였다(기다린 `TaskCompletionSource` 제외). 처음 멈출 때 스택에 있던 상태 기계를 힙의 상자로 옮겨야 하기 때문이다(Toub, \"How Async/Await Really Works in C#\", 2023). 즉 **ValueTask가 줄여 주는 것은 동기 완료 경로의 할당뿐**이다.\n  - .NET 6·C# 10부터 쓸 수 있는 `[AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<>))]`를 붙이면 그 상자를 풀에서 빌려 쓴다(같은 Toub의 글). .NET 8 구현의 풀은 스레드당 하나, 코어당 하나만 보관하고 결과를 꺼낼 때(`GetResult`) 상자를 돌려놓는다(dotnet/runtime release/8.0 `PoolingAsyncValueTaskMethodBuilderT.cs`, 보장이 아닌 구현 세부). 그래서 같은 측정에서 \"멈춤 → 완료 → 결과 꺼내기\"를 한 번에 하나씩 반복하면 추가 할당이 0 B였지만, 2,000개를 동시에 멈춰 두면 호출마다 112 B가 그대로 할당되었다. 대신 상자가 재사용되므로 아래의 소비 규칙을 어긴 코드가 실제로 깨진다.\n- **(가)는 금지된 사용이다.** API 문서는 ValueTask 인스턴스에 다음을 \"절대 하지 말라\"고 한다. 여러 번 await하기, `AsTask` 여러 번 부르기, 완료 전에 또는 여러 번 `.Result`/`GetAwaiter().GetResult()` 쓰기, 이 방법들을 섞어 쓰기. 하나라도 하면 결과는 정의되지 않는다. Toub의 ValueTask 글(2018)은 그 이유를 이렇게 설명한다. ValueTask가 감싼 객체는 이미 재활용되어 다른 작업에 쓰이고 있을 수 있다. 같은 글은 여러 곳에서 동시에 await하는 것도 안전하지 않다고 한다. 감싼 객체는 한 번에 한 소비자의 콜백 하나만 다루도록 만들어져 있기 때문이다. 그래서 ValueTask는 바로 await하거나 `AsTask()`를 한 번 부르고, 그 뒤로는 다시 쓰지 말라고 한다. 같은 글은 새 비동기 API의 기본 선택도 여전히 Task라고 말한다. 실제로 풀링 빌더를 붙인 ValueTask를 한 번 소비하고, 다른 호출이 그 상자를 다시 빌려 간 뒤 옛 값을 다시 소비했더니 `InvalidOperationException`이 났다(.NET 8.0.24와 8.0.8에서 실행. 문서상으로는 \"정의되지 않음\"일 뿐이라 다른 결과가 나와도 이상하지 않다). 고치기: `Sprite icon = await GetIconAsync(id);`로 한 번 받아 두고 두 곳에 쓴다. 정말 여러 번 기다려야 하면 `AsTask()`를 한 번만 불러 Task로 바꾼다.\n- **(나)는 규칙 위반은 아니지만 할당이 생긴다.** `WhenAll`/`WhenAny`에 넣으려면 `AsTask()`로 바꿔야 하고, 문서는 이 변환에서 할당이 생기며, 처음부터 캐시된 Task를 돌려줬다면 피할 수 있었던 할당이라고 설명한다. 로딩 화면에서 한 번 하는 일이면 문제가 아니다. 다만 호출부 대부분이 이렇게 쓴다면 Task가 더 맞는 선택이다.\n- **에디터 프로파일러의 작은 할당.** Debug 빌드의 상태 기계는 class라서 동기 완료여도 호출마다 할당된다. 로컬 .NET 8.0.8의 Debug 빌드에서 매개변수도 지역 변수도 없는 `async ValueTask<int>`의 동기 완료는 40 B, `async Task`의 동기 완료는 32 B였다(상태 기계에 필드가 늘면 더 커진다). UniTask README의 \"Allocation on Profiler\" 절도 에디터 프로파일러에 보이는 AsyncStateMachine 할당은 Debug(개발) 빌드에서만 생긴다고 설명한다. 또 Unity 2020.1부터는 Code Optimization을 Release로 바꿔 이 할당을 없앨 수 있다고 적는다. 그러니 판단은 Release 설정에서 측정한 값으로 한다.\n- **UniTask(README).** `UniTask`도 두 번 await할 수 없고, README는 이를 ValueTask/IValueTaskSource와 비슷한 제약이라고 설명한다. 여러 번 써야 하면 `.Preserve()`(결과를 내부에 캐시)나 `UniTask.Lazy`를 쓴다. `UniTaskCompletionSource`는 여러 번, 여러 호출자가 await할 수 있다."
+        },
+        {
+          "question": "보고 3을 재현하는 테스트를 만들려고 콘솔 테스트 프로젝트에서 같은 코드를 돌렸더니 멈추지 않았습니다. 왜 그렇습니까? 이 교착을 테스트에서 결정적으로 재현하려면 어떻게 하겠습니까? 그리고 \"게임 코드의 모든 await에 ConfigureAwait(false)를 붙이자\"는 제안에는 어떻게 답하겠습니까?",
+          "intent": "교착이 \"단일 스레드 컨텍스트 + 그 스레드에서의 동기 대기\"의 조합에서 생긴다는 원리를 이해해 테스트 환경을 직접 설계할 수 있는지, ConfigureAwait(false)의 의미와 한계를 Unity의 메인 스레드 제약과 연결해 판단하는지 확인한다.",
+          "keyAnswer": "- **콘솔에서 멈추지 않는 이유.** .NET 8 콘솔 앱의 메인 스레드에서 `SynchronizationContext.Current`는 null이다(실행해 확인). 연속을 돌려보낼 단일 스레드 컨텍스트가 없으니, 연속은 작업을 완료시킨 쪽에서 이어지거나 스레드 풀에서 실행된다. 메인 스레드가 `.Result`에서 막혀 있어도 작업은 끝난다. Cleary의 글도 같은 코드가 테스트용 콘솔 프로그램에서는 기대대로 돌다가 GUI·ASP.NET 앱으로 옮기면 교착된다고 설명한다. 이 교착은 \"한 번에 하나만 실행하는 컨텍스트 + 그 컨텍스트의 스레드에서 동기 대기\"가 함께 있고, 기다리는 작업이 그 컨텍스트로 돌아와야 끝날 때 생긴다.\n- **결정적으로 재현하기.**\n  - 테스트 안에 단일 스레드 `SynchronizationContext`를 직접 만든다. `Post`는 큐에 넣기만 하고, 테스트 루프가 \"프레임\"마다 큐를 비운다. 메인 스레드에서 호출한 Task의 연속을 다음 Update 틱에 실행한다는 Unity 매뉴얼의 설명을 본뜬 모델이다. 이 모델에서 컨텍스트 스레드가 `.Wait()`로 막힌 동안, 스레드 풀에서 완료된 내부 await의 연속은 큐에 게시된 채 실행되지 않았다(.NET 8.0.24와 8.0.8에서 실행).\n  - 가짜 서버는 `TaskCompletionSource`를 `TaskCreationOptions.RunContinuationsAsynchronously`로 만들고, 정해 둔 프레임에 결과를 채운다. 그러면 연속이 그 큐로 게시된다. .NET 8에서 확인한 바로는, 이 옵션 없이 컨텍스트 스레드에서 직접 완료하면 연속이 그 자리에서 실행되고 큐에 들어가지 않았다.\n  - 막는 코드는 전용 스레드에서 돌리고 `Join(제한 시간)`으로 판정한다. 그래야 교착이 나도 테스트가 끝난다. 실제 시간이나 스레드 풀 타이밍에 기대는 부분은 이 상한 시간뿐이다.\n- **\"모든 await에 `ConfigureAwait(false)`\"에 대한 답.**\n  - API 문서에 따르면 `false`는 캡처한 원래 컨텍스트로 연속을 돌려보내지 않겠다는 뜻이다. Cleary의 글은 컨텍스트가 필요 없는 라이브러리 코드에 쓰고, await 뒤에 컨텍스트가 필요한 코드가 있으면 쓰지 말라고 한다. Unity에서 \"컨텍스트가 필요한 코드\"는 메인 스레드에서만 부를 수 있는 Unity API 대부분이다(Unity 매뉴얼). `ConfigureAwait(false)` 뒤의 코드는 스레드 풀에서 돌 수 있으므로 그 자리에서 UI나 GameObject를 만지면 안 된다.\n  - 이것도 보장이 아니다. ConfigureAwait FAQ에 따르면 이미 완료된 작업을 await하면 `ConfigureAwait(false)`여도 같은 스레드, 같은 컨텍스트에서 계속 실행된다.\n  - 교착은 피해도 근본 해결이 아니다. `.Result`가 응답을 받을 때까지 메인 스레드를 막는 시간, 즉 프레임 멈춤은 그대로 남는다.\n  - 결론: 네트워크·파싱처럼 Unity를 모르는 하위 계층에서만 쓰고, 게임 코드에서는 동기 대기 자체를 없앤다.\n- **UniTask(README).** UniTask는 SynchronizationContext와 ExecutionContext를 쓰지 않고 PlayerLoop의 정해진 시점(`PlayerLoopTiming`)에서 이어서 실행한다. README에 따르면 대부분의 UniTask 메서드는 PlayerLoop의 단일 스레드에서 돌고, 스레드 풀에서 도는 것은 `UniTask.Run`(지금은 폐기 예정이며 `UniTask.RunOnThreadPool`로 대체)과 `UniTask.SwitchToThreadPool`뿐이다. 타임아웃도 스레딩 타이머를 쓰는 `CancelAfter` 대신 PlayerLoop 기반의 `CancelAfterSlim`을 쓰라고 권한다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**모범 답안의 뼈대.** \"컴파일 결과 → await의 순서 → (a)(b)(c) → 보고 1·2·3 수정 → UniTask\" 순서로 답합니다.\n\n**1. 컴파일 결과.** async 메서드는 상태 기계가 됩니다. 명세 §15.14.2는 컴파일러가 작업 빌더(`Create`, `Start`, `SetResult`, `SetException`, `AwaitOnCompleted`)로 중단과 재개를 구현하도록 정하고, §15.14.1은 재개가 `System.Action` 재개 델리게이트로 일어난다고 정합니다. 상태 기계의 모양은 컴파일러의 몫입니다. 현재 C# 컴파일러는 지역 변수와 진행 위치를 상태 기계의 필드로 옮기고, Release 빌드에서는 struct, Debug 빌드에서는 class로 만듭니다(Toub의 글, UniTask README, .NET 8 SDK에서 확인).\n\n**2. `await` 한 줄.** §12.9.9.4의 순서는 이렇습니다. `GetAwaiter()`를 부르고 `IsCompleted`를 봅니다. 이미 끝났으면 멈추지 않고 바로 `GetResult()`로 갑니다. 아니면 재개 델리게이트를 등록하고 호출자에게 돌아갑니다. 작업이 끝나면 재개되어 `GetResult()`가 결과를 주거나 예외를 던집니다. `await`는 스레드를 만들지도 막지도 않습니다. 어디서 이어질지는 awaiter가 정합니다. Task는 기본적으로 현재 `SynchronizationContext`를 캡처해 그곳으로 연속을 보내고, Unity는 메인 스레드에서 호출한 Task의 연속을 `UnitySynchronizationContext`를 통해 다음 프레임 Update 틱에 메인 스레드에서 실행합니다(Unity 매뉴얼).\n\n**3. (a)(b)(c).** (a) ValueTask 문서는 기본 선택을 Task로 둡니다. 결과가 동기적으로 나오는 경우가 많고 아주 자주 불리는 경로에서, 성능 분석으로 이득이 확인될 때만 ValueTask를 씁니다. (2)가 그런 경로이고, 대신 한 번만 await해야 합니다. (b) async Task는 예외를 반환 작업에 기록하고(§15.14.3) await하는 쪽에서 다시 던집니다. async void는 돌려줄 작업이 없어 완료와 예외를 동기화 컨텍스트에 알리므로(§15.14.4) 호출자의 try/catch에 잡히지 않습니다. Cleary의 글은 이 예외가 메서드가 시작될 때 활성화되어 있던 SynchronizationContext에서 직접 발생한다고 설명합니다. (c) 취소는 협조적입니다. 토큰을 받은 작업이 응하고, 처리되지 않은 `OperationCanceledException`은 반환 작업을 canceled로 만듭니다(§15.14.3).\n\n**4. 보고 1·2·3.** 1은 핸들러를 얇게 두고 본문을 `async Task`로 옮겨, 핸들러 안의 try/catch에서 오류를 안내합니다. 2는 창 수명 토큰을 닫을 때 취소하고, await 뒤에 토큰을 다시 본 다음 UI를 건드립니다. TAP 규칙상 취소를 요청해도 결과가 올 수 있습니다. 서버가 이미 지급한 보상은 인벤토리에 반영해야 하므로 요청 자체를 창 수명으로 취소하지는 않습니다. 3의 `Task<T>.Result`는 완료까지 호출 스레드를 막습니다(API 문서). Unity 매뉴얼에 따르면 메인 스레드에서 호출한 Task의 연속은 `UnitySynchronizationContext`로 게시되어 메인 스레드에서 실행됩니다. 그래서 `LoadConfigAsync` 안의 await가 메인 스레드로 돌아와야 끝나는 구조라면, 그 연속을 실행할 메인 스레드가 `.Result`에서 막혀 있으므로 서로를 기다리는 교착이 될 수 있습니다. 한 번에 하나만 실행하는 컨텍스트의 스레드에서 동기 대기하면 이렇게 교착된다는 원리는 Cleary의 글이 설명합니다. Unity 매뉴얼 자체는 `.Result`나 교착을 언급하지 않습니다. 연속이 메인 스레드를 필요로 하지 않더라도 응답이 올 때까지 프레임은 멈춥니다. 어느 쪽이든 동기 대기를 없애고 await로 받습니다.\n\n**5. UniTask(README).** struct 기반 `UniTask<T>`와 전용 빌더로 할당 0을 목표로 하고, PlayerLoop에서 돌아 SynchronizationContext를 쓰지 않습니다. 두 번 await할 수 없고, async void 대신 `async UniTaskVoid` + `Forget()`을 씁니다. 처리되지 않은 예외는 `UniTaskScheduler.UnobservedTaskException`으로 가며, 취소 예외는 거기서 무시됩니다.\n\n**감점되는 답.** \"await는 백그라운드에서 기다린다\", \"ValueTask면 할당이 항상 0\", \"`Task.Run`이나 `ConfigureAwait(false)`만 붙이면 3이 해결\"(메인 스레드는 여전히 막힙니다).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "async 메서드가 작업 빌더를 쓰는 상태 기계로 바뀌고, 재개는 재개 델리게이트(상태 기계를 다시 진행시키는 호출)로 일어난다고 설명했다",
+            "points": 10,
+            "sourceId": "ms-csharp-spec-async-functions"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "await의 순서(GetAwaiter → IsCompleted 확인 → 완료면 바로 GetResult, 아니면 연속을 등록하고 호출자에게 반환)를 말하고, await가 스레드를 만들거나 막지 않는다고 PR 설명을 바로잡았다",
+            "points": 10,
+            "sourceId": "ms-csharp-spec-await"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "보고 1의 원인으로, async void는 반환 작업이 없어 예외가 시작 시점의 동기화 컨텍스트로 가므로 호출자의 try/catch에 잡히지 않는다는 점을 말했다",
+            "points": 8,
+            "sourceId": "ms-async-best-practices"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "보고 3에서 .Result가 메인 스레드를 막고, 기다리는 작업의 연속이 그 메인 스레드로 게시되어야 끝나는 경우에는 서로를 기다리는 교착이 될 수 있다(그렇지 않아도 응답이 올 때까지 프레임이 멈춘다)는 점을 설명했다",
+            "points": 7,
+            "sourceId": "ms-async-best-practices"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "기본 빌더를 쓰는 async ValueTask가 할당을 줄이는 것은 동기 완료 경로뿐이고 실제로 멈추면 상태 기계가 힙의 상자로 옮겨진다는 점, 그리고 기본 선택은 Task라는 권고를 말했다",
+            "points": 10,
+            "sourceId": "ms-valuetask1"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "ValueTask 소비 규칙(한 번만 await, 완료 전 Result 금지, AsTask는 한 번)과 위반 시 결과가 정의되지 않는다는 점을 말하고, 여러 번 써야 할 때의 대안(값을 받아 두기, AsTask 한 번, UniTask의 Preserve 중 하나)을 제시했다",
+            "points": 10,
+            "sourceId": "ms-valuetask1"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "할당 판단은 측정으로 하겠다고 하고, 빌드 설정(Debug에서는 상태 기계가 class)에 따라 결과가 달라진다는 점을 언급했다",
+            "points": 6,
+            "sourceId": "ms-blog-async-internals"
+          },
+          {
+            "id": "c7b",
+            "category": "메모리·성능",
+            "description": "동기 완료하는 async Task<T>도 결과 값(bool, 작은 int 등)에 따라 캐시된 Task를 재사용해 할당이 없을 수 있다는 점을 말하되, 그것을 보장이 아닌 .NET 8 구현 세부로 구분했다",
+            "points": 4,
+            "sourceId": "ms-gh-runtime8-taskcache"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "보고 2에 대해 토큰을 요청에 넘기고, await 뒤에 토큰을 다시 확인한 뒤 UI를 갱신하며, 취소로 끝난 경우는 오류로 안내하지 않는 수정을 제시했다",
+            "points": 10,
+            "sourceId": "ms-tap"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "UniTask의 차이를 README 범위에서 두 가지 이상 말했다(PlayerLoop에서 돌고 SynchronizationContext를 쓰지 않음, UniTaskVoid + Forget과 UnobservedTaskException에서 무시되는 취소 예외, 두 번 await 불가 등)",
+            "points": 10,
+            "sourceId": "gh-unitask"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "이벤트 진입점(async void 핸들러 또는 UniTaskVoid)만 얇게 두고 본문을 Task를 반환하는 메서드로 분리해, 오류 안내를 한 곳에서 처리하는 구조를 제시했다",
+            "points": 8,
+            "sourceId": "ms-async-best-practices"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "세 보고를 원인별(1: 예외 경로, 2: 수명과 취소, 3: 동기 대기)로 나눠 각각 다른 수정을 제시했다",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "await가 작업을 백그라운드 스레드에서 실행하거나 기다린다고 답한다",
+            "penalty": -20,
+            "sourceId": "ms-await-operator"
+          },
+          {
+            "id": "d2",
+            "description": "보고 3을 ConfigureAwait(false)나 Task.Run으로 감싸는 것만으로 해결된다고 답한다(메인 스레드는 여전히 막히고, 이어지는 코드가 메인 스레드가 아닌 곳에서 돌 수 있다)",
+            "penalty": -15,
+            "sourceId": "ms-blog-configureawait"
+          },
+          {
+            "id": "d3",
+            "description": "ValueTask를 쓰면 할당이 항상 0이 된다거나, ValueTask를 여러 번 await해도 된다고 답한다",
+            "penalty": -15,
+            "sourceId": "ms-valuetask1"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 채점이 없는 면접 문제라, 답안의 할당 수치·교착 모델·풀링 빌더 오용 예외를 채점기(.NET 8.0.24)와 로컬 .NET 8.0.8에서 직접 재고, 명세 §15.14·§12.9.9, ValueTask·TAP·ConfigureAwait 문서, Cleary와 Toub의 글, Unity 6 매뉴얼, UniTask README 원문에 대조했습니다."
+      },
+      "nextMission": "콘솔 프로젝트에 단일 스레드 SynchronizationContext(Post는 큐에 넣기만 하고, 루프가 \"프레임\"마다 큐를 비움)를 만들어 보고 3의 교착을 재현해 보세요. 전용 스레드와 Join(2초)으로 교착을 감지하는 테스트를 작성하고, `.Result`를 await로 바꾼 버전이 그 테스트를 통과하는지 확인합니다. 같은 프로그램에서 `async Task<int>`, `async ValueTask<int>`, `PoolingAsyncValueTaskMethodBuilder`를 붙인 ValueTask에 대해 동기 완료와 비동기 완료의 할당량을 Release와 Debug에서 각각 `GC.GetAllocatedBytesForCurrentThread()`로 재서 표로 정리해 보세요."
+    },
+    {
+      "id": "t1-debug-async-shop-screen",
+      "track": "track1",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "멈추는 상점, 사라지는 오류, 뒤바뀌는 설명: 메인 스레드의 동기 대기, 버려진 Task, 빠진 취소",
+      "tags": [
+        "CSharp_Async",
+        "CSharp_Cancellation",
+        "CSharp_SyncContext"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-async-best-practices",
+        "ms-cs4014-async-errors",
+        "ms-tap",
+        "unity-awaitable-continuations"
+      ],
+      "scenario": "모바일 RPG의 상점 화면입니다. 화면을 열면 가격표를 받아 오고, 아이템을 누르면 그 아이템의 상세 설명을 서버에서 받아 옵니다. 출시 전 QA에서 세 가지 보고가 올라왔습니다.\n\n- 상점을 여는 순간 게임이 멈추고 돌아오지 않는다. 점검 중일 때는 상점 버튼이 예외를 던진다.\n- 판매 종료된 아이템을 누르면 아무 안내 없이 상세 창이 빈 채로 남는다.\n- 아이템을 빠르게 연달아 누르면 방금 누른 아이템이 아니라 그 전에 누른 아이템의 설명이 뜬다. 상점을 닫아도 보낸 요청은 서버에서 계속 처리된다.\n\n`ShopScreen`의 버그를 찾아 고치세요. 순수 C#(.NET 8) 코드이고, `IShopApi`·`IShopView`와 public 시그니처는 바꾸지 않습니다.\n\n**지켜야 할 동작**\n\n- `Open()`: `ShowLoading()`을 부르고 서버 응답을 기다리지 않고 바로 돌아옵니다. 응답이 오면 `ShowPrices`, 실패하면 `ShowError(예외의 Message)`를 부릅니다. 어떤 경우에도 `Open()` 밖으로 예외를 던지지 않습니다.\n- `Select(itemId)`: 상세 요청을 보냅니다. 화면에는 **가장 최근에 고른 아이템**의 결과만 나와야 합니다. 새로 고르면 이전 요청의 토큰을 취소해 서버에 알리고, 이전 선택의 응답은 이미 도착했더라도 결과든 오류든 표시하지 않습니다. 최근 선택의 요청이 실패하면 `ShowError(예외의 Message)`를 부릅니다.\n- `Close()`: 대기 중인 모든 요청(가격표, 상세)의 토큰을 취소합니다. `Close()` 이후에는 view를 한 번도 부르지 않고, 그 뒤에 `Select`나 `Open`이 불려도 예외 없이 아무것도 하지 않습니다.\n- 취소로 끝난 요청은 오류가 아니므로 `ShowError`를 부르지 않습니다.\n- `IShopView`는 Unity UI처럼 메인(프레임) 스레드에서만 부를 수 있습니다. 처리되지 않은 예외가 프레임 루프까지 올라가면 안 됩니다.\n\n**실행 채점 환경.** 콘솔 앱에는 `SynchronizationContext`가 없어서 Unity의 메인 스레드와 동작이 다릅니다. 그래서 채점기가 직접 모델을 만듭니다. 전용 스레드에 단일 스레드 `SynchronizationContext`를 설치해 \"메인 스레드\"로 쓰고, 게시된 연속은 그 스레드가 프레임을 돌릴 때만 실행합니다. Unity 매뉴얼이 설명하는, 메인 스레드에서 호출한 Task의 연속이 다음 프레임에 실행되는 방식을 본뜬 것입니다. 가짜 서버의 응답은 채점기가 정한 프레임에 도착하고, `await` 다음 코드는 그다음 프레임에 실행됩니다. `Open`/`Select`/`Close`는 이 스레드에서 불리고, 한 케이스가 2초 안에 끝나지 않으면 메인 스레드가 막힌 것으로 보고 실패 처리합니다.",
+      "constraints": [
+        "메인 스레드에서 .Result, .Wait(), GetAwaiter().GetResult() 같은 동기 대기 금지",
+        "Task.Run 등으로 작업을 스레드 풀에 옮기지 않고, await 뒤의 view 호출이 메인 스레드에서 일어나게 한다(ConfigureAwait(false) 금지)",
+        "ShopApiException, IShopApi, IShopView와 ShopScreen의 public 시그니처(생성자, Open, Select, Close)는 바꾸지 않는다. Open/Select/Close를 Task를 반환하도록 바꾸지 않는다",
+        "Open/Select/Close 밖으로, 그리고 프레임 루프까지 처리되지 않은 예외가 나가지 않는다"
+      ],
+      "starterCode": "using System;\nusing System.Threading;\nusing System.Threading.Tasks;\n\n/// <summary>Server-side failure (maintenance, discontinued item...). Its Message is shown to the player as is.</summary>\npublic sealed class ShopApiException : Exception\n{\n    public ShopApiException(string message) : base(message) { }\n}\n\n/// <summary>\n/// Shop server. Responses arrive on a later frame.\n/// If ct is canceled before the response arrives, the returned task ends Canceled.\n/// </summary>\npublic interface IShopApi\n{\n    Task<int[]> GetPricesAsync(CancellationToken ct);\n    Task<string> GetDetailAsync(int itemId, CancellationToken ct);\n}\n\n/// <summary>Shop UI. Like Unity UI, it may only be called on the main (frame) thread.</summary>\npublic interface IShopView\n{\n    void ShowLoading();\n    void ShowPrices(int[] prices);\n    void ShowDetail(int itemId, string text);\n    void ShowError(string message);\n}\n\npublic sealed class ShopScreen\n{\n    private readonly IShopApi _api;\n    private readonly IShopView _view;\n    private bool _closed;\n\n    public ShopScreen(IShopApi api, IShopView view)\n    {\n        _api = api;\n        _view = view;\n    }\n\n    /// <summary>Called on the main thread when the shop opens.</summary>\n    public void Open()\n    {\n        _view.ShowLoading();\n        int[] prices = _api.GetPricesAsync(CancellationToken.None).Result;\n        _view.ShowPrices(prices);\n    }\n\n    /// <summary>Called on the main thread when the player taps an item.</summary>\n    public void Select(int itemId)\n    {\n        _ = LoadDetailAsync(itemId);\n    }\n\n    /// <summary>Called on the main thread when the shop closes.</summary>\n    public void Close()\n    {\n        _closed = true;\n    }\n\n    private async Task LoadDetailAsync(int itemId)\n    {\n        string text = await _api.GetDetailAsync(itemId, CancellationToken.None);\n        if (_closed) return;\n        _view.ShowDetail(itemId, text);\n    }\n}\n",
+      "edgeCases": [
+        "아이템 1의 응답이 도착해 연속이 다음 프레임을 기다리는 사이에 아이템 2를 고른 경우: 취소는 요청했지만 작업은 이미 결과로 끝났다",
+        "서버가 이미 실패한 Task를 즉시 돌려주는 경우와 다음 프레임에 실패하는 경우",
+        "취소로 끝난 요청(TaskCanceledException)을 오류로 표시하면 안 된다",
+        "Close 뒤에 늦게 도착한 응답과 오류, 그리고 Close 뒤에 다시 불린 Select와 Open",
+        "await 뒤의 코드가 메인 스레드가 아닌 곳에서 실행되는 경우(ConfigureAwait(false))"
+      ],
+      "hints": [
+        "서버 응답은 메인 스레드가 다음 프레임을 돌려야 처리됩니다. 그런데 `Open`은 바로 그 메인 스레드에서 `.Result`로 기다립니다. 이 기다림을 누가 끝내 줄 수 있을까요? 또 `Select(1)`, `Select(2)`를 연달아 부르고 서버가 2에 먼저, 1에 나중에 응답하면 화면에 마지막으로 남는 것은 무엇입니까?",
+        "고칠 곳은 세 군데입니다. `Open`의 동기 대기, `Select`가 `_ =`로 버리는 Task(실패하면 그 예외는 어디로 갈까요?), 그리고 토큰을 만들지도 취소하지도 않는 `Select`/`Close`입니다. await 다음 줄에 \"이 결과가 아직 필요한가\"를 확인하는 코드가 없다는 점도 보세요.",
+        "구조만 적으면 다음과 같습니다. 물음표 자리는 직접 채우세요.\n```\nOpen():\n    ShowLoading()\n    _ = LoadPricesAsync(화면 수명 토큰)     // 기다리지 않고 돌아간다\n\nSelect(id):\n    이전 선택의 CTS를 Cancel\n    새 CTS = 화면 수명에 연결한 CTS\n    _ = LoadDetailAsync(id, 새 CTS의 토큰)\n\nClose():\n    화면 수명 CTS를 Cancel\n\nLoadXxxAsync(..., ct):          // 예외를 스스로 전부 처리하므로 버려도 안전\n    try:\n        결과 = await api 호출(..., ct)\n        if (???) return\n        view에 표시\n    catch (e):\n        if (???) view.ShowError(e.Message)\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Threading;\nusing System.Threading.Tasks;\n\n/// <summary>Server-side failure (maintenance, discontinued item...). Its Message is shown to the player as is.</summary>\npublic sealed class ShopApiException : Exception\n{\n    public ShopApiException(string message) : base(message) { }\n}\n\n/// <summary>\n/// Shop server. Responses arrive on a later frame.\n/// If ct is canceled before the response arrives, the returned task ends Canceled.\n/// </summary>\npublic interface IShopApi\n{\n    Task<int[]> GetPricesAsync(CancellationToken ct);\n    Task<string> GetDetailAsync(int itemId, CancellationToken ct);\n}\n\n/// <summary>Shop UI. Like Unity UI, it may only be called on the main (frame) thread.</summary>\npublic interface IShopView\n{\n    void ShowLoading();\n    void ShowPrices(int[] prices);\n    void ShowDetail(int itemId, string text);\n    void ShowError(string message);\n}\n\npublic sealed class ShopScreen\n{\n    private readonly IShopApi _api;\n    private readonly IShopView _view;\n\n    // Canceled by Close(): every request of this screen hangs off this token.\n    private readonly CancellationTokenSource _lifetime = new CancellationTokenSource();\n    // Canceled when another item is selected (and, being linked, when the screen closes).\n    private CancellationTokenSource _selection;\n\n    public ShopScreen(IShopApi api, IShopView view)\n    {\n        _api = api;\n        _view = view;\n    }\n\n    /// <summary>Called on the main thread when the shop opens.</summary>\n    public void Open()\n    {\n        if (_lifetime.IsCancellationRequested) return;\n        _view.ShowLoading();\n        // Start the request and return to the frame loop. LoadPricesAsync handles all of its\n        // exceptions itself, so the discarded task can never fault unobserved.\n        _ = LoadPricesAsync(_lifetime.Token);\n    }\n\n    /// <summary>Called on the main thread when the player taps an item.</summary>\n    public void Select(int itemId)\n    {\n        if (_lifetime.IsCancellationRequested) return;\n        if (_selection != null)\n        {\n            _selection.Cancel();      // tell the server the old request is no longer needed\n            _selection.Dispose();     // also removes its registration on _lifetime\n        }\n        _selection = CancellationTokenSource.CreateLinkedTokenSource(_lifetime.Token);\n        _ = LoadDetailAsync(itemId, _selection.Token);\n    }\n\n    /// <summary>Called on the main thread when the shop closes.</summary>\n    public void Close()\n    {\n        if (_lifetime.IsCancellationRequested) return;\n        _lifetime.Cancel();           // cancels the price request and the linked selection token\n        _selection?.Dispose();\n        _selection = null;\n    }\n\n    private async Task LoadPricesAsync(CancellationToken ct)\n    {\n        try\n        {\n            int[] prices = await _api.GetPricesAsync(ct);\n            if (ct.IsCancellationRequested) return;   // closed after the response had already arrived\n            _view.ShowPrices(prices);\n        }\n        catch (Exception e)\n        {\n            // A canceled request is not an error, and a closed screen shows nothing.\n            if (!ct.IsCancellationRequested) _view.ShowError(e.Message);\n        }\n    }\n\n    private async Task LoadDetailAsync(int itemId, CancellationToken ct)\n    {\n        try\n        {\n            string text = await _api.GetDetailAsync(itemId, ct);\n            // Cancellation is cooperative: the response may have arrived just before another\n            // item was selected, with its continuation already queued for this frame.\n            if (ct.IsCancellationRequested) return;\n            _view.ShowDetail(itemId, text);\n        }\n        catch (Exception e)\n        {\n            if (!ct.IsCancellationRequested) _view.ShowError(e.Message);\n        }\n    }\n}\n",
+      "explanation": "**버그 1: `Open`의 `.Result`.** `Task<T>.Result`는 작업이 끝날 때까지 호출 스레드를 막습니다(API 문서). `Open`은 메인 스레드에서 불리는데, 가격 응답은 메인 스레드가 프레임을 돌려야 처리됩니다. 막은 쪽과 풀어 줄 쪽이 같은 스레드라서 영원히 끝나지 않습니다(`open-returns-immediately`가 2초 제한에 걸림). 실제 Unity에서도 `GetPricesAsync`가 메인 스레드에서 시작한 await의 연속을 `UnitySynchronizationContext`로 게시하는 async 메서드라면(Unity 매뉴얼은 메인 스레드에서 호출한 Task의 연속이 그렇게 게시된다고 설명합니다), 그 연속을 실행할 메인 스레드가 `.Result`에서 막혀 있으므로 교착이 될 수 있습니다. 이 원리는 Cleary의 글이 설명하며, Unity 매뉴얼 자체는 교착을 언급하지 않습니다. 연속이 메인 스레드를 필요로 하지 않더라도 응답이 올 때까지 프레임은 멈춥니다. 콘솔 앱에서는 이 교착이 재현되지 않으므로 채점기가 단일 스레드 컨텍스트를 따로 만들었습니다. 실패할 때는 `.Result`가 예외를 `AggregateException`으로 감싸 `Open` 밖으로 던집니다(`open-failure-shows-error`). 고치기: 요청을 시작만 하고 돌아온 뒤, 결과와 예외를 async 메서드 안에서 처리합니다.\n\n**버그 2: 버려진 Task의 예외.** `_ = LoadDetailAsync(itemId)`는 Task를 버립니다. 실패하면 예외는 그 Task에 저장될 뿐 아무도 보지 않습니다. 컴파일러 경고 CS4014 문서도 await하지 않으면 비동기 작업의 예외가 조용히 사라진다고 설명합니다. `Select(7)` 뒤 서버가 \"판매 종료된 아이템\"으로 실패하면 화면에 아무것도 나오지 않습니다(`detail-error-shown`). 고치기: 로더가 자기 예외를 직접 잡아 `ShowError`를 부르게 해서, 버려지는 Task가 실패할 일이 없게 합니다. 또는 try/catch로 전부 감싼 async void 진입점을 둡니다. try/catch 없는 async void는 메서드가 시작될 때의 SynchronizationContext, 곧 프레임 루프(Unity라면 메인 스레드의 컨텍스트)에서 예외를 직접 발생시킵니다(Cleary의 글).\n\n**버그 3: 취소가 없다.** 토큰이 늘 `CancellationToken.None`이고, `_closed` 플래그는 닫힌 뒤의 `ShowDetail`만 막습니다. `Select(1)`, `Select(2)` 뒤 응답이 2, 1 순서로 오면 1의 설명이 2를 덮어씁니다. 서버에도 그만두라는 신호가 가지 않습니다(`latest-selection-wins`, `close-cancels-pending`). 고치기: 화면 수명 CTS를 두고, 선택마다 그 수명에 연결한 CTS를 새로 만들어 이전 것을 `Cancel()` 합니다. 그리고 **await 뒤에 토큰을 다시 확인**합니다. TAP 규칙상 취소를 요청해도 작업은 결과로 끝날 수 있습니다. 아이템 1의 응답이 이미 도착해 연속이 다음 프레임을 기다리는 사이에 아이템 2를 고르면, 토큰만 넘긴 코드는 1을 표시합니다(`stale-response-dropped`). catch에서도 토큰이 취소됐으면 오류를 표시하지 않습니다. 버전 번호를 비교하는 방식도 같은 효과를 내므로 통과합니다. 다 쓴 연결 CTS는 Dispose합니다. 채점기와 같은 .NET 8.0.24(x64)와 로컬 .NET 8.0.8에서 재 보니, 수명 토큰이 살아 있는 동안 Dispose하지 않은 연결 CTS 10만 개가 취소한 뒤에도 약 14 MB를 붙잡고 있었고, Dispose한 경우에는 거의 0이었습니다(구현 세부라서 버전에 따라 다를 수 있습니다).\n\n**흔한 실수.** 첫째, `ConfigureAwait(false)`를 붙여 교착만 피하는 것입니다. 연속이 스레드 풀에서 돌아 view를 메인 스레드 밖에서 부르게 됩니다(채점기가 잡음). 둘째, 취소로 끝난 요청을 \"A task was canceled.\" 오류로 보여 주는 것입니다. 셋째, `Close`에서 CTS를 Dispose한 뒤 들어온 `Select`가 `ObjectDisposedException`을 내는 것입니다. 비슷한 코드에서 자주 보는 네 번째 실수는 `ValueTask`를 필드에 보관했다가 두 번 await하는 것입니다. 문서는 ValueTask를 한 번만 await하라고 하며, 어기면 결과가 정의되지 않습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Open이 서버를 기다리지 않고 돌아오고, 응답이 오면 ShowPrices, 실패하면(즉시 실패와 다음 프레임 실패 모두) ShowError(Message)를 부르며 Open 밖으로 예외를 던지지 않는다",
+            "points": 12,
+            "sourceId": "ms-async-best-practices"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "가장 최근 선택만 표시된다: 새로 고르면 이전 요청의 토큰을 취소하고, await 뒤에 토큰(또는 버전 번호)을 다시 확인해 이미 도착한 이전 응답과 오류도 버린다",
+            "points": 12,
+            "sourceId": "ms-tap"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "최근 선택의 요청이 실패하면 ShowError(Message)가 나오고, 취소로 끝난 요청은 ShowError로 표시하지 않는다",
+            "points": 11,
+            "sourceId": "ms-cs4014-async-errors"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "메인 스레드에서 실행되는 코드에 .Result, .Wait(), GetAwaiter().GetResult() 같은 동기 대기가 하나도 없어 응답을 기다리는 동안에도 프레임이 계속 돈다",
+            "points": 12,
+            "sourceId": "ms-task1-result"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Close나 재선택으로 필요 없어진 요청을 토큰으로 취소해, 서버와 클라이언트가 쓸데없는 작업을 이어가지 않는다",
+            "points": 10,
+            "sourceId": "ms-cancellation-managed-threads"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "연결(linked) CTS를 쓴다면 다 쓴 것을 Dispose해 수명 토큰에 등록이 쌓이지 않게 한다(연결하지 않고 각각 취소하는 방식도 인정)",
+            "points": 8,
+            "sourceId": "ms-cancellation-managed-threads"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "view 호출이 모두 메인 스레드 컨텍스트로 돌아온 연속에서 일어난다(ConfigureAwait(false)나 Task.Run 뒤에서 view를 부르지 않는다)",
+            "points": 10,
+            "sourceId": "unity-awaitable-continuations"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "async void를 쓴다면 진입점에만 두고 본문 전체를 try/catch로 감싼다. 또는 async void 없이, 예외를 직접 처리하는 Task 반환 로더를 버린다. 어느 쪽이든 예외가 프레임 루프로 새지 않는다",
+            "points": 10,
+            "sourceId": "ms-async-best-practices"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "화면 수명과 선택 수명이 각각 하나의 CTS(또는 CTS와 버전 번호)로 표현되어, Close 한 번으로 모든 요청이 끝난다",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"이 결과가 아직 필요한가\" 확인과 오류 처리가 로더마다 같은 형태로 한 곳에 모여 있다",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "메인 스레드에서 동기 대기(.Result, .Wait(), GetAwaiter().GetResult())를 남기거나, Task.Run으로 감싼 작업을 다시 동기로 기다린다",
+            "penalty": -25,
+            "sourceId": "ms-async-best-practices"
+          },
+          {
+            "id": "d2",
+            "description": "취소된 요청을 오류로 표시하거나, 이전 선택의 응답이 최근 선택의 화면을 덮어쓴다",
+            "penalty": -20,
+            "sourceId": "ms-tap"
+          },
+          {
+            "id": "d3",
+            "description": "ConfigureAwait(false) 등으로 await 뒤의 view 호출이 메인 스레드 밖에서 일어날 수 있게 만든다",
+            "penalty": -15,
+            "sourceId": "ms-configureawait"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\n// ===== hidden judge =====\n// The game's main thread is modelled as a dedicated thread with a single-threaded\n// SynchronizationContext: posted continuations run only when the loop runs a frame.\n// Server responses complete with RunContinuationsAsynchronously, so the code after\n// an await runs on the next frame, as with Unity's main-thread context.\npublic static class __Judge\n{\n    sealed class FrameLoop : System.Threading.SynchronizationContext\n    {\n        readonly System.Collections.Generic.Queue<System.Action> _queue = new System.Collections.Generic.Queue<System.Action>();\n        public string Escaped;\n        public override void Post(System.Threading.SendOrPostCallback d, object state) { lock (_queue) _queue.Enqueue(() => d(state)); }\n        public override void Send(System.Threading.SendOrPostCallback d, object state) { throw new System.NotSupportedException(\"Send\"); }\n        public override System.Threading.SynchronizationContext CreateCopy() { return this; }\n        public void RunFrame()\n        {\n            for (int guard = 0; guard < 100000; guard++)\n            {\n                System.Action next;\n                lock (_queue) { if (_queue.Count == 0) return; next = _queue.Dequeue(); }\n                try { next(); }\n                catch (System.Exception e) { if (Escaped == null) Escaped = e.GetType().Name + \": \" + e.Message; }\n            }\n        }\n    }\n\n    sealed class Req<T> { public int ItemId; public System.Threading.CancellationToken Token; public System.Threading.Tasks.TaskCompletionSource<T> Tcs; }\n\n    sealed class FakeApi : IShopApi\n    {\n        public readonly System.Collections.Generic.List<Req<int[]>> Prices = new System.Collections.Generic.List<Req<int[]>>();\n        public readonly System.Collections.Generic.List<Req<string>> Details = new System.Collections.Generic.List<Req<string>>();\n        public System.Exception PricesFailNow;\n        public System.Threading.Tasks.Task<int[]> GetPricesAsync(System.Threading.CancellationToken ct)\n        {\n            if (PricesFailNow != null) return System.Threading.Tasks.Task.FromException<int[]>(PricesFailNow);\n            return Add(Prices, -1, ct).Tcs.Task;\n        }\n        public System.Threading.Tasks.Task<string> GetDetailAsync(int itemId, System.Threading.CancellationToken ct) { return Add(Details, itemId, ct).Tcs.Task; }\n        static Req<T> Add<T>(System.Collections.Generic.List<Req<T>> list, int id, System.Threading.CancellationToken ct)\n        {\n            var r = new Req<T> { ItemId = id, Token = ct, Tcs = new System.Threading.Tasks.TaskCompletionSource<T>(System.Threading.Tasks.TaskCreationOptions.RunContinuationsAsynchronously) };\n            lock (list) list.Add(r);\n            if (ct.CanBeCanceled) ct.Register(() => r.Tcs.TrySetCanceled(ct));\n            return r;\n        }\n    }\n\n    sealed class FakeView : IShopView\n    {\n        public readonly System.Collections.Generic.List<string> Log = new System.Collections.Generic.List<string>();\n        public int LoopThread = System.Environment.CurrentManagedThreadId;\n        public bool Closed;\n        public string Violation;\n        void Rec(string s)\n        {\n            if (System.Environment.CurrentManagedThreadId != LoopThread && Violation == null) Violation = \"메인(프레임) 스레드가 아닌 곳에서 view 호출: \" + s;\n            if (Closed && Violation == null) Violation = \"Close 뒤에 view 호출: \" + s;\n            lock (Log) Log.Add(s);\n        }\n        public string Text() { lock (Log) return string.Join(\" | \", Log); }\n        public void ShowLoading() { Rec(\"Loading\"); }\n        public void ShowPrices(int[] prices) { Rec(\"Prices \" + string.Join(\",\", prices)); }\n        public void ShowDetail(int itemId, string text) { Rec(\"Detail \" + itemId + \" \" + text); }\n        public void ShowError(string message) { Rec(\"Error \" + message); }\n    }\n\n    sealed class Rig { public FakeApi Api = new FakeApi(); public FakeView View = new FakeView(); public ShopScreen Screen; public Rig() { Screen = new ShopScreen(Api, View); } }\n\n    sealed class Env\n    {\n        public FrameLoop Loop = new FrameLoop();\n        public System.Collections.Generic.List<Rig> Rigs = new System.Collections.Generic.List<Rig>();\n        public Rig Make() { var r = new Rig(); Rigs.Add(r); return r; }\n        public void Frame() { Loop.RunFrame(); }\n        public string Check()\n        {\n            foreach (var r in Rigs) if (r.View.Violation != null) return r.View.Violation;\n            return Loop.Escaped == null ? null : \"처리되지 않은 예외가 프레임 루프까지 올라옴: \" + Loop.Escaped;\n        }\n    }\n\n    static string Expect(Rig r, string expected, string what)\n    {\n        string got = r.View.Text();\n        return got == expected ? null : what + \": 기대 [\" + expected + \"], 결과 [\" + got + \"]\";\n    }\n\n    static void Run(string id, System.Func<Env, string> body)\n    {\n        string result = null;\n        var thread = new System.Threading.Thread(() =>\n        {\n            var env = new Env();\n            System.Threading.SynchronizationContext.SetSynchronizationContext(env.Loop);\n            try { result = body(env); if (result == null) result = env.Check(); }\n            catch (System.Exception e) { result = \"예외 발생: \" + e.GetType().Name + \" (\" + e.Message + \")\"; }\n        });\n        thread.IsBackground = true;\n        thread.Start();\n        if (!thread.Join(2000)) { System.Console.WriteLine(\"[FAIL] \" + id + \" :: 2초 안에 끝나지 않음: 메인(프레임) 스레드가 막혔습니다\"); return; }\n        System.Console.WriteLine(result == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + result);\n    }\n\n    public static void Main()\n    {\n        Run(\"open-returns-immediately\", env =>\n        {\n            var r = env.Make();\n            r.Screen.Open();\n            if (r.Api.Prices.Count != 1) return \"Open이 가격 요청을 1번 보내야 함 (실제 \" + r.Api.Prices.Count + \"번)\";\n            env.Frame();\n            string e = Expect(r, \"Loading\", \"응답 전\");\n            if (e != null) return e;\n            r.Api.Prices[0].Tcs.SetResult(new[] { 100, 250, 990 });\n            env.Frame();\n            return Expect(r, \"Loading | Prices 100,250,990\", \"가격 응답 후\");\n        });\n\n        Run(\"open-failure-shows-error\", env =>\n        {\n            var r = env.Make();\n            r.Api.PricesFailNow = new ShopApiException(\"서버 점검 중\");\n            try { r.Screen.Open(); }\n            catch (System.Exception ex) { return \"가격 요청이 실패하자 Open이 예외를 밖으로 던짐: \" + ex.GetType().Name; }\n            env.Frame();\n            string e = Expect(r, \"Loading | Error 서버 점검 중\", \"즉시 실패한 가격 요청\");\n            if (e != null) return e;\n            var r2 = env.Make();\n            r2.Screen.Open();\n            env.Frame();\n            r2.Api.Prices[0].Tcs.SetException(new ShopApiException(\"가격표 오류\"));\n            env.Frame();\n            return Expect(r2, \"Loading | Error 가격표 오류\", \"다음 프레임에 실패한 가격 요청\");\n        });\n\n        Run(\"detail-error-shown\", env =>\n        {\n            var r = env.Make();\n            r.Screen.Select(7);\n            env.Frame();\n            r.Api.Details[0].Tcs.SetException(new ShopApiException(\"판매 종료된 아이템\"));\n            env.Frame();\n            return Expect(r, \"Error 판매 종료된 아이템\", \"Select(7)의 요청이 실패한 뒤\");\n        });\n\n        Run(\"latest-selection-wins\", env =>\n        {\n            var r = env.Make();\n            r.Screen.Select(1);\n            r.Screen.Select(2);\n            if (r.Api.Details.Count != 2) return \"Select 두 번에 상세 요청이 2개여야 함 (실제 \" + r.Api.Details.Count + \"개)\";\n            if (!r.Api.Details[0].Token.IsCancellationRequested) return \"아이템 2를 고른 뒤에도 아이템 1 요청의 토큰이 취소되지 않음\";\n            if (r.Api.Details[1].Token.IsCancellationRequested) return \"방금 고른 아이템 2 요청의 토큰이 이미 취소됨\";\n            r.Api.Details[1].Tcs.TrySetResult(\"빙결의 지팡이\");\n            r.Api.Details[0].Tcs.TrySetResult(\"화염의 검\");\n            env.Frame();\n            return Expect(r, \"Detail 2 빙결의 지팡이\", \"1, 2를 차례로 고르고 응답이 2, 1 순서로 온 뒤\");\n        });\n\n        Run(\"stale-response-dropped\", env =>\n        {\n            var r = env.Make();\n            r.Screen.Select(1);\n            r.Api.Details[0].Tcs.SetResult(\"화염의 검\");      // arrived; its continuation waits for the next frame\n            r.Screen.Select(2);                                // the player taps another item first\n            env.Frame();\n            string e = Expect(r, \"\", \"아이템 1의 응답이 도착한 직후(처리 전) 아이템 2를 고른 뒤\");\n            if (e != null) return e;\n            r.Api.Details[1].Tcs.SetResult(\"빙결의 지팡이\");\n            env.Frame();\n            r.Screen.Select(3);\n            r.Api.Details[2].Tcs.SetException(new ShopApiException(\"판매 종료된 아이템\"));\n            r.Screen.Select(4);\n            env.Frame();\n            return Expect(r, \"Detail 2 빙결의 지팡이\", \"이전 선택의 결과·오류는 표시하지 않아야 함\");\n        });\n\n        Run(\"close-cancels-pending\", env =>\n        {\n            var r = env.Make();\n            r.Screen.Select(5);\n            env.Frame();\n            r.Screen.Close();\n            r.View.Closed = true;\n            if (!r.Api.Details[0].Token.IsCancellationRequested) return \"Close 뒤에도 대기 중인 상세 요청의 토큰이 취소되지 않음\";\n            r.Api.Details[0].Tcs.TrySetException(new ShopApiException(\"늦게 온 오류\"));\n            env.Frame();\n            r.Screen.Select(6);\n            env.Frame();\n            foreach (var d in r.Api.Details) d.Tcs.TrySetResult(\"닫힌 뒤의 응답\");\n            env.Frame();\n            var r2 = env.Make();\n            r2.Screen.Open();\n            env.Frame();\n            r2.Screen.Close();\n            r2.View.Closed = true;\n            if (!r2.Api.Prices[0].Token.IsCancellationRequested) return \"Close 뒤에도 대기 중인 가격 요청의 토큰이 취소되지 않음\";\n            r2.Api.Prices[0].Tcs.TrySetResult(new[] { 1 });\n            env.Frame();\n            return null;\n        });\n\n        Run(\"random-vs-model\", env =>\n        {\n            var rng = new System.Random(20261122);\n            for (int round = 0; round < 40; round++)\n            {\n                var r = env.Make();\n                var expected = new System.Collections.Generic.List<string>();\n                var arrived = new System.Collections.Generic.List<(Req<string> req, string line)>();\n                Req<string> latest = null;\n                int nextId = 1;\n                for (int step = 0; step < 30; step++)\n                {\n                    int op = rng.Next(10);\n                    if (op < 4)\n                    {\n                        int before = r.Api.Details.Count;\n                        r.Screen.Select(nextId++);\n                        if (r.Api.Details.Count != before + 1) return \"Select 한 번에 상세 요청이 1개 생겨야 함\";\n                        latest = r.Api.Details[before];\n                    }\n                    else if (op < 7 && r.Api.Details.Count > 0)\n                    {\n                        var req = r.Api.Details[rng.Next(r.Api.Details.Count)];\n                        bool ok = rng.Next(3) > 0;\n                        string text = \"item\" + req.ItemId + \"-\" + step;\n                        bool set = ok ? req.Tcs.TrySetResult(text) : req.Tcs.TrySetException(new ShopApiException(\"err\" + step));\n                        if (set) arrived.Add((req, ok ? \"Detail \" + req.ItemId + \" \" + text : \"Error err\" + step));\n                    }\n                    else\n                    {\n                        env.Frame();\n                        foreach (var a in arrived) if (a.req == latest) expected.Add(a.line);\n                        arrived.Clear();\n                    }\n                }\n                env.Frame();\n                foreach (var a in arrived) if (a.req == latest) expected.Add(a.line);\n                string e = Expect(r, string.Join(\" | \", expected), \"무작위 시나리오 \" + round);\n                if (e != null) return e.Length > 220 ? e.Substring(0, 220) + \"...\" : e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "open-returns-immediately",
+          "open-failure-shows-error",
+          "detail-error-shown",
+          "latest-selection-wins",
+          "stale-response-dropped",
+          "close-cancels-pending",
+          "random-vs-model"
+        ],
+        "note": "서버를 기다리지 않는 Open(응답 후 가격 표시), 즉시 실패와 다음 프레임 실패의 오류 표시, 상세 요청 실패의 오류 표시, 최근 선택 우선(이전 요청 토큰 취소), 이미 도착했지만 처리 전인 이전 응답·오류 무시, Close 뒤 토큰 취소와 view 미호출, 무작위 선택·응답 순서에서 모델과의 일치를 검사합니다. 모든 케이스는 단일 스레드 SynchronizationContext를 설치한 전용 \"메인\" 스레드에서 프레임 단위로 실행되고, view가 그 스레드 밖에서 불리거나 처리되지 않은 예외가 프레임 루프까지 올라오면 실패입니다. 케이스마다 2초 제한이 있습니다. ShopApiException, IShopApi, IShopView, ShopScreen(생성자, Open, Select, Close)의 시그니처는 바꾸지 마세요."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기(.NET 8.0.24)에서 모범 답안 전부 통과·스타터 전부 실패를 확인하고, 버그를 하나씩만 고친 답·await 뒤 확인 누락·취소를 오류로 표시·ConfigureAwait(false)·Close 뒤 Dispose된 CTS 사용 오답이 모두 걸리고 버전 번호·async void 진입점 같은 다른 정답은 통과함을 로컬 .NET 8에서 실행해 본 뒤, 교착 설명을 Cleary의 글·Unity 6 매뉴얼에 맞게 고쳤습니다."
+      },
+      "nextMission": "같은 상점 화면에 [구매] 버튼을 추가해 보세요. 구매 요청은 서버 상태를 바꾸므로 화면을 닫아도 취소하지 않고(세션 수명 토큰), 결과가 오면 인벤토리 모델에는 반영하되 닫힌 화면은 건드리지 않습니다. 구매 중 중복 클릭도 막습니다. 이 문제의 채점 모델(단일 스레드 SynchronizationContext + 프레임 펌프 + 2초 Join)을 그대로 가져와 \"닫은 뒤 도착한 구매 성공\"과 \"두 번 누르기\" 테스트를 직접 작성하세요."
+    },
+    {
+      "id": "t1-impl-cancellable-dungeon-loader",
+      "track": "track1",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "취소와 제한 시간이 있는 던전 입장 로딩: 연결 토큰, 주입한 게임 시계, 역순 롤백, 토큰을 무시하는 단계",
+      "tags": [
+        "CSharp_Async",
+        "CSharp_Cancellation",
+        "CSharp_Timeout"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-cancellation-managed-threads",
+        "ms-tap",
+        "ms-task-whenany",
+        "ms-timeprovider"
+      ],
+      "scenario": "던전 입장 로딩 화면입니다. 맵, 몬스터 테이블, 사운드 뱅크 같은 **로딩 단계**를 순서대로 불러옵니다. 로딩 화면에는 [취소] 버튼이 있고, 전체 로딩이 제한 시간(예: 10초) 안에 끝나지 않으면 \"네트워크가 불안정합니다\" 안내를 띄웁니다. 그런데 서드파티 SDK를 감싼 단계 하나는 취소 토큰을 무시하고 계속 돌기도 합니다.\n\n`DungeonLoader.RunAsync`를 구현하세요. 순수 C#(.NET 8) 코드이고, 나중에 Unity로 옮길 코드입니다.\n\n**계약**\n\n1. 단계는 주어진 순서대로 **하나씩** 실행합니다. 앞 단계가 성공해야 다음 단계를 시작합니다. 모든 단계에는 플레이어가 취소하거나 제한 시간이 지나면 취소되는 토큰을 넘깁니다.\n2. 모두 성공하면 반환 Task가 정상 완료(RanToCompletion)됩니다. 이때는 아무것도 Unload하지 않습니다.\n3. **플레이어 취소**(`cancel`이 취소됨): 반환 Task는 **Canceled**로 끝납니다.\n4. **시간 초과**: 제한 시간은 단계마다가 아니라 `RunAsync`를 호출한 순간부터의 **전체** 게임 시간입니다. 넘으면 반환 Task가 `TimeoutException`으로 실패합니다.\n5. **단계 실패**: 반환 Task가 그 단계가 던진 **예외 객체 그대로** 실패합니다. 감싸거나 바꾸지 않습니다. `LoadAsync`가 Task를 돌려주기 전에 동기적으로 던져도 같습니다.\n6. 3·4·5의 경우, 반환 Task가 끝나기 전에 **이미 성공한 단계만 역순으로** `Unload`합니다. 실행 중이던 단계와 실패한 단계는 Unload하지 않고, 남은 단계는 시작하지 않습니다.\n7. 토큰을 무시하는 단계가 실행 중이어도 취소나 시간 초과가 되면 **기다리지 않고 바로** 끝냅니다. 버려진 그 단계가 나중에 성공하면 그때 `Unload`하고, 나중에 실패하면 그 예외는 조용히 버립니다.\n8. 호출 전에 이미 취소된 토큰이면, 단계도 타이머도 시작하지 않고 Canceled로 끝납니다. 단계가 0개면 바로 정상 완료됩니다.\n9. 시간은 주입받은 `IDelayProvider`로만 잽니다(게임 시간이라 일시정지·배속을 따르고, 테스트에서 가짜 시계를 쓸 수 있습니다). `RunAsync`가 어떻게 끝나든, 끝난 뒤에는 요청해 둔 타임아웃 Delay가 남아 있으면 안 됩니다. 그 Delay에 넘긴 토큰을 취소해 해제하세요.\n\n**실행 채점.** 채점기는 가짜 시계(채점기가 게임 시간을 앞으로 돌릴 때만 `Delay`가 완료됨)와 `TaskCompletionSource`로 만든 가짜 단계를 씁니다. 정해진 순서대로 단계를 완료·실패시키고, 시계를 앞으로 돌리고, 취소를 누릅니다. 실제 시간에 기대는 부분은 각 대기의 1초 상한과, 호출 스레드를 막는 코드를 잡아내는 케이스당 3초 상한뿐입니다.",
+      "constraints": [
+        "시간은 IDelayProvider.Delay로만 잰다: Task.Delay(시간), Thread.Sleep, Timer, CancellationTokenSource.CancelAfter, Stopwatch 사용 금지",
+        "RunAsync 안에서 .Wait(), .Result, Task.WaitAny 같은 동기 대기를 하지 않는다(Unity 메인 스레드에서 불릴 코드이고, 채점기에서는 호출 스레드가 막혀 3초 제한에 걸린다)",
+        "단계는 하나씩 순서대로 실행한다(동시에 여러 단계를 시작하지 않는다)",
+        "결과는 반환 Task의 상태(정상 완료·Canceled·TimeoutException·단계의 예외)로 알린다. 반환 형식을 bool이나 enum으로 바꾸지 않는다",
+        "ILoadStep, IDelayProvider, DungeonLoader 생성자와 RunAsync의 시그니처를 바꾸지 않는다",
+        "Unity로 옮길 코드이므로 ConfigureAwait(false)와 Task.Run을 쓰지 않는다(Unload가 메인 스레드 API를 부를 수 있다)"
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\nusing System.Threading;\nusing System.Threading.Tasks;\n\n/// <summary>\n/// Game-time delay (the game clock, not the wall clock). The returned task completes once\n/// <paramref name=\"delay\"/> of game time has passed, or ends Canceled if <paramref name=\"ct\"/>\n/// is canceled first.\n/// </summary>\npublic interface IDelayProvider\n{\n    Task Delay(TimeSpan delay, CancellationToken ct);\n}\n\n/// <summary>One step of the dungeon entry sequence (map, monster table, sound bank...).</summary>\npublic interface ILoadStep\n{\n    string Name { get; }\n\n    /// <summary>\n    /// Loads this step. Well-behaved steps end Canceled soon after <paramref name=\"ct\"/> is\n    /// canceled, but some third-party steps ignore the token.\n    /// </summary>\n    Task LoadAsync(CancellationToken ct);\n\n    /// <summary>Releases what LoadAsync loaded. Only valid after LoadAsync succeeded. Never throws.</summary>\n    void Unload();\n}\n\npublic sealed class DungeonLoader\n{\n    public DungeonLoader(IReadOnlyList<ILoadStep> steps, IDelayProvider delay, TimeSpan timeout)\n    {\n        throw new NotImplementedException();\n    }\n\n    /// <summary>\n    /// Runs the steps in order. Ends RanToCompletion when every step succeeded,\n    /// Canceled when <paramref name=\"cancel\"/> is canceled, faulted with TimeoutException when\n    /// the timeout passes, or faulted with the failing step's own exception.\n    /// See the scenario for the full contract.\n    /// </summary>\n    public Task RunAsync(CancellationToken cancel)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "제한 10초에 단계별 3초·6초·1초: 어느 단계도 혼자서는 10초를 넘지 않지만 전체는 10초에 도달한다",
+        "토큰을 무시하는 서드파티 단계가 실행 중일 때의 플레이어 취소와 시간 초과, 그리고 그 단계가 나중에 성공하거나 실패하는 경우",
+        "LoadAsync가 Task를 돌려주기 전에 동기적으로 예외를 던지거나, 이미 완료된 Task를 돌려주는 경우",
+        "RunAsync 호출 전에 이미 취소된 토큰, 단계 0개",
+        "성공·실패·취소·시간 초과 어느 경우든 끝난 뒤에 남아 있는 타임아웃 Delay"
+      ],
+      "hints": [
+        "제한 10초에 단계 세 개가 3초, 6초, 1초 걸리면 어느 단계도 혼자서는 10초를 넘지 않지만 전체는 10초입니다. 단계마다 `Delay(10초)`를 새로 걸면 어떻게 될까요? 또 토큰을 무시하는 서드파티 단계가 끝나지 않을 때 `await load`만 쓰면, 플레이어가 취소를 눌러도 `RunAsync`는 언제 끝납니까?",
+        "타임아웃 Delay를 `RunAsync` 시작에서 한 번만 요청하고, 그 Delay가 단계들과 같은 연결 토큰을 듣게 하세요. 그러면 \"플레이어 취소\"와 \"시간 초과\"가 둘 다 그 Task 하나의 완료로 드러납니다. 단계마다 \"단계 Task와 타임아웃 Task 중 무엇이 먼저 끝났는가\"를 보고, 원인은 호출자 토큰으로 가립니다. 모든 끝이 같은 catch(롤백)와 finally(타이머 해제)를 지나게 하세요.",
+        "구조만 적으면 다음과 같습니다. 물음표 자리는 직접 채우세요.\n```\nRunAsync(cancel):\n    이미 취소됐으면 → Canceled로 끝\n    stop = cancel에 연결한 CTS (using)\n    timeout = delay.Delay(제한, stop.Token)      // 한 번만\n    loaded = []\n    try:\n        for step in steps:\n            load = step.LoadAsync(stop.Token)     // 동기 예외도 실패한 단계로\n            if (await WhenAny(load, timeout)) != load:\n                ??? (버려진 단계의 뒷정리 예약)\n                throw (cancel이 취소됐으면 ???, 아니면 ???)\n            await load                             // 단계의 예외를 그대로\n            loaded.add(step)\n    catch:\n        loaded를 ??? 순서로 Unload\n        throw\n    finally:\n        ???                                        // 타이머 해제\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\nusing System.Threading;\nusing System.Threading.Tasks;\n\n/// <summary>\n/// Game-time delay (the game clock, not the wall clock). The returned task completes once\n/// <paramref name=\"delay\"/> of game time has passed, or ends Canceled if <paramref name=\"ct\"/>\n/// is canceled first.\n/// </summary>\npublic interface IDelayProvider\n{\n    Task Delay(TimeSpan delay, CancellationToken ct);\n}\n\n/// <summary>One step of the dungeon entry sequence (map, monster table, sound bank...).</summary>\npublic interface ILoadStep\n{\n    string Name { get; }\n\n    /// <summary>\n    /// Loads this step. Well-behaved steps end Canceled soon after <paramref name=\"ct\"/> is\n    /// canceled, but some third-party steps ignore the token.\n    /// </summary>\n    Task LoadAsync(CancellationToken ct);\n\n    /// <summary>Releases what LoadAsync loaded. Only valid after LoadAsync succeeded. Never throws.</summary>\n    void Unload();\n}\n\npublic sealed class DungeonLoader\n{\n    private readonly IReadOnlyList<ILoadStep> _steps;\n    private readonly IDelayProvider _delay;\n    private readonly TimeSpan _timeout;\n\n    public DungeonLoader(IReadOnlyList<ILoadStep> steps, IDelayProvider delay, TimeSpan timeout)\n    {\n        _steps = steps ?? throw new ArgumentNullException(nameof(steps));\n        _delay = delay ?? throw new ArgumentNullException(nameof(delay));\n        _timeout = timeout;\n    }\n\n    /// <summary>\n    /// Runs the steps in order. Ends RanToCompletion when every step succeeded,\n    /// Canceled when <paramref name=\"cancel\"/> is canceled, faulted with TimeoutException when\n    /// the timeout passes, or faulted with the failing step's own exception.\n    /// See the scenario for the full contract.\n    /// </summary>\n    public async Task RunAsync(CancellationToken cancel)\n    {\n        // Already canceled: end Canceled without starting a step or a timer.\n        cancel.ThrowIfCancellationRequested();\n\n        // One token for every step. The player cancels it through the link; the timeout and\n        // the end of the run cancel it explicitly (finally).\n        using CancellationTokenSource stop = CancellationTokenSource.CreateLinkedTokenSource(cancel);\n\n        // The whole sequence shares one game-time budget. The delay listens to the same token,\n        // so it completes normally only on a real timeout and ends Canceled otherwise.\n        Task timeout = _delay.Delay(_timeout, stop.Token);\n\n        var loaded = new List<ILoadStep>(_steps.Count);\n        try\n        {\n            foreach (ILoadStep step in _steps)\n            {\n                Task load;\n                try { load = step.LoadAsync(stop.Token); }\n                catch (Exception e) { load = Task.FromException(e); }   // a synchronous throw is a failed step\n\n                if (await Task.WhenAny(load, timeout) != load)\n                {\n                    // Timed out, or canceled by the player, while this step was still running.\n                    // Do not wait for it: a step that ignores its token would hold the run hostage.\n                    _ = ReleaseWhenDoneAsync(step, load);\n                    if (cancel.IsCancellationRequested) throw new OperationCanceledException(cancel);\n                    throw new TimeoutException(\"Dungeon loading did not finish within \" + _timeout + \".\");\n                }\n\n                await load;          // rethrows the step's own exception unchanged\n                loaded.Add(step);\n            }\n        }\n        catch\n        {\n            // Roll back in reverse order: later steps may depend on earlier ones.\n            for (int i = loaded.Count - 1; i >= 0; i--) loaded[i].Unload();\n            throw;\n        }\n        finally\n        {\n            // Releases the pending timeout delay and tells an abandoned step to stop.\n            stop.Cancel();\n        }\n    }\n\n    // An abandoned step may still finish later. If it succeeds, what it loaded must be released;\n    // if it fails, the exception is observed here and dropped.\n    private static async Task ReleaseWhenDoneAsync(ILoadStep step, Task load)\n    {\n        try { await load; }\n        catch { return; }\n        step.Unload();\n    }\n}\n",
+      "explanation": "**구조.** 토큰 하나와 타임아웃 Task 하나로 세 가지 끝(취소·시간 초과·실패)을 모두 다룹니다. `stop = CreateLinkedTokenSource(cancel)`을 모든 단계에 넘기고, 시작할 때 **한 번만** `Delay(timeout, stop.Token)`을 요청합니다. 이 Delay는 시간이 다 되면 정상 완료되고, 플레이어가 취소하면 같은 토큰을 듣고 있으므로 Canceled로 끝납니다. 단계마다 `await Task.WhenAny(load, timeout)`으로 무엇이 먼저 끝났는지 봅니다. `WhenAny`는 먼저 끝난 Task가 취소·실패여도 그 Task를 결과로 돌려줍니다(API 문서).\n\n**원인 구분.** 단계가 먼저 끝났으면 `await load`로 그 결과를 꺼냅니다. await는 저장된 예외를 `AggregateException`으로 감싸지 않고 원래 예외를 다시 던지므로(Cleary의 글. 채점기는 같은 객체인지 확인합니다) 계약 5를 그대로 만족합니다. 타임아웃 Task가 먼저 끝났으면 호출자 토큰을 봅니다. 취소되어 있으면 `OperationCanceledException(cancel)`을 던져 반환 Task를 canceled로 만들고(명세 §15.14.3), 아니면 `TimeoutException`을 던집니다. `Task.WaitAsync(TimeSpan)`도 시간이 지나면 `TimeoutException`으로 실패하므로 같은 관례입니다. 연결 토큰 하나만 보면 둘 다 \"취소\"로 보이므로, 원인은 반드시 호출자 토큰으로 가립니다.\n\n**정리.** 모든 실패 경로는 같은 `catch`를 지나며, 성공한 단계만 **역순으로** Unload합니다. 뒤 단계가 앞 단계에 기대는 경우가 많기 때문입니다. `finally`의 `stop.Cancel()`은 남은 타임아웃 Delay를 해제하고, 버려진 단계에게도 그만두라고 알립니다. 연결 CTS는 `using`으로 Dispose합니다(취소 문서의 권고). 이미 취소된 토큰은 처음 줄의 `ThrowIfCancellationRequested`로 단계도 타이머도 없이 Canceled로 끝납니다. TAP 문서도 이 경우 Canceled Task를 돌려주라고 합니다.\n\n**토큰을 무시하는 단계.** 취소는 협조적이라 듣는 쪽이 응할지를 정합니다(취소 문서). 로더가 단계를 강제로 멈출 수는 없고, 기다림을 멈출 수만 있습니다. 그래서 그 단계를 `ReleaseWhenDoneAsync`에 넘겨 둡니다. 나중에 성공하면 Unload하고, 실패하면 거기서 예외를 관찰하고 버립니다. 관찰하지 않은 예외는 `TaskScheduler.UnobservedTaskException`으로 올라갑니다. UniTask README도 `.Timeout`은 작업 바깥에서 동작해 시간이 지난 작업을 멈출 수 없으니, 작업 안에서 멈출 수 있도록 `CancellationToken`을 넘기라고 권합니다.\n\n**비용과 Unity.** 단계 n개에 O(n)이고, 실행마다 CTS, 목록, 단계당 `WhenAny` 하나를 할당하지만 로딩 경로라 문제되지 않습니다. `Unload`는 메인 스레드 API를 부를 수 있으므로 `ConfigureAwait(false)`나 `Task.Run`은 쓰지 않습니다. 실제 시간(`CancelAfter`, `Task.Delay(시간)`)으로 재면 일시정지·배속을 따르지 않고 테스트도 느려집니다. .NET 8의 표준 추상화는 `TimeProvider`이며(테스트용 `FakeTimeProvider`), UniTask README는 스레딩 타이머를 쓰는 `CancelAfter` 대신 PlayerLoop 기반 `CancelAfterSlim`을 권합니다.\n\n**흔한 실수.** 단계마다 타임아웃을 새로 거는 것(3·6·1초면 전체 10초인데도 통과), 연결 토큰만 보고 시간 초과를 취소로 보고하는 것, 토큰을 무시하는 단계를 `await load`로 끝까지 기다리는 것, 성공 경로에서 타임아웃 Delay를 해제하지 않는 것, 앞에서부터 Unload하는 것, 단계 예외를 새 예외로 감싸는 것, `Task.WaitAny`나 `.Wait()`로 동기 대기하는 것(호출 스레드가 막혀 채점기의 3초 제한에 걸림)입니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "단계가 순서대로 하나씩 실행되고(앞 단계 성공 뒤에 다음 단계 시작), 모두 성공하면 반환 Task가 정상 완료되며 아무것도 Unload하지 않는다",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "세 가지 끝을 구분한다: 플레이어 취소는 Canceled, 전체 제한 시간 초과는 TimeoutException, 단계 실패는 그 단계의 예외 객체 그대로(동기적으로 던진 경우 포함)",
+            "points": 13,
+            "sourceId": "ms-csharp-spec-async-functions"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "취소·시간 초과·실패 모두에서 이미 성공한 단계만 역순으로 Unload하고, 실행 중이던 단계와 실패한 단계는 Unload하지 않으며, 남은 단계는 시작하지 않는다",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "타임아웃 Delay를 RunAsync 시작에서 전체 예산으로 한 번 요청하고, RunAsync가 어떻게 끝나든 그 Delay의 토큰을 취소해 해제한다",
+            "points": 10,
+            "sourceId": "ms-cancellation-managed-threads"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "토큰을 무시하는 단계를 기다리지 않고(WhenAny, WaitAsync 등으로 경쟁시킴) 바로 끝내며, 버려진 단계가 나중에 성공하면 Unload하고 실패하면 예외를 관찰해 버린다",
+            "points": 12,
+            "sourceId": "ms-task-whenany"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "연결한 CancellationTokenSource를 using이나 Dispose로 정리한다",
+            "points": 8,
+            "sourceId": "ms-cancellation-managed-threads"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "시간을 IDelayProvider로만 재고(실제 시간 API 없음), ConfigureAwait(false)나 Task.Run 없이 호출한 컨텍스트로 돌아와 Unload한다",
+            "points": 10,
+            "sourceId": "ms-timeprovider"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "이미 취소된 토큰이면 단계도 타이머도 시작하지 않고 Canceled로 끝나며, 단계에 넘기는 토큰은 플레이어 취소와 시간 초과 양쪽에 취소된다",
+            "points": 10,
+            "sourceId": "ms-tap"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "롤백과 타이머 해제가 catch/finally 한 곳에 모여 모든 종료 경로가 같은 정리 코드를 지나고, 취소 원인(플레이어인가 시간 초과인가)을 가리는 규칙이 한 곳에 드러나 있다",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "버려진 단계의 뒷정리가 별도 메서드로 분리되어 있고, 그 메서드가 늦은 실패를 관찰해 관찰되지 않은 예외로 남지 않게 한다",
+            "points": 7,
+            "sourceId": "ms-unobserved-task-exception"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "실제 시간(Task.Delay(시간), Timer, CancelAfter, Stopwatch)으로 제한 시간을 잰다",
+            "penalty": -25,
+            "sourceId": "ms-timeprovider"
+          },
+          {
+            "id": "d2",
+            "description": "토큰을 무시하는 단계를 끝까지 기다려, 취소나 시간 초과 뒤에도 RunAsync가 끝나지 않는다",
+            "penalty": -20,
+            "sourceId": "gh-unitask"
+          },
+          {
+            "id": "d3",
+            "description": "시간 초과를 취소로, 또는 플레이어 취소를 실패로 보고해 호출자가 원인을 구분할 수 없다",
+            "penalty": -15,
+            "sourceId": "ms-task-waitasync"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\n// ===== hidden judge =====\n// Game time is a fake clock advanced by the judge; steps complete only when the judge says so.\n// Nothing here depends on wall-clock time except the 1-second upper bound of each wait.\npublic static class __Judge\n{\n    sealed class FakeClock : IDelayProvider\n    {\n        sealed class Pending { public System.TimeSpan Due; public System.Threading.Tasks.TaskCompletionSource Tcs; }\n        readonly System.Collections.Generic.List<Pending> _pending = new System.Collections.Generic.List<Pending>();\n        public System.TimeSpan Now;\n        public readonly System.Collections.Generic.List<System.TimeSpan> Requested = new System.Collections.Generic.List<System.TimeSpan>();\n        public int PendingCount { get { lock (_pending) return _pending.Count; } }\n        public System.Threading.Tasks.Task Delay(System.TimeSpan delay, System.Threading.CancellationToken ct)\n        {\n            lock (_pending) Requested.Add(delay);\n            if (ct.IsCancellationRequested) return System.Threading.Tasks.Task.FromCanceled(ct);\n            var p = new Pending { Due = Now + delay, Tcs = new System.Threading.Tasks.TaskCompletionSource() };\n            lock (_pending) _pending.Add(p);\n            ct.Register(() => { lock (_pending) _pending.Remove(p); p.Tcs.TrySetCanceled(ct); });\n            return p.Tcs.Task;\n        }\n        public void Advance(double seconds)\n        {\n            Now += System.TimeSpan.FromSeconds(seconds);\n            while (true)\n            {\n                Pending due = null;\n                lock (_pending) foreach (var p in _pending) if (p.Due <= Now && (due == null || p.Due < due.Due)) due = p;\n                if (due == null) return;\n                lock (_pending) _pending.Remove(due);\n                due.Tcs.TrySetResult();\n            }\n        }\n    }\n\n    sealed class FakeStep : ILoadStep\n    {\n        public string Name { get; set; }\n        public bool IgnoresToken, CompletesSync;\n        public System.Exception ThrowsSync;\n        public System.Threading.Tasks.TaskCompletionSource Tcs;\n        public System.Threading.CancellationToken Token;\n        public int Loads, Unloads;\n        public System.Collections.Generic.List<string> Log;\n        public System.Threading.Tasks.Task LoadAsync(System.Threading.CancellationToken ct)\n        {\n            Loads++; Token = ct;\n            lock (Log) Log.Add(\"load \" + Name);\n            if (ThrowsSync != null) throw ThrowsSync;\n            if (CompletesSync) return System.Threading.Tasks.Task.CompletedTask;\n            Tcs = new System.Threading.Tasks.TaskCompletionSource();\n            if (!IgnoresToken) ct.Register(() => Tcs.TrySetCanceled(ct));\n            return Tcs.Task;\n        }\n        public void Unload() { Unloads++; lock (Log) Log.Add(\"unload \" + Name); }\n    }\n\n    sealed class Rig\n    {\n        public FakeClock Clock = new FakeClock();\n        public System.Collections.Generic.List<string> Log = new System.Collections.Generic.List<string>();\n        public FakeStep[] Steps;\n        public DungeonLoader Loader;\n        public System.Threading.CancellationTokenSource Cts = new System.Threading.CancellationTokenSource();\n        public Rig(params string[] names)\n        {\n            Steps = new FakeStep[names.Length];\n            for (int i = 0; i < names.Length; i++) Steps[i] = new FakeStep { Name = names[i], Log = Log };\n            Loader = new DungeonLoader(Steps, Clock, System.TimeSpan.FromSeconds(10));\n        }\n        public string Text() { lock (Log) return string.Join(\", \", Log); }\n    }\n\n    static bool WaitUntil(System.Func<bool> cond)\n    {\n        var sw = System.Diagnostics.Stopwatch.StartNew();\n        while (!cond()) { if (sw.ElapsedMilliseconds > 1000) return false; System.Threading.Thread.Sleep(1); }\n        return true;\n    }\n\n    static string Started(Rig r, int i) { return WaitUntil(() => r.Steps[i].Loads == 1 && r.Steps[i].Tcs != null) ? null : \"단계 \" + r.Steps[i].Name + \"가 시작되지 않음. 기록: [\" + r.Text() + \"]\"; }\n\n    static string Outcome(System.Threading.Tasks.Task run, string expect, System.Exception same)\n    {\n        if (!WaitUntil(() => run.IsCompleted)) return \"RunAsync가 끝나지 않음 (기대: \" + expect + \")\";\n        string got = run.Status == System.Threading.Tasks.TaskStatus.RanToCompletion ? \"완료\"\n            : run.IsCanceled ? \"취소\"\n            : run.Exception.InnerExceptions.Count == 1 && run.Exception.InnerException is System.TimeoutException ? \"타임아웃\"\n            : \"실패(\" + run.Exception.InnerException.GetType().Name + \")\";\n        if (expect == \"실패\" && got.StartsWith(\"실패(\") && run.Exception.InnerExceptions.Count == 1 && ReferenceEquals(run.Exception.InnerException, same)) return null;\n        if (expect == \"실패\") return \"단계가 던진 예외 그 자체로 실패해야 함: 결과 \" + got;\n        return got == expect ? null : \"결과 상태: 기대 \" + expect + \", 결과 \" + got;\n    }\n\n    static string Log(Rig r, string expected) { string got = r.Text(); return got == expected ? null : \"load/unload 기록: 기대 [\" + expected + \"], 결과 [\" + got + \"]\"; }\n    static string Released(Rig r) { return r.Clock.PendingCount == 0 ? null : \"RunAsync가 끝났는데 타임아웃 Delay가 아직 대기 중 (해제되지 않음)\"; }\n    static string UsedClock(Rig r) { return r.Clock.Requested.Contains(System.TimeSpan.FromSeconds(10)) ? null : \"IDelayProvider.Delay(timeout)으로 타임아웃을 재지 않음\"; }\n\n    // Each case runs on its own background thread with a 3-second bound, so code that blocks the\n    // calling thread (.Wait(), .Result, Task.WaitAny) fails that case instead of hanging the judge.\n    static void Run(string id, System.Func<string> body)\n    {\n        string reason = null;\n        var thread = new System.Threading.Thread(() =>\n        {\n            try { reason = body(); }\n            catch (System.Exception e) { reason = \"예외 발생: \" + e.GetType().Name + \" (\" + e.Message + \")\"; }\n        });\n        thread.IsBackground = true;\n        thread.Start();\n        if (!thread.Join(3000)) { System.Console.WriteLine(\"[FAIL] \" + id + \" :: 3초 안에 끝나지 않음: RunAsync나 단계 처리가 호출 스레드를 막았습니다(동기 대기 금지)\"); return; }\n        System.Console.WriteLine(reason == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + reason);\n    }\n\n    public static void Main()\n    {\n        Run(\"steps-run-in-order\", () =>\n        {\n            var r = new Rig(\"map\", \"monsters\", \"sound\");\n            var run = r.Loader.RunAsync(r.Cts.Token);\n            string e = Started(r, 0) ?? UsedClock(r);\n            if (e != null) return e;\n            if (r.Steps[1].Loads != 0) return \"앞 단계가 끝나기 전에 다음 단계가 시작됨\";\n            if (!r.Steps[0].Token.CanBeCanceled) return \"단계에 취소할 수 있는 토큰을 넘기지 않음\";\n            r.Clock.Advance(2); r.Steps[0].Tcs.SetResult();\n            e = Started(r, 1); if (e != null) return e;\n            r.Clock.Advance(3); r.Steps[1].Tcs.SetResult();\n            e = Started(r, 2); if (e != null) return e;\n            if (run.IsCompleted) return \"마지막 단계가 끝나기 전에 RunAsync가 끝남\";\n            r.Steps[2].Tcs.SetResult();\n            return Outcome(run, \"완료\", null) ?? Log(r, \"load map, load monsters, load sound\") ?? Released(r);\n        });\n\n        Run(\"player-cancel-rolls-back\", () =>\n        {\n            var r = new Rig(\"map\", \"monsters\", \"sound\");\n            var run = r.Loader.RunAsync(r.Cts.Token);\n            string e = Started(r, 0); if (e != null) return e;\n            r.Steps[0].Tcs.SetResult();\n            e = Started(r, 1); if (e != null) return e;\n            r.Cts.Cancel();\n            e = Outcome(run, \"취소\", null); if (e != null) return e;\n            if (!r.Steps[1].Token.IsCancellationRequested) return \"실행 중인 단계의 토큰이 취소되지 않음\";\n            return Log(r, \"load map, load monsters, unload map\") ?? Released(r);\n        });\n\n        Run(\"timeout-rolls-back\", () =>\n        {\n            var r = new Rig(\"map\", \"monsters\", \"sound\");\n            var run = r.Loader.RunAsync(r.Cts.Token);\n            string e = Started(r, 0); if (e != null) return e;\n            r.Clock.Advance(3); r.Steps[0].Tcs.SetResult();\n            e = Started(r, 1); if (e != null) return e;\n            r.Clock.Advance(6); r.Steps[1].Tcs.SetResult();\n            e = Started(r, 2); if (e != null) return e;\n            r.Clock.Advance(0.5);\n            if (run.IsCompleted) return \"전체 9.5초 시점(제한 10초)에 RunAsync가 이미 끝남\";\n            r.Clock.Advance(0.5);\n            e = Outcome(run, \"타임아웃\", null); if (e != null) return \"단계별이 아니라 전체 10초 제한이어야 함. \" + e;\n            if (!r.Steps[2].Token.IsCancellationRequested) return \"타임아웃 뒤에도 실행 중인 단계의 토큰이 취소되지 않음\";\n            return Log(r, \"load map, load monsters, load sound, unload monsters, unload map\") ?? Released(r);\n        });\n\n        Run(\"step-failure-propagates\", () =>\n        {\n            var r = new Rig(\"map\", \"monsters\", \"sound\");\n            var run = r.Loader.RunAsync(r.Cts.Token);\n            string e = Started(r, 0); if (e != null) return e;\n            r.Steps[0].Tcs.SetResult();\n            e = Started(r, 1); if (e != null) return e;\n            var boom = new System.IO.InvalidDataException(\"monsters.bin 손상\");\n            r.Steps[1].Tcs.SetException(boom);\n            e = Outcome(run, \"실패\", boom) ?? Log(r, \"load map, load monsters, unload map\") ?? Released(r);\n            if (e != null) return e;\n            var r2 = new Rig(\"map\", \"monsters\");\n            var sync = new System.InvalidOperationException(\"동기 예외\");\n            r2.Steps[0].CompletesSync = true;\n            r2.Steps[1].ThrowsSync = sync;\n            var run2 = r2.Loader.RunAsync(r2.Cts.Token);\n            e = Outcome(run2, \"실패\", sync);\n            return e == null ? Log(r2, \"load map, load monsters, unload map\") ?? Released(r2) : \"LoadAsync가 동기적으로 던진 경우: \" + e;\n        });\n\n        Run(\"already-canceled-and-empty\", () =>\n        {\n            var r = new Rig(\"map\", \"monsters\");\n            r.Cts.Cancel();\n            var run = r.Loader.RunAsync(r.Cts.Token);\n            string e = Outcome(run, \"취소\", null);\n            if (e != null) return \"이미 취소된 토큰: \" + e;\n            if (r.Text() != \"\") return \"이미 취소된 토큰인데 단계가 시작됨: [\" + r.Text() + \"]\";\n            e = Released(r); if (e != null) return e;\n            var empty = new Rig();\n            e = Outcome(empty.Loader.RunAsync(empty.Cts.Token), \"완료\", null);\n            if (e != null) return \"단계 0개: \" + e;\n            var syncAll = new Rig(\"map\", \"monsters\", \"sound\");\n            foreach (var s in syncAll.Steps) s.CompletesSync = true;\n            e = Outcome(syncAll.Loader.RunAsync(syncAll.Cts.Token), \"완료\", null);\n            return e != null ? \"모든 단계가 동기 완료: \" + e : Released(empty) ?? Released(syncAll) ?? Log(syncAll, \"load map, load monsters, load sound\");\n        });\n\n        Run(\"ignoring-step-does-not-hang\", () =>\n        {\n            var r = new Rig(\"map\", \"thirdparty-sdk\", \"sound\");\n            r.Steps[1].IgnoresToken = true;\n            var run = r.Loader.RunAsync(r.Cts.Token);\n            string e = Started(r, 0); if (e != null) return e;\n            r.Steps[0].Tcs.SetResult();\n            e = Started(r, 1); if (e != null) return e;\n            r.Cts.Cancel();\n            e = Outcome(run, \"취소\", null);\n            if (e != null) return \"토큰을 무시하는 단계가 실행 중일 때 취소: \" + e;\n            e = Log(r, \"load map, load thirdparty-sdk, unload map\") ?? Released(r); if (e != null) return e;\n            r.Steps[1].Tcs.SetResult();\n            if (!WaitUntil(() => r.Steps[1].Unloads == 1)) return \"버려진 단계가 나중에 성공했는데 Unload되지 않음. 기록: [\" + r.Text() + \"]\";\n            var r2 = new Rig(\"map\", \"thirdparty-sdk\");\n            r2.Steps[1].IgnoresToken = true;\n            var run2 = r2.Loader.RunAsync(r2.Cts.Token);\n            e = Started(r2, 0); if (e != null) return e;\n            r2.Steps[0].Tcs.SetResult();\n            e = Started(r2, 1); if (e != null) return e;\n            r2.Clock.Advance(10);\n            e = Outcome(run2, \"타임아웃\", null);\n            if (e != null) return \"토큰을 무시하는 단계가 실행 중일 때 타임아웃: \" + e;\n            r2.Steps[1].Tcs.SetException(new System.Exception(\"늦은 실패\"));\n            System.Threading.Thread.Sleep(20);\n            return Log(r2, \"load map, load thirdparty-sdk, unload map\") ?? Released(r2);\n        });\n\n        Run(\"random-vs-model\", () =>\n        {\n            var rng = new System.Random(81122);\n            for (int round = 0; round < 150; round++)\n            {\n                int n = rng.Next(0, 6);\n                var names = new string[n];\n                for (int i = 0; i < n; i++) names[i] = \"s\" + i;\n                var r = new Rig(names);\n                foreach (var s in r.Steps) { int k = rng.Next(100); s.IgnoresToken = k < 15; s.CompletesSync = k >= 15 && k < 30; }\n                var expected = new System.Collections.Generic.List<string>();\n                var loaded = new System.Collections.Generic.List<FakeStep>();\n                int idx = 0; double t = 0; string outcome = null; System.Exception failure = null; FakeStep abandoned = null;\n                var run = r.Loader.RunAsync(r.Cts.Token);\n                System.Action startNext = () =>\n                {\n                    while (idx < n) { expected.Add(\"load \" + r.Steps[idx].Name); if (!r.Steps[idx].CompletesSync) return; loaded.Add(r.Steps[idx]); idx++; }\n                    outcome = \"완료\";\n                };\n                System.Action rollback = () => { for (int i = loaded.Count - 1; i >= 0; i--) expected.Add(\"unload \" + loaded[i].Name); };\n                startNext();\n                for (int ev = 0; ev < 40 && outcome == null; ev++)\n                {\n                    var cur = r.Steps[idx];\n                    if (!WaitUntil(() => cur.Tcs != null)) return \"라운드 \" + round + \": 단계 \" + cur.Name + \"가 시작되지 않음\";\n                    int k = rng.Next(100);\n                    if (k < 45) { cur.Tcs.SetResult(); loaded.Add(cur); idx++; startNext(); }\n                    else if (k < 55) { failure = new System.InvalidOperationException(\"fail \" + cur.Name); cur.Tcs.SetException(failure); outcome = \"실패\"; rollback(); }\n                    else if (k < 92)\n                    {\n                        int dt = rng.Next(1, 5); t += dt; r.Clock.Advance(dt);\n                        if (t >= 10) { outcome = \"타임아웃\"; if (cur.IgnoresToken) abandoned = cur; rollback(); }\n                    }\n                    else { r.Cts.Cancel(); outcome = \"취소\"; if (cur.IgnoresToken) abandoned = cur; rollback(); }\n                }\n                if (outcome == null) { r.Cts.Cancel(); outcome = \"취소\"; if (r.Steps[idx].IgnoresToken) abandoned = r.Steps[idx]; rollback(); }\n                string e = Outcome(run, outcome, failure);\n                if (e == null && abandoned != null)\n                {\n                    if (rng.Next(2) == 0) { abandoned.Tcs.SetResult(); expected.Add(\"unload \" + abandoned.Name); WaitUntil(() => abandoned.Unloads == 1); }\n                    else abandoned.Tcs.SetException(new System.Exception(\"late\"));\n                }\n                if (e == null) e = Log(r, string.Join(\", \", expected)) ?? Released(r);\n                if (e != null) return \"라운드 \" + round + \" (단계 \" + n + \"개): \" + e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "steps-run-in-order",
+          "player-cancel-rolls-back",
+          "timeout-rolls-back",
+          "step-failure-propagates",
+          "already-canceled-and-empty",
+          "ignoring-step-does-not-hang",
+          "random-vs-model"
+        ],
+        "note": "순차 실행과 정상 완료, 플레이어 취소(Canceled)와 역순 롤백, 전체 제한 시간(단계별이 아님) 초과의 TimeoutException과 롤백, 단계 예외의 그대로 전파(동기 throw 포함), 이미 취소된 토큰·단계 0개·모두 동기 완료, 토큰을 무시하는 단계가 있어도 바로 끝나고 그 단계가 나중에 성공하면 Unload되는지, 그리고 무작위 시나리오에서 모델과의 일치를 검사합니다. 끝난 뒤 타임아웃 Delay가 남아 있으면 실패입니다. 시간은 가짜 시계로만 흐르며 각 대기의 상한은 1초이고, 케이스 하나가 3초 안에 끝나지 않으면(동기 대기로 호출 스레드를 막으면) 실패입니다. IDelayProvider, ILoadStep, DungeonLoader(생성자, RunAsync)의 시그니처는 바꾸지 마세요."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기(.NET 8.0.24)에서 모범 답안 전부 통과·스타터 실패를 확인하고, 단계별 타임아웃·시간 초과를 취소로 보고·await load만 쓰기·타이머 미해제·정순 롤백·예외 감싸기·버려진 단계 미해제·동기 WaitAny 오답이 모두 걸리고 WaitAsync를 쓰는 다른 정답은 통과함을 실행해 본 뒤, WhenAny·WaitAsync·TAP·취소 문서와 UniTask README에 대조했습니다."
+      },
+      "nextMission": "로딩 화면에 진행률 막대를 붙여 보세요. 단계마다 가중치(예: 맵 5, 몬스터 2, 사운드 3)를 두고, 단계가 성공할 때마다 0~1 진행률을 보고합니다. 취소나 시간 초과 때는 마지막 보고 값에서 멈춰야 합니다. 이어서 IDelayProvider 대신 .NET 8의 `TimeProvider`와 `Task.Delay(TimeSpan, TimeProvider, CancellationToken)`을 받도록 바꾸고, 같은 테스트를 Microsoft.Extensions.Time.Testing의 `FakeTimeProvider`로 다시 작성해 보세요."
+    },
+    {
+      "id": "t1-tutor-generic-constraints-iequatable",
+      "track": "track1",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "제네릭 제약 조건: where T : struct, IEquatable<T> 한 줄이 비교마다 생기던 박싱을 없애는 이유",
+      "tags": [
+        "CSharp_Generic_Constraint",
+        "CSharp_IEquatable",
+        "CSharp_GC_Boxing"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-generics-constraints",
+        "ms-iequatable",
+        "ms-csharp-spec-boxing",
+        "ms-learn-equalitycomparer-default"
+      ],
+      "scenario": "전술 RPG의 전투 코드는 매 프레임 유닛마다 \"빙결 상태인가?\", \"이 칸이 이동 경로에 있는가?\"를 묻습니다. 이 질문은 모두 범용 유틸리티 `ArrayUtil.Contains<T>(T[] items, T value)` 하나로 처리합니다. 프로파일러를 보니 이 메서드가 호출될 때마다 힙 할당이 생깁니다. 채점기와 같은 64비트 .NET 8에서 재 보면, 상태 이상 64개짜리 배열을 한 번 검사할 때 1,536 B입니다. 코드 어디에도 `new`는 없고, `StatusId`는 이미 `IEquatable<StatusId>`를 구현하고 있습니다.\n\n**해야 할 일**\n1. 아래 개념 카드를 읽으세요.\n2. 스타터 코드의 `Contains<T>`에 알맞은 제약 조건을 붙여, 비교가 박싱 없이 이루어지게 고치세요. 결과(true/false)는 그대로여야 하고, 호출당 할당은 0 B여야 합니다. 여유가 있으면 배열 조각이나 `stackalloc` 버퍼도 검사할 수 있도록 `ReadOnlySpan<T>` 오버로드를 추가하고, 배열 버전이 그것을 부르게 하세요.\n3. 퀴즈 2문제에 답하세요.\n\n이 문제에는 실행 채점이 없습니다. 직접 실행해서 64개 배열에서 있는 값은 true, 없는 값은 false, `null` 배열과 빈 배열은 false인지 확인하세요. 그리고 1만 번 호출하는 구간의 `GC.GetAllocatedBytesForCurrentThread()` 차이가 0인지 재 보세요(스타터 코드는 15,360,000 B).",
+      "constraints": [
+        "Contains<T> 안에서 박싱을 일으키는 코드 금지: (object) 캐스트, object.Equals(a, b), 비제네릭 컬렉션",
+        "호출당 힙 할당 0 B, 시간 O(n)",
+        "public static bool Contains<T>(T[] items, T value)의 이름과 매개변수, null 배열이면 false라는 동작은 유지한다(제약 추가와 오버로드 추가는 허용)",
+        "StatusId는 바꾸지 않는다"
+      ],
+      "starterCode": "using System;\n\n/// <summary>Status effect id (burn, freeze, poison...). A small value type that is compared very often.</summary>\npublic readonly struct StatusId : IEquatable<StatusId>\n{\n    public readonly int Value;\n    public StatusId(int value) { Value = value; }\n\n    public bool Equals(StatusId other) => Value == other.Value;\n    public override bool Equals(object obj) => obj is StatusId other && Equals(other);\n    public override int GetHashCode() => Value;\n    public static bool operator ==(StatusId a, StatusId b) => a.Equals(b);\n    public static bool operator !=(StatusId a, StatusId b) => !a.Equals(b);\n}\n\npublic static class ArrayUtil\n{\n    /// <summary>\n    /// True if value occurs in items (null items: false).\n    /// Called every frame for every unit: \"is this unit frozen?\", \"is this tile on the path?\".\n    /// </summary>\n    public static bool Contains<T>(T[] items, T value)\n    {\n        if (items == null) return false;\n        for (int i = 0; i < items.Length; i++)\n        {\n            if (items[i].Equals(value)) return true;\n        }\n        return false;\n    }\n}\n",
+      "edgeCases": [
+        "null 배열과 빈 배열: false",
+        "찾는 값이 마지막 칸에 있을 때와 아예 없을 때(64칸을 모두 비교)",
+        "IEquatable<T>를 구현하지 않은 struct를 넘기면: IEquatable<T> 제약이 있으면 컴파일 오류 CS0315",
+        "클래스나 int?를 넘기면: struct 제약이 있으면 컴파일 오류 CS0453"
+      ],
+      "hints": [
+        "스타터의 `items[i].Equals(value)`를 보세요. 제약이 없는 `T`에 대해 컴파일러가 아는 `Equals`는 무엇입니까? `StatusId` 값을 그 메서드의 인자로 넘기면 어떤 변환이 일어납니까? 64칸을 검사하면 그 변환이 몇 번 일어날까요?",
+        "본문은 그대로 두고 시그니처만 바꾸면 됩니다. `T`에 \"`Equals(T)`가 있다\"는 사실을 알려 주는 제약은 무엇이고, \"값 형식만 받는다\"는 조건을 거는 제약은 무엇입니까? `==`로 바꾸는 길은 막혀 있습니다(CS0019).",
+        "구조만 적으면 다음과 같습니다.\n```\npublic static bool Contains<T>(T[] items, T value) where T : ???, ???\n{\n    if (items == null) return false;\n    return Contains((ReadOnlySpan<T>)items, value);   // 배열 → Span: 할당 없음\n}\n\npublic static bool Contains<T>(ReadOnlySpan<T> items, T value) where T : ???, ???\n{\n    for i in 0 .. items.Length - 1:\n        if (items[i].Equals(value)) return true   // 이제 어느 Equals가 불리는가?\n    return false\n}\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 상점의 두 감정 창구\n\n상점 NPC에게 \"이 아이템 있어요?\"라고 묻는 창구가 두 개 있다고 합시다.\n\n- **만능 창구 `Equals(object)`**: 무엇이든 받지만, 물건을 반드시 **상자에 포장해서** 내야 합니다. struct 값을 `object` 자리에 넘기는 것은 **박싱 변환**이고, 명세 §10.2.9는 박싱을 \"객체 인스턴스를 할당하고 값을 그 안으로 복사하는 것\"으로 정의합니다. 비교 한 번에 상자가 하나씩 생깁니다.\n- **전용 창구 `IEquatable<T>.Equals(T)`**: 그 형식만 받으므로 포장할 필요가 없습니다.\n\n제네릭 메서드 안에서 어느 창구로 갈지는 **형식 매개변수의 제약 조건**이 정합니다. 컴파일러는 `T`에 대해 제약이 알려 준 것만 압니다.\n\n```csharp\n// 제약 없음: T에 대해 아는 멤버는 object의 것뿐 → Equals(object) → value가 박싱된다\nstatic bool ContainsA<T>(T[] items, T value)\n{ for (int i = 0; i < items.Length; i++) if (items[i].Equals(value)) return true; return false; }\n\n// IEquatable<T> 제약: Equals(T)가 보이고, 인자 형식이 정확히 맞는 이쪽이 선택된다 → 박싱 없음\nstatic bool ContainsB<T>(T[] items, T value) where T : IEquatable<T>\n{ for (int i = 0; i < items.Length; i++) if (items[i].Equals(value)) return true; return false; }\n```\n\n채점기와 같은 .NET 8.0.24(x64, Release, 계층형 컴파일 끔)와 로컬 .NET 8.0.8에서 `StatusId` 64개를 검사하는 호출 한 번을 재면 다음과 같습니다(두 곳의 값이 같았습니다).\n\n| 방식 | 호출당 할당 |\n| --- | --- |\n| 제약 없음 (`ContainsA`) | 1,536 B (24 B짜리 상자 64개) |\n| `where T : struct`만 | 1,536 B |\n| `where T : IEquatable<T>` 또는 `where T : struct, IEquatable<T>` | 0 B |\n| 제약 없이 `EqualityComparer<T>.Default.Equals(items[i], value)` | 0 B |\n\n### 받는 쪽(`items[i]`)은 왜 박싱되지 않았나\n\n형식 매개변수로 가상 메서드나 인터페이스 메서드를 부를 때, 컴파일러는 IL의 `constrained.` 접두사를 붙여 호출합니다. .NET 8 SDK로 만든 IL을 보면 `ContainsA`에는 인자를 담는 `box`와 `Object.Equals(object)` 호출이, `ContainsB`에는 `box` 없이 `IEquatable<T>.Equals(T)` 호출이 들어 있습니다. 런타임 문서에 따르면 값 형식이 그 메서드를 **직접 구현했으면** 박싱 없이 그 구현을 부릅니다. 구현하지 않은 `Object`·`ValueType`의 메서드일 때만 받는 쪽을 상자에 담습니다. 그래서 `Equals(object)`를 재정의한 `StatusId`는 인자 하나만 박싱되었습니다. 아무것도 재정의하지 않은 struct라면 받는 쪽과 인자가 둘 다 박싱되어, 같은 측정에서 호출당 3,072 B가 나왔습니다.\n\n### `struct` 제약은 무엇을 하나\n\n- 문서에 따르면 `where T : struct`는 형식 인수가 **nullable이 아닌 값 형식**이어야 한다는 뜻입니다. 클래스나 `int?`를 넘기면 컴파일 오류(CS0453)입니다.\n- **박싱을 없애는 것은 `struct`가 아니라 `IEquatable<T>`입니다.** `struct`만 붙이면 여전히 `Equals(object)`로 갑니다(위 표).\n- 두 제약을 함께 쓰면 \"값 형식 전용이고, 형식 전용 비교로 비교한다\"는 의도가 시그니처에 드러납니다. 덤으로 `items[i]`가 null일 수 없어 `NullReferenceException`도 걱정하지 않아도 됩니다. 클래스에도 쓰고 싶다면 `where T : IEquatable<T>`만 두면 됩니다. .NET의 `MemoryExtensions.Contains<T>(this ReadOnlySpan<T>, T)`가 바로 그렇게 선언되어 있습니다.\n\n### `==`는 왜 안 되나\n\n제약 없는 형식 매개변수에 대해 문서는 \"형식 인수가 그 연산자를 지원한다는 보장이 없으므로 `==`와 `!=`를 쓸 수 없다\"고 설명하고, 값이 같은지 비교하려면 `IEquatable<T>` 제약을 쓰라고 권합니다. `IEquatable<T>`에는 `==` 연산자가 없으므로 `where T : struct, IEquatable<T>`를 붙여도 `items[i] == value`는 여전히 CS0019 오류입니다(.NET 8 SDK로 컴파일해 확인). `StatusId`에 정의한 `operator ==`는 `StatusId`를 직접 쓰는 코드에서만 쓰입니다.\n\n### 제약 없이 쓰는 길: `EqualityComparer<T>.Default`\n\n문서에 따르면 `EqualityComparer<T>.Default`는 `T`가 `IEquatable<T>`를 구현하면 그 구현을 쓰는 비교자를, 아니면 `Object.Equals`를 쓰는 비교자를 돌려줍니다. .NET 8 런타임 소스(`ComparerHelpers.cs`)도 그대로입니다. `IEquatable<T>`면 `GenericEqualityComparer<T>`, 아니면 `ObjectEqualityComparer<T>`를 만듭니다. `List<T>.Contains`, `Array.IndexOf<T>`, `Dictionary<TKey,TValue>`가 모두 이 기본 비교자를 씁니다(각 문서). 그러니 **struct에 `IEquatable<T>`를 구현하는 것**이 컬렉션 전체의 박싱을 없애는 열쇠입니다. `Equals(object)`만 재정의한 struct는 `Array.IndexOf`에서도 비교마다 박싱되었습니다(측정 1,536 B).",
+      "quiz": [
+        {
+          "question": "타일 좌표를 나타내는 `TileId`는 `Equals(object)`와 `GetHashCode`만 재정의했고 `IEquatable<TileId>`는 구현하지 않았습니다. `StatusId`는 스타터 코드 그대로입니다. 배열은 모두 64칸이고 찾는 값은 배열에 없습니다. 아래 네 호출은 64비트 .NET 8에서 호출당 몇 바이트를 할당할까요? 컴파일되지 않는 것이 있다면 이유와 함께 고르세요.\n\n```csharp\nstatic bool ContainsA<T>(T[] items, T value) { /* items[i].Equals(value) */ }\nstatic bool ContainsS<T>(T[] items, T value) where T : struct { /* items[i].Equals(value) */ }\nstatic bool ContainsB<T>(T[] items, T value) where T : IEquatable<T> { /* items[i].Equals(value) */ }\n\nContainsA(statusIds, new StatusId(5));        // (가)\nContainsS(statusIds, new StatusId(5));        // (나)\nArray.IndexOf(tileIds, new TileId(5));        // (다)\nContainsB(tileIds, new TileId(5));            // (라)\n```",
+          "answer": "(가) 1,536 B, (나) 1,536 B, (다) 1,536 B이고 (라)는 컴파일되지 않습니다(필드가 int 하나인 struct로 .NET 8 SDK, Release에서 측정. 상자 하나가 24 B).\n\n- **(가)** 제약이 없으니 `items[i].Equals(value)`는 `Object.Equals(object)`로 묶입니다. 인자 `value`가 비교마다 박싱되어 상자 64개가 생깁니다. 받는 쪽 `items[i]`는 `constrained.` 호출이고 `StatusId`가 `Equals(object)`를 재정의했으므로 박싱되지 않습니다.\n- **(나)** `struct` 제약은 \"값 형식이어야 한다\"는 조건일 뿐, `Equals(StatusId)`를 보여 주지 않습니다. 결과는 (가)와 같습니다.\n- **(다)** `Array.IndexOf<T>`는 `EqualityComparer<T>.Default`로 비교합니다(API 문서). `TileId`는 `IEquatable<TileId>`가 없으므로 기본 비교자는 `Object.Equals`를 쓰는 쪽입니다. .NET 8 구현에서는 `ObjectEqualityComparer<TileId>`가 만들어지고, 그 안의 `x.Equals(y)`가 비교마다 `y`를 박싱합니다.\n- **(라)** CS0315 오류입니다. 메시지는 \"There is no boxing conversion from 'TileId' to 'System.IEquatable<TileId>'\"이고, `TileId`가 제약을 만족하지 않는다는 뜻입니다. 이것이 제약의 진짜 가치입니다. 런타임에 조용히 생기던 GC 할당이 컴파일 오류로 바뀌어 미리 드러납니다. 고치려면 `TileId`에 `IEquatable<TileId>`를 구현합니다. 그러면 (다)도 0 B가 됩니다."
+        },
+        {
+          "question": "동료가 `Contains`에 `where T : struct, IEquatable<T>`를 붙인 뒤 비교를 `items[i] == value`로 바꿨더니 CS0019가 났습니다. 그래서 제약을 지우고 아래처럼 고쳐 컴파일에 성공했습니다. 이 코드는 무엇을 돌려주고, 무엇이 문제입니까?\n\n```csharp\npublic static bool Contains<T>(T[] items, T value)\n{\n    for (int i = 0; i < items.Length; i++)\n        if ((object)items[i] == (object)value) return true;\n    return false;\n}\n```",
+          "answer": "**값이 배열에 있어도 항상 false를 돌려주고, 비교마다 상자를 두 개씩 만듭니다.**\n\n- `(object)items[i]`와 `(object)value`는 각각 박싱 변환이라서, 비교할 때마다 힙에 새 상자가 두 개 생깁니다. `object` 두 개를 `==`로 비교하면 미리 정의된 **참조** 같음 연산자가 쓰입니다(명세 §12.15.7). 이 연산자는 두 참조가 같은 인스턴스를 가리킬 때만 true입니다. 방금 따로 만든 두 상자는 언제나 다른 인스턴스이므로 결과는 늘 false입니다. 명세의 주석도 새로 할당한 상자에 대한 참조는 다른 모든 참조와 반드시 다르다고 설명합니다.\n- .NET 8에서 실행하면 `StatusId(1010)`이 들어 있는 배열에서도 false였고, 64칸 검사 한 번에 3,072 B(상자 128개)가 할당되었습니다.\n- 버그가 두 개 겹쳤습니다. 결과가 틀렸고, 원래 고치려던 할당은 두 배로 늘었습니다.\n\n**올바른 길.** CS0019는 \"`==`는 형식 매개변수에 쓸 수 없다\"는 뜻일 뿐이고, 해결책은 제약을 지우는 것이 아닙니다. 제약은 남기고 `items[i].Equals(value)`로 비교합니다. 그러면 `IEquatable<T>.Equals(T)`가 호출되어 박싱도 없고 값으로 비교합니다. 제약을 붙일 수 없는 코드라면 `EqualityComparer<T>.Default.Equals(items[i], value)`를 씁니다."
+        }
+      ],
+      "solutionCode": "using System;\n\n/// <summary>Status effect id (burn, freeze, poison...). A small value type that is compared very often.</summary>\npublic readonly struct StatusId : IEquatable<StatusId>\n{\n    public readonly int Value;\n    public StatusId(int value) { Value = value; }\n\n    public bool Equals(StatusId other) => Value == other.Value;\n    public override bool Equals(object obj) => obj is StatusId other && Equals(other);\n    public override int GetHashCode() => Value;\n    public static bool operator ==(StatusId a, StatusId b) => a.Equals(b);\n    public static bool operator !=(StatusId a, StatusId b) => !a.Equals(b);\n}\n\npublic static class ArrayUtil\n{\n    /// <summary>\n    /// True if value occurs in items (null items: false).\n    /// Called every frame for every unit: \"is this unit frozen?\", \"is this tile on the path?\".\n    /// </summary>\n    // struct: T is a non-nullable value type, so items[i] can never be null.\n    // IEquatable<T>: items[i].Equals(value) now binds to Equals(T), so value is not boxed.\n    public static bool Contains<T>(T[] items, T value) where T : struct, IEquatable<T>\n    {\n        if (items == null) return false;\n        return Contains((ReadOnlySpan<T>)items, value);\n    }\n\n    /// <summary>Same check for any contiguous buffer: an array slice, a stackalloc buffer, a List's backing span.</summary>\n    public static bool Contains<T>(ReadOnlySpan<T> items, T value) where T : struct, IEquatable<T>\n    {\n        for (int i = 0; i < items.Length; i++)\n        {\n            if (items[i].Equals(value)) return true;\n        }\n        return false;\n    }\n}\n",
+      "explanation": "**원인.** 스타터의 `Contains<T>`에는 제약이 없습니다. 그래서 컴파일러가 `items[i].Equals(value)`에서 찾을 수 있는 메서드는 `Object.Equals(object)`뿐입니다. `value`를 `object` 자리에 넘기는 것은 박싱 변환이고(명세 §10.2.9), 비교 한 번마다 힙에 상자가 하나 생깁니다. 64칸 검사 한 번에 24 B × 64 = 1,536 B, 1만 번이면 15,360,000 B입니다(채점기와 같은 .NET 8.0.24와 로컬 .NET 8.0.8, x64 Release에서 측정). `StatusId`가 `IEquatable<StatusId>`를 구현해 두었어도, 제네릭 메서드는 그 사실을 모르니 쓰지 못합니다.\n\n**고치기.** `where T : struct, IEquatable<T>`를 붙입니다. 이제 `T`에 `Equals(T)`가 있다는 것이 알려지고, 인자 형식이 정확히 맞는 `Equals(T)`가 `Equals(object)`보다 나은 후보로 선택됩니다. 형식 매개변수를 통한 인터페이스 호출은 `constrained.` 접두사로 나가는데, 런타임 문서에 따르면 값 형식이 그 메서드를 직접 구현했으면 박싱 없이 호출됩니다. 같은 측정에서 0 B였습니다. 코드 본문은 한 글자도 바뀌지 않았고, 제약 한 줄이 호출되는 메서드를 바꾼 것입니다.\n\n**두 제약의 역할.** 박싱을 없애는 것은 `IEquatable<T>`입니다. `struct`만으로는 여전히 1,536 B입니다. `struct`는 형식 인수를 nullable이 아닌 값 형식으로 제한합니다(문서). 그래서 `items[i]`가 null일 수 없고, 클래스나 `int?`가 들어오는 것을 컴파일 단계에서 막습니다. 클래스에도 쓰고 싶다면 `IEquatable<T>`만 남기고 null 원소를 따로 처리하면 됩니다. .NET의 `MemoryExtensions.Contains<T>(this ReadOnlySpan<T>, T)`가 `where T : IEquatable<T>`로 선언된 것도 같은 이유입니다.\n\n**Span 오버로드.** 배열 버전이 `ReadOnlySpan<T>` 버전을 부르게 하면, 배열 조각이나 `stackalloc` 버퍼도 같은 코드로 검사할 수 있습니다. 배열에서 Span으로 바꾸는 것은 할당이 없는 변환입니다. 시간은 두 버전 모두 O(n)입니다.\n\n**제약을 붙일 수 없을 때.** 이미 공개된 API라서 제약을 추가할 수 없다면, 본문에서 `EqualityComparer<T>.Default.Equals(items[i], value)`를 씁니다. `T`가 `IEquatable<T>`를 구현하면 그 구현을 쓰므로(문서) `StatusId`에서는 0 B였습니다. 다만 구현하지 않은 struct에서는 여전히 박싱되고(.NET 8 구현은 `ObjectEqualityComparer<T>`를 고릅니다), 이 문제를 컴파일러가 잡아 주지 않습니다. 제약은 그 실수를 CS0315 컴파일 오류로 바꿔 줍니다.\n\n**흔한 실수.** 첫째, `struct` 제약만 붙이고 박싱이 사라졌다고 믿는 것입니다. 둘째, `==`가 CS0019로 막히자 `(object)a == (object)b`로 바꾸는 것입니다. 이러면 늘 false이고 할당은 두 배가 됩니다. 셋째, struct에 `Equals(object)`만 재정의하고 `IEquatable<T>`를 빼먹는 것입니다. 이러면 `List<T>.Contains`, `Array.IndexOf`, `Dictionary`가 모두 박싱합니다. 넷째, 재지 않고 넘어가는 것입니다. JIT 최적화는 런타임마다 다르므로 Unity에서도 Profiler의 GC Alloc으로 확인합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "고친 Contains가 있는 값에 true, 없는 값에 false, null 배열과 빈 배열에 false를 돌려준다",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "비교가 IEquatable<T>.Equals(T)로 묶이도록 IEquatable<T> 제약을 붙였다(struct 제약과 함께 쓰거나 단독으로)",
+            "points": 12,
+            "sourceId": "ms-generics-constraints"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "퀴즈 1에서 (가)(나)(다)가 비교마다 박싱되는 이유와 (라)가 CS0315로 막히는 이유를 설명했다",
+            "points": 8,
+            "sourceId": "ms-gh-runtime8-comparerhelpers"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "워밍업 뒤 1만 번 호출 구간의 GC.GetAllocatedBytesForCurrentThread 차이가 0임을 직접 재서 확인했다",
+            "points": 15,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "struct 제약만으로는 박싱이 사라지지 않고, 박싱을 없애는 것은 IEquatable<T> 제약이라는 점을 설명할 수 있다",
+            "points": 10,
+            "sourceId": "ms-csharp-spec-boxing"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "비교 루프 안에 박싱을 일으키는 코드((object) 캐스트, object.Equals(a, b), 비제네릭 컬렉션)가 없다",
+            "points": 5,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "받는 쪽(items[i])이 박싱되지 않는 이유를 constrained. 호출과 \"값 형식이 메서드를 직접 구현했는가\"로 설명할 수 있다",
+            "points": 10,
+            "sourceId": "ms-opcodes-constrained"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "퀴즈 2에서 형식 매개변수에 ==를 쓸 수 없는 이유와 (object) 비교가 참조 비교라 늘 false라는 점을 말하고, Equals(T)나 EqualityComparer<T>.Default라는 대안을 제시했다",
+            "points": 10,
+            "sourceId": "ms-csharp-spec-ref-equality"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "제약이 의도(값 형식 전용, 형식 전용 비교)를 시그니처에 드러내고, 왜 그 제약을 골랐는지 주석이나 말로 설명할 수 있다",
+            "points": 8,
+            "sourceId": "ms-memoryextensions-contains"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "제약을 붙일 수 없을 때의 대안 EqualityComparer<T>.Default와 그 한계(IEquatable<T>를 구현하지 않은 형식이면 여전히 박싱)를 설명할 수 있다",
+            "points": 7,
+            "sourceId": "ms-learn-equalitycomparer-default"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "(object) 캐스트 비교나 object.Equals(a, b)로 바꿔 박싱을 늘리거나, 참조 비교 때문에 결과를 틀리게 만든다",
+            "penalty": -20,
+            "sourceId": "ms-csharp-spec-ref-equality"
+          },
+          {
+            "id": "d2",
+            "description": "struct 제약만 붙이고 측정 없이 박싱이 사라졌다고 결론 낸다",
+            "penalty": -15,
+            "sourceId": "ms-generics-constraints"
+          },
+          {
+            "id": "d3",
+            "description": "제네릭을 버리고 object[]나 ArrayList 같은 비제네릭 경로로 바꾼다",
+            "penalty": -10,
+            "sourceId": "ms-csharp-spec-boxing"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 채점이 없는 튜터링 문제라, 표와 퀴즈의 할당량(1,536 B·0 B·3,072 B·15,360,000 B)과 IL의 box·constrained.를 채점기(.NET 8.0.24)와 로컬 .NET 8.0.8에서 재고 CS0315·CS0019·CS0453을 컴파일해 확인한 뒤, 제약 조건·IEquatable·EqualityComparer.Default·OpCodes.Constrained 문서와 명세 §10.2.9·§12.15.7에 대조했습니다."
+      },
+      "nextMission": "같은 원리로 가장 큰 값을 찾는 `Max<T>(ReadOnlySpan<T> items) where T : struct, IComparable<T>`를 작성하세요(빈 Span이면 예외). 그다음 제약 없이 `Comparer<T>.Default.Compare`를 쓰는 버전과 `IComparable`(비제네릭)로 캐스팅하는 버전을 만들어, 1만 번 호출 구간의 할당을 세 버전 모두 재고 차이를 설명해 보세요."
+    },
+    {
+      "id": "t1-impl-gridpos-equality-dictionary-key",
+      "track": "track1",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "GridPos를 Dictionary 키로: IEquatable<T>, 고르게 퍼지는 GetHashCode, 동서로 이어진 지도의 IEqualityComparer",
+      "tags": [
+        "CSharp_IEquatable",
+        "CSharp_GetHashCode",
+        "CSharp_EqualityComparer"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-iequatable",
+        "ms-object-gethashcode",
+        "ms-learn-dictionary",
+        "ms-hashcode",
+        "ms-gh-runtime8-valuetype-hash"
+      ],
+      "scenario": "턴제 전략 게임의 전장 지도입니다. 칸마다의 정보는 `Dictionary<GridPos, TileState>`에, 아군 시야는 `HashSet<GridPos>`에 담고, AI와 UI가 매 프레임 수천 번 조회합니다. 지금의 `GridPos`는 `int` 두 개짜리 struct이고 같음 비교를 직접 구현하지 않았습니다. 그래서 조회마다 힙 할당이 생기고, 넓은 지도에서는 조회가 눈에 띄게 느립니다. 채점기와 같은 .NET 8.0.24(x64)에서 재 보면, 기본 `GetHashCode`는 -128~127 범위의 65,536칸에 대해 서로 다른 값을 256개밖에 내지 않습니다. 또 \"구형 월드\" 모드에서는 지도가 동서로 이어져 있어서, 열 x와 열 x + 너비가 같은 칸입니다.\n\n**할 일**\n\n1. `GridPos`의 `Equals(GridPos)`, `Equals(object)`, `GetHashCode`, `==`, `!=`를 구현하세요.\n   - X와 Y가 모두 같을 때만 같습니다. 다섯 멤버의 결과는 서로 일치해야 합니다. `Equals(object)`는 `GridPos`가 아닌 것(null, 다른 형식)에 예외 없이 false를 돌려줍니다.\n   - 같은 좌표는 언제나 같은 해시를 냅니다. 이것은 모든 해시가 지켜야 하는 규칙입니다.\n   - 이 문제는 조회 속도를 위해 분포 요건을 하나 더 둡니다. X와 Y가 각각 -128~127인 65,536칸의 `GetHashCode()` 값을 모았을 때 **서로 다른 값이 64,881개(99%) 이상**이어야 합니다. 숨은 테스트가 이 개수를 그대로 셉니다.\n   - 비교, 해시, `Dictionary`/`HashSet` 조회에서 **힙 할당이 0**이어야 합니다.\n2. 동서로 이어진 지도용 `WrapXComparer : IEqualityComparer<GridPos>`를 구현하세요.\n   - `width`가 0 이하면 `ArgumentOutOfRangeException`을 던집니다.\n   - 두 좌표는 Y가 같고, X를 너비로 나눈 **수학적 나머지(0 이상 width 미만)**가 같을 때 같습니다. 음수 X도 포함합니다. 예를 들어 너비 100에서 (-1, 5)와 (99, 5)는 같은 칸입니다.\n   - `GetHashCode`는 이 같음과 일관되어야 하고, 이 비교자를 쓰는 조회에서도 할당이 없어야 합니다.\n\n순수 C#(.NET 8) 코드입니다. 실행 채점은 위의 모든 조건과 무작위 추가·삭제·조회에서 기준 사전과의 일치를 검사합니다.",
+      "constraints": [
+        "GridPos의 Equals/GetHashCode/==/!=와 Dictionary·HashSet 조회에서 힙 할당 0 B: 박싱, 문자열, Tuple 객체를 만들지 않는다",
+        "-128~127 범위 65,536칸에서 서로 다른 GetHashCode 값이 99%(64,881개) 이상: 해시 규칙이 아니라 이 문제가 정한 분포 요건",
+        "GridPos(생성자, X, Y, 다섯 멤버)와 WrapXComparer(생성자, Width, Equals, GetHashCode)의 public 시그니처를 유지한다. readonly record struct로 바꾸거나 WrapXComparer가 EqualityComparer<GridPos>를 상속하게 바꾸는 것은 허용한다",
+        "해시 값을 세이브 파일이나 네트워크 메시지에 쓰지 않는다"
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n/// <summary>Tile coordinate on the battle map. Used as a Dictionary/HashSet key every frame.</summary>\npublic readonly struct GridPos : IEquatable<GridPos>\n{\n    public int X { get; }\n    public int Y { get; }\n\n    public GridPos(int x, int y)\n    {\n        X = x;\n        Y = y;\n    }\n\n    public bool Equals(GridPos other) => throw new NotImplementedException();\n\n    public override bool Equals(object obj) => throw new NotImplementedException();\n\n    public override int GetHashCode() => throw new NotImplementedException();\n\n    public static bool operator ==(GridPos a, GridPos b) => throw new NotImplementedException();\n\n    public static bool operator !=(GridPos a, GridPos b) => throw new NotImplementedException();\n\n    public override string ToString() => \"(\" + X + \", \" + Y + \")\";\n}\n\n/// <summary>\n/// Equality for a world map that wraps around east-west like a globe:\n/// column x and column x + Width are the same column. Y does not wrap.\n/// </summary>\npublic sealed class WrapXComparer : IEqualityComparer<GridPos>\n{\n    /// <summary>width must be greater than 0, otherwise ArgumentOutOfRangeException.</summary>\n    public WrapXComparer(int width)\n    {\n        throw new NotImplementedException();\n    }\n\n    public int Width => throw new NotImplementedException();\n\n    public bool Equals(GridPos a, GridPos b) => throw new NotImplementedException();\n\n    public int GetHashCode(GridPos p) => throw new NotImplementedException();\n}\n",
+      "edgeCases": [
+        "(1, 2)와 (2, 1), 대각선 (x, x): 대칭인 X ^ Y 해시는 이들을 대량으로 충돌시킨다",
+        "Equals(object)에 null, string, Tuple<int, int>(1, 2)를 넘길 때: 예외 없이 false",
+        "너비 100의 이어진 지도에서 x = -1, -201, 250, int.MinValue",
+        "default(GridPos)와 new GridPos(0, 0)은 같다"
+      ],
+      "hints": [
+        "(1, 2)와 (2, 1), 그리고 (5, 5)와 (-3, -3)에 대해 `X ^ Y`를 계산해 보세요. 무엇이 나옵니까? 또 너비 100 지도에서 `-1 % 100`은 얼마이고, 그 값으로 비교하면 (-1, 5)와 (99, 5)가 같은 칸으로 판정됩니까?",
+        "실제 비교는 `Equals(GridPos)` 한 곳에만 쓰고, 나머지 네 멤버는 거기로 위임하세요. `Equals(object)`는 `is` 패턴으로 형식을 확인한 다음 위임합니다. 해시는 Equals가 비교하는 값을 섞어 만들되, 섞는 일은 `HashCode.Combine`에 맡길 수 있습니다. 비교자의 Equals와 GetHashCode는 반드시 **같은 정규화 값**(접은 열 번호와 Y)을 써야 합니다.",
+        "구조만 적으면 다음과 같습니다. 물음표 자리는 직접 채우세요.\n```\nGridPos:\n    Equals(GridPos o)    => ???                        // 유일한 실제 비교\n    Equals(object obj)   => obj is GridPos o && Equals(o)\n    GetHashCode()        => ???(X, Y)                  // Equals와 같은 필드\n    ==, !=               => Equals에 위임\n\nWrapXComparer(width):\n    width <= 0 이면 ArgumentOutOfRangeException\n    Column(x):\n        c = x % width\n        return ???                                     // 음수면?\n    Equals(a, b)         => Column(a.X) == Column(b.X) && a.Y == b.Y\n    GetHashCode(p)       => ???                        // Equals가 보는 값만으로\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n/// <summary>Tile coordinate on the battle map. Used as a Dictionary/HashSet key every frame.</summary>\npublic readonly struct GridPos : IEquatable<GridPos>\n{\n    public int X { get; }\n    public int Y { get; }\n\n    public GridPos(int x, int y)\n    {\n        X = x;\n        Y = y;\n    }\n\n    // The one real comparison. Everything else forwards here so the four entry points cannot disagree.\n    public bool Equals(GridPos other) => X == other.X && Y == other.Y;\n\n    // Only for callers that hold an object. Generic collections use Equals(GridPos) instead.\n    public override bool Equals(object obj) => obj is GridPos other && Equals(other);\n\n    // Same fields as Equals, so equal positions always hash alike. HashCode.Combine mixes the bits,\n    // so (1, 2) and (2, 1) or (x, y) and (y, x) do not collide the way x ^ y does.\n    // Its seed is random per process: never save these values.\n    public override int GetHashCode() => HashCode.Combine(X, Y);\n\n    public static bool operator ==(GridPos a, GridPos b) => a.Equals(b);\n\n    public static bool operator !=(GridPos a, GridPos b) => !a.Equals(b);\n\n    public override string ToString() => \"(\" + X + \", \" + Y + \")\";\n}\n\n/// <summary>\n/// Equality for a world map that wraps around east-west like a globe:\n/// column x and column x + Width are the same column. Y does not wrap.\n/// </summary>\npublic sealed class WrapXComparer : IEqualityComparer<GridPos>\n{\n    /// <summary>width must be greater than 0, otherwise ArgumentOutOfRangeException.</summary>\n    public WrapXComparer(int width)\n    {\n        if (width <= 0) throw new ArgumentOutOfRangeException(nameof(width));\n        Width = width;\n    }\n\n    public int Width { get; }\n\n    public bool Equals(GridPos a, GridPos b) => Column(a.X) == Column(b.X) && a.Y == b.Y;\n\n    // Hash exactly what Equals compares: the wrapped column, not the raw X.\n    public int GetHashCode(GridPos p) => HashCode.Combine(Column(p.X), p.Y);\n\n    // Mathematical modulo: C#'s % keeps the sign of the dividend, so -1 % 100 is -1, not 99.\n    private int Column(int x)\n    {\n        int c = x % Width;\n        return c < 0 ? c + Width : c;\n    }\n}\n",
+      "explanation": "**계약부터.** `Object.GetHashCode` 문서의 규칙은 두 가지입니다. 같다고 판정되는 두 객체는 반드시 같은 해시를 내야 하고, 같음을 정하는 상태가 바뀌지 않는 한 해시도 바뀌면 안 됩니다. `Dictionary` 문서도 키로 쓰는 동안 해시에 영향을 주는 변경을 금지합니다. `GridPos`를 `readonly struct`로 두면 이 조건이 형식 차원에서 지켜집니다. `IEquatable<T>` 문서는 값 형식이라면 `IEquatable<T>`를 구현하고, `Equals(Object)`·`GetHashCode`·`==`·`!=`를 서로 일관되게 재정의하라고 합니다.\n\n**왜 `IEquatable<GridPos>`인가.** 비교자를 주지 않은 `Dictionary`와 `HashSet`은 `EqualityComparer<T>.Default`를 쓰고, 이 비교자는 `T`가 `IEquatable<T>`를 구현하면 그 구현을 씁니다(문서). .NET 8 구현에서는 `GenericEqualityComparer<T>`가 선택되어 `Equals(GridPos)`를 박싱 없이 부릅니다. 모범 답안은 실제 비교를 `Equals(GridPos)` 한 곳에만 두고 나머지 네 멤버가 거기로 위임하게 해서, 서로 어긋날 여지를 없앴습니다.\n\n**해시 품질.** 채점기와 같은 .NET 8.0.24(x64)와 로컬 .NET 8.0.8에서 -128~127 범위 65,536칸의 서로 다른 해시 비율을 쟀고, 두 곳의 값이 같았습니다. `HashCode.Combine(X, Y)`, `(X, Y).GetHashCode()`, `readonly record struct`의 합성 해시는 100%였습니다. `X * 397 ^ Y`는 50.4%, `X * 31 + Y`는 12.5%, `X ^ Y`와 기본 `ValueType.GetHashCode`는 0.4%(256개)였습니다. .NET 8 구현의 기본 해시는 참조 필드가 없고 빈틈없이 채워진 struct라면 형식 ID로 만든 값에 필드의 4바이트 조각을 차례로 XOR하므로(dotnet/runtime release/8.0 `comutilnative.cpp`, 보장이 아닌 구현 세부) `X ^ Y`와 개수가 같습니다. 이 해시들도 같은 좌표에 늘 같은 값을 내므로 `GetHashCode` 규칙에는 맞는 올바른 해시입니다. 문서도 고른 분포를 \"최선의 성능을 위한\" 조건으로 둡니다. 다만 이 문제가 정한 분포 요건(99%)에 못 미쳐 `hash-spread`에서 실패합니다. 해시가 같은 키는 버킷 수와 상관없이 늘 충돌하므로 조회가 느려집니다. 문서도 `x ^ y`가 (n1, n2)와 (n2, n1)에 같은 값을 내 충돌이 많아질 수 있다며 `HashCode.Combine`을 권합니다. `(X << 16) | (Y & 0xFFFF)` 같은 비트 패킹도 통과하지만, 좌표가 16비트를 넘으면 충돌이 생긴다는 전제를 주석으로 남겨야 합니다.\n\n**저장하지 않는다.** `HashCode`는 프로세스마다 무작위 시드를 써서, 해시 값이 한 프로세스 안에서만 일정합니다(문서). 세이브 파일이나 네트워크 패킷에는 해시가 아니라 좌표 자체를 씁니다.\n\n**감싸는 비교자.** C#의 `%`는 결과의 부호가 왼쪽 피연산자를 따르므로(연산자 문서) `-1 % 100`은 -1입니다. 음수면 너비를 더해 0 이상으로 접습니다. 핵심은 `GetHashCode`가 `Equals`와 **같은 정규화 값**(접은 열, Y)을 해시하는 것입니다. 원래 X로 해시하면 (-1, 5)와 (99, 5)가 같다고 판정되는데도 다른 버킷에 들어가, `Dictionary`가 같은 칸을 두 개의 키로 저장합니다. 같음의 정의를 `GridPos`에 넣지 않고 비교자로 분리했기 때문에, 지도 모드에 따라 `new Dictionary<GridPos, T>(new WrapXComparer(width))`처럼 골라 쓸 수 있습니다. `IEqualityComparer<T>` 문서는 인터페이스를 직접 구현하기보다 `EqualityComparer<T>`를 상속하라고 권하며, 그렇게 바꿔도 통과합니다.\n\n**할당과 흔한 실수.** 채점의 조회 묶음에서 모범 답안은 0 B였습니다. 기본 `ValueType.GetHashCode`에 맡기면 호출마다 받는 쪽이 박싱되었고(24 B), `Equals(GridPos)`를 `Equals((object)other)`로 위임하면 비교마다, 문자열 보간이나 `Tuple`로 해시를 만들면 해시마다 할당이 생겼습니다. 그 밖에 `Equals(object)`에서 `(GridPos)obj`로 바로 캐스팅해 다른 형식에서 `InvalidCastException`을 내는 것, 비교자에서 `x % width`만 쓰는 것이 흔한 실수입니다. `readonly record struct GridPos(int X, int Y)`로 쓰면 컴파일러가 이 멤버들을 모두 합성하며(레코드 문서), 이 방법도 통과합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "X와 Y가 모두 같을 때만 같다고 판정하고, Equals(GridPos)·Equals(object)·==·!=의 결과가 서로 일치하며, Equals(object)가 null과 다른 형식에 예외 없이 false를 돌려준다",
+            "points": 12,
+            "sourceId": "ms-iequatable"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "같은 좌표는 같은 해시를 내고, Dictionary와 HashSet에서 따로 만든 같은 좌표로 값을 찾으며 중복이 제거된다",
+            "points": 13,
+            "sourceId": "ms-object-gethashcode"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "WrapXComparer가 음수를 포함한 X를 0 이상 width 미만으로 접어 비교하고, GetHashCode도 같은 접은 값으로 계산해 (-1, y)와 (99, y)가 같은 키로 저장된다",
+            "points": 10,
+            "sourceId": "ms-learn-csharp-arithmetic"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "비교, 해시, Dictionary·HashSet 조회(기본 비교자와 WrapXComparer 모두)에서 할당이 0 B다: 박싱, 문자열 보간, Tuple 객체가 없다",
+            "points": 12,
+            "sourceId": "ms-gh-runtime8-comparerhelpers"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "해시가 이 문제의 분포 요건을 채운다: -128~127 범위에서 99% 이상 서로 다르다(HashCode.Combine, ValueTuple, record struct, 범위를 명시한 비트 패킹 등)",
+            "points": 10,
+            "sourceId": "ms-hashcode"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "제네릭 컬렉션의 비교가 Equals(object)가 아니라 Equals(GridPos)로 가도록 IEquatable<GridPos>가 구현되어 있고, Equals(GridPos)가 내부에서 object로 바꿔 비교하지 않는다",
+            "points": 8,
+            "sourceId": "ms-learn-equalitycomparer-default"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "IEquatable<GridPos> 구현과 Equals(object)·GetHashCode·==·!= 재정의가 서로 일관된다(직접 작성하거나 readonly record struct가 합성)",
+            "points": 10,
+            "sourceId": "ms-record"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "GridPos가 readonly struct(또는 readonly record struct)라 키로 쓰는 동안 해시가 바뀌지 않고, 해시 값을 저장하거나 프로세스 밖으로 보내지 않는다는 점을 안다",
+            "points": 10,
+            "sourceId": "ms-learn-dictionary"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "실제 비교 로직이 한 곳(Equals(GridPos), 비교자의 열 정규화 함수)에만 있고 나머지 멤버는 위임한다",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "이어진 지도의 같음을 GridPos 자체가 아니라 별도 비교자(IEqualityComparer<GridPos> 구현 또는 EqualityComparer<GridPos> 상속)로 분리해, Dictionary를 만들 때 지도 모드에 맞게 고를 수 있다",
+            "points": 7,
+            "sourceId": "ms-iequalitycomparer"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "GetHashCode가 Equals와 일관되지 않다(같은 칸인데 해시가 다르거나, 비교자가 접지 않은 원래 X로 해시한다)",
+            "penalty": -20,
+            "sourceId": "ms-object-gethashcode"
+          },
+          {
+            "id": "d2",
+            "description": "비교나 해시에서 박싱하거나 문자열·Tuple 객체를 만든다",
+            "penalty": -15,
+            "sourceId": "ms-iequatable"
+          },
+          {
+            "id": "d3",
+            "description": "시나리오의 분포 요건(99%)을 무시하고 X ^ Y나 X + Y처럼 대칭인 해시를 써서, 원래 기본 해시(서로 다른 값 256개)와 비슷한 수준의 충돌을 남긴다",
+            "penalty": -10,
+            "sourceId": "ms-object-gethashcode"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\n// ===== hidden judge =====\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string reason;\n        try { reason = body(); }\n        catch (System.Exception e) { reason = \"예외 발생: \" + e.GetType().Name + \" (\" + e.Message + \")\"; }\n        System.Console.WriteLine(reason == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + reason);\n    }\n\n    static GridPos P(int x, int y) { return new GridPos(x, y); }\n\n    static string Same(GridPos a, GridPos b, bool expected)\n    {\n        object boxed = b;\n        bool eq = a.Equals(b), eqObj = a.Equals(boxed), op = a == b, neq = a != b;\n        if (eq != expected || eqObj != expected || op != expected || neq == expected)\n            return a + \" 와 \" + b + \": 기대 같음=\" + expected + \", Equals(GridPos)=\" + eq + \", Equals(object)=\" + eqObj + \", ==\" + op + \", !=\" + neq;\n        if (expected && a.GetHashCode() != b.GetHashCode()) return a + \" 와 \" + b + \"는 같은데 GetHashCode가 다름\";\n        return null;\n    }\n\n    static long _sink;\n\n    public static void Main()\n    {\n        Run(\"equality-members\", () =>\n        {\n            string e = Same(P(3, 4), P(3, 4), true) ?? Same(P(3, 4), P(4, 3), false) ?? Same(P(-7, 0), P(-7, 0), true)\n                ?? Same(P(0, -1), P(0, 1), false) ?? Same(P(int.MinValue, int.MaxValue), P(int.MinValue, int.MaxValue), true)\n                ?? Same(P(5, 5), P(5, 6), false) ?? Same(default(GridPos), P(0, 0), true);\n            if (e != null) return e;\n            if (P(1, 2).Equals(null)) return \"Equals(null)이 true\";\n            if (P(1, 2).Equals((object)\"(1, 2)\")) return \"다른 형식(string)과 Equals(object)가 true\";\n            if (P(1, 2).Equals((object)new System.Tuple<int, int>(1, 2))) return \"다른 형식(Tuple)과 Equals(object)가 true\";\n            return null;\n        });\n\n        Run(\"dictionary-and-hashset\", () =>\n        {\n            var d = new System.Collections.Generic.Dictionary<GridPos, string>();\n            d[P(10, -3)] = \"성채\"; d[P(-10, 3)] = \"늪\"; d[P(3, -10)] = \"숲\";\n            d[P(10, -3)] = \"점령된 성채\";\n            if (d.Count != 3) return \"같은 칸에 다시 대입했는데 키가 늘어남 (Count \" + d.Count + \")\";\n            if (!d.TryGetValue(P(10, -3), out string v) || v != \"점령된 성채\") return \"새로 만든 같은 좌표로 값을 찾지 못함\";\n            if (d.ContainsKey(P(-3, 10)) || d.ContainsKey(P(10, 3))) return \"다른 칸이 키로 잡힘\";\n            var set = new System.Collections.Generic.HashSet<GridPos>();\n            for (int i = 0; i < 3; i++) for (int x = -5; x <= 5; x++) for (int y = -5; y <= 5; y++) set.Add(P(x, y));\n            if (set.Count != 121) return \"HashSet 중복 제거: 기대 121칸, 결과 \" + set.Count;\n            if (!set.Remove(P(-5, 5)) || set.Contains(P(-5, 5))) return \"HashSet.Remove 뒤에도 남아 있음\";\n            return null;\n        });\n\n        Run(\"hash-consistent\", () =>\n        {\n            var rng = new System.Random(4242);\n            for (int i = 0; i < 20000; i++)\n            {\n                int x = rng.Next(int.MinValue, int.MaxValue), y = rng.Next(-100000, 100000);\n                var a = P(x, y); var b = P(x, y);\n                if (a.GetHashCode() != b.GetHashCode()) return a + \": 같은 좌표의 GetHashCode가 다름\";\n                if (a.GetHashCode() != a.GetHashCode()) return a + \": GetHashCode가 호출마다 다름\";\n            }\n            return null;\n        });\n\n        Run(\"hash-spread\", () =>\n        {\n            var hashes = new System.Collections.Generic.HashSet<int>();\n            for (int x = -128; x < 128; x++) for (int y = -128; y < 128; y++) hashes.Add(P(x, y).GetHashCode());\n            double pct = hashes.Count * 100.0 / 65536;\n            return pct >= 99.0 ? null : \"-128~127 범위 65,536칸의 서로 다른 해시 값이 \" + hashes.Count + \"개(\" + pct.ToString(\"F1\") + \"%)뿐임 (99% 이상이어야 함)\";\n        });\n\n        Run(\"wrap-comparer\", () =>\n        {\n            try { new WrapXComparer(0); return \"너비 0에서 예외가 나지 않음\"; } catch (System.ArgumentOutOfRangeException) { }\n            var c = new WrapXComparer(100);\n            if (c.Width != 100) return \"Width: 기대 100, 결과 \" + c.Width;\n            (GridPos a, GridPos b, bool eq)[] cases =\n            {\n                (P(-1, 5), P(99, 5), true), (P(0, 5), P(100, 5), true), (P(250, -7), P(-50, -7), true), (P(-201, 2), P(99, 2), true),\n                (P(3, 5), P(3, 6), false), (P(3, 5), P(4, 5), false), (P(-1, 5), P(1, 5), false), (P(int.MinValue, 0), P(int.MinValue % 100 + 100, 0), true)\n            };\n            foreach (var t in cases)\n            {\n                if (c.Equals(t.a, t.b) != t.eq) return \"너비 100에서 \" + t.a + \" 와 \" + t.b + \": 기대 같음=\" + t.eq;\n                if (t.eq && c.GetHashCode(t.a) != c.GetHashCode(t.b)) return \"너비 100에서 \" + t.a + \" 와 \" + t.b + \"는 같은데 GetHashCode가 다름\";\n            }\n            var d = new System.Collections.Generic.Dictionary<GridPos, int>(c);\n            for (int x = -300; x < 300; x++) for (int y = 0; y < 3; y++) d[P(x, y)] = x;\n            if (d.Count != 300) return \"너비 100 지도에서 x -300~299, y 0~2를 넣었을 때 기대 300칸, 결과 \" + d.Count;\n            if (!d.TryGetValue(P(-1, 2), out int v) || v != 299) return \"(-1, 2)로 (299, 2)에 넣은 값을 찾지 못함\";\n            return null;\n        });\n\n        Run(\"no-alloc-lookups\", () =>\n        {\n            var d = new System.Collections.Generic.Dictionary<GridPos, int>(4096);\n            var set = new System.Collections.Generic.HashSet<GridPos>(4096);\n            var w = new System.Collections.Generic.Dictionary<GridPos, int>(4096, new WrapXComparer(5000));\n            for (int x = 1000; x < 1040; x++) for (int y = -2000; y < -1960; y++) { var k = P(x, y); d[k] = x ^ y; set.Add(k); w[k] = x + y; }\n            long bytes = 0;\n            for (int round = 0; round < 4; round++)\n            {\n                long before = System.GC.GetAllocatedBytesForCurrentThread();\n                long sum = 0;\n                for (int x = 1000; x < 1040; x++)\n                    for (int y = -2000; y < -1960; y++)\n                    {\n                        var k = P(x, y);\n                        if (d.TryGetValue(k, out int v)) sum += v;\n                        if (d.ContainsKey(P(x, y + 7777))) sum++;\n                        d[k] = v + 1;\n                        if (set.Contains(k)) sum++;\n                        if (w.TryGetValue(P(x + 5000 * (round + 1), y), out int wv)) sum += wv;\n                        if (k == P(x, y) && !(k != P(x, y)) && k.Equals(P(x, y))) sum += k.GetHashCode() & 1;\n                    }\n                _sink += sum;\n                if (round > 0) bytes += System.GC.GetAllocatedBytesForCurrentThread() - before;\n            }\n            return bytes == 0 ? null : \"키 조회·비교 4,800번(3회 측정)에 \" + bytes + \" B 할당됨 (박싱이나 문자열 생성 없이 비교·해시해야 함)\";\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(9001);\n            var d = new System.Collections.Generic.Dictionary<GridPos, int>();\n            var r = new System.Collections.Generic.Dictionary<long, int>();\n            for (int i = 0; i < 30000; i++)\n            {\n                int x = rng.Next(-40, 40), y = rng.Next(-40, 40), op = rng.Next(4);\n                long key = ((long)x << 32) | (uint)y;\n                if (op == 0) { d[P(x, y)] = i; r[key] = i; }\n                else if (op == 1) { if (d.Remove(P(x, y)) != r.Remove(key)) return \"Remove\" + P(x, y) + \" 결과가 기준과 다름\"; }\n                else\n                {\n                    bool f1 = d.TryGetValue(P(x, y), out int v1), f2 = r.TryGetValue(key, out int v2);\n                    if (f1 != f2 || v1 != v2) return \"TryGetValue\" + P(x, y) + \": 기대 \" + f2 + \"/\" + v2 + \", 결과 \" + f1 + \"/\" + v1;\n                }\n            }\n            return d.Count == r.Count ? null : \"최종 Count: 기대 \" + r.Count + \", 결과 \" + d.Count;\n        });\n    }\n}\n",
+        "cases": [
+          "equality-members",
+          "dictionary-and-hashset",
+          "hash-consistent",
+          "hash-spread",
+          "wrap-comparer",
+          "no-alloc-lookups",
+          "random-vs-reference"
+        ],
+        "note": "다섯 같음 멤버의 일관성(null·다른 형식 포함), Dictionary·HashSet에서의 조회와 중복 제거, 같은 좌표의 해시 일치, -128~127 범위 65,536칸에서 해시 값 99% 이상 고유, WrapXComparer의 음수·큰 X 정규화와 해시 일관성(너비 0이면 ArgumentOutOfRangeException), 기본 비교자와 WrapXComparer를 쓰는 조회·비교 묶음의 할당 0 B(워밍업 뒤 GC.GetAllocatedBytesForCurrentThread로 측정), 무작위 추가·삭제·조회에서 기준 사전과의 일치를 검사합니다. GridPos(생성자 (x, y), X, Y, Equals(GridPos), Equals(object), GetHashCode, ==, !=, ToString)와 WrapXComparer(생성자 (width), Width, Equals(GridPos, GridPos), GetHashCode(GridPos))의 시그니처는 바꾸지 마세요."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기(.NET 8.0.24)에서 모범 답안(HashCode.Combine) 전부 통과·스타터 실패를 확인하고, X*397^Y·X^Y 해시, (GridPos) 캐스트, object 경유 비교, 문자열 해시, %만 쓴 접기, 원래 X로 해시, Math.Abs 오답이 모두 걸리고 ValueTuple·비트 패킹·record struct·EqualityComparer 상속 정답은 통과함을 실행해 본 뒤, 분포 요건을 시나리오에 정확히 적고 GetHashCode·HashCode·IEquatable·Dictionary 문서에 대조했습니다."
+      },
+      "nextMission": "좌표 범위가 -32768~32767로 커진다고 하고, 비트 패킹 해시 `(X << 16) | (Y & 0xFFFF)`가 어떤 좌표 쌍에서 충돌하는지 직접 찾아보세요. 이어서 같은 지도를 `Dictionary<GridPos, TileState>` 대신 `(y - minY) * width + (x - minX)`로 인덱싱하는 배열로 바꾼 버전을 만들고, 조회 10만 번의 시간을 Stopwatch로 비교해 배열이 나은 경우와 Dictionary가 나은 경우(빈 칸이 많은 지도, 음수 좌표, 끝없이 넓어지는 지도)를 정리해 보세요."
     }
   ]
 }
