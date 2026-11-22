@@ -2,14 +2,15 @@
 /* 문제 파일의 스키마·채점표 합계·출처 ID를 검사합니다. (Node 18+)
    사용법: node tools/validate-data.js            → data/의 모든 트랙 파일
            node tools/validate-data.js <파일>...  → 지정한 파일만
-           --strict-basis  채점 항목·치명적 감점마다 sourceId나 basis 중 하나를 요구 */
+           채점 항목·치명적 감점마다 sourceId나 basis 중 하나를 요구합니다(최종 점검 후 기본 동작).
+           --strict-basis는 예전 호출과의 호환을 위해 받아 두며, 따로 하는 일은 없습니다. */
 const fs = require('fs'), path = require('path');
 const dataDir = path.join(__dirname, '..', 'data');
 const regList = JSON.parse(fs.readFileSync(path.join(dataDir, 'sources.json'), 'utf8')).sources;
 const reg = new Set(regList.map(s => s.id));
 const regUrl = Object.fromEntries(regList.map(s => [s.id, s.url]));
 const tracks = JSON.parse(fs.readFileSync(path.join(dataDir, 'tracks.json'), 'utf8')).tracks;
-const args = process.argv.slice(2), strictBasis = args.includes('--strict-basis'), fileArgs = args.filter(a => a !== '--strict-basis');
+const args = process.argv.slice(2), strictBasis = true, fileArgs = args.filter(a => a !== '--strict-basis');
 const BASIS = ['principle', 'tests'];
 const files = fileArgs.length ? fileArgs : fs.readdirSync(dataDir).filter(f => /^track\d+_.*\.json$/.test(f)).map(f => path.join(dataDir, f));
 const CATS = { '정확성': 35, '메모리·성능': 30, '엔진·언어 규약': 20, '아키텍처·가독성': 15 };
