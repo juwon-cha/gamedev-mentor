@@ -1005,18 +1005,25 @@
 | `wiki-specular-reflection` | [Wikipedia — Specular reflection](https://en.wikipedia.org/wiki/Specular_reflection) | 트랙 추가 자료 | track6 | 1 — `t6-impl-project-reflect-bounce` |
 | `wiki-vector-projection` | [Wikipedia — Vector projection](https://en.wikipedia.org/wiki/Vector_projection) | 트랙 추가 자료 | track6 | 2 — `t6-impl-closest-point-segment-sweep`, `t6-impl-project-reflect-bounce` |
 
-## 트랙7: CS 기초 추가 자료 (`data/track7_cs.json`의 `extraSources`, 208개)
+## 트랙7: CS 기초 추가 자료 (`data/track7_cs.json`의 `extraSources`, 227개)
 
 | id | 제목 | 종류 | 트랙 | 인용 문제 |
 |---|---|---|---|---|
 | `android-memory-management` | [Android Developers · Memory allocation among processes](https://developer.android.com/topic/performance/memory-management) | 트랙 추가 자료 | track7 | 1 — `t7-interview-memory-stack-heap-virtual` |
+| `cmu-15418-basicarch` | [CMU 15-418/618 (Fall 2026) — Lecture 3: Basic architecture (슬라이드 PDF)](https://www.cs.cmu.edu/~418/lectures/03_basicarch.pdf) | 트랙 추가 자료 | track7 | 0 |
+| `cmu-15418-cachecoherence` | [CMU 15-418/618 (Fall 2026) — Lecture 10: Cache coherence (슬라이드 PDF)](https://www.cs.cmu.edu/~418/lectures/10_cachecoherence.pdf) | 트랙 추가 자료 | track7 | 1 — `t7-interview-cpu-cache-locality` |
+| `cmu-15418-lockfree` | [CMU 15-418/618 Fall 2026 — Lock-free Programming (lecture slides)](https://www.cs.cmu.edu/~418/lectures/17_lockfree.pdf) | 트랙 추가 자료 | track7 | 0 |
+| `cmu-15418-sync` | [CMU 15-418/618 Fall 2026 — Synchronization (lecture slides)](https://www.cs.cmu.edu/~418/lectures/16_synchronization.pdf) | 트랙 추가 자료 | track7 | 0 |
+| `cmu-15418-virtualmemory` | [CMU 15-418/618 (Fall 2026) — Lecture 19: Virtual memory (슬라이드 PDF)](https://www.cs.cmu.edu/~418/lectures/19_virtualmemory.pdf) | 트랙 추가 자료 | track7 | 1 — `t7-interview-memory-stack-heap-virtual` |
+| `cmu-17214-03-testability` | [CMU 17-214/514 (Fall 2026) 03 Testing and Testability 슬라이드](https://github.com/CMU-17-214/f2026/blob/main/slides/03-testing-and-testability.pdf) | 트랙 추가 자료 | track7 | 1 — `t7-interview-debugging-methodology` |
+| `cmu-17214-17-concurrency` | [CMU 17-214/514 (Fall 2026) 17 Concurrency and Asynchrony 슬라이드](https://github.com/CMU-17-214/f2026/blob/main/slides/17-concurrency.pdf) | 트랙 추가 자료 | track7 | 4 — `t7-debug-loot-ledger-race`, `t7-debug-trade-deadlock`, `t7-impl-main-thread-dispatcher`, `t7-interview-sync-primitives` |
 | `cppref-arithmetic` | [cppreference · Arithmetic operators](https://en.cppreference.com/w/cpp/language/operator_arithmetic) | 트랙 추가 자료 | track7 | 0 |
 | `crc-reveng-crc32` | [Greg Cook, Catalogue of parametrised CRC algorithms — CRC-32/ISO-HDLC](https://reveng.sourceforge.io/crc-catalogue/17plus.htm#crc.cat.crc-32-iso-hdlc) | 트랙 추가 자료 | track7 | 1 — `t7-impl-atomic-save-writer` |
 | `crc-reveng-legend` | [Greg Cook, CRC catalogue — Legend](https://reveng.sourceforge.io/crc-catalogue/legend.htm) | 트랙 추가 자료 | track7 | 0 |
 | `cs-spec-conditional-methods` | [C# 언어 사양(Microsoft Learn) · §23.5.3.2 Conditional methods](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/attributes#23532-conditional-methods) | 트랙 추가 자료 | track7 | 1 — `t7-interview-compile-jit-aot-il2cpp` |
 | `cs-spec-unsafe-code` | [C# language specification — Unsafe code (sizeof operator, fixed statement)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/unsafe-code) | 트랙 추가 자료 | track7 | 0 |
 | `dotnet-runtime-memory-model` | [GitHub · dotnet/runtime (release/8.0) · .NET memory model (Memory-model.md)](https://github.com/dotnet/runtime/blob/release/8.0/docs/design/specs/Memory-model.md) | 트랙 추가 자료 | track7 | 1 — `t7-debug-lazy-init-double-checked-locking` |
-| `ecma-335-cli` | [ECMA-335 · Common Language Infrastructure (CLI), Partition I §8.9.1 Array types](https://ecma-international.org/publications-and-standards/standards/ecma-335/) | 트랙 추가 자료 | track7 | 1 — `t7-interview-cpu-cache-locality` |
+| `ecma-335-cli` | [ECMA-335 · Common Language Infrastructure (CLI), Partition I §8.9.1 Array types](https://ecma-international.org/publications-and-standards/standards/ecma-335/) | 트랙 추가 자료 | track7 | 0 |
 | `fnv-isthe` | [Landon Curt Noll — FNV Hash (저자 페이지)](https://www.isthe.com/chongo/tech/comp/fnv/index.html) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-hash-encode-encrypt-fnv1a` |
 | `gdk-xgamesave-submitupdate` | [Microsoft GDK · XGameSaveSubmitUpdate](https://learn.microsoft.com/en-us/gaming/gdk/docs/reference/system/xgamesave/functions/xgamesavesubmitupdate) | 트랙 추가 자료 | track7 | 1 — `t7-interview-file-io-atomic-save` |
 | `git-bisect` | [git-bisect Documentation (git-scm.com)](https://git-scm.com/docs/git-bisect) | 트랙 추가 자료 | track7 | 1 — `t7-interview-debugging-methodology` |
@@ -1036,6 +1043,8 @@
 | `linux-nanosleep-man` | [Linux man-pages 6.19 — nanosleep(2)](https://man7.org/linux/man-pages/man2/nanosleep.2.html) | 트랙 추가 자료 | track7 | 1 — `t7-interview-os-scheduling-frame-pacing` |
 | `linux-sched-man` | [Linux man-pages 6.19 — sched(7)](https://man7.org/linux/man-pages/man7/sched.7.html) | 트랙 추가 자료 | track7 | 0 |
 | `linux-time-man` | [Linux man-pages 6.19 — time(7)](https://man7.org/linux/man-pages/man7/time.7.html) | 트랙 추가 자료 | track7 | 0 |
+| `ms-arraypool` | [ArrayPool<T> Class (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.buffers.arraypool-1?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-debug-async-thread-chunk-mesher` |
+| `ms-arraypool-rent` | [ArrayPool<T>.Rent(Int32) Method (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.buffers.arraypool-1.rent?view=net-8.0) | 트랙 추가 자료 | track7 | 0 |
 | `ms-async-keyword` | [Microsoft Learn — async keyword (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/async) | 트랙 추가 자료 | track7 | 1 — `t7-debug-async-thread-chunk-mesher` |
 | `ms-async-scenarios` | [Microsoft Learn — Asynchronous programming scenarios](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios) | 트랙 추가 자료 | track7 | 1 — `t7-debug-async-thread-chunk-mesher` |
 | `ms-azure-git-branching` | [Git branching guidance — Azure Repos (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance) | 트랙 추가 자료 | track7 | 1 — `t7-interview-version-control-game-team` |
@@ -1053,7 +1062,9 @@
 | `ms-crypto-overview` | [Microsoft Learn — Overview of encryption, signatures, and hash algorithms in .NET](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptographic-services) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-hash-encode-encrypt-fnv1a` |
 | `ms-cs1612` | [Microsoft Learn · Compiler Error CS1612](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1612) | 트랙 추가 자료 | track7 | 0 |
 | `ms-csc-code-generation` | [Microsoft Learn · C# compiler options that control code generation](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/code-generation) | 트랙 추가 자료 | track7 | 0 |
+| `ms-csharp-spec-atomicity` | [C# 언어 명세 (Microsoft Learn) — §9.6 Atomicity of variable references](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/variables#96-atomicity-of-variable-references) | 트랙 추가 자료 | track7 | 0 |
 | `ms-csharp-spec-compound-assignment` | [Microsoft Learn · C# 명세 §12.24.5 Compound assignment](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12245-compound-assignment) | 트랙 추가 자료 | track7 | 0 |
+| `ms-csharp-spec-enum-logical` | [C# 언어 명세 (Microsoft Learn) — §12.16.3 Enumeration logical operators](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12163-enumeration-logical-operators) | 트랙 추가 자료 | track7 | 0 |
 | `ms-csharp-spec-postfix` | [Microsoft Learn · C# 명세 §12.8.16 Postfix increment and decrement operators](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12816-postfix-increment-and-decrement-operators) | 트랙 추가 자료 | track7 | 0 |
 | `ms-cultureinfo-invariant` | [CultureInfo.InvariantCulture Property (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo.invariantculture?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-impl-debug-console-tokenizer` |
 | `ms-data-sqlite` | [Microsoft Learn — Microsoft.Data.Sqlite overview](https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/) | 트랙 추가 자료 | track7 | 0 |
@@ -1064,6 +1075,7 @@
 | `ms-dotnet-logging` | [Logging in C# — .NET (Microsoft Learn)](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview) | 트랙 추가 자료 | track7 | 1 — `t7-interview-debugging-methodology` |
 | `ms-double-parse` | [Double.Parse Method (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.double.parse?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-impl-debug-console-tokenizer` |
 | `ms-enum-flags` | [Microsoft Learn · Enumeration types (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-bits-status-flags` |
+| `ms-enum-hasflag` | [Microsoft Learn · Enum.HasFlag(Enum) Method](https://learn.microsoft.com/en-us/dotnet/api/system.enum.hasflag) | 트랙 추가 자료 | track7 | 0 |
 | `ms-exception-stacktrace` | [Exception.StackTrace Property (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.exception.stacktrace?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-interview-debugging-methodology` |
 | `ms-exceptions-managed-threads` | [Microsoft Learn · Exceptions in managed threads](https://learn.microsoft.com/en-us/dotnet/standard/threading/exceptions-in-managed-threads) | 트랙 추가 자료 | track7 | 1 — `t7-impl-fixed-thread-pool-work-queue` |
 | `ms-file-move` | [Microsoft Learn · File.Move Method](https://learn.microsoft.com/en-us/dotnet/api/system.io.file.move) | 트랙 추가 자료 | track7 | 2 — `t7-impl-atomic-save-writer`, `t7-interview-file-io-atomic-save` |
@@ -1072,9 +1084,9 @@
 | `ms-fileoptions` | [Microsoft Learn · FileOptions Enum](https://learn.microsoft.com/en-us/dotnet/api/system.io.fileoptions) | 트랙 추가 자료 | track7 | 0 |
 | `ms-filestream-flush` | [Microsoft Learn · FileStream.Flush Method](https://learn.microsoft.com/en-us/dotnet/api/system.io.filestream.flush) | 트랙 추가 자료 | track7 | 2 — `t7-impl-atomic-save-writer`, `t7-interview-file-io-atomic-save` |
 | `ms-flagsattribute` | [Microsoft Learn · FlagsAttribute Class](https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-bits-status-flags` |
-| `ms-floating-point-types` | [Microsoft Learn · Floating-point numeric types (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types) | 트랙 추가 자료 | track7 | 2 — `t7-debug-integer-pitfalls-combat-math`, `t7-debug-time-cooldown-daily-reset` |
+| `ms-floating-point-types` | [Microsoft Learn · Floating-point numeric types (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types) | 트랙 추가 자료 | track7 | 2 — `t7-debug-time-cooldown-daily-reset`, `t7-impl-token-bucket-rate-limiter` |
 | `ms-gettickcount64` | [Microsoft Learn — GetTickCount64 function (sysinfoapi.h)](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount64) | 트랙 추가 자료 | track7 | 0 |
-| `ms-gh-botr-intro-clr-net8` | [Book of the Runtime — Intro to the CLR (release/8.0)](https://github.com/dotnet/runtime/blob/release/8.0/docs/design/coreclr/botr/intro-to-clr.md) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-object-vs-struct-array-layout` |
+| `ms-gh-botr-intro-clr-net8` | [Book of the Runtime — Intro to the CLR (release/8.0)](https://github.com/dotnet/runtime/blob/release/8.0/docs/design/coreclr/botr/intro-to-clr.md) | 트랙 추가 자료 | track7 | 2 — `t7-interview-cpu-cache-locality`, `t7-tutor-object-vs-struct-array-layout` |
 | `ms-gh-botr-threading-net8` | [Book of the Runtime — Managed Threading: object headers and sync blocks (release/8.0)](https://github.com/dotnet/runtime/blob/release/8.0/docs/design/coreclr/botr/threading.md) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-object-vs-struct-array-layout` |
 | `ms-gh-botr-type-loader-net8` | [Book of the Runtime — Type Loader Design (release/8.0)](https://github.com/dotnet/runtime/blob/release/8.0/docs/design/coreclr/botr/type-loader.md) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-bufferedfilestream-net8` | [GitHub · dotnet/runtime (release/8.0) · BufferedFileStreamStrategy.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/IO/Strategies/BufferedFileStreamStrategy.cs) | 트랙 추가 자료 | track7 | 0 |
@@ -1084,8 +1096,10 @@
 | `ms-gh-runtime-filesystem-unix-net8` | [GitHub · dotnet/runtime (release/8.0) · FileSystem.Unix.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/IO/FileSystem.Unix.cs) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-lazy-net8` | [GitHub · dotnet/runtime (release/8.0) · Lazy.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Lazy.cs) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-lazyinitializer-net8` | [GitHub · dotnet/runtime (release/8.0) · LazyInitializer.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Threading/LazyInitializer.cs) | 트랙 추가 자료 | track7 | 0 |
+| `ms-gh-runtime-list-cs-net8` | [dotnet/runtime (release/8.0) — List.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Private.CoreLib/src/System/Collections/Generic/List.cs) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-movefileex-net8` | [GitHub · dotnet/runtime (release/8.0) · Interop.MoveFileEx.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/Common/src/Interop/Windows/Kernel32/Interop.MoveFileEx.cs) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-object-h-net8` | [dotnet/runtime release/8.0 — src/coreclr/vm/object.h](https://github.com/dotnet/runtime/blob/release/8.0/src/coreclr/vm/object.h) | 트랙 추가 자료 | track7 | 0 |
+| `ms-gh-runtime-padding-net8` | [dotnet/runtime (release/8.0) — Internal/Padding.cs](https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/Common/src/Internal/Padding.cs) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-pal-datetime-net8` | [dotnet/runtime release/8.0 — pal_datetime.c (SystemNative_GetSystemTimeAsTicks)](https://github.com/dotnet/runtime/blob/release/8.0/src/native/libs/System.Native/pal_datetime.c) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-pal-io-net8` | [GitHub · dotnet/runtime (release/8.0) · System.Native pal_io.c](https://github.com/dotnet/runtime/blob/release/8.0/src/native/libs/System.Native/pal_io.c) | 트랙 추가 자료 | track7 | 0 |
 | `ms-gh-runtime-pal-time-net8` | [dotnet/runtime release/8.0 — pal_time.c (SystemNative_GetTimestamp)](https://github.com/dotnet/runtime/blob/release/8.0/src/native/libs/System.Native/pal_time.c) | 트랙 추가 자료 | track7 | 0 |
@@ -1111,7 +1125,7 @@
 | `ms-learn-string-gethashcode` | [Microsoft Learn — String.GetHashCode (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.string.gethashcode?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-hash-encode-encrypt-fnv1a` |
 | `ms-lippert-stack` | [Microsoft Learn (archive) · Eric Lippert, The Stack Is An Implementation Detail, Part One](https://learn.microsoft.com/en-us/archive/blogs/ericlippert/the-stack-is-an-implementation-detail-part-one) | 트랙 추가 자료 | track7 | 1 — `t7-interview-memory-stack-heap-virtual` |
 | `ms-list-thread-safety` | [Microsoft Learn · List<T> Class (Thread Safety)](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) | 트랙 추가 자료 | track7 | 2 — `t7-debug-loot-ledger-race`, `t7-impl-main-thread-dispatcher` |
-| `ms-lock-statement` | [Microsoft Learn · The lock statement](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock) | 트랙 추가 자료 | track7 | 4 — `t7-debug-loot-ledger-race`, `t7-debug-trade-deadlock`, `t7-impl-main-thread-dispatcher`, `t7-interview-sync-primitives` |
+| `ms-lock-statement` | [Microsoft Learn · The lock statement](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock) | 트랙 추가 자료 | track7 | 3 — `t7-debug-loot-ledger-race`, `t7-debug-trade-deadlock`, `t7-impl-main-thread-dispatcher` |
 | `ms-managed-execution` | [Microsoft Learn · Managed execution process](https://learn.microsoft.com/en-us/dotnet/standard/managed-execution-process) | 트랙 추가 자료 | track7 | 1 — `t7-interview-compile-jit-aot-il2cpp` |
 | `ms-managed-threadpool` | [Microsoft Learn · The managed thread pool](https://learn.microsoft.com/en-us/dotnet/standard/threading/the-managed-thread-pool) | 트랙 추가 자료 | track7 | 1 — `t7-impl-fixed-thread-pool-work-queue` |
 | `ms-monitor-pulse` | [Microsoft Learn · Monitor.Pulse Method](https://learn.microsoft.com/en-us/dotnet/api/system.threading.monitor.pulse) | 트랙 추가 자료 | track7 | 1 — `t7-impl-fixed-thread-pool-work-queue` |
@@ -1119,6 +1133,7 @@
 | `ms-monitor-wait` | [Microsoft Learn · Monitor.Wait Method](https://learn.microsoft.com/en-us/dotnet/api/system.threading.monitor.wait) | 트랙 추가 자료 | track7 | 2 — `t7-impl-bounded-blocking-queue`, `t7-impl-fixed-thread-pool-work-queue` |
 | `ms-native-aot` | [Microsoft Learn · Native AOT deployment overview](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/) | 트랙 추가 자료 | track7 | 0 |
 | `ms-numeric-conversions` | [Microsoft Learn · Built-in numeric conversions (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/numeric-conversions) | 트랙 추가 자료 | track7 | 2 — `t7-debug-integer-pitfalls-combat-math`, `t7-impl-bit-pack-unit-header` |
+| `ms-operator-precedence` | [Microsoft Learn · C# operators and expressions — Operator precedence](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/#operator-precedence) | 트랙 추가 자료 | track7 | 0 |
 | `ms-qpc-timestamps` | [Microsoft Learn — Acquiring high-resolution time stamps](https://learn.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps) | 트랙 추가 자료 | track7 | 2 — `t7-debug-time-cooldown-daily-reset`, `t7-interview-os-scheduling-frame-pacing` |
 | `ms-readerwriterlockslim` | [Microsoft Learn · ReaderWriterLockSlim Class](https://learn.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlockslim) | 트랙 추가 자료 | track7 | 1 — `t7-interview-sync-primitives` |
 | `ms-ready-to-run` | [Microsoft Learn · ReadyToRun deployment overview](https://learn.microsoft.com/en-us/dotnet/core/deploying/ready-to-run) | 트랙 추가 자료 | track7 | 1 — `t7-interview-compile-jit-aot-il2cpp` |
@@ -1132,10 +1147,11 @@
 | `ms-streamwriter-flush` | [Microsoft Learn · StreamWriter.Flush Method](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamwriter.flush) | 트랙 추가 자료 | track7 | 0 |
 | `ms-string-enumeraterunes` | [Microsoft Learn · String.EnumerateRunes Method](https://learn.microsoft.com/en-us/dotnet/api/system.string.enumeraterunes?view=net-8.0) | 트랙 추가 자료 | track7 | 0 |
 | `ms-string-length` | [Microsoft Learn · String.Length Property](https://learn.microsoft.com/en-us/dotnet/api/system.string.length) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-utf8-nickname-byte-limit` |
+| `ms-string-normalize` | [Microsoft Learn · String.Normalize Method (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.string.normalize?view=net-8.0) | 트랙 추가 자료 | track7 | 0 |
 | `ms-structlayout-pack` | [StructLayoutAttribute.Pack Field (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.structlayoutattribute.pack?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-object-vs-struct-array-layout` |
 | `ms-structlayoutattribute` | [StructLayoutAttribute Class (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.structlayoutattribute?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-object-vs-struct-array-layout` |
 | `ms-sync-primitives-overview` | [Microsoft Learn · Overview of synchronization primitives](https://learn.microsoft.com/en-us/dotnet/standard/threading/overview-of-synchronization-primitives) | 트랙 추가 자료 | track7 | 1 — `t7-interview-sync-primitives` |
-| `ms-tap-consuming` | [Microsoft Learn · Consuming the Task-based Asynchronous Pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern) | 트랙 추가 자료 | track7 | 1 — `t7-interview-unity-concurrency-model` |
+| `ms-tap-consuming` | [Microsoft Learn · Consuming the Task-based Asynchronous Pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern) | 트랙 추가 자료 | track7 | 0 |
 | `ms-task-iscompleted` | [Microsoft Learn — Task.IsCompleted (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.iscompleted?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-debug-async-thread-chunk-mesher` |
 | `ms-task-run` | [Microsoft Learn — Task.Run (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.run?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-debug-async-thread-chunk-mesher` |
 | `ms-task-wait` | [Microsoft Learn · Task.Wait Method](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.wait) | 트랙 추가 자료 | track7 | 1 — `t7-impl-fixed-thread-pool-work-queue` |
@@ -1147,7 +1163,7 @@
 | `ms-timezoneinfo-baseutcoffset` | [TimeZoneInfo.BaseUtcOffset Property (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.timezoneinfo.baseutcoffset?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-debug-time-cooldown-daily-reset` |
 | `ms-timezoneinfo-converttimefromutc` | [TimeZoneInfo.ConvertTimeFromUtc Method (.NET 8)](https://learn.microsoft.com/en-us/dotnet/api/system.timezoneinfo.converttimefromutc?view=net-8.0) | 트랙 추가 자료 | track7 | 1 — `t7-debug-time-cooldown-daily-reset` |
 | `ms-tokenbucket-options` | [Microsoft Learn — TokenBucketRateLimiterOptions (System.Threading.RateLimiting)](https://learn.microsoft.com/en-us/dotnet/api/system.threading.ratelimiting.tokenbucketratelimiteroptions) | 트랙 추가 자료 | track7 | 1 — `t7-impl-token-bucket-rate-limiter` |
-| `ms-volatile` | [Microsoft Learn · volatile keyword](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/volatile) | 트랙 추가 자료 | track7 | 3 — `t7-debug-lazy-init-double-checked-locking`, `t7-debug-loot-ledger-race`, `t7-interview-unity-concurrency-model` |
+| `ms-volatile` | [Microsoft Learn · volatile keyword](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/volatile) | 트랙 추가 자료 | track7 | 2 — `t7-debug-lazy-init-double-checked-locking`, `t7-debug-loot-ledger-race` |
 | `ms-vs-breakpoints` | [Use the right type of breakpoint — Visual Studio (Microsoft Learn)](https://learn.microsoft.com/en-us/visualstudio/debugger/using-breakpoints) | 트랙 추가 자료 | track7 | 1 — `t7-interview-debugging-methodology` |
 | `ms-vs-dump-files` | [Use dump files in the debugger — Visual Studio (Microsoft Learn)](https://learn.microsoft.com/en-us/visualstudio/debugger/using-dump-files) | 트랙 추가 자료 | track7 | 1 — `t7-interview-debugging-methodology` |
 | `ms-wer-localdumps` | [Collecting User-Mode Dumps (WER LocalDumps)](https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps) | 트랙 추가 자료 | track7 | 0 |
@@ -1161,6 +1177,7 @@
 | `sqlite-atomic-commit` | [SQLite · Atomic Commit In SQLite](https://www.sqlite.org/atomiccommit.html) | 트랙 추가 자료 | track7 | 1 — `t7-interview-file-io-atomic-save` |
 | `sqlite-faq` | [SQLite — Frequently Asked Questions (q19: INSERT is really slow)](https://www.sqlite.org/faq.html#q19) | 트랙 추가 자료 | track7 | 1 — `t7-interview-client-data-formats-sqlite` |
 | `sqlite-foreignkeys` | [SQLite — Foreign Key Support](https://www.sqlite.org/foreignkeys.html) | 트랙 추가 자료 | track7 | 0 |
+| `sqlite-release-3-53-0` | [SQLite Release 3.53.0 (2026-04-09)](https://www.sqlite.org/releaselog/3_53_0.html) | 트랙 추가 자료 | track7 | 0 |
 | `sqlite-user-version` | [SQLite — PRAGMA user_version](https://www.sqlite.org/pragma.html#pragma_user_version) | 트랙 추가 자료 | track7 | 0 |
 | `sqlite-whentouse` | [SQLite — Appropriate Uses For SQLite](https://www.sqlite.org/whentouse.html) | 트랙 추가 자료 | track7 | 1 — `t7-interview-client-data-formats-sqlite` |
 | `unicode-uax29` | [Unicode Standard Annex #29 · Unicode Text Segmentation](https://www.unicode.org/reports/tr29/) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-utf8-nickname-byte-limit` |
@@ -1174,7 +1191,7 @@
 | `unity-il2cpp-limitations` | [Unity Manual (6000.0) · IL2CPP limitations](https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/il2cpp/scripting-restrictions) | 트랙 추가 자료 | track7 | 1 — `t7-interview-compile-jit-aot-il2cpp` |
 | `unity-il2cpp-runtime-checks` | [Unity Manual (6000.0) · IL2CPP runtime code checks](https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/il2cpp/il2cpp-runtime-checks) | 트랙 추가 자료 | track7 | 0 |
 | `unity-il2cpp-stack-traces` | [Unity Manual (6000.0) · IL2CPP managed stack traces](https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/scripting-backends/il2cpp/il2cpp-managed-stack-traces) | 트랙 추가 자료 | track7 | 1 — `t7-interview-compile-jit-aot-il2cpp` |
-| `unity-job-create-run` | [Unity 6 Manual · Create and run a job](https://docs.unity.com/en-us/engine/6000.0/manual/scripting/programming-distribute-work-threads/job-system/creating-jobs) | 트랙 추가 자료 | track7 | 1 — `t7-interview-unity-concurrency-model` |
+| `unity-job-create-run` | [Unity 6 Manual · Create and run a job](https://docs.unity.com/en-us/engine/6000.0/manual/scripting/programming-distribute-work-threads/job-system/creating-jobs) | 트랙 추가 자료 | track7 | 0 |
 | `unity-job-system-overview` | [Unity 6 Manual · Job system overview](https://docs.unity.com/en-us/engine/6000.0/manual/scripting/programming-distribute-work-threads/job-system/overview) | 트랙 추가 자료 | track7 | 2 — `t7-interview-process-thread-context-switch`, `t7-interview-unity-concurrency-model` |
 | `unity-managed-code-debugging` | [Unity Manual (6000.0) · Debug C# code in Unity](https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/environment-and-tools/debugging-and-diagnostics/managed-code-debugging) | 트랙 추가 자료 | track7 | 0 |
 | `unity-managed-code-stripping` | [Unity Manual (6000.0) · Managed code stripping](https://docs.unity.com/en-us/engine/6000.0/manual/programming-environment/script-compilation/managed-code-stripping) | 트랙 추가 자료 | track7 | 0 |
@@ -1187,16 +1204,16 @@
 | `unity-targetframerate` | [Unity 6 (6000.0) Scripting API — Application.targetFrameRate](https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/application/targetframerate) | 트랙 추가 자료 | track7 | 1 — `t7-interview-os-scheduling-frame-pacing` |
 | `unity-vc-integration` | [Version control integrations — Unity 6.0 Manual](https://docs.unity.com/en-us/engine/6000.0/manual/get-started/project-configuration/version-control/versioncontrolintegration) | 트랙 추가 자료 | track7 | 0 |
 | `unity-vsynccount` | [Unity 6 (6000.0) Scripting API — QualitySettings.vSyncCount](https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/qualitysettings/vsynccount) | 트랙 추가 자료 | track7 | 1 — `t7-interview-os-scheduling-frame-pacing` |
-| `wiki-aba-problem` | [Wikipedia · ABA problem](https://en.wikipedia.org/wiki/ABA_problem) | 트랙 추가 자료 | track7 | 1 — `t7-interview-sync-primitives` |
+| `wiki-aba-problem` | [Wikipedia · ABA problem](https://en.wikipedia.org/wiki/ABA_problem) | 트랙 추가 자료 | track7 | 0 |
 | `wiki-amdahl` | [Wikipedia · Amdahl's law](https://en.wikipedia.org/wiki/Amdahl%27s_law) | 트랙 추가 자료 | track7 | 1 — `t7-interview-process-thread-context-switch` |
 | `wiki-aot` | [Wikipedia · Ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) | 트랙 추가 자료 | track7 | 0 |
 | `wiki-cache-replacement` | [Wikipedia · Cache replacement policies](https://en.wikipedia.org/wiki/Cache_replacement_policies) | 트랙 추가 자료 | track7 | 1 — `t7-impl-lru-asset-cache` |
-| `wiki-compare-and-swap` | [Wikipedia · Compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap) | 트랙 추가 자료 | track7 | 1 — `t7-interview-sync-primitives` |
+| `wiki-compare-and-swap` | [Wikipedia · Compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap) | 트랙 추가 자료 | track7 | 0 |
 | `wiki-context-switch` | [Wikipedia · Context switch](https://en.wikipedia.org/wiki/Context_switch) | 트랙 추가 자료 | track7 | 1 — `t7-interview-process-thread-context-switch` |
 | `wiki-cpu-cache` | [Wikipedia · CPU cache](https://en.wikipedia.org/wiki/CPU_cache) | 트랙 추가 자료 | track7 | 1 — `t7-interview-cpu-cache-locality` |
 | `wiki-crc` | [Wikipedia — Cyclic redundancy check](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) | 트랙 추가 자료 | track7 | 1 — `t7-tutor-hash-encode-encrypt-fnv1a` |
 | `wiki-deadlock` | [Wikipedia · Deadlock (computer science)](https://en.wikipedia.org/wiki/Deadlock_(computer_science)) | 트랙 추가 자료 | track7 | 1 — `t7-debug-trade-deadlock` |
-| `wiki-false-sharing` | [Wikipedia · False sharing](https://en.wikipedia.org/wiki/False_sharing) | 트랙 추가 자료 | track7 | 2 — `t7-interview-cpu-cache-locality`, `t7-interview-process-thread-context-switch` |
+| `wiki-false-sharing` | [Wikipedia · False sharing](https://en.wikipedia.org/wiki/False_sharing) | 트랙 추가 자료 | track7 | 1 — `t7-interview-cpu-cache-locality` |
 | `wiki-fragmentation` | [Wikipedia · Fragmentation (computing)](https://en.wikipedia.org/wiki/Fragmentation_(computing)) | 트랙 추가 자료 | track7 | 1 — `t7-interview-memory-stack-heap-virtual` |
 | `wiki-interpreter` | [Wikipedia · Interpreter (computing)](https://en.wikipedia.org/wiki/Interpreter_(computing)) | 트랙 추가 자료 | track7 | 0 |
 | `wiki-jit` | [Wikipedia · Just-in-time compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation) | 트랙 추가 자료 | track7 | 1 — `t7-interview-compile-jit-aot-il2cpp` |
@@ -1204,10 +1221,12 @@
 | `wiki-locality-of-reference` | [Wikipedia · Locality of reference](https://en.wikipedia.org/wiki/Locality_of_reference) | 트랙 추가 자료 | track7 | 1 — `t7-interview-cpu-cache-locality` |
 | `wiki-memory-leak` | [Wikipedia · Memory leak](https://en.wikipedia.org/wiki/Memory_leak) | 트랙 추가 자료 | track7 | 1 — `t7-interview-memory-stack-heap-virtual` |
 | `wiki-rwlock` | [Wikipedia · Readers–writer lock](https://en.wikipedia.org/wiki/Readers%E2%80%93writer_lock) | 트랙 추가 자료 | track7 | 1 — `t7-interview-sync-primitives` |
+| `wiki-single-precision` | [Wikipedia — Single-precision floating-point format](https://en.wikipedia.org/wiki/Single-precision_floating-point_format) | 트랙 추가 자료 | track7 | 1 — `t7-debug-integer-pitfalls-combat-math` |
 | `wiki-spinlock` | [Wikipedia · Spinlock](https://en.wikipedia.org/wiki/Spinlock) | 트랙 추가 자료 | track7 | 1 — `t7-interview-sync-primitives` |
 | `wiki-thread` | [Wikipedia · Thread (computing)](https://en.wikipedia.org/wiki/Thread_(computing)) | 트랙 추가 자료 | track7 | 1 — `t7-interview-process-thread-context-switch` |
 | `wiki-token-bucket` | [Wikipedia — Token bucket](https://en.wikipedia.org/wiki/Token_bucket) | 트랙 추가 자료 | track7 | 1 — `t7-impl-token-bucket-rate-limiter` |
-| `wiki-virtual-memory` | [Wikipedia · Virtual memory](https://en.wikipedia.org/wiki/Virtual_memory) | 트랙 추가 자료 | track7 | 1 — `t7-interview-memory-stack-heap-virtual` |
+| `wiki-virtual-memory` | [Wikipedia · Virtual memory](https://en.wikipedia.org/wiki/Virtual_memory) | 트랙 추가 자료 | track7 | 0 |
+| `win32-about-processes-threads` | [Microsoft Learn (Win32) · About Processes and Threads](https://learn.microsoft.com/en-us/windows/win32/procthread/about-processes-and-threads) | 트랙 추가 자료 | track7 | 1 — `t7-interview-process-thread-context-switch` |
 | `win32-context-switches` | [Microsoft Learn — Context Switches (Win32)](https://learn.microsoft.com/en-us/windows/win32/procthread/context-switches) | 트랙 추가 자료 | track7 | 0 |
 | `win32-createwaitabletimerex` | [Microsoft Learn — CreateWaitableTimerExW function](https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-createwaitabletimerexw) | 트랙 추가 자료 | track7 | 0 |
 | `win32-file-caching` | [Microsoft Learn — File Caching (Win32)](https://learn.microsoft.com/en-us/windows/win32/fileio/file-caching) | 트랙 추가 자료 | track7 | 0 |

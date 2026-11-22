@@ -97,7 +97,7 @@
   - `"principle"` (화면 표시 "일반 원칙"): 항목 설명 자체에 밝힌 일반 공학 원칙(가독성, 이름 짓기, 관심사 분리 등)을 채점합니다.
   - `"tests"` (화면 표시 "테스트로 확인"): 숨은 테스트가 바로 그 동작을 확인합니다.
 
-최종 점검을 마친 트랙은 모든 항목이 `sourceId`와 `basis` 중 적어도 하나를 가지며, `node tools/validate-data.js --strict-basis`로 검사합니다. 현황은 [VERIFICATION.md](VERIFICATION.md)의 요약에 있습니다.
+모든 항목은 `sourceId`와 `basis` 중 적어도 하나를 가지며, `node tools/validate-data.js`가 이를 검사합니다(최종 점검을 마친 2026-11-23부터 기본 동작). 현황은 [VERIFICATION.md](VERIFICATION.md)의 요약에 있습니다.
 
 ## 4. "흔한 오해"
 

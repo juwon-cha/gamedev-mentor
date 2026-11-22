@@ -98,3 +98,21 @@
 **어떻게 고쳤는지.** "매뉴얼은 이렇게 쓰지만, C# 명세와 실행 결과로는 `++`·`+=`가 get → set으로 값을 되돌려 쓴다. 안 되는 것은 구조체 요소의 필드를 제자리에서 바꾸는 것(CS1612)이고, 그때는 복사본을 고쳐 다시 대입한다"는 형태로 고치고, Unity 안에서 직접 실행한 결과가 아니라는 점을 밝혔다. 자료 `ms-csharp-spec-postfix`, `ms-cs1612`, `ms-csharp-spec-compound-assignment`, `unity-nativearray-indexer-api`를 더했다.
 
 **끝까지 확인하지 못한 것.** Unity 엔진 안에서의 실행. 이 문제의 `sourceRefs`가 9개로 기준(4개)을 넘는 점은 최종 점검에서 다룬다.
+
+## 최종 점검 (2026-11-23)
+
+배포된 30문제 전체를 점검 에이전트 3개(10문제씩)가 차례로 다시 확인하고, 점검에 참여하지 않은 검증 에이전트 2개(15문제씩)가 그 변경을 다시 확인했다. 두 번째 검증자가 숨은 테스트를 직접 고친 부분은 또 다른 검증 에이전트가 따로 확인했다. 모든 검증이 통과 판정을 냈다.
+
+**한 일.** 흔한 오해가 없던 12문제에 "### 흔한 오해" 절을 넣고(출처나 .NET 8 실행으로 뒷받침, 트랙 안에서 중복 없음), 모든 채점 항목·감점에 `sourceId`나 `basis`를 붙이고, `sourceRefs`가 4개를 넘던 문제를 4개로 줄였다. `sourceRefs`가 9개이던 `t7-interview-unity-concurrency-model`도 4개로 줄이고 나머지는 본문 `[id]` 인용으로 남겼다(이미 고친 `nativeArray[0]++` 문장은 그대로). 새 근거로 C# 명세 §9.6·§12.16.3, dotnet/runtime release/8.0 `List.cs`·`Padding.cs`, Win32 문서, Microsoft Learn ArrayPool·String.Normalize, SQLite 3.53.0 릴리스 노트, CMU 17-214 3·17강, CMU 15-418 동기화·락 프리 슬라이드를 더했다.
+
+**확인한 것.** Microsoft Learn·Win32·GDK 문서, .NET 8 소스, BOTR, Unity 6 매뉴얼, Burst 1.8, Android, POSIX/Linux/ext4, SQLite, git·git-lfs, RFC, 유니코드 보고서, ECMA-335, Wikipedia, CMU 슬라이드 등 약 200쪽을 다시 받아 대조했다. 로컬 .NET 8에서 숨은 테스트와 틀린 변형, 본문 수치를 다시 실행했고, git bisect·git lfs track과 Release/Debug 줄 번호도 직접 돌렸다. 동시성 테스트는 판정 서버에서 캐시를 피해 반복 실행했다. 커밋 전 `check-tests.js`를 판정 서버에서 전부 다시 돌려 통과했다.
+
+**틀려서 고친 것.**
+- `t7-debug-trade-deadlock`: 전역 락만 쓰는 수정과 Gate 하나만 잠그는 수정이 테스트를 통과하고 있었다. 판정 서버가 낮은 쪽 Gate를 쥔 동안 거래가 끝나면 실패하는 검사를 넣었고, 검증 단계에서 낮은 쪽 Gate만 잠그는 수정이 세 번 중 한 번 통과하는 빈틈이 다시 발견되어 높은 쪽 Gate만 쥔 경우의 검사도 넣었다. 모범 답안과 다르게 쓴 정답 네 가지는 캐시를 피한 실행에서 매번 7/7 통과했고, 틀린 수정 일곱 가지는 매번 실패했다.
+- `t7-interview-client-data-formats-sqlite`: SQLite 3.53.0의 ALTER TABLE은 NOT NULL뿐 아니라 CHECK 제약도 추가·삭제할 수 있다는 점이 빠져 있어 릴리스 노트로 고쳤다.
+- `t7-interview-sync-primitives`: ReaderWriterLockSlim은 쓰기 대기자가 있으면 새 읽기를 막는다는 점을 넣고, 이는 기본 비재귀 설정에서의 "현재 공정성 정책"이라 바뀔 수 있다는 문서의 단서를 붙였다. "최악의 조합"은 추론으로 표시했다.
+- `t7-interview-memory-stack-heap-virtual`: "페이지는 대개 4 KB"에 Unity 매뉴얼의 모바일 16 KB를 더했다. `t7-interview-unity-concurrency-model`: Burst는 static readonly 관리 배열을 허용한다는 점을 바로잡았다.
+- `t7-impl-bounded-blocking-queue`: 새 흔한 오해가 스레드 풀 문제의 것과 겹쳐 타임아웃 의미로 바꿨다. LRU 캐시·프로세스와 스레드 면접의 시간과 유실 횟수를 다시 재서 범위로 고쳤다.
+- 그 밖에: `ArrayPool.Rent`가 요청보다 긴 배열을 줄 수 있다는 경고, 토큰 버킷의 "1초에 최대 6개"가 양 끝을 포함한 1000 ms 창이라는 조건, 모바일 vSyncCount 설명을 Unity 문서 표현에 맞추는 수정, `git lfs migrate import --no-rewrite` 설명(추론 표시)을 넣었다.
+
+**끝까지 확인하지 못한 것.** Unity 관련 주장은 Unity 안에서 실행하지 않고 문서로만 확인했다. 동시성 테스트는 판정 서버의 스레드 한도(약 12개)와 스케줄링에 기대므로 환경이 바뀌면 다시 확인해야 한다.
