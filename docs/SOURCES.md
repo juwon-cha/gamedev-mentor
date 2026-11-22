@@ -1153,7 +1153,7 @@
 | `win32-sleep` | [Microsoft Learn — Sleep function (synchapi.h)](https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep) | 트랙 추가 자료 | track7 | 1 — `t7-interview-os-scheduling-frame-pacing` |
 | `win32-timebeginperiod` | [Microsoft Learn — timeBeginPeriod function (timeapi.h)](https://learn.microsoft.com/en-us/windows/win32/api/timeapi/nf-timeapi-timebeginperiod) | 트랙 추가 자료 | track7 | 1 — `t7-interview-os-scheduling-frame-pacing` |
 
-## 트랙8: 네트워크 추가 자료 (`data/track8_network.json`의 `extraSources`, 112개)
+## 트랙8: 네트워크 추가 자료 (`data/track8_network.json`의 `extraSources`, 113개)
 
 | id | 제목 | 종류 | 트랙 | 인용 문제 |
 |---|---|---|---|---|
@@ -1246,6 +1246,7 @@
 | `rfc6455` | [RFC 6455 · The WebSocket Protocol](https://www.rfc-editor.org/rfc/rfc6455.html) | 트랙 추가 자료 | track8 | 1 — `t8-interview-http-websocket-udp` |
 | `rfc768` | [RFC 768 — User Datagram Protocol](https://www.rfc-editor.org/rfc/rfc768.html) | 트랙 추가 자료 | track8 | 0 |
 | `rfc8259` | [RFC 8259 · The JavaScript Object Notation (JSON) Data Interchange Format](https://www.rfc-editor.org/rfc/rfc8259.html) | 트랙 추가 자료 | track8 | 1 — `t8-tutor-wire-formats-versioning` |
+| `rfc8441` | [RFC 8441 · Bootstrapping WebSockets with HTTP/2](https://www.rfc-editor.org/rfc/rfc8441.html) | 트랙 추가 자료 | track8 | 0 |
 | `rfc8446` | [IETF RFC 8446 · The Transport Layer Security (TLS) Protocol Version 1.3](https://www.rfc-editor.org/rfc/rfc8446.html) | 트랙 추가 자료 | track8 | 1 — `t8-interview-multiplayer-security` |
 | `rfc8656` | [IETF RFC 8656 · Traversal Using Relays around NAT (TURN)](https://www.rfc-editor.org/rfc/rfc8656.html) | 트랙 추가 자료 | track8 | 1 — `t8-interview-network-topology` |
 | `rfc9000` | [RFC 9000 — QUIC: A UDP-Based Multiplexed and Secure Transport](https://www.rfc-editor.org/rfc/rfc9000.html) | 트랙 추가 자료 | track8 | 0 |
