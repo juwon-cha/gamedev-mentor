@@ -361,6 +361,156 @@
       "title": "Martin Kleppmann · How to do distributed locking (2016-02-08)",
       "url": "https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html",
       "summary": "펜싱 토큰: 락을 얻을 때마다 커지는 번호를 받아 쓰기 요청에 붙이고, 저장소는 더 큰 번호를 이미 처리했으면 늦게 온 작은 번호(예: 34 뒤의 33)의 쓰기를 거부한다. 멈췄다 깨어난 옛 소유자의 늦은 쓰기를 막는 방법."
+    },
+    {
+      "id": "gpp-spatial-partition",
+      "title": "Game Programming Patterns — Spatial Partition",
+      "url": "https://gameprogrammingpatterns.com/spatial-partition.html",
+      "summary": "고정 격자 셀에 유닛을 이중 연결 리스트로 담아 근접 질의를 줄이는 공간 분할 패턴 설명."
+    },
+    {
+      "id": "ue-actor-relevancy",
+      "title": "Unreal Engine 5.9 Documentation · Actor Relevancy",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/actor-relevancy-in-unreal-engine",
+      "summary": "서버가 연결(클라이언트)마다 관련 있는 액터 집합을 정해 그 액터만 복제하고, 동적으로 스폰된 복제 액터는 더 이상 관련이 없어지면 클라이언트에서 파괴된다는 설명. IsNetRelevantFor 의 판정 순서와 NetCullDistanceSquared(관련 거리의 제곱)."
+    },
+    {
+      "id": "unity-ngo-object-visibility",
+      "title": "Unity Netcode for GameObjects 2.4 · Object visibility",
+      "url": "https://docs.unity3d.com/Packages/com.unity.netcode.gameobjects@2.4/manual/basics/object-visibility.html",
+      "summary": "NetworkObject 가 클라이언트에게 보이면 서버가 그 클라이언트에 복제본을 스폰시키고, 숨겨지면 이전에 보이던 클라이언트는 그 객체를 despawn·파괴한다. CheckObjectVisibility 콜백과 NetworkShow/NetworkHide, 틱마다 거리로 보이기를 갱신하는 예제."
+    },
+    {
+      "id": "wiki-hysteresis",
+      "title": "Wikipedia · Hysteresis",
+      "url": "https://en.wikipedia.org/wiki/Hysteresis",
+      "summary": "히스테리시스의 정의와 제어 시스템에서의 쓰임. 온도조절기가 18°C 아래에서 히터를 켜고 22°C 를 넘어야 끄는 예처럼 켜는 기준과 끄는 기준을 달리해 잦은 전환을 막는다(Schmitt trigger 도 같은 원리)."
+    },
+    {
+      "id": "ue-replication-graph",
+      "title": "Unreal Engine 5.9 Documentation · Replication Graph",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/replication-graph-in-unreal-engine",
+      "summary": "Replication Graph 의 개념 설계. 월드를 격자 칸(배틀로얄·MOBA·MMORPG)이나 방·구역으로 나누고, 액터를 그것이 보이거나 들릴 수 있는 칸에 넣어 두면 노드가 클라이언트 카메라가 있는 칸의 액터 목록을 바로 내줄 수 있어 클라이언트 갱신이 빨라진다는 설명."
+    },
+    {
+      "id": "ms-numeric-conversions",
+      "title": "Microsoft Learn · Built-in numeric conversions (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/numeric-conversions",
+      "summary": "암시적·명시적 숫자 변환 표. int·uint·long·ulong → float 암시적 변환은 정밀도를 잃을 수 있고, unchecked 정수 축소 변환은 상위 비트를 버리며, 실수 → 정수 변환은 0 쪽으로 버림한다는 설명."
+    },
+    {
+      "id": "ms-mathf-floor",
+      "title": "Microsoft Learn · MathF.Floor(Single) (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.mathf.floor?view=net-8.0",
+      "summary": "지정한 단정밀도 실수보다 작거나 같은 가장 큰 정수 값을 돌려준다는 정의."
+    },
+    {
+      "id": "rfc8446",
+      "title": "IETF RFC 8446 · The Transport Layer Security (TLS) Protocol Version 1.3",
+      "url": "https://www.rfc-editor.org/rfc/rfc8446.html",
+      "summary": "TLS 1.3 규격. §1: 네트워크를 완전히 장악한 공격자 앞에서도 서버 인증·기밀성·무결성을 제공하며 하부 전송에 신뢰성 있고 순서가 보장되는 스트림을 요구한다. §5.3: 레코드마다 64비트 순서 번호로 AEAD nonce 를 만든다. 부록 E.2: 이미 받은 레코드를 다시 받아들이게 할 수 없다(순서 보호·재전송 불가). §2.3·§8·부록 E.5: 0-RTT 데이터는 연결 사이의 재전송 방지를 보장하지 않으므로, 구매처럼 부작용이 있는 동작이 중복될 수 있고 그 방어는 서버의 책임이다."
+    },
+    {
+      "id": "rfc9147",
+      "title": "IETF RFC 9147 · The Datagram Transport Layer Security (DTLS) Protocol Version 1.3",
+      "url": "https://www.rfc-editor.org/rfc/rfc9147.html",
+      "summary": "DTLS 1.3 규격. TLS 1.3 을 바탕으로 같은 보장을 주되 순서 보호·재전송 불가는 예외이며 데이터그램의 성질(유실·순서 바뀜을 보정하지 않음)을 유지한다. §3: TLS 는 데이터그램 전송에 바로 쓸 수 없고, 온라인 게임 같은 지연 민감 응용이 데이터그램을 쓴다. §3.4: 레코드 재전송 탐지는 선택 기능."
+    },
+    {
+      "id": "netcode-standard",
+      "title": "netcode 1.03 STANDARD.md (Glenn Fiedler, mas-bandwidth/netcode, 2026-11-19 커밋 고정)",
+      "url": "https://github.com/mas-bandwidth/netcode/blob/f23eaa82d600a8753dc97d730d099e5377b87516/STANDARD.md",
+      "summary": "UDP 위의 보안 연결 프로토콜 규격. 웹 백엔드가 인증한 클라이언트에게 HTTPS 로 connect token 을 주고(비공개 부분은 백엔드와 전용 서버가 공유하는 키로 암호화·서명, 만료 시각 포함), 전용 서버는 유효한 토큰만 받는다. 연결 뒤 패킷은 64비트 순서 번호를 nonce 로 쓰는 AEAD 로 암호화·서명되고, 재전송 방지 버퍼(크기는 구현에 맡기되 클라이언트당 256개면 대부분 충분하다고 안내)보다 오래된 패킷과 이미 받은 순서 번호의 패킷은 버린다."
+    },
+    {
+      "id": "owasp-api1-bola",
+      "title": "OWASP API Security Top 10 (2023) · API1:2023 Broken Object Level Authorization",
+      "url": "https://api-security.owasp.org/editions/2023/en/0xa1-broken-object-level-authorization/",
+      "summary": "요청에 담긴 객체 ID 를 바꿔 남의 객체에 접근하는 취약점. 객체 ID 를 받아 동작하는 모든 엔드포인트가 로그인한 사용자가 그 객체에 그 동작을 할 권한이 있는지 검사해야 하며, 세션(JWT 등)의 사용자 ID 와 ID 파라미터를 비교하는 것만으로는 일부 경우만 막는다고 설명한다. 예측하기 어려운 GUID 사용도 권한다."
+    },
+    {
+      "id": "owasp-api4-resource",
+      "title": "OWASP API Security Top 10 (2023) · API4:2023 Unrestricted Resource Consumption",
+      "url": "https://api-security.owasp.org/editions/2023/en/0xa4-unrestricted-resource-consumption/",
+      "summary": "요청 빈도·크기 제한이 없어 자원이 고갈되거나 비용이 폭증하는 위험. 정해진 시간 안에 클라이언트가 API 와 상호작용할 수 있는 횟수를 제한하고, 모든 입력 매개변수와 페이로드의 최대 크기를 정해 강제하라고 권한다."
+    },
+    {
+      "id": "owasp-logging-cheatsheet",
+      "title": "OWASP Cheat Sheet Series · Logging Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "summary": "보안 로깅 지침. \"Data to exclude\": 세션 식별 값, 액세스 토큰, 비밀번호, 암호화 키 등은 로그에 그대로 남기지 말고 제거·마스킹·해시·암호화하라고 적는다."
+    },
+    {
+      "id": "owasp-session-cheatsheet",
+      "title": "OWASP Cheat Sheet Series · Session Management Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html",
+      "summary": "세션 ID 교환 방식. URL 에 세션 ID 를 넣는 방식은 링크·로그·브라우저 기록·Referer 헤더 등으로 ID 를 노출하고 조작·세션 고정 공격을 쉽게 한다고 경고한다."
+    },
+    {
+      "id": "ms-entra-access-tokens",
+      "title": "Microsoft Learn · Access tokens in the Microsoft identity platform",
+      "url": "https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens",
+      "summary": "클라이언트는 액세스 토큰을 불투명한 문자열로 다루고 검증하지 않으며, 웹 API 는 받은 토큰을 검증하고 자신의 App ID URI 가 aud 인 토큰만 받아야 한다(다른 리소스용 토큰을 받아들이는 것은 confused deputy 문제). 서명과 발급자를 먼저 검증한다. 기본 수명은 발급 때 60 ~ 90분(평균 75분) 사이 무작위로 정해진다(Microsoft identity platform 의 설계)."
+    },
+    {
+      "id": "pf-validate-entity-token",
+      "title": "Microsoft Learn · PlayFab Authentication REST API: Validate Entity Token",
+      "url": "https://learn.microsoft.com/en-us/rest/api/playfab/authentication/authentication/validate-entity-token",
+      "summary": "서버가 클라이언트가 준 EntityToken 을 검증하는 API(title 엔터티만 호출 가능). 토큰이 만료·취소되지 않았는지 확인하고 소유자 정보를 돌려준다(PlayFab 의 설계)."
+    },
+    {
+      "id": "pf-player-statistics",
+      "title": "Microsoft Learn · PlayFab: Using player statistics",
+      "url": "https://learn.microsoft.com/en-us/xbox/playfab/community/leaderboards/tournaments-leaderboards/using-player-statistics",
+      "summary": "PlayFab 플레이어 통계. 치트를 막기 위해 클라이언트는 기본적으로 통계를 읽을 수만 있고 갱신할 수 없으며, \"Allow client to post player statistics\" 를 켜면 보안 계층이 꺼져 플레이어가 임의의 점수를 올릴 수 있으므로 경쟁 요소가 있으면 클라이언트에서 통계를 올리지 말라고 권한다. 통계는 비공개가 없고 리더보드로 다른 플레이어도 읽을 수 있다(API Access Policy 로 클라이언트 기능을 끈 경우는 예외, PlayFab 의 설계)."
+    },
+    {
+      "id": "aoe-1500-archers",
+      "title": "Paul Bettner · 1500 Archers on a 28.8: Network Programming in Age of Empires and Beyond (Game Developer, 2001)",
+      "url": "https://www.gamedeveloper.com/programming/1500-archers-on-a-28-8-network-programming-in-age-of-empires-and-beyond",
+      "summary": "Age of Empires 의 동시 시뮬레이션(락스텝) 설계. 턴 1000 에 내린 명령을 턴 1002 에 실행하도록 예약하는 두 턴 지연(턴은 보통 200ms), 가장 느린 기계에 맞추는 Speed Control, 다르게 돌아간 시뮬레이션을 out of sync 로 표시하고 게임을 멈추는 방식, 월드·객체·길찾기를 체크섬하며 겪은 디싱크 버그, 시드를 맞춘 난수와 호출 횟수 일치, 녹화 게임을 버그 재현에 쓴 경험."
+    },
+    {
+      "id": "ms-hashcode",
+      "title": "HashCode Struct (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.hashcode?view=net-8.0",
+      "summary": "여러 값의 해시를 하나로 섞는 HashCode.Combine. 정적 무작위 시드를 써서 해시가 한 프로세스 안에서만 일정하므로 디스크 등에 저장하지 말라는 비고."
+    },
+    {
+      "id": "ms-object-gethashcode",
+      "title": "Object.GetHashCode Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.object.gethashcode?view=net-8.0",
+      "summary": "기본 GetHashCode 구현은 보장되지 않아 .NET 구현·플랫폼마다 다를 수 있고, 같은 객체가 애플리케이션 도메인·프로세스·플랫폼마다 다르게 해시될 수 있으므로 해시 코드를 만든 애플리케이션 도메인 밖에서 쓰거나 저장·직렬화하지 말라는 비고."
+    },
+    {
+      "id": "wiki-fnv",
+      "title": "Wikipedia · Fowler–Noll–Vo hash function",
+      "url": "https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function",
+      "summary": "FNV 해시. FNV-1a 는 바이트마다 XOR 한 뒤 FNV 소수를 곱한다. 32비트 매개변수는 오프셋 기준값 2166136261(0x811c9dc5), 소수 16777619(0x01000193). 암호학적 해시가 아니다."
+    },
+    {
+      "id": "ietf-fnv-draft17",
+      "title": "IETF Internet-Draft draft-eastlake-fnv-17 · The FNV Non-Cryptographic Hash Algorithm (2019)",
+      "url": "https://www.ietf.org/archive/id/draft-eastlake-fnv-17.txt",
+      "summary": "FNV 설계자들이 쓴 인터넷 초안(규격 확정 문서는 아님). FNV-1a 의사 코드(바이트마다 XOR 뒤 FNV 소수를 곱함)와 32비트 매개변수(FNV 소수 16,777,619 = 0x01000193, 오프셋 기준값 2,166,136,261 = 0x811C9DC5)."
+    },
+    {
+      "id": "rfc5905",
+      "title": "IETF RFC 5905 · Network Time Protocol Version 4: Protocol and Algorithms Specification",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.html",
+      "summary": "NTPv4 규격. §4: 동기화 거리 LAMBDA = EPSILON + DELTA/2 가 모든 원인에 의한 최대 오차를 나타낸다. §8: 네 타임스탬프로 오프셋 theta = 1/2 · [(T2 − T1) + (T3 − T4)] 와 왕복 지연 delta = (T4 − T1) − (T3 − T2) 를 계산한다. §10: 시계 필터 알고리즘이 최근 표본 8개를 시프트 레지스터에 두고 지연이 작은 순으로 정렬하고(부록 A.5.2 의 참조 코드는 정렬된 첫 항목을 가장 좋은 표본으로 쓴다), 동기화 거리 lambda = delta/2 + epsilon 을 서버 품질 지표로 쓴다."
+    },
+    {
+      "id": "ms-qpc-timestamps",
+      "title": "Microsoft Learn · Acquiring high-resolution time stamps (Windows)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps",
+      "summary": "Windows 문서. 관리 코드의 System.Diagnostics.Stopwatch 는 QueryPerformanceCounter(QPC)를 정밀 시간 기준으로 쓰고, QPC 는 외부 시각 기준(UTC 등)과 동기화되지 않으며 거꾸로 가지 않는(monotonic) 카운터라는 설명. UTC 와 맞춘 시각이 필요하면 GetSystemTimePreciseAsFileTime 을 쓴다."
+    },
+    {
+      "id": "ms-datetime-now",
+      "title": "Microsoft Learn · DateTime.Now Property (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.datetime.now?view=net-8.0",
+      "summary": "이 컴퓨터의 현재 날짜·시각을 지역 시각으로 돌려준다. 해상도는 시스템 타이머에 달려 대략 0.5 ~ 15ms 이고, 해상도가 낮아 성능 측정 도구로는 맞지 않으므로 Stopwatch 가 더 낫다는 비고."
     }
   ],
   "problems": [
@@ -4252,6 +4402,978 @@
         "note": "RFC 9110 §3.4·§9.2.2, RFC 6455 §1.1·§1.3·§5.5.2, Gaffer 의 UDP vs. TCP, PlayFab 멀티플레이 안내 원문과 대조해 절 번호와 재시도 예외 조건을 넣고, 브라우저의 UDP 제약은 Unity 6 매뉴얼과 MDN(RTCDataChannel·WebTransport)으로, 재시도 백오프·구매 ID 멱등화는 Azure Architecture Center 의 지침과 PlayFab Inventory API 문서로 출처를 달았습니다."
       },
       "nextMission": "TCP 의 유실 시 멈춤을 숫자로 확인해 보세요. 고정 스크립트(선형 합동 생성기)로 2% 유실, 편도 지연 50ms 인 모의 링크를 만들고, 20ms 마다 보내는 위치 업데이트 1만 개를 두 방식으로 받습니다. (1) TCP 식: 순서대로만 꺼내고, 유실된 패킷은 송신 측이 2 × RTT 뒤에 다시 보낸다. (2) UDP 식: 도착하는 대로 가장 최신 것만 쓴다. 두 방식에서 \"화면의 위치가 몇 ms 전 정보인가\"의 평균과 99번째 백분위수를 표로 비교하고, 유실률을 0.5%, 5% 로 바꿔 차이가 어떻게 커지는지 확인합니다.",
+      "tests": null
+    },
+    {
+      "id": "t8-impl-lag-compensation-rewind",
+      "track": "track8",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "서버 되감기 히트 판정: 유한한 위치 히스토리로 쏜 사람이 보던 순간을 재구성하기",
+      "tags": [
+        "Net_LagCompensation",
+        "Net_RingBuffer",
+        "Net_HitScan"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "valve-latency-compensating",
+        "gambetta-lag-compensation",
+        "riot-valorant-netcode"
+      ],
+      "scenario": "탑다운 슈터의 권위 서버입니다. 클라이언트는 다른 플레이어를 보간 지연만큼 과거로 그리므로, 서버가 사격 명령을 받은 순간의 **현재** 위치로 판정하면 정확히 조준한 즉발 사격이 빗나갑니다. Valve 의 Yahn Bernier 는 논문 *Latency Compensating Methods in Client/Server In-game Protocol Design and Optimization* 에서 Half-Life 의 해법을 설명합니다. 서버는 사격 명령을 실행하기 전에 다른 플레이어를 그 명령이 만들어진 순간의 위치로 되돌리는데, 이때 연결 지연과 그 클라이언트가 쓰던 보간량을 모두 반영해야 하고, 생존 여부 같은 상태도 함께 되돌려야 할 수 있습니다. 여러분은 그 되감기를 2D 원형 히트박스로 구현합니다.\n\n서버는 틱마다 모든 엔터티의 `(시각, x, y, 생존)` 을 `Record` 로 넘깁니다. 메모리는 정해져 있어야 하므로 엔터티마다 **최근 `historyCapacity` 개의 샘플만** 보관하고, 가득 차면 가장 오래된 샘플을 덮어씁니다.\n\n**규칙 1 — 되감을 목표 시각 (`RewindTargetMs`).** 아래 공식과 두 한도는 이 게임이 정한 규칙입니다.\n- `interp = clientInterpMs` 를 0 ~ `MaxInterpMs`(100) 로 자른다. 이 값은 클라이언트가 보낸 것이라 믿을 수 없다.\n- `target = serverNowMs − rttMs − interp`. `rttMs` 는 서버가 직접 잰 그 클라이언트의 왕복 지연(0 이상)이다. 스냅샷이 클라이언트로 가는 시간과 사격 명령이 돌아오는 시간을 합친 것이다. Bernier 의 논문은 \"연결 지연\"이라고만 쓰고 편도인지 왕복인지 따로 밝히지 않습니다. 이 규칙은 명령이 서버에 도착한 시각에서 거꾸로 세므로 왕복 지연을 씁니다.\n- `target` 이 `serverNowMs − MaxRewindMs`(250) 보다 이르면 `serverNowMs − 250` 을 쓴다.\n\n예: 서버 1000ms, 왕복 80ms, 보간 50ms → 870ms. 보간 500ms 라고 주장 → 820ms. 왕복 400ms → 750ms.\n\n**규칙 2 — 그 시각의 상태 (`TryGetStateAt`).** 보관 중인 샘플만 씁니다.\n- 샘플이 하나도 없으면 `false`.\n- 시각이 가장 오래된 샘플 이하면 그 샘플을, 가장 최근 샘플 이상이면 그 샘플을 그대로 쓴다. 덮어써서 사라진 샘플로 보간하지 않는다.\n- 그 사이면 `a.time ≤ t < b.time` 인 이웃한 두 샘플 a, b 로 x, y 를 선형 보간하고, 생존 여부는 **앞 샘플 a 의 값**을 쓴다.\n\n**규칙 3 — 판정 (`HitScan`).** 목표 시각을 규칙 1 로 구하고, 각 엔터티를 규칙 2 로 그 시각에 놓은 뒤 판정합니다.\n- 쏜 사람 자신, 샘플이 없는 엔터티, 그 시각에 죽어 있던 엔터티는 건너뛴다.\n- 방향 `(dirX, dirY)` 는 길이가 0 이 아니면 정규화해서 쓰고, 길이가 0 이면 `-1`.\n- 반지름 `hitRadius` 원에 광선이 **들어가는 거리** s 를 구한다. 원점이 원 안이거나 원 위면 s = 0, 원이 광선 뒤쪽이거나 광선이 원을 비껴가면 맞지 않는다. 접하는 광선은 맞은 것으로 친다.\n- s ≤ `range` 인 엔터티 가운데 s 가 가장 작은 id 를 돌려준다. 같으면 작은 id, 아무도 없으면 `-1`.\n- 판정은 보관된 히스토리를 바꾸지 않는다.",
+      "constraints": [
+        "메모리는 생성자에서 엔터티 수 × historyCapacity 만큼 한 번 잡는다. Record·TryGetStateAt·HitScan 은 힙 할당이 없다(List<T> 증가, LINQ, 람다 캡처 금지).",
+        "TryGetStateAt 은 엔터티당 O(historyCapacity) 이하, HitScan 은 O(엔터티 수 × historyCapacity) 이하다.",
+        "목표 시각에는 서버가 잰 rttMs 를 쓰고, 클라이언트가 보낸 clientInterpMs 는 반드시 0 ~ MaxInterpMs 로 자른다.",
+        "상수 MaxInterpMs·MaxRewindMs 와 공개 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// 서버가 매 틱 엔터티의 위치·생존 상태를 기록해 두고, 사격 명령을 \"쏜 사람이 보던 시각\"으로 되감아 판정한다.\npublic sealed class LagCompensator\n{\n    public const int MaxInterpMs = 100;   // 클라이언트가 알려 준 보간 지연은 0 ~ 100ms 로 자른다(이 게임의 규칙)\n    public const int MaxRewindMs = 250;   // 서버 현재 시각에서 최대 250ms 까지만 되감는다(이 게임의 규칙)\n\n    // 엔터티 id 는 0 .. entityCount-1, historyCapacity >= 1 은 엔터티마다 보관하는 샘플 수다.\n    public LagCompensator(int entityCount, int historyCapacity)\n    {\n    }\n\n    // 서버 틱마다 엔터티마다 한 번 호출된다. 같은 엔터티의 timeMs 는 엄격히 증가한다(호출자 보장).\n    public void Record(int entityId, int timeMs, float x, float y, bool alive)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 규칙 1: 되감을 목표 시각(서버 시계, ms).\n    public static int RewindTargetMs(int serverNowMs, int rttMs, int clientInterpMs)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 규칙 2: timeMs 시점의 상태. 이 엔터티의 샘플이 하나도 없으면 false.\n    public bool TryGetStateAt(int entityId, int timeMs, out float x, out float y, out bool alive)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 규칙 3: 맞은 엔터티 id, 아무도 맞지 않으면 -1.\n    public int HitScan(int shooterId, float originX, float originY, float dirX, float dirY,\n                       float range, float hitRadius, int serverNowMs, int rttMs, int clientInterpMs)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "왕복 250ms + 보간 50ms 인 사격: 300ms 가 아니라 250ms 까지만 되감는다.",
+        "보간 지연 200ms 나 -40ms 라는 주장: 각각 100ms, 0ms 로 자른다.",
+        "용량 3 에 샘플 9개를 기록한 뒤 덮어쓴 시각을 조회: 남아 있는 가장 오래된 샘플을 그대로 돌려준다.",
+        "100ms 샘플에서 죽은 대상을 90ms 로 되감으면 살아 있고, 110ms 로 되감으면 죽어 있다.",
+        "원점이 원 안인 대상(s = 0), 원에 정확히 접하는 광선, 중심까지는 사거리보다 멀지만 입사 거리는 사거리 안인 대상."
+      ],
+      "hints": [
+        "대상이 10 m/s 로 x 방향으로 달려 500ms 에 x = 0 을 지납니다. 원점에서 +y 로 쏜 사격이 서버 시각 620ms 에 도착했고 왕복 80ms, 보간 40ms 입니다. 620ms 의 위치(x = 1.2)로 판정하면 어떻게 됩니까? 왕복 대신 편도(40ms)만 빼면 목표 시각과 x 는 얼마입니까? 그리고 클라이언트가 \"보간 400ms\" 라고 보내면 무엇을 얻습니까?",
+        "엔터티마다 고정 크기 배열 하나와 \"가장 오래된 슬롯(head)\", \"개수(count)\" 두 값이면 링 버퍼가 됩니다. 조회는 head 부터 시간 순으로 (head + k) % capacity 를 돌며 처음으로 t < time 인 샘플을 찾으면 그 앞 샘플과 사이입니다. 판정은 원 중심을 원점 기준으로 옮겨 광선 방향으로의 투영 b 와 c2 = |중심 − 원점|² − r² 를 쓰면 됩니다. 사거리는 중심까지의 거리가 아니라 입사 거리와 비교합니다.",
+        "```\nRewindTargetMs(now, rtt, interp):\n    interp = Clamp(interp, 0, MaxInterpMs)\n    return Max(now - rtt - interp, ____)\n\nTryGetStateAt(id, t):\n    if count == 0: return false\n    a = 가장 오래된 샘플 ; if t <= a.time: return a\n    for k in 1 .. count-1:\n        b = (head + k) % capacity 번째 샘플\n        if t < b.time: return Lerp(a, b, ____), alive = ____\n        a = b\n    return a                                 // 가장 최근 이후\n\nHitScan(...):\n    d = 정규화(dir) ; target = RewindTargetMs(...)\n    for id: (쏜 사람·샘플 없음·죽음 건너뜀)\n        o = 중심 - 원점 ; c2 = |o|² - r² ; b = o·d\n        s = c2 <= 0 ? 0 : (b < 0 또는 b² - c2 < 0 이면 건너뜀) ____\n        if s <= range and s < bestS: best = id\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 서버가 매 틱 엔터티의 위치·생존 상태를 기록해 두고, 사격 명령을 \"쏜 사람이 보던 시각\"으로 되감아 판정한다.\npublic sealed class LagCompensator\n{\n    public const int MaxInterpMs = 100;   // 클라이언트가 알려 준 보간 지연은 0 ~ 100ms 로 자른다(이 게임의 규칙)\n    public const int MaxRewindMs = 250;   // 서버 현재 시각에서 최대 250ms 까지만 되감는다(이 게임의 규칙)\n\n    private readonly int _capacity;\n    private readonly int[] _time;         // [entity * capacity + slot]\n    private readonly float[] _x, _y;\n    private readonly bool[] _alive;\n    private readonly int[] _head;         // 엔터티마다 가장 오래된 샘플의 슬롯\n    private readonly int[] _count;        // 엔터티마다 보관 중인 샘플 수(<= capacity)\n\n    // 엔터티 id 는 0 .. entityCount-1, historyCapacity >= 1 은 엔터티마다 보관하는 샘플 수다.\n    public LagCompensator(int entityCount, int historyCapacity)\n    {\n        _capacity = historyCapacity;\n        int n = entityCount * historyCapacity;\n        _time = new int[n]; _x = new float[n]; _y = new float[n]; _alive = new bool[n];\n        _head = new int[entityCount]; _count = new int[entityCount];\n    }\n\n    // 서버 틱마다 엔터티마다 한 번 호출된다. 같은 엔터티의 timeMs 는 엄격히 증가한다(호출자 보장).\n    public void Record(int entityId, int timeMs, float x, float y, bool alive)\n    {\n        int slot;\n        if (_count[entityId] < _capacity) { slot = (_head[entityId] + _count[entityId]) % _capacity; _count[entityId]++; }\n        else { slot = _head[entityId]; _head[entityId] = (slot + 1) % _capacity; }   // 가득 차면 가장 오래된 것을 덮어쓴다\n        int i = entityId * _capacity + slot;\n        _time[i] = timeMs; _x[i] = x; _y[i] = y; _alive[i] = alive;\n    }\n\n    // 규칙 1: 목표 시각 = 서버 현재 시각 − 왕복 지연 − 보간 지연(0 ~ 100 으로 자름), 단 250ms 보다 더 되감지 않는다.\n    public static int RewindTargetMs(int serverNowMs, int rttMs, int clientInterpMs)\n    {\n        int interp = Math.Clamp(clientInterpMs, 0, MaxInterpMs);\n        int target = serverNowMs - rttMs - interp;\n        return Math.Max(target, serverNowMs - MaxRewindMs);\n    }\n\n    // 규칙 2: timeMs 시점의 상태. 보관한 샘플 범위 밖이면 가장 가까운 끝 샘플, 사이면 선형 보간(생존 여부는 앞 샘플).\n    public bool TryGetStateAt(int entityId, int timeMs, out float x, out float y, out bool alive)\n    {\n        int count = _count[entityId];\n        if (count == 0) { x = 0; y = 0; alive = false; return false; }\n        int baseIndex = entityId * _capacity, head = _head[entityId];\n        int a = baseIndex + head;                                  // 가장 오래된 샘플\n        if (timeMs <= _time[a]) { x = _x[a]; y = _y[a]; alive = _alive[a]; return true; }\n        for (int k = 1; k < count; k++)\n        {\n            int b = baseIndex + (head + k) % _capacity;\n            if (timeMs < _time[b])                                 // a.time <= timeMs < b.time\n            {\n                double f = (double)(timeMs - _time[a]) / (_time[b] - _time[a]);\n                x = (float)(_x[a] + (_x[b] - _x[a]) * f);\n                y = (float)(_y[a] + (_y[b] - _y[a]) * f);\n                alive = _alive[a];\n                return true;\n            }\n            a = b;\n        }\n        x = _x[a]; y = _y[a]; alive = _alive[a];                   // 가장 최근 샘플 이후\n        return true;\n    }\n\n    // 규칙 3: 되감은 시각의 히트 원들에 광선을 쏴서, 입사 거리가 가장 짧은 엔터티 id(같으면 작은 id)를 돌려준다. 없으면 -1.\n    public int HitScan(int shooterId, float originX, float originY, float dirX, float dirY,\n                       float range, float hitRadius, int serverNowMs, int rttMs, int clientInterpMs)\n    {\n        double len = Math.Sqrt((double)dirX * dirX + (double)dirY * dirY);\n        if (len == 0) return -1;\n        double dx = dirX / len, dy = dirY / len;\n        int target = RewindTargetMs(serverNowMs, rttMs, clientInterpMs);\n\n        int best = -1; double bestS = double.MaxValue;\n        for (int id = 0; id < _count.Length; id++)\n        {\n            if (id == shooterId) continue;\n            if (!TryGetStateAt(id, target, out float cx, out float cy, out bool alive) || !alive) continue;\n            double ox = cx - (double)originX, oy = cy - (double)originY;   // 원점에서 원 중심으로\n            double c2 = ox * ox + oy * oy - (double)hitRadius * hitRadius;\n            double s;\n            if (c2 <= 0) s = 0;                                    // 원점이 원 안: 바로 맞는다\n            else\n            {\n                double b = ox * dx + oy * dy;                      // 광선 방향으로의 투영\n                double disc = b * b - c2;\n                if (b < 0 || disc < 0) continue;                   // 뒤쪽이거나 비껴감\n                s = b - Math.Sqrt(disc);                           // 원에 들어가는 거리\n            }\n            if (s > range) continue;\n            if (s < bestS) { bestS = s; best = id; }               // id 오름차순으로 도므로 같으면 작은 id 가 남는다\n        }\n        return best;\n    }\n}\n",
+      "explanation": "**무엇을 재구성하는가.** 쏜 사람의 화면에서 다른 플레이어는 \"스냅샷이 오는 데 걸린 시간 + 보간 지연\"만큼 과거였고, 사격이 서버에 오는 데 다시 편도 지연이 걸립니다. 그래서 서버는 명령을 처리하는 시각에서 **왕복 지연 + 보간 지연**만큼 되돌아갑니다. Bernier 의 논문도 되감기가 연결 지연(connection latency)과 클라이언트가 그 프레임에 쓰던 보간량(Half-Life 는 usercmd 의 lerp_msec 필드로 보낸다)을 모두 반영해야 한다고 적습니다. 다만 논문은 이 \"연결 지연\"이 편도인지 왕복인지 밝히지 않습니다. 논문의 절차는 서버 히스토리에서 \"그 플레이어에게 보내져 명령을 내리기 직전에 도착한 업데이트\"를 찾는 것인데, 그 업데이트가 서버를 떠난 시각은 명령이 서버에 도착한 시각보다 대략 왕복 지연만큼 앞입니다. 그래서 명령 도착 시각을 기준으로 세는 이 문제의 공식은 왕복 지연을 씁니다(편도만 빼면 힌트 1 처럼 빗나갑니다). `serverNowMs − rttMs − interp` 공식과 두 한도는 그 생각을 이 게임의 규칙으로 정한 것이고, 논문에 이 공식과 숫자가 있는 것은 아닙니다.\n\n**한도는 보안 장치입니다.** `clientInterpMs` 는 클라이언트가 만든 값이라, 자르지 않으면 \"보간 400ms\" 라고 보내 상대가 아직 엄폐 전이던 과거를 골라 쏠 수 있습니다. Riot 은 VALORANT 에서 클라이언트가 사격 순간 보던 시뮬레이션 시각을 보내되, 한도가 없으면 지연 500ms 인 플레이어가 상대가 엄폐한 지 0.5초 뒤에도 맞힐 수 있으므로 서버가 되감는 범위에 한도를 둔다고 밝힙니다.\n\n**히스토리는 엔터티마다 고정 크기 링 버퍼입니다.** 쓰기 O(1), 메모리는 엔터티 수 × 용량으로 고정입니다. 조회는 오래된 샘플부터 훑어 `a.time ≤ t < b.time` 인 구간을 선형 보간하고(Bernier 도 목표 시각 앞의 업데이트와 그 다음 업데이트를 씁니다), 범위 밖은 끝 샘플로 자릅니다. 덮어쓴 샘플로 보간하면 이미 사라진 위치가 판정에 섞입니다. 한도 전체를 보간하려면 구간 양 끝을 감싸는 샘플이 필요하므로 용량은 250ms 를 틱 간격으로 나눈 개수보다 한두 개 넉넉하게 잡습니다.\n\n**상태도 되감습니다.** 논문은 살았는지 죽었는지, 앉아 있었는지 같은 상태도 되돌려야 할 수 있다고 적습니다. 위치는 보간하지만 생존은 이산값이라 그 시각에 유효했던 앞 샘플의 값을 씁니다.\n\n**판정.** 정규화한 방향 d 와 중심까지의 벡터 o 로 `b = o·d`, `c2 = |o|² − r²` 를 구합니다. `c2 ≤ 0` 이면 원점이 원 안이라 s = 0, 아니면 `b < 0` 이거나 `b² − c2 < 0` 일 때 빗나가고 입사 거리는 `b − √(b² − c2)` 입니다. 사거리를 중심 거리와 비교하거나, 정규화를 빼거나, 쏜 사람을 빼지 않는 것이 흔한 실수입니다. Half-Life 는 플레이어를 실제로 옮겼다가 되돌렸지만, 이 구현은 되감은 위치를 읽기만 하므로 되돌리기를 잊을 일이 없습니다. 복잡도는 조회 O(C), 사격 한 번 O(N·C), 할당 없음입니다.\n\n### 흔한 오해\n- **\"지연 보상을 넣으면 지연 문제가 사라져서 모두가 공정해진다\"** — 불일치가 없어지는 것이 아니라 쏜 사람 대신 맞는 사람에게 옮겨 갑니다. 엄폐한 직후에 맞을 수 있다는 것을 Gambetta 도 대가로 인정하고[gambetta-lag-compensation], Bernier 는 지연이 큰 플레이어에게 맞은 쪽은 \"모퉁이 너머로 맞았다\"고 느낄 수 있다며 이를 게임 디자인상의 선택이라고 부릅니다[valve-latency-compensating].\n- **\"되감기는 로켓 같은 투사체에도 똑같이 적용하면 된다\"** — 서버에서 따로 날아다니는 투사체는 어느 시간대에 살아야 하는지부터 정해야 해서 훨씬 까다롭습니다. Bernier 는 Half-Life 가 투사체를 지연 보상하지 않았다고 적습니다[valve-latency-compensating]. 이 문제의 방식은 즉발(히트스캔) 판정용입니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "목표 시각이 serverNowMs − rttMs − clamp(clientInterpMs, 0, 100) 이고, 서버 현재 시각에서 250ms 보다 더 되감지 않는다.",
+            "points": 9,
+            "sourceId": "valve-latency-compensating"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "이웃한 두 샘플 사이를 선형 보간하고, 보관 범위 밖은 가장 오래된/최근 샘플로 자르며, 샘플이 없으면 false 다.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "생존 여부를 앞 샘플 값으로 되감아, 그 시각에 죽어 있던 대상은 맞지 않는다.",
+            "points": 8,
+            "sourceId": "valve-latency-compensating"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "광선 판정이 맞다: 정규화, 원 안이면 s = 0, 뒤쪽·비껴감 제외, 접선 포함, 입사 거리와 사거리 비교, 가장 가까운 대상(같으면 작은 id), 쏜 사람 제외.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "엔터티마다 고정 크기 링 버퍼를 생성자에서 한 번 할당하고, 가득 차면 가장 오래된 샘플을 덮어쓴다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Record·TryGetStateAt·HitScan 에 힙 할당이 없다(List 증가, LINQ, 람다 캡처, 임시 배열 없음).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "조회가 O(C), 사격 한 번이 O(N·C) 이하이며, 용량을 최대 되감기와 틱 간격으로 어떻게 정하는지 설명할 수 있다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "되감기 양에 서버가 잰 rttMs 를 쓰고, 클라이언트가 보낸 보간 지연은 자른 뒤에만 쓴다.",
+            "points": 7,
+            "sourceId": "riot-valorant-netcode"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "ms 를 비율로 바꾸는 보간 계산이 실수 나눗셈이다(정수 나눗셈으로 0 이 되지 않는다).",
+            "points": 6,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "엔진·언어 규약",
+            "description": "판정이 히스토리를 바꾸지 않는다(되감은 위치를 읽기만 하거나, 옮겼다면 반드시 되돌린다).",
+            "points": 7,
+            "sourceId": "valve-latency-compensating"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "목표 시각 계산, 상태 조회, 광선 판정이 각각 분리되어 있어 따로 테스트할 수 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c12",
+            "category": "아키텍처·가독성",
+            "description": "한도 값(100ms, 250ms)이 무엇을 막는지와 쏜 사람 기준 판정의 대가(피해자가 엄폐한 직후에 맞을 수 있음)를 주석이나 설명으로 남겼다.",
+            "points": 7,
+            "sourceId": "gambetta-lag-compensation"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "클라이언트가 보낸 보간 지연이나 시각을 자르지 않고 그대로 되감기에 써서, 더 먼 과거를 골라 쏘는 조작을 허용한다.",
+            "penalty": -25,
+            "sourceId": "riot-valorant-netcode"
+          },
+          {
+            "id": "d2",
+            "description": "히스토리가 무한히 자라거나(List 에 계속 추가), 사격마다 할당한다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "되감지 않고 서버 현재 위치로 판정한다.",
+            "penalty": -20,
+            "sourceId": "gambetta-lag-compensation"
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Bernier PDF 본문을 추출해 논문의 \"연결 지연\"이 편도·왕복을 밝히지 않는다는 점과 왕복을 쓰는 이유를 해설에 적고 Gambetta·Riot 글과 대조했으며, 정답·스타터와 흔한 오답 13종(편도 지연, 보간 자르기 누락, 250ms 한도 누락, 중심 거리 비교, 정규화 누락, 뒤 샘플의 생존 여부, 정수 나눗셈, 접선 제외 등)을 .NET 8 과 Compiler Explorer 에서 실행해 테스트가 모두 잡는 것을 확인했습니다."
+      },
+      "nextMission": "머리·몸 두 개의 히트 원(머리는 피해 2배)과 \"앉기\" 상태를 히스토리에 추가하고, 앉아 있으면 머리 원이 몸 쪽으로 내려오게 하세요. 조회는 링 버퍼 위 이분 탐색으로 O(log C) 로 바꾸고, 용량 64·엔터티 100 에서 사격 1만 번을 처리할 때 할당이 0 바이트인지 GC.GetAllocatedBytesForCurrentThread 로 확인하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string F(double v) => v.ToString(\"0.###\");\n\n    static string State(LagCompensator c, int id, int t, bool wantOk, float wx, float wy, bool walive, string ctx)\n    {\n        bool ok = c.TryGetStateAt(id, t, out float x, out float y, out bool alive);\n        if (ok != wantOk) return ctx + \": 엔터티 \" + id + \", \" + t + \"ms 조회 결과 기대 \" + wantOk + \" / 결과 \" + ok;\n        if (!ok) return null;\n        if (System.Math.Abs(x - wx) > 1e-3 || System.Math.Abs(y - wy) > 1e-3 || alive != walive)\n            return ctx + \": 엔터티 \" + id + \", \" + t + \"ms 상태 기대 (\" + F(wx) + \", \" + F(wy) + \", alive=\" + walive + \") / 결과 (\" + F(x) + \", \" + F(y) + \", alive=\" + alive + \")\";\n        return null;\n    }\n\n    static string Shot(LagCompensator c, int shooter, float ox, float oy, float dx, float dy, float range, float r, int now, int rtt, int interp, int want, string ctx)\n    {\n        int got = c.HitScan(shooter, ox, oy, dx, dy, range, r, now, rtt, interp);\n        return got == want ? null : ctx + \": HitScan(원점 (\" + F(ox) + \", \" + F(oy) + \"), 방향 (\" + F(dx) + \", \" + F(dy) + \"), 사거리 \" + F(range) + \", 반지름 \" + F(r) + \", now \" + now + \", rtt \" + rtt + \", interp \" + interp + \") 기대 \" + want + \" / 결과 \" + got;\n    }\n\n    // 기준 구현: 모든 샘플을 리스트에 쌓고 마지막 cap 개만 본다.\n    sealed class Ref\n    {\n        readonly int cap; readonly System.Collections.Generic.List<(int t, float x, float y, bool a)>[] s;\n        public Ref(int n, int cap) { this.cap = cap; s = new System.Collections.Generic.List<(int, float, float, bool)>[n]; for (int i = 0; i < n; i++) s[i] = new System.Collections.Generic.List<(int, float, float, bool)>(); }\n        public void Rec(int id, int t, float x, float y, bool a) => s[id].Add((t, x, y, a));\n        public bool Get(int id, int t, out double x, out double y, out bool a)\n        {\n            var l = s[id]; x = y = 0; a = false; if (l.Count == 0) return false;\n            int lo = System.Math.Max(0, l.Count - cap);\n            if (t <= l[lo].t) { x = l[lo].x; y = l[lo].y; a = l[lo].a; return true; }\n            if (t >= l[l.Count - 1].t) { var z = l[l.Count - 1]; x = z.x; y = z.y; a = z.a; return true; }\n            for (int i = lo; ; i++) if (l[i].t <= t && t < l[i + 1].t) { var p = l[i]; var q = l[i + 1]; double f = (t - p.t) / (double)(q.t - p.t); x = p.x + (q.x - p.x) * f; y = p.y + (q.y - p.y) * f; a = p.a; return true; }\n        }\n        // 맞은 id 와, 판정이 경계에 가까워 쓰기 곤란한지(ambiguous)를 함께 돌려준다.\n        public int Hit(int shooter, double ox, double oy, double dx, double dy, double range, double r, int target, out bool ambiguous)\n        {\n            ambiguous = false; double L = System.Math.Sqrt(dx * dx + dy * dy); dx /= L; dy /= L;\n            int best = -1; double bs = double.MaxValue, second = double.MaxValue;\n            for (int id = 0; id < s.Length; id++)\n            {\n                if (id == shooter || !Get(id, target, out double cx, out double cy, out bool al) || !al) continue;\n                double px = cx - ox, py = cy - oy, c2 = px * px + py * py - r * r, b = px * dx + py * dy, disc = b * b - c2;\n                if (System.Math.Abs(c2) < 1e-2 || System.Math.Abs(disc) < 1e-2) ambiguous = true;\n                if (c2 > 0 && (b < 0 || disc < 0)) continue;\n                double sHit = c2 <= 0 ? 0 : b - System.Math.Sqrt(disc);\n                if (System.Math.Abs(sHit - range) < 1e-2) ambiguous = true;\n                if (sHit > range) continue;\n                if (sHit < bs) { second = bs; bs = sHit; best = id; } else if (sHit < second) second = sHit;\n            }\n            if (best >= 0 && second - bs < 1e-2) ambiguous = true;\n            return best;\n        }\n    }\n\n    static int RefTarget(int now, int rtt, int interp) => System.Math.Max(now - rtt - System.Math.Min(100, System.Math.Max(0, interp)), now - 250);\n\n    static uint _lcg;\n    static int Next(int mod) { _lcg = unchecked(_lcg * 1664525u + 1013904223u); return (int)((_lcg >> 8) % (uint)mod); }\n\n    public static void Main()\n    {\n        Run(\"rewind-target-formula\", () =>\n        {\n            int[][] cs = { new[] { 1000, 80, 50, 870 }, new[] { 1000, 80, 500, 820 }, new[] { 1000, 80, -40, 920 }, new[] { 1000, 400, 50, 750 },\n                           new[] { 1000, 0, 0, 1000 }, new[] { 1000, 150, 100, 750 }, new[] { 1000, 160, 100, 750 }, new[] { 5000, 30, 70, 4900 }, new[] { 300, 20, 100, 180 } };\n            foreach (var k in cs) { int got = LagCompensator.RewindTargetMs(k[0], k[1], k[2]); if (got != k[3]) return \"RewindTargetMs(now \" + k[0] + \", rtt \" + k[1] + \", interp \" + k[2] + \") 기대 \" + k[3] + \" / 결과 \" + got; }\n            return null;\n        });\n\n        Run(\"state-interpolation\", () =>\n        {\n            var c = new LagCompensator(3, 8);\n            c.Record(0, 0, 0f, 0f, true); c.Record(0, 50, 10f, -5f, true); c.Record(0, 100, 10f, 20f, true); c.Record(0, 116, 26f, 20f, true);\n            c.Record(1, 200, 3f, 4f, true);\n            return State(c, 0, 20, true, 4f, -2f, true, \"두 샘플 사이\") ?? State(c, 0, 50, true, 10f, -5f, true, \"샘플 시각과 정확히 같음\")\n                ?? State(c, 0, 75, true, 10f, 7.5f, true, \"두 샘플 사이\") ?? State(c, 0, 108, true, 18f, 20f, true, \"간격이 16ms 인 구간\")\n                ?? State(c, 0, -30, true, 0f, 0f, true, \"가장 오래된 샘플보다 이전\") ?? State(c, 0, 130, true, 26f, 20f, true, \"가장 최근 샘플 이후\")\n                ?? State(c, 1, 150, true, 3f, 4f, true, \"샘플이 하나뿐\") ?? State(c, 1, 900, true, 3f, 4f, true, \"샘플이 하나뿐\")\n                ?? State(c, 2, 100, false, 0f, 0f, false, \"기록이 없는 엔터티\");\n        });\n\n        Run(\"bounded-history\", () =>\n        {\n            var c = new LagCompensator(1, 3);\n            for (int t = 0; t <= 400; t += 50) c.Record(0, t, t / 10f, -t / 20f, true);   // 보관되는 것은 300, 350, 400ms 뿐\n            string e = State(c, 0, 320, true, 32f, -16f, true, \"용량 3, 남은 구간 안\") ?? State(c, 0, 100, true, 30f, -15f, true, \"용량 3: 덮어쓴 100ms 샘플이 아니라 가장 오래 남은 300ms 샘플\")\n                ?? State(c, 0, 299, true, 30f, -15f, true, \"용량 3: 250ms 와 300ms 사이를 보간하지 않는다\") ?? State(c, 0, 1000, true, 40f, -20f, true, \"가장 최근 이후\");\n            if (e != null) return e;\n            var one = new LagCompensator(2, 1);\n            for (int t = 0; t < 100; t += 10) { one.Record(1, t, t, 1f, true); }\n            if ((e = State(one, 1, 0, true, 90f, 1f, true, \"용량 1: 가장 최근 샘플만\")) != null) return e;\n            var w = new LagCompensator(2, 4);\n            for (int k = 0; k < 1000; k++) { w.Record(0, k * 20, k, 0f, k % 2 == 0); w.Record(1, k * 20 + 5, -k, 2f, true); }\n            return State(w, 0, 19950, true, 997.5f, 0f, false, \"1000개 기록 뒤(링 버퍼를 여러 바퀴 돎)\") ?? State(w, 0, 19930, true, 996.5f, 0f, true, \"1000개 기록 뒤\")\n                ?? State(w, 0, 19000, true, 996f, 0f, true, \"1000개 기록 뒤 남은 가장 오래된 샘플(19920ms)\") ?? State(w, 1, 19955, true, -997.5f, 2f, true, \"1000개 기록 뒤, 다른 엔터티\");\n        });\n\n        Run(\"alive-state-rewind\", () =>\n        {\n            var c = new LagCompensator(2, 16);\n            c.Record(0, 0, 0f, 0f, true);\n            bool[] al = { true, true, false, false, true, true }; float[] xs = { 10, 10, 10, 10, -50, -50 };\n            for (int k = 0; k < 6; k++) c.Record(1, k * 50, xs[k], 0f, al[k]);\n            return State(c, 1, 90, true, 10f, 0f, true, \"100ms 샘플에서 죽음: 90ms 에는 살아 있다\") ?? State(c, 1, 100, true, 10f, 0f, false, \"100ms 에 죽음\")\n                ?? State(c, 1, 199, true, -48.8f, 0f, false, \"150ms(죽음)와 200ms(부활) 사이\") ?? State(c, 1, 200, true, -50f, 0f, true, \"200ms 에 부활\")\n                ?? Shot(c, 0, 0f, 0f, 1f, 0f, 50f, 1f, 180, 60, 30, 1, \"목표 시각 90ms: 아직 살아 있던 대상\")\n                ?? Shot(c, 0, 0f, 0f, 1f, 0f, 50f, 1f, 200, 60, 30, -1, \"목표 시각 110ms: 이미 죽은 대상\");\n        });\n\n        Run(\"hitscan-rewind-and-limits\", () =>\n        {\n            var c = new LagCompensator(2, 64);\n            for (int t = 0; t <= 1000; t += 20) { c.Record(0, t, 0f, 0f, true); c.Record(1, t, -5f + 0.01f * t, 20f, true); }  // 대상은 10 m/s 로 x 방향, 500ms 에 x = 0\n            return Shot(c, 0, 0f, 0f, 0f, 1f, 100f, 0.3f, 620, 80, 40, 1, \"목표 500ms: 쏜 사람이 보던 위치(x = 0)\")\n                ?? Shot(c, 0, 0f, 0f, 0f, 1f, 100f, 0.3f, 620, 0, 0, -1, \"되감지 않으면(목표 620ms) 대상은 x = 1.2\")\n                ?? Shot(c, 0, 0f, 0f, 0f, 1f, 100f, 0.3f, 800, 250, 50, -1, \"왕복 250 + 보간 50: 250ms 한도로 550ms(x = 0.5)까지만 되감는다\")\n                ?? Shot(c, 0, 0f, 0f, 0f, 1f, 100f, 0.3f, 800, 100, 200, -1, \"보간 200ms 라는 주장은 100ms 로 잘린다(목표 600ms, x = 1)\")\n                ?? Shot(c, 0, 0f, 0f, 0f, 1f, 100f, 0.3f, 700, 100, 100, 1, \"왕복 100 + 보간 100: 목표 500ms\");\n        });\n\n        Run(\"hitscan-geometry\", () =>\n        {\n            var c = new LagCompensator(7, 4);\n            float[][] p = { new[] { 0f, 0f }, new[] { 10f, 0f }, new[] { 6f, 0.5f }, new[] { -5f, 0f }, new[] { 30f, 30f }, new[] { 0f, 8f }, new[] { 0f, 8f } };\n            for (int i = 0; i < 7; i++) c.Record(i, 0, p[i][0], p[i][1], true);\n            string e = Shot(c, 0, 0f, 0f, 1f, 0f, 100f, 1f, 100, 50, 50, 2, \"가장 가까운 대상(쏜 사람 자신은 제외)\")\n                ?? Shot(c, 0, 0f, 0f, 3f, 0f, 4f, 1f, 100, 50, 50, -1, \"방향 (3, 0), 사거리 4: 입사 거리 5.13 이라 밖\")\n                ?? Shot(c, 0, 0f, 0f, 0.5f, 0f, 6f, 1f, 100, 50, 50, 2, \"방향 (0.5, 0), 사거리 6: 입사 거리 5.13\")\n                ?? Shot(c, 0, 0f, 0f, -1f, 0f, 100f, 1f, 100, 50, 50, 3, \"뒤쪽(-x)의 대상\")\n                ?? Shot(c, 0, 0f, 0f, 0f, 1f, 100f, 1f, 100, 50, 50, 5, \"같은 거리의 두 대상: 작은 id\")\n                ?? Shot(c, 0, 0f, 0f, 0f, 0f, 100f, 1f, 100, 50, 50, -1, \"길이 0 인 방향\");\n            if (e != null) return e;\n            var g = new LagCompensator(4, 2);\n            g.Record(0, 0, 100f, 100f, true); g.Record(1, 0, 5f, 1f, true); g.Record(2, 0, 0.5f, 0f, true);\n            return Shot(g, 0, 0f, 0f, 1f, 0f, 10f, 1f, 50, 0, 0, 2, \"원점이 원 안인 대상(입사 거리 0)\")\n                ?? Shot(g, 0, 0f, 0f, -1f, 0f, 10f, 1f, 50, 0, 0, 2, \"원점이 원 안이면 방향과 상관없이\")\n                ?? Shot(g, 0, 0f, -3f, 1f, 0f, 5f, 1f, 50, 0, 0, -1, \"원점 (0, -3) 에서 +x: 모두 비껴감\")\n                ?? Shot(g, 0, 0f, 2f, 1f, 0f, 5f, 1f, 50, 0, 0, 1, \"(5, 1) 원에 접하는 광선, 입사 거리 정확히 5 = 사거리\")\n                ?? Shot(g, 0, 0f, 2f, 1f, 0f, 4.99f, 1f, 50, 0, 0, -1, \"사거리 4.99\")\n                ?? Shot(g, 0, 1f, 1f, 1f, 0f, 3.5f, 1f, 50, 0, 0, 1, \"중심까지 4 지만 입사 거리 3 인 대상\")\n                ?? Shot(g, 3, 1f, 1f, 1f, 0f, 3.5f, 1f, 50, 0, 0, 1, \"기록이 없는 엔터티(3)가 쏘아도 판정은 된다\");\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            _lcg = 2024u; int checkedShots = 0, checkedStates = 0;\n            for (int scene = 0; scene < 120; scene++)\n            {\n                int n = 2 + Next(6), cap = 1 + Next(12); var c = new LagCompensator(n, cap); var r = new Ref(n, cap);\n                int t = Next(100); int[] last = new int[n];\n                for (int step = 0; step < 40; step++)\n                {\n                    t += 10 + Next(30);\n                    for (int id = 0; id < n; id++)\n                    {\n                        if (Next(8) == 0) continue;   // 가끔 기록을 건너뛴다(엔터티마다 시각이 다르다)\n                        float x = Next(4000) / 100f - 20f, y = Next(4000) / 100f - 20f; bool a = Next(6) != 0;\n                        int tt = t + Next(5); c.Record(id, tt, x, y, a); r.Rec(id, tt, x, y, a);\n                    }\n                }\n                for (int q = 0; q < 10; q++)\n                {\n                    int id = Next(n), qt = t - Next(cap * 45 + 60);\n                    bool okR = r.Get(id, qt, out double wx, out double wy, out bool wa);\n                    string e = State(c, id, qt, okR, (float)wx, (float)wy, wa, \"무작위 장면 \" + scene); if (e != null) return e; checkedStates++;\n                }\n                for (int q = 0; q < 15; q++)\n                {\n                    int now = t + Next(20), rtt = Next(300), interp = Next(300) - 50, shooter = Next(n);\n                    float ox = Next(2000) / 100f - 10f, oy = Next(2000) / 100f - 10f, dx = Next(200) - 100, dy = Next(200) - 100, range = 5 + Next(40), rad = 0.5f + Next(30) / 10f;\n                    if (Next(2) == 0 && r.Get(Next(n), RefTarget(now, rtt, interp), out double ax, out double ay, out bool _))   // 절반은 누군가의 되감은 위치를 노린다\n                    { dx = (float)(ax - ox) + (Next(200) - 100) / 100f; dy = (float)(ay - oy) + (Next(200) - 100) / 100f; range = 60; }\n                    if (dx == 0 && dy == 0) continue;\n                    int want = r.Hit(shooter, ox, oy, dx, dy, range, rad, RefTarget(now, rtt, interp), out bool amb);\n                    if (amb) continue;\n                    string e = Shot(c, shooter, ox, oy, dx, dy, range, rad, now, rtt, interp, want, \"무작위 장면 \" + scene); if (e != null) return e; checkedShots++;\n                }\n            }\n            return checkedShots > 800 && checkedStates == 1200 ? null : \"테스트 생성 오류 (\" + checkedShots + \", \" + checkedStates + \")\";\n        });\n    }\n}\n",
+        "cases": [
+          "rewind-target-formula",
+          "state-interpolation",
+          "bounded-history",
+          "alive-state-rewind",
+          "hitscan-rewind-and-limits",
+          "hitscan-geometry",
+          "random-vs-reference"
+        ],
+        "note": "RewindTargetMs 의 공식과 두 한도(보간 0 ~ 100ms, 최대 250ms), 샘플 사이 보간·정확히 같은 시각·범위 밖 자르기·기록 없는 엔터티, 용량 3·1·4(1000개 기록) 링 버퍼에서 덮어쓴 샘플을 쓰지 않는지, 생존 여부를 앞 샘플로 되감는지(죽음·부활), 10 m/s 로 움직이는 대상을 되감아 맞히되 250ms 한도·보간 주장 자르기가 판정을 바꾸는지, 광선 판정(가장 가까운 대상, 쏜 사람 제외, 정규화, 뒤쪽, 원 안, 접선, 입사 거리 대 사거리, 같은 거리의 작은 id, 길이 0 방향)을 봅니다. 마지막으로 고정 선형 합동 생성기로 만든 장면 120개(엔터티 2 ~ 7, 용량 1 ~ 12)에서 상태 조회 1200번과 사격 약 1800번을 기준 구현과 비교하며, 판정 경계에서 0.01 안쪽인 사격은 쓰지 않습니다. LagCompensator(int, int), Record(int, int, float, float, bool), static RewindTargetMs(int, int, int), TryGetStateAt(int, int, out float, out float, out bool), HitScan(int, float, float, float, float, float, float, int, int, int) 와 두 상수는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t8-debug-interest-management",
+      "track": "track8",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "깜빡이는 상자, 사라지지 않는 시체, 두 번 생기는 몬스터: 관심 영역(AOI) 복제 버그 세 개",
+      "tags": [
+        "Net_InterestManagement",
+        "Net_Hysteresis",
+        "Net_SpatialGrid"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "gpp-spatial-partition",
+        "ue-actor-relevancy",
+        "unity-ngo-object-visibility",
+        "wiki-hysteresis"
+      ],
+      "scenario": "오픈 필드 MMO 의 서버는 모든 엔터티를 모든 클라이언트에 보내지 않고, 클라이언트(뷰어)마다 가까운 것만 복제합니다. Unreal Engine 문서가 설명하듯 \"관련 있는(relevant) 집합\"은 연결마다 따로 정해지고, 더 이상 관련이 없어진 동적 액터는 클라이언트에서 파괴됩니다. 우리 서버도 같은 생각으로 엔터티를 20m 격자 셀에 담아 두고, 틱마다 뷰어별로 `Spawn`(처음 보낼 때), `Update`(계속 보이는 동안 매 틱), `Despawn`(그만 보낼 때) 메시지를 만듭니다.\n\n**이 서버가 지켜야 할 규칙**\n1. 뷰어가 모르는 엔터티는 거리가 `EnterRadius`(50m) **이하**가 되면 `Spawn` 한다.\n2. 뷰어가 아는 엔터티는 거리가 `ExitRadius`(60m) **이하**인 동안 매 틱 `Update` 하고, 60m 를 넘으면 `Despawn` 한다. 50 ~ 60m 사이의 띠가 히스테리시스로, 경계에서 조금 흔들려도 생겼다 사라졌다 하지 않게 한다.\n3. 뷰어가 알던 엔터티가 월드에서 제거되거나(`RemoveEntity`) 순간이동으로 멀어지면, 다음 `Tick` 에 그 뷰어에게 `Despawn` 을 정확히 한 번 보낸다.\n4. 한 틱에 같은 (뷰어, 엔터티) 쌍에 대한 메시지는 하나뿐이다.\n5. 살아 있는 엔터티는 언제나 현재 위치의 셀 **하나에만** 들어 있다. 디버그 지표 `TotalBucketEntries` 는 살아 있는 엔터티 수와 같아야 한다.\n\n후보는 뷰어를 중심으로 한 변이 2 × 60m 인 정사각형을 덮는 셀들에서 모읍니다. 메시지 순서는 따지지 않습니다.\n\n**QA 보고** (아래 출력은 지금 코드를 그대로 돌린 결과입니다)\n- 보고 1: 뷰어 1 이 (0, 0) 에 서 있고 상자 7 이 (57, 0) 에 놓여 있습니다. 한 번도 50m 안에 들어온 적이 없는데 틱마다 `[1:Spawn:7]`, `[1:Despawn:7]`, `[1:Spawn:7]`, `[1:Despawn:7]` 이 나가서 상자가 깜빡입니다.\n- 보고 2: 10m 앞의 몬스터 40 이 죽어 `RemoveEntity(40)` 을 불렀는데, 그다음 틱부터 출력이 `[]` 이고 클라이언트에는 시체가 계속 서 있습니다.\n- 보고 3: 65m 에 있던 몬스터 21 이 45m 로 다가온 틱에 `[1:Spawn:21, 1:Spawn:21]`, 다음 틱에 `[1:Update:21, 1:Update:21]` 이 나갑니다. 엔터티 30개가 2000번 움직인 뒤 `TotalBucketEntries` 는 2024 입니다.\n\n**할 일:** 버그를 모두 찾아 고치세요. 버그마다 실패하는 입력과 기대·실제 출력을 한 줄씩 적고(주석이나 답안 메모), Despawn 을 무엇을 기준으로 만들어야 하는지 한두 문장으로 설명하세요. 공개 시그니처와 상수는 바꾸지 않습니다.",
+      "constraints": [
+        "Tick 은 뷰어마다 후보 셀만 훑는다. 모든 엔터티를 매번 검사하는 O(뷰어 × 엔터티) 방식으로 바꾸지 않는다.",
+        "MoveEntity·RemoveEntity·Tick 의 자료구조 비용을 늘리지 않는다(셀 하나의 List 에서 빼고 넣는 정도). Tick 은 재사용하는 _candidates·_seen 외에 틱마다 컬렉션을 새로 만들지 않는다.",
+        "중복을 Tick 에서 걸러내는 것만으로 끝내지 말고, 엔터티가 두 셀에 들어가는 원인을 고친다.",
+        "NetMsg·MsgKind·InterestManager 의 공개 멤버와 상수(CellSize, EnterRadius, ExitRadius)는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\npublic enum MsgKind { Spawn, Update, Despawn }\n\n// 서버가 한 클라이언트(뷰어)에게 보내는 복제 메시지 하나.\npublic readonly struct NetMsg\n{\n    public readonly int Viewer;\n    public readonly MsgKind Kind;\n    public readonly int Entity;\n    public NetMsg(int viewer, MsgKind kind, int entity) { Viewer = viewer; Kind = kind; Entity = entity; }\n    public override string ToString() => Viewer + \":\" + Kind + \":\" + Entity;\n}\n\n// 필드 서버의 관심 영역(AOI) 관리자. 엔터티를 20m 격자 셀에 담아 두고, 틱마다 뷰어별로 Spawn/Update/Despawn 을 만든다.\npublic sealed class InterestManager\n{\n    public const float CellSize = 20f;\n    public const float EnterRadius = 50f;\n    public const float ExitRadius = 60f;\n\n    private sealed class Entity { public float X, Y; }\n    private sealed class Viewer { public int Id; public float X, Y; public HashSet<int> Known = new HashSet<int>(); }\n\n    private readonly Dictionary<int, Entity> _entities = new Dictionary<int, Entity>();\n    private readonly Dictionary<long, List<int>> _cells = new Dictionary<long, List<int>>();\n    private readonly SortedDictionary<int, Viewer> _viewers = new SortedDictionary<int, Viewer>();\n    private readonly List<int> _candidates = new List<int>();\n    private HashSet<int> _seen = new HashSet<int>();\n\n    private static long Key(int cx, int cy) => ((long)cx << 32) | (uint)cy;\n    private static int CellOf(float v) => (int)MathF.Floor(v / CellSize);\n\n    private List<int> Cell(float x, float y)\n    {\n        long k = Key(CellOf(x), CellOf(y));\n        if (!_cells.TryGetValue(k, out var list)) { list = new List<int>(); _cells.Add(k, list); }\n        return list;\n    }\n\n    public void AddEntity(int id, float x, float y)\n    {\n        _entities.Add(id, new Entity { X = x, Y = y });\n        Cell(x, y).Add(id);\n    }\n\n    public void MoveEntity(int id, float x, float y)\n    {\n        var e = _entities[id];\n        if (CellOf(e.X) != CellOf(x) || CellOf(e.Y) != CellOf(y))\n            Cell(x, y).Add(id);\n        e.X = x; e.Y = y;\n    }\n\n    public void RemoveEntity(int id)\n    {\n        var e = _entities[id];\n        Cell(e.X, e.Y).Remove(id);\n        _entities.Remove(id);\n    }\n\n    // 뷰어(접속한 클라이언트의 카메라 위치)를 추가하거나 옮긴다.\n    public void SetViewer(int viewerId, float x, float y)\n    {\n        if (!_viewers.TryGetValue(viewerId, out var v)) { v = new Viewer { Id = viewerId }; _viewers.Add(viewerId, v); }\n        v.X = x; v.Y = y;\n    }\n\n    // 디버그 통계: 모든 셀에 들어 있는 항목 수의 합.\n    public int TotalBucketEntries\n    {\n        get { int n = 0; foreach (var list in _cells.Values) n += list.Count; return n; }\n    }\n\n    public void Tick(List<NetMsg> output)\n    {\n        foreach (var v in _viewers.Values)\n        {\n            _candidates.Clear();\n            int x0 = CellOf(v.X - ExitRadius), x1 = CellOf(v.X + ExitRadius);\n            int y0 = CellOf(v.Y - ExitRadius), y1 = CellOf(v.Y + ExitRadius);\n            for (int cx = x0; cx <= x1; cx++)\n                for (int cy = y0; cy <= y1; cy++)\n                    if (_cells.TryGetValue(Key(cx, cy), out var list)) _candidates.AddRange(list);\n\n            _seen.Clear();\n            foreach (int id in _candidates)\n            {\n                if (!_entities.TryGetValue(id, out var e)) continue;\n                bool known = v.Known.Contains(id);\n                float limit = known ? EnterRadius : ExitRadius;\n                float dx = e.X - v.X, dy = e.Y - v.Y;\n                if (dx * dx + dy * dy <= limit * limit)\n                {\n                    output.Add(new NetMsg(v.Id, known ? MsgKind.Update : MsgKind.Spawn, id));\n                    _seen.Add(id);\n                }\n                else if (known)\n                {\n                    output.Add(new NetMsg(v.Id, MsgKind.Despawn, id));\n                }\n            }\n            (v.Known, _seen) = (_seen, v.Known);\n        }\n    }\n}\n",
+      "edgeCases": [
+        "경계값: 정확히 50m 면 Spawn, 아는 엔터티가 정확히 60m 면 Update, 60.25m 면 Despawn.",
+        "50 ~ 60m 에 있는 모르는 엔터티는 몇 틱이 지나도 Spawn 되지 않는다.",
+        "죽은 엔터티와 멀리 순간이동한 엔터티는 후보 셀에 없어도 Despawn 된다. 뷰어가 순간이동해도 마찬가지다.",
+        "셀 경계를 넘는 이동(음수 좌표 포함) 뒤에도 메시지는 쌍마다 하나다."
+      ],
+      "hints": [
+        "보고 1 의 상자는 처음 틱에 \"모르는 엔터티\"였고, 둘째 틱에는 \"아는 엔터티\"였습니다. 각 경우에 몇 m 를 기준으로 비교해야 하는지 규칙 1·2 와 코드를 나란히 놓고 보세요. 보고 2 의 몬스터 40 은 제거된 뒤 어느 셀에도 없습니다. 그러면 Tick 의 어느 반복문에도 등장하지 않는데, Despawn 은 어디서 만들어집니까?",
+        "버그는 Tick 의 거리 기준, Tick 이 Despawn 을 만드는 위치, 그리고 MoveEntity 의 셀 갱신에 하나씩 있습니다. Despawn 은 \"이번 틱의 후보\" 가 아니라 \"뷰어가 알던 집합\" 을 기준으로 정해야 하고, 셀을 옮길 때는 두 가지 일을 해야 합니다(Game Programming Patterns 의 Spatial Partition 장이 설명하는 것).",
+        "```\nTick:\n  for each viewer v:\n    candidates = 셀(v ± ExitRadius) 의 id 들\n    seen.Clear()\n    for id in candidates:\n        limit = v.Known.Contains(id) ? ____ : ____\n        if dist² <= limit²: emit(Known 에 있으면 Update, 없으면 Spawn) ; seen.Add(id)\n    for id in ____:                      // 후보에 없던 것까지\n        if not seen.Contains(id): emit Despawn\n    swap(v.Known, seen)\n\nMoveEntity(id, x, y):\n    if 셀이 바뀌면: ____ ; 새 셀에 추가\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\npublic enum MsgKind { Spawn, Update, Despawn }\n\n// 서버가 한 클라이언트(뷰어)에게 보내는 복제 메시지 하나.\npublic readonly struct NetMsg\n{\n    public readonly int Viewer;\n    public readonly MsgKind Kind;\n    public readonly int Entity;\n    public NetMsg(int viewer, MsgKind kind, int entity) { Viewer = viewer; Kind = kind; Entity = entity; }\n    public override string ToString() => Viewer + \":\" + Kind + \":\" + Entity;\n}\n\n// 필드 서버의 관심 영역(AOI) 관리자. 엔터티를 20m 격자 셀에 담아 두고, 틱마다 뷰어별로 Spawn/Update/Despawn 을 만든다.\npublic sealed class InterestManager\n{\n    public const float CellSize = 20f;\n    public const float EnterRadius = 50f;\n    public const float ExitRadius = 60f;\n\n    private sealed class Entity { public float X, Y; }\n    private sealed class Viewer { public int Id; public float X, Y; public HashSet<int> Known = new HashSet<int>(); }\n\n    private readonly Dictionary<int, Entity> _entities = new Dictionary<int, Entity>();\n    private readonly Dictionary<long, List<int>> _cells = new Dictionary<long, List<int>>();\n    private readonly SortedDictionary<int, Viewer> _viewers = new SortedDictionary<int, Viewer>();\n    private readonly List<int> _candidates = new List<int>();\n    private HashSet<int> _seen = new HashSet<int>();\n\n    private static long Key(int cx, int cy) => ((long)cx << 32) | (uint)cy;\n    private static int CellOf(float v) => (int)MathF.Floor(v / CellSize);\n\n    private List<int> Cell(float x, float y)\n    {\n        long k = Key(CellOf(x), CellOf(y));\n        if (!_cells.TryGetValue(k, out var list)) { list = new List<int>(); _cells.Add(k, list); }\n        return list;\n    }\n\n    public void AddEntity(int id, float x, float y)\n    {\n        _entities.Add(id, new Entity { X = x, Y = y });\n        Cell(x, y).Add(id);\n    }\n\n    public void MoveEntity(int id, float x, float y)\n    {\n        var e = _entities[id];\n        if (CellOf(e.X) != CellOf(x) || CellOf(e.Y) != CellOf(y))\n        {\n            Cell(e.X, e.Y).Remove(id);          // 옛 셀에서 빼야 한 엔터티가 두 셀에 동시에 들어가지 않는다\n            Cell(x, y).Add(id);\n        }\n        e.X = x; e.Y = y;\n    }\n\n    public void RemoveEntity(int id)\n    {\n        var e = _entities[id];\n        Cell(e.X, e.Y).Remove(id);\n        _entities.Remove(id);\n    }\n\n    // 뷰어(접속한 클라이언트의 카메라 위치)를 추가하거나 옮긴다.\n    public void SetViewer(int viewerId, float x, float y)\n    {\n        if (!_viewers.TryGetValue(viewerId, out var v)) { v = new Viewer { Id = viewerId }; _viewers.Add(viewerId, v); }\n        v.X = x; v.Y = y;\n    }\n\n    // 디버그 통계: 모든 셀에 들어 있는 항목 수의 합.\n    public int TotalBucketEntries\n    {\n        get { int n = 0; foreach (var list in _cells.Values) n += list.Count; return n; }\n    }\n\n    public void Tick(List<NetMsg> output)\n    {\n        foreach (var v in _viewers.Values)\n        {\n            _candidates.Clear();\n            int x0 = CellOf(v.X - ExitRadius), x1 = CellOf(v.X + ExitRadius);\n            int y0 = CellOf(v.Y - ExitRadius), y1 = CellOf(v.Y + ExitRadius);\n            for (int cx = x0; cx <= x1; cx++)\n                for (int cy = y0; cy <= y1; cy++)\n                    if (_cells.TryGetValue(Key(cx, cy), out var list)) _candidates.AddRange(list);\n\n            _seen.Clear();\n            foreach (int id in _candidates)\n            {\n                if (!_entities.TryGetValue(id, out var e)) continue;\n                bool known = v.Known.Contains(id);\n                float limit = known ? ExitRadius : EnterRadius;   // 보이던 것은 60m 까지 유지, 새로 들어오는 것은 50m 안에서만\n                float dx = e.X - v.X, dy = e.Y - v.Y;\n                if (dx * dx + dy * dy <= limit * limit)\n                {\n                    output.Add(new NetMsg(v.Id, known ? MsgKind.Update : MsgKind.Spawn, id));\n                    _seen.Add(id);\n                }\n            }\n            // 이번 틱에 보이지 않은 것은 후보에 있었든 없었든(사라진 엔터티, 셀 밖으로 나간 엔터티) 모두 Despawn\n            foreach (int id in v.Known)\n                if (!_seen.Contains(id)) output.Add(new NetMsg(v.Id, MsgKind.Despawn, id));\n            (v.Known, _seen) = (_seen, v.Known);\n        }\n    }\n}\n",
+      "explanation": "**버그 1 — 히스테리시스 기준이 뒤바뀜 (보고 1).** `known ? EnterRadius : ExitRadius` 는 모르는 엔터티를 60m 에서 들이고 아는 엔터티를 50m 에서 내보냅니다. 띠가 거꾸로 되어 50 ~ 60m 의 엔터티는 Spawn 과 Despawn 을 매 틱 반복합니다. 실패 입력: 뷰어 (0, 0), 상자 (57, 0) — 기대 `[]`, 결과 `[1:Spawn:7]`. `known ? ExitRadius : EnterRadius` 가 맞습니다. Wikipedia 의 Hysteresis 문서가 온도조절기 예(18°C 아래에서 켜고 22°C 를 넘어야 끈다)로 설명하듯, 켜는 기준과 끄는 기준을 벌려 놓아야 잦은 전환이 사라집니다. 50/60m 값과 \"이하\" 포함 규칙은 이 서버가 정한 것입니다.\n\n**버그 2 — Despawn 을 후보 안에서만 만듦 (보고 2).** Despawn 이 후보 반복 안의 `else if (known)` 에만 있어서, 후보 셀에 아예 없는 엔터티(제거됨, 멀리 순간이동, 뷰어가 순간이동)는 메시지 없이 `Known` 에서만 조용히 빠집니다. 서버는 잊었고 클라이언트는 영원히 기억하는 유령입니다. 실패 입력: 몬스터 40 을 (10, 0) 에 두고 한 틱, `RemoveEntity(40)` 뒤 한 틱 — 기대 `[1:Despawn:40]`, 결과 `[]`. 고친 코드는 반복이 끝난 뒤 `v.Known` 가운데 `_seen` 에 없는 것을 모두 Despawn 하고, 루프 안의 Despawn 은 지웁니다(남기면 같은 엔터티에 두 번 보냅니다). Unity Netcode for GameObjects 문서도 객체가 클라이언트에게 숨겨지면 그 클라이언트가 이전에 보이던 객체를 despawn 하고 파괴한다고 설명합니다. 기준은 \"알던 집합과 지금 집합의 차이\"입니다.\n\n**버그 3 — 옛 셀에서 빼지 않음 (보고 3).** `MoveEntity` 가 셀이 바뀔 때 새 셀에 넣기만 해서 지나온 셀마다 id 가 남습니다. 두 셀이 모두 후보 범위에 있으면 같은 id 가 후보에 두 번 들어가고, `v.Known` 은 틱 끝에서야 바뀌므로 두 번 다 Spawn 이 됩니다. 실패 입력: 몬스터 21 을 (65, 0) → (45, 0) — 기대 `[1:Spawn:21]`, 결과 `[1:Spawn:21, 1:Spawn:21]`. 셀 목록도 끝없이 자랍니다(30개 · 2000번 이동 → 2024). Game Programming Patterns 의 Spatial Partition 장은 유닛이 셀 경계를 넘으면 옛 셀에서 빼고 새 셀에 넣어야 한다고 설명합니다. Tick 에서 중복만 거르면 메시지는 맞아도 셀 목록과 후보 수가 계속 커집니다.\n\n**복잡도.** 뷰어마다 (2·60/20 + 1)² 개 안팎의 셀과 그 안의 엔터티만 보고, Despawn 검사는 알던 집합 크기에 비례합니다.\n\n### 흔한 오해\n- **\"엔터티를 격자에 넣었으니 후보 검색은 들어오는 반경(50m)만 덮으면 된다\"** — 아는 엔터티는 60m 까지 유지되므로 후보가 50m 만 덮으면 50 ~ 60m 에서 셀 정렬에 따라 일찍 Despawn 되는 또 다른 깜빡임이 생깁니다. 이 문제의 정답에서 후보 범위만 50m 로 바꾸면 x = 60 에 있는 아는 몬스터가 Update 대신 Despawn 을 받는 것을 확인했습니다(verified by running .NET 8). 후보 범위는 가장 큰 나가기 반경을 덮어야 합니다.\n- **\"Unreal 에서 관련이 없어진 액터는 클라이언트에 그대로 남고 업데이트만 멈춘다\"** — Unreal Engine 5.9 문서는 동적으로 스폰된 복제 액터가 더 이상 관련이 없어지면 클라이언트에서 파괴된다고 적습니다[ue-actor-relevancy]. Netcode for GameObjects 도 객체가 어떤 클라이언트에게 숨겨지면 그 객체가 보이던 클라이언트에서 despawn·파괴된다고 설명합니다[unity-ngo-object-visibility]. 이 문제의 Despawn 메시지가 그 \"클라이언트에서 지우라\"는 신호이고, 빠뜨리면 보고 2 처럼 유령이 남습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "히스테리시스 기준을 고쳤다: 모르는 엔터티는 50m 이하에서 Spawn, 아는 엔터티는 60m 이하면 Update, 넘으면 Despawn.",
+            "points": 12,
+            "sourceId": "wiki-hysteresis"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "알던 엔터티가 후보에 없을 때(제거, 순간이동, 뷰어 이동)도 다음 틱에 Despawn 을 정확히 한 번 보낸다.",
+            "points": 12,
+            "sourceId": "unity-ngo-object-visibility"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "셀이 바뀌면 옛 셀에서 빼고 새 셀에 넣어, 쌍마다 메시지가 하나이고 TotalBucketEntries 가 살아 있는 엔터티 수와 같다.",
+            "points": 11,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "셀 목록이 이동 횟수에 비례해 자라지 않는다(옛 셀의 id 가 남지 않는다).",
+            "points": 10,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Tick 이 여전히 후보 셀만 훑고, 전체 엔터티 순회로 바꾸지 않았다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Tick 에서 틱마다 새 컬렉션을 만들지 않고 _candidates·_seen 을 재사용한다(Known 과 _seen 은 맞바꾼다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "각 버그의 실패 입력(57m 상자, 제거된 몬스터 40, 65m → 45m 몬스터 21)과 기대·실제 출력을 적었다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "Despawn 을 \"알던 집합 − 이번 틱에 본 집합\" 으로 정해야 하는 이유를, 관련이 없어진 액터를 클라이언트에서 파괴하는 엔진의 relevancy/visibility 모델과 연결해 설명했다.",
+            "points": 10,
+            "sourceId": "ue-actor-relevancy"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "Despawn 을 한 곳에서만 만든다(후보 루프 안과 밖에 중복되지 않는다).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "고친 부분 외의 코드와 공개 시그니처를 바꾸지 않았다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "후보 셀 대신 모든 엔터티를 매 틱 검사하도록 바꿔 문제를 우회했다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "중복 메시지를 Tick 에서만 걸러 내고 셀 목록이 계속 자라는 원인을 남겼다.",
+            "penalty": -15,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "d3",
+            "description": "히스테리시스를 없애(한 반경만 사용) 깜빡임을 50m 경계로 옮겨 놓았다.",
+            "penalty": -15,
+            "sourceId": "wiki-hysteresis"
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "스타터를 그대로 실행해 QA 보고의 출력(Spawn/Despawn 반복, 제거 뒤 [], 중복 Spawn·Update, 셀 항목 2024)을 확인하고, 버그 하나만 남긴 3종과 둘을 남긴 3종이 모두 실패하고 정답은 통과하는 것을 .NET 8 과 Compiler Explorer 에서 확인했으며, Unreal 5.9 Actor Relevancy·NGO 2.4 Object visibility·Game Programming Patterns 문서와 대조했습니다."
+      },
+      "nextMission": "엔터티 종류마다 반경을 다르게 하세요(상자 20/25m, 몬스터 50/60m, 보스 120/140m). 후보 사각형은 가장 큰 나가기 반경을 덮어야 합니다. 그다음 Despawn 을 곧바로 보내지 않고 1초 동안 Update 없이 붙잡아 두었다가 그 안에 다시 들어오면 Spawn 없이 Update 를 재개하는 \"시간 히스테리시스\"를 추가하고, 거리 히스테리시스만 있을 때와 메시지 수를 고정 시나리오로 비교하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static readonly System.Collections.Generic.List<NetMsg> Buf = new System.Collections.Generic.List<NetMsg>();\n\n    // 한 틱을 돌리고 메시지를 정렬된 문자열로 돌려준다(순서는 따지지 않고, 중복은 그대로 센다).\n    static string TickStr(InterestManager m)\n    {\n        Buf.Clear(); m.Tick(Buf);\n        var s = new System.Collections.Generic.List<string>(); foreach (var x in Buf) s.Add(x.Viewer + \":\" + x.Kind + \":\" + x.Entity);\n        s.Sort(System.StringComparer.Ordinal); return \"[\" + string.Join(\", \", s) + \"]\";\n    }\n\n    static string Expect(InterestManager m, string want, string ctx)\n    {\n        string got = TickStr(m);\n        return got == want ? null : ctx + \": 기대 \" + want + \" / 결과 \" + got;\n    }\n\n    // 기준 구현: 격자 없이 모든 엔터티를 매번 검사한다.\n    sealed class Ref\n    {\n        public readonly System.Collections.Generic.SortedDictionary<int, (float x, float y)> E = new System.Collections.Generic.SortedDictionary<int, (float, float)>();\n        public readonly System.Collections.Generic.SortedDictionary<int, (float x, float y, System.Collections.Generic.HashSet<int> known)> V = new System.Collections.Generic.SortedDictionary<int, (float, float, System.Collections.Generic.HashSet<int>)>();\n        public string Tick()\n        {\n            var s = new System.Collections.Generic.List<string>();\n            foreach (var kv in V)\n            {\n                var known = kv.Value.known; var next = new System.Collections.Generic.HashSet<int>();\n                foreach (var e in E)\n                {\n                    float dx = e.Value.x - kv.Value.x, dy = e.Value.y - kv.Value.y; bool k = known.Contains(e.Key);\n                    float lim = k ? 60f : 50f;\n                    if (dx * dx + dy * dy <= lim * lim) { next.Add(e.Key); s.Add(kv.Key + \":\" + (k ? \"Update\" : \"Spawn\") + \":\" + e.Key); }\n                }\n                foreach (int id in known) if (!next.Contains(id)) s.Add(kv.Key + \":Despawn:\" + id);\n                known.Clear(); known.UnionWith(next);\n            }\n            s.Sort(System.StringComparer.Ordinal); return \"[\" + string.Join(\", \", s) + \"]\";\n        }\n    }\n\n    static uint _lcg;\n    static int Next(int mod) { _lcg = unchecked(_lcg * 1664525u + 1013904223u); return (int)((_lcg >> 8) % (uint)mod); }\n\n    public static void Main()\n    {\n        Run(\"enter-exit-hysteresis\", () =>\n        {\n            var m = new InterestManager(); m.SetViewer(1, 0f, 0f); m.AddEntity(7, 57f, 0f);\n            for (int t = 1; t <= 4; t++) if (Expect(m, \"[]\", \"57m 에 서 있는 상자(50m 안에 들어온 적 없음), \" + t + \"번째 틱\") is string e) return e;\n            m.AddEntity(8, 45f, 0f);\n            float[] path = { 45f, 55f, 59.75f, 60f, 60.25f, 52f, 50f };\n            string[] want = { \"[1:Spawn:8]\", \"[1:Update:8]\", \"[1:Update:8]\", \"[1:Update:8]\", \"[1:Despawn:8]\", \"[]\", \"[1:Spawn:8]\" };\n            for (int k = 0; k < path.Length; k++) { m.MoveEntity(8, path[k], 0f); if (Expect(m, want[k], \"다가왔다 멀어지는 몬스터, x = \" + path[k]) is string e) return e; }\n            return null;\n        });\n\n        Run(\"jitter-no-flicker\", () =>\n        {\n            var m = new InterestManager(); m.SetViewer(3, 100f, 100f); m.AddEntity(5, 149f, 100f);\n            if (Expect(m, \"[3:Spawn:5]\", \"49m 에서 처음 보임\") is string e0) return e0;\n            float[] jitter = { 0f, 4.5f, 9f, 6f, 1f, 8.75f, 3f, 10f };\n            for (int k = 0; k < 24; k++)\n            {\n                m.SetViewer(3, 100f - jitter[k % 8], 100f + (k % 3) * 0.5f);\n                if (Expect(m, \"[3:Update:5]\", \"뷰어가 0 ~ 10m 흔들림(거리 49 ~ 59m), \" + (k + 1) + \"번째 틱\") is string e) return e;\n            }\n            return null;\n        });\n\n        Run(\"removed-entity-despawned\", () =>\n        {\n            var m = new InterestManager(); m.SetViewer(1, 0f, 0f); m.SetViewer(2, 300f, 0f);\n            m.AddEntity(40, 10f, 0f); m.AddEntity(41, 290f, 5f); m.AddEntity(42, 20f, -20f);\n            string e = Expect(m, \"[1:Spawn:40, 1:Spawn:42, 2:Spawn:41]\", \"첫 틱\");\n            if (e != null) return e;\n            m.RemoveEntity(40);\n            return Expect(m, \"[1:Despawn:40, 1:Update:42, 2:Update:41]\", \"몬스터 40 이 죽어 제거된 다음 틱\")\n                ?? Expect(m, \"[1:Update:42, 2:Update:41]\", \"그다음 틱(Despawn 은 한 번만)\");\n        });\n\n        Run(\"teleport-out-despawned\", () =>\n        {\n            var m = new InterestManager(); m.SetViewer(1, 0f, 0f); m.AddEntity(9, -30f, 10f); m.AddEntity(10, 5f, 5f);\n            string e = Expect(m, \"[1:Spawn:10, 1:Spawn:9]\", \"첫 틱\");\n            if (e != null) return e;\n            m.MoveEntity(9, 500f, 500f);\n            if ((e = Expect(m, \"[1:Despawn:9, 1:Update:10]\", \"엔터티 9 가 마을로 귀환(500, 500)\")) != null) return e;\n            m.SetViewer(1, -1000f, 0f);\n            return Expect(m, \"[1:Despawn:10]\", \"뷰어가 순간이동해 멀어짐\");\n        });\n\n        Run(\"cell-cross-single-message\", () =>\n        {\n            var m = new InterestManager(); m.SetViewer(1, 0f, 0f); m.AddEntity(20, 19f, 5f); m.AddEntity(21, 65f, 0f);\n            string e = Expect(m, \"[1:Spawn:20]\", \"첫 틱\");\n            if (e != null) return e;\n            m.MoveEntity(20, 21f, 5f); m.MoveEntity(21, 45f, 0f);\n            if ((e = Expect(m, \"[1:Spawn:21, 1:Update:20]\", \"20 은 셀 0 → 1, 21 은 셀 3 → 2 로 경계를 넘음\")) != null) return e;\n            m.MoveEntity(20, -21f, -5f); m.MoveEntity(21, 39f, 0f);\n            return Expect(m, \"[1:Update:20, 1:Update:21]\", \"다시 경계를 넘음(음수 좌표 포함)\");\n        });\n\n        Run(\"bucket-bookkeeping\", () =>\n        {\n            var m = new InterestManager(); _lcg = 11u;\n            for (int id = 0; id < 30; id++) m.AddEntity(id, Next(400) - 200, Next(400) - 200);\n            for (int k = 0; k < 2000; k++) m.MoveEntity(Next(30), Next(400) - 200, Next(400) - 200);\n            if (m.TotalBucketEntries != 30) return \"엔터티 30개가 2000번 움직인 뒤 셀 항목 수 기대 30 / 결과 \" + m.TotalBucketEntries;\n            for (int id = 0; id < 30; id += 3) m.RemoveEntity(id);\n            return m.TotalBucketEntries == 20 ? null : \"10개를 제거한 뒤 셀 항목 수 기대 20 / 결과 \" + m.TotalBucketEntries;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            _lcg = 99u;\n            for (int run = 0; run < 25; run++)\n            {\n                var m = new InterestManager(); var r = new Ref(); int nextId = 100;\n                for (int v = 0; v < 3; v++) { float x = (Next(800) - 400) / 4f, y = (Next(800) - 400) / 4f; m.SetViewer(v, x, y); r.V[v] = (x, y, new System.Collections.Generic.HashSet<int>()); }\n                for (int tick = 0; tick < 60; tick++)\n                {\n                    for (int op = 0; op < 6; op++)\n                    {\n                        int kind = Next(10);\n                        if (kind == 0 || r.E.Count < 3) { float x = (Next(1000) - 500) / 4f, y = (Next(1000) - 500) / 4f; m.AddEntity(nextId, x, y); r.E[nextId++] = (x, y); }\n                        else if (kind == 1) { int id = new System.Collections.Generic.List<int>(r.E.Keys)[Next(r.E.Count)]; m.RemoveEntity(id); r.E.Remove(id); }\n                        else if (kind == 2) { int v = Next(3); float x = r.V[v].x + (Next(161) - 80) / 4f, y = r.V[v].y + (Next(161) - 80) / 4f; m.SetViewer(v, x, y); r.V[v] = (x, y, r.V[v].known); }\n                        else { int id = new System.Collections.Generic.List<int>(r.E.Keys)[Next(r.E.Count)]; var p = r.E[id]; float x = p.x + (Next(81) - 40) / 4f, y = p.y + (Next(81) - 40) / 4f; if (Next(15) == 0) { x = -x; y = -y; } m.MoveEntity(id, x, y); r.E[id] = (x, y); }\n                    }\n                    string want = r.Tick(), got = TickStr(m);\n                    if (got != want) return run + \"회차 \" + tick + \"번째 틱 기대 \" + want + \" / 결과 \" + got;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "enter-exit-hysteresis",
+          "jitter-no-flicker",
+          "removed-entity-despawned",
+          "teleport-out-despawned",
+          "cell-cross-single-message",
+          "bucket-bookkeeping",
+          "random-vs-reference"
+        ],
+        "note": "고정 상자(57m)와 다가왔다 멀어지는 몬스터로 Spawn·Update·Despawn 의 경계값(50m 이하 진입, 60m 이하 유지, 60.25m 이탈, 52m 재접근은 무시, 50m 재진입)을, 뷰어가 0 ~ 10m 흔들릴 때 깜빡이지 않는지를 봅니다. 제거된 엔터티·순간이동한 엔터티·순간이동한 뷰어가 Despawn 을 정확히 한 번 받는지, 셀 경계(음수 좌표 포함)를 넘은 뒤 메시지가 쌍마다 하나인지, 2000번 이동과 제거 뒤 TotalBucketEntries 가 살아 있는 엔터티 수와 같은지 확인합니다. 마지막으로 고정 선형 합동 생성기로 만든 25회 × 60틱(뷰어 3명, 추가·제거·이동·순간이동 섞음)을 격자 없는 기준 구현과 틱마다 비교합니다. 좌표는 0.25 단위라 float 거리 비교에 오차가 없습니다. 메시지 순서는 보지 않고 중복은 셉니다. NetMsg, MsgKind, InterestManager 의 AddEntity·MoveEntity·RemoveEntity·SetViewer·TotalBucketEntries·Tick(List<NetMsg>) 과 상수는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t8-impl-aoi-grid-hysteresis",
+      "track": "track8",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "셀 격자 관심 영역: 엔터티 업데이트를 받을 플레이어 고르기와 경계 흔들림 막기",
+      "tags": [
+        "Net_InterestManagement",
+        "Net_SpatialGrid",
+        "Net_Hysteresis"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ue-replication-graph",
+        "gpp-spatial-partition",
+        "wiki-hysteresis",
+        "ms-numeric-conversions"
+      ],
+      "scenario": "100명이 들어가는 배틀로얄 서버는 지금 엔터티마다 모든 플레이어와 거리를 재서 업데이트를 받을 사람을 고릅니다. 엔터티 수 × 플레이어 수만큼 계산하므로 셀 격자로 바꾸기로 했습니다. Unreal Engine 의 Replication Graph 문서가 개념 설계로 소개하듯, 월드를 격자 칸으로 나누면 서버는 \"클라이언트의 카메라가 있는 칸\"을 기준으로 보낼 액터 목록을 바로 정할 수 있습니다.\n\n**셀 모델 (이 게임의 규칙)**\n- 월드를 한 변 `CellSize` = 32m 인 정사각형 셀로 나눈다. 좌표 v 의 셀 번호는 `floor(v / 32)` 이다. 음수도 마찬가지라 -0.01 은 -1 번 셀이다.\n- 플레이어마다 **기준 셀** 하나가 있다. 셀 (ex, ey) 에 있는 엔터티의 업데이트는 기준 셀 (ax, ay) 가 `|ax − ex| ≤ 1` 이고 `|ay − ey| ≤ 1` 인 플레이어, 즉 기준 셀 주변 3×3 셀 안에 엔터티가 있는 플레이어가 받는다.\n\n**히스테리시스 규칙 (이 게임의 규칙).** 기준 셀을 \"지금 서 있는 셀\"로 매번 바꾸면, 셀 경계에 서서 조금만 흔들려도 3×3 범위가 한 칸씩 왔다 갔다 하고 그 가장자리의 엔터티가 생겼다 사라졌다 합니다. 그래서 기준 셀에 `Margin` = 4m 의 여유를 둡니다.\n- 처음 들어온 플레이어의 기준 셀은 서 있는 셀이다.\n- 그 뒤에는 플레이어가 기준 셀을 사방으로 4m 넓힌 사각형 `[ax·32 − 4, (ax+1)·32 + 4] × [ay·32 − 4, (ay+1)·32 + 4]` 안(경계 포함)에 있는 동안 기준 셀을 바꾸지 않는다.\n- 그 밖으로 나가면 기준 셀을 지금 서 있는 셀로 바꾼다. 순간이동처럼 멀리 가도 한 번에 바꾼다.\n\n예: 셀 (0, 0) 이 기준인 플레이어가 x = 33, 36 으로 가면 그대로이고, 36.5 에서 (1, 0) 이 됩니다. 거기서 x = 30, 28 로 돌아와도 (1, 0) 이고, 27.5 에서 (0, 0) 으로 돌아갑니다.\n\n**구현할 것 (`AoiGrid`)** — 두 사전(`_anchor`: 플레이어 → 기준 셀, `_byAnchor`: 기준 셀 → 플레이어 목록)과 목록을 꺼내는 `Bucket` 도우미는 starter 에 들어 있습니다.\n- `CellOf(v)`: 셀 번호.\n- `UpdatePlayer(id, x, y)`: 플레이어를 추가하거나 옮기고 위 규칙으로 기준 셀을 갱신한다.\n- `RemovePlayer(id)`: 접속을 끊은 플레이어를 완전히 잊는다. 같은 id 로 다시 들어오면 처음 들어온 것처럼 다룬다. 없는 id 면 아무 일도 하지 않는다.\n- `AnchorOf(id)`: 현재 기준 셀.\n- `GetReceivers(x, y, result)`: 그 위치의 엔터티를 받을 플레이어 id 를 중복 없이 오름차순으로 `result` 에 채운다. 기존 내용은 지운다.",
+      "constraints": [
+        "GetReceivers 는 모든 플레이어를 훑지 않는다. 기준 셀별 플레이어 목록을 두고 엔터티 셀 주변 9개 셀의 목록만 본다(O(9 + 받는 사람 수 · log)).",
+        "UpdatePlayer 는 기준 셀이 바뀔 때만 옛 셀 목록에서 빼고 새 셀 목록에 넣는다. 기준 셀이 그대로면 목록을 건드리지 않는다.",
+        "셀 번호는 (int)(v / CellSize) 처럼 0 쪽으로 자르지 말고 MathF.Floor 로 구한다.",
+        "상수 CellSize·Margin 과 공개 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 셀 기반 관심 영역: 플레이어는 \"기준 셀\" 주변 3×3 셀 안의 엔터티 업데이트를 받는다.\npublic sealed class AoiGrid\n{\n    public const float CellSize = 32f;   // 셀 한 변(m)\n    public const float Margin = 4f;      // 기준 셀 밖으로 이만큼 넘어가야 기준 셀을 바꾼다(m)\n\n    // 제공: 플레이어 → 기준 셀, 기준 셀 → 그 셀이 기준인 플레이어 목록\n    private readonly Dictionary<int, (int cx, int cy)> _anchor = new Dictionary<int, (int, int)>();\n    private readonly Dictionary<(int, int), List<int>> _byAnchor = new Dictionary<(int, int), List<int>>();\n\n    // 제공: 기준 셀의 플레이어 목록(없으면 만들어 돌려준다)\n    private List<int> Bucket((int, int) cell)\n    {\n        if (!_byAnchor.TryGetValue(cell, out var list)) { list = new List<int>(); _byAnchor.Add(cell, list); }\n        return list;\n    }\n\n    // 좌표 v 가 속한 셀 번호.\n    public static int CellOf(float v)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 플레이어를 추가하거나 옮긴다.\n    public void UpdatePlayer(int playerId, float x, float y)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 접속을 끊은 플레이어를 뺀다(없으면 아무 일도 하지 않는다).\n    public void RemovePlayer(int playerId)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 플레이어의 현재 기준 셀. 호출자 보장: 등록된 플레이어만 묻는다.\n    public (int cx, int cy) AnchorOf(int playerId)\n    {\n        throw new NotImplementedException();\n    }\n\n    // (x, y) 에 있는 엔터티의 업데이트를 받아야 하는 플레이어 id 를 오름차순으로 result 에 채운다(기존 내용은 지운다).\n    public void GetReceivers(float x, float y, List<int> result)\n    {\n        throw new NotImplementedException();\n    }\n}",
+      "edgeCases": [
+        "음수 좌표: CellOf(-0.01) = -1, CellOf(-32) = -1, CellOf(-32.01) = -2.",
+        "여유의 끝은 포함: 기준 셀 (0, 0) 에서 x = 36 은 그대로, 36.5 는 (1, 0).",
+        "셀 경계 x = 32 를 30 ~ 35.9 사이로 계속 오가도 기준 셀이 바뀌지 않아, 서쪽 셀 (-1, 0) 의 엔터티를 계속 받는다.",
+        "순간이동은 옆 칸으로 한 칸씩이 아니라 도착한 셀로 바로 바꾼다.",
+        "접속을 끊었다 다시 들어온 플레이어는 옛 기준 셀을 기억하지 않는다."
+      ],
+      "hints": [
+        "플레이어가 (31, 16) 과 (33.5, 16) 을 번갈아 오간다고 해 봅시다. 기준 셀을 매번 CellOf(x) 로 잡으면 (0, 0) 과 (1, 0) 이 번갈아 나오고, (-20, 16) 에 있는 상자(셀 -1)는 받았다 못 받았다 합니다. 또 (int)(-20f / 32f) 와 MathF.Floor(-20f / 32f) 는 각각 얼마입니까?",
+        "starter 의 두 사전을 그대로 쓰면 됩니다. \"플레이어 → 기준 셀\"(_anchor) 과 \"기준 셀 → 그 셀이 기준인 플레이어 목록\"(_byAnchor) 입니다. 엔터티 셀이 기준 셀의 3×3 안에 있다는 것은 기준 셀이 엔터티 셀의 3×3 안에 있다는 것과 같으므로, GetReceivers 는 엔터티 셀 주변 9개 셀의 목록을 모으면 됩니다. 플레이어는 목록 하나에만 있으므로 중복이 생기지 않습니다.",
+        "```\nUpdatePlayer(id, x, y):\n    if 기준 셀 a 가 있으면:\n        if a 를 사방으로 Margin 넓힌 사각형 안이면(경계 포함): return\n        ____                      // 옛 목록에서 뺀다\n    a = (CellOf(x), CellOf(y)) ; 저장 ; 새 목록에 넣는다\n\nGetReceivers(x, y, result):\n    result.Clear() ; (ex, ey) = 엔터티 셀\n    for cx in ex-1 .. ex+1, cy in ey-1 .. ey+1:\n        ____                      // 그 셀이 기준인 플레이어들\n    result.Sort()\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 셀 기반 관심 영역: 플레이어는 \"기준 셀\" 주변 3×3 셀 안의 엔터티 업데이트를 받는다.\npublic sealed class AoiGrid\n{\n    public const float CellSize = 32f;   // 셀 한 변(m)\n    public const float Margin = 4f;      // 기준 셀 밖으로 이만큼 넘어가야 기준 셀을 바꾼다(m)\n\n    private readonly Dictionary<int, (int cx, int cy)> _anchor = new Dictionary<int, (int, int)>();\n    private readonly Dictionary<(int, int), List<int>> _byAnchor = new Dictionary<(int, int), List<int>>();\n\n    // 셀 번호. 음수 좌표도 바닥 함수로: -0.5 는 -1 번 셀이다.\n    public static int CellOf(float v) => (int)MathF.Floor(v / CellSize);\n\n    // 플레이어를 추가하거나 옮긴다. 기준 셀은 히스테리시스 규칙으로만 바뀐다.\n    public void UpdatePlayer(int playerId, float x, float y)\n    {\n        if (_anchor.TryGetValue(playerId, out var a))\n        {\n            float minX = a.cx * CellSize - Margin, maxX = (a.cx + 1) * CellSize + Margin;\n            float minY = a.cy * CellSize - Margin, maxY = (a.cy + 1) * CellSize + Margin;\n            if (x >= minX && x <= maxX && y >= minY && y <= maxY) return;   // 여유 띠 안: 그대로\n            Bucket(a).Remove(playerId);\n        }\n        var next = (CellOf(x), CellOf(y));                                 // 지금 서 있는 셀로 바꾼다\n        _anchor[playerId] = next;\n        Bucket(next).Add(playerId);\n    }\n\n    public void RemovePlayer(int playerId)\n    {\n        if (_anchor.TryGetValue(playerId, out var a)) { Bucket(a).Remove(playerId); _anchor.Remove(playerId); }\n    }\n\n    public (int cx, int cy) AnchorOf(int playerId) => _anchor[playerId];\n\n    // (x, y) 에 있는 엔터티의 업데이트를 받아야 하는 플레이어 id 를 오름차순으로 result 에 채운다.\n    public void GetReceivers(float x, float y, List<int> result)\n    {\n        result.Clear();\n        int ex = CellOf(x), ey = CellOf(y);\n        for (int cx = ex - 1; cx <= ex + 1; cx++)          // 엔터티 셀이 기준 셀의 3×3 안 ⇔ 기준 셀이 엔터티 셀의 3×3 안\n            for (int cy = ey - 1; cy <= ey + 1; cy++)\n                if (_byAnchor.TryGetValue((cx, cy), out var list)) result.AddRange(list);\n        result.Sort();                                     // 플레이어는 기준 셀 하나에만 있으므로 중복이 없다\n    }\n\n    private List<int> Bucket((int, int) cell)\n    {\n        if (!_byAnchor.TryGetValue(cell, out var list)) { list = new List<int>(); _byAnchor.Add(cell, list); }\n        return list;\n    }\n}\n",
+      "explanation": "**셀 모델은 반경 모델의 근사입니다.** 플레이어가 기준 셀 안에 있으면 3×3 은 x·y 축 방향으로 플레이어에서 32 ~ 64m 까지를 덮고(대각선 쪽은 더 멀리), 4m 여유 때문에 실제로는 축 방향 28 ~ 68m 입니다. 정확한 원은 아니지만 판정이 정수 비교뿐이고, 셀별 플레이어 목록을 두면 엔터티 하나의 수신자를 9개 목록에서 바로 모을 수 있습니다. Game Programming Patterns 의 Spatial Partition 장도 범위가 있는 상호작용은 다른 셀에 있는 대상도 가까울 수 있어 이웃 셀까지 봐야 한다고 설명합니다. 3×3 은 그 \"이웃 셀\" 범위를 관심 영역으로 쓴 것입니다.\n\n**왜 대칭으로 뒤집어 조회하는가.** 엔터티 셀 E 가 기준 셀 A 의 3×3 안에 있다는 조건은 `|A − E| ≤ 1` 이므로 A 가 E 의 3×3 안에 있다는 조건과 같습니다. 그래서 \"이 엔터티를 받을 사람\" 은 E 주변 9개 셀이 기준인 플레이어들이고, 플레이어는 정확히 한 목록에만 있으므로 중복 제거가 필요 없습니다. 기준 셀이 바뀔 때 옛 목록에서 빼지 않으면 떠난 플레이어가 옛 근처의 업데이트를 계속 받습니다.\n\n**히스테리시스.** Wikipedia 의 Hysteresis 문서는 온도조절기가 18°C 아래에서 히터를 켜고 22°C 를 넘어야 끄는 예로, 켜고 끄는 기준을 달리하면 잦은 전환을 막는다고 설명합니다. 여기서는 \"기준 셀을 바꾸는 기준\"이 셀 경계에서 4m 바깥이고, 바꾼 뒤 돌아오는 기준도 새 셀의 경계에서 4m 바깥이라 그 사이 8m 띠 안의 흔들림은 아무것도 바꾸지 않습니다. 32m 와 4m 는 이 게임이 정한 값입니다. 여유가 너무 크면 기준 셀이 실제 위치에서 멀어져, 앞쪽 엔터티를 늦게 받습니다. 3×3 이 최소 한 셀을 덮으므로 여유는 셀 크기보다 충분히 작아야 합니다.\n\n**음수 좌표.** C# 에서 float 를 정수로 변환하면 0 쪽으로 반올림되므로 `(int)(-20f / 32f)` 는 0 이고, `MathF.Floor` 는 그 값 이하의 가장 큰 정수인 -1 을 돌려줍니다. 원점을 지나는 맵에서 0 번 셀이 두 배 넓어지는 버그의 원인입니다.\n\n**복잡도.** `UpdatePlayer` 는 사전 조회와(바뀔 때만) 목록 하나의 삭제·추가, `GetReceivers` 는 9번의 사전 조회와 받는 사람 수 k 에 대한 정렬로 O(9 + k log k) 입니다. 모든 플레이어를 훑는 O(P) 보다 플레이어가 많을수록 유리합니다.\n\n### 흔한 오해\n- **\"셀 번호는 (int)(x / cellSize) 로 구하면 된다\"** — 0 이상인 좌표에서만 맞습니다. 실수를 정수로 바꾸는 변환은 0 쪽으로 반올림하므로[ms-numeric-conversions] -0.01 이 0 번 셀이 되고, -32 < x < 32 가 모두 0 번 셀로 합쳐집니다. 바닥 함수 `MathF.Floor` 를 써야 합니다[ms-mathf-floor]. Game Programming Patterns 의 예제도 `(int)` 로 자르지만, 그 셀 번호를 곧바로 배열 인덱스(`cells_[x][y]`)로 쓰므로 좌표가 0 이상인 격자를 전제한 코드입니다.\n- **\"엔터티와 같은 셀에 있는 플레이어만 받으면 된다\"** — 셀 경계 양쪽에 1m 떨어져 선 두 사람이 서로를 못 보게 됩니다. 범위가 있으면 다른 셀의 대상도 가까울 수 있어 이웃 셀까지 봐야 한다는 것이 Spatial Partition 장의 설명입니다[gpp-spatial-partition].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "CellOf 가 바닥 함수라 음수 좌표에서도 맞다(-0.01 → -1, -32 → -1, -32.01 → -2).",
+            "points": 8,
+            "sourceId": "ms-mathf-floor"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "기준 셀을 4m 넓힌 사각형 안(경계 포함)이면 그대로 두고, 밖이면 지금 서 있는 셀로 한 번에 바꾼다(x·y 둘 다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "GetReceivers 가 기준 셀이 엔터티 셀의 3×3 안인 플레이어를 중복 없이 오름차순으로 돌려주고 result 의 기존 내용을 지운다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "RemovePlayer 뒤에는 수신자에 나오지 않고, 다시 들어오면 옛 기준 셀을 기억하지 않는다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "GetReceivers 가 전체 플레이어를 훑지 않고 기준 셀별 목록 9개만 본다.",
+            "points": 12,
+            "sourceId": "ue-replication-graph"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "기준 셀이 바뀔 때만 목록을 옮기고, 옮길 때 옛 목록에서 반드시 뺀다.",
+            "points": 10,
+            "sourceId": "gpp-spatial-partition"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "셀 모델이 반경 모델보다 무엇을 얻고(정수 비교, 목록 조회) 무엇을 잃는지(덮는 거리가 위치에 따라 축 방향 28 ~ 68m 로 고르지 않고, 대각선 쪽은 더 멂) 설명할 수 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "(int) 변환이 0 쪽으로 자른다는 점을 알고 MathF.Floor 를 썼다.",
+            "points": 10,
+            "sourceId": "ms-numeric-conversions"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "여유(4m)가 경계 흔들림을 흡수한다는 히스테리시스 원리를 설명하고, 값이 이 게임의 규칙임을 구분했다.",
+            "points": 10,
+            "sourceId": "wiki-hysteresis"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "\"기준 셀 유지 판단\" 과 \"목록 옮기기\" 가 한눈에 구분되게 짰다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "여유 사각형의 경계를 상수 CellSize·Margin 으로 계산해, 32·4 같은 숫자를 코드에 흩어 놓지 않았다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "GetReceivers 에서 모든 플레이어를 훑어 격자를 쓰지 않는다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "히스테리시스 없이 기준 셀을 매번 지금 셀로 바꿔 경계에서 수신자가 깜빡인다.",
+            "penalty": -20,
+            "sourceId": "wiki-hysteresis"
+          },
+          {
+            "id": "d3",
+            "description": "(int) 변환으로 셀 번호를 구해 음수 좌표에서 틀린다.",
+            "penalty": -10,
+            "sourceId": "ms-numeric-conversions"
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Replication Graph·Game Programming Patterns·Wikipedia Hysteresis·Microsoft Learn 숫자 변환 문서와 대조하고, (int) 변환·경계 미포함·옛 목록 미삭제·한 칸씩 이동·result 미삭제 등 오답 10종이 실패하고 HashSet 을 쓴 다른 정답은 통과하는 것을 .NET 8 과 Compiler Explorer 에서 확인했습니다."
+      },
+      "nextMission": "이 격자를 엔터티 쪽에도 적용해 보세요. 엔터티도 셀별 목록에 넣고, 틱마다 \"기준 셀이 바뀐 플레이어\" 에 대해서만 새로 3×3 에 들어온 셀의 엔터티에 Spawn, 빠진 셀의 엔터티에 Despawn 을 만드는 증분 방식으로 바꾼 뒤, 플레이어 100명·엔터티 5000개·1000틱 무작위 이동에서 매 틱 전체를 다시 계산하는 방식과 결과가 같은지와 셀 조회 횟수를 비교하세요.",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static readonly System.Collections.Generic.List<int> R = new System.Collections.Generic.List<int>();\n    static string Recv(AoiGrid g, float x, float y) { R.Clear(); R.Add(-99); g.GetReceivers(x, y, R); return \"[\" + string.Join(\", \", R) + \"]\"; }\n    static string ExpectRecv(AoiGrid g, float x, float y, string want, string ctx) { string got = Recv(g, x, y); return got == want ? null : ctx + \": (\" + x + \", \" + y + \") 의 엔터티를 받을 플레이어 기대 \" + want + \" / 결과 \" + got; }\n    static string ExpectAnchor(AoiGrid g, int id, float x, float y, int ax, int ay, string ctx)\n    {\n        g.UpdatePlayer(id, x, y); var a = g.AnchorOf(id);\n        return a.cx == ax && a.cy == ay ? null : ctx + \": 플레이어 \" + id + \" 를 (\" + x + \", \" + y + \") 로 옮긴 뒤 기준 셀 기대 (\" + ax + \", \" + ay + \") / 결과 (\" + a.cx + \", \" + a.cy + \")\";\n    }\n\n    static int RefCell(float v) => (int)System.Math.Floor(v / 32.0);\n\n    static uint _lcg;\n    static int Next(int mod) { _lcg = unchecked(_lcg * 1664525u + 1013904223u); return (int)((_lcg >> 8) % (uint)mod); }\n\n    public static void Main()\n    {\n        Run(\"cell-of-floor\", () =>\n        {\n            float[] xs = { 0f, 31.99f, 32f, -0.01f, -32f, -32.01f, 100f, -100f, 1000f };\n            int[] want = { 0, 0, 1, -1, -1, -2, 3, -4, 31 };\n            for (int i = 0; i < xs.Length; i++) { int got = AoiGrid.CellOf(xs[i]); if (got != want[i]) return \"CellOf(\" + xs[i] + \") 기대 \" + want[i] + \" / 결과 \" + got; }\n            return null;\n        });\n\n        Run(\"anchor-hysteresis\", () =>\n        {\n            var g = new AoiGrid();\n            return ExpectAnchor(g, 1, 10f, 10f, 0, 0, \"처음 들어옴\") ?? ExpectAnchor(g, 1, 33f, 10f, 0, 0, \"경계(32)를 1m 넘음: 여유 4m 안\")\n                ?? ExpectAnchor(g, 1, 36f, 10f, 0, 0, \"정확히 여유 끝(36)\") ?? ExpectAnchor(g, 1, 36.5f, 10f, 1, 0, \"여유를 넘음(36.5)\")\n                ?? ExpectAnchor(g, 1, 30f, 10f, 1, 0, \"되돌아와도 새 기준 셀의 여유 안(28 ~ 68)\") ?? ExpectAnchor(g, 1, 28f, 10f, 1, 0, \"정확히 여유 끝(28)\")\n                ?? ExpectAnchor(g, 1, 27.5f, 10f, 0, 0, \"여유를 넘어 되돌아감\") ?? ExpectAnchor(g, 1, 20f, -3f, 0, 0, \"y 가 -3: 여유 안\")\n                ?? ExpectAnchor(g, 1, 20f, -4.5f, 0, -1, \"y 가 -4.5: 음수 쪽 셀로\") ?? ExpectAnchor(g, 1, -4.5f, -30f, -1, -1, \"x 가 -4.5\")\n                ?? ExpectAnchor(g, 1, 500f, -300f, 15, -10, \"순간이동: 지금 서 있는 셀로 바로\");\n        });\n\n        Run(\"border-jitter-no-flicker\", () =>\n        {\n            var g = new AoiGrid();\n            g.UpdatePlayer(7, 20f, 16f);\n            float[] jitter = { 31f, 33.5f, 32.5f, 34f, 31.5f, 35.9f, 30f, 33f };\n            for (int k = 0; k < 40; k++)\n            {\n                g.UpdatePlayer(7, jitter[k % 8], 16f + (k % 5));\n                var a = g.AnchorOf(7);\n                if (a.cx != 0 || a.cy != 0) return \"셀 경계(x = 32) 를 30 ~ 35.9 로 오가는 \" + (k + 1) + \"번째 이동 뒤 기준 셀 기대 (0, 0) / 결과 (\" + a.cx + \", \" + a.cy + \")\";\n                if (ExpectRecv(g, -20f, 16f, \"[7]\", \"경계에서 흔들리는 \" + (k + 1) + \"번째 이동 뒤, 서쪽 셀(-1, 0)의 상자\") is string e) return e;\n            }\n            return null;\n        });\n\n        Run(\"receivers-3x3\", () =>\n        {\n            var g = new AoiGrid();\n            g.UpdatePlayer(5, 80f, 80f);     // (2, 2)\n            g.UpdatePlayer(2, 40f, 40f);     // (1, 1)\n            g.UpdatePlayer(9, 120f, 50f);    // (3, 1)\n            g.UpdatePlayer(1, 140f, 80f);    // (4, 2)\n            g.UpdatePlayer(4, -10f, 80f);    // (-1, 2)\n            g.UpdatePlayer(3, 70f, 130f);    // (2, 4)\n            return ExpectRecv(g, 80f, 80f, \"[2, 5, 9]\", \"셀 (2, 2) 의 엔터티: 3×3 안의 기준 셀 (1,1)·(2,2)·(3,1)\")\n                ?? ExpectRecv(g, 100f, 100f, \"[1, 3, 5]\", \"셀 (3, 3) 의 엔터티\") ?? ExpectRecv(g, 10f, 70f, \"[2, 4]\", \"셀 (0, 2) 의 엔터티\")\n                ?? ExpectRecv(g, 64f, 127.9f, \"[3, 5]\", \"셀 (2, 3) 의 엔터티\") ?? ExpectRecv(g, -70f, -70f, \"[]\", \"아무도 없는 셀 (-3, -3)\")\n                ?? ExpectRecv(g, -0.5f, 60f, \"[4]\", \"셀 (-1, 1) 의 엔터티(음수 좌표)\");\n        });\n\n        Run(\"remove-and-move-buckets\", () =>\n        {\n            var g = new AoiGrid();\n            g.UpdatePlayer(1, 10f, 10f); g.UpdatePlayer(2, 12f, 12f); g.UpdatePlayer(3, 200f, 10f);\n            string e = ExpectRecv(g, 40f, 10f, \"[1, 2]\", \"처음\");\n            if (e != null) return e;\n            g.RemovePlayer(2);\n            if ((e = ExpectRecv(g, 40f, 10f, \"[1]\", \"플레이어 2 접속 종료 뒤\")) != null) return e;\n            g.UpdatePlayer(1, 210f, 10f);\n            if ((e = ExpectRecv(g, 40f, 10f, \"[]\", \"플레이어 1 이 (6, 0) 셀로 멀리 이동한 뒤 옛 근처\")) != null) return e;\n            if ((e = ExpectRecv(g, 220f, 20f, \"[1, 3]\", \"플레이어 1 의 새 근처\")) != null) return e;\n            g.UpdatePlayer(2, 33f, 10f);\n            if ((e = ExpectAnchor(g, 2, 33f, 10f, 1, 0, \"다시 접속한 플레이어 2 는 지금 셀로 시작(옛 기준 셀을 기억하지 않음)\")) != null) return e;\n            for (int k = 0; k < 50; k++) g.UpdatePlayer(1, k % 2 == 0 ? 10f : 210f, 10f);\n            return ExpectRecv(g, 220f, 20f, \"[1, 3]\", \"플레이어 1 이 두 곳을 50번 오간 뒤(중복 없음)\");\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            _lcg = 31u;\n            for (int run = 0; run < 30; run++)\n            {\n                var g = new AoiGrid(); var pos = new System.Collections.Generic.Dictionary<int, (int ax, int ay)>();\n                var live = new System.Collections.Generic.Dictionary<int, (float x, float y)>();\n                for (int step = 0; step < 300; step++)\n                {\n                    int id = Next(12); int op = Next(20);\n                    if (op == 0) { g.RemovePlayer(id); live.Remove(id); pos.Remove(id); continue; }\n                    float x, y;\n                    if (!live.TryGetValue(id, out var p) || op == 1) { x = (Next(1600) - 800) / 4f; y = (Next(1600) - 800) / 4f; }\n                    else { x = p.x + (Next(41) - 20) / 4f; y = p.y + (Next(41) - 20) / 4f; }\n                    live[id] = (x, y);\n                    if (pos.TryGetValue(id, out var a) && x >= a.ax * 32 - 4 && x <= a.ax * 32 + 36 && y >= a.ay * 32 - 4 && y <= a.ay * 32 + 36) { }\n                    else pos[id] = (RefCell(x), RefCell(y));\n                    g.UpdatePlayer(id, x, y);\n                    var got = g.AnchorOf(id);\n                    if (got.cx != pos[id].ax || got.cy != pos[id].ay) return run + \"회차 \" + step + \"번째: 플레이어 \" + id + \" 를 (\" + x + \", \" + y + \") 로 옮긴 뒤 기준 셀 기대 (\" + pos[id].ax + \", \" + pos[id].ay + \") / 결과 (\" + got.cx + \", \" + got.cy + \")\";\n                    float ex = (Next(1600) - 800) / 4f, ey = (Next(1600) - 800) / 4f;\n                    if (Next(2) == 0) { ex = x + (Next(161) - 80) / 2f; ey = y + (Next(161) - 80) / 2f; }\n                    var want = new System.Collections.Generic.List<int>();\n                    foreach (var kv in pos) if (System.Math.Abs(kv.Value.ax - RefCell(ex)) <= 1 && System.Math.Abs(kv.Value.ay - RefCell(ey)) <= 1) want.Add(kv.Key);\n                    want.Sort();\n                    if (ExpectRecv(g, ex, ey, \"[\" + string.Join(\", \", want) + \"]\", run + \"회차 \" + step + \"번째\") is string e) return e;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "cell-of-floor",
+          "anchor-hysteresis",
+          "border-jitter-no-flicker",
+          "receivers-3x3",
+          "remove-and-move-buckets",
+          "random-vs-reference"
+        ],
+        "note": "CellOf 의 바닥 함수(음수 포함), 기준 셀 히스테리시스의 정확한 경계(x = 33·36 은 유지, 36.5 에서 변경, 돌아올 때 30·28 유지·27.5 변경, y 쪽과 음수 쪽, 순간이동은 한 번에), 셀 경계 x = 32 를 30 ~ 35.9 로 40번 오가는 동안 기준 셀과 서쪽 셀 엔터티의 수신자가 바뀌지 않는지, 3×3 수신자(대각선·두 칸 떨어진 셀 제외, 음수 좌표, 오름차순)를 봅니다. 접속 종료·재접속·먼 이동 뒤 옛 근처에서 수신자가 남지 않는지, result 의 기존 내용을 지우는지도 확인하고, 고정 선형 합동 생성기로 만든 30회 × 300단계(플레이어 12명, 흔들림·순간이동·접속 종료 섞음)를 전체를 훑는 기준 구현과 기준 셀·수신자 모두 비교합니다. 좌표는 0.25 단위입니다. AoiGrid 의 CellOf(float)·UpdatePlayer(int, float, float)·RemovePlayer(int)·AnchorOf(int)·GetReceivers(float, float, List<int>) 와 상수는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t8-interview-multiplayer-security",
+      "track": "track8",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "\"클라이언트를 믿지 마라\" 그다음: TLS·토큰·재전송 방지·객체 권한으로 멀티플레이 백엔드 지키기",
+      "tags": [
+        "Net_Security",
+        "Net_Authentication",
+        "Net_ReplayProtection"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "rfc8446",
+        "owasp-api1-bola",
+        "ms-entra-access-tokens",
+        "netcode-standard"
+      ],
+      "scenario": "PC·모바일 크로스플레이 액션 RPG 의 서버 프로그래머 면접입니다. 로그인·상점·우편함은 HTTPS REST API, 던전 전투는 전용 서버와 직접 만든 UDP 프로토콜입니다. 출시 전 보안 점검 보고서에 다음 다섯 줄이 있습니다.\n\n1. 우편 보상 수령 `POST /mail/claim { \"mailId\": 812 }` 을 프록시로 잡아 mailId 만 바꿔 보내니 **다른 플레이어의 우편 보상**을 받았다.\n2. 같은 수령 요청을 30번 다시 보내니 보상이 30번 들어왔다.\n3. 개발 빌드가 액세스 토큰을 URL 쿼리(`?token=...`)로 보내 접근 로그에 그대로 남아 있었다. 로그 시스템 접근 권한자는 수십 명이다.\n4. 전투 서버는 패킷 안의 `PlayerId` 필드로 보낸 사람을 판단하고, UDP 패킷은 평문이다.\n5. 랭킹 점수는 결과 화면에서 클라이언트가 직접 올린다(PlayFab 의 \"Allow client to post player statistics\" 를 켜 두었다).\n\n팀은 이미 \"클라이언트를 믿지 마라\"(Gambetta 의 Client-Server Game Architecture)를 알고 이동·쿨다운은 서버에서 검증합니다.\n\n**질문: 위 다섯 가지 각각에 대해, 어떤 보호 장치를 어느 계층(전송 / 인증 / 객체 권한 / 게임 로직)에 두겠습니까? 특히 TLS 가 막아 주는 것과 막아 주지 못하는 것을 구분해 설명해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "TLS 의 위협 모델은 네트워크 공격자다. 자기 클라이언트를 조작하는 플레이어는 암호화 전의 평문을 쥐고 있으므로 TLS 가 막지 못한다.",
+        "1번은 인증이 아니라 객체 수준 권한 문제다. 토큰의 사용자 ID 와 요청의 ID 를 비교하는 것만으로는 부족할 수 있다.",
+        "2번은 TLS 로 풀리지 않는다. 새 연결로 같은 요청을 다시 보낼 수 있고, 0-RTT 데이터는 연결 사이의 재전송 방지(non-replay)를 보장하지 않는다.",
+        "보낸 사람은 패킷 필드가 아니라 서버가 검증한 토큰·연결에서 정해야 한다.",
+        "출처가 있는 규칙(RFC, OWASP, Microsoft/PlayFab 문서)과 일반적인 실무 관행을 구분해서 말하는가."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "2번에 대해 팀원이 \"HTTPS 를 쓰니까 재전송 공격은 원래 불가능하다, 클라이언트 버그일 것\"이라고 합니다. 이 말은 어디까지 맞습니까? 어떻게 고치겠습니까?",
+          "intent": "TLS 레코드 계층의 재전송 방지가 무엇을 보장하는지(연결 안, 네트워크 공격자)와 보장하지 않는 것(엔드포인트 자신, 새 연결, 0-RTT)을 구분하고, 애플리케이션 수준의 해법을 설계할 수 있는지 본다.",
+          "keyAnswer": "- **맞는 부분:** RFC 8446 은 레코드마다 64비트 순서 번호로 AEAD nonce 를 만들고(§5.3), 레코드 계층이 공격자가 이미 받아들인 레코드를 다시 받아들이게 할 수 없도록 한다고 적는다(부록 E.2). 네트워크 중간에서 패킷을 복사해 같은 연결에 다시 넣는 공격은 막힌다.\n- **틀린 부분:** 이번 공격자는 네트워크가 아니라 **엔드포인트(플레이어 자신)** 다. 평문 요청을 쥐고 있으므로 새 TLS 연결을 열어 같은 요청을 30번 보내면 TLS 입장에서는 모두 정상 요청이다. 또 RFC 8446 은 0-RTT 데이터에는 연결 사이의 재전송 방지가 없다고 하고(§2.3), 재전송 가능한 0-RTT 데이터가 구매 같은 부작용 있는 동작을 중복시킬 수 있으며 그 방어는 결국 서버의 책임이라고 적는다(부록 E.5).\n- **고치기(일반적인 실무):** 보상 지급을 서버 상태의 1회성 전이로 만든다. \"수령 안 함 → 수령함\" 을 조건부 갱신(예: `claimed = 0` 이고 소유자가 요청자인 행만 갱신)으로 하고, 갱신된 행이 있을 때만 같은 트랜잭션에서 아이템을 준다. 두 번째 요청은 갱신할 행이 없으므로 아무것도 주지 않는다. 네트워크 재시도를 위해 요청마다 고유 키를 받아 이전 결과를 그대로 돌려주는 방식을 더할 수 있다.\n- **0-RTT:** 서버가 TLS 1.3 의 0-RTT 를 켠다면 보상 수령·구매처럼 멱등하지 않은 요청은 0-RTT 로 받지 않는다.\n- **비용:** 조건부 갱신은 이미 있는 행 하나의 갱신이라 추가 저장소가 거의 들지 않는다. 고유 키 방식은 키를 보관하는 기간만큼 저장소가 든다."
+        },
+        {
+          "question": "3번의 토큰이 로그에 남은 것을 발견했습니다. 지금 당장 무엇을 하고, 구조는 어떻게 바꾸겠습니까? 그리고 전투 서버는 클라이언트가 내민 토큰을 어떻게 믿어야 합니까(4번)?",
+          "intent": "유출 대응과 재발 방지를 나누고, 토큰의 전달·기록·수명·대상(aud) 제한과 서버 측 검증을 출처에 근거해 설명할 수 있는지 본다.",
+          "keyAnswer": "- **당장(일반적인 실무):** 로그에 남은 토큰은 유출된 것으로 보고 무효화(취소·재발급 강제)하고, 로그에서 지우거나 가리며, 그 토큰으로 들어온 요청 기록을 검토한다.\n- **전달 방식:** 토큰을 URL 에 넣지 않고 Authorization 같은 헤더로 보낸다. OWASP Session Management Cheat Sheet 는 URL 에 세션 ID 를 넣으면 링크·로그·브라우저 기록·Referer 헤더로 노출된다고 경고한다.\n- **기록:** OWASP Logging Cheat Sheet 는 세션 식별 값과 액세스 토큰을 로그에 그대로 남기지 말고 제거·마스킹·해시하라고 적는다. 로깅 계층에서 헤더를 걸러 내는 필터를 둔다.\n- **수명과 대상:** Microsoft identity platform 문서는 웹 API 가 받은 액세스 토큰을 검증하되 자신이 aud(대상)인 토큰만 받아야 하고, 다른 리소스용 토큰을 받아들이는 것은 confused deputy 문제라고 설명한다. 서명·발급자도 검증한다. 상점 API 용 토큰은 전투 서버에서 통하지 않게 대상을 나눈다. 같은 문서의 기본 수명은 60 ~ 90분 사이 무작위다(Microsoft 의 설계). 짧은 수명은 유출된 토큰이 쓸모 있는 시간을 줄인다(일반 원칙). 클라이언트는 토큰을 불투명한 문자열로 다루고 직접 해석하지 않는다(같은 문서).\n- **전투 서버(PlayFab 을 쓴다면):** PlayFab 의 ValidateEntityToken 은 서버(title 엔터티)가 클라이언트가 준 EntityToken 이 만료·취소되지 않았는지 확인하고 소유자를 돌려주는 API 다. 접속 때 한 번 검증해 그 연결에 소유자를 묶고, 이후 패킷의 `PlayerId` 필드는 무시한다.\n- **비용:** 요청마다 원격 검증을 부르면 지연이 늘므로 접속 시 한 번 검증하고 연결 상태에 결과를 둔다(구현 아이디어)."
+        },
+        {
+          "question": "4번을 근본적으로 고치려 합니다. UDP 위의 전투 프로토콜에서 연결 수립, 암호화, 재전송 방지를 어떻게 설계하겠습니까? 그렇게 해도 남는 위협은 무엇입니까?",
+          "intent": "TLS 를 UDP 에 그대로 쓸 수 없는 이유를 알고, 공개된 게임용 프로토콜 설계(connect token, AEAD, 재전송 창)를 근거로 설명하며, 암호화가 해결하지 못하는 위협(정당한 키를 가진 조작 클라이언트, 자원 고갈)을 구분하는지 본다.",
+          "keyAnswer": "- **왜 TLS 를 그대로 못 쓰나:** RFC 8446 의 TLS 는 하부 전송으로 신뢰성 있고 순서가 보장되는 스트림을 요구한다(§1). 유실·순서 바뀜을 그대로 쓰는 UDP 게임 프로토콜에 그대로 올릴 수 없다. 데이터그램용 표준으로는 DTLS 1.3(RFC 9147)이 있다. RFC 9147 은 TLS 를 데이터그램 전송에 바로 쓸 수 없다고 하고, DTLS 는 TLS 1.3 과 같은 보장을 주되 순서 보호·재전송 불가는 예외(레코드 재전송 탐지는 선택 기능)라고 적는다. 아래는 게임 전용 프로토콜을 직접 설계한 공개 예다.\n- **연결 수립(netcode 표준의 설계):** 클라이언트가 웹 백엔드에서 인증하면 백엔드가 HTTPS 로 connect token 을 준다. 토큰의 비공개 부분은 백엔드와 전용 서버만 아는 키로 암호화·서명되어 있고 만료 시각을 담는다. 전용 서버는 유효한 토큰을 가진 클라이언트만 연결시키므로, 누가 접속했는지를 패킷 필드가 아니라 토큰이 정한다.\n- **암호화·재전송 방지(같은 표준):** 연결 뒤 패킷은 AEAD 로 암호화·서명되고, 0 부터 늘어나는 64비트 순서 번호를 nonce 로 쓰므로 순서 번호를 바꾸면 서명 검사에 실패한다. 받는 쪽은 가장 최근 번호에서 재전송 방지 버퍼 크기보다 오래된 패킷을 버리고, 창 안이면 처음 받는 번호만 받는다. 표준은 버퍼 크기를 구현에 맡기되 20 ~ 60Hz 로 몇 초 분량, 클라이언트당 256개면 대부분 충분하다고 적는다. TLS 1.3 이 레코드 순서 번호로 nonce 를 만드는 것(RFC 8446 §5.3)과 같은 생각이다.\n- **비용:** 재전송 창은 클라이언트당 순서 번호 256개 정도의 고정 메모리, 검사는 O(1) 이다.\n- **그래도 남는 것:** 정당한 클라이언트는 키를 갖고 있으므로 **조작한 입력도 정상적으로 암호화해서** 보낼 수 있다. 암호화는 제3자를 막을 뿐이라 서버 권위 검증(이동·쿨다운·피해 계산)은 그대로 필요하다. 자원 고갈도 남는다. 표준도 유효할 수 없을 만큼 짧은 패킷이나 형식이 틀린 패킷은 복호화 전에 버리게 하고, OWASP API4:2023 이 권하듯 클라이언트별 요청 빈도와 페이로드 크기에 한도를 둔다(백엔드 API 에도 같은 원칙). 에임봇이나 정보 노출(월핵)은 암호화와 무관한 별도 대응이 필요하다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**계층을 나눠 답합니다.** \"클라이언트를 믿지 마라\"는 방향이고, 실제 장치는 계층마다 다릅니다.\n\n**전송 — TLS 1.3 이 주는 것.** RFC 8446 §1 에 따르면 TLS 는 네트워크를 완전히 장악한 공격자 앞에서도 서버 인증, 기밀성(데이터는 양 끝점만 본다), 무결성(들키지 않고 바꿀 수 없다)을 제공합니다. 공용 Wi-Fi 의 도청·변조는 여기서 막힙니다. 그러나 **끝점인 플레이어 자신**은 암호화 전의 평문을 쥐고 있어, 1·2·5번 공격은 TLS 를 그대로 통과합니다. 4번의 평문 UDP 는 이 보호가 아예 없는 상태입니다.\n\n**인증 — 보낸 사람은 서버가 정한다 (3·4번).** 신원은 요청 본문의 `PlayerId` 가 아니라 서버가 검증한 토큰에서 옵니다. Microsoft identity platform 문서는 웹 API 가 액세스 토큰의 서명·발급자를 검증하고 자신이 aud 인 토큰만 받아야 한다고 설명합니다. PlayFab 을 쓴다면 서버가 ValidateEntityToken 으로 클라이언트 토큰이 만료·취소되지 않았는지 확인하고 소유자를 얻습니다(PlayFab 의 설계). 토큰은 URL 이 아니라 헤더로 보내고 로그에 남기지 않습니다(OWASP Session Management·Logging Cheat Sheet).\n\n**객체 권한 — 1번.** 로그인은 했지만 남의 우편을 연 것이므로 OWASP API1:2023 의 Broken Object Level Authorization 입니다. 객체 ID 를 받는 모든 엔드포인트가 \"이 사용자가 이 객체에 이 동작을 할 권한이 있는가\"를 검사해야 하고, 우편이라면 \"수신자가 요청자인가\"를 서버 데이터로 확인합니다.\n\n**재전송·중복 — 2번.** 수령 상태의 1회성 전이(수령 안 함 → 수령함)와 아이템 지급을 한 트랜잭션으로 묶어, 두 번째 요청에는 바꿀 상태가 없게 합니다(일반적인 실무). UDP 전투 프로토콜은 netcode 표준처럼 순서 번호를 AEAD nonce 로 쓰고 재전송 방지 창으로 중복·오래된 패킷을 버립니다.\n\n**게임 로직 — 5번.** 점수는 서버가 경기 결과로 계산해 올립니다. PlayFab 문서도 치트를 막기 위해 클라이언트의 통계 갱신을 기본으로 막아 두고, 그 설정을 켜면 플레이어가 임의의 점수를 올릴 수 있으니 경쟁 요소가 있으면 클라이언트에서 올리지 말라고 권합니다.\n\n**자원 — 모든 엔드포인트.** OWASP API4:2023 이 권하듯 요청 빈도와 페이로드 크기에 한도를 둡니다. 정답이 되는 표준 목록은 없으며, 위 계층 구분과 실무 장치(조건부 갱신, 헤더 필터)는 출처의 원칙을 이 게임에 적용한 것입니다.\n\n### 흔한 오해\n- **\"HTTPS 를 쓰면 패킷 변조와 재전송 공격은 해결된다\"** — 네트워크 공격자에 대해서만 맞습니다. TLS 의 보장은 연결 안의 레코드와 중간자에 대한 것이고[rfc8446], 평문을 쥔 플레이어가 새 연결로 같은 요청을 보내는 것은 막지 못합니다. 0-RTT 데이터는 연결 사이의 재전송 방지조차 보장되지 않아(§2.3), RFC 가 직접 구매 중복을 예로 들며 그 방어는 서버의 책임이라고 적습니다(부록 E.5)[rfc8446].\n- **\"토큰에서 꺼낸 사용자 ID 와 요청의 ID 를 비교하면 권한 검사는 끝난다\"** — OWASP 는 세션(JWT 등)의 사용자 ID 를 ID 파라미터와 비교하는 것으로는 BOLA 의 일부 경우만 막는다고 적습니다[owasp-api1-bola]. 우편 ID 처럼 다른 객체를 가리키는 ID 는 그 객체의 소유자·권한을 서버 데이터로 확인해야 합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "TLS 가 네트워크 공격자에 대해 서버 인증·기밀성·무결성을 준다는 것과, 자기 클라이언트를 조작하는 플레이어는 막지 못한다는 것을 구분했다.",
+            "points": 9,
+            "sourceId": "rfc8446"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "1번을 객체 수준 권한(BOLA) 문제로 짚고, 객체마다 요청자의 권한을 서버 데이터로 확인한다고 답했다.",
+            "points": 9,
+            "sourceId": "owasp-api1-bola"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "2번이 TLS 로 풀리지 않는 이유(새 연결로 재전송, 0-RTT 의 연결 간 재전송)를 말하고 서버 상태의 1회성 전이로 고쳤다.",
+            "points": 9,
+            "sourceId": "rfc8446"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "보낸 사람을 패킷·본문의 ID 가 아니라 서버가 검증한 토큰·연결로 정한다고 답했다.",
+            "points": 8,
+            "sourceId": "ms-entra-access-tokens"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "UDP 재전송 방지 창을 고정 크기 버퍼(클라이언트당 순서 번호 수백 개, O(1) 검사)로 설명했다.",
+            "points": 10,
+            "sourceId": "netcode-standard"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "토큰 검증을 요청마다 원격으로 하지 않고 접속 때 검증해 연결에 묶는 등 검증 비용을 고려했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "요청 빈도·페이로드 크기 한도와, 유효할 수 없는 크기·형식의 패킷을 비싼 처리(복호화) 전에 버리는 것을 말했다.",
+            "points": 10,
+            "sourceId": "owasp-api4-resource"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "토큰을 URL 이 아니라 헤더로 보낸다고 하고, URL 이 로그·브라우저 기록·Referer 로 새는 경로를 말했다.",
+            "points": 4,
+            "sourceId": "owasp-session-cheatsheet"
+          },
+          {
+            "id": "c8b",
+            "category": "엔진·언어 규약",
+            "description": "토큰을 로그에서 제거·마스킹하고, 대상(aud)과 수명을 제한한다고 말했다.",
+            "points": 3,
+            "sourceId": "owasp-logging-cheatsheet"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "5번을 서버가 계산한 점수로 바꾸고, PlayFab 의 클라이언트 통계 갱신 설정이 치트 방지를 위해 기본으로 꺼져 있다는 것을 PlayFab 의 설계로 밝혔다.",
+            "points": 7,
+            "sourceId": "pf-player-statistics"
+          },
+          {
+            "id": "c10",
+            "category": "엔진·언어 규약",
+            "description": "TLS 가 신뢰성 있는 스트림을 요구해 UDP 에 그대로 쓸 수 없다는 점과, DTLS 1.3 이나 connect token·AEAD·순서 번호 nonce 같은 UDP 용 설계를 말했다.",
+            "points": 6,
+            "sourceId": "rfc9147"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "다섯 항목을 전송·인증·객체 권한·게임 로직 계층에 나눠 배치해 답했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c12",
+            "category": "아키텍처·가독성",
+            "description": "출처의 규칙과 일반적인 실무 관행(조건부 갱신, 로그 필터 등)을 구분해서 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "\"HTTPS 를 쓰면 변조·재전송·치트가 해결된다\" 고 답한다.",
+            "penalty": -25,
+            "sourceId": "rfc8446"
+          },
+          {
+            "id": "d2",
+            "description": "보낸 사람이나 권한을 클라이언트가 보낸 ID 필드로 판단해도 된다고 답한다.",
+            "penalty": -20,
+            "sourceId": "owasp-api1-bola"
+          },
+          {
+            "id": "d3",
+            "description": "클라이언트가 점수·보상 결과를 정해 서버에 올리는 구조를 유지한다.",
+            "penalty": -15,
+            "sourceId": "gambetta-client-server"
+          }
+        ]
+      },
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "RFC 8446·RFC 9147·netcode 1.03 STANDARD.md(고정 커밋)·OWASP API1·API4:2023·Logging/Session Management 치트시트·Microsoft Entra 액세스 토큰·PlayFab ValidateEntityToken·플레이어 통계 문서를 직접 열어 각 주장과 절 번호를 대조했습니다."
+      },
+      "nextMission": "netcode 표준의 재전송 방지 규칙(가장 최근 번호 − 256 보다 오래되면 버림, 창 안이면 처음 받는 번호만, 복호화에 성공한 뒤에만 기록)을 C# 로 구현하세요. 64비트 순서 번호, 256칸 링 버퍼(칸마다 그 칸에 마지막으로 기록한 순서 번호 저장)를 쓰고, 고정 시드로 만든 중복·순서 바뀜·오래된 패킷 스크립트에서 \"복호화 실패한 패킷은 창을 움직이지 않는다\" 까지 테스트로 확인하세요.",
+      "tests": null
+    },
+    {
+      "id": "t8-impl-lockstep-turn-manager",
+      "track": "track8",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "결정론적 락스텝 턴 관리자: 입력이 다 모일 때까지 멈추고, 체크섬으로 디싱크를 잡기",
+      "tags": [
+        "Net_Lockstep",
+        "Net_Determinism",
+        "Net_DesyncDetection"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "gaffer-deterministic-lockstep",
+        "aoe-1500-archers",
+        "ms-hashcode",
+        "wiki-fnv"
+      ],
+      "scenario": "2 ~ 5명이 하는 P2P 전략 게임입니다. 유닛 상태를 보내지 않고, 모든 피어가 **같은 입력으로 같은 시뮬레이션**을 돌립니다. Paul Bettner 의 *1500 Archers on a 28.8* 이 설명하는 Age of Empires 의 방식처럼, 턴 1000 에 내린 명령은 턴 1002 에 실행하도록 예약되고(입력 지연은 호출하는 게임 코드가 정합니다), 시뮬레이션이 다르게 돌아간 피어는 \"out of sync\" 로 표시되어 게임이 멈춥니다. Gaffer On Games 의 Deterministic Lockstep 글도 시뮬레이션은 그 프레임의 입력이 있어야만 진행할 수 있고, 없으면 기다려야 한다고 설명합니다. 입력은 작으므로 상대가 받았다고 확인할 때까지 매 패킷에 중복해서 실리고, 그래서 같은 입력이 여러 번 도착하는 것이 정상입니다.\n\n제공된 `TinySim` 은 정수만 쓰는 결정론적 시뮬레이션입니다. `Apply(player, command)` 로 입력을 적용하고 `EndTurn()` 으로 턴을 끝내며, `Checksum()` 은 상태 전체의 FNV-1a 32비트 해시입니다(오프셋 기준값 2166136261, FNV 소수 16777619 — Wikipedia 의 FNV 문서와 IETF 초안 draft-eastlake-fnv-17 에 실린 32비트 매개변수). 공격 명령은 공격자의 현재 체력에 따라 피해가 달라서, 같은 턴의 입력을 적용하는 **순서**가 결과를 바꿉니다. `TinySim` 은 바꾸지 마세요.\n\n**규칙 1 — 입력 받기 (`SubmitInput`).** 다음을 모두 만족할 때만 받고 `true` 를 돌려줍니다.\n- `0 ≤ player < playerCount`\n- `NextTurn ≤ turn < NextTurn + MaxAheadTurns`(32). 이미 실행한 턴의 늦은 입력, 너무 먼 미래의 입력은 버린다.\n- 그 (플레이어, 턴) 의 입력이 아직 없다. 재전송된 중복은 값이 같든 다르든 버리고 처음 값을 유지한다.\n\n**규칙 2 — 턴 실행 (`Advance(maxTurns)`).** 불일치가 발견되지 않았고 `NextTurn` 의 입력이 **모든 플레이어**에게서 와 있는 동안, 최대 `maxTurns` 턴을 차례로 실행하고 실행한 턴 수를 돌려줍니다. 한 턴의 실행은\n1. 입력을 **플레이어 번호 오름차순**으로 `Apply` 한다(도착 순서가 아니다).\n2. `EndTurn()` 을 부르고, 그다음 `Checksum()` 을 그 턴의 로컬 체크섬으로 기록한다.\n3. 그 턴에 대해 미리 받아 둔 원격 체크섬과 비교한다.\n4. `NextTurn` 을 1 늘린다.\n\n입력이 모자라면 멈춥니다(0 을 돌려준다). `WaitingMask` 는 `NextTurn` 의 입력이 아직 없는 플레이어의 비트 마스크(플레이어 p 는 `1 << p`)로, \"누구를 기다리는 중\" 표시에 씁니다. `maxTurns` 는 밀린 턴을 한 프레임에 너무 많이 따라잡지 않게 하는 한도입니다.\n\n**규칙 3 — 체크섬 비교 (`SubmitChecksum`).** 다른 피어가 그 턴을 실행한 직후의 체크섬을 보냅니다. 호출자 보장: 같은 (플레이어, 턴) 의 체크섬은 한 번만 옵니다.\n- 없는 플레이어 번호나 음수 턴이면 무시한다.\n- `turn < NextTurn`(이미 실행함): `turn ≥ NextTurn − HistoryTurns`(32) 이면 기록해 둔 로컬 체크섬과 바로 비교하고, 더 오래되었으면 무시한다.\n- `NextTurn ≤ turn < NextTurn + 32`: 보관했다가 그 턴을 실행할 때 비교한다.\n- `turn ≥ NextTurn + 32`: 무시한다.\n- 값이 다르면 불일치입니다. `DesyncTurn` 은 지금까지 발견한 불일치 턴 가운데 **가장 이른 턴**(없으면 -1)이고, 불일치가 하나라도 발견되면 그 뒤로 `Advance` 는 아무 턴도 실행하지 않습니다. 실행 중에 발견하면 그 턴까지만 실행하고 멈춥니다.\n\n32턴 창과 한도들은 이 게임의 규칙입니다.",
+      "constraints": [
+        "메모리는 생성자에서 한 번 잡는 고정 크기 링 버퍼(입력 32턴 × 플레이어, 로컬 체크섬 32턴, 원격 체크섬 32턴 × 플레이어)로 제한한다. 호출마다 힙 할당이 없다(Dictionary·List 증가, LINQ 금지).",
+        "SubmitInput·SubmitChecksum 은 O(1), Advance 는 실행한 턴마다 O(플레이어 수)다.",
+        "링 버퍼의 칸에는 그 칸이 어느 턴의 값인지(턴 번호 태그)를 함께 저장해, 한 바퀴 전의 값을 지금 턴의 값으로 착각하지 않는다.",
+        "TinySim 과 상수 MaxAheadTurns·HistoryTurns, 공개 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// ---- 제공 코드: 바꾸지 마세요. 정수만 쓰는 결정론적 시뮬레이션 ----\npublic sealed class TinySim\n{\n    public readonly int Players;\n    public int Turn;                 // 실행한 턴 수\n    public readonly int[] X, Y, Hp;\n\n    public TinySim(int players)\n    {\n        Players = players; X = new int[players]; Y = new int[players]; Hp = new int[players];\n        for (int p = 0; p < players; p++) { X[p] = p * 10; Y[p] = 0; Hp[p] = 100; }\n    }\n\n    // command: 0 = 대기, 1~4 = 상하좌우 이동, 5 = 다음 플레이어 공격(피해 = 내 체력 / 10)\n    public void Apply(int player, int command)\n    {\n        switch (command)\n        {\n            case 1: Y[player]++; break;\n            case 2: Y[player]--; break;\n            case 3: X[player]--; break;\n            case 4: X[player]++; break;\n            case 5: { int t = (player + 1) % Players; Hp[t] -= Hp[player] / 10; if (Hp[t] < 0) Hp[t] = 0; break; }\n        }\n    }\n\n    public void EndTurn()\n    {\n        Turn++;\n        for (int p = 0; p < Players; p++) if (Hp[p] > 0 && Hp[p] < 100) Hp[p]++;   // 살아 있으면 턴마다 1 회복\n    }\n\n    // 상태 전체의 FNV-1a(32비트) 체크섬. 모든 정수를 리틀 엔디언 4바이트로 넣는다.\n    public uint Checksum()\n    {\n        uint h = 2166136261u;\n        void Add(int v) { for (int i = 0; i < 4; i++) { h ^= (byte)(v >> (8 * i)); h *= 16777619u; } }\n        Add(Turn);\n        for (int p = 0; p < Players; p++) { Add(X[p]); Add(Y[p]); Add(Hp[p]); }\n        return h;\n    }\n}\n// ---- 제공 코드 끝 ----\n\n// 결정론적 락스텝 턴 관리자: 모든 플레이어의 입력이 모인 턴만 실행하고, 턴마다 상태 체크섬을 비교한다.\npublic sealed class LockstepTurnManager\n{\n    public const int MaxAheadTurns = 32;   // NextTurn 부터 이만큼 앞까지의 입력·체크섬만 받는다\n    public const int HistoryTurns = 32;    // 실행한 턴의 체크섬을 이만큼 뒤까지 보관한다\n\n    public LockstepTurnManager(int playerCount, TinySim sim)\n    {\n    }\n\n    // 다음에 실행할 턴 번호(0 부터).\n    public int NextTurn => throw new NotImplementedException();\n\n    // 처음 발견한 불일치 턴 가운데 가장 이른 턴. 없으면 -1.\n    public int DesyncTurn => throw new NotImplementedException();\n\n    // NextTurn 에 아직 입력이 오지 않은 플레이어의 비트 마스크(플레이어 p 는 1 << p).\n    public int WaitingMask => throw new NotImplementedException();\n\n    // 규칙 1: 받았으면 true, 버렸으면 false.\n    public bool SubmitInput(int player, int turn, int command)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 규칙 3: 다른 피어가 보낸 그 턴 실행 직후의 체크섬.\n    public void SubmitChecksum(int player, int turn, uint checksum)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 규칙 2: 실행한 턴 수를 돌려준다.\n    public int Advance(int maxTurns)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "세 명 가운데 두 명의 입력만 온 턴: Advance 는 0, WaitingMask 는 빠진 플레이어의 비트.",
+        "턴 0 ~ 5 의 입력이 거꾸로 도착: Advance(4) 는 4, 다음 Advance(4) 는 2.",
+        "같은 (플레이어, 턴) 에 다른 명령이 다시 와도 처음 명령이 실행된다. NextTurn + 31 은 받고 NextTurn + 32 는 버린다.",
+        "같은 턴에 플레이어 0 과 1 이 공격: 도착 순서와 상관없이 0 → 1 순서로 적용한 결과와 같아야 한다.",
+        "턴 7 의 다른 체크섬을 먼저 받고 턴 5 의 다른 체크섬을 나중에 받으면 DesyncTurn 은 5 이고, 턴 7 을 실행한 직후 멈춘다."
+      ],
+      "hints": [
+        "플레이어 0 과 1 이 같은 턴에 공격(명령 5)을 냈고 입력은 2 → 1 → 0 순서로 도착했습니다. 도착하는 대로 Apply 하면 플레이어 2 의 체력은 얼마이고, 번호 순서로 하면 얼마입니까? 그리고 턴 7 에서 체크섬이 다르다는 사실을 알았는데, 그 뒤에 온 턴 5 의 체크섬도 달랐다면 \"어디서부터 어긋났는가\" 는 몇 턴입니까?",
+        "세 링 버퍼 모두 \"칸 = turn % 32, 칸에 턴 번호 태그\" 로 만들 수 있습니다. 입력과 원격 체크섬은 [NextTurn, NextTurn + 32) 만, 로컬 체크섬은 [NextTurn − 32, NextTurn) 만 다루므로 같은 칸을 두 턴이 동시에 쓰지 않습니다. 범위 검사를 빼먹으면 32턴 뒤의 값이 아직 실행하지 않은 턴의 칸을 밀어냅니다. 체크섬은 EndTurn 뒤에 계산합니다.",
+        "```\nSubmitInput(p, t, c):\n    if p 범위 밖 or t < NextTurn or t >= NextTurn + 32: return false\n    i = 칸(t, p) ; if tag[i] == t: return false      // 중복: 처음 값 유지\n    tag[i] = t ; cmd[i] = c ; return true\n\nAdvance(max):\n    done = 0\n    while done < max and DesyncTurn < 0 and WaitingMask == 0:\n        for p = 0 .. N-1: sim.Apply(p, cmd[칸(NextTurn, p)])\n        sim.EndTurn() ; sum = sim.Checksum() ; 로컬 기록\n        for p: if 원격[칸(NextTurn, p)] 이 이 턴의 값이고 != sum: ____\n        NextTurn++ ; done++\n    return done\n\nSubmitChecksum(p, t, c):\n    if p 범위 밖 or t < 0: return\n    if t < NextTurn: if t >= NextTurn - 32 and 로컬(t) != c: ____ ; return\n    if t < NextTurn + 32: 원격[칸(t, p)] = (t, c)\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// ---- 제공 코드: 바꾸지 마세요. 정수만 쓰는 결정론적 시뮬레이션 ----\npublic sealed class TinySim\n{\n    public readonly int Players;\n    public int Turn;                 // 실행한 턴 수\n    public readonly int[] X, Y, Hp;\n\n    public TinySim(int players)\n    {\n        Players = players; X = new int[players]; Y = new int[players]; Hp = new int[players];\n        for (int p = 0; p < players; p++) { X[p] = p * 10; Y[p] = 0; Hp[p] = 100; }\n    }\n\n    // command: 0 = 대기, 1~4 = 상하좌우 이동, 5 = 다음 플레이어 공격(피해 = 내 체력 / 10)\n    public void Apply(int player, int command)\n    {\n        switch (command)\n        {\n            case 1: Y[player]++; break;\n            case 2: Y[player]--; break;\n            case 3: X[player]--; break;\n            case 4: X[player]++; break;\n            case 5: { int t = (player + 1) % Players; Hp[t] -= Hp[player] / 10; if (Hp[t] < 0) Hp[t] = 0; break; }\n        }\n    }\n\n    public void EndTurn()\n    {\n        Turn++;\n        for (int p = 0; p < Players; p++) if (Hp[p] > 0 && Hp[p] < 100) Hp[p]++;   // 살아 있으면 턴마다 1 회복\n    }\n\n    // 상태 전체의 FNV-1a(32비트) 체크섬. 모든 정수를 리틀 엔디언 4바이트로 넣는다.\n    public uint Checksum()\n    {\n        uint h = 2166136261u;\n        void Add(int v) { for (int i = 0; i < 4; i++) { h ^= (byte)(v >> (8 * i)); h *= 16777619u; } }\n        Add(Turn);\n        for (int p = 0; p < Players; p++) { Add(X[p]); Add(Y[p]); Add(Hp[p]); }\n        return h;\n    }\n}\n// ---- 제공 코드 끝 ----\n\n// 결정론적 락스텝 턴 관리자: 모든 플레이어의 입력이 모인 턴만 실행하고, 턴마다 상태 체크섬을 비교한다.\npublic sealed class LockstepTurnManager\n{\n    public const int MaxAheadTurns = 32;   // NextTurn 부터 이만큼 앞까지의 입력·체크섬만 받는다\n    public const int HistoryTurns = 32;    // 실행한 턴의 체크섬을 이만큼 뒤까지 보관한다\n\n    private readonly int _players;\n    private readonly TinySim _sim;\n    private readonly int[] _inputTurn, _inputCmd;      // [슬롯 * players + p], 슬롯 = turn % MaxAheadTurns\n    private readonly int[] _localTurn;                 // 슬롯 = turn % HistoryTurns\n    private readonly uint[] _localSum;\n    private readonly int[] _remoteTurn;                // 아직 실행하지 않은 턴의 원격 체크섬, 슬롯 = turn % MaxAheadTurns\n    private readonly uint[] _remoteSum;\n\n    public LockstepTurnManager(int playerCount, TinySim sim)\n    {\n        _players = playerCount; _sim = sim;\n        _inputTurn = Filled(MaxAheadTurns * playerCount); _inputCmd = new int[MaxAheadTurns * playerCount];\n        _localTurn = Filled(HistoryTurns); _localSum = new uint[HistoryTurns];\n        _remoteTurn = Filled(MaxAheadTurns * playerCount); _remoteSum = new uint[MaxAheadTurns * playerCount];\n        DesyncTurn = -1;\n    }\n\n    private static int[] Filled(int n) { var a = new int[n]; for (int i = 0; i < n; i++) a[i] = -1; return a; }\n\n    public int NextTurn { get; private set; }\n    public int DesyncTurn { get; private set; }\n\n    // NextTurn 에 아직 입력이 오지 않은 플레이어의 비트 마스크(플레이어 p 는 1 << p).\n    public int WaitingMask\n    {\n        get\n        {\n            int mask = 0, slot = NextTurn % MaxAheadTurns;\n            for (int p = 0; p < _players; p++) if (_inputTurn[slot * _players + p] != NextTurn) mask |= 1 << p;\n            return mask;\n        }\n    }\n\n    // 규칙 1: 범위 안의 처음 오는 입력만 받는다. 받았으면 true.\n    public bool SubmitInput(int player, int turn, int command)\n    {\n        if (player < 0 || player >= _players) return false;\n        if (turn < NextTurn || turn >= NextTurn + MaxAheadTurns) return false;   // 이미 실행했거나 너무 먼 미래\n        int i = (turn % MaxAheadTurns) * _players + player;\n        if (_inputTurn[i] == turn) return false;                                 // 중복(재전송): 처음 값을 유지\n        _inputTurn[i] = turn; _inputCmd[i] = command;\n        return true;\n    }\n\n    // 규칙 3: 원격 체크섬. 실행한 턴이면 바로 비교, 아직이면 보관했다가 실행할 때 비교한다.\n    public void SubmitChecksum(int player, int turn, uint checksum)\n    {\n        if (player < 0 || player >= _players || turn < 0) return;              // 없는 플레이어, 음수 턴\n        if (turn < NextTurn)\n        {\n            if (turn < NextTurn - HistoryTurns) return;                            // 너무 오래되어 비교할 수 없다\n            int s = turn % HistoryTurns;\n            if (_localTurn[s] == turn && _localSum[s] != checksum) ReportDesync(turn);\n            return;\n        }\n        if (turn >= NextTurn + MaxAheadTurns) return;\n        int i = (turn % MaxAheadTurns) * _players + player;\n        _remoteTurn[i] = turn; _remoteSum[i] = checksum;\n    }\n\n    // 규칙 2: 입력이 모두 모인 턴을 순서대로 최대 maxTurns 개 실행하고 실행한 수를 돌려준다.\n    public int Advance(int maxTurns)\n    {\n        int done = 0;\n        while (done < maxTurns && DesyncTurn < 0 && WaitingMask == 0)\n        {\n            int t = NextTurn, slot = t % MaxAheadTurns;\n            for (int p = 0; p < _players; p++) _sim.Apply(p, _inputCmd[slot * _players + p]);   // 플레이어 번호 순서로\n            _sim.EndTurn();\n            uint sum = _sim.Checksum();\n            _localTurn[t % HistoryTurns] = t; _localSum[t % HistoryTurns] = sum;\n            for (int p = 0; p < _players; p++)\n            {\n                int i = slot * _players + p;\n                if (_remoteTurn[i] == t && _remoteSum[i] != sum) ReportDesync(t);\n                _inputTurn[i] = -1; _remoteTurn[i] = -1;                         // 슬롯을 다음 바퀴에 쓸 수 있게 비운다\n            }\n            NextTurn = t + 1;\n            done++;\n        }\n        return done;\n    }\n\n    private void ReportDesync(int turn) { if (DesyncTurn < 0 || turn < DesyncTurn) DesyncTurn = turn; }\n}\n",
+      "explanation": "**왜 멈추는가.** 락스텝에서 보내는 것은 상태가 아니라 입력이므로, 대역폭은 유닛 수가 아니라 입력 크기에 비례합니다. 대신 Gaffer 의 글이 말하듯 그 프레임의 입력이 없으면 시뮬레이션은 기다릴 수밖에 없습니다. 입력이 모자란 턴을 \"없음(0)\" 으로 처리하고 진행하면, 늦게 온 입력을 가진 피어와 즉시 어긋납니다. Age of Empires 는 명령을 두 턴 뒤로 예약해, 턴(보통 200ms)이 도는 동안 다음 턴의 명령이 도착·확인될 시간을 벌었습니다. 글은 이 덕분에 메시지가 도착·확인되는 동안에도 게임이 애니메이션과 시뮬레이션을 계속 돌릴 수 있었다고 적습니다.\n\n**결정론의 조건.** 같은 초기 상태와 같은 입력이 **비트 단위로 같은** 결과를 내야 합니다(Gaffer). 여기서 깨지기 쉬운 곳은 적용 순서입니다. `TinySim` 의 공격은 공격자의 현재 체력에 따라 피해가 달라, 플레이어 0 과 1 의 공격을 도착 순서대로 적용하면 체력이 [100, 91, 91], 번호 순서면 [100, 91, 92] 가 됩니다. 피어마다 도착 순서가 다르므로 번호 순서처럼 모두가 같은 순서를 써야 합니다. 체크섬은 `EndTurn` 뒤에 계산해야 다른 피어의 \"그 턴 실행 직후\" 값과 같은 시점을 비교합니다.\n\n**디싱크 검출.** Age of Empires 팀은 월드와 객체, 길찾기, 표적 선택까지 체크섬을 냈고, 다르게 돌아간 시뮬레이션은 out of sync 로 게임을 멈췄습니다. 이 관리자도 체크섬이 먼저 오면 보관했다가 실행할 때, 늦게 오면 보관한 로컬 값과 바로 비교합니다. 늦게 온 체크섬이 더 이른 턴의 불일치를 알려 줄 수 있으므로 `DesyncTurn` 은 최솟값을 유지합니다. 디버깅에서 필요한 것은 \"처음 어긋난 턴\" 이기 때문입니다. 불일치 뒤에 계속 진행해도 결과가 이미 다르므로 멈춥니다.\n\n**메모리 한도와 태그.** 받을 수 있는 범위를 [NextTurn, NextTurn + 32) 로 묶으면 입력 저장소가 32턴 × 플레이어로 고정되고, 조작된 피어가 먼 미래의 입력을 쏟아 내도 메모리가 늘지 않습니다. 칸을 `turn % 32` 로 재사용하므로 칸마다 턴 번호를 태그로 두어야 한 바퀴 전의 값을 지금 값으로 오인하지 않습니다. 범위 검사를 빼면 턴 72 의 체크섬이 아직 실행 전인 턴 40 의 칸을 밀어내 진짜 불일치를 놓칩니다.\n\n**따라잡기 한도.** 패킷이 몰려 와 여러 턴이 한꺼번에 준비되면 `maxTurns` 만큼만 실행합니다. Gaffer 도 렌더 프레임당 시뮬레이션 프레임을 4개로 제한해, 따라잡으려다 더 뒤처지는 \"spiral of death\" 를 피했다고 적습니다.\n\n**복잡도.** 입력·체크섬 제출 O(1), 턴 실행 O(N), 메모리 O(32 · N), 할당 없음.\n\n### 흔한 오해\n- **\"상태 체크섬은 GetHashCode() 나 HashCode.Combine 으로 만들면 된다\"** — .NET 의 HashCode 는 정적으로 초기화한 무작위 시드를 써서 해시가 한 운영체제 프로세스 안에서만 일정하다고 문서가 밝힙니다[ms-hashcode]. Object.GetHashCode 문서도 같은 객체가 프로세스·플랫폼마다 다르게 해시될 수 있으니 해시 코드를 만든 애플리케이션 도메인 밖에서 쓰거나 저장하지 말라고 적습니다[ms-object-gethashcode]. 피어마다 다른 프로세스이므로 상태가 같아도 값이 달라 거짓 디싱크가 날 수 있습니다. FNV-1a 처럼 알고리즘과 매개변수가 고정된 해시를 직접 계산해야 합니다[wiki-fnv][ietf-fnv-draft17].\n- **\"같은 코드에 같은 입력이면 부동소수점 계산도 어느 PC 에서나 같다\"** — Gaffer 는 컴파일러·OS·명령어 집합에 따라 부동소수점 동작이 달라 결정론을 보장하기가 거의 불가능하고, 같은 기계에서도 디버그와 릴리스 빌드가 다를 수 있다고 경고합니다[gaffer-deterministic-lockstep]. 그래서 `TinySim` 은 정수만 씁니다. 난수도 마찬가지로 AoE 는 시드를 맞추고 시뮬레이션 안에서 난수를 부르는 횟수까지 같게 해야 했습니다[aoe-1500-archers].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "모든 플레이어의 입력이 모인 턴만 실행하고, 모자라면 멈추며 WaitingMask 가 빠진 플레이어를 정확히 가리킨다.",
+            "points": 9,
+            "sourceId": "gaffer-deterministic-lockstep"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "입력을 플레이어 번호 오름차순으로 적용하고, EndTurn 뒤에 체크섬을 계산한다.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "입력 범위 [NextTurn, NextTurn + 32), 중복은 처음 값 유지, 없는 플레이어 거부를 지킨다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "체크섬을 먼저 오면 보관했다가, 늦게 오면 32턴 기록과 바로 비교하고, DesyncTurn 을 가장 이른 턴으로 유지하며 불일치 뒤에는 실행하지 않는다.",
+            "points": 9,
+            "sourceId": "aoe-1500-archers"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "저장소가 생성자에서 잡은 고정 크기 링 버퍼이고 범위 밖 입력·체크섬으로 늘어나지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "호출마다 힙 할당이 없다(Dictionary·List 증가, LINQ, 람다 캡처 없음).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "maxTurns 로 한 번에 따라잡는 턴 수를 제한하는 이유(spiral of death)를 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "gaffer-deterministic-lockstep"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "링 버퍼 칸마다 턴 번호 태그를 둬서 한 바퀴 전의 값을 쓰지 않는다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "체크섬에 GetHashCode/HashCode 처럼 프로세스마다 달라지는 해시를 쓰면 안 되는 이유를 안다.",
+            "points": 7,
+            "sourceId": "ms-hashcode"
+          },
+          {
+            "id": "c10",
+            "category": "엔진·언어 규약",
+            "description": "시뮬레이션에 부동소수점·로컬 시각·동기화하지 않은 난수가 들어가면 결정론이 깨진다는 것을 설명할 수 있다.",
+            "points": 6,
+            "sourceId": "gaffer-deterministic-lockstep"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "입력 수집, 턴 실행, 체크섬 비교가 각각 분리되어 있고, 입력 지연(몇 턴 뒤로 예약할지)은 호출하는 쪽의 책임으로 남겼다.",
+            "points": 8,
+            "sourceId": "aoe-1500-archers"
+          },
+          {
+            "id": "c12",
+            "category": "아키텍처·가독성",
+            "description": "불일치를 기록하는 곳이 한 군데(최솟값 갱신)로 모여 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "입력이 모자란 턴을 기본값으로 채워 실행한다(멈추지 않는다).",
+            "penalty": -25,
+            "sourceId": "gaffer-deterministic-lockstep"
+          },
+          {
+            "id": "d2",
+            "description": "입력을 도착 순서대로 적용해 피어마다 결과가 달라진다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "입력·체크섬 저장소에 범위 한도가 없어 먼 미래의 값으로 메모리가 늘거나 아직 실행 전인 칸을 덮어쓴다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "1500 Archers(Paul Bettner)·Gaffer 글·HashCode/Object.GetHashCode 문서·FNV 매개변수(Wikipedia, IETF 초안)와 대조하고, 도착 순서 적용·EndTurn 전 체크섬·태그 없음·첫 불일치 유지·불일치 뒤 진행·범위 검사 누락·중복 덮어쓰기·입력 없는 턴 실행·보관 범위 끝 누락·음수 턴 예외 등 오답 13종이 실패하고 설계가 다른 정답 2종은 통과하는 것을 .NET 8 과 Compiler Explorer 에서 확인했습니다."
+      },
+      "nextMission": "디싱크가 나면 원인을 좁히는 도구를 만드세요. 체크섬을 X·Y·Hp 세 부분으로 나눠 따로 보내 어느 상태가 처음 달라졌는지 알리고, 마지막 32턴의 입력을 기록해 두었다가 불일치 턴 직전 상태에서 두 피어의 입력으로 각각 다시 돌려 차이를 출력하는 리플레이를 붙이세요(AoE 팀이 녹화 게임을 버그 재현에 쓴 것과 같은 생각).",
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    // 기준: 플레이어 순서대로 입력을 적용한 시뮬레이션의 턴별 체크섬.\n    static uint[] RefSums(int players, int[,] cmds, int turns)\n    {\n        var s = new TinySim(players); var sums = new uint[turns];\n        for (int t = 0; t < turns; t++) { for (int p = 0; p < players; p++) s.Apply(p, cmds[t, p]); s.EndTurn(); sums[t] = s.Checksum(); }\n        return sums;\n    }\n\n    // 기준 관리자: 사전으로 같은 규칙을 그대로 옮긴 것.\n    sealed class RefMgr\n    {\n        readonly int n; readonly TinySim sim; public int Next, Desync = -1;\n        readonly System.Collections.Generic.Dictionary<(int, int), int> inp = new System.Collections.Generic.Dictionary<(int, int), int>();\n        readonly System.Collections.Generic.Dictionary<(int, int), uint> rem = new System.Collections.Generic.Dictionary<(int, int), uint>();\n        readonly System.Collections.Generic.Dictionary<int, uint> loc = new System.Collections.Generic.Dictionary<int, uint>();\n        public RefMgr(int n) { this.n = n; sim = new TinySim(n); }\n        public bool In(int p, int t, int c) { if (p < 0 || p >= n || t < Next || t >= Next + 32 || inp.ContainsKey((p, t))) return false; inp[(p, t)] = c; return true; }\n        public void Sum(int p, int t, uint c) { if (p < 0 || p >= n || t < 0) return; if (t < Next) { if (t >= Next - 32 && loc[t] != c) Bad(t); return; } if (t < Next + 32) rem[(p, t)] = c; }\n        void Bad(int t) { if (Desync < 0 || t < Desync) Desync = t; }\n        public int Mask() { int m = 0; for (int p = 0; p < n; p++) if (!inp.ContainsKey((p, Next))) m |= 1 << p; return m; }\n        public int Adv(int max)\n        {\n            int d = 0;\n            while (d < max && Desync < 0 && Mask() == 0)\n            {\n                for (int p = 0; p < n; p++) sim.Apply(p, inp[(p, Next)]); sim.EndTurn(); uint s = sim.Checksum(); loc[Next] = s;\n                for (int p = 0; p < n; p++) if (rem.TryGetValue((p, Next), out uint r) && r != s) Bad(Next);\n                Next++; d++;\n            }\n            return d;\n        }\n    }\n\n    static string State(LockstepTurnManager m, int next, int mask, int desync, string ctx)\n    {\n        if (m.NextTurn != next || m.WaitingMask != mask || m.DesyncTurn != desync)\n            return ctx + \": 기대 NextTurn \" + next + \", WaitingMask \" + mask + \", DesyncTurn \" + desync + \" / 결과 \" + m.NextTurn + \", \" + m.WaitingMask + \", \" + m.DesyncTurn;\n        return null;\n    }\n\n    static uint _lcg;\n    static int Next(int mod) { _lcg = unchecked(_lcg * 1664525u + 1013904223u); return (int)((_lcg >> 8) % (uint)mod); }\n\n    public static void Main()\n    {\n        Run(\"stall-until-all-inputs\", () =>\n        {\n            var m = new LockstepTurnManager(3, new TinySim(3));\n            m.SubmitInput(0, 0, 4); m.SubmitInput(1, 0, 1);\n            int a = m.Advance(8);\n            if (a != 0) return \"플레이어 2 의 턴 0 입력이 없는데 Advance 가 \" + a + \"턴 실행함\";\n            string e = State(m, 0, 4, -1, \"플레이어 2 를 기다리는 중\");\n            if (e != null) return e;\n            m.SubmitInput(2, 0, 0); a = m.Advance(8);\n            return a != 1 ? \"세 입력이 모인 뒤 Advance 기대 1 / 결과 \" + a : State(m, 1, 7, -1, \"턴 0 실행 뒤(턴 1 은 아무도 안 보냄)\");\n        });\n\n        Run(\"out-of-order-and-catch-up-limit\", () =>\n        {\n            var cmds = new int[6, 2]; for (int t = 0; t < 6; t++) { cmds[t, 0] = 1 + t % 5; cmds[t, 1] = 5 - t % 4; }\n            var m = new LockstepTurnManager(2, new TinySim(2));\n            for (int t = 5; t >= 0; t--) { m.SubmitInput(1, t, cmds[t, 1]); m.SubmitInput(0, t, cmds[t, 0]); }   // 거꾸로 도착\n            int a = m.Advance(4), b = m.Advance(4), c = m.Advance(4);\n            if (a != 4 || b != 2 || c != 0) return \"턴 0 ~ 5 입력이 거꾸로 도착한 뒤 Advance(4) 세 번 기대 4, 2, 0 / 결과 \" + a + \", \" + b + \", \" + c;\n            uint[] want = RefSums(2, cmds, 6);\n            var s = new TinySim(2); var mm = new LockstepTurnManager(2, s);\n            for (int t = 5; t >= 0; t--) { mm.SubmitInput(1, t, cmds[t, 1]); mm.SubmitInput(0, t, cmds[t, 0]); }\n            mm.Advance(10);\n            return s.Checksum() == want[5] ? State(m, 6, 3, -1, \"6턴 실행 뒤\") : \"6턴 실행 뒤 시뮬레이션 체크섬 기대 \" + want[5] + \" / 결과 \" + s.Checksum();\n        });\n\n        Run(\"input-window-and-duplicates\", () =>\n        {\n            var s = new TinySim(2); var m = new LockstepTurnManager(2, s);\n            bool[] got = { m.SubmitInput(0, 0, 4), m.SubmitInput(0, 0, 4), m.SubmitInput(0, 0, 3), m.SubmitInput(2, 0, 1), m.SubmitInput(-1, 0, 1),\n                           m.SubmitInput(1, 31, 1), m.SubmitInput(1, 32, 1), m.SubmitInput(1, 0, 2) };\n            string want = \"TFFFFTFT\", g = \"\"; foreach (bool b in got) g += b ? \"T\" : \"F\";\n            if (g != want) return \"턴 0 입력, 같은 입력 재전송, 다른 값 중복, 없는 플레이어 2·-1, 턴 31, 턴 32(범위 밖), 플레이어 1 턴 0 의 결과 기대 \" + want + \" / 결과 \" + g;\n            m.Advance(1);\n            if (s.X[0] != 1) return \"중복으로 온 다른 명령(3: 왼쪽)이 처음 명령(4: 오른쪽)을 덮어씀: X[0] 기대 1 / 결과 \" + s.X[0];\n            if (m.SubmitInput(0, 0, 4)) return \"이미 실행한 턴 0 의 늦은 입력을 받음\";\n            return m.SubmitInput(1, 32, 1) ? null : \"턴 0 실행 뒤 범위가 [1, 33) 으로 밀렸는데 턴 32 입력을 거부함\";\n        });\n\n        Run(\"player-order-determinism\", () =>\n        {\n            var s = new TinySim(3); var m = new LockstepTurnManager(3, s);\n            m.SubmitInput(2, 0, 0); m.SubmitInput(1, 0, 5); m.SubmitInput(0, 0, 5);   // 도착 순서: 2, 1, 0\n            m.Advance(1);\n            var cmds = new int[1, 3] { { 5, 5, 0 } };\n            uint want = RefSums(3, cmds, 1)[0];\n            return s.Checksum() == want ? null : \"같은 턴의 공격 두 개를 도착 순서로 적용함: 체력 [\" + string.Join(\", \", s.Hp) + \"] (기대: 플레이어 번호 순서로 적용한 [100, 91, 92])\";\n        });\n\n        Run(\"checksum-agreement\", () =>\n        {\n            var cmds = new int[40, 3]; _lcg = 5u; for (int t = 0; t < 40; t++) for (int p = 0; p < 3; p++) cmds[t, p] = Next(6);\n            uint[] sums = RefSums(3, cmds, 40);\n            var m = new LockstepTurnManager(3, new TinySim(3));\n            for (int t = 0; t < 40; t++)\n            {\n                for (int p = 0; p < 3; p++) m.SubmitInput(p, t, cmds[t, p]);\n                if (t + 3 < 40) m.SubmitChecksum(1, t + 3, sums[t + 3]);    // 아직 실행하지 않은 턴의 체크섬이 먼저 옴\n                if (t >= 5) m.SubmitChecksum(2, t - 5, sums[t - 5]);        // 이미 실행한 턴의 체크섬이 늦게 옴\n                m.Advance(1);\n            }\n            return State(m, 40, 7, -1, \"세 피어가 같은 입력으로 40턴\");\n        });\n\n        Run(\"desync-detection\", () =>\n        {\n            var cmds = new int[20, 2]; for (int t = 0; t < 20; t++) { cmds[t, 0] = t % 6; cmds[t, 1] = (t * 7) % 6; }\n            uint[] good = RefSums(2, cmds, 20);\n            var bs = new TinySim(2); var bad = new uint[20];                  // 피어 B: 턴 5 직전에 체력 하나가 1 다름(비결정적 코드의 흉내)\n            for (int t = 0; t < 20; t++) { if (t == 5) bs.Hp[1] -= 1; for (int p = 0; p < 2; p++) bs.Apply(p, cmds[t, p]); bs.EndTurn(); bad[t] = bs.Checksum(); }\n            var m = new LockstepTurnManager(2, new TinySim(2));\n            for (int t = 0; t < 20; t++) for (int p = 0; p < 2; p++) m.SubmitInput(p, t, cmds[t, p]);\n            m.SubmitChecksum(1, 3, bad[3]); m.SubmitChecksum(1, 7, bad[7]);\n            int a = m.Advance(100);\n            if (a != 8) return \"턴 7 체크섬이 다른데 Advance 가 \" + a + \"턴 실행함(기대: 턴 7 까지 8턴 실행하고 멈춤)\";\n            string e = State(m, 8, 0, 7, \"턴 7 불일치 발견\");\n            if (e != null) return e;\n            m.SubmitChecksum(1, 5, bad[5]);\n            if ((e = State(m, 8, 0, 5, \"늦게 온 턴 5 의 다른 체크섬\")) != null) return e;\n            m.SubmitChecksum(1, 6, bad[6]); m.SubmitChecksum(1, 2, good[2]);\n            if ((e = State(m, 8, 0, 5, \"그 뒤의 턴 6 불일치와 턴 2 일치\")) != null) return e;\n            return m.Advance(5) == 0 ? null : \"불일치 뒤에도 Advance 가 턴을 실행함\";\n        });\n\n        Run(\"checksum-window\", () =>\n        {\n            var cmds = new int[80, 2];\n            uint[] sums = RefSums(2, cmds, 80);\n            var m = new LockstepTurnManager(2, new TinySim(2));\n            for (int t = 0; t < 40; t++) { m.SubmitInput(0, t, 0); m.SubmitInput(1, t, 0); m.Advance(1); }\n            m.SubmitChecksum(0, 7, 12345u);       // NextTurn 40 - 33: 보관 범위 밖\n            m.SubmitChecksum(1, 8, sums[8]);      // 범위 안, 일치\n            m.SubmitChecksum(1, 72, 777u);        // NextTurn 40 + 32: 받을 수 있는 범위 밖\n            m.SubmitChecksum(0, 71, sums[71]);    // 범위 안, 일치\n            m.SubmitChecksum(5, 39, 1u);          // 없는 플레이어\n            string e = State(m, 40, 3, -1, \"범위 밖·없는 플레이어 체크섬은 무시\");\n            if (e != null) return e;\n            for (int t = 40; t < 80; t++) { m.SubmitInput(0, t, 0); m.SubmitInput(1, t, 0); m.Advance(1); }\n            if ((e = State(m, 80, 3, -1, \"턴 72 까지 실행해도 버린 체크섬은 비교하지 않음\")) != null) return e;\n            var m2 = new LockstepTurnManager(2, new TinySim(2));\n            for (int t = 0; t < 40; t++) { m2.SubmitInput(0, t, 0); m2.SubmitInput(1, t, 0); m2.Advance(1); }\n            m2.SubmitChecksum(1, 40, 999u);       // 아직 실행 전인 턴 40 의 다른 체크섬\n            m2.SubmitChecksum(1, 72, sums[72]);   // 범위 밖: 턴 40 의 보관 값을 밀어내면 안 된다\n            m2.SubmitInput(0, 40, 0); m2.SubmitInput(1, 40, 0); m2.Advance(1);\n            if ((e = State(m2, 41, 3, 40, \"턴 40 의 불일치(그 뒤 범위 밖 턴 72 체크섬이 옴)\")) != null) return e;\n            var m3 = new LockstepTurnManager(2, new TinySim(2));\n            m3.SubmitChecksum(0, -1, 5u); m3.SubmitChecksum(1, -32, 5u);   // 음수 턴: 무시\n            for (int t = 0; t < 40; t++) { m3.SubmitInput(0, t, 0); m3.SubmitInput(1, t, 0); m3.Advance(1); }\n            m3.SubmitChecksum(0, 8, sums[8] ^ 1u);   // NextTurn 40 - 32: 보관 범위의 가장 오래된 턴\n            return State(m3, 40, 3, 8, \"음수 턴 체크섬은 무시하고, 보관 범위의 가장 오래된 턴(NextTurn − 32 = 8)의 불일치는 찾아야 함\");\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            _lcg = 4242u;\n            for (int run = 0; run < 40; run++)\n            {\n                int n = 2 + Next(4), turns = 120; var cmds = new int[turns, n];\n                for (int t = 0; t < turns; t++) for (int p = 0; p < n; p++) cmds[t, p] = Next(6);\n                uint[] sums = RefSums(n, cmds, turns); int badTurn = run % 3 == 0 ? 10 + Next(90) : -1;\n                var m = new LockstepTurnManager(n, new TinySim(n)); var r = new RefMgr(n);\n                var events = new System.Collections.Generic.List<(int at, int kind, int p, int t)>();\n                for (int t = 0; t < turns; t++) for (int p = 0; p < n; p++)\n                {\n                    events.Add((t * 3 + Next(4), 0, p, t));                           // 제때 도착하는 사본 하나\n                    for (int k = Next(3); k > 0; k--) events.Add((t * 3 - Next(Next(6) == 0 ? 150 : 10) + Next(30), 0, p, t));   // 재전송 사본: 너무 이르거나 늦을 수 있다\n                    events.Add((t * 3 + Next(140), 1, p, t));                         // 체크섬은 앞뒤로 흩어져 도착\n                }\n                events.Sort((x, y) => x.at != y.at ? x.at.CompareTo(y.at) : x.kind != y.kind ? x.kind.CompareTo(y.kind) : x.p != y.p ? x.p.CompareTo(y.p) : x.t.CompareTo(y.t));\n                int step = 0;\n                foreach (var ev in events)\n                {\n                    step++;\n                    if (ev.kind == 0)\n                    {\n                        bool w = r.In(ev.p, ev.t, cmds[ev.t, ev.p]), g = m.SubmitInput(ev.p, ev.t, cmds[ev.t, ev.p]);\n                        if (w != g) return run + \"회차 \" + step + \"번째 사건: 플레이어 \" + ev.p + \" 의 턴 \" + ev.t + \" 입력(NextTurn \" + r.Next + \") 기대 \" + w + \" / 결과 \" + g;\n                    }\n                    else { uint c = ev.t == badTurn && ev.p == 0 ? sums[ev.t] ^ 1u : sums[ev.t]; r.Sum(ev.p, ev.t, c); m.SubmitChecksum(ev.p, ev.t, c); }\n                    if (Next(3) == 0) { int mx = 1 + Next(4); int w = r.Adv(mx), g = m.Advance(mx); if (w != g) return run + \"회차 \" + step + \"번째 사건 뒤 Advance(\" + mx + \") 기대 \" + w + \" / 결과 \" + g; }\n                    string e = State(m, r.Next, r.Mask(), r.Desync, run + \"회차 \" + step + \"번째 사건 뒤\");\n                    if (e != null) return e;\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "stall-until-all-inputs",
+          "out-of-order-and-catch-up-limit",
+          "input-window-and-duplicates",
+          "player-order-determinism",
+          "checksum-agreement",
+          "desync-detection",
+          "checksum-window",
+          "random-vs-reference"
+        ],
+        "note": "세 명 중 둘의 입력만 온 턴에서 멈추고 WaitingMask 가 맞는지, 거꾸로 도착한 6턴을 Advance(4) 두 번에 4·2턴으로 따라잡는지와 결과 체크섬, 입력 범위(늦은 입력, NextTurn + 31 은 받고 + 32 는 버림, 실행 뒤 범위가 밀림), 중복(같은 값·다른 값, 처음 값 유지), 없는 플레이어, 같은 턴 공격 두 개의 적용 순서(번호 순서), 세 피어 40턴에서 먼저 온·늦게 온 체크섬이 모두 일치할 때 불일치가 없는지, 체크섬이 다른 피어에서 턴 7 을 실행한 직후 멈추고 늦게 온 턴 5 불일치로 DesyncTurn 이 5 가 되는지, 보관 범위 밖(NextTurn − 33, NextTurn + 32)·없는 플레이어·음수 턴 체크섬을 무시하고, 보관 범위의 가장 오래된 턴(NextTurn − 32)은 비교하며, 범위 밖 체크섬이 아직 실행 전인 턴의 보관 값을 밀어내지 않는지 봅니다. 마지막으로 고정 선형 합동 생성기로 만든 40회(플레이어 2 ~ 5명, 120턴, 재전송 중복·너무 이른 사본·흩어진 체크섬, 세 회에 한 번 체크섬 하나를 일부러 바꿈)를 사전 기반 기준 구현과 사건마다 비교합니다. TinySim 과 LockstepTurnManager(int, TinySim), NextTurn, DesyncTurn, WaitingMask, SubmitInput(int, int, int), SubmitChecksum(int, int, uint), Advance(int) 와 두 상수는 바꾸면 안 됩니다."
+      }
+    },
+    {
+      "id": "t8-tutor-time-sync-offset",
+      "track": "track8",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "서버 시계 맞추기: 네 개의 타임스탬프로 시각 오프셋과 왕복 지연 추정하기",
+      "tags": [
+        "Net_TimeSync",
+        "Net_ClockOffset",
+        "Net_RTT"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "rfc5905",
+        "ms-qpc-timestamps",
+        "ms-datetime-now"
+      ],
+      "scenario": "대전 게임의 라운드 시작 카운트다운이 기기마다 다르게 끝납니다. 서버는 \"라운드 시작 = 서버 시각 120000ms\" 를 보내는데, 클라이언트마다 자기 시계가 서버와 다르기 때문입니다. 스냅샷 보간의 재생 시각, 지연 보상에 쓰는 사격 시각도 모두 \"지금 서버 시각이 몇인가\" 를 알아야 합니다. 클라이언트는 서버에 시각 요청을 보내 그 차이(오프셋)를 추정하기로 했습니다.\n\n**해야 할 일**\n1. 개념 카드에서 네 타임스탬프 T1 ~ T4 로 오프셋과 왕복 지연을 구하는 NTP 식과, 그 식이 기대는 가정을 확인하세요.\n2. 예제 문제를 손으로 풀어 보세요. 클라이언트 시계 T1 = 1000 에 요청을 보냈고, 서버가 서버 시계 T2 = 5050 에 받아 T3 = 5052 에 응답했으며, 클라이언트가 T4 = 1100 에 받았습니다. 오프셋과 왕복 지연은 얼마입니까?\n3. `TimeSync.Compute` 와 `ServerClock` 을 완성하세요. `ServerClock` 은 최근 8개 표본 가운데 왕복 지연이 가장 작은 표본의 오프셋을 씁니다(같으면 더 최근 표본, 표본이 없으면 0). 지연이 음수이거나 NaN 인 표본은 버립니다. 8개와 이 선택 규칙은 이 문제의 규칙입니다.\n4. 퀴즈 2문제에 답하세요.",
+      "constraints": [
+        "AddSample 과 OffsetMs 는 O(Window) 이하이고 힙 할당이 없다. 표본은 고정 크기 배열에 담는다.",
+        "시각은 인자로 받은 값만 쓴다. 클래스 안에서 DateTime.Now 같은 실제 시계를 읽지 않는다.",
+        "공개 멤버의 이름과 시그니처, 상수 Window 는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// 한 번의 요청·응답으로 얻은 추정값.\npublic readonly struct SyncSample\n{\n    public readonly double OffsetMs;   // 서버 시계 − 클라이언트 시계의 추정\n    public readonly double DelayMs;    // 왕복 지연(서버 안에서 머문 시간은 뺀 값)\n    public SyncSample(double offsetMs, double delayMs) { OffsetMs = offsetMs; DelayMs = delayMs; }\n}\n\npublic static class TimeSync\n{\n    // t1: 클라이언트가 요청을 보낸 시각(클라이언트 시계)   t2: 서버가 요청을 받은 시각(서버 시계)\n    // t3: 서버가 응답을 보낸 시각(서버 시계)               t4: 클라이언트가 응답을 받은 시각(클라이언트 시계)\n    public static SyncSample Compute(double t1, double t2, double t3, double t4)\n    {\n        // TODO: RFC 5905 의 offset(theta)과 delay(delta)\n        return new SyncSample(0, 0);\n    }\n}\n\n// 최근 Window 개 표본 가운데 왕복 지연이 가장 작은 표본의 오프셋을 쓴다.\npublic sealed class ServerClock\n{\n    public const int Window = 8;\n\n    // 표본 하나를 더한다. 지연이 음수(또는 NaN)인 표본은 버린다. 9번째부터는 가장 오래된 표본을 밀어낸다.\n    public void AddSample(double t1, double t2, double t3, double t4)\n    {\n        // TODO\n    }\n\n    public bool HasEstimate => false;   // TODO: 표본이 하나라도 있으면 true\n\n    // 지연이 가장 작은 표본의 오프셋(같으면 더 최근 표본). 표본이 없으면 0.\n    public double OffsetMs => 0;        // TODO\n\n    // 클라이언트의 단조 시계(예: Stopwatch) 값을 서버 시각 추정으로 바꾼다.\n    public double ToServerTime(double localMs) => localMs + OffsetMs;\n}\n",
+      "edgeCases": [
+        "예제: T1 = 1000, T2 = 5050, T3 = 5052, T4 = 1100 → 오프셋 4001, 왕복 지연 98.",
+        "서버 처리 시간(T3 − T2)은 왕복 지연에서 빠진다. 서버가 200ms 붙잡고 있다 응답해도 지연이 200ms 늘지 않는다.",
+        "지연이 음수인 표본(타임스탬프가 잘못됨)은 버리고, 기존 추정을 바꾸지 않는다.",
+        "9번째 표본부터는 가장 오래된 표본이 밀려난다. 지연이 같으면 더 최근 표본의 오프셋을 쓴다."
+      ],
+      "hints": [
+        "편도 지연이 양쪽 다 49ms 이고 서버 시계가 클라이언트보다 정확히 4001ms 앞선다고 가정하고 T2 와 T4 를 직접 계산해 보세요. T2 − T1 에는 \"편도 지연 + 오프셋\" 이, T3 − T4 에는 \"오프셋 − 편도 지연\" 이 들어 있습니다. 둘을 더하면 무엇이 지워집니까?",
+        "ServerClock 은 크기 8 인 배열 하나와 \"다음에 쓸 칸\", \"들어 있는 개수\" 두 정수면 됩니다. OffsetMs 는 들어 있는 표본을 최근 것부터 거꾸로 훑으며 \"지연이 더 작을 때만\" 바꾸면, 같은 지연에서는 자연히 최근 표본이 남습니다.",
+        "```\nCompute(t1, t2, t3, t4):\n    offset = ( (t2 - t1) + ( ____ ) ) / 2\n    delay  = (t4 - t1) - ( ____ )\n\nAddSample(...):\n    s = Compute(...)\n    if not (s.DelayMs >= 0): return          // 음수와 NaN 을 함께 거른다\n    samples[next] = s ; next = (next + 1) % 8 ; count = min(count + 1, 8)\n\nOffsetMs:\n    if count == 0: return 0\n    for k = 1 .. count: i = (next - k + 8) % 8   // 최근 것부터\n        if best 가 없거나 samples[i].DelayMs < ____: best = i\n    return samples[best].OffsetMs\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 해외에 있는 친구에게 시각 묻기\n\n전화로 친구에게 \"지금 몇 시야?\" 라고 묻습니다. 내가 물은 시각(내 시계로 T1), 친구가 들은 시각(친구 시계로 T2), 친구가 대답한 시각(친구 시계로 T3), 내가 대답을 들은 시각(내 시계로 T4)을 적어 두면, 두 시계의 차이와 통화 지연을 함께 추정할 수 있습니다. 단, \"가는 데 걸린 시간과 오는 데 걸린 시간이 같다\" 고 가정해야 합니다.\n\n### NTP 의 식 (RFC 5905 §8)\n\n| 값 | 식 | 뜻 |\n|---|---|---|\n| 오프셋 θ | ½ · [(T2 − T1) + (T3 − T4)] | 서버 시계 − 클라이언트 시계 |\n| 왕복 지연 δ | (T4 − T1) − (T3 − T2) | 왕복 시간에서 서버가 붙잡고 있던 시간을 뺀 것 |\n\n**왜 이 식인가.** 클라이언트 → 서버 편도 지연을 d₁, 서버 → 클라이언트를 d₂, 실제 오프셋을 θ* 라 하면 T2 = T1 + d₁ + θ*, T4 = T3 + d₂ − θ* 입니다. 대입하면 δ = d₁ + d₂ 이고, 계산한 θ 는 **θ* + (d₁ − d₂) / 2** 입니다. 즉 식은 d₁ = d₂ 일 때만 정확하고, 경로가 비대칭이면 (d₁ − d₂)/2 만큼 틀립니다. d₁, d₂ 가 0 이상이면 |d₁ − d₂| ≤ d₁ + d₂ = δ 이므로 그 오차는 **δ/2 이하**입니다(타임스탬프가 정확하고, 한 번 주고받는 동안 두 시계의 속도 차이를 무시할 수 있다는 전제). 이 상한은 위 유도에서 바로 나오는 결과이고 RFC 5905 에 이 부등식이 그대로 적혀 있지는 않습니다. 다만 RFC 5905 는 \"모든 원인에 의한 최대 오차\"를 나타내는 동기화 거리를 Λ = E + Δ/2 로 정의하고(§4), 서버마다 λ = δ/2 + ε 를 품질 지표로 씁니다(§10). 네 타임스탬프만으로는 비대칭을 알아낼 방법이 없으므로, 할 수 있는 일은 δ 가 작은 표본을 고르는 것입니다.\n\n### 어떤 표본을 쓸 것인가\n\n큐잉 지연이 한쪽 경로에만 끼면 δ 가 그만큼 커지고 오프셋은 그 절반만큼 밀립니다. RFC 5905 의 시계 필터 알고리즘은 최근 표본 8개를 시프트 레지스터에 두고 지연이 작은 순서로 정렬해 첫 번째를 가장 좋은 표본으로 씁니다(§10, 부록 A.5.2 의 참조 코드). 이 문제의 `ServerClock` 은 그 생각만 떼어 온 단순화입니다(분산·지터 계산, 여러 서버 중 선택은 뺐습니다).\n\n### 어느 시계로 잴 것인가\n\nT1 과 T4 는 클라이언트의 **단조 시계**로 잽니다. Windows 의 Microsoft Learn 문서(Acquiring high-resolution time stamps)에 따르면 Windows 에서 .NET 의 Stopwatch 는 QueryPerformanceCounter(QPC)를 정밀 시간 기준으로 쓰고, QPC 는 거꾸로 가지 않으며(monotonic) 외부 시각 기준과 동기화되지 않습니다. 반면 DateTime.Now 는 지역 시각이고 해상도가 운영체제에 따라 대략 0.5 ~ 15ms 라서, 문서는 성능 측정 도구로는 맞지 않고 Stopwatch 가 낫다고 적습니다. 게임은 \"Stopwatch 값 + 오프셋 = 서버 시각\" 으로 쓰고, 오프셋은 주기적으로 다시 잽니다.",
+      "quiz": [
+        {
+          "question": "예제(T1 = 1000, T2 = 5050, T3 = 5052, T4 = 1100)의 오프셋과 왕복 지연은 얼마입니까? 실제로는 요청이 70ms, 응답이 28ms 걸렸다면 추정 오프셋은 얼마나 틀렸고, 클라이언트가 그 사실을 알 수 있습니까?",
+          "answer": "θ = ½ · [(5050 − 1000) + (5052 − 1100)] = ½ · (4050 + 3952) = 4001ms, δ = (1100 − 1000) − (5052 − 5050) = 98ms 입니다. 실제 오프셋은 T2 = T1 + 70 + θ* 에서 θ* = 5050 − 1070 = 3980ms 이고(T4 = 5052 + 28 − 3980 = 1100 으로 맞습니다), 추정은 4001 − 3980 = 21ms = (70 − 28)/2 만큼 틀렸습니다. 네 타임스탬프는 d₁ + d₂ = 98 만 알려 주고 둘의 비율은 알려 주지 않으므로 클라이언트는 이 오차를 알아낼 수 없습니다. 말할 수 있는 것은 오차가 δ/2 = 49ms 이하라는 것뿐입니다."
+        },
+        {
+          "question": "표본 8개의 오프셋을 평균 내면 더 정확하지 않습니까? 왜 지연이 가장 작은 표본을 고릅니까?",
+          "answer": "오차의 상한이 δ/2 이므로 δ 가 큰 표본일수록 크게 틀렸을 수 있습니다. 예를 들어 요청 쪽에만 300ms 의 큐잉 지연이 끼면 그 표본의 오프셋은 150ms 밀립니다. 평균은 이런 표본을 그대로 섞어 결과를 끌고 가지만, 지연이 가장 작은 표본은 두 편도 지연이 모두 작았던 경우라 비대칭이 끼어들 여지도 가장 작습니다. RFC 5905 의 시계 필터 알고리즘도 최근 8개 표본을 지연 순으로 정렬해 첫 번째를 가장 좋은 표본으로 봅니다. 다만 너무 오래된 표본은 그동안 두 시계가 벌어졌을 수 있으므로 창을 최근 표본으로 제한합니다."
+        }
+      ],
+      "solutionCode": "using System;\n\n// 한 번의 요청·응답으로 얻은 추정값.\npublic readonly struct SyncSample\n{\n    public readonly double OffsetMs;   // 서버 시계 − 클라이언트 시계의 추정\n    public readonly double DelayMs;    // 왕복 지연(서버 안에서 머문 시간은 뺀 값)\n    public SyncSample(double offsetMs, double delayMs) { OffsetMs = offsetMs; DelayMs = delayMs; }\n}\n\npublic static class TimeSync\n{\n    // t1: 클라이언트가 요청을 보낸 시각(클라이언트 시계)   t2: 서버가 요청을 받은 시각(서버 시계)\n    // t3: 서버가 응답을 보낸 시각(서버 시계)               t4: 클라이언트가 응답을 받은 시각(클라이언트 시계)\n    public static SyncSample Compute(double t1, double t2, double t3, double t4)\n    {\n        double offset = ((t2 - t1) + (t3 - t4)) / 2.0;   // RFC 5905 의 theta\n        double delay = (t4 - t1) - (t3 - t2);            // RFC 5905 의 delta\n        return new SyncSample(offset, delay);\n    }\n}\n\n// 최근 8개 표본 가운데 왕복 지연이 가장 작은 표본의 오프셋을 쓴다(NTP 시계 필터를 단순화한 것).\npublic sealed class ServerClock\n{\n    public const int Window = 8;\n    private readonly SyncSample[] _samples = new SyncSample[Window];\n    private int _count, _next;              // _next: 다음에 쓸 칸(가장 오래된 표본을 덮어쓴다)\n\n    public void AddSample(double t1, double t2, double t3, double t4)\n    {\n        var s = TimeSync.Compute(t1, t2, t3, t4);\n        if (!(s.DelayMs >= 0)) return;      // 음수·NaN 지연은 타임스탬프가 잘못된 것이므로 버린다\n        _samples[_next] = s;\n        _next = (_next + 1) % Window;\n        if (_count < Window) _count++;\n    }\n\n    public bool HasEstimate => _count > 0;\n\n    // 표본이 없으면 0. 지연이 같으면 더 최근 표본.\n    public double OffsetMs\n    {\n        get\n        {\n            if (_count == 0) return 0;\n            int best = -1;\n            for (int k = 1; k <= _count; k++)                       // 최근 것부터 거꾸로\n            {\n                int i = (_next - k + Window) % Window;\n                if (best < 0 || _samples[i].DelayMs < _samples[best].DelayMs) best = i;\n            }\n            return _samples[best].OffsetMs;\n        }\n    }\n\n    // 클라이언트의 단조 시계(예: Stopwatch) 값을 서버 시각 추정으로 바꾼다.\n    public double ToServerTime(double localMs) => localMs + OffsetMs;\n}\n",
+      "explanation": "**식의 유도가 곧 가정입니다.** T2 − T1 은 \"요청 편도 지연 + 오프셋\", T3 − T4 는 \"오프셋 − 응답 편도 지연\" 입니다. 더하면 오프셋 두 배와 (d₁ − d₂) 가 남으므로, RFC 5905 의 θ = ½[(T2 − T1) + (T3 − T4)] 는 두 편도 지연이 같다는 가정 아래에서 정확합니다. δ = (T4 − T1) − (T3 − T2) 는 가정 없이 d₁ + d₂ 와 같고, 서버가 요청을 붙잡고 있던 시간 T3 − T2 는 빠집니다. 비대칭이면 오차는 (d₁ − d₂)/2 이고, d₁, d₂ ≥ 0 이면 |d₁ − d₂| ≤ d₁ + d₂ 이므로 그 크기는 δ/2 를 넘지 못합니다(타임스탬프가 정확하고 교환하는 동안 시계 속도 차이를 무시할 때). 이 상한은 RFC 의 문장이 아니라 이 유도에서 나온 결과이며, 무작위 비대칭 10만 건을 .NET 8 로 돌려 상한이 깨지지 않는 것과 한쪽 편도가 0 일 때 오차가 정확히 δ/2 가 되는 것도 확인했습니다.\n\n**표본 선택.** 그래서 정확도의 열쇠는 δ 가 작은 표본입니다. 큐잉 지연이 한쪽 경로에만 끼면 오프셋이 그 절반만큼 밀리므로, 평균보다 \"가장 덜 막힌 표본\" 이 낫습니다. RFC 5905 의 시계 필터는 최근 8개 표본을 지연 순으로 정렬해 첫 번째를 가장 좋은 표본으로 봅니다. 이 문제는 그 부분만 단순화했습니다. 창을 최근 표본으로 제한하는 이유는 두 시계의 진행 속도가 조금씩 달라 오래된 표본의 오프셋이 낡기 때문입니다.\n\n**구현.** `Compute` 는 두 줄입니다. `ServerClock` 은 크기 8 의 링 버퍼에 표본을 넣고, `OffsetMs` 에서 최근 것부터 거꾸로 훑으며 지연이 **더 작을 때만** 갱신하면 같은 지연에서는 최근 표본이 남습니다. 음수 지연은 타임스탬프가 잘못된 것이라 버리는데, `!(d >= 0)` 으로 쓰면 NaN 도 함께 걸러집니다. 둘 다 O(8), 할당 없음입니다.\n\n**게임에서 쓰는 법.** 클라이언트는 Stopwatch 같은 단조 시계로 T1·T4 를 재고, `서버 시각 ≈ 단조 시계 + 오프셋` 으로 카운트다운·보간 재생 시각·사격 시각을 정합니다. 오프셋이 갑자기 바뀌면 화면 시간이 튀므로, 새 추정은 몇백 ms 에 걸쳐 조금씩 따라가게 하는 것이 일반적입니다(출처 없이 적는 구현 관행).\n\n### 흔한 오해\n- **\"서버가 보낸 시각에 RTT/2 를 더하면 지금 서버 시각이 정확히 나온다\"** — 두 편도 지연이 같을 때만 맞습니다. 비대칭이면 (d₁ − d₂)/2 만큼 틀리고 네 타임스탬프로는 이를 알 수 없으며, 보장할 수 있는 것은 오차가 δ/2 이하라는 것뿐입니다(위 유도와 .NET 8 실행으로 확인). RFC 5905 도 \"모든 원인에 의한 최대 오차\"를 나타내는 동기화 거리에 지연의 절반을 넣습니다[rfc5905].\n- **\"DateTime.Now 로 T1·T4 를 재면 ms 단위 RTT 를 정확히 잴 수 있다\"** — DateTime.Now 의 해상도는 운영체제에 따라 대략 0.5 ~ 15ms 이고, 문서는 그래서 성능 측정 도구로는 맞지 않고 Stopwatch 가 낫다고 적습니다[ms-datetime-now]. Windows 에서 Stopwatch 의 기반인 QPC 는 거꾸로 가지 않는 단조 카운터입니다[ms-qpc-timestamps].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Compute 가 θ = ½[(T2 − T1) + (T3 − T4)], δ = (T4 − T1) − (T3 − T2) 를 계산한다(예제 → 4001, 98).",
+            "points": 12,
+            "sourceId": "rfc5905"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "ServerClock 이 최근 8개 중 지연이 가장 작은 표본의 오프셋을 쓰고, 같으면 최근 표본, 없으면 0 이며, 음수·NaN 지연을 버린다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "퀴즈 1 에서 비대칭 오차 21ms = (70 − 28)/2 와 상한 δ/2 = 49ms 를 구하고, 클라이언트가 비대칭을 알 수 없다고 답했다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "표본을 고정 크기 8 의 배열(링 버퍼)에 담고 AddSample·OffsetMs 에 할당이 없다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "평균 대신 최소 지연 표본을 고르는 이유(오차 상한 δ/2, 한쪽 경로의 큐잉 지연)를 설명했다.",
+            "points": 15,
+            "sourceId": "rfc5905"
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "T1·T4 를 Stopwatch 같은 단조 시계로 재야 하는 이유(QPC 는 거꾸로 가지 않음, DateTime.Now 의 해상도)를 말했다.",
+            "points": 10,
+            "sourceId": "ms-qpc-timestamps"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "클래스 안에서 실제 시계를 읽지 않고 인자로 받은 시각만 쓴다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "식 계산(Compute)과 표본 관리(ServerClock)가 분리되어 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "8개 창과 선택 규칙이 이 문제의 단순화이며 NTP 의 전체 알고리즘(분산·지터·여러 서버 선택)과 다름을 구분했다.",
+            "points": 7,
+            "sourceId": "rfc5905"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "오프셋을 \"서버 시각 − 클라이언트 시각\" 한 번의 차이로 계산해 편도 지연을 무시한다.",
+            "penalty": -20,
+            "sourceId": "rfc5905"
+          },
+          {
+            "id": "d2",
+            "description": "왕복 지연에서 서버 처리 시간(T3 − T2)을 빼지 않는다.",
+            "penalty": -15,
+            "sourceId": "rfc5905"
+          }
+        ]
+      },
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "RFC 5905 원문(§4·§8·§10·부록 A.5.2)과 Microsoft Learn QPC·DateTime.Now 문서를 대조하고, δ/2 상한을 직접 유도한 뒤 정답 코드로 예제·퀴즈 수치(4001, 98, 21, 49)와 무작위 10만 건 상한 검사를 .NET 8 에서 실행해 확인했습니다."
+      },
+      "nextMission": "오프셋 추정을 \"부드럽게\" 적용하세요. ServerClock 이 새 오프셋을 내놓아도 화면 시간은 1초에 최대 5% 의 속도 차이로만 따라가게 하는 SmoothedClock 을 만들고(차이가 500ms 를 넘으면 한 번에 맞춤), 서버 시계가 클라이언트보다 1초에 0.1ms 빨리 가는 상황을 10분 동안 고정 스크립트로 흉내 내 화면 시간이 거꾸로 가지 않는지와 최대 오차를 출력하세요.",
       "tests": null
     }
   ]
