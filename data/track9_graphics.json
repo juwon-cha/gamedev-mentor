@@ -727,6 +727,288 @@
       "title": "Unity 6 Manual · Post-processing and full-screen effects (overview)",
       "url": "https://docs.unity.com/en-us/engine/6000.0/manual/post-processing-and-full-screen-effects/overview",
       "summary": "파이프라인별 후처리 지원: URP·HDRP 는 자체 후처리, Built-in 은 Post-Processing Version 2 패키지가 필요하며 서로 호환되지 않는다는 표."
+    },
+    {
+      "id": "gpp-data-locality",
+      "title": "Game Programming Patterns — Data Locality (Packed data)",
+      "url": "https://gameprogrammingpatterns.com/data-locality.html",
+      "summary": "활성 파티클을 배열 앞쪽에 모으고 비활성화할 때 마지막 활성 파티클과 맞바꿔 순회에서 빈칸을 없애는 예"
+    },
+    {
+      "id": "unity-particle-main-module",
+      "title": "Unity 6 Manual — Main module reference (Particle System)",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/visual-effects/particle-systems/particle-system-modules/part-sys-main-module",
+      "summary": "Start Lifetime, Max Particles(한도 도달 시 일부 제거), Ring Buffer Mode, Delta Time(Scaled/Unscaled) 설명"
+    },
+    {
+      "id": "unity-particle-emission-module",
+      "title": "Unity 6 Manual — Emission module reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/visual-effects/particle-systems/particle-system-modules/part-sys-emission-module",
+      "summary": "Rate over Time(단위 시간당 방출 수), Rate over Distance, Bursts 설명"
+    },
+    {
+      "id": "unity-particle-color-over-life",
+      "title": "Unity 6 Manual — Color over Lifetime module reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/visual-effects/particle-systems/particle-system-modules/part-sys-color-over-life-module",
+      "summary": "그라디언트의 왼쪽 끝이 파티클 수명의 시작, 오른쪽 끝이 끝을 나타낸다는 설명"
+    },
+    {
+      "id": "ms-learn-list-removeat",
+      "title": "Microsoft Learn — List<T>.RemoveAt(Int32) (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-8.0",
+      "summary": "제거 뒤 남은 원소가 앞으로 당겨지며 O(n)(n = Count − index) 연산이라는 설명"
+    },
+    {
+      "id": "ms-gc-allocated-bytes",
+      "title": "Microsoft Learn — GC.GetAllocatedBytesForCurrentThread (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.gc.getallocatedbytesforcurrentthread",
+      "summary": "현재 스레드가 관리 힙에 할당한 총 바이트 수(네이티브 할당 제외)를 돌려주는 API"
+    },
+    {
+      "id": "iq-distfunctions2d",
+      "title": "Inigo Quilez — 2D distance functions",
+      "url": "https://iquilezles.org/articles/distfunctions2d/",
+      "summary": "원(sdCircle), 상자(sdBox) 등 2D 기본 도형의 정확한 부호 있는 거리 함수 코드"
+    },
+    {
+      "id": "iq-smin",
+      "title": "Inigo Quilez — Smooth minimum",
+      "url": "https://iquilezles.org/articles/smin/",
+      "summary": "여러 smooth-min 변형(2차 다항식 등)과 k 를 블렌드 두께로 맞추는 정규화 설명"
+    },
+    {
+      "id": "iq-distfunctions",
+      "title": "Inigo Quilez — Distance functions (3D, 연산 포함)",
+      "url": "https://iquilezles.org/articles/distfunctions/",
+      "summary": "Union·Subtraction·Intersection 과 smooth 연산, 합집합이 바깥에서만 정확한 SDF 라는 설명"
+    },
+    {
+      "id": "valve-sdf-2007",
+      "title": "Chris Green (Valve), Improved Alpha-Tested Magnification for Vector Textures and Special Effects (SIGGRAPH 2007)",
+      "url": "https://steamcdn-a.akamaihd.net/apps/valve/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf",
+      "summary": "거리장을 저해상도 텍스처 채널에 0..1 로 담고 0.5 를 가장자리로 쓰는 SDF 글리프·외곽선·글로우 기법"
+    },
+    {
+      "id": "ms-vector2-max",
+      "title": "Microsoft Learn — Vector2.Max (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2.max?view=net-8.0",
+      "summary": "두 벡터의 성분별 최댓값으로 이루어진 벡터를 돌려준다"
+    },
+    {
+      "id": "ms-vector2-abs",
+      "title": "Microsoft Learn — Vector2.Abs (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2.abs?view=net-8.0",
+      "summary": "각 성분의 절댓값으로 이루어진 벡터를 돌려준다"
+    },
+    {
+      "id": "unity-choose-render-pipeline",
+      "title": "Unity 6 Manual — Choose a render pipeline",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/choose-a-render-pipeline/pipeline",
+      "summary": "URP·HDRP·Built-in 의 대상 용도, 지원 플랫폼, 소스 접근, 라이팅, 성능 기능 비교와 전환 비용 경고"
+    },
+    {
+      "id": "unity-render-pipeline-feature-comparison",
+      "title": "Unity 6 Manual — Render pipeline feature comparison",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/choose-a-render-pipeline/feature-comparison",
+      "summary": "파이프라인별 기능 지원표(라이트 수 제한, SRP Batcher, GPU Resident Drawer, GPU 인스턴싱 등)"
+    },
+    {
+      "id": "unity-rendering-paths-intro",
+      "title": "Unity 6 Manual — Rendering paths in Unity",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/rendering-paths-introduction",
+      "summary": "Forward(오브젝트마다 차례로 라이팅)와 Deferred(G-buffer 후 한꺼번에 라이팅, 투명은 forward 패스) 개요"
+    },
+    {
+      "id": "unity-urp-rendering-path-comparison",
+      "title": "Unity 6 Manual — Choose a rendering path in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/introduction/urp-concepts/rendering-paths/comparison",
+      "summary": "URP Forward·Forward+·Deferred 선택 기준과 비교표(모바일 성능, 라이트 수, MSAA, 노멀 정밀도, 카메라 스태킹)"
+    },
+    {
+      "id": "unity-urp-rendering-paths-intro",
+      "title": "Unity 6 Manual — Introduction to rendering paths in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/introduction/urp-concepts/rendering-paths/introduction-urp",
+      "summary": "URP 렌더링 경로의 요구 사항(최소 셰이더 모델, OpenGL·OpenGL ES 지원 여부)"
+    },
+    {
+      "id": "unity-urp-forward-paths",
+      "title": "Unity 6 Manual — Forward and Forward+ rendering paths in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/introduction/urp-concepts/rendering-paths/forward-rendering-paths",
+      "summary": "Forward 는 오브젝트당 라이트 제한, Forward+ 는 화면을 타일로 나눠 타일에 영향을 주는 라이트만 계산"
+    },
+    {
+      "id": "unity-urp-forward-plus-troubleshoot",
+      "title": "Unity 6 Manual — Troubleshooting the Forward+ rendering path in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/introduction/urp-concepts/rendering-paths/forward-plus-rendering-path-limitations",
+      "summary": "카메라당 보이는 라이트 한도가 Lit 셰이더 배리언트의 컴파일 시간에 영향을 준다는 설명과 한도 조정 방법"
+    },
+    {
+      "id": "unity-urp-gbuffer-layout",
+      "title": "Unity 6 Manual — G-buffer layout in the Deferred rendering path in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/introduction/urp-concepts/rendering-paths/deferred-rendering-path/g-buffer-layout",
+      "summary": "URP Deferred 의 G-buffer 필드(알베도, 머티리얼 플래그, 노멀 24비트, Emissive/GI/Lighting 포맷 등)"
+    },
+    {
+      "id": "unity-birp-rendering-paths",
+      "title": "Unity 6 Manual — Introduction to rendering paths in the Built-In Render Pipeline",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/built-in-render-pipeline/built-in-rendering-paths/rendering-paths",
+      "summary": "Built-in 의 Deferred·Forward·Vertex Lit 비교표(라이트 하나의 비용, 반투명, 안티에일리어싱, 단순한 장면의 오버헤드)"
+    },
+    {
+      "id": "unity-birp-deferred",
+      "title": "Unity 6 Manual — Deferred rendering path in the Built-In Render Pipeline",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/built-in-render-pipeline/built-in-rendering-paths/render-tech-deferred-shading",
+      "summary": "라이트 비용이 비추는 픽셀 수에 비례, 안티에일리어싱·반투명 한계, 기본 G-buffer 160 bits/pixel 구성"
+    },
+    {
+      "id": "unity-hdrp-forward-deferred",
+      "title": "HDRP 17.0 Manual — Forward and Deferred rendering",
+      "url": "https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@17.0/manual/Forward-And-Deferred-Rendering.html",
+      "summary": "HDRP 의 Lit Shader Mode(Forward/Deferred/Both), 대부분의 장면에서 Deferred 가 빠르다는 설명과 품질 차이, Both 의 빌드 시간"
+    },
+    {
+      "id": "ms-d3d11-output-merger",
+      "title": "Microsoft Learn — Output-Merger Stage (Direct3D 11)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d11/d3d10-graphics-programming-guide-output-merger-stage",
+      "summary": "픽셀 셰이더가 같은 크기의 렌더 타깃 최소 8개에 동시에 쓸 수 있는 다중 렌더 타깃(MRT) 설명"
+    },
+    {
+      "id": "unity-render-pipelines-overview",
+      "title": "Unity 6 Manual — Introduction to render pipelines",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/overview",
+      "summary": "렌더 파이프라인의 단계(컬링·렌더링·후처리)와 URP·HDRP·Built-in 의 한 줄 정의"
+    },
+    {
+      "id": "unity-shader-variants",
+      "title": "Unity 6 Manual — Introduction to shader variants",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/shader-troubleshooting/shader-reducing/shader-variants/shader-variants",
+      "summary": "변형 수는 키워드 세트 크기의 곱(조합 폭발), 그래픽스 API·셰이더 프로그램마다 따로 컴파일, 중복 변형의 디듀플리케이션"
+    },
+    {
+      "id": "unity-shader-conditionals",
+      "title": "Unity 6 Manual — How Unity compiles branching shaders",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/writing-custom/shader-writing/sl-multiple-program-variants/shader-conditionals-choose-a-type",
+      "summary": "dynamic_branch 와 shader variant(multi_compile·shader_feature)의 차이, shader_feature 는 머티리얼이 쓰는 조합만 컴파일"
+    },
+    {
+      "id": "unity-shader-make-conditionals",
+      "title": "Unity 6 Manual — Make shader behavior conditional on keywords",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/writing-custom/shader-writing/sl-multiple-program-variants/make-conditionals",
+      "summary": "모든 키워드가 꺼진 상태의 변형: shader_feature 단일 키워드는 자동 생성, 두 개 이상이면 _ 를 선언"
+    },
+    {
+      "id": "unity-shader-keywords-declare",
+      "title": "Unity 6 Manual — Declare shader keywords",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/writing-custom/shader-writing/sl-multiple-program-variants/declare",
+      "summary": "#pragma 한 줄이 키워드 세트, 키워드 128 개 초과 시 느려질 수 있음, 런타임에는 세트 개념이 없음"
+    },
+    {
+      "id": "unity-shader-variant-stripping",
+      "title": "Unity 6 Manual — Strip shader variants",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/shader-troubleshooting/shader-reducing/shader-variants/shader-variant-stripping",
+      "summary": "shader_feature 우선, 스테이지 전용 접미사(_fragment 등, 일부 API 에서 효과 없음), 플랫폼 매크로, 품질 단계, 에디터 설정·IPreprocessShaders 로 스트리핑"
+    },
+    {
+      "id": "unity-shader-how-many-variants",
+      "title": "Unity 6 Manual — Check how many shader variants you have",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/shader-troubleshooting/shader-reducing/shader-variants/shader-how-many-variants",
+      "summary": "Editor.log 의 Full variant space / After stripping 줄, 런타임 컴파일 로그, Strict shader variant matching"
+    },
+    {
+      "id": "unity-urp-shader-stripping",
+      "title": "Unity 6 Manual — Reduce shader variants in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/built-in/shaders-in-universalrp/shader-stripping",
+      "summary": "URP Asset 에서 쓰지 않는 기능을 끄면 관련 변형을 스트리핑, Strip Unused Variants, 다른 렌더링 경로의 URP Asset 을 함께 넣지 말 것"
+    },
+    {
+      "id": "ms-d3dcompile",
+      "title": "Microsoft Learn — D3DCompile function (d3dcompiler.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/d3dcompiler/nf-d3dcompiler-d3dcompile",
+      "summary": "HLSL 소스를 컴파일할 때 셰이더 매크로(D3D_SHADER_MACRO) 배열을 pDefines 로 넘긴다"
+    },
+    {
+      "id": "unity-shader-keywords-default",
+      "title": "Unity 6 Manual — Default shader keywords",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/shader-troubleshooting/shader-reducing/shader-variants/shader-keywords-default",
+      "summary": "Unity 가 컴파일 때 자동으로 더하는 키워드 세트(스테레오 렌더링 세트, Standard Shader 의 라이트맵 세트, Built-in 의 하드웨어 티어 세트)"
+    },
+    {
+      "id": "wiki-percentile",
+      "title": "Wikipedia — Percentile",
+      "url": "https://en.wikipedia.org/wiki/Percentile",
+      "summary": "백분위에는 표준 정의가 없고, nearest-rank 방법은 순위 ⌈P/100 × N⌉ 의 값을 고른다"
+    },
+    {
+      "id": "wiki-harmonic-mean",
+      "title": "Wikipedia — Harmonic mean (Average speed)",
+      "url": "https://en.wikipedia.org/wiki/Harmonic_mean",
+      "summary": "같은 거리마다 속도가 다를 때 평균 속도는 조화 평균이고, 산술 평균은 항상 그 이상이라 과대평가된다"
+    },
+    {
+      "id": "capframex-metrics",
+      "title": "CapFrameX Blog — Explanation of different performance metrics (2020, 2022 갱신)",
+      "url": "https://www.capframex.com/blog/post/Explanation%20of%20different%20performance%20metrics",
+      "summary": "프레임 시간 기반 지표 설명: 백분위의 의미와 반올림 차이, x% low 에는 명확한 정의가 없고 average 방식과 integral(시간 기준) 방식이 있다"
+    },
+    {
+      "id": "ms-learn-array-sort",
+      "title": "Microsoft Learn — Array.Sort (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-8.0",
+      "summary": "배열의 원소를 그 자리에서 정렬하며 introsort 기반의 불안정 정렬, O(n log n)"
+    },
+    {
+      "id": "ms-qpc-timestamps",
+      "title": "Microsoft Learn — Acquiring high-resolution time stamps",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps",
+      "summary": "시간 간격 측정에는 QueryPerformanceCounter 를 쓰고, 관리 코드의 Stopwatch 가 QPC 를 기반으로 한다"
+    },
+    {
+      "id": "unity-static-batching-build",
+      "title": "Unity 6 Manual — Batch static meshes at build time",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/reduce-draw-calls/draw-call-batching/enable",
+      "summary": "빌드 시점 정적 배칭: 같은 메시여도 합친 메시를 위해 추가 GPU 메모리를 쓴다(빽빽한 숲 예), 컬링된 메시가 버퍼에 빈칸을 남긴다"
+    },
+    {
+      "id": "unity-combine-meshes-manual",
+      "title": "Unity 6 Manual — Combine meshes manually",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/reduce-draw-calls/draw-call-batching/combining-meshes",
+      "summary": "결합한 메시는 한 드로우로 그려지지만 개별 컬링이 안 되어 일부만 보여도 전체를 그린다"
+    },
+    {
+      "id": "unity-grd-compatible",
+      "title": "Unity 6 Manual — Make a GameObject compatible with the GPU Resident Drawer in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/in-urp/reduce-draw-calls-urp/reduce-rendering-work-on-cpu/make-object-compatible-gpu-rendering",
+      "summary": "호환 조건: Mesh Renderer, DOTS instancing 셰이더, 정적 GI 만, MaterialPropertyBlock 금지, 카메라 사이에 이동 금지 등"
+    },
+    {
+      "id": "unity-rendermeshinstanced",
+      "title": "Unity 6 Scripting API — Graphics.RenderMeshInstanced",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/graphics/rendermeshinstanced",
+      "summary": "호출 하나의 모든 인스턴스를 하나의 바운드로 컬링·정렬, 한 번에 최대 1023 개(기본 행렬 두 개면 511 개), enableInstancing 필요"
+    },
+    {
+      "id": "unity-mesh-combinemeshes",
+      "title": "Unity 6 Scripting API — Mesh.CombineMeshes",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/mesh/combinemeshes",
+      "summary": "여러 메시를 한 메시로 합친다. 같은 머티리얼이면 mergeSubMeshes = true, 라이트맵 UV 변환 시 같은 라이트맵 텍스처 필요"
+    },
+    {
+      "id": "unity-mesh-indexformat",
+      "title": "Unity 6 Scripting API — Mesh.indexFormat",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/mesh/indexformat",
+      "summary": "16비트 인덱스는 정점 65,535 개까지(기본값), 32비트는 일부 기기(Mali-400 등)에서 미지원"
+    },
+    {
+      "id": "ms-d3d11-drawindexedinstanced",
+      "title": "Microsoft Learn — ID3D11DeviceContext::DrawIndexedInstanced",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-drawindexedinstanced",
+      "summary": "같은 지오메트리를 재사용해 여러 오브젝트를 그리는 인스턴싱, 정점별 버퍼와 인스턴스별 버퍼가 필요"
+    },
+    {
+      "id": "ms-gh-d3d12-executeindirect",
+      "title": "microsoft/DirectX-Graphics-Samples — D3D12ExecuteIndirect sample readme",
+      "url": "https://github.com/microsoft/DirectX-Graphics-Samples/blob/master/Samples/Desktop/D3D12ExecuteIndirect/readme.md",
+      "summary": "컴퓨트 셰이더로 보이는 삼각형을 골라 드로우 인자를 버퍼에 모으고 ExecuteIndirect 로 처리하는 샘플"
     }
   ],
   "problems": [
@@ -4510,6 +4792,951 @@
         "note": "Unity 6 URP 매뉴얼(안티에일리어싱, Bloom, URP 후처리, 성능 설정, URP Asset, 후처리 개요)과 Direct3D 래스터화 규칙 문서의 MSAA 설명 원문과 대조하고 Render Scale 숫자를 다시 계산했다."
       },
       "nextMission": "Unity 6 URP 프로젝트에서 같은 장면과 카메라 경로로 (1) 후처리 없음, (2) Bloom 기본값(High Quality Filtering 켬), (3) Bloom 에서 High Quality Filtering 끄고 Downscale Quarter, (4) (3) + FXAA, (5) (3) + TAA, (6) (3) + MSAA 4x, (7) (4) + Render Scale 0.75 의 일곱 설정을 대상 기기에서 GPU 프레임 시간으로 재어 표로 만드세요. Frame Debugger 로 각 설정의 후처리 패스 수를 함께 적고, (5) 에서 캐릭터가 빠르게 지나갈 때의 잔상을 캡처해 (4) 와 비교합니다."
+    },
+    {
+      "id": "t9-impl-particle-update-swap-remove",
+      "track": "track9",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "파티클 시스템 업데이트: 방출 누적, 수명, swap-remove, 고정 용량",
+      "tags": [
+        "Gfx_Particle",
+        "Gfx_SwapRemove",
+        "Gfx_DataLocality"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "gpp-data-locality",
+        "unity-particle-main-module",
+        "unity-particle-emission-module",
+        "ms-learn-list-removeat"
+      ],
+      "scenario": "2D 액션 게임의 검 타격 불꽃(hit spark)은 사내 이펙트 툴의 미리보기와 게임 런타임이 같은 결과를 내야 해서, 엔진에 의존하지 않는 순수 C# 파티클 시스템으로 시뮬레이션합니다. 보스전에서는 이미터 수십 개가 동시에 돌아가므로 프레임마다 가비지가 생기면 안 되고, 파티클 수는 이미터마다 정한 **용량**을 넘지 않아야 합니다.\n\n**할 일:** `SparkSystem` 의 `Update(float dt)` 와 `GetColor(int index)` 를 구현하세요. 순수 C#(.NET 8), `System.Numerics` 만 씁니다. 생성자와 필드, 간단한 게터는 주어져 있습니다.\n\n**규약** (이 표가 정답의 기준입니다. 이 연습이 정한 모델이며 Unity 파티클 시스템의 내부 동작을 옮긴 것이 아닙니다)\n\n| 항목 | 규약 |\n|---|---|\n| 저장 | 필드별 배열(SoA). 살아 있는 파티클은 항상 인덱스 `[0, Count)` 에 빈틈없이 모여 있습니다. |\n| Update 순서 | **1단계:** 살아 있는 파티클마다 `age += dt`. `age ≥ lifetime` 이면 제거합니다. 살아남으면 `velocity += gravity · dt`, 그다음 그 속도로 `position += velocity · dt` (semi-implicit Euler). **2단계:** 방출. |\n| 방출 시점 | `emitDebt += ratePerSecond · dt`, `n = ⌊emitDebt⌋`, `emitDebt −= n`. 소수 부분은 다음 Update 로 넘깁니다. 1단계가 끝난 뒤에 방출하므로, 이번 Update 에서 죽어 비운 슬롯을 이번 방출이 쓸 수 있습니다. |\n| 새 파티클 | 맨 뒤(`Count` 위치)에 추가. `id` 는 실제로 추가된 파티클에만 0, 1, 2, … 순서로 붙습니다. 나이 0, 위치는 Update 를 부른 시점의 `EmitterPosition`, 속도는 `initialVelocity(id)`. 이번 Update 에서 태어난 파티클은 이번 Update 에서 나이를 먹지도 움직이지도 않습니다. |\n| 제거 (swap-remove) | 죽은 파티클 자리에 마지막 파티클을 옮기고 `Count` 를 1 줄입니다. 파티클의 순서는 보존되지 않으며(채점은 `id` 로 파티클을 찾습니다), 옮겨 온 파티클도 이번 Update 에서 빠짐없이 처리해야 합니다. |\n| 용량 초과 | 빈 슬롯보다 많이 방출해야 하면 남는 요청은 **버리고** 그 수만큼 `DroppedCount` 를 늘립니다. 버린 요청은 빚으로 남기지 않습니다(나중에 한꺼번에 나오지 않습니다). |\n| 색 | `Vector4.Lerp(startColor, endColor, age / lifetime)`. 살아 있는 파티클의 비율은 항상 `[0, 1)` 입니다. |\n\n**예시** (초기 속도는 호출 측이 `initialVelocity` 로 정합니다)\n\n- 초당 32개, 수명 4 초, `dt = 1/64` 초: Update 마다 0.5 개라서 `Count` 는 0, 1, 1, 2, 2, 3, … 이고 64번째 Update 뒤 32 입니다.\n- 초당 10개, 수명 4 초, `dt = 0.125` 초: 누적 1.25, 2.5, 3.75, 5.0 이라 `Count` 는 1, 2, 3, 5 입니다.\n- 용량 10, 초당 64개, 수명 1 초, `dt = 1/64` 초: 10번째 Update 뒤 가득 차고, 11 ~ 64번째 Update 의 요청 54 개는 버려집니다. 65번째 Update 에서 id 0 의 나이가 정확히 1 이 되어 제거되고, 같은 Update 의 방출이 그 자리에 id 10 을 넣습니다(`Count` 10, `DroppedCount` 54). 이어서 `dt = 3` 초짜리 긴 프레임이 오면 10 개가 모두 죽고, 요청 192 개 중 10 개만 추가되어 `DroppedCount` 는 236 이 됩니다.\n- 용량 1, 초당 4개, 중력 (0, −8), `EmitterPosition` (3, 1), 초기 속도 (−10, 2), `dt = 0.25` 초: 1번째 Update 에 위치 (3, 1) 에서 태어납니다. 2번째 Update 뒤 속도 (−10, 0), 위치 (0.5, 1), 3번째 Update 뒤 속도 (−10, −2), 위치 (−2, 0.5) 입니다.",
+      "constraints": [
+        "`Update` 는 시간 O(Count + 이번 Update 의 방출 요청 수) 이하이고, 파티클 하나의 제거는 O(1) 이다(`List<T>.RemoveAt`, `Array.Copy` 로 뒤를 당기기 금지).",
+        "`Update` 와 `GetColor` 는 힙 할당이 없다. 배열은 생성자에서만 만든다.",
+        "활성 플래그를 두고 건너뛰는 방식 금지: 살아 있는 파티클은 항상 `[0, Count)` 에 모여 있어야 한다.",
+        "입력: `dt` 는 0 이상의 유한한 값, `ratePerSecond · dt ≤ 1,000,000`, `capacity ≥ 1`, `lifetime > 0`. NaN·무한대는 주어지지 않는다. 공개 멤버의 이름과 시그니처를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 피격 불꽃 파티클 시스템 (순수 C#, 엔진 없음). 규약은 문제 본문의 표와 같다.\n// - 파티클 데이터는 구조체 배열이 아니라 필드별 배열(SoA)에 담고, 살아 있는 파티클은 항상 [0, Count) 에 빈틈없이 모여 있다.\n// - Update 와 GetColor 를 구현한다. 필요한 private 필드는 더해도 된다.\n// - 공개 멤버의 이름과 시그니처는 바꾸지 않는다.\npublic sealed class SparkSystem\n{\n    private readonly long[] ids;\n    private readonly float[] ages;\n    private readonly Vector2[] positions;\n    private readonly Vector2[] velocities;\n    private readonly float ratePerSecond;\n    private readonly float lifetime;\n    private readonly Vector2 gravity;\n    private readonly Vector4 startColor;\n    private readonly Vector4 endColor;\n    private readonly Func<long, Vector2> initialVelocity;\n\n    public SparkSystem(int capacity, float ratePerSecond, float lifetime, Vector2 gravity,\n                       Vector4 startColor, Vector4 endColor, Func<long, Vector2> initialVelocity)\n    {\n        if (capacity < 1) throw new ArgumentOutOfRangeException(nameof(capacity));\n        if (!(ratePerSecond >= 0f)) throw new ArgumentOutOfRangeException(nameof(ratePerSecond));\n        if (!(lifetime > 0f)) throw new ArgumentOutOfRangeException(nameof(lifetime));\n        this.initialVelocity = initialVelocity ?? throw new ArgumentNullException(nameof(initialVelocity));\n        ids = new long[capacity];\n        ages = new float[capacity];\n        positions = new Vector2[capacity];\n        velocities = new Vector2[capacity];\n        this.ratePerSecond = ratePerSecond;\n        this.lifetime = lifetime;\n        this.gravity = gravity;\n        this.startColor = startColor;\n        this.endColor = endColor;\n    }\n\n    public int Capacity => ids.Length;\n    public int Count { get; private set; }\n    public long DroppedCount { get; private set; }\n    public Vector2 EmitterPosition { get; set; }\n\n    public long GetId(int index) => ids[index];\n    public float GetAge(int index) => ages[index];\n    public Vector2 GetPosition(int index) => positions[index];\n    public Vector2 GetVelocity(int index) => velocities[index];\n\n    // 색: startColor 에서 endColor 로, 나이 / 수명 비율만큼 선형 보간한다.\n    public Vector4 GetColor(int index)\n    {\n        throw new NotImplementedException();\n    }\n\n    // dt 초만큼 시뮬레이션한다. 순서와 방출 규칙은 문제 본문의 표를 따른다.\n    public void Update(float dt)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "작은 dt: 초당 32개·`dt = 1/64` 초면 `ratePerSecond · dt = 0.5` 라서, 소수 부분을 버리는 구현은 영원히 하나도 방출하지 않는다.",
+        "같은 Update 에서 죽고 태어나기: 용량이 가득 찬 상태에서 한 파티클이 죽으면, 방출이 1단계 뒤에 오므로 그 슬롯이 같은 Update 에서 다시 채워진다.",
+        "swap 으로 옮겨 온 파티클: 수명 0.5·dt 0.125·초당 8개에서 5번째 Update 에 id 0 이 죽으면 마지막의 id 3 이 인덱스 0 으로 온다. 그 자리를 다시 처리하지 않으면 id 3 의 나이가 0.125 가 아니라 0 으로 남는다. 옮겨 온 파티클이 이미 죽은 나이일 수도 있다.",
+        "긴 프레임(히치): `dt` 가 수명보다 길면 기존 파티클은 모두 죽고, 방출 요청이 용량을 넘는 만큼은 버려진다(빚 없음).",
+        "`dt = 0`: 나이·위치·`Count` 가 모두 그대로다."
+      ],
+      "hints": [
+        "반례 두 개로 시작하세요. (가) 초당 32개, `dt = 1/64` 초에서 `(int)(ratePerSecond * dt)` 는 매번 0 입니다. 64번 Update 한 뒤에는 몇 개가 있어야 합니까? 남은 0.5 를 어디에 보관해야 할까요? (나) 수명 0.5, `dt = 0.125`, 초당 8개로 Update 를 다섯 번 부르면, 다섯 번째 Update 에서 인덱스 0 의 id 0 이 죽고 마지막(인덱스 3)의 id 3 이 그 자리로 옵니다. 그 다음 반복에서 `i` 는 몇이어야 합니까?",
+        "고칠 곳이 갈리는 지점은 세 군데입니다. 방출 개수를 정하는 줄(소수 부분의 행방), 제거한 직후 인덱스를 다루는 줄(옮겨 온 파티클을 이번 Update 에서 처리하는가), 그리고 두 단계의 순서(방출이 1단계 앞에 오면 새 파티클이 태어나자마자 나이를 먹고, 비운 슬롯을 같은 Update 에서 못 씁니다). 용량 초과는 빈 슬롯 수 `Capacity − Count` 와 요청 수 `n` 의 차이로 한 번에 셀 수 있습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nUpdate(dt):\n    i = 0\n    while i < Count:\n        age = ages[i] + dt\n        if age >= lifetime:\n            last = Count - 1\n            (모든 배열에서) [i] = [last]\n            Count = last\n            ____            // i 를 어떻게 할까?\n        ages[i] = age\n        velocities[i] = ____\n        positions[i] += ____\n        i++\n\n    emitDebt += ratePerSecond * dt\n    n = ____ ; emitDebt -= n\n    spawn = min(n, ____)\n    DroppedCount += ____\n    repeat spawn times: 맨 뒤에 (id = nextId++, age 0, EmitterPosition, initialVelocity(id)) 추가\n\nGetColor(i): return Vector4.Lerp(startColor, endColor, ____)\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 피격 불꽃 파티클 시스템 (순수 C#, 엔진 없음). 규약은 문제 본문과 같다.\n// Update(dt) 의 순서\n//   1) 살아 있는 파티클마다 age += dt. age >= lifetime 이면 제거한다(swap-remove).\n//      살아남으면 velocity += gravity * dt, 그다음 position += velocity * dt (semi-implicit Euler).\n//   2) 방출: emitDebt += rate * dt. 정수 부분 n 만큼 방출하고 소수 부분은 남긴다.\n//      빈 슬롯이 있으면 나이 0, 위치 = EmitterPosition, 속도 = initialVelocity(id) 로 맨 뒤에 추가한다.\n//      가득 찼으면 그 요청은 버리고 DroppedCount 를 1 늘린다(빚으로 남기지 않는다).\n//   이번 Update 에서 태어난 파티클은 이번 Update 에서 나이를 먹거나 움직이지 않는다.\n// 색: Vector4.Lerp(startColor, endColor, age / lifetime).\npublic sealed class SparkSystem\n{\n    private readonly long[] ids;\n    private readonly float[] ages;\n    private readonly Vector2[] positions;\n    private readonly Vector2[] velocities;\n    private readonly float ratePerSecond;\n    private readonly float lifetime;\n    private readonly Vector2 gravity;\n    private readonly Vector4 startColor;\n    private readonly Vector4 endColor;\n    private readonly Func<long, Vector2> initialVelocity;\n    private float emitDebt;\n    private long nextId;\n\n    public SparkSystem(int capacity, float ratePerSecond, float lifetime, Vector2 gravity,\n                       Vector4 startColor, Vector4 endColor, Func<long, Vector2> initialVelocity)\n    {\n        if (capacity < 1) throw new ArgumentOutOfRangeException(nameof(capacity));\n        if (!(ratePerSecond >= 0f)) throw new ArgumentOutOfRangeException(nameof(ratePerSecond));\n        if (!(lifetime > 0f)) throw new ArgumentOutOfRangeException(nameof(lifetime));\n        this.initialVelocity = initialVelocity ?? throw new ArgumentNullException(nameof(initialVelocity));\n        ids = new long[capacity];\n        ages = new float[capacity];\n        positions = new Vector2[capacity];\n        velocities = new Vector2[capacity];\n        this.ratePerSecond = ratePerSecond;\n        this.lifetime = lifetime;\n        this.gravity = gravity;\n        this.startColor = startColor;\n        this.endColor = endColor;\n    }\n\n    public int Capacity => ids.Length;\n    public int Count { get; private set; }\n    public long DroppedCount { get; private set; }\n    public Vector2 EmitterPosition { get; set; }\n\n    public long GetId(int index) => ids[index];\n    public float GetAge(int index) => ages[index];\n    public Vector2 GetPosition(int index) => positions[index];\n    public Vector2 GetVelocity(int index) => velocities[index];\n\n    public Vector4 GetColor(int index)\n    {\n        return Vector4.Lerp(startColor, endColor, ages[index] / lifetime);\n    }\n\n    public void Update(float dt)\n    {\n        // 1) 나이 먹기, 죽은 파티클 제거, 적분\n        int i = 0;\n        while (i < Count)\n        {\n            float age = ages[i] + dt;\n            if (age >= lifetime)\n            {\n                // swap-remove: 마지막 파티클을 이 자리로 옮긴다. i 는 그대로 두어\n                // 옮겨 온 파티클도 이번 Update 에서 검사·적분되게 한다.\n                int last = Count - 1;\n                ids[i] = ids[last];\n                ages[i] = ages[last];\n                positions[i] = positions[last];\n                velocities[i] = velocities[last];\n                Count = last;\n                continue;\n            }\n            ages[i] = age;\n            Vector2 v = velocities[i] + gravity * dt;\n            velocities[i] = v;\n            positions[i] += v * dt;\n            i++;\n        }\n\n        // 2) 방출: 소수 부분은 다음 Update 로 넘긴다. 빈 슬롯이 없으면 버린다.\n        emitDebt += ratePerSecond * dt;\n        int toEmit = (int)emitDebt;\n        emitDebt -= toEmit;\n        int spawn = Math.Min(toEmit, ids.Length - Count);\n        DroppedCount += toEmit - spawn;\n        for (int k = 0; k < spawn; k++)\n        {\n            int slot = Count++;\n            long id = nextId++;\n            ids[slot] = id;\n            ages[slot] = 0f;\n            positions[slot] = EmitterPosition;\n            velocities[slot] = initialVelocity(id);\n        }\n    }\n}\n",
+      "explanation": "**접근.** 한 번의 Update 를 \"기존 파티클 처리\"와 \"방출\" 두 단계로 나누고, 살아 있는 파티클을 배열 앞쪽 `[0, Count)` 에 빈틈없이 유지합니다. Game Programming Patterns 의 Data Locality 장은 파티클 시스템 예에서 활성 파티클을 배열 앞쪽에 모아 두고, 파티클을 비활성화할 때 마지막 활성 파티클과 맞바꿔 그 정렬 상태를 유지합니다. 그러면 업데이트 루프는 활성 플래그를 검사하지 않고 `numActive` 까지만 돌고, 캐시에 올라오는 데이터가 모두 처리할 파티클의 것이 됩니다. 이 문제의 swap-remove 는 같은 생각에서 죽은 파티클의 데이터는 버리고 마지막 파티클만 옮기는 형태입니다.\n\n**왜 맞는가.**\n- **방출 누적:** Unity 매뉴얼은 Emission 모듈의 Rate over Time 을 \"단위 시간당 방출하는 파티클 수\"로 설명합니다. 비율을 프레임마다 정수로 자르면 `rate · dt < 1` 인 높은 프레임레이트에서 방출이 사라지므로, 소수 부분을 `emitDebt` 에 남겨 다음 Update 에서 이어 셉니다. 그러면 N 번 Update 뒤의 총 요청 수는 프레임 분할과 무관하게 `⌊rate · 총 시간⌋` 이 됩니다(부동소수 오차를 빼면). Unity 가 방출 시점을 내부적으로 어떻게 계산하는지는 문서에 없으므로, 이 누적 방식은 이 연습의 모델입니다.\n- **swap-remove 와 인덱스:** 인덱스 `i` 의 파티클을 지우면 아직 처리하지 않은 마지막 파티클이 `i` 로 옵니다. `i` 를 그대로 두고 같은 자리를 다시 검사해야 그 파티클도 이번 Update 에서 나이를 먹고 움직이며, 그 파티클이 이미 죽을 나이라면 연달아 제거됩니다. 거꾸로(`Count − 1` 에서 0 으로) 도는 구현도 맞습니다. 옮겨 오는 파티클이 이미 처리된 쪽이기 때문입니다. 두 방식은 결과의 순서가 다르므로 채점은 `id` 로 파티클을 찾습니다.\n- **순서:** 1단계 뒤에 방출하므로 새 파티클은 나이 0, 이미터 위치에서 시작하고, 이번 Update 에서 죽어 비운 슬롯을 이번 방출이 바로 씁니다.\n- **용량:** Unity 매뉴얼은 Max Particles 를 \"시스템에 동시에 있을 수 있는 최대 파티클 수\"로 정의하고 한도에 닿으면 일부 파티클이 제거된다고만 적습니다. 어떤 파티클인지는 밝히지 않습니다. 이 연습의 \"새 요청을 버리고 세기\"는 연습이 정한 정책입니다.\n\n**복잡도.** 1단계는 파티클마다 상수 시간이고 제거는 데이터 네 개를 옮기는 O(1) 입니다. 2단계는 추가하는 파티클 수에 비례하고 버리는 수는 뺄셈 한 번으로 셉니다. 메모리는 생성자에서 만든 배열 네 개(용량 × (8 + 4 + 8 + 8) 바이트)뿐이고 Update 는 할당하지 않습니다. 비교하자면 .NET 의 `List<T>.RemoveAt` 은 뒤의 원소를 한 칸씩 당기는 O(n) 연산(n = Count − index)이라, 한 프레임에 수백 개가 죽으면 제거 비용이 파티클 수의 제곱으로 커질 수 있습니다.\n\n**흔한 실수.**\n- 방출 수를 `(int)(rate * dt)` 로 잘라 높은 프레임레이트에서 방출이 줄거나 사라진다.\n- 제거 뒤 `i++` 를 해서 옮겨 온 파티클을 건너뛴다. 로컬에서 이렇게 바꿔 돌리면 수명 0.5·dt 0.125 예의 5번째 Update 뒤 id 3 의 나이가 0.125 대신 0 으로 남는다.\n- 방출을 1단계 앞에 둔다. 새 파티클이 태어나자마자 나이를 먹고(나이 0 대신 dt), 가득 찬 상태에서는 그 Update 에서 비는 슬롯을 쓰지 못한다. 로컬에서 이렇게 바꿔 돌리면 용량 10 예에서 64번째 Update 뒤 `Count` 가 10 이 아니라 9 로, 한 칸이 빈 채 Update 가 끝난다.\n- 버린 요청을 빚으로 남기거나 `age > lifetime` 으로 비교한다(자리가 나는 순간 한꺼번에 쏟아지거나, 나이가 정확히 수명인 파티클이 한 프레임 더 남는다).\n- 위치를 먼저 옮기고 속도를 나중에 갱신한다(explicit Euler). 예의 2번째 Update 뒤 위치가 (0.5, 1) 이 아니라 (0.5, 1.5) 가 된다.\n\n### 흔한 오해\n- **\"Unity 매뉴얼에 따르면 파티클 시스템은 Max Particles 에 닿으면 가장 오래된 파티클을 지우고 그 자리에 새 파티클을 만든다.\"** — Unity 6 매뉴얼의 Max Particles 설명은 한도에 닿으면 \"일부 파티클이 제거된다\"고만 적고 어느 파티클인지 밝히지 않습니다. 가장 오래된 파티클을 재활용하는 것은 Ring Buffer Mode 를 켰을 때의 설명이고, 그 모드는 수명이 끝난 파티클도 한도까지 살려 둡니다 [unity-particle-main-module].\n- **\"`List<T>.RemoveAt` 은 인덱스로 바로 지우니까 O(1) 이다.\"** — 제거한 자리 뒤의 원소가 한 칸씩 앞으로 당겨지므로 O(n) 이고, n 은 `Count − index` 입니다. 맨 끝 원소를 지울 때만 옮길 것이 없어 싸집니다. 그래서 swap-remove 는 지울 자리로 마지막 원소를 옮긴 뒤 맨 끝을 지웁니다 [ms-learn-list-removeat].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "방출 수의 소수 부분을 다음 Update 로 넘긴다: 초당 32개·dt 1/64 초에서 Count 가 0, 1, 1, 2, 2, 3 으로 늘고 64번째 Update 뒤 32 다. 초당 10개·dt 0.125 초에서는 1, 2, 3, 5 다.",
+            "points": 9,
+            "sourceId": "unity-particle-emission-module"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "Update 순서가 나이 → 제거 → 적분 → 방출이다: 새 파티클은 나이 0·이미터 위치에서 시작하고, 같은 Update 에서 비운 슬롯을 방출이 다시 쓴다(용량 10 예에서 65번째 Update 뒤 Count 10, DroppedCount 54, 살아 있는 id 1 ~ 10).",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "swap-remove 로 옮겨 온 파티클도 같은 Update 에서 검사·적분된다: 수명 0.5·dt 0.125·초당 8개에서 5번째 Update 뒤 id 3 의 나이가 0.125 다.",
+            "points": 9,
+            "sourceId": "gpp-data-locality"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "age ≥ lifetime 이면 제거하고, 속도를 먼저 갱신한 semi-implicit Euler 로 적분하며(예의 2번째 Update 뒤 위치 (0.5, 1)), 색을 Lerp(startColor, endColor, age / lifetime) 로 계산한다(나이 0.25 / 수명 0.5 → 두 색의 중간).",
+            "points": 8,
+            "sourceId": "unity-particle-color-over-life"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Update 와 GetColor 에 힙 할당이 없다(배열은 생성자에서만 만들고, Update 안에서 List·LINQ·캡처 람다를 쓰지 않는다).",
+            "points": 10,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "파티클 하나의 제거가 O(1) 이다(마지막 파티클을 빈 자리로 옮긴다. List<T>.RemoveAt 이나 Array.Copy 로 뒤를 당기지 않는다).",
+            "points": 10,
+            "sourceId": "ms-learn-list-removeat"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "살아 있는 파티클이 항상 [0, Count) 에 빈틈없이 있어 업데이트 루프가 Count 까지만 돌고 활성 플래그를 검사하지 않는다.",
+            "points": 10,
+            "sourceId": "gpp-data-locality"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "용량 초과 정책을 규약대로 지켰다(버린 요청을 DroppedCount 로 세고, 빚으로 남기지 않으며, id 를 주지 않는다). 그리고 이것이 연습의 정책이며 Unity Max Particles 문서는 한도에서 어떤 파티클이 제거되는지 밝히지 않는다는 점을 구분해 말할 수 있다.",
+            "points": 10,
+            "sourceId": "unity-particle-main-module"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "Update 가 시간을 직접 읽지 않고 인자 dt 만 쓴다(Scaled/Unscaled 시간 선택은 호출 측의 몫. Unity Main module 의 Delta Time 설정과 같은 역할).",
+            "points": 10,
+            "sourceId": "unity-particle-main-module"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "Update 가 \"나이·제거·적분\" 단계와 \"방출\" 단계로 나뉘어 순서가 코드에서 바로 보인다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "제거한 뒤 인덱스를 올리지 않는 이유(옮겨 온 파티클을 다시 처리)가 주석이나 구조로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "List<T>.RemoveAt 이나 배열 앞당기기로 제거해 제거 하나가 O(Count) 다.",
+            "penalty": -20,
+            "sourceId": "ms-learn-list-removeat"
+          },
+          {
+            "id": "d2",
+            "description": "Update 마다 힙 할당(new List, LINQ, 캡처 람다, 임시 배열)이 있다.",
+            "penalty": -20,
+            "sourceId": "ms-gc-allocated-bytes"
+          },
+          {
+            "id": "d3",
+            "description": "공개 시그니처나 규약(Update 순서, 방출 누적, 용량 정책)을 바꿔서 통과시켰다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static System.Numerics.Vector2 V(double x, double y) { return new System.Numerics.Vector2((float)x, (float)y); }\n    static readonly System.Numerics.Vector4 C0 = new System.Numerics.Vector4(1f, 0.5f, 0f, 1f), C1 = new System.Numerics.Vector4(0.5f, 0f, 0f, 0f);\n    static System.Numerics.Vector2 Vel(long id) { return new System.Numerics.Vector2((id * 37 % 21) - 10, 2 + id * 13 % 17); }\n\n    // 참조 구현(double): 리스트로 시뮬레이션한다. 파티클은 [id, age, px, py, vx, vy].\n    sealed class Ref\n    {\n        public System.Collections.Generic.List<double[]> P = new System.Collections.Generic.List<double[]>();\n        public int Cap; public double Rate, Life, Gx, Gy, Debt, Ex, Ey; public long Next, Dropped;\n        public void Step(double dt)\n        {\n            foreach (var p in P) p[1] += dt;\n            P.RemoveAll(p => p[1] >= Life);\n            foreach (var p in P) { p[4] += Gx * dt; p[5] += Gy * dt; p[2] += p[4] * dt; p[3] += p[5] * dt; }\n            Debt += Rate * dt; int n = (int)System.Math.Floor(Debt); Debt -= n;\n            for (int k = 0; k < n; k++)\n            {\n                if (P.Count == Cap) { Dropped++; continue; }\n                var v = Vel(Next); P.Add(new double[] { Next++, 0, Ex, Ey, v.X, v.Y });\n            }\n        }\n    }\n\n    static string Same(SparkSystem s, Ref r, string where)\n    {\n        if (s.Count != r.P.Count) return where + \": Count 기대 \" + r.P.Count + \", 결과 \" + s.Count;\n        if (s.DroppedCount != r.Dropped) return where + \": DroppedCount 기대 \" + r.Dropped + \", 결과 \" + s.DroppedCount;\n        var byId = new System.Collections.Generic.Dictionary<long, int>();\n        for (int i = 0; i < s.Count; i++) if (!byId.TryAdd(s.GetId(i), i)) return where + \": id \" + s.GetId(i) + \" 가 두 번 들어 있다\";\n        foreach (var p in r.P)\n        {\n            if (!byId.TryGetValue((long)p[0], out int i)) return where + \": 살아 있어야 할 id \" + p[0] + \" 가 없다\";\n            double age = s.GetAge(i); var pos = s.GetPosition(i); var vel = s.GetVelocity(i); var col = s.GetColor(i);\n            if (System.Math.Abs(age - p[1]) > 1e-6) return where + \": id \" + p[0] + \" 의 나이 기대 \" + F(p[1]) + \", 결과 \" + F(age);\n            double tol = 1e-3 + 1e-5 * (System.Math.Abs(p[2]) + System.Math.Abs(p[3]));\n            if (System.Math.Abs(pos.X - p[2]) > tol || System.Math.Abs(pos.Y - p[3]) > tol) return where + \": id \" + p[0] + \" 의 위치 기대 (\" + F(p[2]) + \", \" + F(p[3]) + \"), 결과 (\" + F(pos.X) + \", \" + F(pos.Y) + \")\";\n            if (System.Math.Abs(vel.X - p[4]) > 1e-3 || System.Math.Abs(vel.Y - p[5]) > 1e-3) return where + \": id \" + p[0] + \" 의 속도 기대 (\" + F(p[4]) + \", \" + F(p[5]) + \"), 결과 (\" + F(vel.X) + \", \" + F(vel.Y) + \")\";\n            double t = p[1] / r.Life; double[] ec = { C0.X + (C1.X - C0.X) * t, C0.Y + (C1.Y - C0.Y) * t, C0.Z + (C1.Z - C0.Z) * t, C0.W + (C1.W - C0.W) * t };\n            if (System.Math.Abs(col.X - ec[0]) > 1e-4 || System.Math.Abs(col.Y - ec[1]) > 1e-4 || System.Math.Abs(col.Z - ec[2]) > 1e-4 || System.Math.Abs(col.W - ec[3]) > 1e-4)\n                return where + \": id \" + p[0] + \" (나이 \" + F(p[1]) + \") 의 색 기대 (\" + F(ec[0]) + \", \" + F(ec[1]) + \", \" + F(ec[2]) + \", \" + F(ec[3]) + \"), 결과 (\" + F(col.X) + \", \" + F(col.Y) + \", \" + F(col.Z) + \", \" + F(col.W) + \")\";\n        }\n        return null;\n    }\n\n    static SparkSystem Make(int cap, double rate, double life, double gx, double gy, out Ref r)\n    {\n        r = new Ref { Cap = cap, Rate = rate, Life = life, Gx = gx, Gy = gy };\n        return new SparkSystem(cap, (float)rate, (float)life, V(gx, gy), C0, C1, Vel);\n    }\n    static string Steps(SparkSystem s, Ref r, double dt, int n, string what)\n    {\n        for (int k = 1; k <= n; k++) { s.Update((float)dt); r.Step(dt); string e = Same(s, r, what + \" (dt \" + F(dt) + \" 로 \" + k + \"번째 Update 후)\"); if (e != null) return e; }\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"emit-fractional-rate\", () =>\n        {\n            var s = Make(1000, 32, 4, 0, 0, out var r);   // 32개/초, dt 1/64 초 → Update 마다 0.5 개\n            string e = Steps(s, r, 1.0 / 64, 64, \"초당 32개\");\n            if (e != null) return e;\n            var s2 = Make(1000, 10, 4, 0, 0, out var r2); // 10개/초, dt 0.125 초 → 1.25 개\n            return Steps(s2, r2, 0.125, 8, \"초당 10개\");\n        });\n        Run(\"spawn-state-moving-emitter\", () =>\n        {\n            var s = Make(100, 192, 4, 0, -8, out var r);  // Update 마다 3개\n            for (int k = 0; k < 6; k++) { s.EmitterPosition = V(k * 1.5, -k); r.Ex = k * 1.5; r.Ey = -k; s.Update(1f / 64); r.Step(1.0 / 64); string e = Same(s, r, \"움직이는 이미터 \" + (k + 1) + \"번째 Update 후\"); if (e != null) return e; }\n            return null;\n        });\n        Run(\"semi-implicit-euler\", () =>\n        {\n            var s = Make(1, 4, 10, 0, -8, out var r);     // 첫 Update 에서 1개만 태어나고 그 뒤는 버려진다\n            s.EmitterPosition = V(3, 1); r.Ex = 3; r.Ey = 1;\n            return Steps(s, r, 0.25, 5, \"용량 1, 중력 (0, -8)\");\n        });\n        Run(\"lifetime-boundary-color\", () =>\n        {\n            var s = Make(100, 8, 0.5, 0, 0, out var r);   // dt 0.125: 다섯 번째 Update 에서 나이가 정확히 0.5 가 된다\n            string e = Steps(s, r, 0.125, 12, \"수명 0.5\");\n            if (e != null) return e;\n            for (int i = 0; i < s.Count; i++) if (s.GetAge(i) >= 0.5f) return \"나이가 수명 이상인 파티클이 남아 있다: 나이 \" + F(s.GetAge(i));\n            return null;\n        });\n        Run(\"capacity-drop-and-reuse\", () =>\n        {\n            var s = Make(10, 64, 1, 0, 0, out var r);     // Update 마다 1개, 10개가 차면 버려진다\n            string e = Steps(s, r, 1.0 / 64, 70, \"용량 10\");\n            if (e != null) return e;\n            return Steps(s, r, 3.0, 2, \"용량 10, 3초짜리 긴 프레임\");\n        });\n        Run(\"swap-remove-many-deaths\", () =>\n        {\n            var s = Make(64, 192, 0.25, 1, -9.8, out var r); // Update 마다 3개가 태어나고 3개가 죽는다\n            string e = Steps(s, r, 1.0 / 64, 120, \"한 Update 에 여러 개 사망\");\n            if (e != null) return e;\n            var s2 = Make(40, 640, 0.125, 0, -4, out var r2); // 용량이 꽉 찬 채로 계속 죽고 태어난다\n            return Steps(s2, r2, 1.0 / 64, 60, \"용량 40 포화\");\n        });\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int t = 0; t < 120; t++)\n            {\n                var s = Make(rng.Next(1, 301), rng.Next(0, 2001), rng.Next(1, 129) / 64.0, rng.Next(-8, 9), rng.Next(-20, 1), out var r);\n                for (int k = 0; k < 40; k++)\n                {\n                    double dt = rng.Next(10) == 0 ? rng.Next(0, 3) : rng.Next(0, 17) / 256.0;\n                    s.Update((float)dt); r.Step(dt);\n                    string e = Same(s, r, \"무작위 #\" + t + \" (용량 \" + s.Capacity + \", 수명 \" + F(r.Life) + \", 초당 \" + F(r.Rate) + \"), \" + (k + 1) + \"번째 Update(dt \" + F(dt) + \") 후\");\n                    if (e != null) return e;\n                }\n            }\n            return null;\n        });\n        Run(\"no-allocation-in-update\", () =>\n        {\n            var s = Make(5000, 20000, 0.25, 0, -9.8, out var r);\n            for (int k = 0; k < 200; k++) s.Update(1f / 64);\n            long before = System.GC.GetAllocatedBytesForCurrentThread();\n            for (int k = 0; k < 2000; k++) { s.Update(1f / 64); s.GetColor(k % s.Count); }\n            long bytes = System.GC.GetAllocatedBytesForCurrentThread() - before;\n            return bytes == 0 ? null : \"용량 5000 에서 Update 2000번 동안 힙 할당 \" + bytes + \" 바이트 (0 이어야 한다)\";\n        });\n    }\n}\n",
+        "cases": [
+          "emit-fractional-rate",
+          "spawn-state-moving-emitter",
+          "semi-implicit-euler",
+          "lifetime-boundary-color",
+          "capacity-drop-and-reuse",
+          "swap-remove-many-deaths",
+          "random-vs-reference",
+          "no-allocation-in-update"
+        ],
+        "note": "방출 누적(초당 32개·dt 1/64, 초당 10개·dt 0.125), 새 파티클의 상태와 움직이는 이미터, semi-implicit Euler 적분, 수명 경계(나이 == 수명이면 제거)와 색 보간, 용량 초과 시 버리기·같은 Update 의 슬롯 재사용·긴 프레임, 한 Update 에 여러 개가 죽는 swap-remove, 무작위 설정 120 개에서 double 참조 구현과의 일치(파티클은 id 로 찾으며 순서는 검사하지 않음), 그리고 Update 2,000 번의 힙 할당이 0 바이트인지(GC.GetAllocatedBytesForCurrentThread)를 검사합니다. 시간 간격과 수명은 2 의 거듭제곱 분모라 나이·방출 판정이 float 에서도 정확합니다. public sealed class SparkSystem 의 생성자 SparkSystem(int, float, float, Vector2, Vector4, Vector4, Func<long, Vector2>), Capacity, Count, DroppedCount, EmitterPosition, GetId, GetAge, GetPosition, GetVelocity, GetColor(int), Update(float) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "로컬 .NET 8 과 채점기에서 정답 전체 통과·스타터 실패를 확인하고, 소수 방출 버림·제거 뒤 i++·방출 선행·버린 요청의 빚·age > lifetime·explicit Euler·할당·속도 누락 등 오답 12 개가 모두 걸리고 역순 순회·요청별 용량 검사 같은 다른 정답은 통과함을 돌려 보았으며, Unity Main·Emission·Color over Lifetime 모듈, GPP Data Locality, List<T>.RemoveAt 원문과 대조했습니다."
+      },
+      "nextMission": "Unity 의 Start Lifetime 처럼 파티클마다 수명이 다르게 해 보세요. 생성자에 `Func<long, float> lifetimeOf` 를 받아 id 마다 수명을 정하면 죽는 순서가 태어난 순서와 달라지므로, swap-remove 가 순서와 무관하게 맞는지 참조 구현과 비교해 확인하세요. 그다음 방출을 프레임 안에서 고르게 퍼뜨려(이번 Update 에서 k 번째로 태어난 파티클에 `(n − k) / n · dt` 같은 출생 시각 오프셋만큼 나이와 이동을 미리 적용) `Update(1/32)` 한 번과 `Update(1/64)` 두 번의 결과가 얼마나 가까워지는지 측정해 보세요."
+    },
+    {
+      "id": "t9-impl-sdf-2d-smooth-union",
+      "track": "track9",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "2D 부호 있는 거리 함수: 원, 상자, smooth union 을 격자에 굽기",
+      "tags": [
+        "Gfx_SDF",
+        "Gfx_SmoothMin"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "iq-distfunctions2d",
+        "iq-smin",
+        "iq-distfunctions",
+        "valve-sdf-2007"
+      ],
+      "scenario": "모바일 MOBA 의 스킬 범위 표시(장판)는 원형 폭발 범위와 사각형 벽 범위가 겹치는 모양을 하나의 매끈한 테두리로 그려야 합니다. 셰이더가 픽셀마다 도형을 계산하는 대신, 툴에서 **부호 있는 거리장(SDF)** 을 작은 격자 텍스처로 미리 굽고 셰이더는 그 거리 값으로 안/밖과 테두리 두께를 정하기로 했습니다. SDF 글꼴과 아이콘이 쓰는 것과 같은 아이디어입니다.\n\n**할 일:** `Sdf2D` 의 네 함수를 구현하세요. 순수 C#(.NET 8), `System.Numerics` 만 씁니다.\n\n**식** (Inigo Quilez 의 \"2D distance functions\"와 \"Smooth minimum\" 글에 실린 GLSL 코드를 옮겼습니다. 이 문제가 쓰는 smooth-min 은 그 글의 여러 변형 가운데 **정규화한 2차 다항식(quadratic polynomial)** 입니다)\n\n| 함수 | 식 |\n|---|---|\n| 원 (`sdCircle`) | `length(p) − r` (도형은 원점 중심이므로 `p` 대신 `p − center` 를 넣습니다) |\n| 상자 (`sdBox`) | `d = abs(p) − b;  length(max(d, 0)) + min(max(d.x, d.y), 0)`. `b` 는 중심에서 변까지의 거리(반 크기) |\n| smooth union | `k *= 4;  h = max(k − abs(a − b), 0) / k;  min(a, b) − h·h·k·(1/4)` |\n\n**규약**\n\n- 부호: 바깥은 양수, 경계는 0, 안쪽은 음수입니다.\n- `SmoothUnion` 의 `k` 는 거리 단위의 블렌드 두께이고 0 이상입니다. `k = 0` 이면 보통의 합집합 `min(a, b)` 를 돌려줍니다(위 식을 그대로 쓰면 0 으로 나눕니다).\n- `Bake`: 텍셀 `(i, j)` 의 샘플 위치는 텍셀 **중심** `origin + ((i + 0.5)·cellSize, (j + 0.5)·cellSize)` 이고, 그 위치의 `SmoothUnion(Circle(…), Box(…), k)` 를 `output[j · width + i]` 에 씁니다(행 우선, j 가 커질수록 y 가 커집니다). `output.Length` 는 `width · height` 이상이고 그 뒤 칸은 건드리지 않습니다.\n- 반지름은 0 이상, 반 크기의 두 성분은 양수, `cellSize` 는 양수입니다. NaN·무한대는 주어지지 않습니다.\n\n**예시**\n\n- `Circle((3, 4), (0, 0), 2) = 3`, 중심에서는 `−2`.\n- `Box((5, 6), (0, 0), (2, 2)) = 5`: 가장 가까운 점은 꼭짓점 (2, 2) 입니다. `Box((1, 0), (0, 0), (2, 3)) = −1`: 가장 가까운 변까지 1 입니다.\n- `SmoothUnion(1, 1, 0.5) = 0.5`, `SmoothUnion(0, 2, 1) = −0.25`, `SmoothUnion(0, 5, 1) = 0` (`|a − b| ≥ 4k` 라 블렌드 없음), `SmoothUnion(−2, 3, 0) = −2`.",
+      "constraints": [
+        "네 함수 모두 힙 할당이 없다. `Bake` 는 호출 측이 준 `output` 에만 쓴다.",
+        "`Bake` 는 시간 O(width × height), 텍셀마다 상수 시간이다.",
+        "공개 시그니처를 바꾸지 않는다. 입력은 본문의 규약 범위 안에서만 주어진다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 2D 부호 있는 거리 함수(SDF). 바깥은 양수, 경계는 0, 안쪽은 음수다.\n// 식은 문제 본문의 표(Inigo Quilez 의 글에서 옮긴 식)를 따른다.\npublic static class Sdf2D\n{\n    // 원의 부호 있는 거리.\n    public static float Circle(Vector2 p, Vector2 center, float radius)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 축 정렬 상자의 부호 있는 거리. halfSize 는 중심에서 변까지의 거리(반 크기)다.\n    public static float Box(Vector2 p, Vector2 center, Vector2 halfSize)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 정규화한 2차 다항식 smooth minimum. k 는 거리 단위의 블렌드 두께이고, k == 0 이면 min(a, b) 다.\n    public static float SmoothUnion(float a, float b, float k)\n    {\n        throw new NotImplementedException();\n    }\n\n    // width × height 격자의 텍셀 (i, j) 중심에서 SmoothUnion(Circle, Box, k) 를 계산해\n    // output[j * width + i] 에 쓴다. 텍셀 중심의 위치는 문제 본문의 규약을 따른다.\n    public static void Bake(float[] output, int width, int height, Vector2 origin, float cellSize,\n                            Vector2 circleCenter, float radius, Vector2 boxCenter, Vector2 boxHalfSize, float k)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "상자의 꼭짓점 쪽 바깥: `Box((5, 6), (0, 0), (2, 2))` 는 5 다. `max(d.x, d.y)` 만 쓰면 4 가 된다.",
+        "상자 안쪽: `Box((0, 0), (0, 0), (2, 3))` 는 −2 다. 바깥 항 `length(max(d, 0))` 만 쓰면 0 이 된다.",
+        "`k = 0`: 식을 그대로 쓰면 `0 / 0` 이 되어 NaN 이 나오므로 `min(a, b)` 를 돌려준다.",
+        "블렌드 범위: `a = b` 이면 결과는 `min − k`, `|a − b| ≥ 4k` 이면 정확히 `min(a, b)` 다.",
+        "텍셀 모서리 `(i, j)·cellSize` 에서 샘플링하면 거리장이 반 텍셀 어긋난다. 텍셀 중심 `(i + 0.5, j + 0.5)` 를 쓴다."
+      ],
+      "hints": [
+        "`Box((5, 6), (0, 0), (2, 2))` 를 그림으로 그려 보세요. `d = abs(p) − b = (3, 4)` 이고 가장 가까운 점은 꼭짓점 (2, 2) 라서 답은 √(3² + 4²) = 5 입니다. `max(d.x, d.y) = 4` 는 왜 틀렸을까요? 반대로 `Box((0, 0), (0, 0), (2, 3))` 은 `d = (−2, −3)` 인데, 안쪽에서 가장 가까운 변까지의 거리는 얼마이고 부호는 무엇이어야 합니까?",
+        "`Box` 는 두 항의 합입니다. 바깥 항은 `d` 의 양수 성분만 남긴 벡터의 길이이고(안쪽이면 0), 안쪽 항은 두 성분이 모두 음수일 때만 0 이 아닙니다. `SmoothUnion` 에서는 `k` 에 4 를 곱하는 줄을 빼먹으면 블렌드 두께가 1/4 로 줄어듭니다. `k = 0` 은 나누기 전에 걸러야 합니다. `Bake` 는 샘플 위치의 0.5 와 인덱스 식 `j · width + i` 두 곳을 확인하세요.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nCircle(p, c, r):  return ____ - r\n\nBox(p, c, b):\n    d = Vector2.Abs(p - c) - b\n    outside = Vector2.Max(d, ____).Length()\n    inside  = min(max(d.X, d.Y), ____)\n    return outside + inside\n\nSmoothUnion(a, b, k):\n    if k <= 0: return min(a, b)\n    k4 = ____\n    h = max(k4 - |a - b|, 0) / k4\n    return min(a, b) - ____\n\nBake(...):\n    for j in 0..height-1:\n        for i in 0..width-1:\n            p = origin + ((i + ____) * cellSize, (j + ____) * cellSize)\n            output[____] = SmoothUnion(Circle(p, …), Box(p, …), k)\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 2D 부호 있는 거리 함수(SDF). 바깥은 양수, 경계는 0, 안쪽은 음수다.\npublic static class Sdf2D\n{\n    // 원: |p - center| - radius\n    public static float Circle(Vector2 p, Vector2 center, float radius)\n    {\n        return (p - center).Length() - radius;\n    }\n\n    // 축 정렬 상자. halfSize 는 중심에서 변까지의 거리(반 크기)다.\n    // d = |p - center| - halfSize;  length(max(d, 0)) + min(max(d.x, d.y), 0)\n    public static float Box(Vector2 p, Vector2 center, Vector2 halfSize)\n    {\n        Vector2 d = Vector2.Abs(p - center) - halfSize;\n        float outside = Vector2.Max(d, Vector2.Zero).Length();   // 바깥: 가장 가까운 변·꼭짓점까지의 거리\n        float inside = MathF.Min(MathF.Max(d.X, d.Y), 0f);        // 안쪽: 가장 가까운 변까지의 거리(음수)\n        return outside + inside;\n    }\n\n    // 정규화한 2차 다항식 smooth minimum (Inigo Quilez, \"smooth minimum\" 글의 quadratic polynomial).\n    // k 는 거리 단위의 블렌드 두께다. k == 0 이면 보통의 합집합 min(a, b) 이다.\n    public static float SmoothUnion(float a, float b, float k)\n    {\n        if (k <= 0f) return MathF.Min(a, b);          // 0 으로 나누지 않는다\n        float k4 = k * 4f;\n        float h = MathF.Max(k4 - MathF.Abs(a - b), 0f) / k4;\n        return MathF.Min(a, b) - h * h * k4 * 0.25f;\n    }\n\n    // width × height 격자의 텍셀 (i, j) 중심 = origin + ((i + 0.5) * cellSize, (j + 0.5) * cellSize) 에서\n    // SmoothUnion(Circle, Box, k) 를 계산해 output[j * width + i] 에 쓴다.\n    public static void Bake(float[] output, int width, int height, Vector2 origin, float cellSize,\n                            Vector2 circleCenter, float radius, Vector2 boxCenter, Vector2 boxHalfSize, float k)\n    {\n        for (int j = 0; j < height; j++)\n        {\n            float y = origin.Y + (j + 0.5f) * cellSize;\n            for (int i = 0; i < width; i++)\n            {\n                var p = new Vector2(origin.X + (i + 0.5f) * cellSize, y);\n                output[j * width + i] = SmoothUnion(Circle(p, circleCenter, radius), Box(p, boxCenter, boxHalfSize), k);\n            }\n        }\n    }\n}\n",
+      "explanation": "**접근.** 도형마다 \"점 p 에서 경계까지의 거리, 안쪽이면 음수\"를 계산하는 함수를 만들고, 두 거리를 하나로 합치는 연산을 얹은 다음, 텍셀 중심마다 그 값을 적습니다. 식은 Inigo Quilez 의 2D 거리 함수 글을 따릅니다. 그 글의 기본 도형은 모두 원점 중심이므로 `p − center` 로 옮겨서 넣고, 원과 상자에는 \"exact\"(정확한 SDF)라고 표시되어 있습니다.\n\n**상자 식이 맞는 이유.** `d = abs(p − c) − b` 는 대칭을 이용해 점을 첫 사분면으로 접은 뒤 각 축으로 변에서 얼마나 나가 있는지를 잽니다. 바깥에서는 양수 성분만 남긴 `max(d, 0)` 이 가장 가까운 변이나 꼭짓점까지의 벡터라서 그 길이가 거리입니다. 한 축만 나가 있으면 그 축의 거리, 두 축 모두 나가 있으면 꼭짓점까지의 대각선 거리가 됩니다. 안쪽에서는 두 성분이 모두 음수이고 덜 음수인 쪽, 곧 `max(d.x, d.y)` 가 가장 가까운 변까지의 거리(음수)입니다. `min(…, 0)` 이 바깥에서 이 항을 0 으로 만들고, `max(d, 0)` 은 안쪽에서 0 벡터가 되므로 두 항을 그냥 더하면 됩니다. 제곱근은 한 번이고 분기가 없습니다. 같은 글은 이 함수들이 제곱근과 나눗셈을 가능한 한 적게 쓰도록 쓰였다고 밝힙니다.\n\n**합집합과 smooth union.** 보통의 합집합은 `min(a, b)` 입니다. Quilez 의 3D 거리 함수 글은 이 합집합이 바깥(거리가 양수인 곳)에서만 정확한 SDF 이고, smooth union 은 정확한 SDF 가 아니라 bound 라고 분류합니다. Smooth minimum 글은 여러 변형에 k 를 미리 곱하는 정규화를 넣어 `k` 가 블렌드로 도형이 부푸는 최대 두께와 정확히 같아지게 했다고 설명합니다. 이 문제의 2차 다항식에서는 `a = b` 일 때 `h = 1` 이라 결과가 `min − k` 이고, `|a − b| ≥ 4k` 이면 `h = 0` 이라 `min(a, b)` 그대로입니다. 그래서 두 장판이 서로 4k 보다 가까운 곳에서만 목처럼 이어집니다. `k = 0` 은 식이 `0 / 0` 이 되므로 따로 처리합니다.\n\n**SDF 텍스처로 쓰기.** Valve 의 2007 년 논문(Chris Green)은 고해상도 이진 이미지에서 거리장을 만들어 저해상도 텍스처의 한 채널에 담고, 부호 있는 거리를 0..1 로 옮겨 0.5 가 정확한 가장자리가 되게 해서 알파 테스트 문턱값 0.5 로 그립니다. 셰이더에서는 두 문턱값 사이를 smoothstep 으로 보간해 가장자리를 부드럽게 하고, 같은 거리장으로 외곽선과 글로우를 만듭니다. 이 문제의 `Bake` 결과를 그런 텍스처로 옮길 때는 범위를 정해 0..1 로 매핑하는 단계가 하나 더 필요합니다(nextMission). 논문 본문은 어느 쪽 거리를 음수로 정의하는지 따로 적지 않으므로, 안쪽이 음수인 이 문제의 부호 규약에서 어느 쪽을 0.5 위로 보낼지는 직접 정해야 합니다.\n\n**복잡도.** 함수마다 상수 시간이고 `Bake` 는 O(width × height), 추가 메모리는 없습니다.\n\n**흔한 실수.** 상자의 바깥을 `max(d.x, d.y)` 로 계산한다(꼭짓점 쪽이 짧게 나온다). 바깥 항만 써서 안쪽이 0 이 된다. `abs` 를 빼먹어 중심의 반대쪽이 틀린다. 텍셀 모서리에서 샘플링한다. 길이의 제곱을 쓴다.\n\n### 흔한 오해\n- **\"smooth-min 의 k 는 어느 코드에서 가져와도 같은 뜻이다.\"** — Smooth minimum 글은 흔히 보이는 버전들이 k 를 미리 곱하는 정규화 없이 쓰였다고 지적하고, 정규화한 버전에서만 k 가 블렌드 두께와 같다고 설명합니다 [iq-smin]. 로컬 .NET 8 에서 돌려 보면 정규화하지 않은 2차 다항식(같은 식에서 `k *= 4` 를 뺀 것)은 `SmoothUnion(1, 1, 0.5)` 가 0.875, 이 문제의 정규화 버전은 0.5 입니다. 같은 k 로 두께가 네 배 차이 납니다.\n- **\"min 으로 합친 SDF 는 안쪽까지 정확한 거리장이다.\"** — Quilez 는 두 SDF 의 합집합이 바깥(거리가 양수인 곳)에서만 정확한 SDF 이고 안쪽에서는 그렇지 않다고 적습니다 [iq-distfunctions]. 안쪽 거리로 테두리 두께나 내부 글로우를 정한다면 이 점을 감안해야 합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Circle 이 |p − center| − radius 를 돌려준다: p (3, 4), 중심 (0, 0), 반지름 2 → 3. 중심에서는 −반지름.",
+            "points": 11,
+            "sourceId": "iq-distfunctions2d"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "Box 가 바깥과 안쪽 모두 맞다: p (5, 6), 반 크기 (2, 2) → 5 (4 가 아님), p (1, 0), 반 크기 (2, 3) → −1, 중심 → −min(반 크기).",
+            "points": 12,
+            "sourceId": "iq-distfunctions2d"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "SmoothUnion 이 정규화한 2차 다항식이다: (1, 1, 0.5) → 0.5, (0, 2, 1) → −0.25, |a − b| ≥ 4k 이면 정확히 min(a, b), k = 0 이면 NaN 없이 min(a, b).",
+            "points": 12,
+            "sourceId": "iq-smin"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Bake 가 호출 측 버퍼에만 쓰고 새 배열을 만들지 않으며, 텍셀마다 상수 시간이다(전체 O(width × height)).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Box 가 제곱근 한 번으로 끝난다(영역마다 분기하지 않고 성분별 max·min 으로 바깥 항과 안쪽 항을 더한다).",
+            "points": 10,
+            "sourceId": "iq-distfunctions2d"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Bake 가 y 를 바깥 루프에 두어 output 을 행 우선 순서로 연속해서 쓰고, width × height 칸 밖은 건드리지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "GLSL 의 abs·max 를 System.Numerics 의 성분별 연산(Vector2.Abs, Vector2.Max)이나 같은 뜻의 스칼라 식으로 옮겼다.",
+            "points": 10,
+            "sourceId": "ms-vector2-max"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "부호 규약(바깥 양수, 경계 0, 안쪽 음수)과 텍셀 중심 (i + 0.5, j + 0.5) 규약을 지켰고, 구운 거리를 SDF 텍스처에 담을 때 Valve 방식처럼 0.5 가 가장자리가 되는 매핑을 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "valve-sdf-2007"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "Bake 가 Circle·Box·SmoothUnion 을 재사용한다(거리 식을 다시 쓰지 않았다).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "k 의 의미(거리 단위의 블렌드 두께)와 k = 0 처리가 주석이나 이름으로 드러난다.",
+            "points": 7,
+            "sourceId": "iq-smin"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Box 의 안쪽 항을 빼서 안쪽이 0 이 되거나, 바깥을 max(d.x, d.y) 로 계산해 꼭짓점 쪽 거리가 틀린다.",
+            "penalty": -20,
+            "sourceId": "iq-distfunctions2d"
+          },
+          {
+            "id": "d2",
+            "description": "정규화하지 않은 smooth-min 을 써서 k 의 뜻이 규약과 다르다(a = b 에서 min − k 가 아니다).",
+            "penalty": -15,
+            "sourceId": "iq-smin"
+          },
+          {
+            "id": "d3",
+            "description": "k = 0 에서 NaN 을 내거나, 공개 시그니처를 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static System.Numerics.Vector2 V(double x, double y) { return new System.Numerics.Vector2((float)x, (float)y); }\n    static string P(System.Numerics.Vector2 v) { return \"(\" + F(v.X) + \", \" + F(v.Y) + \")\"; }\n    static bool Near(double got, double exp, double tol) { return !double.IsNaN(got) && System.Math.Abs(got - exp) <= tol; }\n\n    // 참조 구현(double)\n    static double RC(double px, double py, double cx, double cy, double r) { return System.Math.Sqrt((px - cx) * (px - cx) + (py - cy) * (py - cy)) - r; }\n    static double RB(double px, double py, double cx, double cy, double bx, double by)\n    {\n        double dx = System.Math.Abs(px - cx) - bx, dy = System.Math.Abs(py - cy) - by;\n        double ox = System.Math.Max(dx, 0), oy = System.Math.Max(dy, 0);\n        return System.Math.Sqrt(ox * ox + oy * oy) + System.Math.Min(System.Math.Max(dx, dy), 0);\n    }\n    static double RS(double a, double b, double k)\n    {\n        if (k <= 0) return System.Math.Min(a, b);\n        double k4 = 4 * k, h = System.Math.Max(k4 - System.Math.Abs(a - b), 0) / k4;\n        return System.Math.Min(a, b) - h * h * k4 / 4;\n    }\n\n    static string C(double px, double py, double cx, double cy, double r, double exp)\n    {\n        float got = Sdf2D.Circle(V(px, py), V(cx, cy), (float)r);\n        return Near(got, exp, 1e-4) ? null : \"Circle(p \" + P(V(px, py)) + \", 중심 \" + P(V(cx, cy)) + \", 반지름 \" + F(r) + \"): 기대 \" + F(exp) + \", 결과 \" + F(got);\n    }\n    static string B(double px, double py, double cx, double cy, double bx, double by, double exp)\n    {\n        float got = Sdf2D.Box(V(px, py), V(cx, cy), V(bx, by));\n        return Near(got, exp, 1e-4) ? null : \"Box(p \" + P(V(px, py)) + \", 중심 \" + P(V(cx, cy)) + \", 반 크기 \" + P(V(bx, by)) + \"): 기대 \" + F(exp) + \", 결과 \" + F(got);\n    }\n    static string S(double a, double b, double k, double exp)\n    {\n        float got = Sdf2D.SmoothUnion((float)a, (float)b, (float)k);\n        return Near(got, exp, 1e-5) ? null : \"SmoothUnion(\" + F(a) + \", \" + F(b) + \", k \" + F(k) + \"): 기대 \" + F(exp) + \", 결과 \" + F(got);\n    }\n    static string Grid(int w, int h, double ox, double oy, double cell, double cx, double cy, double r, double bcx, double bcy, double bx, double by, double k)\n    {\n        var buf = new float[w * h + 3];\n        for (int i = 0; i < buf.Length; i++) buf[i] = 12345f;\n        Sdf2D.Bake(buf, w, h, V(ox, oy), (float)cell, V(cx, cy), (float)r, V(bcx, bcy), V(bx, by), (float)k);\n        for (int j = 0; j < h; j++)\n            for (int i = 0; i < w; i++)\n            {\n                double px = ox + (i + 0.5) * cell, py = oy + (j + 0.5) * cell;\n                double exp = RS(RC(px, py, cx, cy, r), RB(px, py, bcx, bcy, bx, by), k);\n                if (!Near(buf[j * w + i], exp, 1e-3)) return \"Bake \" + w + \"×\" + h + \" (원점 \" + P(V(ox, oy)) + \", 셀 \" + F(cell) + \"): 텍셀 (\" + i + \", \" + j + \") 중심 \" + P(V(px, py)) + \" 기대 \" + F(exp) + \", 결과 \" + F(buf[j * w + i]);\n            }\n        for (int i = w * h; i < buf.Length; i++) if (buf[i] != 12345f) return \"Bake 가 output 의 width × height 칸 뒤(인덱스 \" + i + \")를 건드렸다\";\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"circle-values\", () => C(3, 4, 0, 0, 2, 3) ?? C(0, 0, 0, 0, 2, -2) ?? C(2, 0, 0, 0, 2, 0) ?? C(4, 5, 1, 1, 1, 4) ?? C(1.5, 1, 1, 1, 1, -0.5));\n        Run(\"box-outside-corner-and-sides\", () => B(5, 6, 0, 0, 2, 2, 5) ?? B(5, 1, 0, 0, 2, 2, 3) ?? B(-1, 7, 0, 0, 2, 3, 4) ?? B(13, 14, 10, 10, 1, 1, System.Math.Sqrt(13)) ?? B(2, 3, 0, 0, 2, 3, 0));\n        Run(\"box-inside-negative\", () => B(0, 0, 0, 0, 2, 3, -2) ?? B(1, 0, 0, 0, 2, 3, -1) ?? B(0.5, 2.5, 0, 0, 2, 3, -0.5) ?? B(11, 9.5, 10, 10, 4, 1, -0.5));\n        Run(\"smooth-union-normalized\", () => S(1, 1, 0.5, 0.5) ?? S(0, 2, 1, -0.25) ?? S(2, 0, 1, -0.25) ?? S(0, 5, 1, 0) ?? S(0, 4, 1, 0) ?? S(-1, 0.5, 2, -2.3203125) ?? S(3, -2, 0.25, -2));\n        Run(\"smooth-union-k-zero\", () => S(1, 1, 0, 1) ?? S(-2, 3, 0, -2) ?? S(0, 0, 0, 0));\n        Run(\"bake-texel-centers\", () => Grid(4, 3, -1, -0.75, 0.5, 0, 0, 0.6, 0.5, 0, 0.4, 0.3, 0.1) ?? Grid(5, 2, 10, 20, 2, 13, 21, 1.5, 17, 22, 2, 1, 0));\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int t = 0; t < 4000; t++)\n            {\n                double px = rng.Next(-200, 201) / 10.0, py = rng.Next(-200, 201) / 10.0, cx = rng.Next(-50, 51) / 10.0, cy = rng.Next(-50, 51) / 10.0;\n                double r = rng.Next(0, 61) / 10.0, bx = rng.Next(1, 61) / 10.0, by = rng.Next(1, 61) / 10.0, k = rng.Next(0, 41) / 10.0;\n                double dc = RC(px, py, cx, cy, r), db = RB(px, py, -cx, cy, bx, by);\n                string e = C(px, py, cx, cy, r, dc) ?? B(px, py, -cx, cy, bx, by, db) ?? S(dc, db, k, RS(dc, db, k));\n                if (e != null) return \"무작위 #\" + t + \": \" + e;\n            }\n            return Grid(16, 9, -4, -2.25, 0.5, 1, 0.5, 1.25, -1, -0.5, 1.5, 0.75, 0.5);\n        });\n    }\n}\n",
+        "cases": [
+          "circle-values",
+          "box-outside-corner-and-sides",
+          "box-inside-negative",
+          "smooth-union-normalized",
+          "smooth-union-k-zero",
+          "bake-texel-centers",
+          "random-vs-reference"
+        ],
+        "note": "Circle 의 값(바깥·경계·안쪽), Box 의 꼭짓점 쪽·변 쪽 바깥과 안쪽 음수 거리, 정규화한 2차 smooth union(a = b, 블렌드 중간, |a − b| ≥ 4k, a·b 순서), k = 0 에서 NaN 없이 min, Bake 의 텍셀 중심 위치와 행 우선 인덱스(버퍼의 width × height 뒤 칸은 그대로인지 포함), 무작위 점·도형 4,000 개와 16×9 격자에서 double 참조 구현과의 일치(허용 오차 1e-4 ~ 1e-3)를 검사합니다. public static class Sdf2D 의 Circle(Vector2, Vector2, float), Box(Vector2, Vector2, Vector2), SmoothUnion(float, float, float), Bake(float[], int, int, Vector2, float, Vector2, float, Vector2, Vector2, float) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Inigo Quilez 의 2D 거리 함수·smooth minimum·3D 거리 함수 글 원문과 Valve 2007 논문 PDF 로 식(sdCircle, sdBox, 정규화한 2차 다항식 smin 의 k *= 4)과 k 의 뜻을 대조하고, 로컬 .NET 8 과 채점기에서 정답 통과·스타터 실패, max 만 쓴 상자·바깥 항만 쓴 상자·정규화 없는 smin·k = 0 의 NaN·모서리 샘플링·열 우선 인덱스 등 오답이 걸리고 분기형 스칼라 정답은 통과함을 확인했습니다."
+      },
+      "nextMission": "`Bake` 결과를 8비트 SDF 텍스처로 옮기는 `byte Encode(float d, float spread)` 를 만들어 보세요. 거리 −spread ~ +spread 를 255 ~ 0 으로(안쪽이 0.5 보다 크게) 옮기고 범위 밖은 자릅니다. 그다음 디코딩한 값에 문턱값 0.5 를 적용한 안/밖 판정이 원래 거리의 부호와 텍셀마다 같은지, 그리고 테두리 `|d| < 0.1` 을 smoothstep 으로 부드럽게 그릴 때 spread 를 너무 작게 잡으면 무엇이 잘리는지 확인하세요."
+    },
+    {
+      "id": "t9-interview-unity-render-pipelines-paths",
+      "track": "track9",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "Unity 렌더 파이프라인 고르기: Built-in · URP · HDRP 와 Forward · Forward+ · Deferred",
+      "tags": [
+        "Gfx_RenderPipeline",
+        "Gfx_Deferred",
+        "Gfx_ForwardPlus"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "unity-choose-render-pipeline",
+        "unity-urp-rendering-path-comparison",
+        "unity-birp-deferred",
+        "unity-hdrp-forward-deferred"
+      ],
+      "scenario": "새 프로젝트로 3인칭 액션 게임을 Unity 6 에서 시작합니다. 출시 대상은 Android·iOS 와 PC 이고, 스타일은 약간 카툰풍입니다. 밤 던전 장면에는 횃불·마법 투사체 같은 작은 실시간 포인트 라이트가 화면에 동시에 수십 개 보이고, 반투명 이펙트(연기, 불꽃, 마법진)도 많습니다. 아트 디렉터는 모바일에서 MSAA 를 쓰고 싶어 하고, 리드 프로그래머는 \"라이트가 많으니 디퍼드로 가자\"는 의견입니다. 프로젝트 초기에 파이프라인과 렌더링 경로를 정해야 합니다.\n\n**질문: Unity 6 의 Built-in Render Pipeline, URP, HDRP 를 무엇으로 구분하겠습니까? 이 프로젝트에는 어느 파이프라인과 어느 렌더링 경로(Forward / Forward+ / Deferred)를 고르겠습니까? 포워드와 디퍼드가 라이트 비용, 반투명, MSAA, 메모리에서 어떻게 다른지 근거를 들어 설명해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "디퍼드에서도 반투명 오브젝트는 G-buffer 에 들어가지 않고 마지막에 forward 패스로 그려진다. URP Deferred 에서 투명 오브젝트의 오브젝트당 실시간 라이트는 9 개다.",
+        "URP Deferred 는 셰이더 모델 4.5 이상이 필요하고 OpenGL·OpenGL ES 를 지원하지 않는다. 기기가 고른 경로를 지원하지 않으면 Unity 는 다른 경로로 바꿔 그린다.",
+        "Subtractive 나 Shadowmask Lighting Mode 의 라이트는 Forward 경로에만 최적화되어 있어 URP 매뉴얼은 Deferred 와 함께 쓰지 말라고 한다.",
+        "HDRP 에서 Lit Shader Mode 를 Deferred 로 두어도 Fabric, Hair, AxF, StackLit, Unlit, 투명 Lit 셰이더는 forward 로 그린다.",
+        "URP Forward+ 를 고르면 URP Asset 의 Main Light·Additional Lights·Per Object Limit 설정과 Lighting 창의 Probe Blending 설정이 무시된다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "리드 프로그래머가 \"디퍼드는 라이트 비용이 장면 복잡도와 상관없으니 라이트가 많으면 무조건 디퍼드가 빠르다\"고 말합니다. 어떻게 답하겠습니까? 모바일과 PC 를 나눠서 말해 주세요.",
+          "intent": "디퍼드의 장점을 조건과 함께 말하는지, 파이프라인마다 문서가 말하는 비용 모델(Built-in 의 픽셀 비례, URP 모바일의 G-buffer 패스 비용, HDRP 의 \"대부분의 장면\")을 구분하는지 확인한다.",
+          "keyAnswer": "- **맞는 부분:** Built-in 의 Deferred 문서는 실시간 라이트의 비용이 그 라이트가 비추는 픽셀 수에 비례하고 장면 복잡도와는 무관하다고 적습니다. 비교표로는 디퍼드에서 픽셀 라이트 하나의 비용이 \"비추는 픽셀 수\", 포워드에서는 \"픽셀 수 × 비추는 오브젝트 수\"이고, 포워드는 오브젝트를 픽셀 라이트 수만큼 여러 번 그립니다. 그래서 작은 포인트 라이트가 많고 각 라이트가 여러 오브젝트를 비추는 장면에서는 디퍼드가 유리할 수 있습니다.\n- **틀린 부분:** 같은 비교표는 단순한 장면에서 디퍼드의 오버헤드를 \"High\", 포워드를 \"None\"으로 적습니다. Built-in 의 Deferred 문서는 그림자도 공짜가 아니어서, 그림자를 드리우는 오브젝트를 그림자 라이트마다 한 번 이상 더 그려야 한다고 적습니다.\n- **모바일(URP):** URP 비교표는 Deferred 의 모바일 성능 영향을 G-buffer 를 그리는 추가 패스 때문에 \"High\"로, Forward 와 Forward+ 는 \"Low\"로 표시합니다. 매뉴얼은 라이트가 많지 않거나 모바일·저사양 플랫폼이면 기본 Forward 를, 라이트가 많은데 Deferred 가 그 플랫폼에서 너무 느리면 Forward+ 를 고르라고 합니다. Forward+ 는 화면을 타일로 나누고 각 타일에 영향을 주는 라이트만 계산합니다.\n- **PC(HDRP 라면):** HDRP 문서는 여러 머티리얼과 로컬 라이트가 많은 장면 등 대부분의 시나리오에서 Deferred 가 빠르지만, 디렉셔널 라이트 하나뿐인 장면처럼 Forward 가 더 빠른 경우도 있다고 적습니다.\n- **결론:** \"무조건\"이 아니라 대상 기기에서 같은 장면을 경로별로 측정해 정합니다. 라이트 수를 늘려 가며 GPU 시간을 비교하고, Forward+ 라면 Rendering Debugger 의 Material Override 를 LightingComplexity 로 두어 화면 영역(Forward+ 에서는 타일)마다 영향을 주는 라이트 수를 확인합니다 [unity-urp-rendering-debugger] [unity-urp-forward-paths]."
+        },
+        {
+          "question": "URP Deferred 를 고른다면 아트 디렉터의 두 요구, 모바일 MSAA 와 많은 반투명 이펙트는 어떻게 됩니까? G-buffer 가 차지하는 메모리도 어림해 주세요.",
+          "intent": "디퍼드가 구조적으로 포기하는 것(MSAA, 반투명의 G-buffer 경로)과 G-buffer 의 메모리·대역폭 비용을 숫자로 말하는지 확인한다.",
+          "keyAnswer": "- **MSAA:** URP 비교표에서 MSAA 는 Forward·Forward+ 는 Yes, Deferred 는 No 입니다. Built-in 의 Deferred 문서도 안티에일리어싱을 제대로 지원하지 않는다고 적습니다. 디퍼드에서 계단 현상을 줄이려면 URP 의 다른 방식(FXAA, SMAA, TAA)을 써야 하고, URP 매뉴얼은 모바일에는 FXAA 를 권장합니다 [unity-urp-anti-aliasing].\n- **반투명:** 디퍼드 경로는 반투명 오브젝트를 그리지 못해 마지막에 forward 패스로 그립니다. URP Deferred 에서 투명 오브젝트의 오브젝트당 실시간 라이트는 9 개라서, 연기·불꽃이 많은 장면의 라이팅은 결국 포워드의 제약을 받습니다.\n- **G-buffer 메모리:** Built-in 의 기본 G-buffer 는 RT0 ~ RT3 와 깊이·스텐실을 합쳐 160 bits/pixel(비HDR), HDR 이면 192 bits/pixel 이고, Shadowmask 를 쓰면 RT4 가 더해져 192 / 224 bits/pixel 입니다. 1920×1080 에서 160 bits/pixel 이면 2,073,600 × 20 바이트 = 41,472,000 바이트, 약 41.5 MB 이고, 이 버퍼들을 프레임마다 쓰고 다시 읽습니다. URP 의 G-buffer 배치는 다르며(알베도 24비트 sRGB, 노멀 24비트 인코딩, Emissive/GI/Lighting 은 기본 B10G11R11 등), URP 매뉴얼은 Rendering Layers 를 쓰면 G-buffer 렌더 타깃이 하나 더 생겨 성능에 영향을 줄 수 있다고 적습니다.\n- **MRT:** G-buffer 를 한 번의 기하 패스로 채우려면 픽셀 셰이더가 여러 렌더 타깃에 동시에 써야 합니다. Direct3D 11 문서로는 픽셀 셰이더가 같은 크기의 렌더 타깃 최소 8 개에 동시에 쓸 수 있고 타깃마다 포맷이 달라도 됩니다. Built-in Deferred 의 요구 사항에 MRT 가 들어가는 이유입니다(이 연결은 두 문서를 합친 설명입니다).\n- **노멀 정밀도:** URP 비교표는 Deferred 의 픽셀 노멀이 인코딩되어 덜 정확하거나, 더 정확하지만 느린 노멀을 고를 수 있다고 적습니다."
+        },
+        {
+          "question": "\"모바일은 URP, PC 는 HDRP 로 따로 빌드하자\" 또는 \"일단 익숙한 Built-in 으로 시작하고 나중에 URP 로 옮기자\"는 제안이 나왔습니다. 각각 평가하고, URP 를 고른다면 SRP Batcher 가 무엇을 바꾸는지도 설명해 주세요.",
+          "intent": "파이프라인 선택이 셰이더·콘텐츠 전체에 걸린 결정이라는 점, 문서가 말하는 플랫폼 지원과 전환 비용, SRP Batcher 의 정확한 역할을 아는지 확인한다.",
+          "keyAnswer": "- **URP + HDRP 병행:** Unity 매뉴얼은 URP 와 HDRP 를 동시에 쓸 수 없다고 적습니다. 둘 다 SRP 위에 만들었지만 렌더 경로와 라이트 모델이 다릅니다. 셰이더와 기능도 파이프라인마다 달라서, 두 벌을 유지하면 머티리얼·셰이더·라이팅 작업이 사실상 두 배가 됩니다. HDRP 의 지원 플랫폼은 데스크톱, Xbox, PlayStation 이므로 모바일에는 쓸 수 없습니다. 카툰풍이라면 매뉴얼이 URP 를 실사·스타일 라이팅 모두에 맞고 셀 셰이딩 같은 커스텀 라이팅 모델로 바꾸기 쉽다고 설명하는 점도 근거입니다.\n- **Built-in 으로 시작:** 매뉴얼은 개발이 진행된 프로젝트를 다른 파이프라인으로 옮기는 일이 매우 오래 걸릴 수 있으니 초기에 고르라고 합니다. Built-in 은 소스가 주로 C++ 이고 접근하려면 소스 코드를 구매해야 하며, Shader Graph 는 Built-in 지원에 대해 기존 기능의 버그 수정 외에는 업데이트를 받지 않는다고 적혀 있습니다.\n- **SRP Batcher:** Built-in 에서는 지원되지 않고 URP·HDRP·커스텀 SRP 에서 씁니다. 드로우 콜 수를 줄이는 전통적인 방법과 달리 드로우 콜 사이의 렌더 상태 변경을 줄이고, 같은 셰이더 배리언트를 쓰는 머티리얼의 드로우 콜을 준비·제출하는 CPU 시간을 줄입니다. 머티리얼 데이터가 GPU 메모리에 계속 남아 있고 엔진의 오브젝트별 프로퍼티는 큰 GPU 버퍼 하나에서 관리합니다. 그래서 셰이더 배리언트 수를 적게 유지하는 것이 중요합니다.\n- **권장안:** URP 하나로 가고, 기본은 Forward+(라이트가 많은 장면), 저사양 기기 품질 단계는 Forward 로 둡니다. Deferred 는 모바일 성능 영향과 MSAA·반투명 제약 때문에 PC 품질 단계에서 측정해 이득이 있을 때만 검토합니다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**파이프라인 구분.** Unity 6 매뉴얼의 \"Choose a render pipeline\" 표는 URP 를 모든 플랫폼에서 확장성이 필요한 프로젝트, 특히 타일 기반 디퍼드 렌더링(TBDR) GPU 와 독립형 VR 에서의 효율에 초점을 둔 파이프라인으로, HDRP 를 하이엔드 플랫폼(데스크톱·Xbox·PlayStation)에서 사실적인 그래픽을 내는 파이프라인으로 설명합니다. Built-in 은 \"Introduction to render pipelines\" 페이지의 표현으로 커스터마이즈 옵션이 제한된 범용 파이프라인이고, 비교표로는 소스가 주로 C++(구매해야 접근)이며 확장 수단이 파이프라인이 제공하는 API 와 주입 지점뿐입니다. 같은 페이지는 파이프라인마다 셰이더와 기능이 달라 개발 중간의 전환이 매우 오래 걸릴 수 있다고 경고합니다. 모바일이 들어간 이 프로젝트에서 HDRP 는 후보가 아니고, 새 프로젝트에서 SRP Batcher 를 쓸 수 없는 Built-in 을 고를 이유도 약합니다.\n\n**포워드와 디퍼드.** 매뉴얼의 정의로 포워드는 오브젝트를 하나씩 라이팅하고 파이프라인마다 라이트 제한이 있습니다. 디퍼드는 먼저 기하·머티리얼 데이터를 텍스처 묶음인 G-buffer 에 쓰고 그 데이터로 모든 오브젝트를 한꺼번에 라이팅하며, 반투명은 마지막에 forward 패스로 그립니다. Built-in 비교표는 비용 차이를 정리합니다. 픽셀 라이트 하나의 비용이 디퍼드는 비추는 픽셀 수, 포워드는 픽셀 수 × 비추는 오브젝트 수이고, 포워드는 오브젝트를 픽셀 라이트 수만큼 다시 그리지만, 단순한 장면에서는 디퍼드의 오버헤드가 큽니다.\n\n**URP 의 세 경로.** Forward 는 기본 경로로 오브젝트당 실시간 라이트가 9 개로 제한됩니다. Forward+ 는 화면을 타일로 나눠 타일에 영향을 주는 라이트만 계산하므로 오브젝트당 제한은 없지만 카메라당 보이는 라이트 한도(플랫폼에 따라 최대 256)는 있습니다. Deferred 는 불투명 오브젝트의 라이트 수에 제한이 없지만, URP 비교표는 모바일 성능 영향을 G-buffer 추가 패스 때문에 크다고 표시하고 MSAA 를 지원하지 않으며, 셰이더 모델 4.5 이상이 필요하고 OpenGL ES 를 지원하지 않습니다. 이 프로젝트의 요구(모바일, MSAA, 많은 작은 라이트, 많은 반투명)를 맞추면 URP + Forward+, 저사양 품질 단계는 Forward 가 문서와 맞는 선택입니다. 최종 결정은 대상 기기에서 측정합니다.\n\n**SRP Batcher.** Built-in 에는 없고, 드로우 콜 수가 아니라 같은 셰이더 배리언트를 쓰는 드로우 사이의 렌더 상태 변경과 그 준비에 드는 CPU 시간을 줄입니다.\n\n**흔한 실수.** HDRP 를 \"더 좋은 URP\"로 생각해 모바일에 제안한다. 디퍼드가 반투명과 MSAA 도 처리한다고 말한다. Forward+ 를 \"디퍼드의 일종\"이나 \"라이트 제한이 아예 없는 경로\"로 설명한다. SRP Batcher 를 드로우 콜 수를 줄이는 기능으로 설명한다.\n\n### 흔한 오해\n- **\"디퍼드에서는 라이트가 사실상 공짜라서 라이트가 많으면 디퍼드가 항상 빠르다.\"** — Built-in 의 Deferred 문서로 디퍼드 라이트의 비용은 비추는 픽셀 수에 비례하고 그림자를 드리우는 라이트는 여전히 비싸며 [unity-birp-deferred], Built-in 비교표는 단순한 장면에서 디퍼드의 오버헤드를 High 로 적습니다 [unity-birp-rendering-paths]. URP 는 모바일에서 Deferred 의 성능 영향을 High 로 표시하고 [unity-urp-rendering-path-comparison], HDRP 도 디렉셔널 라이트 하나뿐인 장면처럼 Forward 가 더 빠른 경우가 있다고 적습니다 [unity-hdrp-forward-deferred].\n- **\"URP Forward+ 는 라이트 개수 제한이 없다.\"** — 제한이 없는 것은 오브젝트당 라이트 수이고, 카메라당 보이는 라이트 수에는 플랫폼별 한도가 있습니다 [unity-urp-forward-paths]. 이 한도는 Lit·Complex Lit 셰이더 배리언트의 컴파일 시간에도 영향을 주며, 데스크톱 Forward+ 의 한도는 256 입니다 [unity-urp-forward-plus-troubleshoot].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "세 파이프라인을 문서대로 구분했다: URP 는 모든 플랫폼에서의 확장성(TBDR 모바일·독립형 VR 효율), HDRP 는 하이엔드 플랫폼(데스크톱·Xbox·PlayStation)의 사실적 그래픽, Built-in 은 범용이지만 확장 수단이 파이프라인이 제공하는 API·주입 지점뿐이고 소스가 주로 C++(구매해야 접근)인 파이프라인.",
+            "points": 9,
+            "sourceId": "unity-choose-render-pipeline"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "포워드(오브젝트를 하나씩 라이팅, 파이프라인마다 라이트 제한)와 디퍼드(G-buffer 에 기하·머티리얼 데이터를 쓴 뒤 그 데이터로 한꺼번에 라이팅)의 원리를 설명했다.",
+            "points": 9,
+            "sourceId": "unity-rendering-paths-intro"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "URP 세 경로의 차이를 말했다: Forward 는 오브젝트당 실시간 라이트 9 개, Forward+ 는 화면 타일 단위로 라이트를 골라 오브젝트당 제한이 없지만 카메라당 한도가 있고, Deferred 는 불투명은 제한 없음·투명은 9 개.",
+            "points": 9,
+            "sourceId": "unity-urp-rendering-path-comparison"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "디퍼드의 조건과 한계를 말했다: 투명 오브젝트는 forward 패스로 그린다, URP Deferred 는 MSAA 를 지원하지 않는다, URP Deferred 는 셰이더 모델 4.5 이상이 필요하고 OpenGL·OpenGL ES 를 지원하지 않는다.",
+            "points": 8,
+            "sourceId": "unity-urp-rendering-paths-intro"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "라이트 비용의 차이를 Built-in 비교표로 말했다: 디퍼드에서 픽셀 라이트 하나의 비용은 그 라이트가 비추는 픽셀 수, 포워드에서는 픽셀 수 × 비추는 오브젝트 수, 단순한 장면에서 디퍼드의 오버헤드는 크다.",
+            "points": 10,
+            "sourceId": "unity-birp-rendering-paths"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "URP 비교표가 Deferred 의 모바일 성능 영향을 G-buffer 를 그리는 추가 패스 때문에 크다고 표시하고, 라이트가 많지 않거나 모바일·저사양이면 Forward 를 권장한다는 점을 근거로 들었다.",
+            "points": 10,
+            "sourceId": "unity-urp-rendering-path-comparison"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "G-buffer 의 메모리·대역폭을 숫자로 따졌다(예: Built-in 기본 배치 160 bits/pixel 이면 1920×1080 에서 약 41.5 MB) 그리고 Rendering Layers·Shadowmask 가 렌더 타깃을 더 늘린다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-birp-deferred"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "SRP Batcher 가 Built-in 에서는 지원되지 않고, 드로우 콜 수를 줄이는 대신 같은 셰이더 배리언트를 쓰는 드로우 사이의 렌더 상태 변경과 그 준비에 드는 CPU 시간을 줄인다고 정확히 말했다.",
+            "points": 10,
+            "sourceId": "unity-srp-batcher"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "파이프라인 전환 비용(셰이더와 기능이 다르다, URP 와 HDRP 는 동시에 쓸 수 없다)과 HDRP 의 Lit Shader Mode 를 Both 로 두면 빌드 시간과 셰이더 메모리가 늘어난다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-hdrp-forward-deferred"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "결론(파이프라인, 기본 경로, 저사양 기기의 대안)을 먼저 말하고 근거를 이어서 댔다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "대상 기기에서 경로별로 측정해 결정하는 절차(라이트 수를 늘려 가며 GPU 시간 비교, Rendering Debugger 의 Lighting Complexity 등)를 제시했다.",
+            "points": 7,
+            "sourceId": "unity-urp-forward-paths"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "\"라이트가 많으면 디퍼드가 항상 더 빠르다\"처럼 조건 없이 단정했다(단순한 장면의 오버헤드, 모바일의 G-buffer 비용, 그림자 비용을 무시).",
+            "penalty": -20,
+            "sourceId": "unity-birp-rendering-paths"
+          },
+          {
+            "id": "d2",
+            "description": "디퍼드가 투명 오브젝트와 MSAA 를 그대로 처리한다고 답했다.",
+            "penalty": -15,
+            "sourceId": "unity-urp-rendering-path-comparison"
+          },
+          {
+            "id": "d3",
+            "description": "모바일이 포함된 프로젝트에 HDRP 를 제안했다(HDRP 의 지원 플랫폼은 데스크톱·Xbox·PlayStation).",
+            "penalty": -15,
+            "sourceId": "unity-choose-render-pipeline"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼의 Choose a render pipeline, 렌더링 경로 소개, URP 경로 비교·요구 사항·Forward+·G-buffer·안티에일리어싱·Rendering Debugger, Built-in 경로 비교·Deferred, HDRP 17 Forward/Deferred, SRP Batcher 페이지와 D3D11 Output-Merger 문서를 원문으로 읽고 모든 수치(9·256·257 라이트, 셰이더 모델 4.5, 160/192/224 bits/pixel, 1920×1080 에서 41,472,000 B)를 대조했습니다."
+      },
+      "nextMission": "URP 샘플 씬에 큐브 200 개와 범위가 작은 포인트 라이트 16·64·128 개를 배치하고, URP Asset 의 Rendering Path 를 Forward·Forward+·Deferred 로 바꿔 가며 대상 모바일 기기에서 GPU 프레임 시간을 기록하세요. Forward 에서 오브젝트당 라이트 한도 때문에 사라지는 라이트가 있는지 화면으로 확인하고, Forward+ 에서는 Rendering Debugger 의 Lighting Complexity 로 타일당 라이트 수를 확인한 뒤, 표 한 장으로 \"이 프로젝트의 경로\"를 결론 내 보세요."
+    },
+    {
+      "id": "t9-tutor-shader-variants-stripping",
+      "track": "track9",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "셰이더 변형과 키워드: 조합 폭발을 세어 보고 스트리핑으로 줄이기",
+      "tags": [
+        "Gfx_ShaderVariant",
+        "Gfx_ShaderKeyword",
+        "Gfx_Stripping"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "unity-shader-variants",
+        "unity-shader-conditionals",
+        "unity-shader-make-conditionals",
+        "unity-shader-variant-stripping"
+      ],
+      "scenario": "모바일 RPG(Unity 6, URP)의 캐릭터용 커스텀 `Toon` 셰이더에 기능이 하나씩 붙더니 Android 빌드 시간이 크게 늘었고, 빌드 로그에는 이 셰이더의 변형(variant)이 수천 개 찍힙니다. 셰이더 상단의 키워드 선언은 이렇습니다.\n\n```hlsl\n#pragma multi_compile _ FOG_ON                              // 옵션 메뉴에서 안개 켜기/끄기\n#pragma multi_compile QUALITY_LOW QUALITY_MED QUALITY_HIGH  // 그래픽 품질 단계\n#pragma shader_feature OUTLINE                              // 머티리얼 체크박스\n#pragma shader_feature _ RIM_LIGHT                          // 머티리얼 체크박스\n#pragma multi_compile _ DISSOLVE BURN FREEZE                // 피격 효과, 스크립트가 EnableKeyword 로 켠다\n#pragma multi_compile _ EMISSION                            // 머티리얼 체크박스인데 multi_compile 로 선언됨\n```\n\n이 셰이더는 패스 3 개(각각 버텍스·프래그먼트 스테이지)이고, Android 빌드의 그래픽스 API 목록은 Vulkan 과 OpenGL ES 3 입니다. 빌드에 들어가는 이 셰이더의 머티리얼은 다섯 개로, 켠 키워드는 `{OUTLINE}`, `{OUTLINE, RIM_LIGHT}`, `{}`, `{OUTLINE}`, `{OUTLINE}` 입니다.\n\n**해야 할 일**\n1. 아래 개념 카드를 읽고 이 셰이더의 변형 수를 손으로 세어 보세요.\n2. `starterCode` 의 `ShaderVariantMath` 세 함수를 구현해 손으로 센 값을 확인하세요. 순수 C#(.NET 8)입니다.\n3. 퀴즈에 답하세요.\n\n**이 연습의 모델** (Unity 매뉴얼의 규칙을 단순화한 것입니다. 실제 빌드의 숫자는 Unity 가 자동으로 더하는 키워드, 스트리핑, 디듀플리케이션 때문에 달라집니다)\n- `#pragma` 한 줄이 키워드 세트 하나이고, 세트의 상태 수는 선언한 이름의 수입니다(`_` 는 \"모두 꺼진 상태\" 하나로 셉니다).\n- `shader_feature` 로 키워드를 **하나만** 선언하면 꺼진 상태가 자동으로 더해져 2 입니다. `multi_compile` 로 키워드 하나만 선언한 세트는 1 로 셉니다. 매뉴얼은 shader_feature 로 키워드 하나를 선언하면 꺼진 변형이 자동으로 생긴다고 적고, multi_compile 에서 꺼진 상태가 필요하면 `_` 를 함께 선언하는 예(`multi_compile _ FEATURE_3_ON` → 2 개)를 듭니다. multi_compile 단일 키워드를 1 로 세는 것은 이 연습의 규칙이며, 시나리오의 셰이더에는 그런 세트가 없습니다.\n- 전체 변형 공간 = 모든 세트의 상태 수의 곱(셰이더 프로그램 하나당).\n- 빌드에 남는 수 = `multi_compile` 세트 상태 수의 곱 × 머티리얼들이 실제로 쓰는 `shader_feature` 상태 조합의 가짓수. 입력에서 머티리얼은 세트마다 키워드를 최대 하나 켭니다.",
+      "constraints": [
+        "`FullVariantSpace` 와 `AfterMaterialFiltering` 은 곱이 `long` 범위를 넘으면 `OverflowException` 을 던진다(조용히 틀린 값을 내지 않는다).",
+        "`AfterMaterialFiltering` 은 시간 O(머티리얼 수 × 세트 수 × 세트 크기) 이하.",
+        "입력: 세트와 머티리얼 목록은 null 이 아니고 머티리얼은 하나 이상이다. 키워드 이름은 셰이더 안에서 겹치지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\n\n// 셰이더 변형(variant) 수 계산기. 이 연습의 모델은 문제 본문과 같다.\n// - 키워드 세트 하나 = #pragma 한 줄. names 에는 선언한 이름이 순서대로 들어 있고 \"_\" 는 \"모두 꺼진 상태\"다.\npublic sealed class KeywordSet\n{\n    public KeywordSet(bool isShaderFeature, params string[] names)\n    {\n        IsShaderFeature = isShaderFeature;\n        Names = names;\n    }\n\n    public bool IsShaderFeature { get; }\n    public string[] Names { get; }\n}\n\npublic static class ShaderVariantMath\n{\n    // 세트 하나가 만드는 상태 수.\n    public static int StatesInSet(KeywordSet set)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 한 셰이더 프로그램의 전체 변형 공간(모든 세트의 상태 수의 곱). 넘치면 OverflowException.\n    public static long FullVariantSpace(IReadOnlyList<KeywordSet> sets)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 빌드에 남는 변형 수(이 연습의 모델). materials[m] 은 머티리얼 m 이 켠 키워드 목록이다(세트마다 최대 하나).\n    public static long AfterMaterialFiltering(IReadOnlyList<KeywordSet> sets, IReadOnlyList<string[]> materials)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "`#pragma shader_feature OUTLINE` 처럼 키워드가 하나면 상태는 2 다(켜짐, 자동으로 더해지는 꺼짐).",
+        "`#pragma shader_feature _ RED GREEN BLUE WHITE` 는 5, `#pragma multi_compile _ FEATURE_3_ON` 은 2 다.",
+        "같은 shader_feature 조합을 쓰는 머티리얼이 여럿이어도 변형은 한 번만 센다.",
+        "두 개짜리 세트를 64 개 곱하면 2^64 라서 `long` 을 넘는다."
+      ],
+      "hints": [
+        "매뉴얼의 예부터 재현하세요. 키워드 세 개짜리 세트와 네 개짜리 세트가 있으면 변형은 3 + 4 가 아니라 3 × 4 = 12 개입니다. 한 세트에서 하나씩 골라 만든 모든 조합이 변형이기 때문입니다. Toon 셰이더의 여섯 세트는 각각 몇 개의 상태를 만듭니까? `shader_feature OUTLINE` 은 이름이 하나인데 상태는 몇 개입니까?",
+        "`AfterMaterialFiltering` 은 두 부분의 곱입니다. multi_compile 세트는 머티리얼과 상관없이 전부 컴파일되므로 상태 수를 그대로 곱합니다. shader_feature 세트는 머티리얼마다 \"세트별로 무엇을 켰는가\"를 튜플로 만들고, 서로 다른 튜플의 수를 셉니다. 아무것도 켜지 않은 세트는 꺼진 상태로 칩니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nStatesInSet(set):\n    if set.IsShaderFeature and set.Names.Length == 1 and set.Names[0] != \"_\": return ____\n    return ____\n\nFullVariantSpace(sets):\n    total = 1\n    for set in sets: total = checked(total * ____)\n    return total\n\nAfterMaterialFiltering(sets, materials):\n    multi = (multi_compile 세트의 상태 수의 곱)\n    combos = new HashSet<string>()\n    for enabled in materials:\n        key = (shader_feature 세트마다 켠 이름의 인덱스, 없으면 -1) 를 이어 붙인 문자열\n        combos.Add(key)\n    return checked(multi * ____)\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 도시락 가게의 미리 싸 두기\n\n점심 도시락 가게가 \"맵기 3 단계 × 치즈 추가 여부 × 곱빼기 여부\"를 주문받는다고 합시다. 주문이 들어올 때마다 조리하면 느리니, 가능한 조합을 전부 미리 싸 둡니다. 옵션 세 개만으로 3 × 2 × 2 = 12 종류이고, 옵션이 하나 늘 때마다 종류는 덧셈이 아니라 곱셈으로 불어나 냉장고(메모리)와 준비 시간(빌드)이 감당하지 못하게 됩니다. 셰이더 변형이 정확히 이 구조입니다.\n\n### 1. 변형이란\n\n- Unity 는 셰이더 소스를 셰이더 프로그램으로 컴파일하고, 프로그램마다 조건별로 다른 버전인 **변형**을 하나 이상 만듭니다. 런타임에는 지금 조건에 맞는 변형을 씁니다. 조건은 **셰이더 키워드**로 정합니다.\n- 장점은 GPU 의 동적 분기 비용 없이 조건별 코드를 쓸 수 있다는 것이고, 단점은 변형이 많으면 빌드 시간, 셰이더 메모리, 셰이더 컴파일 끊김이 늘어난다는 것입니다(매뉴얼은 파일 크기와 로딩 시간도 듭니다).\n- 저수준에서 보면 \"같은 소스를 서로 다른 매크로 정의로 여러 번 컴파일하는 것\"과 같은 아이디어입니다. 예를 들어 Direct3D 의 `D3DCompile` 은 셰이더 매크로(`D3D_SHADER_MACRO`) 배열을 받아 소스를 컴파일합니다. 이 비교는 개념 설명이며 Unity 의 내부 구현을 말하는 것이 아닙니다.\n\n### 2. 왜 폭발하는가: 곱셈\n\n- 한 셰이더 프로그램의 변형 수는 키워드 세트 크기의 **곱**입니다. 매뉴얼의 예로 세 개짜리 세트와 네 개짜리 세트는 12 개, `_ON`/`_OFF` 두 개짜리 세트가 10 개면 1,024 개입니다. 매뉴얼은 이 급격한 증가를 조합 폭발(combinatorial explosion)이라고 부릅니다.\n- 그 곱이 다시 **셰이더 프로그램 수**(모든 패스의 모든 스테이지, 폴백과 UsePass 로 끌어온 패스 포함)와 **그래픽스 API 수**만큼 곱해집니다. Unity 는 현재 빌드 타깃의 그래픽스 API 목록에 있는 API 마다 변형을 한 벌씩 컴파일합니다.\n- 키워드를 선언하면 Unity 는 기본적으로 셰이더의 모든 스테이지가 그 키워드를 쓴다고 가정합니다.\n\n### 3. 선언 방식 세 가지\n\n| 지시문 | 무엇을 컴파일하나 | 언제 |\n|---|---|---|\n| `multi_compile` | 머티리얼 사용과 무관하게 모든 조합 | C# 스크립트가 런타임에 키워드를 바꿀 때(예: 옵션 메뉴의 안개) |\n| `shader_feature` | 빌드에 들어간 머티리얼이 쓰는 조합만 | 머티리얼 속성으로만 분기할 때 |\n| `dynamic_branch` | 변형을 만들지 않음. 키워드마다 uniform 정수(0/1)를 두고 드로우 콜마다 상태를 보냄 | GPU 가 빠르고 분기 양쪽의 길이가 비슷할 때 |\n\n- 꺼진 상태: `shader_feature` 로 키워드 하나만 선언하면 꺼진 변형이 자동으로 생깁니다. 키워드가 둘 이상인 세트에서 \"모두 꺼짐\"이 필요하면 `_` 를 함께 선언합니다(`shader_feature _ RED GREEN BLUE WHITE` 는 변형 5 개).\n- 런타임에는 세트라는 개념이 없어서 같은 세트의 키워드 둘을 동시에 켤 수도 있고, `shader_feature` 에서 그렇게 하면 Unity 가 가장 비슷한 변형을 찾아 예상과 다른 결과가 날 수 있습니다.\n- **함정:** 빌드 때 어떤 머티리얼도 쓰지 않은 `shader_feature` 조합을 런타임에 스크립트로 켜면, 그 변형은 이미 빠졌으므로 Unity 는 가장 비슷한 변형을 대신 씁니다. Player Settings 의 Strict shader variant matching 을 켜면 이때 분홍색 에러 셰이더와 콘솔 경고로 드러납니다.\n\n### 4. 줄이는 방법 (스트리핑)\n\n- 가능한 곳은 `shader_feature` 로 바꾸고, 쓰지 않는 키워드를 `multi_compile` 로 선언하지 않습니다.\n- 한 스테이지에서만 쓰는 키워드에는 `_vertex`, `_fragment` 같은 접미사를 붙입니다(예: `shader_feature_fragment`). 단, 매뉴얼에 따르면 이 접미사는 OpenGL, OpenGL ES, Vulkan 에서는 효과가 없습니다.\n- 플랫폼 매크로(`SHADER_API_DESKTOP` 등)로 모바일에서는 조합을 덜 만들고, 품질 설정을 몇 단계로 묶어 사용자가 고를 수 있는 조합 수를 줄입니다.\n- URP 에서는 URP Asset 에서 쓰지 않는 기능을 끄면 관련 변형이 스트리핑됩니다. 빌드에 들어가는 모든 URP Asset 에서 꺼야 하고, 렌더링 경로가 다른 URP Asset 을 함께 넣으면 키워드마다 변형이 두 벌 생깁니다.\n- 그래도 남는 것은 에디터 스크립트의 `IPreprocessShaders.OnProcessShader` 로 빌드 때 걸러 냅니다.\n\n### 5. 확인하기\n\n빌드 후 `Editor.log` 에서 `Compiling shader` 를 찾으면 셰이더 패스마다 \"Full variant space\", \"After settings filtering\", \"After built-in stripping\", \"After scriptable stripping\" 줄이 보입니다. URP 는 Graphics 설정의 Shader Stripping 로그 수준을 바꾸면 `ShaderStrippingReport` 를 남깁니다.",
+      "quiz": [
+        {
+          "question": "시나리오의 Toon 셰이더에서 (1) 셰이더 프로그램 하나의 전체 변형 공간, (2) 빌드 전체에서 컴파일 대상이 되는 프로그램 × 변형 × API 의 수(디듀플리케이션·스트리핑 전), (3) 머티리얼 다섯 개로 shader_feature 를 걸렀을 때 프로그램 하나당 남는 변형 수를 구하고, 각 숫자가 어떤 규칙에서 나오는지 설명하세요. 구현한 함수로 확인하세요.",
+          "answer": "(1) 세트별 상태 수는 `_ FOG_ON` → 2, `QUALITY_LOW/MED/HIGH` → 3, `shader_feature OUTLINE` → 2(단일 키워드라 꺼진 변형이 자동으로 생김), `_ RIM_LIGHT` → 2, `_ DISSOLVE BURN FREEZE` → 4, `_ EMISSION` → 2 입니다. 변형 수는 세트 크기의 곱이므로 2 × 3 × 2 × 2 × 4 × 2 = 192 입니다(`FullVariantSpace` = 192). (2) 패스 3 개에 스테이지가 2 개씩이라 셰이더 프로그램은 6 개이고, 키워드는 기본적으로 모든 스테이지에 영향을 준다고 가정되며, Unity 는 그래픽스 API(Vulkan, OpenGL ES 3)마다 변형을 한 벌씩 컴파일합니다. 192 × 6 × 2 = 2,304 입니다. 실제 숫자는 Unity 가 자동으로 더하는 키워드와 스트리핑, 디듀플리케이션 때문에 달라질 수 있습니다. (3) multi_compile 세트(2, 3, 4, 2)는 머티리얼과 무관하게 전부 남아 48 입니다. shader_feature 세트(OUTLINE, RIM_LIGHT)에서 머티리얼이 실제로 쓰는 조합은 (켜짐, 꺼짐), (켜짐, 켜짐), (꺼짐, 꺼짐) 세 가지이므로 48 × 3 = 144 입니다(`AfterMaterialFiltering` = 144). 머티리얼 체크박스인 EMISSION 을 `shader_feature _ EMISSION` 으로 바꾸면 어떤 머티리얼도 켜지 않으므로 그 세트는 꺼진 상태 하나만 남아 144 가 72 로 줄어듭니다."
+        },
+        {
+          "question": "누군가 \"피격 효과 세트(`_ DISSOLVE BURN FREEZE`)도 shader_feature 로 바꾸면 192 가 36 으로 준다\"고 제안했습니다. 숫자가 맞는지 확인하고, 이 변경이 게임에서 어떤 버그를 낼 수 있는지, 그 버그를 어떻게 발견하고, 변형 수를 줄이면서 피격 효과를 지킬 대안은 무엇인지 설명하세요. Android 에서 `multi_compile_fragment` 로 바꾸는 안은 효과가 있습니까?",
+          "answer": "숫자는 절반만 맞습니다. 이 모델의 전체 변형 공간(`FullVariantSpace`)은 세트를 어느 지시문으로 선언하든 세트 크기의 곱이라 192 그대로이고, 줄어드는 것은 빌드에 남는 수(`AfterMaterialFiltering`)로 144 에서 36 이 됩니다. multi_compile 이 FOG(2), QUALITY(3), EMISSION(2)만 남아 12 이고, 빌드의 머티리얼 다섯 개는 피격 키워드를 하나도 켜지 않으므로 shader_feature 조합은 여전히 세 가지라 12 × 3 = 36 입니다. 하지만 피격 효과는 스크립트가 런타임에 `EnableKeyword` 로 켭니다. 매뉴얼은 스크립트로 런타임에 분기해야 하면 `multi_compile` 을 쓰라고 하고, `shader_feature` 는 빌드의 머티리얼이 쓰는 조합만 컴파일하며 빌드에 없던 조합을 런타임에 쓰면 가장 비슷한 변형을 찾는다고 설명합니다. 그래서 DISSOLVE 를 켜도 디졸브가 없는 변형으로 그려져 효과가 사라질 수 있습니다. Player Settings 의 Strict shader variant matching 을 켜면 그런 경우 분홍색 에러 셰이더와 누락된 변형·키워드를 알려 주는 콘솔 경고가 나오므로 QA 빌드에서 잡을 수 있습니다. 대안은 세 가지를 비교합니다. (가) 피격될 수 있는 머티리얼 조합마다 각 효과 키워드를 켠 조합이 빌드에 남게 합니다. 그 키워드를 켠 머티리얼을 빌드에 넣거나, 매뉴얼의 노트가 드는 대로 shader variant collection 을 preloaded shaders 목록에 넣습니다. 이 모델에서 세 조합이 모두 피격될 수 있다면 남겨야 할 조합이 3 × 4 = 12 개라 12 × 12 = 144 로 지금과 같아 이득이 없고, 피격되는 캐릭터의 머티리얼이 `{OUTLINE}` 하나뿐이라면 조합이 6 개라 12 × 6 = 72 입니다. 빠뜨린 조합은 다시 가장 비슷한 변형으로 대체되므로 Strict shader variant matching 으로 확인합니다. (나) `dynamic_branch` 로 바꿔 변형을 없애는 대신 분기 비용을 받아들입니다. 매뉴얼은 GPU 가 빠르고 분기 길이가 비대칭이 아닐 때 쓰라고 합니다. (다) EMISSION 처럼 머티리얼 속성으로만 바뀌는 키워드를 먼저 shader_feature 로 돌리고, 품질 단계를 플랫폼 매크로로 모바일에서 줄입니다. `multi_compile_fragment` 는 버텍스 프로그램에서 그 세트를 빼려는 것이지만, 매뉴얼에 따르면 스테이지 전용 접미사는 OpenGL ES 와 Vulkan 에서 효과가 없으므로 이 Android 빌드에서는 변형이 줄지 않습니다."
+        }
+      ],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\n\n// 셰이더 변형(variant) 수 계산기. 이 연습의 모델은 문제 본문과 같다.\n// - 키워드 세트 하나 = #pragma 한 줄. names 에는 선언한 이름이 순서대로 들어 있고 \"_\" 는 \"모두 꺼진 상태\"다.\n// - 세트의 상태 수 = names 의 길이. 단 shader_feature 로 키워드 하나만 선언했으면 꺼진 상태가 자동으로 더해져 2.\n// - 전체 변형 공간 = 모든 세트의 상태 수의 곱.\n// - 빌드에 남는 수 = multi_compile 세트 상태 수의 곱 × 머티리얼들이 실제로 쓰는 shader_feature 상태 조합의 가짓수.\npublic sealed class KeywordSet\n{\n    public KeywordSet(bool isShaderFeature, params string[] names)\n    {\n        IsShaderFeature = isShaderFeature;\n        Names = names;\n    }\n\n    public bool IsShaderFeature { get; }\n    public string[] Names { get; }\n}\n\npublic static class ShaderVariantMath\n{\n    public static int StatesInSet(KeywordSet set)\n    {\n        if (set.IsShaderFeature && set.Names.Length == 1 && set.Names[0] != \"_\") return 2; // 자동 off 변형\n        return set.Names.Length;\n    }\n\n    public static long FullVariantSpace(IReadOnlyList<KeywordSet> sets)\n    {\n        long total = 1;\n        foreach (var set in sets) total = checked(total * StatesInSet(set)); // 넘치면 OverflowException\n        return total;\n    }\n\n    // materials[m] 은 머티리얼 m 이 켠 키워드 목록이다(세트마다 최대 하나).\n    public static long AfterMaterialFiltering(IReadOnlyList<KeywordSet> sets, IReadOnlyList<string[]> materials)\n    {\n        long multi = 1;\n        foreach (var set in sets) if (!set.IsShaderFeature) multi = checked(multi * StatesInSet(set));\n\n        var combos = new HashSet<string>();\n        var state = new List<int>();\n        foreach (var enabled in materials)\n        {\n            state.Clear();\n            foreach (var set in sets)\n            {\n                if (!set.IsShaderFeature) continue;\n                int s = -1;                                   // -1 = 이 세트의 키워드를 하나도 켜지 않음(꺼진 상태)\n                for (int i = 0; i < set.Names.Length; i++)\n                    if (set.Names[i] != \"_\" && Array.IndexOf(enabled, set.Names[i]) >= 0) s = i;\n                state.Add(s);\n            }\n            combos.Add(string.Join(\",\", state));\n        }\n        return checked(multi * combos.Count);\n    }\n}\n",
+      "explanation": "**핵심.** 셰이더 변형은 키워드 조합마다 따로 컴파일한 셰이더 프로그램입니다. Unity 매뉴얼에 따르면 한 프로그램의 변형 수는 키워드 세트 크기의 곱이고, 그 수는 다시 셰이더 프로그램(패스의 스테이지) 수와 빌드 타깃의 그래픽스 API 수만큼 곱해집니다. 그래서 두 개짜리 세트 10 개만으로 1,024 개가 되고, 매뉴얼은 세 개짜리 세트 8 개를 `multi_compile` 로 선언하면 6,000 개가 넘는 변형을 컴파일할 수 있다고 경고합니다(3^8 = 6,561).\n\n**구현.** `StatesInSet` 은 이름 수를 돌려주되, shader_feature 단일 키워드만 2 로 셉니다. 매뉴얼이 이 경우에 꺼진 변형을 자동으로 만든다고 적기 때문입니다. `FullVariantSpace` 는 `checked` 곱으로 넘침을 예외로 드러냅니다. `AfterMaterialFiltering` 은 multi_compile 쪽은 전부, shader_feature 쪽은 머티리얼이 실제로 쓰는 상태 튜플만 셉니다. 같은 튜플을 쓰는 머티리얼이 여럿이어도 변형은 하나이므로 집합으로 중복을 없앱니다. 이 함수는 \"shader_feature 는 빌드의 머티리얼이 쓰는 조합만 컴파일한다\"는 문장을 단순화한 모델입니다. 실제 빌드에서는 Unity 가 컴파일할 때 자동으로 더하는 키워드 세트(예: 기본적으로 모든 그래픽스 셰이더 프로그램에 붙는 STEREO_INSTANCING_ON 등의 스테레오 렌더링 세트, Built-in 의 Standard Shader 에 붙는 라이트맵 세트) [unity-shader-keywords-default], Graphics 설정과 URP 의 스트리핑, 같은 패스 안의 동일한 변형을 합치는 디듀플리케이션 때문에 숫자가 달라집니다. 복잡도는 머티리얼 수 × 세트 수 × 세트 크기에 비례합니다.\n\n**판단 기준.** 스크립트가 런타임에 바꾸는 키워드는 `multi_compile`(또는 `dynamic_branch`), 머티리얼 속성으로만 바뀌는 키워드는 `shader_feature` 입니다. 거꾸로 하면 변형이 불필요하게 늘거나(체크박스를 multi_compile 로 선언한 EMISSION), 런타임에 필요한 변형이 빠집니다(피격 효과를 shader_feature 로 바꾼 경우). 줄인 뒤에는 Editor.log 의 \"Full variant space\"와 스트리핑 후 숫자, Strict shader variant matching 으로 결과를 확인합니다.\n\n이 문제에는 숨은 테스트가 없습니다. 퀴즈의 숫자(192, 2,304, 144, 72, 36)를 함수로 직접 출력해 맞춰 보세요.\n\n**흔한 실수.** 세트 크기를 더한다. shader_feature 단일 키워드의 자동 꺼짐 변형을 빼먹는다. API 수와 스테이지 수를 곱하지 않는다. 같은 조합의 머티리얼을 중복으로 센다.\n\n### 흔한 오해\n- **\"내용이 같은 변형은 Unity 가 알아서 합치니까 변형이 늘어도 손해가 없다.\"** — 매뉴얼은 같은 패스 안의 동일한 변형이 같은 바이트코드를 가리키게 하는 디듀플리케이션이 파일 크기 증가만 막을 뿐, 컴파일 작업은 그대로 낭비되고 런타임 메모리와 셰이더 로딩 시간도 늘어난다고 적습니다. 그래서 필요 없는 변형은 스트리핑하라고 권합니다 [unity-shader-variants].\n- **\"`_fragment` 같은 스테이지 접미사를 붙이면 어느 플랫폼에서나 변형이 줄어든다.\"** — 매뉴얼은 이 접미사가 그래픽스 API 에 따라 다르게 동작하거나 효과가 없으며, OpenGL, OpenGL ES, Vulkan 에서는 효과가 없고 Metal 은 `_vertex`·`_hull`·`_domain` 을 한 스테이지로 다룬다고 적습니다 [unity-shader-variant-stripping].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "한 셰이더 프로그램의 변형 수가 키워드 세트 크기의 곱이라고 설명하고 매뉴얼의 예(3 × 4 = 12, 두 개짜리 세트 10 개 = 1,024)를 재현했다.",
+            "points": 12,
+            "sourceId": "unity-shader-variants"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "세트의 상태 수를 규칙대로 셌다: _ 는 꺼진 상태 하나, shader_feature 로 키워드 하나만 선언하면 꺼진 변형이 자동으로 더해져 2, 그리고 Toon 셰이더는 192, 머티리얼 다섯 개로 걸러 144 다.",
+            "points": 12,
+            "sourceId": "unity-shader-make-conditionals"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "multi_compile 은 머티리얼 사용과 무관하게 모든 조합을 컴파일하고, shader_feature 는 빌드의 머티리얼이 쓰는 조합만 남기며, 빌드에 없던 조합을 런타임에 켜면 Unity 가 가장 비슷한 변형을 고른다고 설명했다.",
+            "points": 11,
+            "sourceId": "unity-shader-conditionals"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "변형이 많을 때의 비용(빌드 시간, 파일 크기, 런타임 메모리, 로딩 시간, 셰이더 컴파일 끊김)과 그래픽스 API·셰이더 프로그램(패스 × 스테이지)마다 곱해진다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-shader-variants"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "스트리핑 수단을 둘 이상 들었다: shader_feature 로 바꾸기, 쓰지 않는 multi_compile 키워드 없애기, 스테이지 전용 접미사, 플랫폼 매크로, 품질 단계 축소, URP Asset 의 기능 끄기, IPreprocessShaders.",
+            "points": 10,
+            "sourceId": "unity-shader-variant-stripping"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "변형을 줄이는 다른 길로 dynamic_branch 를 들고 그 대가(키워드마다 uniform 정수, 드로우 콜마다 상태 전송, 비대칭 분기의 GPU 비용)를 말했다.",
+            "points": 10,
+            "sourceId": "unity-shader-conditionals"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "실제 변형 수를 확인하는 방법(Editor.log 의 Compiling shader 항목, Strict shader variant matching, URP 의 Shader Stripping 로그)을 말했다.",
+            "points": 10,
+            "sourceId": "unity-shader-how-many-variants"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "URP 에서 기능을 모든 URP Asset 에서 꺼야 스트리핑되고, 렌더링 경로가 다른 URP Asset 을 함께 넣으면 키워드마다 변형이 두 벌 생긴다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-urp-shader-stripping"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "AfterMaterialFiltering 이 multi_compile 쪽 곱과 shader_feature 쪽 조합 수를 나눠 계산해 모델의 두 규칙이 코드에서 드러난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "곱이 long 을 넘을 때 조용히 틀린 값을 내지 않는다(checked 연산 등).",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "변형 수를 세트 크기의 합으로 계산했거나, 그래픽스 API·셰이더 프로그램마다 따로 컴파일된다는 점을 빠뜨려 규모를 크게 낮춰 잡았다.",
+            "penalty": -20,
+            "sourceId": "unity-shader-variants"
+          },
+          {
+            "id": "d2",
+            "description": "스크립트로 런타임에 켜는 키워드를 근거 없이 shader_feature 로 바꾸라고 제안했다(빌드에 없는 조합은 비슷한 변형으로 대체된다).",
+            "penalty": -15,
+            "sourceId": "unity-shader-conditionals"
+          },
+          {
+            "id": "d3",
+            "description": "스테이지 전용 접미사가 모든 그래픽스 API 에서 변형을 줄인다고 단정했다(OpenGL·OpenGL ES·Vulkan 에서는 효과가 없다).",
+            "penalty": -10,
+            "sourceId": "unity-shader-variant-stripping"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼의 셰이더 변형 소개·분기 컴파일 방식·키워드 조건·키워드 선언·기본 키워드·스트리핑·변형 수 확인·URP 스트리핑 페이지 원문과 대조했고, 퀴즈의 192·2,304·144·72·36 과 대안 (가) 의 144·72 는 정답 코드를 로컬 .NET 8 에서 돌려 확인했습니다(숨은 테스트 없음)."
+      },
+      "nextMission": "`AfterMaterialFiltering` 을 확장해 그래픽스 API 목록과 패스·스테이지 구성을 받고, 키워드마다 \"영향을 주는 스테이지\"(접미사 `_vertex`/`_fragment`)를 지정할 수 있게 해 보세요. API 가 OpenGL ES·Vulkan 이면 접미사를 무시하는 규칙(매뉴얼의 설명)을 넣고, 시나리오의 Toon 셰이더를 Metal 빌드와 Vulkan 빌드로 각각 세어 비교하세요. 그다음 Unity 6 프로젝트에서 같은 셰이더를 빌드해 Editor.log 의 \"Full variant space\" 숫자와 맞춰 보고, 차이가 Unity 가 자동으로 더한 키워드 때문인지 확인하세요."
+    },
+    {
+      "id": "t9-debug-frame-pacing-percentiles",
+      "track": "track9",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "프레임 페이싱 분석기 버그: 평균 FPS 의 함정, 백분위 순위, 정렬로 망가진 시간 순서",
+      "tags": [
+        "Gfx_FramePacing",
+        "Gfx_Profiling"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-percentile",
+        "wiki-harmonic-mean",
+        "capframex-metrics",
+        "ms-learn-array-sort"
+      ],
+      "scenario": "모바일 액션 게임의 보스전이 \"평균 FPS 는 괜찮은데 끊긴다\"는 리뷰를 받았습니다. QA 빌드는 프레임마다 걸린 시간(ms)을 기록하고, 순수 C# 분석기 `FramePacing` 이 그 로그로 보고서를 만듭니다. 목표는 60 FPS, 예산은 16.7 ms 입니다.\n\nQA 가 보낸 100 프레임 로그(인덱스 0 부터)는 다음과 같습니다. 대부분 16 ms 이고, 인덱스 20·21 이 40 ms, 50 이 100 ms, 70·71·72 가 34 ms, 90 이 25 ms 입니다. 그래프로 보면 최장 끊김은 70 ~ 72 의 세 프레임입니다.\n\n지금 코드로 `Analyze(log, 16.7)` 을 돌린 출력과 QA 의 제보입니다(아래 숫자는 모두 수정 전 코드의 실제 출력입니다).\n\n- 평균 FPS 가 60.0074 로 나온다. 그런데 100 프레임에 1,795 ms 가 걸렸다.\n- P99 프레임 시간이 100 ms 로 로그의 최댓값(한 번 있었던 100 ms 히치)과 똑같다.\n- 최장 연속 예산 초과가 7 프레임으로 나오고, 분석을 돌린 뒤 저장한 로그 그래프가 시간 순서를 잃고, 16 ms 로 평평하다가 맨 오른쪽 일곱 프레임에서 계단처럼 올라가는 오름차순 모양이 되었다.\n\n**통계의 정의** (이 표가 정답의 기준입니다. 업계에 하나의 표준 정의가 있는 것이 아니라 이 분석기가 정한 정의입니다)\n\n| 통계 | 정의 |\n|---|---|\n| `AverageFps` | `1000 × N / Σ 프레임 시간(ms)`. 측정 구간 전체의 프레임 수를 걸린 시간으로 나눈 값입니다. |\n| `PercentileMs(log, p)` | **nearest-rank 방법.** p 는 1 ~ 100 의 정수. 오름차순으로 정렬해 순위 `r = ⌈p × N / 100⌉` (1 부터 세는 순위)의 값. 보간하지 않습니다. |\n| `OnePercentLowFps` | 가장 느린 `k = ⌈N / 100⌉` 개 프레임의 평균 프레임 시간을 FPS 로 바꾼 값: `1000 × k / (그 k 개 시간의 합)`. |\n| `CountOver` / `LongestStreakOver` | 프레임 시간이 예산보다 **큰**(`>`) 프레임의 수 / 기록 순서에서 그런 프레임이 연속으로 이어진 최대 길이. |\n| `Analyze` | 위 값을 모아 `PacingReport` 로 돌려줍니다. 입력 로그는 **읽기만** 합니다(호출 측이 그 로그를 시간 순서대로 그래프로 저장합니다). |\n\n입력: 로그 길이는 1 이상이고 모든 값은 양의 유한값입니다.\n\n**할 일:** 버그를 모두 찾아 고치세요. 버그마다 \"수정 전에는 틀리고 수정 후에는 맞는\" 가장 작은 입력을 하나씩 적어 보세요. 공개 시그니처와 정의는 바꾸지 않습니다.",
+      "constraints": [
+        "`Analyze` 는 시간 O(N log N), 추가 메모리 O(N) 이하이고, 정렬은 사본 하나에서 한 번만 한다(P50·P99·1% low 가 같은 정렬 결과를 쓴다).",
+        "`AverageFps`, `CountOver`, `LongestStreakOver` 는 O(N).",
+        "공개 멤버(`PacingReport` 와 `FramePacing` 의 메서드)의 이름과 시그니처를 바꾸지 않는다. 통계의 정의를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// 프레임 페이싱 분석기. frameTimesMs 는 기록된 순서(시간 순서)대로의 프레임 시간(ms)이다.\n// 통계의 정의는 문제 본문의 표와 같다.\npublic readonly struct PacingReport\n{\n    public PacingReport(double averageFps, double p50Ms, double p99Ms, double onePercentLowFps,\n                        int framesOverBudget, int longestStreakOverBudget)\n    {\n        AverageFps = averageFps;\n        P50Ms = p50Ms;\n        P99Ms = p99Ms;\n        OnePercentLowFps = onePercentLowFps;\n        FramesOverBudget = framesOverBudget;\n        LongestStreakOverBudget = longestStreakOverBudget;\n    }\n\n    public double AverageFps { get; }\n    public double P50Ms { get; }\n    public double P99Ms { get; }\n    public double OnePercentLowFps { get; }\n    public int FramesOverBudget { get; }\n    public int LongestStreakOverBudget { get; }\n}\n\npublic static class FramePacing\n{\n    public static double AverageFps(double[] frameTimesMs)\n    {\n        double sum = 0;\n        for (int i = 0; i < frameTimesMs.Length; i++) sum += 1000.0 / frameTimesMs[i];\n        return sum / frameTimesMs.Length;\n    }\n\n    // percentile 은 1 ~ 100 의 정수다.\n    public static double PercentileMs(double[] frameTimesMs, int percentile)\n    {\n        Array.Sort(frameTimesMs);\n        int index = percentile * frameTimesMs.Length / 100;\n        if (index >= frameTimesMs.Length) index = frameTimesMs.Length - 1;\n        return frameTimesMs[index];\n    }\n\n    public static double OnePercentLowFps(double[] frameTimesMs)\n    {\n        var sorted = (double[])frameTimesMs.Clone();\n        Array.Sort(sorted);\n        int k = (sorted.Length + 99) / 100;\n        double sum = 0;\n        for (int i = sorted.Length - k; i < sorted.Length; i++) sum += sorted[i];\n        return 1000.0 * k / sum;\n    }\n\n    public static int CountOver(double[] frameTimesMs, double budgetMs)\n    {\n        int count = 0;\n        foreach (double t in frameTimesMs) if (t > budgetMs) count++;\n        return count;\n    }\n\n    public static int LongestStreakOver(double[] frameTimesMs, double budgetMs)\n    {\n        int best = 0, run = 0;\n        foreach (double t in frameTimesMs)\n        {\n            if (t > budgetMs) { run++; if (run > best) best = run; }\n            else run = 0;\n        }\n        return best;\n    }\n\n    public static PacingReport Analyze(double[] frameTimesMs, double budgetMs)\n    {\n        double average = AverageFps(frameTimesMs);\n        double p50 = PercentileMs(frameTimesMs, 50);\n        double p99 = PercentileMs(frameTimesMs, 99);\n        double low = OnePercentLowFps(frameTimesMs);\n        int over = CountOver(frameTimesMs, budgetMs);\n        int streak = LongestStreakOver(frameTimesMs, budgetMs);\n        return new PacingReport(average, p50, p99, low, over, streak);\n    }\n}\n",
+      "edgeCases": [
+        "두 프레임 [10, 30]: 40 ms 에 2 프레임이므로 평균 50 FPS 다. 지금 코드는 (100 + 33.3) / 2 = 66.67 을 낸다.",
+        "Wikipedia 의 nearest-rank 예 {15, 20, 35, 40, 50}: P40 은 순위 ⌈2⌉ = 2 의 값 20 이다. 지금 코드는 35 를 낸다. p·N/100 이 정수일 때만 틀리므로 놓치기 쉽다.",
+        "100 프레임 로그의 P99 는 99번째로 작은 값이다. 지금 코드는 최댓값을 낸다.",
+        "[20, 20, 10, 20, 20, 20, 10, 20] 에 예산 16.7: 초과 6, 최장 연속 3. 로그를 정렬한 뒤 세면 6 이 된다.",
+        "1% low 의 k: N = 100 이면 1 개, N = 101 이면 2 개다."
+      ],
+      "hints": [
+        "반례 세 개를 손으로 계산해 보세요. (가) [10, 30] 은 40 ms 동안 2 프레임입니다. 평균 FPS 는 얼마이고, 코드는 무엇을 평균하고 있습니까? (나) {15, 20, 35, 40, 50} 의 P40 을 nearest-rank 로 구하면 순위 ⌈40 × 5 / 100⌉ = 2 의 값입니다. 코드의 인덱스 식은 몇 번째 값을 고릅니까? (다) 같은 로그 배열로 `PercentileMs` 를 부르기 전과 후에 `log[20]` 을 출력해 보세요.",
+        "버그는 세 군데입니다. `AverageFps` 가 누적하는 값(시간입니까, 프레임마다의 FPS 입니까?), `PercentileMs` 의 인덱스 식(순위는 1 부터 세고 올림입니다. 0 부터 세는 인덱스로 바꿀 때 무엇을 빼야 합니까?), 그리고 `PercentileMs` 의 첫 줄이 누구의 배열을 바꾸는지입니다. 마지막 것은 `Analyze` 안에서 그 뒤에 부르는 함수 가운데 순서에 민감한 것이 무엇인지와 함께 보세요.",
+        "수정 위치의 뼈대입니다. 빈칸은 직접 채우세요.\n```\nAverageFps(log):\n    totalMs = Σ log[i]\n    return 1000.0 * ____ / totalMs\n\nPercentileMs(log, p):\n    sorted = ____            // 호출 측의 배열은 건드리지 않는다\n    Array.Sort(sorted)\n    rank = ____        // ⌈p × N / 100⌉ 을 정수 연산으로\n    return sorted[____]\n\nAnalyze(log, budget):\n    sorted = (사본을 한 번 정렬)\n    P50, P99, 1% low ← sorted\n    평균, 초과 수, 최장 연속 ← ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 프레임 페이싱 분석기. frameTimesMs 는 기록된 순서(시간 순서)대로의 프레임 시간(ms)이다.\n// 통계의 정의는 문제 본문의 표와 같다.\npublic readonly struct PacingReport\n{\n    public PacingReport(double averageFps, double p50Ms, double p99Ms, double onePercentLowFps,\n                        int framesOverBudget, int longestStreakOverBudget)\n    {\n        AverageFps = averageFps;\n        P50Ms = p50Ms;\n        P99Ms = p99Ms;\n        OnePercentLowFps = onePercentLowFps;\n        FramesOverBudget = framesOverBudget;\n        LongestStreakOverBudget = longestStreakOverBudget;\n    }\n\n    public double AverageFps { get; }\n    public double P50Ms { get; }\n    public double P99Ms { get; }\n    public double OnePercentLowFps { get; }\n    public int FramesOverBudget { get; }\n    public int LongestStreakOverBudget { get; }\n}\n\npublic static class FramePacing\n{\n    // [수정 1] 평균 FPS = 프레임 수 / 걸린 시간. 프레임별 FPS 의 산술 평균은 빠른 프레임에 치우친다.\n    public static double AverageFps(double[] frameTimesMs)\n    {\n        double totalMs = 0;\n        for (int i = 0; i < frameTimesMs.Length; i++) totalMs += frameTimesMs[i];\n        return 1000.0 * frameTimesMs.Length / totalMs;\n    }\n\n    // percentile 은 1 ~ 100 의 정수다.\n    public static double PercentileMs(double[] frameTimesMs, int percentile)\n    {\n        return PercentileOfSorted(SortedCopy(frameTimesMs), percentile);\n    }\n\n    public static double OnePercentLowFps(double[] frameTimesMs)\n    {\n        return OnePercentLowOfSorted(SortedCopy(frameTimesMs));\n    }\n\n    public static int CountOver(double[] frameTimesMs, double budgetMs)\n    {\n        int count = 0;\n        foreach (double t in frameTimesMs) if (t > budgetMs) count++;\n        return count;\n    }\n\n    public static int LongestStreakOver(double[] frameTimesMs, double budgetMs)\n    {\n        int best = 0, run = 0;\n        foreach (double t in frameTimesMs)\n        {\n            if (t > budgetMs) { run++; if (run > best) best = run; }\n            else run = 0;\n        }\n        return best;\n    }\n\n    public static PacingReport Analyze(double[] frameTimesMs, double budgetMs)\n    {\n        double[] sorted = SortedCopy(frameTimesMs);            // 정렬은 사본에서 한 번만\n        return new PacingReport(\n            AverageFps(frameTimesMs),\n            PercentileOfSorted(sorted, 50),\n            PercentileOfSorted(sorted, 99),\n            OnePercentLowOfSorted(sorted),\n            CountOver(frameTimesMs, budgetMs),\n            LongestStreakOver(frameTimesMs, budgetMs));      // 시간 순서가 필요한 통계는 원본으로\n    }\n\n    // [수정 3] 호출 측의 로그(시간 순서)를 정렬해 버리지 않도록 사본을 정렬한다.\n    private static double[] SortedCopy(double[] frameTimesMs)\n    {\n        var copy = (double[])frameTimesMs.Clone();\n        Array.Sort(copy);\n        return copy;\n    }\n\n    // [수정 2] nearest-rank: 순위 r = ceil(p * N / 100), 값은 r 번째로 작은 값(인덱스 r - 1).\n    private static double PercentileOfSorted(double[] sorted, int percentile)\n    {\n        long rank = ((long)percentile * sorted.Length + 99) / 100;\n        return sorted[rank - 1];\n    }\n\n    // 1% low(이 연습의 정의): 가장 느린 k = ceil(N / 100) 개 프레임의 평균 프레임 시간을 FPS 로 바꾼 값.\n    private static double OnePercentLowOfSorted(double[] sorted)\n    {\n        int k = (sorted.Length + 99) / 100;\n        double sum = 0;\n        for (int i = sorted.Length - k; i < sorted.Length; i++) sum += sorted[i];\n        return 1000.0 * k / sum;\n    }\n}\n",
+      "explanation": "**버그 1: 평균 FPS 를 프레임별 FPS 의 평균으로 계산한다 (`AverageFps`).** 프레임마다 `1000 / 프레임 시간` 을 더해 N 으로 나누면 프레임 하나하나를 같은 무게로 셉니다. 하지만 평균 FPS 는 \"걸린 시간 동안 몇 프레임을 그렸는가\"이고, 각 프레임이 같은 양의 일(프레임 1 장)이므로 Wikipedia 의 조화 평균 항목이 설명하는 \"같은 거리를 다른 속도로 간 평균 속도\"와 같은 경우입니다. 이때 맞는 평균은 조화 평균(= 전체 거리 / 전체 시간)이고, 산술 평균은 항상 그 이상이라 과대평가됩니다. 실패 입력: [10, 30] 에서 50 대신 66.67, 보스전 로그에서 55.71 대신 60.01. 빠른 프레임이 많을수록 히치가 평균에서 지워지는 것이 제보 1 의 원인입니다.\n\n**버그 2: 백분위 순위가 한 칸 밀린다 (`PercentileMs` 의 인덱스).** Wikipedia 의 nearest-rank 정의는 순위 `n = ⌈P/100 × N⌉` 의 값을 고르고, 100 번째 백분위는 최댓값입니다. 코드의 `p * N / 100` 은 내림이라, 나누어떨어지지 않으면 `⌈x⌉ − 1` 과 같아 우연히 맞고 나누어떨어질 때만 한 칸 위를 고릅니다. 실패 입력: {15, 20, 35, 40, 50} 의 P40 이 20 대신 35, 100 프레임 로그의 P99 가 99번째 값 대신 최댓값(보스전 로그에서 40 대신 100 ms, 제보 2). 수정은 정수로 올림한 순위에서 1 을 뺀 인덱스입니다. `Math.Ceiling(p / 100.0 * N)` 처럼 부동소수로 계산하면 로컬 .NET 8 에서 `7 / 100.0 * 100` 이 7.000000000000001 이라 P7 이 8 번째 값으로 밀리므로 정수 연산을 씁니다.\n\n**버그 3: 입력 로그를 그 자리에서 정렬한다 (`PercentileMs` 의 `Array.Sort`).** Microsoft Learn 의 `Array.Sort` 는 넘겨받은 배열의 원소를 정렬합니다(그 자리 정렬이고 불안정 정렬, O(n log n)). 그래서 `Analyze` 가 P50 을 구한 순간부터 로그는 오름차순이 되고, 뒤이어 부르는 `LongestStreakOver` 는 예산을 넘은 프레임이 전부 끝에 모인 배열을 봅니다. 실패 입력: [20, 20, 10, 20, 20, 20, 10, 20] 의 최장 연속이 3 대신 6, 보스전 로그는 3 대신 7. 호출 측이 저장한 그래프가 정렬된 곡선이 된 것도 같은 원인입니다(제보 3). 순서와 무관한 평균·초과 수·백분위는 영향을 받지 않아 버그가 숨기 쉽습니다. 수정은 사본을 한 번 정렬해 P50·P99·1% low 에 함께 쓰고, 시간 순서가 필요한 통계는 원본으로 구하는 것입니다.\n\n**정의를 적는 이유.** Wikipedia 는 백분위에 표준 정의가 없고 방법에 따라 보간 여부가 다르다고 적습니다. CapFrameX 의 설명 글은 도구마다 백분위의 반올림·보간 방식이 달라 같은 데이터에서도 보통 0.5 FPS 정도까지 차이가 날 수 있고, x% low 에는 명확한 정의가 없어 \"가장 느린 x% 의 평균\" 방식과 전체 시간의 x% 를 기준으로 하는 \"integral\" 방식이 함께 쓰인다고 설명합니다. 같은 글은 average 방식을 \"1000 개 값에서 가장 낮은 10 개 값의 평균\"이라고만 적으므로, 프레임 시간을 평균한 뒤 FPS 로 바꾸는 이 분석기의 1% low 가 그 도구의 숫자와 같다고 가정하면 안 됩니다(FPS 값을 산술 평균하면 버그 1 과 같은 이유로 같거나 더 높게 나옵니다). 그래서 보고서는 통계마다 방법을 밝혀야 다른 도구의 숫자와 비교할 수 있습니다. 로그를 만드는 쪽에서는 Microsoft 의 고해상도 타임스탬프 문서가 권하는 대로 QueryPerformanceCounter(관리 코드에서는 이를 쓰는 `Stopwatch`)로 프레임 간격을 잽니다.\n\n**복잡도.** 정렬 1 회 O(N log N), 나머지는 O(N), 추가 메모리는 사본 하나입니다.\n\n### 흔한 오해\n- **\"1% low 는 P1 FPS(프레임 시간으로는 P99)와 같은 값이고, 어느 도구에서나 같은 식으로 계산한다.\"** — CapFrameX 는 x% low 에 명확한 정의가 없다고 밝히고, 가장 느린 1% 의 평균으로 계산하면 작은 이상치까지 모두 들어가 1 번째 백분위보다 낮게 나온다고 설명합니다. 이 도구도 1.7.0 부터 \"x% low average\"와 \"x% low integral\" 두 방식을 함께 제공한다고 적습니다 [capframex-metrics]. 숫자를 비교할 때는 도구와 정의를 먼저 맞춰야 합니다.\n- **\"P1 이 45 FPS 면 99% 의 시간 동안 45 FPS 이상이었다.\"** — 백분위는 시간이 아니라 프레임 개수 기준이라 \"렌더링된 프레임의 99% 가 45 FPS 이상\"이라는 뜻일 뿐입니다. CapFrameX 의 예로 20 초 기록에서 제외된 1% 프레임 안에 500 ms 짜리 이상치가 네 개 있으면 적어도 10% 의 시간은 45 FPS 아래였습니다 [capframex-metrics]. 이 연습의 `LongestStreakOver` 처럼 시간 순서와 길이를 보는 지표를 함께 봐야 하는 이유입니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "버그 1 을 고쳐 평균 FPS 를 프레임 수 / 걸린 시간으로 계산한다: [10, 30] → 50 (66.67 아님), 보스전 로그 → 55.71 (60.01 아님).",
+            "points": 12,
+            "sourceId": "wiki-harmonic-mean"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "버그 2 를 고쳐 nearest-rank 순위 ⌈p·N/100⌉ 의 값을 돌려준다: {15, 20, 35, 40, 50} 의 P40 → 20, 1 ~ 100 의 P7 → 7, 보스전 로그의 P99 → 40 ms.",
+            "points": 12,
+            "sourceId": "wiki-percentile"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "버그 3 을 고쳐 입력 로그를 바꾸지 않는다: Analyze 뒤에도 로그가 시간 순서 그대로이고, 보스전 로그의 최장 연속 초과가 3 프레임이다(7 아님).",
+            "points": 11,
+            "sourceId": "ms-learn-array-sort"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Analyze 가 사본을 한 번만 정렬해 P50·P99·1% low 를 모두 구한다(시간 O(N log N), 정렬 1회).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "추가 메모리가 정렬용 사본 하나(O(N))이고, 평균·초과 수·연속 초과는 원본을 한 번씩 훑어 O(N) 에 구한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "순위가 부동소수 오차로 한 칸 밀리지 않는다(정수 연산으로 올림하거나 p·N 을 먼저 곱한 뒤 나눈다. `p / 100.0 * N` 순서로 계산하면 7 / 100.0 × 100 = 7.000000000000001 이라 Math.Ceiling 이 8 이 된다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Array.Sort 가 넘겨받은 배열 자체를 정렬한다는 점을 알고, Clone 이나 CopyTo 로 만든 사본을 정렬했다.",
+            "points": 10,
+            "sourceId": "ms-learn-array-sort"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "보고서에 통계의 정의(백분위는 nearest-rank, 1% low 는 이 연습의 정의)를 밝히고, 다른 도구는 백분위를 보간하거나 x% low 를 다르게 계산할 수 있다는 점을 말했다.",
+            "points": 10,
+            "sourceId": "capframex-metrics"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "버그마다 수정 전에는 틀리고 수정 후에는 맞는 가장 작은 입력을 적었다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "정렬된 데이터와 시간 순서의 원본이 변수 이름으로 구분되고, 시간 순서가 필요한 통계는 원본을 쓴다는 것이 코드에서 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "평균 FPS 를 여전히 프레임별 FPS 의 산술 평균으로 계산한다.",
+            "penalty": -20,
+            "sourceId": "wiki-harmonic-mean"
+          },
+          {
+            "id": "d2",
+            "description": "입력 로그를 정렬해 시간 순서를 잃거나, 연속 초과를 정렬된 데이터로 계산한다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-array-sort"
+          },
+          {
+            "id": "d3",
+            "description": "통계의 정의(nearest-rank, 1% low 의 k = ⌈N/100⌉, 예산 초과는 > budget)나 공개 시그니처를 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static bool Near(double got, double exp) { return System.Math.Abs(got - exp) <= 1e-9 * System.Math.Max(1.0, System.Math.Abs(exp)); }\n    static string Show(double[] a) { return a.Length <= 8 ? \"[\" + string.Join(\", \", System.Array.ConvertAll(a, x => F(x))) + \"]\" : \"(길이 \" + a.Length + \" 의 로그)\"; }\n\n    // 참조 구현: 평균 = 프레임 수 / 시간, 백분위 = nearest-rank, 1% low = 가장 느린 ceil(N/100) 개의 평균 시간을 FPS 로\n    static double RAvg(double[] a) { double s = 0; foreach (var t in a) s += t; return 1000.0 * a.Length / s; }\n    static double RPct(double[] a, int p) { var s = (double[])a.Clone(); System.Array.Sort(s); int r = (int)System.Math.Ceiling(p * (decimal)a.Length / 100m); return s[r - 1]; }\n    static double RLow(double[] a) { var s = (double[])a.Clone(); System.Array.Sort(s); int k = (a.Length + 99) / 100; double sum = 0; for (int i = a.Length - k; i < a.Length; i++) sum += s[i]; return 1000.0 * k / sum; }\n    static int RStreak(double[] a, double b) { int best = 0, run = 0; foreach (var t in a) { run = t > b ? run + 1 : 0; if (run > best) best = run; } return best; }\n    static int RCount(double[] a, double b) { int c = 0; foreach (var t in a) if (t > b) c++; return c; }\n\n    static double[] BossLog()\n    {\n        var a = new double[100];\n        for (int i = 0; i < 100; i++) a[i] = 16;\n        a[20] = 40; a[21] = 40; a[50] = 100; a[70] = 34; a[71] = 34; a[72] = 34; a[90] = 25;\n        return a;\n    }\n    static string Unchanged(double[] before, double[] after, string what)\n    {\n        for (int i = 0; i < before.Length; i++)\n            if (before[i] != after[i]) return what + \" 를 부른 뒤 입력 로그가 바뀌었다: 인덱스 \" + i + \" 의 값 \" + F(before[i]) + \" → \" + F(after[i]) + \" (시간 순서가 깨짐)\";\n        return null;\n    }\n    static string Check(double[] log, double budget, string what)\n    {\n        var copy = (double[])log.Clone();\n        PacingReport r = FramePacing.Analyze(log, budget);\n        string e = Unchanged(copy, log, what + \" 의 Analyze\");\n        if (e != null) return e;\n        if (!Near(r.AverageFps, RAvg(copy))) return what + \": AverageFps 기대 \" + F(RAvg(copy)) + \", 결과 \" + F(r.AverageFps);\n        if (!Near(r.P50Ms, RPct(copy, 50))) return what + \": P50Ms 기대 \" + F(RPct(copy, 50)) + \", 결과 \" + F(r.P50Ms);\n        if (!Near(r.P99Ms, RPct(copy, 99))) return what + \": P99Ms 기대 \" + F(RPct(copy, 99)) + \", 결과 \" + F(r.P99Ms);\n        if (!Near(r.OnePercentLowFps, RLow(copy))) return what + \": OnePercentLowFps 기대 \" + F(RLow(copy)) + \", 결과 \" + F(r.OnePercentLowFps);\n        if (r.FramesOverBudget != RCount(copy, budget)) return what + \": FramesOverBudget 기대 \" + RCount(copy, budget) + \", 결과 \" + r.FramesOverBudget;\n        if (r.LongestStreakOverBudget != RStreak(copy, budget)) return what + \": LongestStreakOverBudget 기대 \" + RStreak(copy, budget) + \", 결과 \" + r.LongestStreakOverBudget;\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"average-fps-frames-over-time\", () =>\n        {\n            foreach (var log in new[] { new double[] { 10, 30 }, new double[] { 8, 8, 8, 40 }, new double[] { 16, 16, 16 }, new double[] { 33.3 } })\n            {\n                double got = FramePacing.AverageFps((double[])log.Clone());\n                if (!Near(got, RAvg(log))) return \"AverageFps(\" + Show(log) + \"): 프레임 수 / 걸린 시간 = \" + F(RAvg(log)) + \" 이어야 하는데 결과 \" + F(got);\n            }\n            return null;\n        });\n        Run(\"percentile-nearest-rank\", () =>\n        {\n            var wiki = new double[] { 40, 15, 50, 20, 35 };\n            int[] ps = { 5, 30, 40, 50, 100 }; double[] exp = { 15, 20, 20, 35, 50 };\n            for (int i = 0; i < ps.Length; i++) { double got = FramePacing.PercentileMs((double[])wiki.Clone(), ps[i]); if (got != exp[i]) return \"PercentileMs(\" + Show(wiki) + \", \" + ps[i] + \"): 순위 ceil(\" + ps[i] + \" × 5 / 100) 의 값 \" + F(exp[i]) + \" 이어야 하는데 결과 \" + F(got); }\n            var hundred = new double[100]; for (int i = 0; i < 100; i++) hundred[i] = (i * 37 % 100) + 1; // 1 ~ 100 이 섞여 있다\n            foreach (int p in new[] { 1, 7, 50, 99, 100 }) { double got = FramePacing.PercentileMs((double[])hundred.Clone(), p); if (got != p) return \"PercentileMs(1 ~ 100 을 섞은 로그, \" + p + \"): 기대 \" + p + \", 결과 \" + F(got); }\n            return null;\n        });\n        Run(\"input-order-preserved\", () =>\n        {\n            var log = BossLog(); var before = (double[])log.Clone();\n            FramePacing.PercentileMs(log, 99);\n            string e = Unchanged(before, log, \"PercentileMs\");\n            if (e != null) return e;\n            FramePacing.OnePercentLowFps(log);\n            return Unchanged(before, log, \"OnePercentLowFps\");\n        });\n        Run(\"analyze-boss-log\", () => Check(BossLog(), 16.7, \"보스전 로그(100 프레임)\"));\n        Run(\"streak-is-chronological\", () =>\n        {\n            var log = new double[] { 20, 20, 10, 20, 20, 20, 10, 20 };\n            PacingReport r = FramePacing.Analyze(log, 16.7);\n            if (r.FramesOverBudget != 6 || r.LongestStreakOverBudget != 3) return \"Analyze(\" + Show(new double[] { 20, 20, 10, 20, 20, 20, 10, 20 }) + \", 예산 16.7): 초과 6 · 최장 연속 3 이어야 하는데 결과 \" + r.FramesOverBudget + \" · \" + r.LongestStreakOverBudget;\n            var eq = new double[] { 16.7, 20, 16.7, 16.7 };\n            PacingReport r2 = FramePacing.Analyze(eq, 16.7);\n            if (r2.FramesOverBudget != 1 || r2.LongestStreakOverBudget != 1) return \"Analyze([16.7, 20, 16.7, 16.7], 예산 16.7): 예산과 같은 프레임은 초과(>)가 아니므로 초과 1 · 최장 연속 1 이어야 하는데 결과 \" + r2.FramesOverBudget + \" · \" + r2.LongestStreakOverBudget;\n            return null;\n        });\n        Run(\"one-percent-low-slowest-ceil\", () =>\n        {\n            foreach (int n in new[] { 1, 99, 100, 101, 250 })\n            {\n                var log = new double[n]; for (int i = 0; i < n; i++) log[i] = 16 + (i % 7) * 0.5;\n                log[n / 2] = 50; if (n > 2) log[n - 1] = 40; if (n > 3) log[1] = 30;\n                double got = FramePacing.OnePercentLowFps(log);\n                if (!Near(got, RLow(log))) return \"OnePercentLowFps(길이 \" + n + \"): 가장 느린 \" + ((n + 99) / 100) + \" 개로 계산한 \" + F(RLow(log)) + \" 이어야 하는데 결과 \" + F(got);\n            }\n            return null;\n        });\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int t = 0; t < 300; t++)\n            {\n                int n = t < 20 ? t + 1 : rng.Next(1, 3001);\n                var log = new double[n];\n                for (int i = 0; i < n; i++) log[i] = rng.Next(20) == 0 ? rng.Next(170, 1200) / 10.0 : rng.Next(140, 180) / 10.0;\n                string e = Check(log, 16.7, \"무작위 로그 #\" + t + \" (길이 \" + n + \")\");\n                if (e != null) return e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "average-fps-frames-over-time",
+          "percentile-nearest-rank",
+          "input-order-preserved",
+          "analyze-boss-log",
+          "streak-is-chronological",
+          "one-percent-low-slowest-ceil",
+          "random-vs-reference"
+        ],
+        "note": "AverageFps 가 프레임 수 / 걸린 시간인지([10, 30] → 50 등), PercentileMs 가 nearest-rank 순위를 쓰는지(Wikipedia 예 {15, 20, 35, 40, 50} 의 P5·P30·P40·P50·P100, 1 ~ 100 을 섞은 로그의 P1·P7·P50·P99·P100), PercentileMs·OnePercentLowFps·Analyze 가 입력 로그의 순서를 바꾸지 않는지, 보스전 로그 100 프레임의 보고서 전체, 연속 초과가 시간 순서로 계산되는지와 예산과 같은 프레임을 초과로 세지 않는지(>), 1% low 의 k = ⌈N/100⌉(N = 1, 99, 100, 101, 250), 무작위 로그 300 개에서 참조 구현과의 일치를 검사합니다. public readonly struct PacingReport 의 생성자·속성과 public static class FramePacing 의 AverageFps(double[]), PercentileMs(double[], int), OnePercentLowFps(double[]), CountOver(double[], double), LongestStreakOver(double[], double), Analyze(double[], double) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "수정 전 코드를 로컬 .NET 8 에서 돌려 제보 숫자(60.0074, P99 100 ms, 최장 연속 7, 정렬된 로그)를 확인하고, 정답 통과·스타터 실패와 버그 하나만 남긴 세 변형·부동소수 올림·보간 백분위·FPS 산술 평균 1% low·>= 예산 오답이 모두 걸림을 채점기와 로컬에서 확인했으며, Wikipedia 백분위·조화 평균, CapFrameX 지표 글, Array.Sort 문서 원문과 대조했습니다."
+      },
+      "nextMission": "CapFrameX 가 설명하는 \"x% low integral\" 방식을 `OnePercentLowIntegralFps` 로 추가해 보세요. 프레임 시간을 큰 것부터 더해 가다 합이 전체 시간의 1% 에 처음 도달하거나 넘는 프레임의 시간을 FPS 로 바꿉니다. 보스전 로그에서 이 값과 이 연습의 1% low, 그리고 P1 FPS(= 1000 / 프레임 시간의 P99)를 나란히 출력해 세 정의가 얼마나 다른지 확인하고, 보고서에 어느 정의를 쓸지 팀 규칙 한 줄로 적어 보세요."
+    },
+    {
+      "id": "t9-interview-forest-10000-trees",
+      "track": "track9",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "나무 10,000 그루 그리기: 정적 배칭 · 메시 결합 · GPU 인스턴싱의 메모리, 컬링 단위, 머티리얼 제약",
+      "tags": [
+        "Gfx_Instancing",
+        "Gfx_Batching",
+        "Gfx_MeshCombine"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "unity-static-batching-build",
+        "unity-combine-meshes-manual",
+        "unity-rendermeshinstanced",
+        "unity-gpu-resident-drawer"
+      ],
+      "scenario": "Unity 6 URP 로 만드는 오픈 필드 게임입니다. 대상은 PC(DX12·Vulkan)와 콘솔이고, 사양이 낮은 Android 기기(OpenGL ES 3 만 지원하는 기기 포함)도 하위 품질로 지원해야 합니다. 숲 지역에 나무 메시 3 종(LOD0 기준 한 그루 3,000 정점, 머티리얼은 종마다 하나)을 모두 **10,000 그루** 배치합니다. 나무는 움직이지 않고, 바람 흔들림은 셰이더의 정점 애니메이션으로 처리합니다. 카메라에는 보통 1,500 그루 정도가 동시에 보입니다.\n\n팀에서 나온 안은 네 가지입니다.\n1. 나무를 전부 Static 으로 표시해 정적 배칭에 맡긴다.\n2. 툴에서 나무를 구역별 덩어리(청크)로 `Mesh.CombineMeshes` 해 둔다.\n3. 스크립트에서 나무 종마다 `Graphics.RenderMeshInstanced` 로 직접 인스턴싱한다.\n4. URP 의 GPU Resident Drawer 를 켠다.\n\n**질문: 나무 10,000 그루라는 이 경우에 정적 배칭, 메시 결합, GPU 인스턴싱(직접 호출 또는 GPU Resident Drawer)을 메모리, 컬링 단위, 머티리얼·메시 제약 세 기준으로 비교하고, 플랫폼별로 무엇을 고르겠습니까? 숫자로 어림해 주세요(정점 하나는 32 바이트로 가정: 위치 12 + 노멀 12 + UV 8).**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "나무가 Skinned Mesh Renderer(뼈 애니메이션)라면 배칭과 GPU 인스턴싱 모두 대상이 아니다. 이 시나리오처럼 셰이더로 흔드는 Mesh Renderer 여야 한다.",
+        "결합한 청크의 정점이 65,535 개를 넘으면 16비트 인덱스로 담을 수 없다. 32비트 인덱스는 일부 기기(예: Mali-400 GPU 의 Android 기기)에서 지원되지 않아 그 메시가 그려지지 않는다.",
+        "`Graphics.RenderMeshInstanced` 는 호출 하나의 인스턴스 전체를 하나의 바운드로 컬링한다. 넓은 구역에 흩어진 나무 511 그루를 한 호출에 넣으면 그 구역의 한 귀퉁이만 보여도 511 그루를 전부 그린다.",
+        "GPU Resident Drawer 는 OpenGL ES 에서 동작하지 않고, 그 경우 Unity 는 GPU 인스턴싱 없이 그린다.",
+        "정적 배칭한 메시 일부가 컬링되면 결합 버퍼에 빈칸이 생겨 한 번의 드로우로 그리지 못하고 나뉠 수 있다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "\"나무를 전부 Static 으로 표시하면 Unity 가 알아서 묶어 주니 제일 간단하다\"는 안을 숫자로 평가해 주세요. 메모리, 드로우 수, 컬링이 각각 어떻게 됩니까?",
+          "intent": "정적 배칭이 메시를 공유하지 않고 복제한다는 점, 매뉴얼이 바로 이 \"숲\" 상황을 경고한다는 점을 알고, 그 비용을 숫자로 바꿀 수 있는지 확인한다.",
+          "keyAnswer": "- **메모리:** 정적 배칭은 정적 메시를 월드 좌표로 바꿔 공유 정점·인덱스 버퍼로 합칩니다. 빌드 시점 정적 배칭 문서는 같은 메시여도 합친 메시를 저장하려고 GPU 메모리를 추가로 쓰고, 빽빽한 숲의 나무를 static 으로 표시하면 메모리에 큰 영향을 줄 수 있다고 그대로 경고합니다. 런타임 정적 배칭 문서의 같은 노트는 이 자리에 CPU 메모리라고 적어 두 페이지의 표현이 다르고, 매뉴얼은 그 차이를 설명하지 않습니다. 두 노트 모두 정적 배칭이 메모리를 너무 많이 쓰면 메시를 수동으로 결합하라고 덧붙이지만, 나무를 전부 결합하면 결합한 메시도 나무마다 정점을 복사하므로 아래 계산과 같은 규모가 됩니다(계산에서 나오는 추론). 가정한 숫자로는 정점 데이터만 10,000 × 3,000 × 32 B = 960,000,000 B, 약 960 MB(915.5 MiB)이고 인덱스 버퍼가 더해집니다. 같은 나무 3 종을 메시 한 벌씩만 두면 3 × 96,000 B, 약 288 KB 입니다.\n- **드로우 수:** 버퍼 하나에 정점이 64,000 개까지 들어가므로 3,000 정점 나무는 버퍼당 21 그루, 10,000 그루면 적어도 477 개 버퍼입니다(어림). 같은 머티리얼끼리만 합쳐지므로 종이 섞인 구역은 더 잘게 나뉩니다.\n- **컬링:** 정적 배칭은 메시를 개별로 컬링할 수 있지만, 문서대로 컬링된 메시가 버퍼에 빈칸을 남기면 한 번에 그리지 못하고 드로우가 나뉠 수 있습니다. 카메라가 돌 때마다 보이는 1,500 그루의 위치가 바뀌므로 드로우 수가 들쭉날쭉해집니다.\n- **URP 와의 관계:** \"Choose a method for optimizing draw calls\" 표는 URP 에서 배칭을 끄라고 하고, 정적 배칭은 BRG API·GPU Resident Drawer 와 호환되지 않는다고 적습니다. 그래서 이 안은 4번 안과 함께 쓸 수 없습니다.\n- **결론:** 960 MB 규모의 중복 정점은 PC 에서도 부담이고 하위 Android 에서는 받아들일 수 없으므로, 이 안은 소수의 큰 정적 구조물에나 쓰고 숲에는 쓰지 않습니다."
+        },
+        {
+          "question": "그렇다면 2번(청크 결합)과 3번(RenderMeshInstanced 직접 호출)은 어떻습니까? 청크 크기와 컬링을 어떻게 정하고, 직접 인스턴싱에서 컬링·LOD·호출 수는 누가 책임집니까?",
+          "intent": "\"드로우 콜을 줄인다\"는 같은 목표 아래 두 방법의 컬링 단위와 메모리가 정반대라는 점, 그리고 API 문서의 한도와 컬링 규칙을 정확히 아는지 확인한다.",
+          "keyAnswer": "- **청크 결합의 컬링:** 수동 결합 문서는 결합한 메시를 개별로 컬링하지 못해 일부만 화면에 있어도 전체를 그린다고 경고하고, 서로 가깝고 서로에 대해 움직이지 않는 메시(예: 서랍이 많은 찬장)에 맞는 기법이라고 설명합니다. 청크가 크면 드로우는 줄지만 화면 밖 나무까지 정점 셰이더(바람 애니메이션 포함)를 돌립니다. 청크가 작으면 컬링은 정확해지지만 드로우가 늡니다.\n- **청크 크기의 상한:** `Mesh.indexFormat` 문서로 16비트 인덱스는 정점 65,535 개까지이고 기본값입니다. 3,000 정점 나무는 청크당 21 그루(63,000 정점)가 한계이고, 100 그루 청크(300,000 정점)는 32비트 인덱스가 필요한데 문서는 Mali-400 처럼 32비트 인덱스를 지원하지 않는 기기에서 메시가 그려지지 않는다고 적습니다.\n- **청크 결합의 메모리와 제약:** 결합한 메시도 나무마다 정점을 복사하므로 메모리는 정적 배칭과 같은 규모입니다(같은 계산에서 나오는 추론). `CombineMeshes` 는 모든 메시가 같은 머티리얼이면 `mergeSubMeshes` 를 true 로 두라고 하고, 그렇지 않으면 메시마다 별도의 서브메시가 됩니다. 결합하면 나무 하나하나가 별도 렌더러가 아니게 되므로 나무 단위 LOD Group 은 쓸 수 없고, 청크 단위로 LOD 를 따로 만들어야 합니다(구조에서 나오는 추론).\n- **직접 인스턴싱의 컬링:** `RenderMeshInstanced` 문서는 Unity 가 바운드(직접 주지 않으면 모든 인스턴스로 계산한 바운드)로 호출 하나의 모든 인스턴스를 하나로 컬링하고 정렬한다고 적습니다. 그래서 넓게 흩어진 나무를 한 호출에 넣으면 그 묶음 안에서는 컬링이 사실상 사라지고, 호출 측이 프레임마다 보이는 나무만 골라(프러스텀 검사, 공간 분할 청크) 인스턴스 배열을 채워야 합니다. LOD 도 거리로 메시를 골라 LOD 별로 호출을 나누는 일을 직접 해야 합니다.\n- **호출 수와 메모리:** 한 번에 최대 1,023 개이고, 기본으로 objectToWorld·worldToObject 행렬 두 개를 쓰면 511 개입니다(셰이더에 `#pragma instancing_options assumeuniformscaling` 을 넣으면 worldToObject 를 뺄 수 있음). 보이는 1,500 그루가 한 종이라면 ⌈1500 / 511⌉ = 3 번입니다. 인스턴스 데이터는 행렬 두 개(128 B) × 10,000 = 1.28 MB 로 정적 배칭의 복제 정점과 비교할 수 없이 작습니다. 머티리얼에 `enableInstancing` 이 켜져 있지 않거나 플랫폼이 인스턴싱을 지원하지 않으면 이 API 는 InvalidOperationException 을 던집니다.\n- **저수준에서 보면:** Direct3D 11 의 `DrawIndexedInstanced` 는 같은 지오메트리를 재사용해 여러 오브젝트를 그리고, 정점별 데이터 버퍼와 인스턴스별 데이터 버퍼를 함께 씁니다. 메모리가 \"메시 한 벌 + 인스턴스별 작은 데이터\"가 되는 이유입니다."
+        },
+        {
+          "question": "4번 GPU Resident Drawer 로 가겠다면 전제 조건, 다른 방법과의 충돌, 바람 위상이나 색 변화 같은 나무별 차이, 그리고 OpenGL ES 기기의 폴백을 어떻게 다루겠습니까? 무엇으로 효과를 확인합니까?",
+          "intent": "GPU 주도 렌더링을 \"켜면 된다\"가 아니라 문서의 호환 조건·폴백·검증 절차까지 설계하는지, 그리고 컬링을 GPU 로 옮기는 이유를 아는지 확인한다.",
+          "keyAnswer": "- **무엇을 하나:** GPU Resident Drawer 는 BatchRendererGroup API 를 자동으로 써서 GameObject 를 GPU 인스턴싱으로 그리고 드로우 콜과 CPU 시간을 줄입니다. 같은 메시를 쓰는 오브젝트가 많은 큰 씬에서 가장 효과적이라고 문서가 적으므로 이 숲에 맞습니다. 자체 GPU 오클루전 컬링 시스템을 쓰고(Universal Renderer 에서 GPU Occlusion 을 켜야 함), 그 컬링은 오브젝트를 바운딩 구로 근사해 다운샘플한 깊이 버퍼로 보수적으로 판정합니다.\n- **전제 조건:** Forward+ 렌더링 경로, OpenGL ES 를 제외한 컴퓨트 셰이더 지원 그래픽스 API, Mesh Renderer 입니다. 오브젝트 단위로는 DOTS instancing 을 지원하는 셰이더, 실시간 GI 가 아닌 정적 GI, MaterialPropertyBlock 미사용, 카메라 렌더링 사이에 위치가 바뀌지 않을 것 등이 필요합니다. 켜면 BatchRendererGroup 셰이더 변형을 모두 빌드에 넣으므로 빌드 시간이 길어집니다.\n- **충돌:** URP 에서 정적 배칭은 GPU Resident Drawer 와 호환되지 않으므로 1번 안과 함께 쓰지 않습니다. 머티리얼의 GPU Instancing 체크박스도 URP 권장대로 끕니다(추가 셰이더 변형을 피하기 위함).\n- **나무별 차이:** MaterialPropertyBlock 으로 색이나 바람 위상을 넣는 방식은 호환 조건에 걸립니다. 매뉴얼은 같은 메시를 다른 프로퍼티로 그릴 때 Material Variant 를 쓰라고 하지만, 인스턴싱은 같은 메시·같은 머티리얼을 한 번에 그리므로 변형을 많이 만들수록 묶음이 갈린다는 점은 감안해야 합니다(인스턴싱 조건에서 나오는 추론). 위상처럼 연속적인 차이는 셰이더에서 오브젝트 위치 같은 인스턴스마다 다른 값으로 만들어 내는 방식을 검토합니다(일반적인 기법이며 이 문서들이 다루는 내용은 아닙니다).\n- **폴백:** OpenGL ES 기기에서는 문서대로 인스턴싱 없이 그려지므로 하위 품질 단계는 따로 설계합니다. 예를 들어 나무 수와 그림자 거리를 줄이고, 21 그루 이하의 작은 청크 결합이나 CPU 에서 컬링한 `RenderMeshInstanced` 를 후보로 놓고 대상 기기에서 측정해 정합니다.\n- **GPU 로 컬링을 옮기는 이유:** Microsoft 의 D3D12ExecuteIndirect 샘플은 컴퓨트 셰이더로 보이는 삼각형을 골라 그 드로우 인자를 버퍼에 모으고 ExecuteIndirect 로 처리합니다. CPU 가 수천 개 오브젝트를 하나씩 판정해 제출하지 않아도 된다는 같은 아이디어입니다.\n- **확인:** Frame Debugger 에서 Hybrid Batch Group 이라는 이름의 드로우를 확인하고, Rendering Statistics 로 FPS 가 오르고 CPU 처리 시간과 SetPass calls 가 줄었는지 봅니다. 문서는 Scene·Game 뷰보다 플레이 모드나 빌드에서 효과가 크게 나타난다고 적으므로 빌드로 측정합니다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**세 기준으로 본 차이.** 세 방법은 모두 드로우 콜을 줄이지만 무엇을 복제하고 어디서 컬링하는지가 다릅니다.\n\n| | 정적 배칭 | 메시 결합(청크) | GPU 인스턴싱 |\n|---|---|---|---|\n| 메모리 | 나무마다 정점 복제(추가 메모리를 빌드 시점 페이지는 GPU 메모리, 런타임 페이지는 CPU 메모리라고 적어 표현이 다름) | 나무마다 정점 복제(청크 단위) | 메시 한 벌 + 인스턴스별 데이터 |\n| 컬링 단위 | 메시마다, 다만 빈칸 때문에 드로우가 나뉠 수 있음 | 청크 전체 | 직접 호출은 호출 하나가 하나의 바운드, GPU Resident Drawer 는 GPU 컬링 |\n| 제약 | 같은 머티리얼, Mesh Renderer, 정적, 버퍼당 정점 64,000 | 같은 머티리얼이면 서브메시 병합, 16비트 인덱스면 정점 65,535 | 같은 메시·같은 머티리얼, Skinned Mesh 미지원, URP 커스텀 셰이더는 SRP Batcher 를 끄거나 비호환으로 만들어야 인스턴싱됨 |\n\n**숫자.** 가정(나무 3,000 정점, 정점 32 B)으로 정적 배칭이나 결합의 정점 데이터는 10,000 × 96,000 B = 960 MB 이고, 인스턴싱은 메시 세 벌 약 288 KB 에 인스턴스 행렬 1.28 MB(행렬 두 개 기준)입니다. Unity 매뉴얼이 정적 배칭 노트에 \"빽빽한 숲의 나무\" 예를 들어 메모리 영향을 경고하는 이유가 이 차이입니다.\n\n**컬링 단위가 GPU 비용을 정한다.** 결합 문서는 결합한 메시를 개별 컬링하지 못한다고 하고, `RenderMeshInstanced` 문서는 한 호출의 모든 인스턴스를 하나의 바운드로 컬링한다고 적습니다. 둘 다 \"보이지 않는 나무의 정점 셰이더 비용\"을 호출 측의 청크 설계나 직접 컬링으로 막아야 합니다. GPU Resident Drawer 는 가려진 나무를 GPU 오클루전 컬링(Universal Renderer 에서 GPU Occlusion 을 켰을 때)으로 걸러 냅니다.\n\n**URP 에서의 선택.** 매뉴얼의 권장표는 URP 에서 SRP Batcher 와 GPU Resident Drawer 를 켜고, 머티리얼의 GPU Instancing 체크박스와 배칭은 끄라고 합니다. 정적 배칭은 BRG·GPU Resident Drawer 와 호환되지 않습니다. 그래서 PC(DX12·Vulkan)와 콘솔은 Forward+ 경로에서 GPU Resident Drawer, OpenGL ES 하위 기기는 GPU Resident Drawer 가 인스턴싱 없이 그리므로 나무 수·거리를 줄인 별도 품질 단계와 작은 청크 결합 또는 CPU 컬링한 직접 인스턴싱을 측정해 고르는 것이 문서와 맞는 결론입니다.\n\n**흔한 실수.** 인스턴싱을 언제나 가장 빠른 방법으로 단정한다(매뉴얼은 드로우마다 속성을 모아 올리는 비용 때문에 이득이 플랫폼과 GPU 에 따라 다르다고 적습니다). 결합 청크를 크게 만들어 컬링을 잃는다. 32비트 인덱스를 아무 기기에서나 쓴다. 나무별 색을 MaterialPropertyBlock 으로 넣어 GPU Resident Drawer 호환을 깬다.\n\n### 흔한 오해\n- **\"정적 배칭은 같은 메시를 공유하니까 나무가 아무리 많아도 메모리는 메시 한 벌이면 된다.\"** — 매뉴얼은 같은 메시여도 합친 메시를 저장하려고 메모리를 추가로 쓴다고 적고, 빽빽한 숲의 나무를 static 으로 표시하면 메모리에 큰 영향을 줄 수 있다고 경고합니다. 빌드 시점 페이지는 GPU 메모리 [unity-static-batching-build], 런타임 페이지는 CPU 메모리 [unity-static-batching-enable] 라고 적어 두 페이지의 표현이 다르며, 매뉴얼은 그 차이를 설명하지 않습니다.\n- **\"`Graphics.RenderMeshInstanced` 에 나무를 다 넣으면 Unity 가 안 보이는 인스턴스는 알아서 컬링해 준다.\"** — 문서는 Unity 가 바운드로 호출 하나의 모든 인스턴스를 하나의 단위로 컬링하고 정렬한다고 적습니다. 인스턴스별 컬링은 호출 측이 인스턴스 배열을 채우기 전에 해야 합니다 [unity-rendermeshinstanced].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "정적 배칭을 정확히 설명했다: 같은 머티리얼을 쓰는 정적 메시를 월드 좌표의 공유 정점·인덱스 버퍼로 합치고(버퍼당 정점 64,000 개), Mesh Renderer 만 대상이며, 메시마다 컬링되지만 컬링된 메시가 버퍼에 빈칸을 남겨 한 번에 못 그리고 나뉠 수 있다.",
+            "points": 9,
+            "sourceId": "unity-batching-intro"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "수동 결합(Mesh.CombineMeshes 등)은 한 드로우로 그려지지만 개별 컬링이 안 되어, 일부만 보여도 결합한 메시 전체를 그린다고 설명했다.",
+            "points": 9,
+            "sourceId": "unity-combine-meshes-manual"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "GPU 인스턴싱의 조건(같은 메시·같은 머티리얼, 인스턴스별 속성 가능, Skinned Mesh Renderer 미지원)과, 드로우마다 속성을 모아 올리는 비용 때문에 이득이 플랫폼·GPU 에 따라 다르다는 점을 말했다.",
+            "points": 9,
+            "sourceId": "unity-gpu-instancing"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "Graphics.RenderMeshInstanced 는 호출 하나의 모든 인스턴스를 하나의 바운드로 컬링·정렬하고, 한 번에 최대 1,023 개(기본 행렬 두 개면 511 개)까지 그린다고 말했다.",
+            "points": 8,
+            "sourceId": "unity-rendermeshinstanced"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "메모리를 숫자로 비교했다: 정적 배칭·결합은 나무마다 정점을 복제해(가정 3,000 정점 × 32 B × 10,000 ≈ 960 MB, 정점 데이터만) 매뉴얼이 숲 예로 경고하는 수준이고, 인스턴싱은 메시 한 벌 + 인스턴스당 행렬(128 B 면 약 1.28 MB)이다.",
+            "points": 10,
+            "sourceId": "unity-static-batching-build"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "컬링 단위가 GPU 작업량을 정한다는 점을 방법별로 말했다: 결합 청크가 크면 안 보이는 나무까지 그리고, 직접 인스턴싱 호출은 호출 측이 컬링해야 하며, GPU Resident Drawer 는 자체 GPU 오클루전 컬링을 쓴다.",
+            "points": 10,
+            "sourceId": "unity-gpu-resident-drawer"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "청크 크기의 절충(드로우 수 대 컬링 낭비 대 16비트 인덱스의 정점 65,535 개 한도, 32비트 인덱스는 일부 기기 미지원)을 숫자로 따졌다.",
+            "points": 10,
+            "sourceId": "unity-mesh-indexformat"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "URP 의 권장을 말했다: SRP Batcher 와 GPU Resident Drawer 를 켜고 머티리얼의 GPU Instancing 체크박스와 배칭은 끈다. 정적 배칭은 BRG·GPU Resident Drawer 와 호환되지 않는다.",
+            "points": 10,
+            "sourceId": "unity-draw-call-choose"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "GPU Resident Drawer 의 조건(Forward+, 컴퓨트 셰이더 지원 API 이고 OpenGL ES 제외, Mesh Renderer, DOTS instancing 셰이더, MaterialPropertyBlock 금지, 빌드 시간 증가)과 Frame Debugger 의 Hybrid Batch Group 으로 확인하는 방법을 말했다.",
+            "points": 10,
+            "sourceId": "unity-grd-compatible"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "플랫폼별 결론(GPU Resident Drawer 가 되는 기기, 폴백 기기의 대안)과 근거를 한 흐름으로 제시했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "측정 계획을 제시했다(Rendering Statistics 의 SetPass calls·CPU 시간, Frame Debugger, 메모리 프로파일러로 메시 메모리 비교).",
+            "points": 7,
+            "sourceId": "unity-draw-call-choose"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "나무 10,000 그루를 모두 Static 으로 표시해 정적 배칭하는 안을 메모리 영향 없이 권했다.",
+            "penalty": -20,
+            "sourceId": "unity-static-batching-build"
+          },
+          {
+            "id": "d2",
+            "description": "결합한 메시가 나무 단위로 컬링된다고 하거나, RenderMeshInstanced 가 인스턴스마다 컬링해 준다고 답했다.",
+            "penalty": -15,
+            "sourceId": "unity-rendermeshinstanced"
+          },
+          {
+            "id": "d3",
+            "description": "URP 에서 정적 배칭과 GPU Resident Drawer 를 함께 켜면 둘 다 이득이라고 답했다.",
+            "penalty": -15,
+            "sourceId": "unity-draw-call-choose"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼의 빌드 시점·런타임 정적 배칭(각각 GPU·CPU 메모리라고 적은 노트를 원문 그대로 확인), 배칭 소개, 수동 결합, 드로우 콜 최적화 선택표, GPU 인스턴싱, GPU Resident Drawer·호환 조건·GPU 오클루전 컬링, RenderMeshInstanced·CombineMeshes·indexFormat 스크립팅 API 와 D3D11·D3D12 샘플 문서를 읽고, 정점 32 B 가정의 수치(960,000,000 B, 288 KB, 21 그루·477 버퍼, 1.28 MB, ⌈1500/511⌉ = 3)를 다시 계산했습니다."
+      },
+      "nextMission": "`Graphics.RenderMeshInstanced` 를 쓰는 숲 렌더러를 설계해 보세요. 맵을 한 변 64 m 격자로 나누고, 셀마다 나무 행렬 배열과 바운드를 미리 만든 뒤, 프레임마다 카메라 프러스텀과 겹치는 셀만 골라 종별로 최대 511 개씩 나눠 호출합니다. 셀 크기를 32·64·128 m 로 바꿔 가며 \"호출 수\"와 \"화면 밖인데 그려지는 나무 수\"를 기록해 표로 만들고, 같은 씬을 GPU Resident Drawer 로 그렸을 때의 SetPass calls·CPU 시간과 비교해 보세요."
     }
   ]
 }
