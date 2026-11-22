@@ -86,3 +86,21 @@
 **틀려서 고친 것.** Type Object는 GPP 상속 규칙의 의역이 하나로 합친 조건(체력이 0이 아니거나 공격이 NULL이 아니면)처럼 읽혔고, 경계 사례 하나가 PaperTroll을 시나리오 표와 다르게 정의하고 있어 고쳤다. 이벤트 큐 해설은 빈칸 하나를 남긴 Capacity+1 배열도 "맞다"고 했지만 명세 1과 모순이라 고쳤고, 슬롯 0부터 병합 검사를 시작하는 답을 랩어라운드 병합 케이스가 잡지 못해(다른 케이스는 잡았다) 케이스를 강화했다. 메멘토 디버깅은 대안 수정 문장이 public 생성자의 복사를 무시해 이중 복사로 이어지는 점을 고쳤고, 확인할 수 없던 c7("…을 안다")을 바꿨다. 레거시 리팩터링은 Fowler 의역이 어긋나 있어("많은 이가 낭비로 본다" 대 "people often balk… may appear to be a waste") 고쳤고 Feathers 본인의 글을 출처로 더했다. Unity 아키텍처는 Addressables 교체 규칙에 "번들의 마지막 에셋" 조건이 빠져 있었고, MVP 조언을 e-book 페이지에 잘못 귀속했으며, 채점 `sourceId` 둘이 기준을 뒷받침하지 않아 모두 고쳤다. 예외 이름도 밝혔다. 에디터에서는 MissingReferenceException("has been destroyed but you are still trying to access it"), Unity 6 이상의 빌드에서는 NullReferenceException이다.
 
 **끝까지 확인하지 못한 것.** Unity에는 MissingReferenceException의 스크립팅 API 페이지가 없어(404) 예외 이름은 Unity 지원 문서에 기댄다.
+
+## 최종 점검 (2026-11-23)
+
+배포된 30문제 전체를 점검 에이전트 3개(10문제씩)가 차례로 다시 확인하고, 점검에 참여하지 않은 검증 에이전트 2개(15문제씩)가 그 변경을 다시 확인했다. 두 검증 모두 통과 판정을 냈다.
+
+**한 일.** 흔한 오해가 없던 24문제에 "### 흔한 오해" 절을 넣고(출처나 .NET 8 실행으로 뒷받침), 모든 채점 항목·감점에 `sourceId`나 `basis`를 붙이고, `sourceRefs`가 4개를 넘던 문제(최대 11개)를 4개로 줄였다. 새 근거로 Microsoft Learn(아키텍처 원칙, TimeProvider, nullable, Dictionary, AsReadOnly, 단위 테스트 모범 사례, WPF 라우트 이벤트 등), dotnet/runtime release/8.0 `ArraySortHelper.cs`·`Array.cs`·`List.cs`·`Queue.cs`, CMU 17-214 3·4·7·9·10강 슬라이드를 더했다.
+
+**확인한 것.** 인용한 페이지를 모두 다시 받아 대조했다(Game Programming Patterns, Unity 6000.0·Entities 1.3, Gaffer On Games, Fowler, Feathers, refactoring.com, VContainer, Wikipedia 등). 로컬 .NET 8에서 숨은 테스트(모범 답안 통과·초기 코드 실패)와 틀린 변형, 본문 수치(델리게이트 `-=`, `List.Sort` 안정성(3개 원소 2,000번 중 225번 순서 바뀜, 17개부터 모두), tr-TR 문화권, 박싱 할당, `lock` 재진입 등)를 다시 실행했다. 커밋 전 `check-tests.js`를 판정 서버에서 전부 다시 돌려 통과했다.
+
+**틀려서 고친 것.**
+- `t10-impl-chain-of-responsibility-input`: 명세가 요구하는 `Remove(null)` 처리를 틀린 풀이가 통과하고 있어 테스트에 추가했다(모범 답안 7/7, 초기 코드 0/7). WPF "Handled" 조언을 문서의 표현("고려하라")보다 강하게 쓴 곳을 고쳤다.
+- 오브젝트 풀: Unity `collectionCheck`가 이중 반환을 잡는다는 설명에 "에디터에서만 동작한다"는 조건을 넣었다.
+- 커맨드 리바인드·리플레이: 부동소수 비결정성의 원인을 Gaffer On Games가 말하는 대로(컴파일러, OS, 명령어 집합) 고쳤다.
+- 전략 패턴: 인용한 Unity 전자책 페이지는 전략 패턴을 다루지 않아 CMU 17-214 10강과 Dictionary 문서로 바꿨다. 싱글턴·SOLID: ScriptableObject는 빌드에서 저장된 에셋 데이터만 읽는다는 점, LSP가 모든 하위 타입에 적용된다는 점을 바로잡았다.
+- 스탯 수정자: 캐스트는 버림(114.99999999999999 → 114)이고 오버플로는 기본으로 검사하지 않는다는 점을 밝혔다. 플라이웨이트: intrinsic/extrinsic 용어를 GoF의 것으로 밝혔다.
+- 테스트가 확인하지 않는 동작을 "테스트로 확인"이라 한 채점 항목(HSM d2, 중재자 c9, 메멘토 c6)과 근거가 되지 않는 할당 API 문서를 인용한 항목을 `basis`로 바로잡았다. Dirty Flag의 "O(d)를 반드시 치른다"를 버전 비교 방식에 한정했다.
+
+**끝까지 확인하지 못한 것.** Unity 플레이어 빌드에서의 동작은 Unity를 설치하지 않아 문서로만 확인했다.
