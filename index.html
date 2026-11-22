@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GameDev Mentor</title>
+<meta name="description" content="주니어 게임 프로그래머를 위한 클릭형 학습 멘토 (Unity · C# · C++ · 게임 알고리즘)">
+<meta name="theme-color" content="#0b101c">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GD Mentor">
+<script>try{var t=localStorage.getItem('gdm.theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" id="brand"><span class="brand-mark" aria-hidden="true">&gt;_</span>GameDev Mentor</a>
+    <nav class="tabs" aria-label="화면 전환">
+      <button class="tab" data-view="study">학습</button>
+      <button class="tab" data-view="notes">취약점</button>
+      <button class="tab" data-view="settings">설정</button>
+      <button class="tab theme" id="btn-theme" aria-label="다크/라이트 전환" title="다크/라이트 전환">☾</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="wrap">
+  <!-- 학습: 선택 화면 -->
+  <section id="view-setup" hidden>
+    <div id="resume" hidden></div>
+
+    <div class="group">
+      <h2><span class="step">1</span>기기 <small>화면 크기로 자동 선택됨</small></h2>
+      <div class="opts cols-3" id="opt-device" role="radiogroup" aria-label="기기"></div>
+    </div>
+    <div class="group">
+      <h2><span class="step">2</span>트랙</h2>
+      <div class="opts cols-2" id="opt-track" role="radiogroup" aria-label="트랙"></div>
+    </div>
+    <div class="group">
+      <h2><span class="step">3</span>모드</h2>
+      <div class="opts cols-2" id="opt-mode" role="radiogroup" aria-label="모드"></div>
+    </div>
+    <div class="group">
+      <h2><span class="step">4</span>주제 <small>고르지 않으면 멘토가 정합니다</small></h2>
+      <div class="chips" id="opt-topic"></div>
+    </div>
+    <div class="group">
+      <h2><span class="step">5</span>레퍼런스 첨부 <small>선택 · 이 자료에 근거해 출제</small></h2>
+      <label class="drop" id="ref-drop" for="ref-input">
+        <input type="file" id="ref-input" multiple accept=".md,.txt,.cs,.cpp,.h,.hpp,.hlsl,.shader,.json" hidden>
+        <span><b>파일을 끌어다 놓거나 눌러서 선택</b><br><span class="muted small">repomix로 묶은 .md, 공식 문서 요약 .txt, .cs / .cpp 소스</span></span>
+      </label>
+      <div class="chips" id="ref-list"></div>
+    </div>
+
+    <div class="start-bar">
+      <div class="summary" id="summary"></div>
+      <div class="start-btns">
+        <button class="btn primary big" id="btn-start">새 문제 시작하기</button>
+        <button class="btn big" id="btn-start-weak">내 취약점 기반 변형 문제</button>
+      </div>
+      <p class="muted small" id="engine-hint"></p>
+    </div>
+  </section>
+
+  <!-- 학습: 세션 화면 -->
+  <section id="view-session" hidden>
+    <div class="session-head">
+      <div class="chips static" id="session-chips"></div>
+      <button class="btn ghost small" id="btn-exit">← 선택 화면</button>
+    </div>
+    <div class="session-grid">
+      <div class="pane-left">
+        <div id="thread" class="thread" aria-live="polite"></div>
+        <div id="busy" class="busy" hidden><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>멘토가 생각하는 중…</span></div>
+        <div class="actions" id="actions">
+          <button class="btn hint" data-hint="1">힌트 1 · 개념/반례</button>
+          <button class="btn hint" data-hint="2">힌트 2 · 지점 축소</button>
+          <button class="btn hint" data-hint="3">힌트 3 · 의사코드</button>
+          <button class="btn" id="btn-giveup">포기 · 정답 보기</button>
+          <button class="btn" id="btn-next">다음 문제</button>
+          <button class="btn" id="btn-wrap">오답노트 생성</button>
+        </div>
+      </div>
+
+      <form class="pane-right composer" id="composer">
+        <div class="composer-bar">
+          <div class="seg" role="tablist" aria-label="입력 방식">
+            <button type="button" class="seg-b" data-input="text">답변</button>
+            <button type="button" class="seg-b" data-input="code">코드 에디터</button>
+          </div>
+          <div class="composer-tools">
+            <select id="lang" aria-label="언어" hidden>
+              <option value="csharp">C#</option>
+              <option value="cpp">C++</option>
+            </select>
+            <button type="button" class="btn small" id="btn-starter" hidden>스타터 코드 채우기</button>
+            <label class="btn small" for="img-input" id="img-label">이미지 첨부</label>
+            <input type="file" id="img-input" accept="image/*" multiple hidden>
+          </div>
+        </div>
+        <div class="editor" id="editor">
+          <pre class="gutter" id="gutter" aria-hidden="true" hidden>1</pre>
+          <textarea id="answer" rows="4" placeholder="답변을 입력하세요" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+        </div>
+        <div class="thumbs" id="thumbs" hidden></div>
+        <div class="composer-foot">
+          <span class="muted small" id="composer-tip"></span>
+          <button class="btn primary" id="btn-send" type="submit">제출</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 취약점 대시보드 -->
+  <section id="view-notes" hidden>
+    <div class="page-head">
+      <h1>취약점 트래커</h1>
+      <p class="muted">세션에서 “오답노트 생성”을 누르면 취약 태그가 여기에 쌓이고, 변형 문제 출제에 쓰입니다.</p>
+    </div>
+    <div class="row-btns">
+      <button class="btn" id="btn-copy-notes">Google Docs용 마크다운 복사</button>
+      <button class="btn" id="btn-export-notes">JSON 백업 내보내기</button>
+      <label class="btn" for="import-input">JSON 불러오기</label>
+      <input type="file" id="import-input" accept=".json,application/json" hidden>
+    </div>
+    <div id="weak-list" class="stack"></div>
+    <details class="panel">
+      <summary>태그 직접 추가</summary>
+      <div class="chips" id="preset-tags"></div>
+    </details>
+    <details class="panel">
+      <summary>Gemini 앱에서 받은 오답노트 붙여넣기 (프롬프트 복사 모드)</summary>
+      <textarea id="manual-text" rows="6" placeholder="Gemini가 정리해 준 오답노트 답변 전체를 그대로 붙여넣으세요. 끝에 있는 JSON 블록을 읽어 저장합니다."></textarea>
+      <div class="composer-foot"><span></span><button class="btn primary" id="btn-save-manual" type="button">저장</button></div>
+    </details>
+    <div class="page-head"><h2 class="h-sub">세션 기록</h2></div>
+    <div id="log-list" class="stack"></div>
+  </section>
+
+  <!-- 설정 -->
+  <section id="view-settings" hidden>
+    <div class="page-head"><h1>설정</h1></div>
+    <div class="panel">
+      <h3>AI 연결 방식</h3>
+      <div class="opts cols-2" id="opt-engine" role="radiogroup" aria-label="AI 연결 방식"></div>
+    </div>
+    <div class="panel" id="api-panel">
+      <h3>Gemini API</h3>
+      <label class="field" for="api-key">API 키
+        <input id="api-key" type="password" autocomplete="off" placeholder="Google AI Studio에서 발급한 키">
+      </label>
+      <p class="muted small">키는 이 기기의 브라우저에만 저장되고 Google API로만 전송됩니다. 기기마다 한 번씩 입력하세요. <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">키 발급 페이지</a></p>
+      <div class="two">
+        <label class="field" for="deep-model">심층 모델 <span class="muted small">출제 · 꼬리질문 · 코드 리뷰</span>
+          <input id="deep-model" type="text" list="model-list" autocomplete="off" placeholder="gemini-4-neon">
+        </label>
+        <label class="field" for="light-model">경량 모델 <span class="muted small">힌트 · 오답노트 정리</span>
+          <input id="light-model" type="text" list="model-list" autocomplete="off" placeholder="gemini-4-hydrogen">
+        </label>
+      </div>
+      <datalist id="model-list"></datalist>
+      <div class="row-btns">
+        <button class="btn primary" id="btn-save-api" type="button">저장</button>
+        <button class="btn" id="btn-test-api" type="button">연결 테스트 · 모델 목록 불러오기</button>
+      </div>
+      <p class="small" id="api-status" role="status"></p>
+    </div>
+    <div class="panel">
+      <h3>데이터</h3>
+      <p class="muted small">학습 기록과 취약점은 이 기기에만 저장됩니다. 다른 기기로 옮기려면 취약점 탭에서 JSON으로 내보낸 뒤 불러오세요.</p>
+      <div class="row-btns"><button class="btn danger" id="btn-clear" type="button">이 기기의 기록 모두 지우기</button></div>
+    </div>
+    <p class="muted small center">홈 화면에 추가하면 앱처럼 실행됩니다</p>
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="./prompts.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

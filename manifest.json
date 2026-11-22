@@ -1,0 +1,16 @@
+{
+  "name": "GameDev Mentor",
+  "short_name": "GD Mentor",
+  "description": "주니어 게임 프로그래머를 위한 클릭형 학습 멘토 (Unity · C# · C++ · 게임 알고리즘)",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b101c",
+  "theme_color": "#0b101c",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
