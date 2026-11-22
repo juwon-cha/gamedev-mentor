@@ -3005,6 +3005,800 @@
         "note": "채점기에서 모범 답안과 std::allocator·1.5배 성장 대안 정답이 8/8, 해제 후 인자 읽기·소멸자 누락·고정 개수 증가 오답이 해당 케이스에서 실패함을 확인하고, 성장 수치를 채점 환경과 로컬 MSVC 19.41에서 측정해 libstdc++·microsoft/STL 소스와 대조했습니다."
       },
       "nextMission": "`DynArray`의 강한 예외 보장을 채점할 수 있게 만드세요. 복사 생성자가 정해진 횟수 뒤에 예외를 던지는 `ThrowOnCopy` 타입(이동 생성자는 `noexcept(false)`)을 만들고, 재할당 도중 예외가 나도 `size()`·`capacity()`·원소 값이 호출 전과 같고 누수가 없는지 확인하는 테스트 세 개를 작성합니다. 그다음 `insert(index, value)`를 추가해 보고, 중간 삽입에서는 같은 보장을 지키기가 왜 더 어려운지(이미 옮긴 원소를 되돌려야 하는 경우)를 두 줄로 정리합니다."
+    },
+    {
+      "id": "t2-debug-exception-safety-loot-bag",
+      "track": "track2",
+      "mode": "debugging",
+      "difficulty": "Hard",
+      "title": "상자를 다시 열면 아이템이 복제된다: 원소 복사가 던질 때 깨지는 가방과 기본·강한 예외 보장",
+      "tags": [
+        "Cpp_Exception_Safety",
+        "Cpp_Strong_Guarantee",
+        "Cpp_Class_Invariant"
+      ],
+      "language": "cpp",
+      "sourceRefs": [
+        "cppref-exceptions",
+        "cppref-vector-push-back",
+        "cppref-vector-insert",
+        "ms-learn-exception-safety"
+      ],
+      "scenario": "MMORPG의 파티 인벤토리입니다. 파티원마다 `LootBag<Item>`이 하나씩 있고, 아이템은 이름 문자열과 접사(affix) 목록을 가지므로 **복사할 때 메모리를 할당**합니다. 콘솔 빌드의 할당자는 메모리 예산을 넘으면 `std::bad_alloc`을 던지고, 게임은 그 예외를 잡아 \"가방이 가득 찼습니다\"를 띄운 뒤 그대로 진행합니다. 무게 표시줄이 매 프레임 읽기 때문에 가방은 무게 합계를 `totalWeight_`에 캐시해 둡니다. 가방의 **불변식**은 \"`TotalWeight()`는 담긴 아이템 `weight`의 합과 같다\"입니다.\n\nQA가 메모리 예산을 낮춘 빌드로 재현한 버그는 세 가지입니다.\n\n- 아이템을 줍다가 실패하면 무게 표시줄이 실제보다 무거워지고 이동 속도가 떨어진다.\n- 보물 상자를 열다가 실패하면 일부 아이템만 들어온다. 상자는 실패하면 \"다시 열기\"를 허용하므로, 다시 열면 앞쪽 아이템이 **두 번** 들어온다(아이템 복제).\n- 파티원에게 아이템을 넘기다가 실패하면 아이템이 **양쪽 가방에서 모두 사라진다**.\n\ncppreference는 함수가 예외를 던졌을 때 남는 상태를 이렇게 구분합니다.\n\n- **기본 예외 보장**: 함수가 예외를 던지면 프로그램은 유효한 상태다. 자원이 새지 않고, 모든 객체의 불변식이 유지된다.\n- **강한 예외 보장**: 함수가 예외를 던지면 프로그램의 상태는 호출 직전의 상태로 되돌아간다(예: `std::vector::push_back`).\n\n**해야 할 일**\n1. `Add`, `AddAll`, `TransferTo` 각각에 대해 \"어느 줄에서 예외가 나면 그때 무엇이 이미 바뀌어 있는가\"를 적고, 그 결과가 기본 보장조차 못 지키는 것(불변식이 깨짐)인지, 기본 보장은 지키지만 강한 보장은 아닌 것인지 구분하세요.\n2. 세 함수가 모두 강한 예외 보장을 제공하도록 고치세요. 예외는 삼키지 말고 그대로 호출자에게 전파합니다.",
+      "constraints": [
+        "C++17 표준 라이브러리만 사용합니다. `LootBag`의 공개 멤버 함수(`Size`, `TotalWeight`, `At`, `Add`, `AddAll`, `TransferTo`) 시그니처와 `static_assert`는 유지하고, private 멤버와 보조 함수는 자유롭게 추가합니다.",
+        "`Add`, `AddAll`, `TransferTo`는 강한 예외 보장을 제공합니다. 예외가 나가면 그 호출이 건드린 모든 가방(자기 자신과 `dest`)의 아이템, 순서, `TotalWeight()`가 호출 전과 같아야 합니다. 용량(`capacity`)과 원소의 주소는 비교하지 않습니다.",
+        "예외를 잡았다면 같은 예외를 그대로 다시 던집니다(`throw;`). 삼키거나 다른 예외로 바꾸지 않습니다.",
+        "성능: `AddAll`은 상자 아이템 k개에 대해 아이템 복사가 k번 이하이고 분할 상환 O(k)입니다. 가방 전체를 복사해 교환하는 방식(copy-and-swap)은 쓰지 않습니다. `TransferTo`는 아이템 복사가 1번 이하이고, 가방 크기 n에 대해 O(n)입니다.",
+        "`T`의 이동 생성·이동 대입은 `noexcept`이고(`static_assert`), 소멸자는 던지지 않습니다. 복사 생성과 복사 대입은 던질 수 있습니다.",
+        "`TransferTo`는 남은 아이템의 순서를 유지합니다(swap-and-pop 금지). 범위 밖 `index`는 `std::out_of_range`를 던지고 아무것도 바꾸지 않습니다. `dest`가 `*this`인 호출은 없습니다(사전 조건).",
+        "표준이 강한 보장을 약속하지 않는 연산(중간 삽입, 범위 `insert`)이 실제로 보여 주는 동작에 기대어 강한 보장을 주장하지 않습니다."
+      ],
+      "starterCode": "#include <cstddef>\n#include <stdexcept>\n#include <type_traits>\n#include <utility>\n#include <vector>\n\n// Loot bag of one party member, shown in the inventory UI. T is an item type with an\n// int member `weight`. Copying an item can throw (items own strings and affix lists,\n// and the console build's allocator throws std::bad_alloc when the budget runs out).\n// The encumbrance bar reads TotalWeight() every frame, so the sum is cached.\ntemplate <class T>\nclass LootBag {\n    static_assert(std::is_nothrow_move_constructible<T>::value && std::is_nothrow_move_assignable<T>::value,\n                  \"items must move without throwing\");\n\npublic:\n    std::size_t Size() const noexcept { return items_.size(); }\n    int TotalWeight() const noexcept { return totalWeight_; }\n    const T& At(std::size_t index) const { return items_.at(index); }\n\n    // Puts a copy of item at the end of the bag.\n    void Add(const T& item) {\n        totalWeight_ += item.weight;\n        items_.push_back(item);\n    }\n\n    // Opening a chest: every item of the drop goes into the bag, in drop order.\n    void AddAll(const std::vector<T>& drop) {\n        for (const T& item : drop) {\n            Add(item);\n        }\n    }\n\n    // Hands the item at index over to another party member's bag (dest is never *this).\n    // The items left behind keep their order. Throws std::out_of_range for a bad index.\n    void TransferTo(LootBag& dest, std::size_t index) {\n        T item = std::move(items_.at(index));\n        items_.erase(items_.begin() + static_cast<std::ptrdiff_t>(index));\n        totalWeight_ -= item.weight;\n        dest.Add(item);\n    }\n\nprivate:\n    std::vector<T> items_;\n    int totalWeight_ = 0;\n};\n",
+      "edgeCases": [
+        "첫 번째 복사에서 실패: 아무것도 들어가지 않고 `TotalWeight()`도 그대로여야 합니다.",
+        "`AddAll`의 마지막 아이템 복사에서 실패: 앞서 들어간 k−1개를 모두 되돌려야 합니다.",
+        "빈 상자(`drop`이 비어 있음)의 `AddAll`.",
+        "`TransferTo`에서 받는 쪽 가방에 넣는 복사가 실패: 넘겨주는 가방에 아이템이 그대로 있어야 합니다.",
+        "범위 밖 `index`(빈 가방의 0 포함)."
+      ],
+      "hints": [
+        "실패 입력부터 따라가 보세요. 아이템 `[id1(무게 5), id2(무게 7)]`이 든 가방에 `Add(id3(무게 4))`를 하는데 복사 생성자가 첫 호출에서 `std::bad_alloc`을 던진다고 합시다. 예외가 함수를 빠져나간 순간 `Size()`와 `TotalWeight()`는 각각 얼마인가요? 같은 방법으로 상자 아이템 4개 중 두 번째 복사에서 실패하는 `AddAll`, 받는 쪽 가방에 넣는 복사에서 실패하는 `TransferTo`를 한 줄씩 따라가 보세요.",
+        "각 함수의 줄마다 \"실패할 수 있는 연산\"(아이템 복사, 메모리 할당)과 \"실패하지 않는 연산\"(`int` 덧셈, `noexcept` 이동, `pop_back`, 이동 대입만 쓰는 `erase`)을 표시해 보세요. 문제는 실패할 수 있는 연산보다 **앞에** 상태를 바꾸는 줄이 있다는 것입니다. `Add`는 두 줄의 순서, `AddAll`은 앞에서 성공한 부분을 되돌리는 장치의 부재, `TransferTo`는 \"지우기\"와 \"넣기\"의 순서가 문제입니다. cppreference의 `push_back`과 `erase` 문서에서 각각 언제 예외가 날 수 있고, 났을 때 무엇이 보장되는지 확인하세요.",
+        "구조만 적으면 다음과 같습니다.\n\n```\nAdd(item):\n    <던질 수 있는 단계: 끝에 복사해 넣기 — 성공하면 하나 추가, 실패하면 변화 없음>\n    <던지지 않는 단계: 캐시 갱신>\n\nAddAll(drop):\n    oldSize = <현재 크기>\n    added = 0\n    try:\n        for item in drop:\n            <끝에 복사해 넣고 added에 무게를 더한다>\n    catch (...):\n        <크기가 oldSize가 될 때까지 되돌린다 — 던지지 않는 연산만>\n        <같은 예외를 다시 던진다>\n    <캐시에 added를 반영한다 — 커밋>\n\nTransferTo(dest, index):\n    <index 검사 — 실패해도 아직 아무것도 바뀌지 않음>\n    <받는 쪽에 먼저 넣는다 — 실패할 수 있는 마지막 단계>\n    <이제 던지지 않는 연산만으로: 이쪽에서 지우고 캐시를 갱신>\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "#include <cstddef>\n#include <stdexcept>\n#include <type_traits>\n#include <utility>\n#include <vector>\n\n// Loot bag of one party member, shown in the inventory UI. T is an item type with an\n// int member `weight`. Copying an item can throw (items own strings and affix lists,\n// and the console build's allocator throws std::bad_alloc when the budget runs out).\n// The encumbrance bar reads TotalWeight() every frame, so the sum is cached.\n//\n// Invariant: totalWeight_ == sum of items_[i].weight.\n// Add, AddAll and TransferTo give the strong guarantee: if they throw, every bag they\n// touched has the same items, order and TotalWeight() as before the call.\ntemplate <class T>\nclass LootBag {\n    static_assert(std::is_nothrow_move_constructible<T>::value && std::is_nothrow_move_assignable<T>::value,\n                  \"items must move without throwing\");\n\npublic:\n    std::size_t Size() const noexcept { return items_.size(); }\n    int TotalWeight() const noexcept { return totalWeight_; }\n    const T& At(std::size_t index) const { return items_.at(index); }\n\n    // Puts a copy of item at the end of the bag.\n    void Add(const T& item) {\n        // Fix 1: do the step that can throw first. push_back at the end has the strong\n        // guarantee, and the cache is updated only after it succeeded (int += cannot throw).\n        items_.push_back(item);\n        totalWeight_ += item.weight;\n    }\n\n    // Opening a chest: every item of the drop goes into the bag, in drop order.\n    void AddAll(const std::vector<T>& drop) {\n        // Fix 2: all or nothing. Each push_back either adds one item or changes nothing;\n        // if a later copy throws, the items added by this call are popped again\n        // (pop_back cannot throw) and the exception goes on to the caller.\n        // No reserve(oldSize + drop.size()) here: called on every chest it would grow\n        // the capacity linearly instead of geometrically.\n        const std::size_t oldSize = items_.size();\n        int addedWeight = 0;\n        try {\n            for (const T& item : drop) {\n                items_.push_back(item);\n                addedWeight += item.weight;\n            }\n        } catch (...) {\n            while (items_.size() > oldSize) {\n                items_.pop_back();\n            }\n            throw;\n        }\n        totalWeight_ += addedWeight;  // commit: cannot throw\n    }\n\n    // Hands the item at index over to another party member's bag (dest is never *this).\n    // The items left behind keep their order. Throws std::out_of_range for a bad index.\n    void TransferTo(LootBag& dest, std::size_t index) {\n        // Fix 3: copy into dest BEFORE removing from this bag. Until dest.Add returns,\n        // nothing has changed anywhere (Add is strong). After that only non-throwing\n        // steps remain: erase moves the later items with T's noexcept move assignment.\n        const T& item = items_.at(index);  // may throw out_of_range: nothing changed yet\n        const int weight = item.weight;\n        dest.Add(item);\n        items_.erase(items_.begin() + static_cast<std::ptrdiff_t>(index));\n        totalWeight_ -= weight;\n    }\n\nprivate:\n    std::vector<T> items_;\n    int totalWeight_ = 0;\n};\n",
+      "explanation": "**용어부터 정확히**\n\ncppreference의 예외 안전성 절은 흔히 쓰이는 네 단계를 정리합니다. 던지지 않음(nothrow), 강한 보장(던지면 호출 직전 상태로 되돌아감, 예: `vector::push_back`), 기본 보장(던지면 유효한 상태: 자원 누수 없음, 모든 객체의 불변식 유지), 보장 없음. 이 이름들은 C++ 커뮤니티의 용어이고, 표준은 함수마다 \"예외가 나면 효과가 없다\" 같은 문구로 보장을 적습니다. Microsoft의 예외 안전 설계 문서는 강한 보장을 \"완전히 성공하거나 아무 효과가 없는\" 커밋/롤백 트랜잭션으로, 기본 보장을 \"메모리가 새지 않고 객체는 쓸 수 있는 상태이지만 데이터는 바뀌었을 수 있음\"으로 설명합니다. 고치는 원칙은 하나입니다. **실패할 수 있는 일을 먼저 하고, 상태를 바꾸는 일은 실패하지 않는 연산으로 나중에 한다. 그 순서가 불가능하면 되돌리는 경로를 실패하지 않는 연산만으로 만든다.**\n\n**버그 1 — `Add`: 캐시를 먼저 바꿈 (기본 보장 위반)**\n\n`totalWeight_ += item.weight;` 다음 줄의 `push_back`에서 복사가 던지면, 아이템은 들어가지 않았는데 무게만 늘어 불변식이 깨집니다. 실패 입력: `[id1(w5), id2(w7)]`에 `Add(id3(w4))`, 첫 복사가 실패 → `Size()` 2, `TotalWeight()` 16(기대 12). 수정: 끝에 원소 하나를 넣는 `push_back`은 강한 보장이므로(cppreference) 먼저 하고, 성공한 뒤에 던질 수 없는 `int` 덧셈을 합니다.\n\n**버그 2 — `AddAll`: 앞에서 성공한 부분이 남음 (강한 보장 위반)**\n\n`Add`를 고쳐도 루프는 앞서 성공한 `Add`를 되돌리지 않습니다. 실패 입력: `[1, 2]`에 상자 `[10, 11, 12, 13]`, 두 번째 복사가 실패 → `[1, 2, 10]`(기대 `[1, 2]`). 이 상태는 불변식이 맞으므로 **기본 보장은 지키지만** 강한 보장은 아니고, 상자의 \"다시 열기\"와 만나면 아이템 10이 두 번 들어옵니다. `Add`가 틀린 시작 코드에서는 첫 복사 실패만으로 무게가 15가 되어 기본 보장도 깨집니다. 두 버그가 겹쳐 있는 셈입니다. 수정: 시작 크기를 기억하고, 복사가 던지면 이번 호출이 넣은 원소를 `pop_back`으로 빼고 `throw;`로 같은 예외를 다시 던집니다. 무게는 지역 변수에 모았다가 루프가 끝난 뒤 한 번에 반영합니다. `pop_back`과 `int` 연산은 던지지 않으므로 **되돌리는 경로 자체가 실패할 수 없고**, 그래서 강한 보장이 성립합니다. cppreference도 강한 보장을 주는 함수가 사용하는 연산에는 실패하지 않음(nofail)이 기대된다고 적습니다.\n\n**버그 3 — `TransferTo`: 되돌릴 수 없는 일을 먼저 함 (강한 보장 위반, 아이템 소실)**\n\n원본에서 아이템을 꺼내 지우고 무게를 뺀 뒤에야 `dest.Add`가 복사합니다. 그 복사가 던지면 지역 변수 `item`이 파괴되면서 아이템이 사라집니다. 실패 입력: A `[1, 2, 3]`, B `[9]`에서 `A.TransferTo(B, 1)`, 첫 복사가 실패 → A `[1, 3]`, B `[9]`. 버그 1을 고친 뒤에는 각 가방의 불변식이 맞으므로 언어적 의미의 기본 보장은 지켜지지만, \"아이템은 정확히 한 가방에 있다\"는 게임 규칙이 깨지므로 이 함수의 명세는 강한 보장입니다(버그 1이 남아 있으면 B의 무게까지 틀립니다). 수정: 받는 쪽에 **먼저** 넣고(고친 `dest.Add`는 강한 보장), 성공한 뒤에 원본에서 지웁니다. cppreference에 따르면 `vector::erase`는 `T`의 대입 연산자가 던질 때만 던지는데, `static_assert`가 이동 대입을 `noexcept`로 강제하므로 커밋 단계는 실패하지 않습니다. 복사 대신 `dest.items_.push_back(std::move(...))`로 옮기는 답도 맞습니다. 이동 생성자가 `noexcept`이면 `push_back(T&&)`도 강한 보장이라, 실패하면 원본이 그대로 남습니다.\n\n**왜 copy-and-swap이 아닌가**\n\n가방 전체를 복사해 고친 뒤 교환하면 강한 보장은 저절로 생기지만, 아이템 300개 가방에 3개를 넣는 데 복사가 303번 일어나고 그 복사마다 실패할 기회도 생깁니다. Microsoft 문서도 강한 보장이 메모리나 성능 면에서 너무 비싸면 기본 보장이 최선일 수 있다고 말합니다. 이 가방은 끝에만 추가하므로 되돌릴 양이 이번에 넣은 k개뿐이라, 강한 보장을 싸게 줄 수 있는 경우입니다.\n\n**복잡도와 흔한 실수**\n\n`Add`는 분할 상환 O(1), `AddAll`은 복사 k번에 분할 상환 O(k), `TransferTo`는 복사 1번에 `erase` 때문에 O(n)입니다. 흔한 실수는 ① `catch (...)`에서 되돌리기만 하고 다시 던지지 않아 호출자가 실패를 모르는 것, ② 되돌리는 경로에서 새 `vector`를 만드는 등 던질 수 있는 연산을 쓰는 것, ③ `AddAll`마다 `reserve(size() + k)`를 부르는 것입니다. cppreference의 `reserve` 설명대로 이런 호출은 용량을 지수가 아니라 선형으로 늘리고, 숨은 테스트에서 그렇게 쓴 답안은 아이템 1개짜리 상자 300번에 아이템 이동이 약 5만 번 일어났습니다(채점 환경). ④ `insert(end(), first, last)` 한 번으로 바꾸고 강한 보장이라고 믿는 것도 실수입니다. cppreference가 강한 보장을 명시하는 것은 끝에 **원소 하나**를 넣을 때뿐입니다. 이 방식은 채점 환경과 로컬 MSVC 19.41에서 실제로는 실패해도 변화가 없었지만, 그것은 구현의 동작이지 약속이 아닙니다. 되돌리기를 RAII 객체로 쓰고 싶다면 Core Guidelines E.19의 `gsl::finally`를 쓸 수 있습니다. 다만 microsoft/GSL v5.0.1의 `final_action`에는 취소 함수가 없고 옮겨진 경우가 아니면 소멸자에서 항상 실행되므로, 성공했는지를 알려 주는 플래그를 람다가 확인해야 합니다.\n\n### 흔한 오해\n- **\"std::vector는 연산 도중 예외가 나면 알아서 원래 상태로 돌려 놓는다\"** — 끝에 원소 하나를 넣는 `push_back`처럼 강한 보장이 명시된 연산만 그렇습니다. cppreference의 `vector::insert`는 `T`의 복사·이동 생성자나 대입 연산자가 던진 경우를 \"효과 없음\"에서 제외합니다. 채점 환경(GCC 13.2, libstdc++)에서 재할당이 필요 없을 만큼 용량이 남은 `[1 2 3 4 5]`의 1번 위치에 원소 2개를 범위 `insert` 하다가 첫 복사 연산(복사 대입)이 던지자 vector가 `[1 2 3 2 3 4 5]`로 남았고, 같은 코드가 로컬 MSVC 19.41에서는 그대로였습니다. 둘 다 표준이 허용하는 결과입니다 [cppref-vector-insert].\n- **\"함수에 noexcept를 붙이면 예외에 안전해진다\"** — `noexcept` 함수 밖으로 예외가 나가려 하면 `std::terminate`가 호출됩니다. `AddAll`에 붙이면 `bad_alloc`은 \"가방이 가득 찼습니다\"가 아니라 프로그램 종료가 됩니다. 예외 안전성은 실패했을 때 상태를 어떻게 남기느냐의 문제이고, `noexcept`는 정말로 실패할 수 없는 연산(이 문제에서는 `T`의 이동과 소멸)에 붙이는 약속입니다 [cppref-noexcept-spec].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Add가 복사에 실패하면 Size()와 TotalWeight()가 호출 전과 같다(push_back을 먼저 하고 캐시는 성공한 뒤에 갱신).",
+            "points": 12,
+            "sourceId": "cppref-vector-push-back"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "AddAll이 몇 번째 복사에서 실패하든 가방을 호출 전 상태로 되돌리고 같은 예외를 다시 던진다.",
+            "points": 12,
+            "sourceId": "cppref-exceptions"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "TransferTo가 실패하면 두 가방 모두 그대로이고, 성공하면 남은 아이템의 순서가 유지되며, 범위 밖 index에는 std::out_of_range를 던지고 아무것도 바꾸지 않는다.",
+            "points": 11,
+            "sourceId": "cppref-vector-erase"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "AddAll이 가방 전체를 복사하지 않고 상자 아이템 k개에 복사 k번, 분할 상환 O(k)로 동작한다(copy-and-swap 아님).",
+            "points": 12,
+            "sourceId": "ms-learn-exception-safety"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "TransferTo가 아이템 복사 1번 이하(또는 noexcept 이동)로 동작한다.",
+            "points": 10,
+            "sourceId": "cppref-vector-push-back"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "AddAll이 호출마다 reserve(size() + k)를 부르지 않아 용량이 기하급수적으로 늘어난다.",
+            "points": 8,
+            "sourceId": "cppref-vector-reserve"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "되돌리는 경로와 커밋 단계에 던질 수 있는 연산이 없다(pop_back, int 연산, noexcept 이동 대입만 쓰는 erase).",
+            "points": 10,
+            "sourceId": "cppref-exceptions"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "세 버그를 \"기본 보장도 못 지킴(불변식이 깨짐)\"과 \"기본 보장은 지키지만 강한 보장이 아님\"으로 구분해 설명했다.",
+            "points": 10,
+            "sourceId": "cppref-exceptions"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "각 함수가 \"실패할 수 있는 단계 → 던지지 않는 커밋\" 순서로 읽히게 정리되어 있고, 가방의 불변식을 주석으로 적었다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "세 버그 각각에 대해 몇 번째 복사가 실패하면 무엇이 남는지 실패 입력을 제시했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "예외를 catch로 삼키거나 다른 예외로 바꿔 호출자가 실패를 알 수 없다.",
+            "penalty": -20,
+            "sourceId": "cppref-exceptions"
+          },
+          {
+            "id": "d2",
+            "description": "가방 전체를 복사해 교환하는 방식으로 AddAll이나 TransferTo를 구현해 복사 횟수가 가방 크기에 비례한다.",
+            "penalty": -20,
+            "sourceId": "ms-learn-exception-safety"
+          },
+          {
+            "id": "d3",
+            "description": "중간 insert나 범위 insert처럼 표준이 강한 보장을 약속하지 않는 연산의 실제 동작에 기대어 강한 보장을 주장했다.",
+            "penalty": -15,
+            "sourceId": "cppref-vector-insert"
+          }
+        ]
+      },
+      "tests": {
+        "template": "#include <cstdio>\r\n#include <exception>\r\n#include <stdexcept>\r\n#include <string>\r\n#include <utility>\r\n#include <vector>\r\n\r\n#define main __user_main\r\n{{USER_CODE}}\r\n#undef main\r\n\r\nnamespace judge {\r\n\r\n// Failure injection: the n-th item copy from now on throws CopyFailed (0 = never).\r\n// Copy construction and copy assignment both count; moves never throw.\r\nstruct CopyFailed : std::runtime_error {\r\n    CopyFailed() : std::runtime_error(\"item copy failed (injected)\") {}\r\n};\r\nint g_failAt = 0;\r\nlong g_copies = 0;     // copy constructions + copy assignments\r\nlong g_moveCtors = 0;  // move constructions (vector reallocation moves items)\r\nlong g_live = 0;       // items constructed minus items destroyed\r\n\r\nvoid CountCopy() {\r\n    ++g_copies;\r\n    if (g_failAt > 0 && --g_failAt == 0) throw CopyFailed();\r\n}\r\n\r\nstruct Item {\r\n    int id = 0;\r\n    int weight = 0;\r\n    Item(int i, int w) : id(i), weight(w) { ++g_live; }\r\n    Item(const Item& o) : id(o.id), weight(o.weight) {\r\n        CountCopy();\r\n        ++g_live;\r\n    }\r\n    Item(Item&& o) noexcept : id(o.id), weight(o.weight) {\r\n        ++g_moveCtors;\r\n        ++g_live;\r\n    }\r\n    Item& operator=(const Item& o) {\r\n        CountCopy();\r\n        id = o.id;\r\n        weight = o.weight;\r\n        return *this;\r\n    }\r\n    Item& operator=(Item&& o) noexcept {\r\n        id = o.id;\r\n        weight = o.weight;\r\n        return *this;\r\n    }\r\n    ~Item() { --g_live; }\r\n};\r\n\r\nusing Bag = LootBag<Item>;\r\nusing Model = std::vector<std::pair<int, int>>;  // (id, weight) in bag order\r\n\r\nstd::string Num(long long v) { return std::to_string(v); }\r\n\r\nstd::string Show(const Model& m) {\r\n    std::string s = \"[\";\r\n    for (std::size_t i = 0; i < m.size(); ++i) s += (i ? \" \" : \"\") + Num(m[i].first);\r\n    return s + \"]\";\r\n}\r\n\r\nModel Read(const Bag& bag) {\r\n    Model m;\r\n    for (std::size_t i = 0; i < bag.Size(); ++i) m.push_back({bag.At(i).id, bag.At(i).weight});\r\n    return m;\r\n}\r\n\r\nint WeightOf(const Model& m) {\r\n    int w = 0;\r\n    for (const auto& e : m) w += e.second;\r\n    return w;\r\n}\r\n\r\n// Compares a bag with the expected items (ids in order) and checks TotalWeight().\r\nstd::string Check(const Bag& bag, const Model& want, const std::string& who) {\r\n    const Model got = Read(bag);\r\n    if (got != want) return who + \" 아이템 id 기대 \" + Show(want) + \", 결과 \" + Show(got);\r\n    if (bag.TotalWeight() != WeightOf(want))\r\n        return who + \" TotalWeight 기대 \" + Num(WeightOf(want)) + \", 결과 \" + Num(bag.TotalWeight()) + \" (캐시가 내용과 어긋남)\";\r\n    return \"\";\r\n}\r\n\r\nBag Make(const Model& m) {\r\n    Bag bag;\r\n    for (const auto& e : m) bag.Add(Item(e.first, e.second));\r\n    return bag;\r\n}\r\n\r\nstd::vector<Item> Drop(const Model& m) {\r\n    std::vector<Item> v;\r\n    v.reserve(m.size());\r\n    for (const auto& e : m) v.emplace_back(e.first, e.second);\r\n    return v;\r\n}\r\n\r\nModel Concat(Model x, const Model& y) {\r\n    x.insert(x.end(), y.begin(), y.end());\r\n    return x;\r\n}\r\n\r\nconst Model kA = {{1, 5}, {2, 7}};\r\nconst Model kDrop = {{10, 3}, {11, 4}, {12, 6}, {13, 2}};\r\n\r\nstd::string AddOk() {\r\n    Bag bag;\r\n    bag.Add(Item(1, 5));\r\n    bag.Add(Item(2, 7));\r\n    bag.Add(Item(3, 4));\r\n    return Check(bag, {{1, 5}, {2, 7}, {3, 4}}, \"Add 3번:\");\r\n}\r\n\r\nstd::string AddFailure() {\r\n    Bag bag = Make(kA);\r\n    const Item item(3, 4);\r\n    g_failAt = 1;\r\n    bool threw = false;\r\n    try {\r\n        bag.Add(item);\r\n    } catch (const CopyFailed&) {\r\n        threw = true;\r\n    }\r\n    g_failAt = 0;\r\n    if (!threw) return \"첫 복사에서 던진 CopyFailed가 Add 밖으로 전파되지 않음\";\r\n    std::string d = Check(bag, kA, \"복사가 실패한 Add 뒤:\");\r\n    if (!d.empty()) return d;\r\n    bag.Add(item);\r\n    return Check(bag, {{1, 5}, {2, 7}, {3, 4}}, \"실패 뒤 다시 Add:\");\r\n}\r\n\r\nstd::string AddAllOk() {\r\n    Bag bag = Make(kA);\r\n    const std::vector<Item> drop = Drop(kDrop);\r\n    g_copies = 0;\r\n    bag.AddAll(drop);\r\n    const long copies = g_copies;\r\n    const Model want = Concat(kA, kDrop);\r\n    std::string d = Check(bag, want, \"AddAll 성공:\");\r\n    if (!d.empty()) return d;\r\n    bag.AddAll({});\r\n    d = Check(bag, want, \"빈 drop AddAll:\");\r\n    if (!d.empty()) return d;\r\n    if (copies > 4) return \"아이템 4개 AddAll에 복사 \" + Num(copies) + \"번 (드롭 크기만큼만 복사해야 함)\";\r\n    return \"\";\r\n}\r\n\r\nstruct Two {\r\n    Bag a, b;\r\n    std::vector<Item> drop;\r\n};\r\n\r\n// Runs op with the n-th copy failing, for n = 1, 2, ... until op succeeds. Every failed\r\n// attempt must leave the bags exactly as they were; the successful one must finish.\r\ntemplate <class Setup, class Op, class Unchanged, class Done>\r\nstd::string EveryFailurePoint(Setup setup, Op op, Unchanged unchanged, Done done, const char* what) {\r\n    for (int n = 1; n <= 12; ++n) {\r\n        Two state = setup();\r\n        g_failAt = n;\r\n        bool threw = false;\r\n        try {\r\n            op(state);\r\n        } catch (const CopyFailed&) {\r\n            threw = true;\r\n        }\r\n        g_failAt = 0;\r\n        const std::string d = threw ? unchanged(state) : done(state);\r\n        if (!d.empty())\r\n            return std::string(what) + \" \" + Num(n) + \"번째 복사에 실패 주입\" + (threw ? \"(예외 발생) 뒤 \" : \"(예외 없이 끝남) 뒤 \") + d;\r\n        if (!threw) return \"\";\r\n    }\r\n    return std::string(what) + \": 복사가 12번 넘게 일어남\";\r\n}\r\n\r\nstd::string AddAllFailure() {\r\n    auto setup = [] { return Two{Make(kA), Bag(), Drop(kDrop)}; };\r\n    auto op = [](Two& s) { s.a.AddAll(s.drop); };\r\n    auto unchanged = [](Two& s) { return Check(s.a, kA, \"가방:\"); };\r\n    auto done = [](Two& s) { return Check(s.a, Concat(kA, kDrop), \"가방:\"); };\r\n    return EveryFailurePoint(setup, op, unchanged, done, \"AddAll(아이템 4개)의\");\r\n}\r\n\r\nstd::string AddAllCopyBudget() {\r\n    Model big;\r\n    for (int i = 0; i < 300; ++i) big.push_back({100 + i, 1 + i % 5});\r\n    Bag bag = Make(big);\r\n    const Model small = {{7, 2}, {8, 3}, {9, 4}};\r\n    const std::vector<Item> drop = Drop(small);\r\n    g_copies = 0;\r\n    bag.AddAll(drop);\r\n    const long copies = g_copies;\r\n    std::string d = Check(bag, Concat(big, small), \"아이템 300개 가방에 AddAll:\");\r\n    if (!d.empty()) return d;\r\n    if (copies > 3) return \"아이템 300개 가방에 3개를 AddAll 하는 데 복사 \" + Num(copies) + \"번 (기대 3번 이하: 가방 전체를 복사하지 않음)\";\r\n    // 300 chests of one item each: with geometric growth the reallocations move each\r\n    // item only a few times in total; growing the capacity by exactly k per call moves\r\n    // the whole bag on almost every call once the spare capacity is used up.\r\n    long moves = 0;\r\n    Model all = Concat(big, small);\r\n    for (int i = 0; i < 300; ++i) {\r\n        const std::vector<Item> one = Drop({{1000 + i, 1}});\r\n        all.push_back({1000 + i, 1});\r\n        g_moveCtors = 0;\r\n        bag.AddAll(one);\r\n        moves += g_moveCtors;\r\n    }\r\n    d = Check(bag, all, \"아이템 1개짜리 AddAll 300번 뒤:\");\r\n    if (!d.empty()) return d;\r\n    if (moves > 5000)\r\n        return \"아이템 1개짜리 AddAll 300번에 아이템 이동 \" + Num(moves) + \"번 (기대 5000번 이하: 용량이 기하급수가 아니라 선형으로 늘어남, 예: 매번 reserve(size + k))\";\r\n    return \"\";\r\n}\r\n\r\nstd::string TransferOk() {\r\n    Bag a = Make({{1, 5}, {2, 7}, {3, 4}});\r\n    Bag b = Make({{9, 1}});\r\n    g_copies = 0;\r\n    a.TransferTo(b, 1);\r\n    const long copies = g_copies;\r\n    std::string d = Check(a, {{1, 5}, {3, 4}}, \"넘겨준 가방:\");\r\n    if (!d.empty()) return d;\r\n    d = Check(b, {{9, 1}, {2, 7}}, \"받은 가방:\");\r\n    if (!d.empty()) return d;\r\n    if (copies > 1) return \"아이템 1개를 넘기는 데 복사 \" + Num(copies) + \"번 (기대 1번 이하)\";\r\n    bool threw = false;\r\n    try {\r\n        a.TransferTo(b, 2);\r\n    } catch (const std::out_of_range&) {\r\n        threw = true;\r\n    }\r\n    if (!threw) return \"범위 밖 index(2, 가방 크기 2)에서 std::out_of_range가 나오지 않음\";\r\n    d = Check(a, {{1, 5}, {3, 4}}, \"범위 밖 index 뒤 넘겨준 가방:\");\r\n    if (!d.empty()) return d;\r\n    return Check(b, {{9, 1}, {2, 7}}, \"범위 밖 index 뒤 받은 가방:\");\r\n}\r\n\r\nstd::string TransferFailure() {\r\n    const Model a0 = {{1, 5}, {2, 7}, {3, 4}};\r\n    const Model b0 = {{9, 1}};\r\n    auto setup = [&] { return Two{Make(a0), Make(b0), {}}; };\r\n    auto op = [](Two& s) { s.a.TransferTo(s.b, 1); };\r\n    auto unchanged = [&](Two& s) {\r\n        std::string d = Check(s.a, a0, \"넘겨준 가방:\");\r\n        return d.empty() ? Check(s.b, b0, \"받은 가방:\") : d;\r\n    };\r\n    auto done = [](Two& s) {\r\n        std::string d = Check(s.a, {{1, 5}, {3, 4}}, \"넘겨준 가방:\");\r\n        return d.empty() ? Check(s.b, {{9, 1}, {2, 7}}, \"받은 가방:\") : d;\r\n    };\r\n    return EveryFailurePoint(setup, op, unchanged, done, \"TransferTo(1번 칸)의\");\r\n}\r\n\r\n// 400 random operations on three bags with random copy failures, compared with a model\r\n// that applies an operation only when it did not throw.\r\nstd::string RandomVsReference() {\r\n    unsigned seed = 20261122u;\r\n    auto next = [&](unsigned mod) {\r\n        seed = seed * 1664525u + 1013904223u;\r\n        return static_cast<int>((seed >> 16) % mod);\r\n    };\r\n    Bag bags[3];\r\n    Model models[3];\r\n    int nextId = 1;\r\n    for (int step = 0; step < 400; ++step) {\r\n        const int kind = next(3), who = next(3), fail = next(4) == 0 ? 1 + next(3) : 0;\r\n        bool threw = false;\r\n        Model after = models[who];\r\n        int other = -1;\r\n        Model otherAfter;\r\n        try {\r\n            if (kind == 0) {\r\n                const Item item(nextId++, 1 + next(9));\r\n                after.push_back({item.id, item.weight});\r\n                g_failAt = fail;\r\n                bags[who].Add(item);\r\n            } else if (kind == 1) {\r\n                Model d;\r\n                const int k = next(4);\r\n                for (int i = 0; i < k; ++i) d.push_back({nextId++, 1 + next(9)});\r\n                const std::vector<Item> drop = Drop(d);\r\n                after = Concat(after, d);\r\n                g_failAt = fail;\r\n                bags[who].AddAll(drop);\r\n            } else {\r\n                other = (who + 1 + next(2)) % 3;\r\n                const std::size_t index = static_cast<std::size_t>(next(static_cast<unsigned>(models[who].size()) + 1));\r\n                otherAfter = models[other];\r\n                const bool valid = index < after.size();\r\n                if (valid) {\r\n                    otherAfter.push_back(after[index]);\r\n                    after.erase(after.begin() + static_cast<std::ptrdiff_t>(index));\r\n                }\r\n                g_failAt = fail;\r\n                try {\r\n                    bags[who].TransferTo(bags[other], index);\r\n                    if (!valid) return \"step \" + Num(step) + \": 범위 밖 index에서 std::out_of_range가 나오지 않음\";\r\n                } catch (const std::out_of_range&) {\r\n                    if (valid) throw;\r\n                    threw = true;\r\n                }\r\n            }\r\n        } catch (const CopyFailed&) {\r\n            threw = true;\r\n        }\r\n        g_failAt = 0;\r\n        if (!threw) {\r\n            models[who] = after;\r\n            if (other >= 0) models[other] = otherAfter;\r\n        }\r\n        for (int i = 0; i < 3; ++i) {\r\n            const std::string d = Check(bags[i], models[i], \"step \" + Num(step) + (threw ? \"(작업 실패 뒤) \" : \"(작업 성공 뒤) \") + \"가방 \" + Num(i) + \":\");\r\n            if (!d.empty()) return d;\r\n        }\r\n    }\r\n    return \"\";\r\n}\r\n\r\ntypedef std::string (*CaseFn)();\r\nstruct Case {\r\n    const char* name;\r\n    CaseFn fn;\r\n};\r\nconst Case kCases[] = {\r\n    {\"add-keeps-order-and-weight\", AddOk},\r\n    {\"add-failed-copy-changes-nothing\", AddFailure},\r\n    {\"addall-success\", AddAllOk},\r\n    {\"addall-all-or-nothing\", AddAllFailure},\r\n    {\"addall-cost-follows-drop-size\", AddAllCopyBudget},\r\n    {\"transfer-success-and-bad-index\", TransferOk},\r\n    {\"transfer-failure-keeps-both-bags\", TransferFailure},\r\n    {\"random-ops-with-failures\", RandomVsReference},\r\n};\r\n\r\n}  // namespace judge\r\n\r\nint main() {\r\n    using namespace judge;\r\n    for (const Case& c : kCases) {\r\n        std::string reason;\r\n        const long liveBefore = g_live;\r\n        try {\r\n            reason = c.fn();\r\n        } catch (const std::exception& e) {\r\n            reason = std::string(\"예상하지 못한 예외가 밖으로 전파됨: \") + e.what();\r\n        } catch (...) {\r\n            reason = \"알 수 없는 예외가 밖으로 전파됨\";\r\n        }\r\n        g_failAt = 0;\r\n        if (reason.empty() && g_live != liveBefore)\r\n            reason = \"케이스가 끝난 뒤 살아 있는 아이템 수가 \" + Num(g_live - liveBefore) + \"개 어긋남 (누수 또는 이중 파괴)\";\r\n        if (reason.empty()) {\r\n            std::printf(\"[PASS] %s\\n\", c.name);\r\n        } else {\r\n            std::printf(\"[FAIL] %s :: %s\\n\", c.name, reason.c_str());\r\n        }\r\n        g_live = liveBefore;\r\n    }\r\n    return 0;\r\n}\r\n",
+        "cases": [
+          "add-keeps-order-and-weight",
+          "add-failed-copy-changes-nothing",
+          "addall-success",
+          "addall-all-or-nothing",
+          "addall-cost-follows-drop-size",
+          "transfer-success-and-bad-index",
+          "transfer-failure-keeps-both-bags",
+          "random-ops-with-failures"
+        ],
+        "note": "채점기는 아이템 타입 `judge::Item`(멤버 `id`, `weight`)으로 `LootBag`을 만듭니다. 이 타입의 복사 생성과 복사 대입은 \"지금부터 n번째 복사에서 예외를 던져라\"로 설정할 수 있고(이동은 `noexcept`라 절대 던지지 않음), 복사·이동 횟수와 살아 있는 아이템 수를 셉니다. 실패 지점은 n = 1, 2, 3, …을 차례로 주입하고 무작위 작업도 고정 시드를 쓰므로 결과가 매번 같습니다. 검사 내용: `Add` 성공과 순서, 첫 복사 실패 뒤 크기·`TotalWeight` 유지와 재시도, `AddAll` 성공·빈 상자·복사 횟수(4개에 4번 이하), `AddAll`의 모든 실패 지점에서 가방이 그대로인지, 300개 가방에 3개를 넣는 `AddAll`의 복사 3번 이하와 1개짜리 `AddAll` 300번의 이동 5000번 이하(용량의 기하급수적 성장), `TransferTo`의 성공·남은 순서·복사 1번 이하·범위 밖 index의 `std::out_of_range`, `TransferTo`의 모든 실패 지점에서 두 가방이 그대로인지, 가방 3개에 대한 무작위 작업 400번(무작위 실패 주입)을 \"예외가 나지 않은 작업만 반영하는\" 기준 모델과 비교. 케이스가 끝날 때마다 살아 있는 아이템 수가 원래대로인지(누수·이중 파괴)도 봅니다. `LootBag`의 공개 멤버 함수 시그니처, `T`가 `int weight` 멤버를 가진다는 가정, `static_assert`는 바꾸지 마세요. 아이템을 복사 대신 이동해 넘기는 `TransferTo`는 통과합니다. 끝에 붙이는 범위 `insert`로 쓴 `AddAll`도 이 구현에서는 통과하지만 표준이 보장하지 않는 동작이므로 채점표에서 감점됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기에서 모범 답안 8/8 통과와 시작 코드 실패, reserve(size+k)·지우기 먼저·예외 삼킴·copy-and-swap 오답이 해당 케이스에서 실패함을 실행해 확인했고, 범위 insert 동작은 GCC 13.2와 로컬 MSVC 19.41에서 직접 재현했으며, 보장 단계와 push_back·insert·erase·reserve·noexcept 설명은 cppreference·Microsoft Learn·GSL v5.0.1 소스와 대조했습니다."
+      },
+      "nextMission": "`LootBag`에 `void InsertAt(std::size_t pos, const T& item)`(정렬 순서를 지키며 중간에 끼워 넣기)을 강한 예외 보장으로 추가하세요. `items_.insert(begin() + pos, item)`은 `T`의 복사가 던지면 강한 보장이 명시되지 않으므로 쓰지 않습니다. 대신 끝에 `push_back`(강한 보장)한 뒤 `std::rotate`로 제자리에 옮기는 방법을 쓰고(`rotate`는 원소의 교환과 이동만 쓰므로, `T`의 이동이 `noexcept`인 이 가방에서는 던지지 않음), 이 문제의 채점기처럼 \"n번째 복사에서 실패\"를 n = 1, 2, …로 주입하는 테스트를 직접 작성해 모든 실패 지점에서 가방이 그대로인지 확인합니다."
+    },
+    {
+      "id": "t2-impl-hot-cold-unit-store",
+      "track": "track2",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "유닛 1만 개의 이동 루프가 이름표까지 읽는다: hot/cold 분리와 swap-and-pop을 견디는 id 표",
+      "tags": [
+        "Cpp_Hot_Cold_Split",
+        "Cpp_Data_Oriented",
+        "Cpp_Swap_And_Pop"
+      ],
+      "language": "cpp",
+      "sourceRefs": [
+        "gpp-data-locality",
+        "cmu-15418-cachecoherence",
+        "cmu-15418-basicarch",
+        "entt-entity-docs"
+      ],
+      "scenario": "RTS 게임의 한 전장에는 유닛이 최대 1만 개 있습니다. 매 프레임 이동 시스템이 모든 유닛을 속도만큼 옮기는데, 지금은 유닛의 모든 필드를 `Unit` 구조체 하나에 담은 `std::vector<Unit>`을 훑습니다. 채점 환경(GCC 13.2의 libstdc++, x86-64)에서 `Unit`은 64바이트이고, 그중 이동 루프가 쓰는 것은 위치와 속도 16바이트뿐입니다. 이름(`std::string`), 프리팹 id, 전리품 테이블, 스폰 시각은 UI와 사망 처리에서나 읽습니다.\n\n팀은 데이터를 **hot**(`UnitHot`: 매 프레임 쓰는 것)과 **cold**(`UnitCold`: 가끔 읽는 것) 두 구조체로 나누고, 각각을 빈칸 없는 배열에 같은 순서로 담기로 했습니다. 유닛이 죽으면 마지막 유닛을 그 자리로 옮기고 배열 끝을 줄입니다(swap-and-pop). 그런데 UI의 체력바, 포탑의 조준 대상, 퀘스트 트래커는 유닛을 **id**로 기억합니다. 유닛이 배열 안에서 옮겨진 뒤에도 id로 그 유닛의 데이터를 O(1)에 찾을 수 있어야 합니다.\n\n**해야 할 일**: `UnitStore`를 완성하세요. `hot_`과 `cold_`는 이미 선언되어 있고, id와 배열 위치를 잇는 표는 직접 설계해 private 멤버로 추가합니다. 그리고 이 분리로 이동 루프가 매 프레임 읽는 바이트가 어떻게 달라지는지 주석이나 한두 문장으로 적으세요(측정 없이 몇 배 빨라진다고 단정하지는 않습니다).\n\n```cpp\nUnitStore units;\nUnitId archer = units.Spawn({0, 0, 1, 0}, {\"Archer\", 7, 3, 12.5});\nUnitId knight = units.Spawn({5, 5, 0, 1}, {\"Knight\", 8, 4, 13.0});\nunits.Despawn(archer);          // knight가 0번 칸으로 옮겨진다\nunits.Hot(knight)->x;           // 여전히 knight의 데이터 (5)\nunits.Integrate(1.0f / 60);     // hot 배열만 훑는다\n```",
+      "constraints": [
+        "C++17 표준 라이브러리만 사용합니다. `UnitHot`, `UnitCold`, `UnitId`의 정의와 `UnitStore` 공개 멤버 함수의 시그니처는 바꾸지 않습니다. 특히 `UnitHot`에 id 같은 필드를 추가하지 않습니다(이동 루프가 읽는 바이트가 늘어남). private 멤버와 보조 함수는 자유입니다.",
+        "`hot_`과 `cold_`는 길이가 같은 두 개의 촘촘한 `std::vector`이고, 두 배열의 i번째 원소는 같은 유닛입니다. 빈칸이나 \"죽음\" 표시가 붙은 원소가 남으면 안 됩니다.",
+        "`Spawn`은 배열 끝에 추가하고 id를 1, 2, 3, … 순서로 발급합니다(재사용 없음, 0은 유닛이 아님). 분할 상환 O(1)입니다.",
+        "`Despawn`은 O(1)입니다. 지울 칸에 마지막 유닛을 옮기고(두 배열 모두) 마지막 칸을 없애며, 다른 유닛의 위치는 바꾸지 않습니다. 살아 있지 않은 id(0, 발급한 적 없는 id, 이미 지운 id)는 `false`를 반환하고 아무것도 바꾸지 않습니다.",
+        "`Hot`, `Cold`, `IdAt`은 O(1)이고, `Hot`과 `Cold`는 복사본이 아니라 촘촘한 배열 안의 원소를 가리킵니다. `Integrate`는 hot 배열만 훑습니다.",
+        "id → 위치 표는 발급한 id 수만큼 커져도 됩니다(한 판에 발급하는 id는 100만 개 이하로 가정). 메모리 할당 실패(`std::bad_alloc`)는 다루지 않습니다."
+      ],
+      "starterCode": "#include <cstddef>\n#include <cstdint>\n#include <string>\n#include <utility>\n#include <vector>\n\n// Read and written by the movement loop for every unit, every frame.\nstruct UnitHot {\n    float x = 0, y = 0;    // position\n    float vx = 0, vy = 0;  // velocity, units per second\n};\n\n// Read by the UI, AI decisions and the death handler; rarely touched.\nstruct UnitCold {\n    std::string name;\n    int prefabId = 0;\n    int lootTableId = 0;\n    double spawnTime = 0;\n};\n\n// Stable handle that gameplay code keeps instead of an index or a pointer.\n// 0 never names a unit. Ids are handed out as 1, 2, 3, ... and never reused.\nusing UnitId = std::uint32_t;\n\nclass UnitStore {\npublic:\n    // Adds a unit at the end of the dense arrays and returns its id.\n    UnitId Spawn(const UnitHot& hot, UnitCold cold) {\n        (void)hot;\n        (void)cold;\n        return 0;\n    }\n\n    // Removes the unit: the last unit moves into its place (swap-and-pop).\n    // Returns false, and changes nothing, if id does not name a live unit.\n    bool Despawn(UnitId id) {\n        (void)id;\n        return false;\n    }\n\n    // nullptr if id does not name a live unit. Valid until the next Spawn or Despawn.\n    UnitHot* Hot(UnitId id) {\n        (void)id;\n        return nullptr;\n    }\n    const UnitCold* Cold(UnitId id) const {\n        (void)id;\n        return nullptr;\n    }\n\n    std::size_t Count() const { return hot_.size(); }\n\n    // Moves every live unit by velocity * dt.\n    void Integrate(float dt) { (void)dt; }\n\n    // Dense views for systems. Element i of HotUnits() and of ColdUnits() belong to the\n    // same unit, whose id is IdAt(i). Exactly Count() elements, no holes.\n    const std::vector<UnitHot>& HotUnits() const { return hot_; }\n    const std::vector<UnitCold>& ColdUnits() const { return cold_; }\n    UnitId IdAt(std::size_t denseIndex) const {\n        (void)denseIndex;\n        return 0;\n    }\n\nprivate:\n    std::vector<UnitHot> hot_;\n    std::vector<UnitCold> cold_;\n};\n",
+      "edgeCases": [
+        "마지막 유닛을 지우는 경우: 옮길 유닛이 없습니다(지울 칸 == 마지막 칸).",
+        "유일한 유닛을 지우고, 모두 지운 뒤 다시 `Spawn` 하는 경우: 새 id는 이전 id를 재사용하지 않습니다.",
+        "`Despawn(0)`, 발급한 적 없는 큰 id, 같은 id를 두 번 `Despawn`.",
+        "여러 번 옮겨진 유닛: 지울 때마다 마지막 칸의 유닛이 바뀌므로, 같은 유닛이 여러 번 옮겨진 뒤에도 id로 찾을 수 있어야 합니다."
+      ],
+      "hints": [
+        "반례: 1~5번 유닛을 차례로 `Spawn`하면 배열 순서는 `[1 2 3 4 5]`입니다. `Despawn(2)` 뒤에는 `[1 5 3 4]`가 되어야 합니다. hot·cold 배열의 원소만 옮겼다면, 여러분의 \"id → 위치\" 표는 id 5가 어디에 있다고 말하나요? 그 상태에서 `Hot(5)`나 `Despawn(5)`를 부르면 무슨 일이 생기나요?",
+        "표가 두 방향으로 필요합니다. \"id → 위치\"는 `Hot`/`Cold`/`Despawn`이 쓰고, \"위치 → id\"는 `Despawn`이 \"마지막 칸에 있는 유닛이 누구인지\" 알아내 그 유닛의 표 항목을 고칠 때 씁니다. 한 번의 `Despawn`에서 바뀌는 \"id → 위치\" 항목은 지운 유닛과 옮겨진 유닛 두 개뿐입니다. 지운 유닛이 바로 마지막 칸의 유닛일 때 두 항목이 같은 항목이 된다는 점에 주의해 갱신 순서를 정하세요.",
+        "구조만 적으면 다음과 같습니다.\n\n```\nSpawn(hot, cold):\n    id = <다음 id>, index = <현재 유닛 수>\n    <hot_, cold_, \"위치 → id\" 표의 끝에 추가>\n    <\"id → 위치\" 표에 id의 위치로 index를 기록>\n    return id\n\nDespawn(id):\n    if <id가 살아 있지 않음>: return false\n    hole = <id의 위치>, last = <마지막 위치>\n    if hole != last:\n        <세 배열에서 last의 원소를 hole로 옮긴다 (cold는 이동)>\n        <옮겨진 유닛의 \"id → 위치\"를 hole로>\n    <세 배열 pop_back>\n    <id를 죽음으로 표시>   // 위의 갱신보다 나중에\n    return true\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "#include <cstddef>\n#include <cstdint>\n#include <string>\n#include <utility>\n#include <vector>\n\n// Read and written by the movement loop for every unit, every frame.\nstruct UnitHot {\n    float x = 0, y = 0;    // position\n    float vx = 0, vy = 0;  // velocity, units per second\n};\n\n// Read by the UI, AI decisions and the death handler; rarely touched.\nstruct UnitCold {\n    std::string name;\n    int prefabId = 0;\n    int lootTableId = 0;\n    double spawnTime = 0;\n};\n\n// Stable handle that gameplay code keeps instead of an index or a pointer.\n// 0 never names a unit. Ids are handed out as 1, 2, 3, ... and never reused.\nusing UnitId = std::uint32_t;\n\n// Hot and cold halves live in two parallel dense arrays (same index = same unit).\n// Two small tables connect them to the stable ids:\n//   indexOf_[id]  -> dense index of that unit, or kDead\n//   idOf_[index]  -> id of the unit at that dense index (needed by swap-and-pop)\n// Invariant: for every dense index i, indexOf_[idOf_[i]] == i.\nclass UnitStore {\npublic:\n    // Adds a unit at the end of the dense arrays and returns its id.\n    UnitId Spawn(const UnitHot& hot, UnitCold cold) {\n        const UnitId id = static_cast<UnitId>(indexOf_.size());  // indexOf_[0] is a dummy\n        const std::uint32_t index = static_cast<std::uint32_t>(hot_.size());\n        hot_.push_back(hot);\n        cold_.push_back(std::move(cold));\n        idOf_.push_back(id);\n        indexOf_.push_back(index);\n        return id;\n    }\n\n    // Removes the unit: the last unit moves into its place (swap-and-pop).\n    // Returns false, and changes nothing, if id does not name a live unit.\n    bool Despawn(UnitId id) {\n        if (!Alive(id)) return false;\n        const std::uint32_t hole = indexOf_[id];\n        const std::uint32_t last = static_cast<std::uint32_t>(hot_.size() - 1);\n        if (hole != last) {\n            // Move the last unit into the hole, in all three dense arrays, and tell the\n            // id table where that unit lives now.\n            hot_[hole] = hot_[last];\n            cold_[hole] = std::move(cold_[last]);\n            idOf_[hole] = idOf_[last];\n            indexOf_[idOf_[hole]] = hole;\n        }\n        hot_.pop_back();\n        cold_.pop_back();\n        idOf_.pop_back();\n        indexOf_[id] = kDead;  // last: when hole == last, the moved unit would be id itself\n        return true;\n    }\n\n    // nullptr if id does not name a live unit. Valid until the next Spawn or Despawn.\n    UnitHot* Hot(UnitId id) { return Alive(id) ? &hot_[indexOf_[id]] : nullptr; }\n    const UnitCold* Cold(UnitId id) const { return Alive(id) ? &cold_[indexOf_[id]] : nullptr; }\n\n    std::size_t Count() const { return hot_.size(); }\n\n    // Moves every live unit by velocity * dt. Touches only the hot array.\n    void Integrate(float dt) {\n        for (UnitHot& u : hot_) {\n            u.x += u.vx * dt;\n            u.y += u.vy * dt;\n        }\n    }\n\n    // Dense views for systems. Element i of HotUnits() and of ColdUnits() belong to the\n    // same unit, whose id is IdAt(i). Exactly Count() elements, no holes.\n    const std::vector<UnitHot>& HotUnits() const { return hot_; }\n    const std::vector<UnitCold>& ColdUnits() const { return cold_; }\n    UnitId IdAt(std::size_t denseIndex) const { return idOf_[denseIndex]; }\n\nprivate:\n    static constexpr std::uint32_t kDead = 0xFFFFFFFFu;\n\n    bool Alive(UnitId id) const { return id != 0 && id < indexOf_.size() && indexOf_[id] != kDead; }\n\n    std::vector<UnitHot> hot_;\n    std::vector<UnitCold> cold_;\n    std::vector<UnitId> idOf_;                  // dense index -> id\n    std::vector<std::uint32_t> indexOf_{kDead};  // id -> dense index; slot 0 is never a unit\n};\n",
+      "explanation": "**왜 나누는가**\n\nGame Programming Patterns의 Data Locality 장은 이 기법을 hot/cold 분리라고 부릅니다. 매 프레임 훑는 배열에 가끔만 쓰는 데이터가 섞여 있으면 원소가 커져 캐시 라인 하나에 들어가는 원소 수가 줄고, 쓰지도 않는 데이터가 매 프레임 캐시로 끌려옵니다. 해법은 자주 쓰는 데이터와 나머지를 나누고, 같은 인덱스로 짝지어지는 평행 배열로 두는 것입니다. 채점 환경(GCC 13.2, libstdc++)에서 `UnitHot`은 16바이트, `UnitCold`는 48바이트(`std::string` 하나가 32바이트), 둘을 합친 `Unit`은 64바이트로 측정됩니다. 유닛 1만 개를 옮기는 루프가 지나가는 메모리는 64만 바이트에서 16만 바이트로 줄어듭니다. CMU 15-418 강의 슬라이드는 캐시가 데이터를 라인 단위(최근 Intel 프로세서에서 64바이트)로 다루고 메모리 접근에는 수백 사이클이 걸린다고 설명합니다. 64바이트 라인 하나에 `Unit`은 1개, `UnitHot`은 4개 들어갑니다. 실제로 얼마나 빨라지는지는 측정으로 확인할 일이지, 이 계산만으로 단정할 일은 아닙니다.\n\n**id와 위치를 잇는 표 두 개**\n\nswap-and-pop은 O(1)이지만 **마지막 유닛의 위치를 바꿉니다**. 그래서 id만 들고 있는 다른 시스템이 그 유닛을 계속 찾으려면 두 방향의 표가 필요합니다.\n\n- `indexOf_[id]`: id → 배열 위치(죽었으면 표시값). `Hot`, `Cold`, `Despawn`이 씁니다.\n- `idOf_[i]`: 배열 위치 → id. `Despawn`이 마지막 칸의 유닛이 누구인지 알아내 그 유닛의 `indexOf_`를 고칠 때 씁니다.\n\n불변식은 \"모든 위치 i에 대해 `indexOf_[idOf_[i]] == i`\"입니다. EnTT 문서가 설명하는 sparse set(희소 배열과 촘촘한 배열)과 \"파괴할 때 swap-and-pop\" 정책이 같은 구조입니다. id를 재사용하지 않으므로 0번 칸은 비워 두고 `indexOf_`를 id로 바로 인덱싱합니다.\n\n**Despawn의 순서**\n\n① 살아 있는지 검사(0, 표 범위 밖, 죽음 표시) ② `hole = indexOf_[id]`, `last = 크기 − 1` ③ `hole != last`이면 hot·cold·`idOf_` 세 배열의 마지막 원소를 `hole`로 옮기고, 옮겨진 유닛의 `indexOf_`를 `hole`로 고침 ④ 세 배열 `pop_back` ⑤ 마지막으로 `indexOf_[id]`를 죽음으로. ⑤를 마지막에 두는 이유는 지운 유닛이 마지막 칸일 때(`hole == last`) \"옮겨진 유닛\"이 자기 자신이 되기 때문입니다. ③을 `hole != last` 검사 없이 항상 실행하는 구현에서 ⑤를 ③보다 먼저 하면, ③의 `indexOf_[idOf_[hole]] = hole`이 방금 단 죽음 표시를 덮어써 지운 id가 살아 있는 것처럼 남습니다(숨은 테스트의 `despawn-last-and-only`가 잡습니다). 모범 답안처럼 `hole != last`일 때만 옮기면 이 덮어쓰기는 일어나지 않지만, ⑤를 마지막에 두면 어느 쪽으로 써도 안전합니다. cold 데이터는 `std::move`로 옮겨 문자열 버퍼를 새로 할당하지 않습니다.\n\n**복잡도와 대가**\n\n`Spawn`은 분할 상환 O(1), `Despawn`·`Hot`·`Cold`·`IdAt`은 O(1), `Integrate`는 16바이트 원소 n개를 순서대로 훑는 O(n)입니다. 대가도 있습니다. 배열 순서가 바뀌므로 그리기 순서처럼 순서가 의미 있는 처리는 따로 정렬해야 합니다. `Hot`이 준 포인터는 다음 `Spawn`(재할당)이나 `Despawn`(원소 이동) 뒤에 다른 유닛을 가리키거나 무효가 되므로, 시스템 사이에는 id만 저장합니다. id를 재사용하지 않으니 `indexOf_`는 발급한 id 수만큼 자랍니다. 슬롯을 재사용하면서도 옛 id를 거부하려면 세대(generation) 번호가 필요합니다.\n\n**흔한 실수**: 옮겨진 유닛의 `indexOf_` 갱신 누락(다음 `Despawn`이 엉뚱한 유닛을 지움), hot만 옮기고 cold는 옮기지 않음, `hole != last` 검사 없이 옮기면서 죽음 표시를 그보다 먼저 해 마지막 유닛 삭제를 망침, `erase`로 중간을 지워 O(n)이 되고 뒤쪽 유닛의 위치가 전부 어긋남, id로 배열을 선형 탐색함.\n\n### 흔한 오해\n- **\"hot/cold 분리는 메모리를 아끼는 최적화다\"** — 분리는 같은 필드를 두 배열에 나눠 담을 뿐이라 전체 크기는 줄지 않고(채점 환경에서 `UnitHot` 16 + `UnitCold` 48 = `Unit` 64바이트), id 표를 두는 이 설계에서는 오히려 조금 늘어납니다(살아 있는 유닛마다 `idOf_` 4바이트, 발급한 id마다 `indexOf_` 4바이트). 줄어드는 것은 매 프레임 루프가 캐시로 끌어오는 바이트 수이고, 이 문제에서는 유닛당 64바이트가 16바이트가 됩니다 [gpp-data-locality].\n- **\"std::string 멤버는 결국 포인터 하나라서 8바이트만 차지한다\"** — 표준은 `std::string`의 크기를 정하지 않습니다. 실제로 재 보면 채점 환경의 libstdc++ 13.2와 로컬 MSVC 19.41(x64 릴리스 빌드)에서 `sizeof(std::string)`은 32였습니다(MSVC `/MDd` 디버그 빌드에서는 40). 두 구현 모두 짧은 문자열을 객체 안에 담는 16바이트 버퍼와 길이를 객체 안에 두기 때문입니다 [gcc13-string-layout][ms-stl-string-layout]. 그래서 이름을 cold 쪽으로 옮기는 것만으로 hot 경로에서 32바이트가 빠집니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Despawn 뒤에도, 옮겨진 유닛을 포함해 모든 살아 있는 id가 Hot/Cold/IdAt로 정확히 찾아진다(옮겨진 유닛의 id → 위치 항목을 갱신).",
+            "points": 12,
+            "sourceId": "entt-entity-docs"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "마지막 유닛 삭제(지울 칸 == 마지막 칸), 유일한 유닛 삭제, 0·발급하지 않은 id·이미 지운 id의 Despawn을 모두 올바르게 처리한다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "hot_과 cold_의 같은 위치가 항상 같은 유닛이고, 두 배열에 빈칸이 없다.",
+            "points": 11,
+            "sourceId": "gpp-data-locality"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Despawn이 O(1) swap-and-pop이다(중간 erase나 id 선형 탐색이 없다).",
+            "points": 12,
+            "sourceId": "entt-entity-docs"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Integrate가 hot 배열만 훑고, UnitHot에 이동 루프가 쓰지 않는 필드를 추가하지 않았다.",
+            "points": 10,
+            "sourceId": "gpp-data-locality"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Hot/Cold의 id → 위치 조회와 IdAt의 위치 → id 조회가 O(1)이다(id로 바로 인덱싱하는 vector 또는 해시, 위치 → id 배열).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "cold 데이터를 옮길 때 복사가 아니라 이동(std::move)을 써 문자열을 다시 할당하지 않는다.",
+            "points": 10,
+            "sourceId": "cppref-move"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "Hot/Cold가 돌려준 포인터를 저장소 안이나 다른 곳에 보관하지 않고(다음 Spawn·Despawn 뒤 무효이거나 다른 유닛을 가리킴), 유닛을 id와 위치로만 관리한다.",
+            "points": 10,
+            "sourceId": "cppref-vector-push-back"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "두 표의 불변식(모든 위치 i에 대해 indexOf_[idOf_[i]] == i)을 주석으로 적었다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "분리하는 이유를 바이트 수와 캐시 라인(64바이트 라인에 Unit 1개 대 UnitHot 4개)으로 설명하되, 측정 없이 몇 배 빨라진다고 단정하지 않았다.",
+            "points": 7,
+            "sourceId": "cmu-15418-cachecoherence"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Despawn을 vector 중간 erase로 구현해 O(n)이 되고 뒤쪽 유닛의 위치가 모두 바뀐다.",
+            "penalty": -20,
+            "sourceId": "cppref-vector-erase"
+          },
+          {
+            "id": "d2",
+            "description": "hot과 cold 중 한쪽만 swap-and-pop해 두 배열의 같은 위치가 서로 다른 유닛을 가리킨다.",
+            "penalty": -20,
+            "sourceId": "gpp-data-locality"
+          },
+          {
+            "id": "d3",
+            "description": "다른 시스템이 Hot()이 돌려준 포인터를 프레임을 넘겨 보관하도록 설계했다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "#include <cstdio>\r\n#include <exception>\r\n#include <string>\r\n#include <utility>\r\n#include <vector>\r\n\r\n#define main __user_main\r\n{{USER_CODE}}\r\n#undef main\r\n\r\nnamespace judge {\r\n\r\nstd::string Num(long long v) { return std::to_string(v); }\r\n\r\nstruct Ref {\r\n    UnitId id;\r\n    UnitHot hot;\r\n    UnitCold cold;\r\n};\r\n\r\n// Reference store: one dense vector, removal by swapping with the last element.\r\nstruct Model {\r\n    std::vector<Ref> units;\r\n    UnitId nextId = 1;\r\n    UnitId Spawn(const UnitHot& h, const UnitCold& c) {\r\n        units.push_back(Ref{nextId, h, c});\r\n        return nextId++;\r\n    }\r\n    bool Despawn(UnitId id) {\r\n        for (std::size_t i = 0; i < units.size(); ++i) {\r\n            if (units[i].id != id) continue;\r\n            units[i] = units.back();\r\n            units.pop_back();\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n    const Ref* Find(UnitId id) const {\r\n        for (const Ref& r : units)\r\n            if (r.id == id) return &r;\r\n        return nullptr;\r\n    }\r\n};\r\n\r\nUnitHot H(float x, float y, float vx = 0, float vy = 0) {\r\n    UnitHot h;\r\n    h.x = x;\r\n    h.y = y;\r\n    h.vx = vx;\r\n    h.vy = vy;\r\n    return h;\r\n}\r\n\r\nUnitCold C(const std::string& name, int prefab) {\r\n    UnitCold c;\r\n    c.name = name;\r\n    c.prefabId = prefab;\r\n    c.lootTableId = prefab * 10;\r\n    c.spawnTime = prefab * 0.5;\r\n    return c;\r\n}\r\n\r\nbool SameHot(const UnitHot& a, const UnitHot& b) { return a.x == b.x && a.y == b.y && a.vx == b.vx && a.vy == b.vy; }\r\nbool SameCold(const UnitCold& a, const UnitCold& b) {\r\n    return a.name == b.name && a.prefabId == b.prefabId && a.lootTableId == b.lootTableId && a.spawnTime == b.spawnTime;\r\n}\r\n\r\n// Dense order around position `at`, at most 8 ids, so failure lines stay short.\r\nstd::string Window(const std::vector<UnitId>& ids, std::size_t at) {\r\n    const std::size_t from = at > 3 ? at - 3 : 0, to = from + 8 < ids.size() ? from + 8 : ids.size();\r\n    std::string s = from ? \"[... \" : \"[\";\r\n    for (std::size_t i = from; i < to; ++i) s += (i > from ? \" \" : \"\") + Num(ids[i]);\r\n    return s + (to < ids.size() ? \" ...]\" : \"]\");\r\n}\r\n\r\nstd::string OrderDiff(const UnitStore& s, const Model& m, std::size_t at) {\r\n    std::vector<UnitId> want, got;\r\n    for (const Ref& r : m.units) want.push_back(r.id);\r\n    for (std::size_t i = 0; i < s.Count(); ++i) got.push_back(s.IdAt(i));\r\n    return \"위치 \" + Num((long long)at) + \" 부근 id 순서 기대 \" + Window(want, at) + \", 결과 \" + Window(got, at);\r\n}\r\n\r\n// Full comparison: dense order, both arrays aligned, every id lookup.\r\nstd::string Compare(UnitStore& s, const Model& m, const std::string& who) {\r\n    if (s.Count() != m.units.size()) return who + \" Count 기대 \" + Num((long long)m.units.size()) + \", 결과 \" + Num((long long)s.Count());\r\n    if (s.HotUnits().size() != s.Count() || s.ColdUnits().size() != s.Count())\r\n        return who + \" HotUnits/ColdUnits 크기가 Count와 다름 (빈칸 없이 촘촘해야 함)\";\r\n    for (std::size_t i = 0; i < m.units.size(); ++i) {\r\n        const Ref& r = m.units[i];\r\n        if (s.IdAt(i) != r.id) return who + \" 촘촘한 배열의 \" + OrderDiff(s, m, i) + \" (지운 자리에는 마지막 유닛이 와야 함)\";\r\n        if (!SameHot(s.HotUnits()[i], r.hot)) return who + \" HotUnits()[\" + Num((long long)i) + \"]가 id \" + Num(r.id) + \"의 hot 데이터가 아님\";\r\n        if (!SameCold(s.ColdUnits()[i], r.cold)) return who + \" ColdUnits()[\" + Num((long long)i) + \"]가 id \" + Num(r.id) + \"의 cold 데이터가 아님 (\" + s.ColdUnits()[i].name + \")\";\r\n        const UnitHot* h = s.Hot(r.id);\r\n        const UnitCold* c = static_cast<const UnitStore&>(s).Cold(r.id);\r\n        if (h == nullptr || c == nullptr) return who + \" 살아 있는 id \" + Num(r.id) + \"의 Hot/Cold가 nullptr\";\r\n        if (h != &s.HotUnits()[i]) return who + \" Hot(\" + Num(r.id) + \")가 HotUnits()의 해당 원소를 가리키지 않음\";\r\n        if (c != &s.ColdUnits()[i]) return who + \" Cold(\" + Num(r.id) + \")가 ColdUnits()의 해당 원소를 가리키지 않음\";\r\n    }\r\n    return \"\";\r\n}\r\n\r\nstd::string DeadEverywhere(UnitStore& s, UnitId id, const std::string& who) {\r\n    if (s.Hot(id) != nullptr || static_cast<const UnitStore&>(s).Cold(id) != nullptr)\r\n        return who + \" 살아 있지 않은 id \" + Num(id) + \"의 Hot/Cold가 nullptr가 아님\";\r\n    return \"\";\r\n}\r\n\r\nstd::string SpawnAndLookup() {\r\n    if (sizeof(UnitHot) != 4 * sizeof(float)) return \"UnitHot에 멤버가 추가됨: hot 구조체는 이동 루프가 쓰는 네 값만 가져야 함\";\r\n    UnitStore s;\r\n    Model m;\r\n    const char* names[] = {\"Grunt\", \"Archer\", \"Wyvern\"};\r\n    for (int i = 0; i < 3; ++i) {\r\n        const UnitId want = m.Spawn(H(i * 1.f, i * 2.f, 1.f, -1.f), C(names[i], 100 + i));\r\n        const UnitId got = s.Spawn(H(i * 1.f, i * 2.f, 1.f, -1.f), C(names[i], 100 + i));\r\n        if (got != want) return \"Spawn 반환 id 기대 \" + Num(want) + \", 결과 \" + Num(got);\r\n    }\r\n    std::string d = Compare(s, m, \"Spawn 3번:\");\r\n    if (!d.empty()) return d;\r\n    s.Hot(2)->x = 42.f;\r\n    m.units[1].hot.x = 42.f;\r\n    d = Compare(s, m, \"Hot(2)->x = 42 뒤:\");\r\n    if (!d.empty()) return d;\r\n    return DeadEverywhere(s, 0, \"id 0:\");\r\n}\r\n\r\nstd::string DespawnMiddle() {\r\n    UnitStore s;\r\n    Model m;\r\n    for (int i = 1; i <= 5; ++i) {\r\n        m.Spawn(H(i * 10.f, 0), C(\"U\" + Num(i), i));\r\n        s.Spawn(H(i * 10.f, 0), C(\"U\" + Num(i), i));\r\n    }\r\n    if (!s.Despawn(2)) return \"살아 있는 id 2의 Despawn이 false\";\r\n    m.Despawn(2);\r\n    std::string d = Compare(s, m, \"5마리 중 id 2 Despawn 뒤:\");\r\n    if (!d.empty()) return d;\r\n    d = DeadEverywhere(s, 2, \"Despawn한 id 2:\");\r\n    if (!d.empty()) return d;\r\n    s.Despawn(1);\r\n    m.Despawn(1);\r\n    return Compare(s, m, \"이어서 id 1 Despawn 뒤:\");\r\n}\r\n\r\nstd::string DespawnLastAndOnly() {\r\n    UnitStore s;\r\n    Model m;\r\n    for (int i = 1; i <= 3; ++i) {\r\n        m.Spawn(H(i * 1.f, 0), C(\"U\" + Num(i), i));\r\n        s.Spawn(H(i * 1.f, 0), C(\"U\" + Num(i), i));\r\n    }\r\n    if (!s.Despawn(3)) return \"마지막 유닛 id 3의 Despawn이 false\";\r\n    m.Despawn(3);\r\n    std::string d = Compare(s, m, \"마지막 유닛(id 3) Despawn 뒤:\");\r\n    if (!d.empty()) return d;\r\n    d = DeadEverywhere(s, 3, \"Despawn한 id 3:\");\r\n    if (!d.empty()) return d;\r\n    s.Despawn(1);\r\n    m.Despawn(1);\r\n    s.Despawn(2);\r\n    m.Despawn(2);\r\n    d = Compare(s, m, \"전부 Despawn 뒤:\");\r\n    if (!d.empty()) return d;\r\n    const UnitId again = s.Spawn(H(7, 7), C(\"Late\", 9));\r\n    m.Spawn(H(7, 7), C(\"Late\", 9));\r\n    if (again != 4) return \"모두 지운 뒤 Spawn한 id 기대 4(재사용 없음), 결과 \" + Num(again);\r\n    return Compare(s, m, \"다시 Spawn 뒤:\");\r\n}\r\n\r\nstd::string InvalidIds() {\r\n    UnitStore s;\r\n    if (s.Despawn(0) || s.Despawn(1)) return \"빈 저장소에서 Despawn이 true\";\r\n    s.Spawn(H(1, 1), C(\"A\", 1));\r\n    s.Spawn(H(2, 2), C(\"B\", 2));\r\n    if (s.Despawn(0)) return \"Despawn(0)이 true (0은 유닛이 아님)\";\r\n    if (s.Despawn(999)) return \"발급한 적 없는 id 999의 Despawn이 true\";\r\n    if (!s.Despawn(1)) return \"살아 있는 id 1의 Despawn이 false\";\r\n    if (s.Despawn(1)) return \"이미 Despawn한 id 1을 다시 Despawn하자 true\";\r\n    if (s.Count() != 1) return \"잘못된 Despawn 뒤 Count 기대 1, 결과 \" + Num((long long)s.Count());\r\n    std::string d = DeadEverywhere(s, 999, \"id 999:\");\r\n    if (!d.empty()) return d;\r\n    d = DeadEverywhere(s, 1, \"Despawn한 id 1:\");\r\n    if (!d.empty()) return d;\r\n    const UnitCold* c = static_cast<const UnitStore&>(s).Cold(2);\r\n    if (c == nullptr || c->name != \"B\") return \"남은 id 2의 Cold가 잘못됨\";\r\n    return \"\";\r\n}\r\n\r\nstd::string IntegrateMovesLive() {\r\n    UnitStore s;\r\n    Model m;\r\n    for (int i = 1; i <= 6; ++i) {\r\n        m.Spawn(H(i * 1.f, 0, 2.f * i, -4.f), C(\"U\" + Num(i), i));\r\n        s.Spawn(H(i * 1.f, 0, 2.f * i, -4.f), C(\"U\" + Num(i), i));\r\n    }\r\n    s.Despawn(2);\r\n    m.Despawn(2);\r\n    s.Despawn(5);\r\n    m.Despawn(5);\r\n    s.Integrate(0.5f);\r\n    s.Integrate(0.25f);\r\n    for (Ref& r : m.units) {\r\n        r.hot.x += r.hot.vx * 0.5f;\r\n        r.hot.y += r.hot.vy * 0.5f;\r\n        r.hot.x += r.hot.vx * 0.25f;\r\n        r.hot.y += r.hot.vy * 0.25f;\r\n    }\r\n    return Compare(s, m, \"Integrate(0.5), Integrate(0.25) 뒤:\");\r\n}\r\n\r\nstd::string IdsNeverReused() {\r\n    UnitStore s;\r\n    std::vector<UnitId> dead;\r\n    for (int round = 0; round < 50; ++round) {\r\n        const UnitId a = s.Spawn(H(0, 0), C(\"A\", round));\r\n        const UnitId b = s.Spawn(H(1, 1), C(\"B\", round));\r\n        if (a != static_cast<UnitId>(2 * round + 1) || b != static_cast<UnitId>(2 * round + 2))\r\n            return \"round \" + Num(round) + \": Spawn id 기대 \" + Num(2 * round + 1) + \"/\" + Num(2 * round + 2) + \", 결과 \" + Num(a) + \"/\" + Num(b);\r\n        s.Despawn(a);\r\n        dead.push_back(a);\r\n    }\r\n    for (UnitId id : dead) {\r\n        std::string d = DeadEverywhere(s, id, \"Despawn한 id:\");\r\n        if (!d.empty()) return d;\r\n    }\r\n    if (s.Count() != 50) return \"Count 기대 50, 결과 \" + Num((long long)s.Count());\r\n    return \"\";\r\n}\r\n\r\nstd::string RandomVsReference() {\r\n    unsigned seed = 77031u;\r\n    auto next = [&](unsigned mod) {\r\n        seed = seed * 1664525u + 1013904223u;\r\n        return (seed >> 8) % mod;\r\n    };\r\n    UnitStore s;\r\n    Model m;\r\n    for (int step = 0; step < 20000; ++step) {\r\n        const unsigned op = next(10);\r\n        if (op < 5 || m.units.empty()) {\r\n            const UnitHot h = H(static_cast<float>(next(1000)), static_cast<float>(next(1000)), 1.f, 2.f);\r\n            const UnitCold c = C(\"Unit\" + Num(step), static_cast<int>(next(50)));\r\n            const UnitId want = m.Spawn(h, c);\r\n            const UnitId got = s.Spawn(h, c);\r\n            if (got != want) return \"step \" + Num(step) + \": Spawn id 기대 \" + Num(want) + \", 결과 \" + Num(got);\r\n        } else if (op < 9) {\r\n            const UnitId id = m.units[next(static_cast<unsigned>(m.units.size()))].id;\r\n            if (!s.Despawn(id)) return \"step \" + Num(step) + \": 살아 있는 id \" + Num(id) + \"의 Despawn이 false\";\r\n            m.Despawn(id);\r\n        } else {\r\n            const UnitId id = static_cast<UnitId>(next(m.nextId + 5));\r\n            const bool want = m.Find(id) != nullptr;\r\n            if (s.Despawn(id) != want) return \"step \" + Num(step) + \": id \" + Num(id) + \"의 Despawn 반환 기대 \" + (want ? \"true\" : \"false\");\r\n            if (want) m.Despawn(id);\r\n        }\r\n        if (step % 997 == 0 || step > 19900) {\r\n            std::string d = Compare(s, m, \"step \" + Num(step) + \":\");\r\n            if (!d.empty()) return d;\r\n        }\r\n    }\r\n    for (UnitId id = 0; id < m.nextId + 3; ++id) {\r\n        const Ref* r = m.Find(id);\r\n        const UnitHot* h = s.Hot(id);\r\n        if ((r == nullptr) != (h == nullptr)) return \"끝 상태: id \" + Num(id) + \"의 Hot \" + (r ? \"nullptr이면 안 됨\" : \"nullptr이어야 함\");\r\n        if (r && !SameHot(*h, r->hot)) return \"끝 상태: id \" + Num(id) + \"의 Hot 데이터가 다름\";\r\n    }\r\n    return Compare(s, m, \"끝 상태:\");\r\n}\r\n\r\ntypedef std::string (*CaseFn)();\r\nstruct Case {\r\n    const char* name;\r\n    CaseFn fn;\r\n};\r\nconst Case kCases[] = {\r\n    {\"spawn-ids-and-lookup\", SpawnAndLookup},\r\n    {\"despawn-middle-moves-last\", DespawnMiddle},\r\n    {\"despawn-last-and-only\", DespawnLastAndOnly},\r\n    {\"invalid-and-dead-ids\", InvalidIds},\r\n    {\"integrate-hot-only\", IntegrateMovesLive},\r\n    {\"ids-never-reused\", IdsNeverReused},\r\n    {\"random-vs-reference\", RandomVsReference},\r\n};\r\n\r\n}  // namespace judge\r\n\r\nint main() {\r\n    using namespace judge;\r\n    for (const Case& c : kCases) {\r\n        std::string reason;\r\n        try {\r\n            reason = c.fn();\r\n        } catch (const std::exception& e) {\r\n            reason = std::string(\"예외가 밖으로 전파됨: \") + e.what();\r\n        } catch (...) {\r\n            reason = \"알 수 없는 예외가 밖으로 전파됨\";\r\n        }\r\n        if (reason.empty()) {\r\n            std::printf(\"[PASS] %s\\n\", c.name);\r\n        } else {\r\n            std::printf(\"[FAIL] %s :: %s\\n\", c.name, reason.c_str());\r\n        }\r\n    }\r\n    return 0;\r\n}\r\n",
+        "cases": [
+          "spawn-ids-and-lookup",
+          "despawn-middle-moves-last",
+          "despawn-last-and-only",
+          "invalid-and-dead-ids",
+          "integrate-hot-only",
+          "ids-never-reused",
+          "random-vs-reference"
+        ],
+        "note": "검사 내용: `Spawn`이 id를 1, 2, 3 순서로 주는지와 `Hot`/`Cold`/`IdAt`/`HotUnits`/`ColdUnits`가 같은 유닛을 가리키는지(`Hot`/`Cold`는 촘촘한 배열 안의 원소 주소여야 함, `UnitHot`은 float 네 개 크기 그대로), 5마리 중 가운데 유닛을 지우면 마지막 유닛이 그 칸으로 오는지, 마지막 유닛·유일한 유닛 삭제와 전부 지운 뒤의 새 id, 0·발급하지 않은 id·이미 지운 id의 `Despawn`과 조회, 일부를 지운 뒤 `Integrate`의 위치 계산, id 재사용이 없는지, 그리고 무작위 작업 2만 번(고정 시드)을 같은 swap-and-pop을 하는 기준 구현과 비교(배열 순서, 두 배열의 정렬, 모든 id 조회). 바꾸면 안 되는 것: `UnitHot`·`UnitCold`·`UnitId`의 정의, `UnitStore`의 공개 멤버 함수 시그니처(`Spawn`, `Despawn`, `Hot`, `Cold`, `Count`, `Integrate`, `HotUnits`, `ColdUnits`, `IdAt`). 조회의 시간 복잡도는 실행 시간으로 판정하지 않고 채점표로 확인합니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기에서 모범 답안 7/7 통과와 시작 코드 실패, 옮겨진 유닛의 표 갱신 누락·검사 없는 이동 전 죽음 표시 오답의 실패와 갱신 순서만 다른 정답의 통과를 확인했고, sizeof 값은 GCC 13.2와 로컬 MSVC 19.41(릴리스·/MDd)에서 재 보았으며, 개념 설명은 GPP·EnTT v4.0.0 문서·CMU 15-418 슬라이드·libstdc++/microsoft/STL 소스와 대조했습니다."
+      },
+      "nextMission": "이동 루프 도중에 유닛이 죽는 경우를 처리하세요. 인덱스로 도는 `Integrate` 안에서 경계 밖으로 나간 유닛을 바로 `Despawn`하면, swap-and-pop 때문에 아직 처리하지 않은 마지막 유닛이 현재 칸으로 옮겨온 뒤 다음 칸으로 넘어가면서 그 유닛을 건너뜁니다(range-for였다면 무효화된 반복자를 쓰게 됩니다). 이 현상을 재현하는 테스트를 먼저 작성한 뒤, 죽은 id를 모아 두었다가 루프가 끝난 뒤 한꺼번에 지우는 `QueueDespawn`/`FlushDespawns`를 추가해 테스트를 통과시키세요."
+    },
+    {
+      "id": "t2-interview-forwarding-parameter-passing",
+      "track": "track2",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "면접: lvalue와 rvalue, std::move와 std::forward, 그리고 값·const&·&& 중 무엇으로 받을까",
+      "tags": [
+        "Cpp_Value_Category",
+        "Cpp_Perfect_Forwarding",
+        "Cpp_Parameter_Passing"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "cppref-value-category",
+        "cppref-forward",
+        "isocpp-cg-f16",
+        "ms-learn-rvalue-reference"
+      ],
+      "scenario": "게임 클라이언트 프로그래머 면접입니다. 면접관이 지원자의 포트폴리오에서 세 조각을 보여 줍니다.\n\n```cpp\n// (1) 데미지 계산 — 초당 수천 번 호출된다\nfloat ComputeDamage(const float& base, const float& multiplier);\n\n// (2) 머리 위 이름표\nclass Nameplate {\npublic:\n    void SetText(std::string&& text) { text_ = text; }\nprivate:\n    std::string text_;\n};\n\n// (3) 오브젝트 풀에 적을 생성한다\ntemplate <class T, class... Args>\nT& Spawn(std::vector<T>& pool, Args&&... args) {\n    return pool.emplace_back(std::move(args)...);\n}\n\nstd::string bossName = \"Lich King\";\nSpawn(enemies, bossName, 900);\nShowBossIntro(bossName);   // 보스 등장 연출에 이름을 띄운다\n```\n\nQA는 보스 등장 연출에 이름이 비어 나온다고 보고했습니다.\n\n**질문: \"lvalue와 rvalue는 무엇이고, `std::move`와 `std::forward`는 각각 무엇을 하나요? `Args&&`가 어떻게 lvalue와 rvalue를 모두 받는지 템플릿 인자 추론과 참조 축약으로 설명한 뒤, 세 조각의 문제를 짚고, 매개변수를 값·`const&`·`&&`·전달 참조 중 무엇으로 받을지 정하는 기준을 말해 주세요.\"**",
+      "constraints": [
+        "C++17 기준으로 답합니다.",
+        "표준이 정한 규칙과 특정 구현에서 측정한 결과(예: 이동된 `std::string`이 비는 것)를 구분해서 말합니다."
+      ],
+      "starterCode": "",
+      "edgeCases": [
+        "`auto&&`도 전달 참조입니다(`for (auto&& x : range)`). 단 `auto&& z = {1, 2, 3};`은 예외입니다.",
+        "`const T&&`, `std::vector<T>&&`, 클래스 템플릿 매개변수 `T`로 쓴 멤버 함수의 `T&&`는 전달 참조가 아닙니다.",
+        "중괄호 초기화 목록은 전달 참조로 추론되지 않습니다: `Spawn(pool, {1.0f, 2.0f}, 10)`은 채점 환경(GCC 13.2)에서 컴파일 오류입니다.",
+        "같은 매개변수를 두 번 `std::forward`하면, rvalue 인자일 때 첫 번째 받는 쪽이 그 객체를 옮겨 갈 수 있어 두 번째 받는 쪽은 이동된 객체를 받을 수 있습니다.",
+        "임시 객체를 받은 전달 참조는 그 호출이 끝날 때까지만 안전합니다. 참조째 저장하면(참조 캡처 람다, 참조를 담은 tuple) 댕글링이 됩니다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "(3)을 `std::forward`로 고쳤습니다. 그런데 생성 직전에 인자를 로그로 남기려고 `LogSpawn(std::forward<Args>(args)...);` 한 줄을 `emplace_back` 앞에 추가했습니다. 무엇이 문제인가요?",
+          "intent": "std::forward가 \"rvalue일 때 넘겨준다\"는 뜻이라 한 번 넘기면 그 인자는 받은 쪽이 가져갈 수 있다는 점, 그리고 Core Guidelines F.19의 \"정적 경로마다 정확히 한 번\" 규칙을 아는지 확인합니다.",
+          "keyAnswer": "- rvalue 인자(예: `Spawn(pool, std::string(\"Ghoul\"), 40)`)라면 첫 번째 `std::forward`가 rvalue를 넘기므로, `LogSpawn`이 `std::string`을 값이나 `&&`로 받으면 그 문자열을 옮겨 가져갈 수 있습니다. 그다음 `emplace_back`은 이동된 객체를 받습니다. 이동된 `std::string`은 유효하지만 지정되지 않은 상태라 이름이 무엇이 될지 보장할 수 없습니다.\n- lvalue 인자일 때는 두 번 다 lvalue라 증상이 없어서, 테스트를 lvalue로만 하면 버그가 숨습니다.\n- Core Guidelines F.19의 집행 규칙은 `TP&&` 매개변수를 정적 경로마다 정확히 한 번만 `std::forward`하라고 합니다(서로 다른 데이터 멤버를 한 번씩 forward하는 경우는 예외).\n- 고치는 법: 로그에는 forward하지 말고 이름으로(lvalue로) 넘기거나, 먼저 생성한 뒤 생성된 객체(`T& e = pool.emplace_back(...)`)를 로그에 씁니다."
+        },
+        {
+          "question": "`std::forward`는 왜 `std::forward<T>(x)`처럼 템플릿 인자를 꼭 적어야 하나요? T가 `std::string&`일 때와 `std::string`일 때 각각 무엇을 돌려주는지 참조 축약으로 설명해 보세요.",
+          "intent": "forward가 마법이 아니라 추론된 T에 담긴 정보를 static_cast로 되살리는 함수라는 점을, 비추론 문맥과 참조 축약으로 설명할 수 있는지 확인합니다.",
+          "keyAnswer": "- `std::forward`의 매개변수 타입은 `std::remove_reference_t<T>&`입니다. T가 `::` 왼쪽(중첩 이름 지정자) 안에 있으므로 비추론 문맥이라, 인자에서 T를 추론할 수 없고 직접 적어야 합니다.\n- 설령 추론이 된다 해도 쓸모가 없습니다. 래퍼 함수 안의 `x`는 이름이 있으니 항상 lvalue 식이라, 추론은 언제나 \"lvalue\"라고만 알려 줄 것입니다. 원래 인자가 lvalue였는지 rvalue였는지는 래퍼의 T(lvalue → `A&`, rvalue → `A`)에만 남아 있습니다.\n- 반환은 `static_cast<T&&>(x)`입니다. T = `std::string&`이면 `std::string& &&` → `std::string&`(lvalue, 복사가 선택됨). T = `std::string`이면 `std::string&&`(xvalue, 이동이 선택됨).\n- microsoft/STL의 구현이 정확히 이 형태이고, rvalue를 받는 두 번째 오버로드는 `static_assert(!is_lvalue_reference_v<_Ty>, \"bad forward call\")`로 rvalue를 lvalue로 forward하려는 호출을 컴파일 오류로 만듭니다. cppreference도 이 경우를 컴파일 타임 오류로 적습니다."
+        },
+        {
+          "question": "`template <class T> explicit Tag(T&& v) : text(std::forward<T>(v)) {}` 생성자를 가진 `Tag`에서 `Tag a(std::string(\"boss\")); Tag b(a);`가 컴파일되지 않습니다. 이유와 해결책을 말하고, 퍼펙트 포워딩이 \"완벽하지 않은\" 다른 경우도 짚어 주세요.",
+          "intent": "전달 참조가 오버로드 해석에서 지나치게 잘 맞는 문제, 추론되지 않는 인자 형태, 그리고 전달 참조로 받은 임시 객체의 수명까지 실무 수준으로 아는지 확인합니다.",
+          "keyAnswer": "- `a`는 non-const lvalue입니다. 템플릿은 T = `Tag&`로 추론되어 매개변수가 `Tag&`가 되고, 이는 복사 생성자의 `const Tag&`보다 더 나은 일치라 템플릿이 선택됩니다. 그러면 `std::string`을 `Tag&`로 초기화하려다 실패합니다. 채점 환경(GCC 13.2)에서 `with T = Tag&`와 함께 \"no matching function for call to basic_string(Tag&)\" 오류가 나는 것을 확인했습니다.\n- 해결: 템플릿을 제한합니다. C++17이면 `template <class T, class = std::enable_if_t<!std::is_same_v<std::decay_t<T>, Tag>>>`, C++20이면 `requires`. 또는 처음부터 `std::string`을 값으로 받아 `std::move`하는 생성자 하나로 바꿉니다(이동 한 번이 더 드는 대신 단순).\n- 추론되지 않는 인자: 중괄호 초기화 목록 `{1.0f, 2.0f}`는 매개변수가 `std::initializer_list`나 배열 참조가 아니면 비추론 문맥이라, `Spawn(pool, {1.0f, 2.0f}, 10)`은 채점 환경에서 컴파일 오류였습니다. 호출하는 쪽에서 `Vec2{1.0f, 2.0f}`처럼 타입을 적어야 합니다.\n- 수명: F.19가 말하듯 전달 참조가 안전한 것은 호출자가 넘긴 임시 객체가 그 함수 호출 동안 살아 있기 때문입니다. 전달 참조를 참조째 저장하면(나중에 실행할 람다에 참조 캡처, `std::tuple<Args&&...>` 보관) 호출이 끝나는 순간 댕글링이 되므로, 오래 보관할 값은 `std::decay_t<T>` 타입으로 복사·이동해 담습니다(`gsl::finally`가 하는 방식)."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "#include <cstdio>\n#include <string>\n#include <utility>\n#include <vector>\n\n// (1) Cheap \"in\" parameter: pass by value (Core Guidelines F.16).\nfloat ComputeDamage(float base, float multiplier) { return base * multiplier; }\n\n// (2) A value the object keeps: const& for lvalues plus && for rvalues\n// (F.16 \"advanced uses\", F.18). Inside the && overload `text` has a name, so it is an\n// lvalue expression; std::move is what lets the assignment move from it.\nclass Nameplate {\npublic:\n    void SetText(const std::string& text) { text_ = text; }\n    void SetText(std::string&& text) { text_ = std::move(text); }\n    const std::string& Text() const { return text_; }\n\nprivate:\n    std::string text_;\n};\n\n// (3) \"Forward\" parameters: TP&& and std::forward exactly once on each path (F.19).\n// For an lvalue argument Args is deduced as X& and forward returns an lvalue (copy);\n// for an rvalue argument Args is X and forward returns an xvalue (move).\ntemplate <class T, class... Args>\nT& Spawn(std::vector<T>& pool, Args&&... args) {\n    return pool.emplace_back(std::forward<Args>(args)...);\n}\n\nstruct Enemy {\n    std::string name;\n    int hp;\n    Enemy(std::string n, int h) : name(std::move(n)), hp(h) {}\n};\n\n// Counts how a stored value gets into an object under each parameter style.\nstruct Counted {\n    static int copies, moves;\n    Counted() = default;\n    Counted(const Counted&) { ++copies; }\n    Counted(Counted&&) noexcept { ++moves; }\n    Counted& operator=(const Counted&) {\n        ++copies;\n        return *this;\n    }\n    Counted& operator=(Counted&&) noexcept {\n        ++moves;\n        return *this;\n    }\n};\nint Counted::copies = 0;\nint Counted::moves = 0;\n\nstruct Holder {\n    Counted kept;\n    void ByValue(Counted c) { kept = std::move(c); }\n    void ByConstRef(const Counted& c) { kept = c; }\n    void Overloaded(const Counted& c) { kept = c; }\n    void Overloaded(Counted&& c) { kept = std::move(c); }\n    template <class C>\n    void Forwarding(C&& c) { kept = std::forward<C>(c); }\n};\n\ntemplate <class F>\nvoid Measure(const char* what, F call) {\n    Counted::copies = Counted::moves = 0;\n    call();\n    std::printf(\"%-32s copies %d, moves %d\\n\", what, Counted::copies, Counted::moves);\n}\n\nint main() {\n    std::printf(\"damage %.1f\\n\", ComputeDamage(40.0f, 1.5f));\n\n    Nameplate plate;\n    std::string title = \"Dragon Slayer\";\n    plate.SetText(title);                   // lvalue: copied, title keeps its text\n    plate.SetText(std::string(\"Boss\"));     // rvalue: moved\n    std::printf(\"plate \\\"%s\\\", title \\\"%s\\\"\\n\", plate.Text().c_str(), title.c_str());\n\n    std::vector<Enemy> enemies;\n    std::string bossName = \"Lich King\";\n    Spawn(enemies, bossName, 900);           // copies bossName\n    Spawn(enemies, std::string(\"Ghoul\"), 40);  // moves the temporary\n    std::printf(\"spawned \\\"%s\\\" and \\\"%s\\\", bossName still \\\"%s\\\"\\n\", enemies[0].name.c_str(),\n                enemies[1].name.c_str(), bossName.c_str());\n\n    Holder h;\n    Counted lv;\n    Measure(\"by value, lvalue\", [&] { h.ByValue(lv); });\n    Measure(\"by value, rvalue\", [&] { h.ByValue(Counted()); });\n    Measure(\"const&, lvalue\", [&] { h.ByConstRef(lv); });\n    Measure(\"const&, rvalue\", [&] { h.ByConstRef(Counted()); });\n    Measure(\"const& + && overloads, lvalue\", [&] { h.Overloaded(lv); });\n    Measure(\"const& + && overloads, rvalue\", [&] { h.Overloaded(Counted()); });\n    Measure(\"T&& + std::forward, lvalue\", [&] { h.Forwarding(lv); });\n    Measure(\"T&& + std::forward, rvalue\", [&] { h.Forwarding(Counted()); });\n    return 0;\n}\n",
+      "explanation": "**1. 값 범주(value category)**\n\n모든 식은 타입과 값 범주를 가집니다. 기본 범주는 lvalue(이름 있는 변수처럼 정체성이 있는 식), xvalue(정체성은 있지만 자원을 옮겨 가도 되는 식, 예: `std::move(x)`), prvalue(임시 값, 예: `std::string(\"Boss\")`, `42`)이고, rvalue는 xvalue와 prvalue를 합친 말입니다. 가장 중요한 규칙은 **변수의 타입이 rvalue 참조여도 그 이름으로 된 식은 lvalue**라는 것입니다(cppreference의 값 범주 문서, Microsoft의 rvalue 참조 문서 모두 명시). (2)의 `text_ = text;`가 복사인 이유입니다. 채점 환경에서 실행해 보면 복사 1번, 이동 0번입니다.\n\n**2. `std::move`와 `std::forward`는 캐스트다**\n\n`std::move(x)`는 `static_cast<std::remove_reference_t<T>&&>(x)`, 즉 무조건 xvalue로 바꾸는 캐스트이고 아무것도 옮기지 않습니다. 실제로 옮기는 것은 그 결과를 받는 이동 생성자나 이동 대입입니다. `std::forward<T>(x)`는 `static_cast<T&&>(x)`이고 T에 따라 lvalue 또는 rvalue를 돌려주는 **조건부** 캐스트입니다. microsoft/STL의 구현도 이 두 줄이 전부이고, rvalue를 lvalue로 forward하려는 호출은 `static_assert`(\"bad forward call\")로 막습니다.\n\n**3. 전달 참조와 참조 축약**\n\n함수 템플릿의 cv 한정이 없는 타입 매개변수에 `&&`를 붙인 매개변수(`template <class T> void f(T&& x)`)와 `auto&&`를 전달 참조라 합니다. 인자가 lvalue이면 T를 `A&`로 추론하는 특별 규칙이 있고, 그러면 매개변수는 `A& &&`가 되는데 참조 축약(rvalue 참조의 rvalue 참조만 rvalue 참조, 나머지 조합은 모두 lvalue 참조)에 따라 `A&`가 됩니다. 인자가 rvalue이면 T = A, 매개변수는 `A&&`입니다. 그래서 `std::forward<Args>(args)`는 lvalue로 들어온 인자에는 lvalue를, rvalue로 들어온 인자에는 rvalue를 돌려줍니다. microsoft/GSL의 `gsl::finally(F&& f)`가 `final_action<std::decay_t<F>>{std::forward<F>(f)}`로 람다를 lvalue면 복사, rvalue면 이동해 담는 것이 실제 예입니다.\n\n**4. 세 조각**\n\n- (1) `float`는 복사가 가장 싼 타입입니다. Core Guidelines F.16의 예제도 `void f4(const int& x);`를 \"접근할 때 간접 참조 비용\"이 있다며 나쁜 예로 듭니다. 값으로 받습니다.\n- (2) `text`는 이름이 있으니 lvalue이고 대입은 복사입니다. `text_ = std::move(text);`가 필요합니다(F.18: 옮겨 갈 매개변수는 `X&&`로 받고 `std::move`). 또 `&&` 하나뿐이면 lvalue를 가진 호출자는 `std::move`를 써야만 호출할 수 있으므로, lvalue도 받으려면 F.16의 고급 항목대로 `const std::string&` 오버로드를 함께 둡니다.\n- (3) `std::move(args)...`는 lvalue 인자까지 xvalue로 바꿔 호출자의 `bossName`을 옮겨 가 버립니다. 채점 환경에서 호출 뒤 `bossName`은 빈 문자열이었습니다. 표준은 이동된 `std::string`을 \"유효하지만 지정되지 않은 상태\"로만 정하므로, 비어 있다고 기대해서도 안 됩니다. `std::forward<Args>(args)...`로 고칩니다(F.19).\n\n**5. 무엇으로 받을까 — Core Guidelines F.15~F.19**\n\nF.15는 단순하고 관례적인 방식을 먼저 쓰라고 합니다. F.16: 입력 매개변수는 복사가 싼 타입(두세 워드)은 값으로, 나머지는 `const&`로. F.17: 입출력 매개변수는 non-const `&`로. F.18: 옮겨 갈 매개변수는 `X&&`로 받고 `std::move`(`unique_ptr`처럼 이동만 되고 이동이 싼 타입은 값으로 받아도 됨). F.19: 다른 곳으로 넘길 매개변수는 `TP&&`로 받고 `std::forward`만 합니다. 저장할 값을 받는 방식별 비용을 채점 환경에서 세어 보면, 값으로 받아 `std::move`로 저장하면 lvalue는 복사 1·이동 1, 임시 객체는 이동 1, `std::move`한 변수는 이동 2이고, `const&` 하나면 rvalue가 와도 항상 복사 1이며, `const&`+`&&` 오버로드나 전달 참조는 lvalue 복사 1, rvalue 이동 1입니다. \"값으로 받고 옮긴다\"는 함수 하나로 끝나는 대신 이동 한 번을 더 쓰는 절충이고, 지침은 저장할 값에는 `const&`+`&&` 오버로드를 고급 기법으로 소개하면서 필요가 입증된 뒤에만 쓰라고 합니다.\n\n### 흔한 오해\n- **\"T&&라고 쓰여 있으면 rvalue 참조다\"** — 함수 템플릿이 추론하는 cv 한정 없는 타입 매개변수의 `T&&`와 `auto&&`는 전달 참조라 lvalue도 받습니다(lvalue 인자면 T가 `A&`로 추론되고 `A& &&`는 `A&`로 축약). 반대로 `const T&&`, `std::vector<T>&&`, 클래스 템플릿 매개변수 `T`의 `T&&`는 전달 참조가 아닙니다 [cppref-reference][cppref-template-argument-deduction].\n- **\"rvalue 참조로 받은 매개변수는 rvalue이니 그대로 넘기면 이동된다\"** — 이름이 있는 식은 타입이 rvalue 참조여도 lvalue입니다. `SetText(std::string&& text)` 안의 `text_ = text;`는 채점 환경에서 복사 1번, 이동 0번이었습니다. 옮기려면 `std::move(text)`를 써야 합니다 [cppref-value-category][ms-learn-rvalue-reference].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "lvalue·xvalue·prvalue를 구분하고, 이름 있는 rvalue 참조 변수는 lvalue 식이라는 규칙으로 (2)의 복사를 설명했다.",
+            "points": 12,
+            "sourceId": "cppref-value-category"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "전달 참조의 추론 규칙(lvalue 인자면 T = A&)과 참조 축약(&&와 &&만 &&, 나머지는 &)으로 Args&&가 lvalue와 rvalue를 모두 받는 원리를 설명했다.",
+            "points": 12,
+            "sourceId": "cppref-template-argument-deduction"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "std::move는 무조건 xvalue로 바꾸는 캐스트이고 std::forward<T>는 T에 따라 lvalue나 rvalue를 돌려주는 조건부 캐스트임을 말하고, (3)의 std::move가 호출자의 bossName을 옮겨 간다는 결과를 짚었다.",
+            "points": 11,
+            "sourceId": "cppref-forward"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "(1)에서 float처럼 복사가 싼 타입은 const&가 아니라 값으로 받는 것이 낫다고 했다.",
+            "points": 10,
+            "sourceId": "isocpp-cg-f16"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "저장할 값을 받는 방식별 복사·이동 횟수(값+move, const&, const&+&& 오버로드, 전달 참조)를 lvalue와 rvalue로 나눠 비교했다.",
+            "points": 10,
+            "sourceId": "isocpp-cg-f16"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "전달 참조로 받은 값을 나중까지 보관할 때는 참조째가 아니라 std::decay_t<T> 값으로 복사·이동해 담아야 한다고 말했다(gsl::finally가 쓰는 방식).",
+            "points": 10,
+            "sourceId": "ms-gsl-final-action"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Core Guidelines F.16~F.19의 기준(입력: 싼 것은 값, 나머지 const&; 입출력: &; 옮겨 갈 것: && + std::move; 넘길 것: TP&& + std::forward 한 번)을 내용으로 정확히 말했다(규칙 번호까지 외울 필요는 없다).",
+            "points": 10,
+            "sourceId": "isocpp-cg-f19"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "const T&&, std::vector<T>&&, 클래스 템플릿 매개변수의 T&&는 전달 참조가 아님을 말했다.",
+            "points": 10,
+            "sourceId": "cppref-reference"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "기본은 단순하고 관례적인 방식(F.15)이고 && 오버로드나 전달 참조는 필요가 입증된 곳에만 쓴다는 판단 기준을 제시했다.",
+            "points": 8,
+            "sourceId": "isocpp-cg-f15"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "세 조각을 고친 코드(값 float, const&와 && 오버로드 또는 값+move, std::forward)를 제시했다.",
+            "points": 7,
+            "sourceId": "isocpp-cg-f18"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "std::forward와 std::move가 같은 일을 한다고 하거나, 전달 참조 매개변수에 std::move를 써도 된다고 답했다.",
+            "penalty": -20,
+            "sourceId": "cppref-forward"
+          },
+          {
+            "id": "d2",
+            "description": "T&&는 언제나 rvalue 참조라고 설명했다.",
+            "penalty": -15,
+            "sourceId": "cppref-reference"
+          },
+          {
+            "id": "d3",
+            "description": "std::move가 런타임에 객체를 옮기는 동작을 한다고 설명했다.",
+            "penalty": -15,
+            "sourceId": "ms-stl-forward"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "값 범주·전달 참조·참조 축약·forward 규칙과 F.15~F.19를 cppreference·Microsoft Learn·Core Guidelines·microsoft/STL 소스와 대조했고, 모범 코드의 복사·이동 횟수, std::move로 비워지는 bossName, 중괄호 목록과 Tag 생성자의 컴파일 오류는 채점 환경(GCC 13.2)에서 직접 실행해 확인했습니다."
+      },
+      "nextMission": "`Spawn`에 \"생성한 적의 이름을 전투 로그에 남기는\" 기능을 추가하되, 인자를 두 번 forward하지 않는 버전을 작성하세요(로그에는 생성된 객체를 쓰고 인자는 한 번만 forward). 그다음 `Counted` 같은 복사·이동 계수 타입으로 lvalue, `const` lvalue, 임시 객체, `std::move`한 변수를 넘길 때의 복사·이동 횟수를 표로 측정하고, 후속 질문 3의 `Tag` 생성자 템플릿을 `std::enable_if_t`로 제한해 `Tag b(a);`가 복사 생성자를 고르는지 `static_assert`와 실행으로 확인합니다."
+    },
+    {
+      "id": "t2-impl-generation-slot-map",
+      "track": "track2",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "죽은 적의 칸에 들어온 새 적을 포탑이 쏜다: 세대 번호로 검사하는 핸들(slot map)",
+      "tags": [
+        "Cpp_Generational_Handle",
+        "Cpp_Slot_Map",
+        "Cpp_Object_Lifetime"
+      ],
+      "language": "cpp",
+      "sourceRefs": [
+        "floooh-handles",
+        "entt-entity-docs",
+        "cppref-optional-reset"
+      ],
+      "scenario": "탑다운 슈터에서 적은 `std::vector`의 칸(슬롯)에 저장되고, 포탑의 조준 대상, 위협 목록, 머리 위 마커는 `Enemy*` 대신 **슬롯 번호**를 들고 있습니다. 번호는 포인터와 달리 배열이 재할당돼도 그대로 쓸 수 있기 때문입니다. 적이 죽으면 그 칸이 비고, 다음에 스폰되는 적이 빈 칸을 다시 씁니다. 그런데 QA에서 이런 버그가 올라왔습니다.\n\n- 포탑이 조준하던 적이 죽은 뒤, 같은 칸에 새로 스폰된 **다른 적**을 계속 쏜다.\n- 죽은 엘리트 몬스터의 마커가 같은 칸에 들어온 졸개 위에 뜬다.\n- 크래시는 없다. 번호는 언제나 배열 범위 안이기 때문이다.\n\n칸 번호만으로는 \"그 칸에 지금 있는 적\"과 \"내가 기억하는 적\"을 구분할 수 없습니다. 칸마다 **세대(generation)** 번호를 두고, 핸들을 `{index, generation}`으로 만드세요. 핸들은 그 핸들을 만든 `Insert`의 객체가 살아 있는 동안에만 유효합니다.\n\n**해야 할 일**: `SlotMap<T>`의 `Insert`, `Remove`, `Get`(두 버전)을 구현하세요. `Slot`을 포함한 private 부분은 자유롭게 바꿔도 됩니다.\n\n```cpp\nSlotMap<Enemy> enemies;\nHandle orc = enemies.Insert(Enemy{1, 100});\nenemies.Remove(orc);                         // Orc 파괴, 칸 0이 빔\nHandle imp = enemies.Insert(Enemy{2, 30});   // 같은 칸 0을 재사용\nenemies.Get(orc);                            // nullptr 이어야 한다 (Imp가 아님)\nenemies.Get(imp)->hp;                        // 30\n```",
+      "constraints": [
+        "C++17 표준 라이브러리만 사용합니다. `Handle`의 멤버와 `SlotMap`의 공개 멤버 함수(`Insert`, `Remove`, `Get` 두 개, `Size`, `SlotCount`) 시그니처는 그대로 둡니다.",
+        "`Insert`는 분할 상환 O(1), `Remove`와 `Get`은 O(1)입니다. 칸이나 발급한 핸들을 선형 탐색하지 않습니다.",
+        "빈 칸이 있으면 새 칸을 만들지 않고 재사용합니다. 그래서 `SlotCount()`는 동시에 살아 있던 객체 수의 최댓값을 넘지 않습니다.",
+        "`Remove`는 객체를 그 자리에서 파괴합니다(소멸자가 `Remove` 안에서 실행됨).",
+        "`Remove`된 객체의 핸들은, 그 칸이 다른 객체에 재사용된 뒤에도, `Get`이 `nullptr`, `Remove`가 `false`를 돌려주고 새 객체에는 아무 영향이 없어야 합니다. 범위 밖 index도 마찬가지입니다. 기본 생성된 `Handle{}`은 어떤 상태에서도 유효하지 않습니다.",
+        "한 칸을 2^32번 가까이 재사용해 세대 번호가 한 바퀴 도는 경우는 다루지 않습니다(설명의 흔한 오해 참고)."
+      ],
+      "starterCode": "#include <cstddef>\n#include <cstdint>\n#include <optional>\n#include <utility>\n#include <vector>\n\n// What gameplay code keeps instead of Enemy*: turret targets, threat lists, UI markers.\nstruct Handle {\n    std::uint32_t index = 0;\n    std::uint32_t generation = 0;\n};\n\n// Objects live in slots. A removed object's slot is reused by a later Insert, and every\n// handle that pointed at the removed object must stop working at that moment.\ntemplate <class T>\nclass SlotMap {\npublic:\n    // Stores value and returns a handle to it. Reuses a free slot before adding a new one.\n    Handle Insert(T value) {\n        (void)value;\n        return Handle{};\n    }\n\n    // Destroys the object now and frees its slot. Returns false, and changes nothing,\n    // if h does not refer to a live object.\n    bool Remove(Handle h) {\n        (void)h;\n        return false;\n    }\n\n    // nullptr if h does not refer to a live object. The pointer stays valid only until\n    // the next Insert or Remove.\n    T* Get(Handle h) {\n        (void)h;\n        return nullptr;\n    }\n    const T* Get(Handle h) const {\n        (void)h;\n        return nullptr;\n    }\n\n    std::size_t Size() const noexcept { return size_; }            // live objects\n    std::size_t SlotCount() const noexcept { return slots_.size(); }  // slots ever created\n\nprivate:\n    struct Slot {\n        std::optional<T> value;  // empty while the slot is free\n        std::uint32_t generation = 0;\n    };\n    std::vector<Slot> slots_;\n    std::vector<std::uint32_t> freeSlots_;  // indices of empty slots\n    std::size_t size_ = 0;\n};\n",
+      "edgeCases": [
+        "칸 0에 적이 살아 있을 때의 `Handle{}`(index 0, generation 0).",
+        "같은 핸들로 `Remove`를 두 번 호출.",
+        "칸이 재사용된 뒤 옛 핸들로 `Get`/`Remove`.",
+        "범위 밖 index, 맞는 index에 틀린 세대."
+      ],
+      "hints": [
+        "Orc를 넣으면 칸 0의 핸들을 받습니다. Orc를 지우고 Imp를 넣으면 Imp도 칸 0에 들어갑니다. 유효성을 \"그 칸에 값이 있는가\"로만 판단하면 Orc의 핸들로 `Get`했을 때 무엇이 나오나요? Orc의 핸들과 Imp의 핸들은 어느 필드가 달라야 하나요? 그리고 아무것도 넣기 전의 `Handle{}`은 `{0, 0}`입니다. 새 칸의 세대가 0부터 시작하면 첫 번째 적의 핸들은 무엇이 되나요?",
+        "세대는 칸이 비워질 때(`Remove`) 한 번 올리면 충분합니다. 그 칸을 위해 지금까지 발급된 모든 핸들이 한꺼번에 무효가 되므로 핸들 목록을 찾아다닐 필요가 없습니다. `Get`과 `Remove`는 같은 검사를 씁니다: index가 범위 안인가 → 그 칸의 세대가 핸들의 세대와 같은가 → 값이 있는가. 범위 검사를 먼저 해야 배열 밖을 읽지 않습니다.",
+        "구조만 적으면 다음과 같습니다.\n\n```\nInsert(value):\n    if <빈 칸 목록이 비어 있음>:\n        <새 칸을 하나 만들고 그 번호를 빈 칸 목록에 넣는다>\n    index = <빈 칸 목록의 마지막>\n    <그 칸에 value를 옮겨 넣고, 빈 칸 목록에서 뺀다, 개수 + 1>\n    return {index, <그 칸의 현재 세대>}\n\nFind(h):   // Get과 Remove가 함께 쓰는 검사\n    if <h.index가 범위 밖>: return 없음\n    if <세대가 다르거나 값이 없음>: return 없음\n    return <그 칸>\n\nRemove(h):\n    slot = Find(h); if 없음: return false\n    <값을 지금 파괴>, <세대 + 1>, <빈 칸 목록에 index 추가>, <개수 − 1>\n    return true\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "#include <cstddef>\n#include <cstdint>\n#include <optional>\n#include <utility>\n#include <vector>\n\n// What gameplay code keeps instead of Enemy*: turret targets, threat lists, UI markers.\nstruct Handle {\n    std::uint32_t index = 0;\n    std::uint32_t generation = 0;\n};\n\n// Objects live in slots. A removed object's slot is reused by a later Insert, and every\n// handle that pointed at the removed object must stop working at that moment.\n//\n// Each slot counts how many times it has been freed (its generation). A handle copies\n// the generation at Insert time, so it matches only while that same object is alive.\ntemplate <class T>\nclass SlotMap {\npublic:\n    // Stores value and returns a handle to it. Reuses a free slot before adding a new one.\n    Handle Insert(T value) {\n        if (freeSlots_.empty()) {\n            slots_.emplace_back();  // a new, empty slot\n            freeSlots_.push_back(static_cast<std::uint32_t>(slots_.size() - 1));\n        }\n        const std::uint32_t index = freeSlots_.back();\n        Slot& slot = slots_[index];\n        slot.value.emplace(std::move(value));  // if this throws, the slot simply stays free\n        freeSlots_.pop_back();\n        ++size_;\n        return Handle{index, slot.generation};\n    }\n\n    // Destroys the object now and frees its slot. Returns false, and changes nothing,\n    // if h does not refer to a live object.\n    bool Remove(Handle h) {\n        Slot* slot = Find(h);\n        if (slot == nullptr) return false;\n        slot->value.reset();  // runs ~T() now, not when the slot is reused\n        ++slot->generation;   // every handle to the old object is stale from here on\n        freeSlots_.push_back(h.index);\n        --size_;\n        return true;\n    }\n\n    // nullptr if h does not refer to a live object. The pointer stays valid only until\n    // the next Insert or Remove.\n    T* Get(Handle h) {\n        Slot* slot = Find(h);\n        return slot ? &*slot->value : nullptr;\n    }\n    const T* Get(Handle h) const {\n        const Slot* slot = Find(h);\n        return slot ? &*slot->value : nullptr;\n    }\n\n    std::size_t Size() const noexcept { return size_; }            // live objects\n    std::size_t SlotCount() const noexcept { return slots_.size(); }  // slots ever created\n\nprivate:\n    struct Slot {\n        std::optional<T> value;  // empty while the slot is free\n        // Starts at 1 so that a default Handle{} (generation 0) never matches a slot.\n        // Wrap-around after 2^32 - 1 reuses of one slot is not handled here.\n        std::uint32_t generation = 1;\n    };\n\n    // Range check, then generation check. A free slot never matches: Remove bumped its\n    // generation past every handle that was given out for it.\n    const Slot* Find(Handle h) const {\n        if (h.index >= slots_.size()) return nullptr;\n        const Slot& slot = slots_[h.index];\n        if (slot.generation != h.generation || !slot.value.has_value()) return nullptr;\n        return &slot;\n    }\n    Slot* Find(Handle h) { return const_cast<Slot*>(static_cast<const SlotMap&>(*this).Find(h)); }\n\n    std::vector<Slot> slots_;\n    std::vector<std::uint32_t> freeSlots_;  // indices of empty slots\n    std::size_t size_ = 0;\n};\n",
+      "explanation": "**인덱스만으로는 왜 부족한가**\n\n칸 번호는 포인터와 달리 배열이 재할당돼도 유효하고, 범위 검사로 배열 밖 접근도 막을 수 있습니다. 하지만 floooh(Andre Weissflog)의 글 \"Handles are the better pointers\"가 지적하듯, 범위 검사와 \"그 칸에 살아 있는 항목이 있는가\" 검사만으로는 그 항목이 핸들을 만들 때의 바로 그 항목이라는 보장이 없습니다. 원래 항목이 파괴되고 같은 칸이 새 항목에 재사용됐을 수 있기 때문입니다. 시나리오의 포탑 버그가 정확히 이것입니다. 언어 차원의 미정의 동작은 아니지만, 논리적으로는 이미 죽은 대상을 가리키는 댕글링 참조입니다.\n\n**세대 번호**\n\n같은 글의 2018년 11월 추가 내용은 칸마다 세대 카운터를 두고 핸들이 해제될 때 올린 뒤, 핸들에 담긴 값과 칸의 현재 세대를 비교하라고 제안합니다. 모범 답안이 이 방식입니다. `Remove`가 세대를 올리는 순간 그 칸을 위해 발급된 옛 핸들이 모두 한 번에 무효가 되므로 O(1)입니다. EnTT도 엔티티 식별자에 엔티티 번호와 버전을 함께 담고, 식별자가 해제되면 버전을 올린 뒤 번호를 재사용합니다.\n\n**`Handle{}`과 시작 세대**\n\n기본 핸들은 `{0, 0}`입니다. 칸의 세대가 0부터 시작하면 첫 번째 적의 핸들이 `{0, 0}`이 되어, 초기화만 하고 대상을 정하지 않은 핸들 멤버가 첫 번째 적을 가리킵니다. 모범 답안은 세대를 1부터 시작해 0을 \"절대 발급하지 않는 값\"으로 남깁니다. 핸들의 index에 칸 번호 + 1을 담아 0을 비워 두는 방법도 있습니다. 다만 `slots_`에 쓰지 않는 더미 칸을 넣으면 `SlotCount()`가 실제 칸 수보다 1 커져 빈 칸 재사용 검사에 걸리므로, 그렇게 하려면 `SlotCount()`가 객체를 담을 수 있는 칸만 세게 해야 합니다.\n\n**객체 수명**\n\ncppreference에 따르면 `std::optional<T>::reset()`은 값이 있으면 그 값을 파괴합니다. 그래서 `Remove`가 끝나는 순간 적의 소멸자가 실행되고 문자열이나 텍스처 같은 자원이 바로 풀립니다. 빈 칸에는 객체가 없으므로 \"죽은 객체\"를 읽을 길도 없습니다. `Get`이 돌려준 포인터는 다음 `Insert`(벡터 재할당)나 `Remove`(파괴) 뒤에는 쓸 수 없으므로, 다른 시스템은 포인터가 아니라 핸들을 저장하고 쓸 때마다 `Get`합니다. floooh의 글이 말하는 \"포인터를 저장하지 말고, 함수 호출을 넘어 들고 있지 말라\"는 규칙과 같습니다.\n\n**복잡도와 흔한 실수**\n\n`Insert`는 분할 상환 O(1), `Remove`와 `Get`은 O(1)이고, 메모리는 칸마다 `std::optional<T>` 하나와 세대 4바이트, 그리고 빈 칸 목록입니다. 흔한 실수는 `Get`에서 세대를 비교하지 않는 것, `Remove`가 세대를 올리지 않는 것(재사용 전에는 \"값이 없음\" 검사가 막아 주지만 재사용 뒤에는 옛 핸들이 통과), 범위 검사 전에 `slots_[h.index]`를 읽는 것, `Remove`가 객체를 파괴하지 않고 \"비었음\"만 표시하는 것, 빈 칸을 두고 새 칸을 계속 만드는 것입니다.\n\n### 흔한 오해\n- **\"포인터 대신 배열 인덱스를 들고 있으면 댕글링 문제는 사라진다\"** — 인덱스는 재할당에는 강하지만, 객체가 지워지고 같은 칸이 재사용되면 같은 인덱스가 다른 객체를 가리킵니다. 숨은 테스트에서 세대 비교를 뺀 답안은 지운 Orc의 핸들로 새 Imp를 얻었습니다(채점 환경에서 실행). 범위 검사와 \"살아 있는 항목인가\" 검사로는 같은 항목인지 알 수 없다는 점이 floooh의 글이 세대 번호를 도입하는 이유입니다 [floooh-handles].\n- **\"세대 카운터를 쓰면 옛 핸들은 절대 다시 유효해지지 않는다\"** — 카운터는 유한한 정수라 한 칸을 충분히 많이 재사용하면 같은 값이 다시 나옵니다. 이 답안처럼 32비트 세대를 1부터 쓰면 그 칸의 2^32 − 1번째 해제에서 세대가 0으로 돌아가, 칸 0이라면 `Handle{}`까지 유효해질 수 있습니다. floooh의 글은 카운터가 넘치려 할 때 그 칸을 비활성화해 다시는 핸들을 내주지 않는 방법을 제안합니다 [floooh-handles].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Remove 뒤에도, 그 칸이 재사용된 뒤에도 옛 핸들의 Get이 nullptr이고 Remove가 false이며 새 객체는 영향을 받지 않는다.",
+            "points": 12,
+            "sourceId": "floooh-handles"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "Handle{}이 빈 맵, 칸 0이 살아 있을 때, 칸 재사용 뒤 어느 경우에도 유효하지 않다(세대를 1부터 시작하는 등).",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "범위 밖 index와 세대가 틀린 핸들을 배열 밖을 읽지 않고 거부한다(범위 검사를 먼저 한다).",
+            "points": 11,
+            "sourceId": "floooh-handles"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Insert·Remove·Get이 O(1)이다(빈 칸 목록 사용, 칸이나 핸들의 선형 탐색 없음).",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "빈 칸을 새 칸보다 먼저 재사용해 SlotCount()가 동시에 살아 있던 최대 개수를 넘지 않는다.",
+            "points": 10,
+            "sourceId": "entt-entity-docs"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Remove가 객체를 그 자리에서 파괴해 문자열·텍스처 같은 자원을 칸이 재사용될 때까지 붙잡지 않는다.",
+            "points": 8,
+            "sourceId": "cppref-optional-reset"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "SlotMap이 객체 포인터를 보관하지 않고 칸 번호와 세대만으로 객체를 찾으며, Get의 포인터는 다음 Insert나 Remove 전까지만 유효하다는 계약을 주석으로 유지했다.",
+            "points": 10,
+            "sourceId": "floooh-handles"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "std::optional(또는 같은 효과의 수명 관리)로 빈 칸에는 객체가 없게 하고, 살아 있지 않은 객체에 접근하지 않는다.",
+            "points": 10,
+            "sourceId": "cppref-optional-reset"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "유효성 검사를 한 곳(예: Find)에 모아 Get과 Remove가 같은 규칙을 쓴다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "세대를 올리는 시점(Remove)과 세대가 한 바퀴 도는 경우의 정책을 주석으로 남겼다.",
+            "points": 7,
+            "sourceId": "floooh-handles"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "세대를 비교하지 않아 재사용된 칸의 새 객체를 옛 핸들로 얻거나 지울 수 있다.",
+            "penalty": -25,
+            "sourceId": "floooh-handles"
+          },
+          {
+            "id": "d2",
+            "description": "핸들 조회가 칸이나 핸들 목록을 훑는 O(n) 탐색이다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "Remove가 객체를 파괴하지 않고 빈 칸이라는 표시만 남긴다.",
+            "penalty": -10,
+            "sourceId": "cppref-optional-reset"
+          }
+        ]
+      },
+      "tests": {
+        "template": "#include <cstdio>\n#include <exception>\n#include <string>\n#include <utility>\n#include <vector>\n\n#define main __user_main\n{{USER_CODE}}\n#undef main\n\nnamespace judge {\n\nlong g_live = 0;  // Enemy objects constructed minus destroyed\n\nstruct Enemy {\n    int id = 0;\n    int hp = 0;\n    Enemy(int i, int h) : id(i), hp(h) { ++g_live; }\n    Enemy(const Enemy& o) : id(o.id), hp(o.hp) { ++g_live; }\n    Enemy(Enemy&& o) noexcept : id(o.id), hp(o.hp) { ++g_live; }\n    Enemy& operator=(const Enemy&) = default;\n    Enemy& operator=(Enemy&&) noexcept = default;\n    ~Enemy() { --g_live; }\n};\n\nusing Map = SlotMap<Enemy>;\n\nstd::string Num(long long v) { return std::to_string(v); }\nstd::string H(Handle h) { return \"{\" + Num(h.index) + \", \" + Num(h.generation) + \"}\"; }\n\n// Get must return the object inserted for this handle, through both overloads.\nstd::string Expect(Map& m, Handle h, int id, int hp, const std::string& who) {\n    Enemy* e = m.Get(h);\n    const Enemy* ce = static_cast<const Map&>(m).Get(h);\n    if (e == nullptr) return who + \" 살아 있는 핸들 \" + H(h) + \"의 Get이 nullptr\";\n    if (ce != e) return who + \" const Get과 비 const Get의 결과가 다름\";\n    if (e->id != id || e->hp != hp) return who + \" 핸들 \" + H(h) + \"이(가) 다른 적(id \" + Num(e->id) + \")을 가리킴, 기대 id \" + Num(id);\n    return \"\";\n}\n\nstd::string ExpectStale(Map& m, Handle h, const std::string& who) {\n    const Enemy* e = m.Get(h);\n    const Enemy* ce = static_cast<const Map&>(m).Get(h);\n    if (e != nullptr || ce != nullptr)\n        return who + \" 무효인 핸들 \" + H(h) + \"의 Get이 nullptr가 아님 (id \" + Num((e ? e : ce)->id) + \"인 적을 가리킴)\";\n    return \"\";\n}\n\nstd::string InsertAndGet() {\n    Map m;\n    const Handle a = m.Insert(Enemy(1, 100));\n    const Handle b = m.Insert(Enemy(2, 80));\n    const Handle c = m.Insert(Enemy(3, 60));\n    if (m.Size() != 3) return \"Insert 3번 뒤 Size 기대 3, 결과 \" + Num((long long)m.Size());\n    std::string d = Expect(m, a, 1, 100, \"a:\");\n    if (d.empty()) d = Expect(m, b, 2, 80, \"b:\");\n    if (d.empty()) d = Expect(m, c, 3, 60, \"c:\");\n    if (!d.empty()) return d;\n    m.Get(b)->hp = 5;\n    return Expect(m, b, 2, 5, \"Get(b)->hp = 5 뒤:\");\n}\n\nstd::string DefaultHandleNeverValid() {\n    Map m;\n    std::string d = ExpectStale(m, Handle{}, \"빈 SlotMap에서 Handle{}:\");\n    if (!d.empty()) return d;\n    const Handle a = m.Insert(Enemy(1, 100));\n    m.Insert(Enemy(2, 80));\n    d = ExpectStale(m, Handle{}, \"적 2명이 있을 때 Handle{}:\");\n    if (!d.empty()) return d;\n    if (m.Remove(Handle{})) return \"Remove(Handle{})가 true (기본 핸들은 어떤 적도 가리키지 않음)\";\n    if (m.Size() != 2) return \"Remove(Handle{}) 뒤 Size 기대 2, 결과 \" + Num((long long)m.Size());\n    m.Remove(a);\n    m.Insert(Enemy(3, 60));\n    return ExpectStale(m, Handle{}, \"슬롯을 재사용한 뒤 Handle{}:\");\n}\n\nstd::string RemovedHandleGoesStale() {\n    Map m;\n    const Handle a = m.Insert(Enemy(1, 100));\n    const Handle b = m.Insert(Enemy(2, 80));\n    if (!m.Remove(a)) return \"살아 있는 핸들의 Remove가 false\";\n    std::string d = ExpectStale(m, a, \"Remove한 a:\");\n    if (!d.empty()) return d;\n    if (m.Remove(a)) return \"이미 Remove한 핸들을 다시 Remove하자 true\";\n    if (m.Size() != 1) return \"Remove 뒤 Size 기대 1, 결과 \" + Num((long long)m.Size());\n    return Expect(m, b, 2, 80, \"남은 b:\");\n}\n\nstd::string ReusedSlotRejectsOldHandle() {\n    Map m;\n    const Handle oldOrc = m.Insert(Enemy(1, 100));\n    m.Remove(oldOrc);\n    const Handle newImp = m.Insert(Enemy(2, 30));\n    if (m.SlotCount() != 1) return \"빈 슬롯이 있는데 새 슬롯을 만듦: SlotCount 기대 1, 결과 \" + Num((long long)m.SlotCount());\n    std::string d = ExpectStale(m, oldOrc, \"같은 슬롯에 새 적이 들어온 뒤 옛 핸들:\");\n    if (!d.empty()) return d;\n    d = Expect(m, newImp, 2, 30, \"새 핸들:\");\n    if (!d.empty()) return d;\n    if (m.Remove(oldOrc)) return \"옛 핸들로 Remove하자 true: 같은 슬롯의 새 적이 지워짐\";\n    if (m.Size() != 1) return \"옛 핸들로 Remove한 뒤 Size 기대 1, 결과 \" + Num((long long)m.Size());\n    return Expect(m, newImp, 2, 30, \"옛 핸들로 Remove를 시도한 뒤 새 핸들:\");\n}\n\nstd::string RemoveDestroysNow() {\n    const long before = g_live;\n    {\n        Map m;\n        const Handle a = m.Insert(Enemy(1, 100));\n        m.Insert(Enemy(2, 80));\n        if (g_live - before != 2) return \"Insert 2번 뒤 살아 있는 Enemy 기대 2, 결과 \" + Num(g_live - before);\n        m.Remove(a);\n        if (g_live - before != 1) return \"Remove 직후 살아 있는 Enemy 기대 1, 결과 \" + Num(g_live - before) + \" (Remove가 객체를 바로 파괴해야 함)\";\n    }\n    if (g_live != before) return \"SlotMap이 파괴된 뒤 살아 있는 Enemy가 \" + Num(g_live - before) + \"개 (누수 또는 이중 파괴)\";\n    return \"\";\n}\n\nstd::string BadHandles() {\n    Map m;\n    const Handle a = m.Insert(Enemy(1, 100));\n    std::string d = ExpectStale(m, Handle{50, a.generation}, \"범위 밖 index:\");\n    if (!d.empty()) return d;\n    d = ExpectStale(m, Handle{a.index, a.generation + 7}, \"세대가 다른 핸들:\");\n    if (!d.empty()) return d;\n    if (m.Remove(Handle{50, a.generation}) || m.Remove(Handle{a.index, a.generation + 7})) return \"잘못된 핸들의 Remove가 true\";\n    return Expect(m, a, 1, 100, \"a:\");\n}\n\nstd::string FreeSlotsReused() {\n    Map m;\n    std::vector<Handle> hs;\n    for (int i = 0; i < 10; ++i) hs.push_back(m.Insert(Enemy(i, i)));\n    for (int i = 0; i < 10; i += 2) m.Remove(hs[i]);\n    m.Remove(hs[9]);\n    for (int i = 0; i < 6; ++i) m.Insert(Enemy(100 + i, 1));\n    if (m.SlotCount() != 10) return \"빈 슬롯 6개를 다시 채운 뒤 SlotCount 기대 10, 결과 \" + Num((long long)m.SlotCount());\n    if (m.Size() != 10) return \"Size 기대 10, 결과 \" + Num((long long)m.Size());\n    for (int i = 1; i < 9; i += 2) {\n        std::string d = Expect(m, hs[i], i, i, \"지우지 않은 핸들:\");\n        if (!d.empty()) return d;\n    }\n    return \"\";\n}\n\nstd::string RandomVsReference() {\n    unsigned seed = 4242u;\n    auto next = [&](unsigned mod) {\n        seed = seed * 1664525u + 1013904223u;\n        return (seed >> 8) % mod;\n    };\n    struct Issued {\n        Handle h;\n        int id;\n        bool alive;\n    };\n    Map m;\n    std::vector<Issued> issued;\n    std::size_t live = 0, peak = 0;\n    for (int step = 0; step < 4000; ++step) {\n        const unsigned op = next(10);\n        if (op < 5 || live == 0) {\n            const Handle h = m.Insert(Enemy(step, static_cast<int>(next(500))));\n            issued.push_back({h, step, true});\n            ++live;\n            if (live > peak) peak = live;\n        } else if (op < 9) {\n            Issued& victim = issued[next(static_cast<unsigned>(issued.size()))];\n            if (m.Remove(victim.h) != victim.alive)\n                return \"step \" + Num(step) + \": \" + (victim.alive ? \"살아 있는\" : \"이미 지운\") + \" 핸들 \" + H(victim.h) + \"의 Remove 반환값이 틀림\";\n            if (victim.alive) --live;\n            victim.alive = false;\n        } else {\n            const Issued& probe = issued[next(static_cast<unsigned>(issued.size()))];\n            const Enemy* e = m.Get(probe.h);\n            if (probe.alive && (e == nullptr || e->id != probe.id))\n                return \"step \" + Num(step) + \": 살아 있는 핸들 \" + H(probe.h) + \"의 Get이 다른 결과를 냄\";\n            if (!probe.alive && e != nullptr)\n                return \"step \" + Num(step) + \": 지운 적의 핸들 \" + H(probe.h) + \"이(가) id \" + Num(e->id) + \"인 적을 가리킴 (세대 검사 누락)\";\n        }\n    }\n    if (m.Size() != live) return \"끝 상태 Size 기대 \" + Num((long long)live) + \", 결과 \" + Num((long long)m.Size());\n    if (m.SlotCount() > peak) return \"SlotCount \" + Num((long long)m.SlotCount()) + \"가 동시에 살아 있던 최대 수 \" + Num((long long)peak) + \"보다 큼 (빈 슬롯을 재사용하지 않음)\";\n    for (const Issued& is : issued) {\n        const Enemy* e = m.Get(is.h);\n        if (is.alive && (e == nullptr || e->id != is.id)) return \"끝 상태: 살아 있는 핸들 \" + H(is.h) + \"의 Get이 틀림\";\n        if (!is.alive && e != nullptr) return \"끝 상태: 지운 적의 핸들 \" + H(is.h) + \"이(가) id \" + Num(e->id) + \"인 적을 가리킴\";\n    }\n    return \"\";\n}\n\ntypedef std::string (*CaseFn)();\nstruct Case {\n    const char* name;\n    CaseFn fn;\n};\nconst Case kCases[] = {\n    {\"insert-and-get\", InsertAndGet},\n    {\"default-handle-never-valid\", DefaultHandleNeverValid},\n    {\"removed-handle-goes-stale\", RemovedHandleGoesStale},\n    {\"reused-slot-rejects-old-handle\", ReusedSlotRejectsOldHandle},\n    {\"remove-destroys-object-now\", RemoveDestroysNow},\n    {\"out-of-range-and-wrong-generation\", BadHandles},\n    {\"free-slots-reused-before-growing\", FreeSlotsReused},\n    {\"random-vs-reference\", RandomVsReference},\n};\n\n}  // namespace judge\n\nint main() {\n    using namespace judge;\n    for (const Case& c : kCases) {\n        std::string reason;\n        try {\n            reason = c.fn();\n        } catch (const std::exception& e) {\n            reason = std::string(\"예외가 밖으로 전파됨: \") + e.what();\n        } catch (...) {\n            reason = \"알 수 없는 예외가 밖으로 전파됨\";\n        }\n        if (reason.empty()) {\n            std::printf(\"[PASS] %s\\n\", c.name);\n        } else {\n            std::printf(\"[FAIL] %s :: %s\\n\", c.name, reason.c_str());\n        }\n    }\n    return 0;\n}\n",
+        "cases": [
+          "insert-and-get",
+          "default-handle-never-valid",
+          "removed-handle-goes-stale",
+          "reused-slot-rejects-old-handle",
+          "remove-destroys-object-now",
+          "out-of-range-and-wrong-generation",
+          "free-slots-reused-before-growing",
+          "random-vs-reference"
+        ],
+        "note": "채점기는 생성·파괴 횟수를 세는 `judge::Enemy`(멤버 `id`, `hp`)로 `SlotMap`을 만듭니다. 검사 내용: `Insert` 3번 뒤 `Get`이 각 객체를 가리키고 포인터로 고친 값이 반영되는지(두 `Get` 오버로드 모두), `Handle{}`이 빈 맵·칸 0이 살아 있을 때·칸 재사용 뒤 모두 무효인지와 `Remove(Handle{})`, `Remove`한 핸들이 무효가 되고 두 번째 `Remove`가 `false`인지, 칸이 재사용된 뒤 옛 핸들의 `Get`·`Remove`가 새 객체를 건드리지 않는지(`SlotCount` 1 유지), `Remove` 직후 소멸자가 실행됐는지와 맵 파괴 뒤 누수가 없는지, 범위 밖 index와 틀린 세대, 빈 칸 재사용(10개 중 6개를 지우고 6개를 넣어도 `SlotCount` 10), 그리고 무작위 작업 4000번(고정 시드)에서 발급한 모든 핸들(지운 것 포함)의 `Get`·`Remove`가 기대와 같은지. 핸들의 구체적인 index·세대 값이나 빈 칸을 쓰는 순서는 검사하지 않습니다. `SlotCount()`는 객체를 담을 수 있는 칸의 수로 검사하므로(10개를 넣으면 10), 쓰지 않는 더미 칸을 세면 실패합니다. `Handle`의 멤버와 `SlotMap`의 공개 멤버 함수 시그니처를 바꾸지 마세요."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기에서 모범 답안 8/8 통과와 시작 코드 실패, 세대 비교 누락·세대 0 시작 오답의 실패와 index+1 방식 정답의 통과를 확인했고, 핸들·세대 카운터·포인터 사용 규칙은 floooh 글과 EnTT v4.0.0 문서, 수명 설명은 cppreference optional::reset과 대조했습니다."
+      },
+      "nextMission": "세대 번호를 `std::uint8_t`로 바꾼 `SlotMap`을 만들어, 같은 칸을 300번 재사용하면 옛 핸들이 다시 유효해지는 것을 테스트로 재현하세요. 그다음 세대가 최댓값에 도달한 칸은 빈 칸 목록에 돌려놓지 않는(은퇴시키는) 방식으로 고치고, 은퇴한 칸 때문에 `SlotCount()`가 얼마나 늘어나는지 함께 측정합니다."
+    },
+    {
+      "id": "t2-tutor-lambda-capture-delayed-popup",
+      "track": "track2",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "몇 프레임 뒤에 뜨는 데미지 숫자가 엉뚱하다: 람다 캡처(값·참조·this)와 지연 콜백의 수명",
+      "tags": [
+        "Cpp_Lambda_Capture",
+        "Cpp_Object_Lifetime",
+        "Cpp_Std_Function"
+      ],
+      "language": "cpp",
+      "sourceRefs": [
+        "cppref-lambda",
+        "ms-learn-lambda-cpp",
+        "isocpp-cg-f53",
+        "isocpp-cg-f54"
+      ],
+      "scenario": "액션 게임의 전투 HUD입니다. 타격이 일어나면 데미지 숫자가 몇 프레임 뒤에 뜨고(타격감 연출), 연속 타격마다 \"Combo xN!\"이 30틱(0.5초) 뒤에 뜹니다. 지연은 `TimerQueue::After(ticks, callback)`에 람다를 넘겨 구현했습니다. QA 리포트는 두 건입니다.\n\n- 광역기로 여러 적을 한 번에 때리면 데미지 숫자가 **전부 마지막 타격의 값**으로 뜬다.\n- 콤보 중에 플레이어가 맞으면, 이미 예약돼 있던 콤보 팝업이 전부 **\"Combo x0!\"**으로 뜬다.\n\n전투 시스템은 `HitInfo` 버퍼 하나를 재사용해 타격마다 덮어쓰고, `ComboCounter`는 플레이어가 맞으면 `Break()`로 콤보를 0으로 되돌립니다. 두 버그 모두 람다가 **무엇을, 언제** 캡처하는가의 문제입니다.\n\n**해야 할 일**\n1. 개념 카드를 읽고, 시작 코드의 두 람다가 실제로 무엇을 캡처하는지 말로 적어 보세요.\n2. `ScheduleDamagePopup`과 `ComboCounter::OnHit`을 고쳐 팝업이 **타격 순간의 값**을 보여 주게 하세요. 팝업은 넘겨받은 바로 그 `PopupLog`에 기록되어야 합니다.\n3. 퀴즈 2문제에 답하세요.",
+      "constraints": [
+        "C++17 표준 라이브러리만 사용합니다. `TimerQueue`, `PopupLog`, `HitInfo`, 그리고 `ScheduleDamagePopup`, `ComboCounter::OnHit`, `Break`, `Combo`의 시그니처는 그대로 둡니다.",
+        "고칠 것은 람다의 캡처(와 그에 따른 본문)입니다. `HitInfo`를 전역·static 변수에 따로 보관하거나 `TimerQueue`를 바꾸는 방식은 쓰지 않습니다.",
+        "`PopupLog`는 HUD와 수명이 같아 모든 타이머보다 오래 산다고 가정합니다. 팝업은 그 로그에 기록되어야 하고, 로그의 복사본에 기록되면 안 됩니다."
+      ],
+      "starterCode": "#include <functional>\n#include <string>\n#include <utility>\n#include <vector>\n\n// Runs callbacks a number of ticks after they were scheduled (one Tick per frame).\nclass TimerQueue {\npublic:\n    void After(int ticks, std::function<void()> callback) {\n        pending_.push_back(Pending{now_ + ticks, std::move(callback)});\n    }\n\n    // Advances one tick and runs every callback that is due, in scheduling order.\n    void Tick() {\n        ++now_;\n        std::vector<Pending> due, later;\n        for (Pending& p : pending_) (p.at <= now_ ? due : later).push_back(std::move(p));\n        pending_ = std::move(later);\n        for (Pending& p : due) p.callback();\n    }\n\nprivate:\n    struct Pending {\n        int at;\n        std::function<void()> callback;\n    };\n    int now_ = 0;\n    std::vector<Pending> pending_;\n};\n\n// The HUD's popup text log. It lives as long as the HUD, longer than any timer.\nstruct PopupLog {\n    std::vector<std::string> lines;\n    void Show(const std::string& text) { lines.push_back(text); }\n};\n\n// The combat system fills one reusable HitInfo per hit and overwrites it on the next hit.\nstruct HitInfo {\n    std::string targetName;\n    int damage = 0;\n};\n\n// Exercise 1: the damage number pops up delayTicks after the hit and must show the hit\n// as it was when it happened, e.g. \"Orc -12\".\nvoid ScheduleDamagePopup(TimerQueue& timers, PopupLog& popups, const HitInfo& hit, int delayTicks) {\n    timers.After(delayTicks, [&]() {\n        popups.Show(hit.targetName + \" -\" + std::to_string(hit.damage));\n    });\n}\n\n// Exercise 2: every hit shows \"Combo xN!\" 30 ticks later, where N is the combo count at\n// the moment of that hit.\nclass ComboCounter {\npublic:\n    void OnHit(TimerQueue& timers, PopupLog& popups) {\n        ++combo_;\n        timers.After(30, [=, &popups]() {\n            popups.Show(\"Combo x\" + std::to_string(combo_) + \"!\");\n        });\n    }\n    void Break() { combo_ = 0; }  // the player took damage: the combo ends\n    int Combo() const { return combo_; }\n\nprivate:\n    int combo_ = 0;\n};\n",
+      "edgeCases": [
+        "버퍼를 다음 타격으로 덮어쓴 뒤 타이머가 실행되는 경우.",
+        "같은 틱에 팝업 여러 개가 예약된 경우: 예약한 순서대로 떠야 합니다.",
+        "팝업이 뜨기 전에 콤보가 끊긴(`Break`) 경우.",
+        "서로 다른 `PopupLog` 두 개에 나눠 예약하는 경우."
+      ],
+      "hints": [
+        "시작 코드로 `Fill(buffer, \"Orc\", 12)` → `ScheduleDamagePopup(..., buffer, 2)` → `Fill(buffer, \"Goblin\", 99)` → `Tick()` 두 번을 따라가 보세요. `[&]` 람다 안의 `hit`은 무엇을 가리키나요? 또 `[=, &popups]` 람다 안의 `combo_`는 실제로 무엇을 거쳐 읽히나요?",
+        "값 캡처는 람다가 **만들어지는 순간** 복사하고, 참조 캡처는 **호출되는 순간** 원래 객체를 읽습니다. 멤버 함수 안의 `[=]`는 멤버를 복사하지 않고 `this` 포인터를 복사합니다. 변수마다 \"타격 순간의 값이 필요한가(값으로), 오래 사는 공용 객체에 써야 하는가(참조로)\"를 정하세요.",
+        "구조만 적으면 다음과 같습니다.\n\n```\nScheduleDamagePopup:\n    timers.After(delayTicks, [<로그는 참조로>, <타격 정보는 지금 복사 — 또는 띄울 문자열을 지금 만들어 init-capture>]() {\n        popups.Show(<복사해 둔 값으로 만든 문구>);\n    });\n\nComboCounter::OnHit:\n    ++combo_;\n    timers.After(30, [<로그는 참조로>, <count = 지금의 combo_>]() {\n        popups.Show(<count로 만든 문구>);\n    });\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 미래의 나에게 남기는 메모\n\n지연 콜백은 \"30틱 뒤에 이걸 해 줘\"라는 메모입니다. 메모에 **숫자를 직접 적어 두는 것**이 값 캡처이고, \"책상 셋째 서랍을 봐\"라고 **위치만 적어 두는 것**이 참조 캡처입니다. 메모를 읽을 때 서랍에 다른 물건이 들어 있으면 엉뚱한 일을 하게 되고, 서랍이 통째로 버려졌다면 그 메모대로 행동하는 것 자체가 사고입니다.\n\n### 람다가 실제로 만드는 것\n\n- 람다 식은 이름 없는 클래스(클로저 타입)의 객체를 만듭니다. 값으로 캡처한 변수마다 클로저 안에 멤버가 생기고, 그 멤버는 **람다 식이 평가될 때**, 즉 `After`에 넘기는 그 순간 초기화됩니다.\n- 참조로 캡처한 변수는 람다가 호출될 때 **원래 객체**를 읽고 씁니다. 참조 변수를 참조로 캡처하면 그 참조가 가리키던 원래 객체를 씁니다.\n- 클로저는 참조로 캡처한 객체의 수명을 늘려 주지 않습니다. 참조로 캡처한 (참조가 아닌) 변수의 수명이 끝난 뒤 람다를 호출하면 미정의 동작이고, `this`로 캡처한 현재 객체도 마찬가지입니다.\n- `mutable`이 없으면 클로저의 `operator()`는 `const`라서 값으로 캡처한 복사본을 바꿀 수 없습니다.\n\n| 캡처 | 뜻 |\n|---|---|\n| `[x]`, `[=]` | 지금 복사한다 |\n| `[&x]`, `[&]` | 원래 객체를 참조한다 |\n| `[this]` | 현재 객체의 포인터를 복사한다(멤버는 호출할 때 그 포인터로 읽음) |\n| `[*this]` (C++17) | 현재 객체 전체를 복사한다 |\n| `[n = expr]`, `[p = std::move(p)]` (C++14 init-capture) | 새 멤버를 지금 원하는 식으로 초기화한다 |\n\n### 함정: 멤버 함수 안의 `[=]`\n\n`[=]`로 쓰고 람다 안에서 멤버 `combo_`를 쓰면 `combo_`가 복사되지 않습니다. 멤버 사용은 `(*this).combo_`로 취급되고, `*this`는 참조로(포인터 `this`가 복사되어) 캡처됩니다. 그래서 읽히는 값은 호출하는 순간의 값입니다. C++20부터는 `[=]`로 `this`를 암묵적으로 캡처하는 것이 deprecated입니다. Core Guidelines F.54는 `this`나 멤버를 쓰는 람다에서는 `[=]` 기본 캡처를 쓰지 말고, 의도했다면 `this`를 명시하라고 합니다.\n\n### 언제 무엇을\n\n- Core Guidelines F.52: 그 자리에서만 쓰는 람다(알고리즘에 넘기는 람다 등)는 참조 캡처를 선호합니다.\n- F.53: 반환되거나, 힙에 저장되거나, 다른 스레드로 넘어가는 람다(이 문제의 타이머 콜백)에서는 참조 캡처를 피합니다.\n- Microsoft의 람다 문서도 같은 점을 짚습니다. 참조 캡처는 바깥의 변경을 반영하고 수명 의존성을 만들지만 값 캡처는 둘 다 없으며, 비동기로 실행되는 람다가 지역 변수를 참조로 캡처하면 람다가 실행될 때 그 변수는 이미 사라졌을 수 있습니다.\n- 오래 사는 시스템 객체(이 문제의 `PopupLog`)는 의도적으로 참조로 캡처하되, \"이 객체는 모든 타이머보다 오래 산다\"는 계약을 주석으로 남깁니다. 그런 계약이 없는 객체(창, 적)는 id·핸들이나 `std::weak_ptr`로 캡처하고 실행할 때 살아 있는지 확인합니다.\n\n### 이 연습의 채점 방식\n\n채점기는 미정의 동작에 기대지 않습니다. 버퍼, 로그, 콤보 카운터는 타이머가 실행될 때까지 모두 살아 있고, 대신 타이머가 실행되기 전에 버퍼를 다음 타격으로 덮어쓰거나 콤보를 끊습니다. 참조로 캡처한 람다는 새 값을, 값으로 캡처한 람다는 타격 순간의 값을 보여 주므로 차이가 정의된 동작으로 드러납니다.",
+      "quiz": [
+        {
+          "question": "UI 창 클래스가 `timers.After(30, [this] { Flash(); });`로 깜빡임을 예약했는데, 30틱이 지나기 전에 플레이어가 창을 닫아 창 객체가 파괴되면 어떻게 되나요? 고치는 방법 두 가지를 말하고, `[*this]`가 대개 답이 아닌 이유도 설명하세요.",
+          "answer": "타이머가 실행될 때 `this`가 가리키는 객체의 수명은 이미 끝났으므로 `Flash()` 호출은 미정의 동작입니다. 클로저는 `this`로 캡처한 현재 객체의 수명을 늘리지 않습니다. 고치는 방법: ① 창이 예약한 타이머의 취소 핸들을 멤버로 들고 있다가 소멸자에서 취소한다(RAII, 이 문제의 `TimerQueue`에는 없는 기능이라 추가해야 함). ② 창을 `std::shared_ptr`로 소유하는 구조라면 `std::weak_ptr`를 캡처해 실행할 때 `lock()`이 성공한 경우에만 호출하거나, 창의 id·핸들을 캡처해 실행할 때 조회한다. `[*this]`(C++17)는 창 객체 전체를 클로저 안에 복사하므로 수명 문제는 사라지지만, 깜빡이는 것은 화면의 창이 아니라 그 복사본이고, 창이 큰 자원을 가졌다면 복사 비용도 듭니다."
+        },
+        {
+          "question": "폭발 이펙트를 `auto fx = std::make_unique<Effect>();`로 만들고 `timers.After(10, [fx = std::move(fx)] { fx->Play(); });`로 넘기면 채점 환경에서 컴파일되지 않습니다. 이유와 대안은?",
+          "answer": "`std::unique_ptr`를 값으로 담은 클로저는 이동만 가능한데, `std::function`은 복사 가능한 대상을 요구합니다. cppreference는 대상이 CopyConstructible이 아니면 미정의 동작이라고 적고, C++23부터는 이런 대상을 넘기는 프로그램을 ill-formed(컴파일 오류)로 규정합니다. C++17로 빌드하는 채점 환경의 GCC 13.2(libstdc++)는 \"std::function target must be copy-constructible\"이라는 `static_assert`로 컴파일을 막았습니다. 대안: 소유권을 공유해도 되면 `std::shared_ptr`를 캡처한다, 이펙트는 이펙트 시스템이 소유하고 람다는 핸들만 캡처한다, C++23이라면 이동 전용 대상을 담는 `std::move_only_function`을 쓴다."
+        }
+      ],
+      "solutionCode": "#include <functional>\n#include <string>\n#include <utility>\n#include <vector>\n\n// Runs callbacks a number of ticks after they were scheduled (one Tick per frame).\nclass TimerQueue {\npublic:\n    void After(int ticks, std::function<void()> callback) {\n        pending_.push_back(Pending{now_ + ticks, std::move(callback)});\n    }\n\n    // Advances one tick and runs every callback that is due, in scheduling order.\n    void Tick() {\n        ++now_;\n        std::vector<Pending> due, later;\n        for (Pending& p : pending_) (p.at <= now_ ? due : later).push_back(std::move(p));\n        pending_ = std::move(later);\n        for (Pending& p : due) p.callback();\n    }\n\nprivate:\n    struct Pending {\n        int at;\n        std::function<void()> callback;\n    };\n    int now_ = 0;\n    std::vector<Pending> pending_;\n};\n\n// The HUD's popup text log. It lives as long as the HUD, longer than any timer.\nstruct PopupLog {\n    std::vector<std::string> lines;\n    void Show(const std::string& text) { lines.push_back(text); }\n};\n\n// The combat system fills one reusable HitInfo per hit and overwrites it on the next hit.\nstruct HitInfo {\n    std::string targetName;\n    int damage = 0;\n};\n\n// Exercise 1: the damage number pops up delayTicks after the hit and must show the hit\n// as it was when it happened, e.g. \"Orc -12\".\nvoid ScheduleDamagePopup(TimerQueue& timers, PopupLog& popups, const HitInfo& hit, int delayTicks) {\n    // The hit data is copied into the closure now (init-capture builds the text once).\n    // popups stays a reference on purpose: the HUD log outlives every timer, and the\n    // popup must land in that log, not in a private copy.\n    timers.After(delayTicks, [&popups, text = hit.targetName + \" -\" + std::to_string(hit.damage)]() {\n        popups.Show(text);\n    });\n}\n\n// Exercise 2: every hit shows \"Combo xN!\" 30 ticks later, where N is the combo count at\n// the moment of that hit.\nclass ComboCounter {\npublic:\n    void OnHit(TimerQueue& timers, PopupLog& popups) {\n        ++combo_;\n        // [=] would not copy combo_: it captures `this`, and combo_ is read through it\n        // when the timer fires. Copy the value into the closure explicitly.\n        timers.After(30, [&popups, count = combo_]() {\n            popups.Show(\"Combo x\" + std::to_string(count) + \"!\");\n        });\n    }\n    void Break() { combo_ = 0; }  // the player took damage: the combo ends\n    int Combo() const { return combo_; }\n\nprivate:\n    int combo_ = 0;\n};\n",
+      "explanation": "**버그 1 — `[&]`가 재사용 버퍼를 참조로 캡처**\n\n`ScheduleDamagePopup`의 `hit`은 호출자의 `HitInfo` 버퍼를 가리키는 참조입니다. `[&]`는 이 참조를 참조로 캡처하므로 람다는 원래 버퍼를 가리키고(cppreference: 참조로 캡처한 참조를 쓰면 원래 참조가 가리키던 객체를 쓴다), 타이머가 실행될 때 버퍼에 들어 있는 값, 즉 마지막 타격의 값을 읽습니다. 실패 입력: Orc 12를 예약한 뒤 버퍼를 Goblin 99로 덮어쓰고 2틱 → `\"Goblin ... -99\"`. 전투 시스템이 버퍼를 지역 변수로 만들었고 그 함수가 먼저 끝났다면, 같은 코드는 수명이 끝난 객체를 읽는 미정의 동작이 됩니다. 이번에는 \"값이 틀리는\" 증상이었지만 뿌리는 같습니다. 수정: 팝업에 필요한 값을 지금 복사합니다. 모범 답안은 init-capture로 띄울 문자열을 예약하는 순간 만들어 담고(`text = ...`), 로그는 `&popups`로 참조합니다. `[&popups, hit]`처럼 `HitInfo` 전체를 복사해도 맞습니다.\n\n**버그 2 — 멤버 함수 안의 `[=]`가 `this`를 캡처**\n\n`[=, &popups]`는 값 캡처처럼 보이지만 `combo_`는 `this->combo_`이고, 복사되는 것은 포인터 `this`입니다. 그래서 30틱 뒤에 읽히는 것은 그때의 `combo_`이고, 그 사이 `Break()`가 불렸다면 0입니다. 실패 입력: 세 번 때린 뒤 `Break()`, 30틱 → `\"Combo x0!\"` 세 번(기대 `x1`, `x2`, `x3`). 수정: `[&popups, count = combo_]`로 그 순간의 값을 클로저에 복사합니다. `this`가 정말 필요하다면 F.54가 권하듯 `[this]`로 명시해 읽는 사람이 속지 않게 합니다.\n\n**참조로 남겨야 하는 것**\n\n`popups`까지 값으로 캡처하면(`[=]() mutable`) 클로저 안의 `PopupLog` 복사본에 기록되어 HUD에는 아무것도 뜨지 않습니다. 숨은 테스트의 `popups-reach-the-given-log`가 이 실수를 잡습니다. 원칙은 \"사건 순간의 데이터는 값으로, 오래 사는 공용 객체는 참조로(수명 계약을 적고)\"입니다. F.53이 금지하는 것은 저장되는 람다가 지역 객체를 참조로 캡처하는 것이지 모든 참조 캡처가 아닙니다.\n\n**비용**\n\n값 캡처는 복사이므로 큰 객체는 필요한 값만 init-capture로 담거나 `std::move`로 옮겨 담습니다. cppreference에 따르면 `std::function`은 함수 포인터와 `std::reference_wrapper`가 아닌 큰 대상을 동적 할당된 저장소에 만들 수 있으므로, 매 프레임 수백 개씩 예약하는 콜백이라면 클로저 크기도 신경 쓸 대상입니다. 모범 답안의 클로저는 문자열 하나와 참조 하나입니다.\n\n### 흔한 오해\n- **\"[=]로 캡처하면 람다 안에서 쓰는 것은 전부 복사된다\"** — 멤버 함수 안에서는 아닙니다. 멤버 사용은 `(*this).m`이고 `*this`는 참조로(포인터 `this`의 복사로) 캡처되므로, 멤버는 호출할 때의 값이 읽힙니다. C++20부터 이 암묵적 `this` 캡처는 deprecated입니다 [cppref-lambda][isocpp-cg-f54]. 시작 코드의 `\"Combo x0!\"`이 바로 이 오해에서 나왔습니다(채점 환경에서 실행).\n- **\"람다가 참조로 캡처한 변수는 람다가 살아 있는 동안 유지된다\"** — const 참조에 묶인 임시 객체의 수명이 늘어나는 규칙과 헷갈리기 쉽지만, 람다의 참조 캡처에는 그런 규칙이 없습니다. cppreference는 클로저가 참조로 캡처한 객체의 수명을 늘리지 않으며, 수명이 끝난 뒤 호출하면 미정의 동작이라고 명시합니다 [cppref-lambda]. Microsoft의 람다 문서도 참조 캡처가 수명 의존성을 만든다고 경고합니다 [ms-learn-lambda-cpp].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "ScheduleDamagePopup이 덮어쓴 버퍼와 무관하게 타격 순간의 이름과 데미지를 보여 준다(값 캡처 또는 init-capture).",
+            "points": 12,
+            "sourceId": "cppref-lambda"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "OnHit이 Break와 무관하게 타격 순간의 콤보 수를 보여 준다(예: count = combo_).",
+            "points": 12,
+            "sourceId": "isocpp-cg-f54"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "퀴즈 1에서 this를 캡처한 콜백이 객체 파괴 뒤 실행되면 미정의 동작임을 말하고, 고치는 방법 두 가지(취소 핸들, weak_ptr·핸들 캡처)를 제시했다.",
+            "points": 11,
+            "sourceId": "cppref-lambda"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "PopupLog는 참조로 캡처해 복사하지 않고, 넘겨받은 그 로그에 기록한다.",
+            "points": 10,
+            "sourceId": "ms-learn-lambda-cpp"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "큰 객체를 통째로 복사하지 않고 필요한 값만 init-capture로 담거나, 값 캡처의 복사 비용과 std::function의 동적 할당 가능성을 설명했다.",
+            "points": 10,
+            "sourceId": "cppref-function-ctor"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "퀴즈 2에서 std::function이 복사 가능한 대상을 요구한다는 점과 이동 전용 캡처의 대안(shared_ptr, 핸들, C++23 move_only_function)을 말했다.",
+            "points": 10,
+            "sourceId": "cppref-move-only-function"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "값 캡처는 람다 식이 평가될 때 초기화되고 참조 캡처는 호출될 때 원래 객체를 읽는다는 규칙으로 두 버그를 설명했다.",
+            "points": 10,
+            "sourceId": "cppref-lambda"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "멤버 함수 안의 [=]가 멤버를 복사하지 않고 this를 캡처한다는 점(C++20부터 deprecated)을 설명했다.",
+            "points": 10,
+            "sourceId": "isocpp-cg-f54"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "[=]나 [&] 같은 기본 캡처 대신 변수별로 명시한 캡처를 써서 의도가 드러난다.",
+            "points": 8,
+            "sourceId": "isocpp-cg-f53"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "참조로 남긴 객체(PopupLog)에 대해 \"모든 타이머보다 오래 산다\"는 수명 계약을 주석으로 남겼다.",
+            "points": 7,
+            "sourceId": "isocpp-cg-f53"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "고친 람다에 여전히 재사용 버퍼나 지역 변수에 대한 참조 캡처가 남아 그 객체의 수명과 값에 의존한다.",
+            "penalty": -20,
+            "sourceId": "isocpp-cg-f53"
+          },
+          {
+            "id": "d2",
+            "description": "PopupLog를 값으로 캡처(mutable)해 팝업이 로그의 복사본에 기록된다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-lambda-cpp"
+          },
+          {
+            "id": "d3",
+            "description": "버퍼를 static이나 전역 변수에 따로 보관하는 식으로 캡처 문제를 우회했다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "#include <cstdio>\n#include <exception>\n#include <string>\n#include <vector>\n\n#define main __user_main\n{{USER_CODE}}\n#undef main\n\n// Every object the callbacks could refer to (the HitInfo buffer, the PopupLog, the\n// ComboCounter) stays alive until the timers have fired, so the program has defined\n// behaviour whichever way the lambdas capture. A by-reference capture is detected by\n// overwriting or changing the caller's object before the timer fires: it then shows\n// the new value instead of the value at the time of the hit.\nnamespace judge {\n\nstd::string Num(long long v) { return std::to_string(v); }\n\nstd::string Lines(const std::vector<std::string>& v) {\n    std::string s = \"[\";\n    for (std::size_t i = 0; i < v.size(); ++i) s += (i ? \", \\\"\" : \"\\\"\") + v[i] + \"\\\"\";\n    return s + \"]\";\n}\n\nstd::string Expect(const PopupLog& log, const std::vector<std::string>& want, const std::string& who) {\n    if (log.lines != want) return who + \" 팝업 기대 \" + Lines(want) + \", 결과 \" + Lines(log.lines);\n    return \"\";\n}\n\nvoid Fill(HitInfo& buffer, const char* name, int damage) {\n    buffer.targetName = name;\n    buffer.damage = damage;\n}\n\nstd::string PopupKeepsHit() {\n    TimerQueue timers;\n    PopupLog log;\n    HitInfo buffer;\n    Fill(buffer, \"Orc\", 12);\n    ScheduleDamagePopup(timers, log, buffer, 2);\n    Fill(buffer, \"Goblin Shaman of the Deep Caves\", 99);  // the next hit reuses the buffer\n    timers.Tick();\n    std::string d = Expect(log, {}, \"1틱 뒤(지연 2틱):\");\n    if (!d.empty()) return d;\n    timers.Tick();\n    return Expect(log, {\"Orc -12\"}, \"2틱 뒤, 버퍼를 다음 타격으로 덮어쓴 상태에서:\");\n}\n\nstd::string ReusedBufferManyHits() {\n    TimerQueue timers;\n    PopupLog log;\n    HitInfo buffer;\n    const char* names[] = {\"Slime\", \"Bat\", \"Wolf\", \"Troll\"};\n    const int damages[] = {3, 8, 15, 40};\n    const int delays[] = {2, 1, 2, 3};\n    for (int i = 0; i < 4; ++i) {\n        Fill(buffer, names[i], damages[i]);\n        ScheduleDamagePopup(timers, log, buffer, delays[i]);\n    }\n    Fill(buffer, \"<overwritten>\", -1);\n    for (int t = 0; t < 3; ++t) timers.Tick();\n    return Expect(log, {\"Bat -8\", \"Slime -3\", \"Wolf -15\", \"Troll -40\"}, \"버퍼 하나로 4번 타격한 뒤 3틱:\");\n}\n\nstd::string PopupsReachSharedLog() {\n    TimerQueue timers;\n    PopupLog hud, killFeed;\n    HitInfo buffer;\n    Fill(buffer, \"Archer\", 21);\n    ScheduleDamagePopup(timers, hud, buffer, 1);\n    Fill(buffer, \"Knight\", 5);\n    ScheduleDamagePopup(timers, killFeed, buffer, 1);\n    ScheduleDamagePopup(timers, hud, buffer, 1);\n    timers.Tick();\n    std::string d = Expect(hud, {\"Archer -21\", \"Knight -5\"}, \"HUD 로그:\");\n    if (!d.empty()) return d + (hud.lines.empty() ? \" (넘겨받은 PopupLog가 아니라 람다 안의 복사본에 썼을 가능성)\" : \"\");\n    return Expect(killFeed, {\"Knight -5\"}, \"킬 피드 로그:\");\n}\n\nstd::string ComboAtHitTime() {\n    TimerQueue timers;\n    PopupLog log;\n    ComboCounter combo;\n    for (int i = 0; i < 3; ++i) combo.OnHit(timers, log);\n    combo.Break();  // the player is hit before the popups appear\n    for (int t = 0; t < 29; ++t) timers.Tick();\n    std::string d = Expect(log, {}, \"29틱 뒤(지연 30틱):\");\n    if (!d.empty()) return d;\n    timers.Tick();\n    d = Expect(log, {\"Combo x1!\", \"Combo x2!\", \"Combo x3!\"}, \"30틱 뒤, 콤보가 이미 끊긴 상태에서:\");\n    if (!d.empty()) return d;\n    if (combo.Combo() != 0) return \"Break 뒤 Combo() 기대 0, 결과 \" + Num(combo.Combo());\n    return \"\";\n}\n\nstd::string ComboAcrossBreak() {\n    TimerQueue timers;\n    PopupLog log;\n    ComboCounter combo;\n    combo.OnHit(timers, log);\n    combo.OnHit(timers, log);\n    for (int t = 0; t < 10; ++t) timers.Tick();\n    combo.Break();\n    combo.OnHit(timers, log);\n    for (int t = 0; t < 5; ++t) timers.Tick();\n    combo.OnHit(timers, log);\n    for (int t = 0; t < 20; ++t) timers.Tick();\n    std::string d = Expect(log, {\"Combo x1!\", \"Combo x2!\"}, \"30틱째:\");\n    if (!d.empty()) return d;\n    for (int t = 0; t < 15; ++t) timers.Tick();\n    return Expect(log, {\"Combo x1!\", \"Combo x2!\", \"Combo x1!\", \"Combo x2!\"}, \"50틱째:\");\n}\n\ntypedef std::string (*CaseFn)();\nstruct Case {\n    const char* name;\n    CaseFn fn;\n};\nconst Case kCases[] = {\n    {\"popup-shows-hit-at-schedule-time\", PopupKeepsHit},\n    {\"reused-buffer-many-hits\", ReusedBufferManyHits},\n    {\"popups-reach-the-given-log\", PopupsReachSharedLog},\n    {\"combo-count-at-hit-time\", ComboAtHitTime},\n    {\"combo-across-break\", ComboAcrossBreak},\n};\n\n}  // namespace judge\n\nint main() {\n    using namespace judge;\n    for (const Case& c : kCases) {\n        std::string reason;\n        try {\n            reason = c.fn();\n        } catch (const std::exception& e) {\n            reason = std::string(\"예외가 밖으로 전파됨: \") + e.what();\n        } catch (...) {\n            reason = \"알 수 없는 예외가 밖으로 전파됨\";\n        }\n        if (reason.empty()) {\n            std::printf(\"[PASS] %s\\n\", c.name);\n        } else {\n            std::printf(\"[FAIL] %s :: %s\\n\", c.name, reason.c_str());\n        }\n    }\n    return 0;\n}\n",
+        "cases": [
+          "popup-shows-hit-at-schedule-time",
+          "reused-buffer-many-hits",
+          "popups-reach-the-given-log",
+          "combo-count-at-hit-time",
+          "combo-across-break"
+        ],
+        "note": "채점기는 미정의 동작에 기대지 않습니다. 람다가 참조할 수 있는 객체(`HitInfo` 버퍼, `PopupLog`, `ComboCounter`)는 타이머가 실행될 때까지 모두 살아 있고, 참조 캡처는 타이머 실행 전에 버퍼를 덮어쓰거나 콤보를 끊어 \"새 값이 보이는가\"로 드러냅니다. 검사 내용: 덮어쓴 버퍼와 무관하게 타격 순간의 이름·데미지가 지연 틱 정확히 맞춰 뜨는지, 버퍼 하나로 4번 타격한 팝업이 각자의 값으로 예약 순서대로 뜨는지, 팝업이 넘겨받은 `PopupLog`(두 개로 나눠 예약)에 기록되는지, `Break()` 뒤에 뜨는 콤보 팝업이 타격 순간의 콤보 수를 보여 주는지, 콤보가 끊겼다가 다시 이어질 때의 순서. `TimerQueue`, `PopupLog`, `HitInfo`와 `ScheduleDamagePopup`, `ComboCounter`의 공개 멤버 함수 시그니처를 바꾸지 마세요."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "채점기에서 모범 답안 5/5 통과와 시작 코드 실패, PopupLog 값 캡처·[this] 캡처 오답의 실패와 [&popups, hit]·[*this] 정답의 통과를 확인했고(테스트는 모든 객체가 살아 있어 미정의 동작에 기대지 않음), 캡처 규칙과 std::function 요구 사항은 cppreference·Microsoft Learn·Core Guidelines와 대조했으며 이동 전용 캡처의 컴파일 오류는 GCC 13.2에서 확인했습니다."
+      },
+      "nextMission": "`TimerQueue::After`가 `TimerHandle`(이동 전용, 파괴되면 대기 중인 콜백을 취소)을 반환하도록 바꾸세요. UI 창이 핸들을 멤버로 들고 있게 한 뒤, 창을 파괴하고 `Tick()`을 돌려도 `[this]` 콜백의 본문이 한 번도 실행되지 않는지를 \"본문이 실행되면 카운터 증가\" 방식의 테스트로 검증합니다(파괴된 객체에 접근하는 코드가 실행되지 않으므로 테스트 자체에 미정의 동작이 없음)."
     }
   ],
   "extraSources": [
@@ -3571,6 +4365,162 @@
       "title": "microsoft/STL — stl/inc/typeinfo, _Small_object_num_ptrs (commit 0cabaf3)",
       "url": "https://github.com/microsoft/STL/blob/0cabaf3c7e0a73fe3040aabce40cd8833e80392b/stl/inc/typeinfo#L29",
       "summary": "std::function·std::any의 객체 안 저장 크기를 정하는 상수 _Small_object_num_ptrs = 6 + 16 / sizeof(void*)(x64에서 8). functional의 _Space_size는 (이 값 - 1) × 포인터 크기라 x64에서 56바이트(구현 사항)."
+    },
+    {
+      "id": "cppref-exceptions",
+      "title": "cppreference — Exceptions (Exception safety)",
+      "url": "https://en.cppreference.com/w/cpp/language/exceptions",
+      "summary": "예외를 던진 뒤의 상태를 nothrow·강한·기본·보장 없음 네 단계로 정리하고, 강한 보장을 주는 함수가 쓰는 연산에는 실패하지 않음이 기대된다고 설명한다."
+    },
+    {
+      "id": "cppref-vector-insert",
+      "title": "cppreference — std::vector::insert",
+      "url": "https://en.cppreference.com/w/cpp/container/vector/insert",
+      "summary": "T의 복사·이동 생성자나 대입 연산자가 던진 경우는 \"효과 없음\"에서 제외되고, 끝에 원소 하나를 넣을 때만 강한 보장이 명시된다."
+    },
+    {
+      "id": "cppref-noexcept-spec",
+      "title": "cppreference — noexcept specifier",
+      "url": "https://en.cppreference.com/w/cpp/language/noexcept_spec",
+      "summary": "예외가 non-throwing 함수의 가장 바깥 블록에 이르면 std::terminate가 호출된다는 규칙."
+    },
+    {
+      "id": "ms-learn-exception-safety",
+      "title": "Microsoft Learn — How to: Design for exception safety",
+      "url": "https://learn.microsoft.com/en-us/cpp/cpp/how-to-design-for-exception-safety",
+      "summary": "no-fail·강한·기본 보장을 설명하고, 강한 보장을 커밋/롤백 트랜잭션으로, 기본 보장을 강한 보장이 너무 비쌀 때의 선택지로 소개하는 Microsoft C++ 문서."
+    },
+    {
+      "id": "ms-gsl-final-action",
+      "title": "microsoft/GSL v5.0.1 — include/gsl/util, final_action과 finally (커밋 고정)",
+      "url": "https://github.com/microsoft/GSL/blob/fbd20b8e8c52cba04dbc869cc9068a7800a5665d/include/gsl/util#L143-L175",
+      "summary": "final_action은 옮겨지지 않았다면 소멸자에서 항상 함수를 실행하고 취소 함수가 없으며, finally(F&& f)는 final_action<std::decay_t<F>>{std::forward<F>(f)}를 만든다(구현)."
+    },
+    {
+      "id": "cmu-15418-cachecoherence",
+      "title": "CMU 15-418/618 (Fall 2026) — Lecture 10: Cache coherence (슬라이드 PDF)",
+      "url": "https://www.cs.cmu.edu/~418/lectures/10_cachecoherence.pdf",
+      "summary": "캐시 설계 복습: 캐시 라인 단위의 데이터(최근 Intel 프로세서에서 64바이트), 쓰기 할당·후기입 동작, 캐시 계층."
+    },
+    {
+      "id": "cmu-15418-basicarch",
+      "title": "CMU 15-418/618 (Fall 2026) — Lecture 3: Basic architecture (슬라이드 PDF)",
+      "url": "https://www.cs.cmu.edu/~418/lectures/03_basicarch.pdf",
+      "summary": "메모리 접근이 수백 사이클의 지연을 만들고 캐시가 그 지연을 줄인다는 점, 데이터를 메모리에서 덜 자주 가져오도록 계산을 조직해야 한다는 대역폭 관점."
+    },
+    {
+      "id": "entt-entity-docs",
+      "title": "EnTT v4.0.0 — docs/md/entity.md (Entity Component System 문서)",
+      "url": "https://github.com/skypjack/entt/blob/v4.0.0/docs/md/entity.md",
+      "summary": "엔티티 식별자가 엔티티 번호와 버전을 담고 해제 시 버전이 올라간 뒤 재사용된다는 점, 컴포넌트 풀이 sparse set이며 파괴할 때 swap-and-pop으로 촘촘한 배열을 유지한다는 설명."
+    },
+    {
+      "id": "gcc13-string-layout",
+      "title": "libstdc++ (GCC 13.2) — bits/basic_string.h, basic_string의 데이터 멤버",
+      "url": "https://github.com/gcc-mirror/gcc/blob/releases/gcc-13.2.0/libstdc%2B%2B-v3/include/bits/basic_string.h#L199-L208",
+      "summary": "포인터, 길이, 그리고 16바이트 지역 버퍼(_M_local_buf)와 용량을 겹친 union으로 이루어진 libstdc++ std::string의 배치(구현 사항)."
+    },
+    {
+      "id": "ms-stl-string-layout",
+      "title": "microsoft/STL — xstring, _String_val의 _Bxty 버퍼 (커밋 고정)",
+      "url": "https://github.com/microsoft/STL/blob/0cabaf3c7e0a73fe3040aabce40cd8833e80392b/stl/inc/xstring#L490-L518",
+      "summary": "16바이트 작은 문자열 버퍼와 포인터를 겹친 union, 길이(_Mysize)와 용량(_Myres)으로 이루어진 MSVC std::string의 배치(구현 사항)."
+    },
+    {
+      "id": "cppref-value-category",
+      "title": "cppreference — Value categories",
+      "url": "https://en.cppreference.com/w/cpp/language/value_category",
+      "summary": "lvalue·xvalue·prvalue의 정의와, 변수의 타입이 rvalue 참조여도 그 이름으로 된 식은 lvalue라는 규칙."
+    },
+    {
+      "id": "cppref-forward",
+      "title": "cppreference — std::forward",
+      "url": "https://en.cppreference.com/w/cpp/utility/forward",
+      "summary": "static_cast<T&&>(t)를 돌려주며, 전달 참조와 함께 쓰면 인자가 원래 가졌던 값 범주로 전달하고, rvalue를 lvalue로 forward하는 것은 컴파일 오류라는 설명."
+    },
+    {
+      "id": "cppref-template-argument-deduction",
+      "title": "cppreference — Template argument deduction",
+      "url": "https://en.cppreference.com/w/cpp/language/template_argument_deduction",
+      "summary": "전달 참조에 lvalue 인자가 오면 A 대신 A&로 추론하는 특별 규칙, 중첩 이름 지정자와 중괄호 초기화 목록 같은 비추론 문맥."
+    },
+    {
+      "id": "isocpp-cg-f15",
+      "title": "C++ Core Guidelines — F.15: Prefer simple and conventional ways of passing information",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rf-conventional",
+      "summary": "매개변수 전달은 단순하고 관례적인 방식을 쓰고, 고급 기법은 필요가 입증된 뒤에만 쓰라는 규칙(F.16~F.21 요약표)."
+    },
+    {
+      "id": "isocpp-cg-f16",
+      "title": "C++ Core Guidelines — F.16: For \"in\" parameters, pass cheaply-copied types by value and others by reference to const",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rf-in",
+      "summary": "두세 워드 이하의 싼 타입은 값으로, 나머지는 const&로. 저장할 값에는 const&와 && 오버로드를 쓰는 고급 용법."
+    },
+    {
+      "id": "isocpp-cg-f18",
+      "title": "C++ Core Guidelines — F.18: For \"will-move-from\" parameters, pass by X&& and std::move the parameter",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rf-consume",
+      "summary": "옮겨 갈 매개변수는 X&&로 받고 std::move하며, unique_ptr처럼 이동만 되고 이동이 싼 타입은 값으로 받아도 된다는 예외."
+    },
+    {
+      "id": "isocpp-cg-f19",
+      "title": "C++ Core Guidelines — F.19: For \"forward\" parameters, pass by TP&& and only std::forward the parameter",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rf-forward",
+      "summary": "다른 코드로 넘길 매개변수는 TP&&로 받고 정적 경로마다 정확히 한 번 std::forward하라는 규칙과, 임시 객체가 호출 동안 살아 있어 안전하다는 근거."
+    },
+    {
+      "id": "ms-learn-rvalue-reference",
+      "title": "Microsoft Learn — Rvalue reference declarator: &&",
+      "url": "https://learn.microsoft.com/en-us/cpp/cpp/rvalue-reference-declarator-amp-amp",
+      "summary": "퍼펙트 포워딩이 해결하는 문제, 이름 있는 rvalue 참조는 lvalue로 취급된다는 규칙, 템플릿 인자 추론의 참조 축약 표를 설명하는 Microsoft C++ 문서."
+    },
+    {
+      "id": "ms-stl-forward",
+      "title": "microsoft/STL — type_traits, std::forward와 std::move (커밋 고정)",
+      "url": "https://github.com/microsoft/STL/blob/0cabaf3c7e0a73fe3040aabce40cd8833e80392b/stl/inc/type_traits#L1637-L1652",
+      "summary": "forward가 static_cast<_Ty&&>이고 rvalue를 받는 오버로드가 \"bad forward call\" static_assert를 두며, move가 static_cast<remove_reference_t<_Ty>&&>인 MSVC 구현."
+    },
+    {
+      "id": "floooh-handles",
+      "title": "The Brain Dump (Andre Weissflog) — Handles are the better pointers (2018, 2018-11 갱신)",
+      "url": "https://floooh.github.io/2018/06/17/handles-vs-pointers.html",
+      "summary": "포인터 대신 인덱스 핸들을 쓰는 설계, 범위·활성 검사만으로는 재사용된 슬롯을 구분할 수 없다는 점, 슬롯별 세대 카운터와 넘칠 때 슬롯을 비활성화하는 방법."
+    },
+    {
+      "id": "cppref-optional-reset",
+      "title": "cppreference — std::optional::reset",
+      "url": "https://en.cppreference.com/w/cpp/utility/optional/reset",
+      "summary": "optional이 값을 가지고 있으면 그 값을 파괴하고, 없으면 아무 효과가 없다."
+    },
+    {
+      "id": "cppref-lambda",
+      "title": "cppreference — Lambda expressions",
+      "url": "https://en.cppreference.com/w/cpp/language/lambda",
+      "summary": "값 캡처 멤버가 람다 식을 평가할 때 초기화된다는 점, 클로저가 참조 캡처 대상의 수명을 늘리지 않는다는 점, [=]가 *this를 참조로 암묵 캡처하며 C++20부터 deprecated라는 규칙."
+    },
+    {
+      "id": "ms-learn-lambda-cpp",
+      "title": "Microsoft Learn — Lambda expressions in C++",
+      "url": "https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp",
+      "summary": "캡처 절, [*this], init-capture를 설명하고, 참조 캡처는 바깥 변경을 반영하며 수명 의존성을 만든다고 경고하는 Microsoft C++ 문서."
+    },
+    {
+      "id": "isocpp-cg-f53",
+      "title": "C++ Core Guidelines — F.53: Avoid capturing by reference in lambdas that will be used non-locally",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rf-value-capture",
+      "summary": "반환·힙 저장·다른 스레드 전달처럼 스코프를 벗어나 쓰일 람다는 지역 변수를 참조로 캡처하지 말라는 규칙."
+    },
+    {
+      "id": "isocpp-cg-f54",
+      "title": "C++ Core Guidelines — F.54: When writing a lambda that captures this or any class data member, don't use [=] default capture",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rf-this-capture",
+      "summary": "멤버 함수 안의 [=]는 값 캡처처럼 보이지만 this 포인터를 캡처해 멤버를 참조로 읽으므로 this를 명시하라는 규칙."
+    },
+    {
+      "id": "cppref-move-only-function",
+      "title": "cppreference — std::move_only_function (C++23)",
+      "url": "https://en.cppreference.com/w/cpp/utility/functional/move_only_function",
+      "summary": "이동만 가능한 호출 가능 대상을 담는 C++23 래퍼. std::function에는 담을 수 없는 이동 전용 람다 예제 포함."
     }
   ]
 }
