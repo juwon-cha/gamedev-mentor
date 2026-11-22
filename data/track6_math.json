@@ -253,6 +253,102 @@
       "title": "Microsoft Learn · Arithmetic operators (C# reference)",
       "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators",
       "summary": "부동소수 % 연산 결과의 부호는 왼쪽 피연산자를 따르며 IEEE 754 나머지와 다르다. float/double 연산은 예외 없이 Infinity·NaN 을 만든다(0.0/0.0 = NaN)."
+    },
+    {
+      "id": "wiki-slab-method",
+      "title": "Wikipedia — Slab method",
+      "url": "https://en.wikipedia.org/wiki/Slab_method",
+      "summary": "반직선을 상자 여섯 면의 평면으로 잘라 축별 구간의 교집합을 구하는 알고리즘. tclose <= tfar 일 때만 교차하고, 축과 나란한 반직선은 IEEE 무한대로 처리되지만 시작점이 면 위에 있으면 0/0 = NaN 이 된다고 설명."
+    },
+    {
+      "id": "tavian-ray-box",
+      "title": "Tavian Barnes — Fast, Branchless Ray/Bounding Box Intersections",
+      "url": "https://tavianator.com/2011/ray_box.html",
+      "summary": "슬랩 방법을 분기 없이 구현하는 글. 방향 성분이 0 인 경우를 IEEE 무한대가 암묵적으로 처리한다고 설명(시작점이 경계 위일 때의 NaN 문제는 댓글과 후속 글에서 다룸)."
+    },
+    {
+      "id": "wiki-line-line-intersection",
+      "title": "Wikipedia — Line–line intersection",
+      "url": "https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection",
+      "summary": "두 점으로 주어진 두 선분의 매개변수 t, u 식. 0 <= t <= 1 이고 0 <= u <= 1 이면 교차하며 이 부등식은 나눗셈 없이 검사할 수 있다. 평행하거나 일치하면 분모가 0."
+    },
+    {
+      "id": "ms-math-atan2",
+      "title": "Microsoft Learn · Math.Atan2(Double, Double)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.math.atan2",
+      "summary": "시그니처는 Atan2(y, x). tan θ = y / x 인 각 θ 를 라디안으로 반환하며 사분면별 범위와 축 위의 값(y 가 0 이고 x 가 음수면 π, 둘 다 0 이면 0)을 명시."
+    },
+    {
+      "id": "unity-mathf-lerpangle",
+      "title": "Unity Scripting API (6000.0) · Mathf.LerpAngle",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/mathf/lerpangle",
+      "summary": "Lerp 와 같지만 값이 360 도를 넘어 감길 때 올바르게 보간. 각도는 도 단위, t 는 [0, 1] 로 제한, 가장 짧은 경로를 반환(예: LerpAngle(1, 190, 1) 은 -170)."
+    },
+    {
+      "id": "unity-mathf-lerp",
+      "title": "Unity Scripting API (6000.0) · Mathf.Lerp",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/mathf/lerp",
+      "summary": "a 와 b 사이를 t 로 선형 보간. t 는 [0, 1] 로 제한되며 t = 0 이면 a, 1 이면 b, 0.5 면 중간값."
+    },
+    {
+      "id": "unity-mathf-inverselerp",
+      "title": "Unity Scripting API (6000.0) · Mathf.InverseLerp",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/mathf/inverselerp",
+      "summary": "값이 a~b 범위의 어디에 있는지를 0~1 로 반환. 범위를 벗어나면 0 또는 1 을 반환(a 와 b 가 같은 경우는 문서에 설명 없음)."
+    },
+    {
+      "id": "wiki-smoothstep",
+      "title": "Wikipedia — Smoothstep",
+      "url": "https://en.wikipedia.org/wiki/Smoothstep",
+      "summary": "왼쪽 경계 이하에서 0, 오른쪽 경계 이상에서 1, 그 사이 3x² - 2x³. 양쪽 경계에서 기울기 0. Ken Perlin 의 smootherstep 6x⁵ - 15x⁴ + 10x³ 은 1차·2차 도함수가 0."
+    },
+    {
+      "id": "wiki-linear-interpolation",
+      "title": "Wikipedia — Linear interpolation",
+      "url": "https://en.wikipedia.org/wiki/Linear_interpolation",
+      "summary": "lerp 의 두 구현 형태: v0 + t*(v1 - v0) 는 부동소수 오차로 t = 1 에서 v1 을 보장하지 않고, (1 - t)*v0 + t*v1 은 보장한다."
+    },
+    {
+      "id": "wiki-projectile-motion",
+      "title": "Wikipedia — Projectile motion",
+      "url": "https://en.wikipedia.org/wiki/Projectile_motion",
+      "summary": "변위 식 x = v t cos θ, y = v t sin θ - g t²/2 와, 속력 v 로 좌표 (x, y) 를 맞히는 발사각 식 tan θ = (v² ± √(v⁴ - g(g x² + 2 y v²))) / (g x). 두 근이 두 발사각이고 허수면 속력이 부족."
+    },
+    {
+      "id": "learnopengl-coordinate-systems",
+      "title": "LearnOpenGL — Coordinate Systems",
+      "url": "https://learnopengl.com/Getting-started/Coordinate-Systems",
+      "summary": "로컬 → 월드 → 뷰 → 클립 → 스크린 좌표계와 모델·뷰·투영 행렬, 원근 나눗셈(w 로 나눠 -1~1 의 NDC), 뷰포트 변환. V_clip = M_projection · M_view · M_model · V_local."
+    },
+    {
+      "id": "unity-camera-screenpointtoray",
+      "title": "Unity Scripting API (6000.0) · Camera.ScreenPointToRay",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/camera/screenpointtoray",
+      "summary": "카메라에서 스크린의 한 점을 지나는 월드 공간 반직선을 반환. near 평면에서 시작. 스크린 좌표는 픽셀 단위, 왼쪽 아래 (0,0), 오른쪽 위 (너비-1, 높이-1), z 는 무시."
+    },
+    {
+      "id": "unity-camera-worldtoscreenpoint",
+      "title": "Unity Scripting API (6000.0) · Camera.WorldToScreenPoint",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/camera/worldtoscreenpoint",
+      "summary": "월드 위치를 스크린 좌표(픽셀, 왼쪽 아래 원점)로 변환. 반환값의 z 는 카메라로부터의 거리(월드 단위)."
+    },
+    {
+      "id": "unity-camera-worldtocameramatrix",
+      "title": "Unity Scripting API (6000.0) · Camera.worldToCameraMatrix",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/camera/worldtocameramatrix",
+      "summary": "월드 → 카메라 공간 행렬(뷰 행렬). 카메라 공간은 OpenGL 규약이라 전방이 -Z 이며, 전방이 +Z 인 Unity 규약과 다르다고 명시."
+    },
+    {
+      "id": "vulkan-spec-vertex-postprocessing",
+      "title": "Vulkan Specification — Fixed-Function Vertex Post-Processing",
+      "url": "https://docs.vulkan.org/spec/latest/chapters/vertexpostproc.html",
+      "summary": "프리미티브 클리핑은 클립 좌표에서 수행된다: 뷰 볼륨은 -w <= x <= w, -w <= y <= w, z_m <= z <= w (z_m 은 기본 0, negativeOneToOne 설정이면 -w). 원근 나눗셈(클립 좌표 → NDC)은 그와 별도의 단계로 나열된다."
+    },
+    {
+      "id": "wiki-orthographic-projection",
+      "title": "Wikipedia — Orthographic projection",
+      "url": "https://en.wikipedia.org/wiki/Orthographic_projection",
+      "summary": "직교 투영은 모든 투영선이 투영면에 수직인 평행 투영(parallel projection)의 한 형태."
     }
   ],
   "problems": [
@@ -2098,6 +2194,914 @@
         "note": "±180도 경계와 도착 값을 포함한 모든 기대값을 다시 계산하고 정답·다르게 쓴 정답 2종(Length·Floor·각도 기반, double·IEEERemainder 기반)·오답 3종을 실행했으며, 도착 시 target 자체를 반환한다는 == 계약을 Unity MoveTowards 문서로 확인했습니다(정답·시작 코드는 채점 서비스, 나머지는 로컬 .NET 8)."
       },
       "nextMission": "MoveTowardsAngle 을 써서 `float TurretStep(float currentDeg, Vector2 turretPos, Vector2 targetPos, float degPerSecond, float dt)` 를 만들고, 30fps 와 144fps 로 3초씩 시뮬레이션해 최종 각도가 0.01도 안에서 같은지 확인하세요. 그다음 최대 각속도 대신 최대 각가속도까지 제한하는 버전(현재 각속도를 상태로 들고, 남은 각도에서 멈출 수 있는 최대 속도 sqrt(2·a·남은 각도)를 넘지 않게 감속)을 구현해 목표에서 진동하지 않는지 검증해 보세요."
+    },
+    {
+      "id": "t6-impl-ray-aabb-slab-block-pick",
+      "track": "track6",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "조준한 블록 고르기: 반직선과 AABB 의 교차(슬랩 방법)로 진입 거리 구하기",
+      "tags": [
+        "Math_RayAABB",
+        "Math_SlabMethod"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-slab-method",
+        "tavian-ray-box"
+      ],
+      "scenario": "복셀 샌드박스 게임에서 플레이어가 조준한 블록을 강조 표시합니다. 카메라에서 나가는 반직선을 주변 블록(축 정렬 상자, AABB) 수십 개와 검사해서 **진입 거리가 가장 짧은 블록**을 고릅니다. 전용 서버에서도 같은 판정을 해야 하므로 엔진의 물리 쿼리 없이 직접 구현합니다.\n\n**할 일:** `BlockPicker.RayAabb` 를 구현하세요. 반직선은 `P(t) = origin + t·direction` (`t >= 0`), 상자는 두 꼭짓점 `min`, `max` 로 주어집니다(각 성분에서 `min <= max` 라고 가정).\n\n1. 맞으면 `true` 를 반환하고 `distance` 에 `origin` 에서 상자에 **처음 닿는 점**까지의 **월드 거리**를 담습니다.\n2. `direction` 은 **정규화되어 있지 않을 수 있습니다.** 길이가 5 든 0.01 이든 `distance` 는 같아야 합니다(매개변수 `t` 가 아니라 거리).\n3. `origin` 이 상자 **안이나 표면**에 있으면 `true`, `distance = 0` 입니다.\n4. 상자가 반직선 **뒤쪽**에 있으면 `false` 입니다.\n5. **경계는 포함**입니다. 면·모서리·꼭짓점에 스치기만 해도 `true` 입니다.\n6. `direction` 의 어떤 성분이 0 이면(그 축과 수직으로 진행) 그 축에서는 `origin` 의 좌표가 `[min, max]` 안(경계 포함)에 있어야 맞을 수 있습니다. 예: `origin (-5, 1, 0)`, `direction (1, 0, 0)`, 상자 `(-1,-1,-1) ~ (1,1,1)` 은 윗면 평면을 따라 진행하므로 `true`, 거리 4 입니다.\n7. `direction` 이 영벡터이면 `origin` 의 위치와 관계없이 `false` 입니다. `false` 일 때 `distance` 는 `0` 입니다.\n\n`System.Numerics.Vector3` 를 쓰는 순수 C# (.NET 8) 입니다. 거리 비교의 허용 오차는 0.001(무작위 비교는 0.005)입니다. 스치는 경우와 면 위를 따라가는 경우는 float 연산이 오차 없이 떨어지는 입력만 검사하고, 무작위 비교는 상자를 0.01 키웠을 때와 줄였을 때 판정이 달라지는 입력을 제외합니다.",
+      "constraints": [
+        "시간 O(1), 힙 할당 없음(축을 돌기 위한 float[] 배열도 만들지 않는다). 반직선을 따라 조금씩 전진하며 검사하는 방식 금지.",
+        "Sqrt 는 명중이 확정된 뒤 1회만(direction 의 길이). 빗나가는 경로는 Sqrt 없이 반환한다.",
+        "direction 의 성분이 0 인 축은 나눗셈 없이 처리한다. 결과에 NaN 이 섞이면 안 된다.",
+        "RayAabb 의 시그니처(out float distance 포함)를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\npublic static class BlockPicker\n{\n    // 반직선 P(t) = origin + t * direction (t >= 0) 이 축 정렬 상자 [min, max] 에 맞으면 true.\n    // distance : origin 에서 상자에 처음 닿는 점까지의 \"월드 거리\" (0 이상).\n    //   - direction 은 정규화되어 있지 않을 수 있다. 길이가 달라도 distance 는 같아야 한다.\n    //   - origin 이 상자 안(또는 표면)에 있으면 true, distance = 0.\n    //   - 상자가 반직선 뒤쪽에 있으면 false.\n    //   - 면·모서리·꼭짓점에 스치기만 해도(경계 포함) true.\n    //   - direction 의 어떤 성분이 0 이면 그 축에서는 origin 이 [min, max] 안(경계 포함)에 있어야 한다.\n    //   - direction 이 영벡터이면 false. false 를 반환할 때 distance 는 0 으로 둔다.\n    //   - min 의 각 성분은 max 의 같은 성분 이하라고 가정한다.\n    public static bool RayAabb(Vector3 origin, Vector3 direction, Vector3 min, Vector3 max, out float distance)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "origin 이 상자 안: 들어가는 시점이 음수(뒤쪽)다. 그대로 쓰면 음수 거리가 나온다.",
+        "상자가 뒤에 있음: 세 축의 구간은 서로 겹치지만 전부 t < 0 이다. 구간이 겹치는지만 보면 등 뒤의 블록이 선택된다.",
+        "direction 의 성분이 0: (min - origin) / 0 은 ±무한대, origin 이 그 평면 위에 있으면 0 / 0 = NaN 이다.",
+        "모서리에 스침: origin (-3,-1,0), direction (1,1,0), 상자 (-1,-1,-1)~(1,1,1) → 들어가는 시점과 나오는 시점이 모두 t = 2, 거리 2√2.",
+        "정규화되지 않은 direction: (0,0,5) 로 쏘면 t = 1.8 이지만 거리는 9 다."
+      ],
+      "hints": [
+        "3D 상자를 한 번에 생각하지 말고 축 하나만 보세요. X 축에서 상자는 구간 `[min.X, max.X]` 이고, 반직선의 x 좌표는 `origin.X + t·direction.X` 입니다. 이 값이 구간 안에 있는 `t` 의 범위는 구간 하나로 나옵니다. 직접 계산해 보세요: `origin (-4, 0, -4)`, `direction (3, 0, 4)`, 상자 `(-1,-1,-1) ~ (1,1,1)`. X 축에서는 `t ∈ [1, 5/3]`, Z 축에서는 `t ∈ [0.75, 1.25]` 입니다. 두 구간이 겹치는 부분은 어디이고, 그 시작점의 `t` 에 `|direction| = 5` 를 곱하면 거리는 얼마인가요? 그리고 Y 축은 `direction.Y = 0` 인데, 이때 `(min.Y - origin.Y) / 0` 을 계산해도 될까요?",
+        "정해야 할 것은 세 가지입니다. (1) 세 축의 구간을 교집합으로 좁혀 갈 때 `[tEnter, tExit]` 의 **초깃값**을 무엇으로 두면 \"뒤에 있는 상자\"와 \"상자 안에서 출발\"이 별도 분기 없이 처리될까요? 반직선은 `t >= 0` 인 부분만 존재합니다. (2) `direction` 성분이 음수이면 `min` 쪽 평면과 `max` 쪽 평면 중 어느 것을 먼저 만납니까? (3) 성분이 0 인 축에서는 `t` 가 무엇이든 그 좌표가 변하지 않습니다. 그러면 검사할 것은 `t` 가 아니라 무엇입니까?",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nRayAabb(origin, direction, min, max, out distance):\n    distance = 0\n    if direction 이 영벡터: return false\n    tEnter = ____ ; tExit = +무한대\n    for 각 축 (o, d, lo, hi):\n        if d == 0:\n            if ____ : return false        // 나눗셈 없이 판정\n            continue\n        t1 = (lo - o) / d ; t2 = (hi - o) / d\n        if t1 > t2: 두 값을 바꾼다\n        tEnter = ____(tEnter, t1)\n        tExit  = ____(tExit, t2)\n        if tEnter ____ tExit: return false\n    distance = tEnter * ____\n    return true\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\npublic static class BlockPicker\n{\n    // 슬랩 방법: 상자를 \"축마다 두 평면 사이의 구간(슬랩)\" 세 개의 교집합으로 본다.\n    // 축마다 반직선이 슬랩 안에 있는 t 구간 [t1, t2] 를 구하고, 세 구간과 [0, +inf) 의 교집합이\n    // 비어 있지 않으면 명중이다. 교집합의 시작 tEnter 가 처음 닿는 지점의 매개변수다.\n    public static bool RayAabb(Vector3 origin, Vector3 direction, Vector3 min, Vector3 max, out float distance)\n    {\n        distance = 0f;\n        float lengthSq = direction.LengthSquared();\n        if (lengthSq == 0f) return false;                 // 방향 없음\n\n        float tEnter = 0f;                                // 0 에서 시작: 반직선의 뒤쪽(t < 0)을 잘라낸다\n        float tExit = float.PositiveInfinity;\n\n        if (!ClipToSlab(origin.X, direction.X, min.X, max.X, ref tEnter, ref tExit)) return false;\n        if (!ClipToSlab(origin.Y, direction.Y, min.Y, max.Y, ref tEnter, ref tExit)) return false;\n        if (!ClipToSlab(origin.Z, direction.Z, min.Z, max.Z, ref tEnter, ref tExit)) return false;\n\n        distance = tEnter * MathF.Sqrt(lengthSq);         // 매개변수 t 를 월드 거리로: |direction| 배\n        return true;\n    }\n\n    // 한 축의 슬랩 [lo, hi] 로 구간 [tEnter, tExit] 를 좁힌다. 구간이 비면 false.\n    private static bool ClipToSlab(float o, float d, float lo, float hi, ref float tEnter, ref float tExit)\n    {\n        if (d == 0f)\n        {\n            // 이 축으로는 움직이지 않는다: 나눗셈 없이, 시작 좌표가 슬랩 안(경계 포함)인지만 본다.\n            return o >= lo && o <= hi;\n        }\n\n        float inv = 1f / d;\n        float t1 = (lo - o) * inv;\n        float t2 = (hi - o) * inv;\n        if (t1 > t2) { float tmp = t1; t1 = t2; t2 = tmp; }   // d < 0 이면 hi 쪽 평면을 먼저 만난다\n\n        if (t1 > tEnter) tEnter = t1;                     // 가장 늦게 들어가는 시점\n        if (t2 < tExit) tExit = t2;                       // 가장 일찍 나오는 시점\n        return tEnter <= tExit;                           // 같으면 스치는 것: 명중으로 본다\n    }\n}\n",
+      "explanation": "**슬랩으로 쪼개기.** AABB 는 \"X 가 `[min.X, max.X]` 안\" 이면서 \"Y 가 …\", \"Z 가 …\" 인 영역, 즉 축마다 평행한 두 평면 사이의 판(슬랩) 세 개의 교집합입니다. Wikipedia 의 Slab method 설명대로 반직선을 여섯 면의 평면으로 잘라 나가면, 축마다 반직선이 그 슬랩 안에 있는 `t` 구간 `[t1, t2]` 가 나오고, 세 구간의 교집합 `[tclose, tfar]` 가 비어 있지 않을 때(`tclose <= tfar`)만 상자와 만납니다. `tclose` 는 \"가장 늦게 들어가는 시점\", `tfar` 는 \"가장 일찍 나오는 시점\"입니다.\n\n**반직선의 뒤쪽 자르기.** 같은 문서는 `tclose` 의 부호가 교점이 앞인지 뒤인지를 알려 준다고 적습니다. 풀이는 이것을 분기 대신 초깃값으로 처리합니다. 구간을 `[0, +∞)` 에서 시작하면 반직선 자체가 네 번째 구간이 되어, 상자가 뒤에 있으면 `tExit < 0 = tEnter` 로 걸러지고, 상자 안에서 출발하면 `tEnter` 가 0 에 머물러 거리 0 이 됩니다. 스치는 경우는 `tEnter == tExit` 이므로 비교를 `<=` 로 두어야 포함됩니다.\n\n**성분이 0 인 축.** `1 / 0` 을 그대로 계산하는 분기 없는 구현도 널리 쓰입니다. Tavian Barnes 의 글은 방향 성분이 0 일 때 IEEE 무한대가 이 경우를 암묵적으로 처리한다고 설명하고, Wikipedia 는 단서를 붙입니다: 시작점이 그 면의 평면 위에 있으면 `0 / 0`, 곧 NaN 이 된다는 것입니다. 같은 문서는 NaN 을 없는 값으로 취급하는 IEEE 754-2008 의 minNum/maxNum 이면 이 경우도 처리된다고 덧붙이지만, .NET 8 의 `MathF.Min/Max` 는 인자 하나가 NaN 이면 NaN 을 돌려줍니다. 그래서 `1f / d` 와 `MathF.Min/Max` 로 쓴 구현에 규칙 6 의 예(`origin (-5, 1, 0)`, `direction (1, 0, 0)`)를 넣으면 Y 축에서 `(1 - 1) × ∞ = NaN` 이 생겨 구간의 양 끝이 모두 NaN 이 되고, 마지막 판정을 `if (tEnter > tExit) return false;` 로 쓰면 `true` 와 거리 NaN 이, `return tEnter <= tExit;` 로 쓰면 빗나감이 나옵니다(둘 다 실행해 확인). 이 문제는 경계를 포함한다고 정했으므로, 풀이는 성분이 0 인 축을 나눗셈 없이 `lo <= o <= hi` 로 판정합니다. `-0f == 0f` 는 참이라 음의 0 도 같은 분기로 갑니다.\n\n**t 는 거리가 아니다.** `t` 는 direction 을 몇 배 했는지이므로 월드 거리는 `tEnter × |direction|` 입니다. 길이는 명중이 확정된 뒤 한 번만 구합니다.\n\n**복잡도.** 축 세 개에 대해 나눗셈 한 번과 비교 몇 번, O(1). 빗나가는 상자는 Sqrt 없이 끝납니다.\n\n**흔한 실수.**\n- 구간이 겹치는지만 보고 `t >= 0` 을 확인하지 않음: 등 뒤의 블록이 선택됩니다.\n- `direction` 성분이 음수일 때 `t1`, `t2` 를 바꾸지 않음: 구간이 뒤집혀 항상 빗나갑니다.\n- 나가는 시점 `tExit` 를 거리로 반환: 상자 반대편 면까지의 거리가 나와 가장 가까운 블록 선택이 틀어집니다.\n- 스침을 `<` 로 비교해 제외: 블록 사이의 모서리를 정확히 조준하면 아무것도 선택되지 않습니다.\n\n여러 상자를 검사할 때는 `1 / direction` 을 반직선마다 한 번만 계산해 두고, 지금까지의 최소 `t` 를 `tExit` 의 초깃값으로 넘기면 더 먼 상자가 일찍 탈락합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "들어가는 시점을 반환한다: origin (0,0,-10), direction (0,0,1), 상자 (-1,-1,-1)~(1,1,1) 에서 거리가 11 이 아니라 9 다.",
+            "points": 12,
+            "sourceId": "wiki-slab-method"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "origin 이 상자 안이나 표면이면 true / 거리 0, 상자가 뒤에 있으면 false, 모서리에 스치면(tEnter == tExit) true 를 반환한다.",
+            "points": 12,
+            "sourceId": "wiki-slab-method"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "direction 이 정규화되지 않아도 월드 거리를 반환한다: direction (0,0,5) 로 쏴도 거리는 1.8 이 아니라 9 다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "닫힌 형태의 계산으로 O(1) 에 끝난다. 반직선을 따라 전진하는 반복문이 없다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "힙 할당이 없다(축을 돌기 위해 float[] 나 리스트를 만들지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "구간이 비는 즉시 반환하고, Sqrt 는 명중이 확정된 뒤 한 번만 호출한다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "direction 성분이 0 인 축을 나눗셈 없이 범위 검사로 처리한다: origin (-5,1,0), direction (1,0,0) 에서 거리가 NaN 이 아니라 4 다.",
+            "points": 10,
+            "sourceId": "wiki-slab-method"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "out 인자 distance 가 모든 반환 경로에서 대입되고 false 일 때 0 이며, direction 이 영벡터이면 false 다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "한 축의 처리가 함수나 반복 하나로 묶여 있고, 같은 코드를 X/Y/Z 로 세 번 복사하지 않았다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "tEnter/tExit(또는 tNear/tFar)가 무엇인지, 초깃값이 왜 0 과 무한대인지 이름이나 주석으로 알 수 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "t >= 0 조건이 없어 반직선 뒤쪽의 상자에 명중하거나 음수 거리를 반환한다.",
+            "penalty": -20,
+            "sourceId": "wiki-slab-method"
+          },
+          {
+            "id": "d2",
+            "description": "direction 성분이 0 일 때 NaN 이 결과에 섞이거나, 축과 나란한 반직선을 항상 빗나감(또는 항상 명중)으로 처리한다.",
+            "penalty": -15,
+            "sourceId": "wiki-slab-method"
+          },
+          {
+            "id": "d3",
+            "description": "direction 이 단위 벡터라고 가정해 매개변수 t 를 거리로 반환한다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    const float Eps = 0.001f; // 거리 비교 허용 오차\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector3 V(float x, float y, float z) { return new System.Numerics.Vector3(x, y, z); }\n\n    static string Desc(System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 mn, System.Numerics.Vector3 mx)\n    {\n        return \"origin \" + o + \", direction \" + d + \", 상자 \" + mn + \" ~ \" + mx;\n    }\n\n    static string Hit(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 mn, System.Numerics.Vector3 mx, float expected, float eps)\n    {\n        float dist;\n        bool hit = BlockPicker.RayAabb(o, d, mn, mx, out dist);\n        if (!hit) return what + \": \" + Desc(o, d, mn, mx) + \" → 기대 명중(거리 \" + expected + \") / 결과 빗나감\";\n        if (!(System.Math.Abs(dist - expected) <= eps)) return what + \": \" + Desc(o, d, mn, mx) + \" → 거리 기대 \" + expected + \" / 결과 \" + dist;\n        return null;\n    }\n\n    static string Miss(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 mn, System.Numerics.Vector3 mx)\n    {\n        float dist;\n        bool hit = BlockPicker.RayAabb(o, d, mn, mx, out dist);\n        if (hit) return what + \": \" + Desc(o, d, mn, mx) + \" → 기대 빗나감 / 결과 명중(거리 \" + dist + \")\";\n        if (dist != 0f) return what + \": 빗나갔을 때 distance 는 0 이어야 함 / 결과 \" + dist;\n        return null;\n    }\n\n    // 기준 구현(double): 여섯 면의 평면과 만나는 점을 하나씩 구해 그 점이 면 안에 있는지 확인한다.\n    // 반환: 명중이면 거리(시작점이 상자 안이면 0), 아니면 -1. grow 만큼 상자를 키우거나(양수) 줄여서(음수) 검사한다.\n    static double Reference(System.Numerics.Vector3 o, System.Numerics.Vector3 d, System.Numerics.Vector3 mn, System.Numerics.Vector3 mx, double grow)\n    {\n        double[] O = { o.X, o.Y, o.Z }, D = { d.X, d.Y, d.Z };\n        double[] lo = { mn.X - grow, mn.Y - grow, mn.Z - grow }, hi = { mx.X + grow, mx.Y + grow, mx.Z + grow };\n        bool inside = true;\n        for (int k = 0; k < 3; k++) if (O[k] < lo[k] || O[k] > hi[k]) inside = false;\n        if (inside) return 0;\n        double len = System.Math.Sqrt(D[0] * D[0] + D[1] * D[1] + D[2] * D[2]);\n        double best = double.PositiveInfinity;\n        for (int axis = 0; axis < 3; axis++)\n        {\n            if (D[axis] == 0) continue;\n            for (int side = 0; side < 2; side++)\n            {\n                double t = ((side == 0 ? lo[axis] : hi[axis]) - O[axis]) / D[axis];\n                if (t < 0) continue;\n                bool onFace = true;\n                for (int k = 0; k < 3; k++)\n                {\n                    if (k == axis) continue;\n                    double p = O[k] + t * D[k];\n                    if (p < lo[k] || p > hi[k]) onFace = false;\n                }\n                if (onFace && t < best) best = t;\n            }\n        }\n        return double.IsPositiveInfinity(best) ? -1 : best * len;\n    }\n\n    public static void Main()\n    {\n        var Z = V(0f, 0f, 1f);\n        var A = V(-1f, -1f, -1f);\n        var B = V(1f, 1f, 1f);\n\n        Run(\"entry-distance\", () =>\n            Hit(\"정면 명중: 들어가는 면(9)이지 나가는 면(11)이 아님\", V(0f, 0f, -10f), Z, A, B, 9f, Eps)\n            ?? Hit(\"중심에서 벗어난 명중\", V(0.5f, -0.5f, -10f), Z, A, B, 9f, Eps)\n            ?? Hit(\"음의 방향으로 진행\", V(10f, 0f, 0f), V(-1f, 0f, 0f), A, B, 9f, Eps)\n            ?? Hit(\"대각선 (1,1,1), 상자 (2,3,4)~(5,6,7): t = 4\", V(0f, 0f, 0f), V(1f, 1f, 1f), V(2f, 3f, 4f), V(5f, 6f, 7f), 6.928203f, Eps)\n            ?? Hit(\"(3,0,4) 방향으로 옆면에 진입\", V(-4f, 0f, -4f), V(3f, 0f, 4f), A, B, 5f, Eps));\n\n        Run(\"miss\", () =>\n            Miss(\"옆으로 빗나감\", V(3f, 0f, -10f), Z, A, B)\n            ?? Miss(\"아슬아슬하게 빗나감\", V(0f, 1.01f, -10f), Z, A, B)\n            ?? Miss(\"대각선으로 모서리 바깥을 지남\", V(-4f, 0f, 0f), V(1f, 1f, 0f), A, B)\n            ?? Miss(\"슬랩을 하나씩은 지나지만 동시에 지나지는 않음\", V(0f, 0f, 0f), V(1f, 1f, 1f), V(2f, 6f, 2f), V(3f, 7f, 3f)));\n\n        Run(\"box-behind\", () =>\n            Miss(\"상자가 정확히 뒤에 있음\", V(0f, 0f, -10f), V(0f, 0f, -1f), A, B)\n            ?? Miss(\"상자를 이미 지나친 뒤\", V(0f, 0f, 1.5f), Z, A, B)\n            ?? Miss(\"비스듬히 멀어지는 중\", V(5f, 5f, 5f), V(1f, 2f, 3f), A, B));\n\n        Run(\"origin-inside\", () =>\n            Hit(\"중심에서 발사\", V(0f, 0f, 0f), Z, A, B, 0f, Eps)\n            ?? Hit(\"상자 안에서 비스듬히\", V(0.5f, -0.25f, 0.75f), V(-3f, 2f, 1f), A, B, 0f, Eps)\n            ?? Hit(\"표면에서 안쪽으로\", V(0f, 0f, -1f), Z, A, B, 0f, Eps)\n            ?? Hit(\"표면에서 바깥쪽으로\", V(0f, 0f, 1f), Z, A, B, 0f, Eps));\n\n        Run(\"axis-parallel\", () =>\n            Hit(\"X 축과 나란히, 슬랩 안\", V(-5f, 0.5f, -0.5f), V(1f, 0f, 0f), A, B, 4f, Eps)\n            ?? Miss(\"X 축과 나란히, Y 슬랩 밖\", V(-5f, 1.5f, 0f), V(1f, 0f, 0f), A, B)\n            ?? Miss(\"X 축과 나란히, Z 슬랩 밖\", V(-5f, 0f, -2f), V(1f, 0f, 0f), A, B)\n            ?? Hit(\"성분 하나만 0 인 방향 (0,1,1)\", V(0f, -4f, -4f), V(0f, 1f, 1f), A, B, 4.2426405f, Eps)\n            ?? Miss(\"성분 하나만 0, 그 축에서 슬랩 밖\", V(2f, -4f, -4f), V(0f, 1f, 1f), A, B)\n            ?? Hit(\"-0 성분도 0 으로 취급\", V(-5f, 0.5f, 0f), V(1f, -0f, 0f), A, B, 4f, Eps));\n\n        Run(\"touching-boundary\", () =>\n            Hit(\"윗면 평면을 따라 진행 (y = max.Y, 방향의 y 성분 0)\", V(-5f, 1f, 0f), V(1f, 0f, 0f), A, B, 4f, Eps)\n            ?? Hit(\"모서리 선을 따라 진행\", V(1f, 1f, -6f), Z, A, B, 5f, Eps)\n            ?? Hit(\"모서리에 스침: 들어가는 시점 == 나오는 시점\", V(-3f, -1f, 0f), V(1f, 1f, 0f), A, B, 2.828427f, Eps)\n            ?? Hit(\"두께가 0 인 상자(판)\", V(0.5f, 0.5f, -3f), Z, V(0f, 0f, 2f), V(1f, 1f, 2f), 5f, Eps));\n\n        Run(\"non-normalized-direction\", () =>\n            Hit(\"길이 5 인 방향: 거리는 9 (t = 1.8 이 아님)\", V(0f, 0f, -10f), V(0f, 0f, 5f), A, B, 9f, Eps)\n            ?? Hit(\"길이 0.01 인 방향\", V(0f, 0f, -10f), V(0f, 0f, 0.01f), A, B, 9f, Eps)\n            ?? Hit(\"방향 (2,2,2)\", V(0f, 0f, 0f), V(2f, 2f, 2f), V(2f, 3f, 4f), V(5f, 6f, 7f), 6.928203f, Eps)\n            ?? Miss(\"길이 5 인 방향, 상자가 뒤\", V(0f, 0f, -10f), V(0f, 0f, -5f), A, B));\n\n        Run(\"zero-direction\", () =>\n        {\n            string e = Miss(\"direction 이 영벡터 (상자 밖)\", V(0f, 0f, -10f), V(0f, 0f, 0f), A, B)\n                ?? Miss(\"direction 이 영벡터 (상자 안)\", V(0f, 0f, 0f), V(0f, 0f, 0f), A, B);\n            if (e != null) return e;\n            float dist;\n            BlockPicker.RayAabb(V(0f, 1f, -10f), V(0f, 0f, 0f), A, B, out dist);\n            return float.IsNaN(dist) ? \"영벡터 방향에서 distance 가 NaN\" : null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int hits = 0, misses = 0, insides = 0;\n            for (int i = 0; i < 4000; i++)\n            {\n                var c = V((float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10));\n                var h = V((float)(0.5 + rng.NextDouble() * 4), (float)(0.5 + rng.NextDouble() * 4), (float)(0.5 + rng.NextDouble() * 4));\n                var mn = c - h; var mx = c + h;\n                var o = i % 7 == 0\n                    ? c + V((float)(rng.NextDouble() * 2 - 1) * h.X, (float)(rng.NextDouble() * 2 - 1) * h.Y, (float)(rng.NextDouble() * 2 - 1) * h.Z)\n                    : V((float)(rng.NextDouble() * 40 - 20), (float)(rng.NextDouble() * 40 - 20), (float)(rng.NextDouble() * 40 - 20));\n                var aim = c + V((float)(rng.NextDouble() * 2 - 1) * h.X, (float)(rng.NextDouble() * 2 - 1) * h.Y, (float)(rng.NextDouble() * 2 - 1) * h.Z) * 1.6f;\n                var d = i % 2 == 0 ? aim - o : V((float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1), (float)(rng.NextDouble() * 2 - 1));\n                if (i % 5 == 0) d.X = 0f;                 // 축과 나란한 방향을 섞는다\n                if (i % 15 == 0) d.Z = 0f;\n                if (d.Length() < 0.1f) continue;\n                d *= (float)(0.05 + rng.NextDouble() * 4) / d.Length();\n                // 경계에서 0.01 이내로 갈리는 입력(키운 상자와 줄인 상자의 판정이 다른 경우)은 판정하지 않는다\n                double loose = Reference(o, d, mn, mx, 0.01), tight = Reference(o, d, mn, mx, -0.01), exact = Reference(o, d, mn, mx, 0.0);\n                if ((loose < 0) != (tight < 0) || (loose == 0) != (tight == 0)) continue;\n                string e;\n                if (exact < 0) { misses++; e = Miss(\"무작위 #\" + i, o, d, mn, mx); }\n                else if (exact == 0) { insides++; e = Hit(\"무작위 #\" + i + \" (상자 안에서 출발)\", o, d, mn, mx, 0f, Eps); }\n                else { hits++; e = Hit(\"무작위 #\" + i, o, d, mn, mx, (float)exact, 0.005f); }\n                if (e != null) return e;\n            }\n            return hits > 800 && misses > 800 && insides > 200 ? null : \"검사한 표본 수가 부족함: 명중 \" + hits + \" / 빗나감 \" + misses + \" / 안 \" + insides;\n        });\n    }\n}\n",
+        "cases": [
+          "entry-distance",
+          "miss",
+          "box-behind",
+          "origin-inside",
+          "axis-parallel",
+          "touching-boundary",
+          "non-normalized-direction",
+          "zero-direction",
+          "random-vs-reference"
+        ],
+        "note": "들어가는 면까지의 거리, 빗나감, 뒤쪽에 있는 상자, 상자 안·표면에서의 발사(거리 0), 축과 나란한 방향(성분 0, -0 포함), 경계 포함 규칙(면 위를 따라 진행, 모서리에 스침, 두께 0 인 상자), 정규화되지 않은 방향에서의 월드 거리, 영벡터 방향, 그리고 여섯 면을 하나씩 검사하는 double 기준 구현과의 무작위 비교를 검사합니다. 거리 허용 오차는 0.001(무작위 0.005)이고 빗나갔을 때 distance 는 0 이어야 합니다. Sqrt 호출 횟수와 힙 할당은 채점표에서 봅니다. BlockPicker.RayAabb(Vector3, Vector3, Vector3, Vector3, out float) 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "풀이·시작 코드와 숨은 테스트를 채점 서비스와 로컬 .NET 8 에서 실행하고, 다르게 작성한 정답 2개와 흔한 오답 8개로 테스트를 검증했으며, 기대값을 손으로 다시 계산하고 Wikipedia Slab method·Tavian Barnes 글을 열어 대조한 뒤 NaN 동작 설명을 실행 결과에 맞게 고쳤습니다."
+      },
+      "nextMission": "`out Vector3 normal` 을 추가해 반직선이 들어간 면의 법선(예: -X 면이면 (-1, 0, 0))을 함께 반환해 보세요. tEnter 를 마지막으로 갱신한 축과 direction 성분의 부호만 기억하면 됩니다. 그다음 상자 배열을 받아 가장 가까운 블록의 인덱스를 반환하는 `PickNearest` 를 작성하고, 지금까지의 최소 t 를 tExit 의 초깃값으로 넘겨 먼 상자를 일찍 탈락시킵니다."
+    },
+    {
+      "id": "t6-impl-segment-segment-2d-laser",
+      "track": "track6",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "레이저와 벽: 2D 선분-선분 교차를 한 점·겹침·없음으로 분류하기",
+      "tags": [
+        "Math_SegmentIntersection",
+        "Math_CrossProduct",
+        "Math_Collinear"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-line-line-intersection",
+        "bourke-point-line",
+        "wiki-cross-product"
+      ],
+      "scenario": "2D 퍼즐 게임의 레이저 장치를 만듭니다. 레이저는 `a` 에서 `b` 까지의 선분이고, 벽·거울·센서는 각각 선분 `c`-`d` 입니다. 레이저가 벽을 **가로지르면** 그 점에서 막히고, 센서의 **끝에만 닿아도** 센서가 켜져야 하며, 벽과 **나란히 포개져** 지나가는 경우는 \"벽을 타고 흐름\"이라는 별도 연출이 붙습니다. 레벨 에디터가 격자에 스냅하기 때문에 끝점이 정확히 맞닿거나 일직선으로 포개지는 배치가 실제로 자주 나옵니다.\n\n**할 일:** `LaserMath.Intersect(a, b, c, d, out point)` 를 구현해 두 **닫힌 선분**(끝점 포함)의 관계를 분류하세요.\n\n| 반환 | 의미 | `point` |\n|---|---|---|\n| `Point` | 공통점이 정확히 한 점 | 그 점 |\n| `Overlap` | 두 선분이 일직선 위에 있고, 겹치는 구간의 길이가 0 보다 큼 | 겹치는 구간에서 **`a` 에 가장 가까운 점**(레이저가 벽에 처음 닿는 위치) |\n| `None` | 공통점 없음 | `Vector2.Zero` |\n\n**경계 규칙**\n\n- 끝점은 선분에 포함됩니다. T 자(한쪽 끝점이 상대 선분 위), ㄴ 자·V 자(끝점끼리 일치)는 모두 `Point` 입니다.\n- 일직선 위에서 끝과 끝만 이어진 경우(예: `(0,0)-(2,0)` 과 `(2,0)-(5,0)`)는 공통점이 한 점이므로 `Point` 입니다. 떨어져 있으면 `None`.\n- 평행하지만 일직선이 아니면 `None`.\n- 길이가 0 인 선분(`a == b` 또는 `c == d`)은 **점**으로 취급합니다. 그 점이 상대 선분 위(끝점 포함)에 있으면 `Point`, 아니면 `None`. 둘 다 점이면 위치가 같을 때만 `Point`.\n- `Overlap` 이 `a` 에서 시작하면(`a` 가 `c`-`d` 위에 있으면) `point` 는 `a` 자신입니다.\n\n**수치 규약.** 평행·일직선 판정은 외적이 **정확히 0** 인지로 합니다. 이 문제의 테스트 입력은 절댓값 20 이하의 정수 좌표(일부는 0.25 단위)라서 외적과 내적이 float 에서 오차 없이 계산됩니다. 반환된 `point` 는 성분별 허용 오차 0.0001 로 비교합니다. 타입은 `System.Numerics.Vector2` (.NET 8) 입니다.",
+      "constraints": [
+        "시간 O(1), 힙 할당 없음. 선분을 잘게 나눠 샘플링하는 방식 금지.",
+        "Sqrt, 삼각함수 사용 금지. 외적·내적과 사칙연산만 쓴다.",
+        "분류(None / Point / Overlap)는 외적·내적 값의 부호와 크기 비교로 결정한다. 나눗셈은 분류가 끝난 뒤 point 를 계산할 때만 쓴다.",
+        "SegmentHit 열거형의 멤버와 Intersect 의 시그니처를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\npublic enum SegmentHit\n{\n    None,     // 공통점 없음\n    Point,    // 공통점이 정확히 한 점\n    Overlap   // 일직선 위에서 길이가 있는 구간이 겹침\n}\n\npublic static class LaserMath\n{\n    // 닫힌 선분 a-b 와 c-d (끝점 포함)의 교차를 분류한다.\n    //   Point   : 공통점이 한 점. point = 그 점. 끝점끼리 닿거나 끝점이 상대 선분 위에 놓인 경우도 포함.\n    //   Overlap : 두 선분이 일직선이고 겹치는 구간의 길이가 0 보다 크다.\n    //             point = 겹치는 구간에서 a 에 가장 가까운 점.\n    //   None    : 공통점 없음(평행, 일직선이지만 떨어져 있음 포함). point = Vector2.Zero.\n    // 길이가 0 인 선분(a == b 또는 c == d)은 점으로 취급한다: 그 점이 상대 위에 있으면 Point.\n    // 평행·일직선 판정은 외적이 \"정확히 0\" 인지로 한다(이 문제의 입력은 오차 없이 계산되는 좌표다).\n    public static SegmentHit Intersect(Vector2 a, Vector2 b, Vector2 c, Vector2 d, out Vector2 point)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "평행하지 않지만 직선끼리의 교점이 한 선분의 바깥: (0,0)-(1,1) 과 (0,4)-(4,0) 은 직선으로는 (2,2) 에서 만나지만 None.",
+        "끝점 접촉: (0,0)-(4,0) 과 (2,0)-(2,3) 은 t 가 정확히 0 또는 1 인 경계라서 부등호를 < 로 쓰면 놓친다.",
+        "일직선: 분모(외적)가 0 이라 교점 공식을 쓸 수 없다. (0,0)-(4,0) 과 (2,0)-(6,0) 은 Overlap (2,0), (0,0)-(2,0) 과 (3,0)-(5,0) 은 None.",
+        "a-b 가 음의 방향일 때의 겹침: (4,0)-(0,0) 과 (-2,0)-(1,0) 의 겹침은 x ∈ [0,1] 이고 a 에 가장 가까운 점은 (1,0).",
+        "길이 0 인 선분: r = b - a 가 영벡터이면 모든 외적이 0 이 되어 \"일직선\"으로 잘못 분류되고, 투영에서 0 으로 나누게 된다."
+      ],
+      "hints": [
+        "두 선분을 매개변수로 써 보세요: `P(t) = a + t·r` (`r = b - a`), `Q(u) = c + u·s` (`s = d - c`), `t` 와 `u` 는 0 에서 1 사이. `a + t·r = c + u·s` 의 양변에 `s` 와의 2D 외적을 취하면 `s × s = 0` 이라 `u` 가 사라지고 `t = (c - a) × s / (r × s)` 만 남습니다. 반례 세 개를 손으로 넣어 보세요. (1) `(0,0)-(4,0)` 과 `(2,0)-(2,3)`: `t` 와 `u` 는 얼마이고, 경계값인가요? (2) `(0,0)-(4,0)` 과 `(2,0)-(6,0)`: 분모 `r × s` 는 얼마인가요? (3) `(2,0)-(2,0)` 과 `(0,0)-(4,0)`: `r` 은 무엇이고, 그러면 `r × s` 와 `(c - a) × r` 은 어떻게 됩니까?",
+        "분기는 네 갈래입니다. (가) 한쪽이나 양쪽의 길이가 0: 가장 먼저 걸러야 뒤의 식들이 안전합니다. 점이 선분 위에 있는지는 \"직선 위에 있는가(외적 0)\"와 \"두 끝점 사이인가(내적의 범위)\" 두 검사로 나뉩니다. (나) `r × s != 0`: 직선끼리는 반드시 한 점에서 만나므로 `0 <= t <= 1`, `0 <= u <= 1` 만 보면 됩니다. 이 검사는 나누지 않고도 할 수 있습니다. 분모의 부호에 따라 부등호 방향이 어떻게 바뀌는지 생각해 보세요. (다) `r × s == 0` 이고 `(c - a) × r != 0`: 서로 다른 평행선입니다. (라) 둘 다 0: 같은 직선 위입니다. 이제 문제는 1차원입니다. `c` 와 `d` 를 `r` 방향으로 투영한 값(내적)과 `a`-`b` 의 범위 `[0, r·r]` 을 구간끼리 비교하면 되고, `c`, `d` 중 어느 쪽 투영값이 작은지는 정해져 있지 않습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nIntersect(a, b, c, d, out point):\n    point = Zero\n    r = b - a ; s = d - c ; ac = c - a\n    rr = Dot(r, r) ; ss = Dot(s, s)\n    if rr == 0 and ss == 0: ____               // 점 vs 점\n    if rr == 0: a 가 선분 c-d 위인가 → Point(a) / None\n    if ss == 0: c 가 선분 a-b 위인가 → Point(c) / None\n\n    denom = Cross(r, s)\n    if denom != 0:\n        tNum = Cross(ac, ____) ; uNum = Cross(ac, ____)\n        denom < 0 이면 세 값의 부호를 뒤집는다\n        if tNum, uNum 중 하나라도 [0, ____] 밖: return None\n        point = a + r * (tNum / denom) ; return Point\n\n    if Cross(ac, r) != 0: return None           // 평행하지만 다른 직선\n    e0 = Dot(c - a, r) ; e1 = Dot(d - a, r)     // \"t * rr\" 단위의 투영값\n    lo = max(min(e0, e1), ____) ; hi = min(max(e0, e1), ____)\n    if lo > hi: return None\n    point = a + r * (lo / rr)\n    return (lo == hi) ? ____ : ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\npublic enum SegmentHit\n{\n    None,     // 공통점 없음\n    Point,    // 공통점이 정확히 한 점\n    Overlap   // 일직선 위에서 길이가 있는 구간이 겹침\n}\n\npublic static class LaserMath\n{\n    // 2D 외적(스칼라): 0 이면 두 벡터가 평행.\n    private static float Cross(Vector2 u, Vector2 v) { return u.X * v.Y - u.Y * v.X; }\n\n    // 선분을 매개변수로 쓴다: P(t) = a + t*r (0 <= t <= 1), Q(u) = c + u*s (0 <= u <= 1).\n    // a + t*r = c + u*s 의 양변에 s (또는 r) 와의 외적을 취하면\n    //   t = Cross(c - a, s) / Cross(r, s),   u = Cross(c - a, r) / Cross(r, s)\n    public static SegmentHit Intersect(Vector2 a, Vector2 b, Vector2 c, Vector2 d, out Vector2 point)\n    {\n        point = Vector2.Zero;\n        Vector2 r = b - a;\n        Vector2 s = d - c;\n        Vector2 ac = c - a;\n        float rr = Vector2.Dot(r, r);\n        float ss = Vector2.Dot(s, s);\n\n        // 1) 길이가 0 인 선분은 점으로 취급한다.\n        if (rr == 0f && ss == 0f)\n        {\n            if (a != c) return SegmentHit.None;\n            point = a;\n            return SegmentHit.Point;\n        }\n        if (rr == 0f)\n        {\n            if (!PointOnSegment(a, c, s, ss)) return SegmentHit.None;\n            point = a;\n            return SegmentHit.Point;\n        }\n        if (ss == 0f)\n        {\n            if (!PointOnSegment(c, a, r, rr)) return SegmentHit.None;\n            point = c;\n            return SegmentHit.Point;\n        }\n\n        float denom = Cross(r, s);\n        if (denom != 0f)\n        {\n            // 2) 평행하지 않다: 두 직선은 한 점에서 만난다. 그 점이 두 선분 안에 있는지만 본다.\n            //    0 <= t <= 1 을 나눗셈 없이 검사한다: 분모가 음수면 분자·분모의 부호를 함께 뒤집는다.\n            float tNum = Cross(ac, s);\n            float uNum = Cross(ac, r);\n            if (denom < 0f) { tNum = -tNum; uNum = -uNum; denom = -denom; }\n            if (tNum < 0f || tNum > denom || uNum < 0f || uNum > denom) return SegmentHit.None;\n            point = a + r * (tNum / denom);\n            return SegmentHit.Point;\n        }\n\n        // 3) 평행하다. c 가 직선 ab 위에 없으면 서로 다른 평행선이다.\n        if (Cross(ac, r) != 0f) return SegmentHit.None;\n\n        // 4) 일직선: c, d 를 a-b 축에 투영한다. 값 e 는 \"t * rr\" 이므로 a-b 구간은 [0, rr] 이다.\n        float e0 = Vector2.Dot(ac, r);\n        float e1 = Vector2.Dot(d - a, r);\n        float lo = MathF.Min(e0, e1);\n        float hi = MathF.Max(e0, e1);\n        if (lo < 0f) lo = 0f;\n        if (hi > rr) hi = rr;\n        if (lo > hi) return SegmentHit.None;              // 일직선이지만 떨어져 있다\n\n        point = a + r * (lo / rr);                        // 겹친 구간에서 a 에 가장 가까운 점\n        return lo == hi ? SegmentHit.Point : SegmentHit.Overlap;\n    }\n\n    // 점 p 가 선분 q + u*s (0 <= u <= 1, ss = s.s > 0) 위에 있는가.\n    private static bool PointOnSegment(Vector2 p, Vector2 q, Vector2 s, float ss)\n    {\n        Vector2 qp = p - q;\n        if (Cross(qp, s) != 0f) return false;             // 직선 위에 없다\n        float e = Vector2.Dot(qp, s);\n        return e >= 0f && e <= ss;\n    }\n}\n",
+      "explanation": "**평행하지 않은 경우.** 선분을 `a + t·r`, `c + u·s` (`0 <= t, u <= 1`) 로 쓰고 연립하면 `t = (c - a) × s / (r × s)`, `u = (c - a) × r / (r × s)` 입니다(`×` 는 2D 외적 `x1·y2 - y1·x2`). Wikipedia 의 Line–line intersection 이 좌표로 풀어 쓴 `t`, `u` 식과 같은 것이고, 그 문서는 `0 <= t <= 1` 이고 `0 <= u <= 1` 일 때 선분끼리 만난다는 것, 이 부등식은 나눗셈 없이 검사할 수 있다는 것을 적습니다. 풀이도 분모가 음수면 분자와 분모의 부호를 함께 뒤집은 뒤 `0 <= tNum <= denom` 을 비교합니다. 경계를 포함하는 `<=` 이므로 T 자·ㄴ 자 접촉이 `Point` 가 되고, 나눗셈은 교점을 계산할 때 한 번만 합니다.\n\n**분모가 0 인 경우.** Paul Bourke 의 같은 페이지에 실린 2D 선분 교차 노트(Intersection point of two line segments in 2 dimensions)대로 분모가 0 이면 두 직선은 평행이고, 분자까지 0 이면 같은 직선(coincident)입니다. 그러나 \"같은 직선\"은 **직선**에 대한 말이지 선분이 겹친다는 뜻이 아닙니다. 두 참고 자료 모두 여기서 끝나므로 나머지는 직접 처리해야 합니다. 같은 직선 위라면 문제는 1차원 구간의 겹침입니다. `c`, `d` 를 `r` 에 투영한 `e0 = (c - a)·r`, `e1 = (d - a)·r` 은 `t × (r·r)` 과 같은 값이므로 `a`-`b` 는 `[0, r·r]` 에 해당합니다. 두 구간의 교집합 `[lo, hi]` 가 비면 `None`, 한 점이면 `Point`, 길이가 있으면 `Overlap` 입니다. 교집합의 아래쪽 끝 `lo` 는 `t` 가 가장 작은 점, 곧 `a` 에 가장 가까운 점이라 규칙의 `point` 가 됩니다. `a` 가 `c`-`d` 안에 있으면 `lo = 0` 이라 `a` 가 그대로 나옵니다.\n\n**길이 0 인 선분을 먼저 거르는 이유.** `r` 이 영벡터이면 `r × s` 도 `(c - a) × r` 도 0 이라 어떤 `c`-`d` 와도 \"같은 직선\"으로 분류되고, 이어서 `lo / (r·r)` 이 `0 / 0` 이 됩니다. 그래서 맨 앞에서 점-점, 점-선분을 따로 처리합니다. 점이 선분 위에 있는지는 외적 0(직선 위)과 내적 범위 `[0, s·s]`(두 끝 사이)로 판정합니다.\n\n**정확히 0 과 비교해도 되는 이유.** 이 문제의 좌표는 작은 정수(와 0.25 단위)라 곱셈과 뺄셈이 float 에서 정확합니다. 실제 게임 좌표에서는 외적이 0 근처의 작은 값으로 흔들리므로, 좌표 크기에 비례하는 허용 오차를 두거나 격자 좌표를 정수로 유지해야 합니다. 어느 쪽이든 \"거의 평행\"을 어느 분기로 보낼지를 한곳에서 정하는 것이 핵심입니다.\n\n**복잡도.** 곱셈과 비교 수십 번, O(1). Sqrt 와 삼각함수는 필요 없습니다.\n\n**흔한 실수.**\n- 분모가 0 이면 무조건 `None`: 벽을 타고 흐르는 레이저와 끝이 이어진 선분을 놓칩니다.\n- `0 < t < 1` 로 비교: 끝점 접촉이 모두 빠집니다.\n- 분모로 먼저 나눈 뒤 판정: 평행일 때 무한대나 NaN 이 생기고, NaN 과의 비교는 모두 false 라 조용히 틀립니다.\n- 일직선 분기에서 `c` 가 항상 `d` 보다 앞이라고 가정: `(0,0)-(6,0)` 과 `(4,0)-(2,0)` 에서 구간이 뒤집힙니다.\n- `Overlap` 의 점으로 `c` 를 반환: `a` 가 겹침 구간 안에 있거나 `a`-`b` 가 반대 방향이면 틀립니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "평행하지 않은 경우의 교점이 맞다: (0,0)-(4,4) 와 (0,3)-(3,0) 은 Point (1.5, 1.5), (0,0)-(1,1) 과 (0,4)-(4,0) 은 None.",
+            "points": 10,
+            "sourceId": "wiki-line-line-intersection"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "끝점 접촉을 Point 로 분류한다: (0,0)-(4,0) 과 (2,0)-(2,3) 은 (2,0), (0,0)-(4,0) 과 (4,0)-(4,5) 는 (4,0).",
+            "points": 9,
+            "sourceId": "wiki-line-line-intersection"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "일직선인 경우를 세 갈래로 나눈다: (0,0)-(4,0) 과 (2,0)-(6,0) 은 Overlap (2,0), (0,0)-(2,0) 과 (2,0)-(5,0) 은 Point (2,0), (0,0)-(2,0) 과 (3,0)-(5,0) 은 None.",
+            "points": 10,
+            "sourceId": "bourke-point-line"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "길이 0 인 선분을 점으로 처리한다: (2,0)-(2,0) 과 (0,0)-(4,0) 은 Point (2,0), (5,0)-(5,0) 과 (0,0)-(4,0) 은 None.",
+            "points": 6,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "반복문·샘플링 없이 O(1) 에 끝난다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "힙 할당, Sqrt, 삼각함수가 없다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "0 <= t <= 1 검사를 분자와 분모의 비교로 하고, 나눗셈은 point 를 계산할 때만 한다.",
+            "points": 8,
+            "sourceId": "wiki-line-line-intersection"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "0 으로 나누는 경로가 없다(분모 0, 길이 0 분기가 나눗셈보다 앞에 있다). point 에 NaN 이나 무한대가 들어가지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "out 인자 point 가 모든 반환 경로에서 대입되고 None 일 때 Vector2.Zero 다. 열거형과 시그니처가 그대로다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "분기 순서(길이 0 → 평행 아님 → 평행 → 일직선)가 코드에서 읽히고 각 분기에 이유가 적혀 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "2D 외적과 \"점이 선분 위인가\"가 보조 함수로 분리되어 같은 식이 여러 번 복사되어 있지 않다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "분모가 0 이면 일직선 여부를 보지 않고 None 을 반환한다(겹침과 끝-끝 접촉을 놓친다).",
+            "penalty": -20,
+            "sourceId": "bourke-point-line"
+          },
+          {
+            "id": "d2",
+            "description": "끝점을 제외하는 부등호(<)를 써서 T 자·ㄴ 자 접촉을 None 으로 분류한다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "평행하거나 길이 0 인 입력에서 0 으로 나눠 NaN/무한대가 판정이나 point 에 들어간다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    const float Eps = 0.0001f; // 교점 좌표 허용 오차(성분별)\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector2 V(float x, float y) { return new System.Numerics.Vector2(x, y); }\n\n    static string Check(string what, System.Numerics.Vector2 a, System.Numerics.Vector2 b, System.Numerics.Vector2 c, System.Numerics.Vector2 d, SegmentHit kind, System.Numerics.Vector2 expected)\n    {\n        System.Numerics.Vector2 p;\n        SegmentHit got = LaserMath.Intersect(a, b, c, d, out p);\n        string desc = what + \": \" + a + \"-\" + b + \" vs \" + c + \"-\" + d;\n        if (got != kind) return desc + \" → 기대 \" + kind + \" / 결과 \" + got;\n        if (!(System.Math.Abs(p.X - expected.X) <= Eps && System.Math.Abs(p.Y - expected.Y) <= Eps))\n            return desc + \" → \" + kind + \" 의 point 기대 \" + expected + \" / 결과 \" + p;\n        return null;\n    }\n\n    static string Pt(string what, float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy, float px, float py)\n    { return Check(what, V(ax, ay), V(bx, by), V(cx, cy), V(dx, dy), SegmentHit.Point, V(px, py)); }\n\n    static string Ov(string what, float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy, float px, float py)\n    { return Check(what, V(ax, ay), V(bx, by), V(cx, cy), V(dx, dy), SegmentHit.Overlap, V(px, py)); }\n\n    static string No(string what, float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy)\n    { return Check(what, V(ax, ay), V(bx, by), V(cx, cy), V(dx, dy), SegmentHit.None, V(0f, 0f)); }\n\n    static long Orient(long ax, long ay, long bx, long by, long cx, long cy) { return (bx - ax) * (cy - ay) - (by - ay) * (cx - ax); }\n\n    // 기준 구현: 정수 좌표를 long 으로 계산하는 방향(orientation) 판정 + 직선의 일반형(Ax + By = C) 연립.\n    static SegmentHit Reference(long[] q, out double px, out double py)\n    {\n        px = 0; py = 0;\n        long o1 = Orient(q[0], q[1], q[2], q[3], q[4], q[5]), o2 = Orient(q[0], q[1], q[2], q[3], q[6], q[7]);\n        long o3 = Orient(q[4], q[5], q[6], q[7], q[0], q[1]), o4 = Orient(q[4], q[5], q[6], q[7], q[2], q[3]);\n        if (o1 == 0 && o2 == 0 && o3 == 0 && o4 == 0)\n        {\n            // 네 점이 일직선: 좌표가 변하는 축 하나로 1차원 구간 겹침을 본다\n            int k = (q[0] != q[2] || q[4] != q[6] || q[0] != q[4]) ? 0 : 1;\n            long ka = q[k], kb = q[2 + k], kc = q[4 + k], kd = q[6 + k];\n            long lo = System.Math.Max(System.Math.Min(ka, kb), System.Math.Min(kc, kd));\n            long hi = System.Math.Min(System.Math.Max(ka, kb), System.Math.Max(kc, kd));\n            if (lo > hi) return SegmentHit.None;\n            long want = System.Math.Min(System.Math.Max(ka, lo), hi); // 겹친 구간에서 a 에 가장 가까운 위치\n            for (int i = 0; i < 8; i += 2) if (q[i + k] == want) { px = q[i]; py = q[i + 1]; break; }\n            return lo == hi ? SegmentHit.Point : SegmentHit.Overlap;\n        }\n        bool straddle1 = (o1 <= 0 && o2 >= 0) || (o1 >= 0 && o2 <= 0);\n        bool straddle2 = (o3 <= 0 && o4 >= 0) || (o3 >= 0 && o4 <= 0);\n        if (!straddle1 || !straddle2) return SegmentHit.None;\n        double A1 = q[3] - q[1], B1 = q[0] - q[2], C1 = A1 * q[0] + B1 * q[1];\n        double A2 = q[7] - q[5], B2 = q[4] - q[6], C2 = A2 * q[4] + B2 * q[5];\n        double det = A1 * B2 - A2 * B1;\n        if (det == 0) return SegmentHit.None; // 한쪽이 점이고 상대 직선 위에 없는 경우\n        px = (B2 * C1 - B1 * C2) / det; py = (A1 * C2 - A2 * C1) / det;\n        return SegmentHit.Point;\n    }\n\n    public static void Main()\n    {\n        Run(\"proper-crossing\", () =>\n            Pt(\"X 자 교차\", 0, 0, 4, 4, 0, 4, 4, 0, 2, 2)\n            ?? Pt(\"교점이 정수가 아님\", 0, 0, 4, 4, 0, 3, 3, 0, 1.5f, 1.5f)\n            ?? Pt(\"일반 위치\", 1, 1, 7, 4, 3, 5, 5, -1, 3.857143f, 2.428571f)\n            ?? Pt(\"c, d 순서를 뒤집어도 같은 점\", 1, 1, 7, 4, 5, -1, 3, 5, 3.857143f, 2.428571f)\n            ?? Pt(\"수직선과 수평선\", -2, 1, 6, 1, 3, -4, 3, 9, 3, 1));\n\n        Run(\"no-contact\", () =>\n            No(\"직선끼리는 (2,2) 에서 만나지만 a-b 가 짧음\", 0, 0, 1, 1, 0, 4, 4, 0)\n            ?? No(\"직선끼리는 만나지만 c-d 가 a-b 의 연장선 쪽에 있음\", 0, 0, 4, 0, 5, -1, 5, 1)\n            ?? No(\"아슬아슬하게 닿지 않음\", 0, 0, 4, 0, 2, 0.25f, 2, 3)\n            ?? No(\"수평 평행선\", 0, 0, 4, 0, 0, 1, 4, 1)\n            ?? No(\"대각 평행선\", 0, 0, 2, 2, 1, 0, 3, 2));\n\n        Run(\"endpoint-touch\", () =>\n            Pt(\"T 자: c 가 a-b 위에 놓임\", 0, 0, 4, 0, 2, 0, 2, 3, 2, 0)\n            ?? Pt(\"ㄴ 자: b 와 c 가 같은 점\", 0, 0, 4, 0, 4, 0, 4, 5, 4, 0)\n            ?? Pt(\"V 자: a 와 c 가 같은 점\", 0, 0, 3, 1, 0, 0, -2, 5, 0, 0)\n            ?? Pt(\"b 가 c-d 의 중간에 놓임\", 1, 1, 3, 3, 0, 6, 6, 0, 3, 3)\n            ?? Pt(\"d 가 a 에 닿음\", 2, 2, 5, 3, -1, 7, 2, 2, 2, 2));\n\n        Run(\"collinear-overlap\", () =>\n            Ov(\"일부 겹침\", 0, 0, 4, 0, 2, 0, 6, 0, 2, 0)\n            ?? Ov(\"c-d 가 a-b 안에 포함(방향 반대)\", 0, 0, 6, 0, 4, 0, 2, 0, 2, 0)\n            ?? Ov(\"a 가 c-d 안에 있음: point 는 a\", 3, 0, 8, 0, 0, 0, 5, 0, 3, 0)\n            ?? Ov(\"완전히 같은 선분\", 1, 2, 5, 4, 1, 2, 5, 4, 1, 2)\n            ?? Ov(\"a-b 가 -X 방향: a(4,0) 에 가장 가까운 겹침점은 (1,0)\", 4, 0, 0, 0, -2, 0, 1, 0, 1, 0)\n            ?? Ov(\"대각선 위\", 0, 0, 4, 2, 2, 1, 6, 3, 2, 1)\n            ?? Ov(\"수직선 위\", 1, 5, 1, -1, 1, 0, 1, 9, 1, 5));\n\n        Run(\"collinear-touch-or-gap\", () =>\n            Pt(\"끝과 끝이 이어짐: 한 점\", 0, 0, 2, 0, 2, 0, 5, 0, 2, 0)\n            ?? Pt(\"끝과 끝이 이어짐(c, d 반대 순서)\", 0, 0, 2, 0, 5, 0, 2, 0, 2, 0)\n            ?? Pt(\"a-b 의 b 쪽 끝이 닿음\", 2, 0, 0, 0, -3, 0, 0, 0, 0, 0)\n            ?? Pt(\"대각선 위에서 끝이 이어짐\", 0, 0, 2, 2, 5, 5, 2, 2, 2, 2)\n            ?? No(\"일직선이지만 떨어져 있음\", 0, 0, 2, 0, 3, 0, 5, 0)\n            ?? No(\"대각선 위에서 떨어져 있음\", 0, 0, 1, 1, 2, 2, 3, 3)\n            ?? No(\"수직선 위에서 떨어져 있음\", 2, 5, 2, 7, 2, 4, 2, -1));\n\n        Run(\"zero-length-segment\", () =>\n            Pt(\"a == b 가 c-d 위\", 2, 0, 2, 0, 0, 0, 4, 0, 2, 0)\n            ?? Pt(\"a == b 가 c-d 의 끝점\", 4, 0, 4, 0, 0, 0, 4, 0, 4, 0)\n            ?? No(\"a == b 가 c-d 밖(직선에서 벗어남)\", 2, 1, 2, 1, 0, 0, 4, 0)\n            ?? No(\"a == b 가 c-d 의 연장선 위\", 5, 0, 5, 0, 0, 0, 4, 0)\n            ?? Pt(\"c == d 가 a-b 위\", 0, 0, 4, 4, 1, 1, 1, 1, 1, 1)\n            ?? No(\"c == d 가 a-b 밖\", 0, 0, 4, 4, 1, 2, 1, 2)\n            ?? Pt(\"네 점이 모두 같음\", 3, -2, 3, -2, 3, -2, 3, -2, 3, -2)\n            ?? No(\"서로 다른 두 점\", 3, -2, 3, -2, 3, 5, 3, 5));\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int[] seen = new int[3];\n            for (int i = 0; i < 6000; i++)\n            {\n                long[] q = new long[8];\n                if (i % 3 == 0)\n                {\n                    // 일직선 위의 네 점: 기준점 + 정수배\n                    long bx = rng.Next(-4, 5), by = rng.Next(-4, 5), vx = rng.Next(-2, 3), vy = rng.Next(-2, 3);\n                    for (int k = 0; k < 8; k += 2) { long m = rng.Next(-4, 5); q[k] = bx + m * vx; q[k + 1] = by + m * vy; }\n                }\n                else\n                {\n                    for (int k = 0; k < 8; k++) q[k] = rng.Next(-5, 6);\n                    if (i % 10 == 1) { q[2] = q[0]; q[3] = q[1]; }   // 길이 0 인 a-b\n                    if (i % 14 == 2) { q[6] = q[4]; q[7] = q[5]; }   // 길이 0 인 c-d\n                }\n                double px, py;\n                SegmentHit kind = Reference(q, out px, out py);\n                seen[(int)kind]++;\n                string e = Check(\"무작위 #\" + i, V(q[0], q[1]), V(q[2], q[3]), V(q[4], q[5]), V(q[6], q[7]), kind, V((float)px, (float)py));\n                if (e != null) return e;\n            }\n            return seen[0] > 500 && seen[1] > 500 && seen[2] > 300 ? null : \"표본 부족: None \" + seen[0] + \" / Point \" + seen[1] + \" / Overlap \" + seen[2];\n        });\n    }\n}\n",
+        "cases": [
+          "proper-crossing",
+          "no-contact",
+          "endpoint-touch",
+          "collinear-overlap",
+          "collinear-touch-or-gap",
+          "zero-length-segment",
+          "random-vs-reference"
+        ],
+        "note": "일반 교차의 교점, 닿지 않는 경우(직선은 만나지만 선분 밖, 평행), 끝점 접촉(T·ㄴ·V 자), 일직선 겹침에서 a 에 가장 가까운 점, 일직선 위의 끝-끝 접촉과 떨어진 경우, 길이 0 인 선분, 그리고 정수 좌표 6000 쌍에 대해 long 정수 방향 판정으로 쓴 기준 구현과의 비교를 검사합니다. 모든 입력은 정수 또는 0.25 단위 좌표라 외적이 오차 없이 계산되며, point 는 성분별 0.0001 이내여야 하고 None 일 때는 Vector2.Zero 여야 합니다. SegmentHit 의 멤버(None, Point, Overlap)와 LaserMath.Intersect(Vector2, Vector2, Vector2, Vector2, out Vector2) 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "풀이·시작 코드와 숨은 테스트를 채점 서비스와 로컬 .NET 8 에서 실행하고, 다르게 작성한 정답 2개와 흔한 오답 7개로 평행·일직선 겹침·끝점 접촉·길이 0 분기를 검증했으며, 기대 교점을 손으로 다시 계산하고 Wikipedia Line–line intersection·Paul Bourke 페이지를 열어 대조했습니다."
+      },
+      "nextMission": "레이저 한 줄과 벽 선분 배열을 받아 \"a 에서 가장 먼저 닿는 벽의 인덱스와 접촉점\"을 반환하는 `FirstHit` 를 작성해 보세요(접촉점을 a 로부터의 제곱 거리로 비교). 그다음 좌표가 정수가 아닌 경우를 위해 외적 비교에 허용 오차 eps × (|r| × |s|) 를 도입하고, 거의 평행한 입력에서 분류가 어떻게 달라지는지 표로 정리합니다."
+    },
+    {
+      "id": "t6-debug-turret-angle-atan2-radians-seam",
+      "track": "track6",
+      "mode": "debugging",
+      "difficulty": "Easy",
+      "title": "엉뚱한 곳을 보는 포탑: Atan2 인자 순서, 도·라디안 혼동, 359°→0° 경계의 각도 보간 디버깅",
+      "tags": [
+        "Math_Atan2",
+        "Math_Radians",
+        "Math_AngleLerp"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-math-atan2",
+        "ms-mathf-cos",
+        "unity-mathf-lerpangle",
+        "ms-learn-csharp-arithmetic"
+      ],
+      "scenario": "탑다운 디펜스 게임의 포탑 조준 코드 `TurretAim` 에 QA 리포트 세 건이 올라왔습니다.\n\n1. **\"포탑이 목표를 보지 않는다.\"** 포탑이 원점에 있고 적이 바로 위 `(0, 5)` 에 있으면 `AngleTo` 가 90 이 아니라 **0** 을 반환해 포탑이 오른쪽을 봅니다. 적이 오른쪽 `(5, 0)` 에 있으면 0 이 아니라 **90** 이 나옵니다. 처음 만든 테스트는 적을 `(1, 1)` 에 두었고 그때는 45 로 맞았습니다.\n2. **\"포탄이 이상한 방향으로 나간다.\"** `DirectionFromAngle(90)` 이 `(0, 1)` 이 아니라 약 **`(-0.4481, 0.8940)`** 을, `DirectionFromAngle(180)` 이 `(-1, 0)` 이 아니라 약 **`(-0.5985, -0.8012)`** 를 반환합니다. 0 도만 정상입니다.\n3. **\"포탑이 반대로 크게 돈다.\"** 350 도를 보던 포탑이 10 도 쪽 적을 향해 돌 때, 20 도만 돌면 되는데 반대 방향으로 340 도를 돕니다. `LerpAngle(350, 10, 0.5)` 가 **180** 을 반환합니다.\n\n**할 일:** 아래 코드에서 버그를 모두 찾아 고치세요. 버그는 세 군데이고 함수마다 하나씩입니다.\n\n**올바른 동작의 약속**\n\n- 좌표계: +X 가 오른쪽, +Y 가 위. 각도는 **+X 방향이 0 도, 반시계 방향이 양수**입니다. 세 함수가 주고받는 각도는 모두 **도(degree)** 단위입니다.\n- `AngleTo(from, to)`: `from` 에서 `to` 를 바라보는 각도. 범위는 `(-180, 180]`. 두 위치가 같으면 0.\n- `DirectionFromAngle(degrees)`: 그 각도가 가리키는 길이 1 의 방향. 90 도면 `(0, 1)`.\n- `LerpAngle(fromDegrees, toDegrees, t)`: `t` 를 `[0, 1]` 로 제한하고, **가까운 쪽으로** 도는 보간. 반환값은 `fromDegrees + (가장 짧은 각도 차이) × t` 이며 0~360 으로 정규화하지 않습니다(350 → 10 의 중간은 360 이고, 이는 0 도와 같은 방향입니다). 두 입력 각도는 호출하는 쪽에서 **0 이상 360 미만**으로 맞춰 넘깁니다(여러 바퀴 감긴 값은 이 문제의 범위 밖입니다).\n- 두 각도가 **정확히 180 도** 차이이면 어느 쪽으로 돌아도 되며, 테스트하지 않습니다.\n- 채점은 각도를 360 의 배수 차이를 무시하고 0.01 도 이내, 방향 벡터를 성분별 0.0001 이내로 비교합니다. 순수 C# (.NET 8, `System.Numerics`) 입니다.",
+      "constraints": [
+        "세 함수 모두 시간 O(1), 힙 할당 없음. 각도를 감기 위한 while 반복문을 쓰지 않는다.",
+        "세 함수의 시그니처와 각도 단위(도)를 바꾸지 않는다. t 의 제한, 같은 위치에서 0 을 반환하는 기존 동작은 유지한다.",
+        "LerpAngle 은 삼각함수(Sin/Cos/Atan2)를 거치지 않고 각도의 차이만으로 계산한다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 각도 규약: +X 방향이 0도, 반시계 방향(+X 에서 +Y 쪽)이 양수. 공개 함수의 각도는 모두 \"도\" 단위.\npublic static class TurretAim\n{\n    // from 에서 to 를 바라보는 각도(도). 범위 (-180, 180]. 두 위치가 같으면 0.\n    public static float AngleTo(Vector2 from, Vector2 to)\n    {\n        Vector2 offset = to - from;\n        if (offset == Vector2.Zero) return 0f;\n        return MathF.Atan2(offset.X, offset.Y) * (180f / MathF.PI);\n    }\n\n    // 각도(도)가 가리키는 길이 1 의 방향 벡터.\n    public static Vector2 DirectionFromAngle(float degrees)\n    {\n        return new Vector2(MathF.Cos(degrees), MathF.Sin(degrees));\n    }\n\n    // fromDegrees 에서 toDegrees 로 \"가까운 쪽으로\" 도는 보간. t 는 [0, 1] 로 제한한다.\n    // 반환값은 fromDegrees + (가장 짧은 각도 차이) * t 이며 0~360 으로 정규화하지 않는다.\n    public static float LerpAngle(float fromDegrees, float toDegrees, float t)\n    {\n        t = Math.Clamp(t, 0f, 1f);\n        return fromDegrees + (toDegrees - fromDegrees) * t;\n    }\n}\n",
+      "edgeCases": [
+        "목표가 축 위에 있음: (0, 5), (-5, 0), (0, -5). 대각선 (1, 1) 은 인자 순서가 바뀌어도 우연히 맞는다.",
+        "90, 180, 270 도처럼 0 이 아닌 각도의 방향 벡터.",
+        "경계를 넘는 보간: 350 → 10, 10 → 350, 300 → 20. 양쪽 방향 모두 확인한다.",
+        "경계를 넘지 않는 보간은 고친 뒤에도 그대로여야 한다: LerpAngle(10, 50, 0.25) 는 20."
+      ],
+      "hints": [
+        "리포트의 숫자를 그대로 손으로 따라가 보세요. (1) `AngleTo((0,0), (0,5))` 에서 `MathF.Atan2` 에 들어가는 두 값은 순서대로 무엇인가요? `Atan2` 의 **첫 번째** 매개변수 이름은 무엇입니까? (2) `MathF.Cos(90)` 은 무엇의 코사인일까요? 90 도일까요? `MathF.Cos(MathF.PI / 2)` 와 비교해 출력해 보세요. (3) `350 + (10 - 350) × 0.5` 를 계산해 보세요. 숫자 350 과 10 사이의 중간은 180 이지만, **방향** 350 도와 10 도 사이의 중간은 어디입니까?",
+        "(1) `(1, 1)` 에서는 왜 맞았을까요? x 와 y 를 바꿔도 결과가 같은 입력이기 때문입니다. 축 위의 점으로 테스트하세요. (2) 이 클래스의 공개 함수는 도 단위를 주고받지만 `MathF.Sin/Cos/Atan2` 는 다른 단위를 씁니다. `AngleTo` 는 반환할 때 변환을 하고 있습니다. `DirectionFromAngle` 에는 그 반대 방향의 변환이 있나요? (3) `toDegrees - fromDegrees` 는 -340 처럼 반 바퀴를 넘는 값이 될 수 있습니다. 차이를 `(-180, 180]` 범위로 접으면 \"가까운 쪽\"이 됩니다. 두 입력이 모두 0 이상 360 미만이면 차이는 -360 과 360 사이이므로, 360 을 한 번 더하거나 빼는 것으로 충분합니다. 더해야 하는 경우와 빼야 하는 경우를 둘 다 챙기세요.",
+        "고친 뒤의 구조입니다. 빈칸은 직접 채우세요.\n```\nAngleTo(from, to):\n    offset = to - from\n    if offset 이 영벡터: return 0\n    return Atan2(____, ____) * (180 / PI)\n\nDirectionFromAngle(degrees):\n    radians = degrees * ____\n    return (Cos(radians), Sin(radians))\n\nLerpAngle(fromDegrees, toDegrees, t):\n    t = Clamp(t, 0, 1)\n    delta = toDegrees - fromDegrees               // 입력이 [0, 360) 이므로 (-360, 360)\n    if delta > 180:  delta ____ 360\n    if delta < -180: delta ____ 360\n    return fromDegrees + delta * t\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 각도 규약: +X 방향이 0도, 반시계 방향(+X 에서 +Y 쪽)이 양수. 공개 함수의 각도는 모두 \"도\" 단위.\npublic static class TurretAim\n{\n    private const float Deg2Rad = MathF.PI / 180f;\n    private const float Rad2Deg = 180f / MathF.PI;\n\n    // from 에서 to 를 바라보는 각도(도). 범위 (-180, 180]. 두 위치가 같으면 0.\n    public static float AngleTo(Vector2 from, Vector2 to)\n    {\n        Vector2 offset = to - from;\n        if (offset == Vector2.Zero) return 0f;\n        return MathF.Atan2(offset.Y, offset.X) * Rad2Deg;   // 인자 순서는 (y, x)\n    }\n\n    // 각도(도)가 가리키는 길이 1 의 방향 벡터.\n    public static Vector2 DirectionFromAngle(float degrees)\n    {\n        float radians = degrees * Deg2Rad;                  // Cos/Sin 은 라디안을 받는다\n        return new Vector2(MathF.Cos(radians), MathF.Sin(radians));\n    }\n\n    // fromDegrees 에서 toDegrees 로 \"가까운 쪽으로\" 도는 보간. t 는 [0, 1] 로 제한한다.\n    // 반환값은 fromDegrees + (가장 짧은 각도 차이) * t 이며 0~360 으로 정규화하지 않는다.\n    public static float LerpAngle(float fromDegrees, float toDegrees, float t)\n    {\n        t = Math.Clamp(t, 0f, 1f);\n        float delta = toDegrees - fromDegrees;              // 입력이 [0, 360) 이므로 (-360, 360)\n        if (delta > 180f) delta -= 360f;                    // 반 바퀴를 넘으면 반대쪽이 더 가깝다\n        else if (delta < -180f) delta += 360f;\n        return fromDegrees + delta * t;\n    }\n}\n",
+      "explanation": "세 버그는 모두 \"각도라는 숫자가 어떤 약속을 달고 다니는가\"의 문제입니다. 인자 순서, 단위, 그리고 360 도마다 같은 방향으로 돌아온다는 성질입니다.\n\n**버그 1 — Atan2 의 인자 순서.** Microsoft 문서의 시그니처는 `Atan2(y, x)` 이고, 반환값은 `tan θ = y / x` 인 각 θ(라디안)이며 `(x, y)` 는 평면 위의 점입니다(문서의 예제는 이 각을 x 축과 그 점까지의 벡터가 이루는 각이라고 부릅니다). 시작 코드는 `Atan2(offset.X, offset.Y)` 로 순서가 바뀌어 있습니다. 실패 입력: `AngleTo((0,0), (0,5))` → `Atan2(0, 5) = 0` (기대 90), `AngleTo((0,0), (5,0))` → 90 (기대 0), `AngleTo((0,0), (-1,1))` → -45 (기대 135). x 와 y 를 바꾸는 것은 직선 `y = x` 에 대한 대칭이라 결과가 `90° - θ` 가 되고, 이 값이 θ 와 같은 방향인 45 도와 -135 도에서만 우연히 맞습니다. 그래서 `(1, 1)` 하나로 만든 테스트는 통과했습니다. 수정: `MathF.Atan2(offset.Y, offset.X)`. 같은 문서는 사분면별 반환 범위와, y 가 0 이고 x 가 음수일 때 π 를 반환한다는 것도 적고 있습니다. 그래서 정확히 왼쪽에 있는 목표는 -180 이 아니라 180 이 됩니다.\n\n**버그 2 — 도를 라디안 함수에 그대로 전달.** `MathF.Cos` 문서는 인자가 라디안이며 도는 `π / 180` 을 곱해 변환하라고 적습니다. 시작 코드는 `MathF.Cos(degrees)` 를 호출합니다. 실패 입력: `DirectionFromAngle(90)` → `(-0.4481, 0.8940)` (기대 `(0, 1)`). 90 라디안은 14 바퀴(약 87.96 라디안)를 빼면 약 2.035 라디안, 곧 약 116.6 도라서 그 방향이 나온 것입니다. 0 도는 0 라디안이기도 해서 유일하게 맞습니다. 수정: `degrees * (MathF.PI / 180f)` 로 바꾼 뒤 전달합니다. 단위 변환은 삼각함수를 부르는 경계 한곳에서만 하고, 변수 이름에 `degrees`/`radians` 를 붙여 두면 같은 실수가 줄어듭니다.\n\n**버그 3 — 각도를 평범한 숫자처럼 보간.** `from + (to - from) × t` 는 수직선 위의 보간입니다. 실패 입력: `LerpAngle(350, 10, 0.5)` → `350 + (-340) × 0.5 = 180` (기대 360, 곧 0 도 방향). 각도는 원 위의 값이므로 차이를 먼저 가까운 쪽으로 접어야 합니다. 두 입력이 `[0, 360)` 이면 `to - from` 은 `(-360, 360)` 범위이므로, 180 을 넘으면 360 을 빼고 -180 미만이면 360 을 더합니다. -340 은 +20 이 되어 `350 + 20 × 0.5 = 360` 입니다. Unity 의 `Mathf.LerpAngle` 문서도 같은 약속을 적습니다: Lerp 와 같지만 값이 360 도를 넘어 감길 때 올바르게 보간하고, 각도는 도 단위, t 는 `[0, 1]` 로 제한됩니다.\n\n**복잡도.** 모두 O(1), 할당 없음.\n\n**고칠 때 흔한 실수.**\n- 버그 1 을 `90 - angle` 로 보정: 범위가 `(-180, 180]` 을 벗어나는 입력이 생기고 원인은 그대로 남습니다.\n- 버그 3 을 `if (delta > 180) delta -= 360` 한쪽만 처리: `LerpAngle(350, 10, 0.5)` 처럼 차이가 -180 보다 작은 쪽은 그대로 남습니다.\n- 여러 바퀴 감긴 입력(730, -350)까지 받으려면 먼저 `% 360` 으로 줄여야 합니다. C# 의 `%` 는 결과의 부호가 왼쪽 피연산자를 따르므로(`-340 % 360` 은 -340) 그 뒤에도 같은 두 비교가 필요합니다. 이 문제는 입력을 `[0, 360)` 으로 약속해 그 단계를 뺐습니다.\n- 두 방향 벡터를 Lerp 한 뒤 Atan2 로 되돌리기: 각속도가 일정하지 않고, 정반대 방향에서는 중간 벡터가 영벡터가 됩니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "AngleTo((0,0), (0,5)) 가 90, AngleTo((0,0), (5,0)) 이 0, AngleTo((0,0), (-1,1)) 이 135 다.",
+            "points": 12,
+            "sourceId": "ms-math-atan2"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "DirectionFromAngle(90) 이 (0, 1), DirectionFromAngle(180) 이 (-1, 0) 이다(성분별 0.0001 이내).",
+            "points": 11,
+            "sourceId": "ms-mathf-cos"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "LerpAngle(350, 10, 0.5) 가 0 도 방향(360 또는 0), LerpAngle(10, 350, 0.25) 가 5 도 방향이고, 경계를 넘지 않는 LerpAngle(10, 50, 0.25) 는 여전히 20 이다.",
+            "points": 12,
+            "sourceId": "unity-mathf-lerpangle"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "각도 차이를 비교 두 번으로 양쪽 방향 모두 접는다(180 초과면 360 을 빼고 -180 미만이면 360 을 더한다). 360 을 반복해서 빼는 while 문이 없다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "세 함수에 힙 할당이 없고, LerpAngle 이 Sin/Cos/Atan2 를 호출하지 않는다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "Atan2 를 (y, x) 순서로 호출하고 결과(라디안)를 도로 변환해 반환한다.",
+            "points": 10,
+            "sourceId": "ms-math-atan2"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "Cos/Sin 에 전달하기 직전에 도를 라디안으로 변환하며, 공개 함수의 단위는 도로 유지된다.",
+            "points": 10,
+            "sourceId": "ms-mathf-cos"
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "변환 계수가 Deg2Rad/Rad2Deg 같은 이름 있는 상수이거나 변수 이름(degrees, radians)으로 단위가 드러난다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "버그만 고쳤다: t 의 제한, 같은 위치에서 0 반환, 시그니처가 그대로다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "인자 순서를 고치지 않고 결과를 90 - angle 로 보정하거나 특정 입력을 if 로 예외 처리한다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "LerpAngle 이 한쪽 방향의 감김만 처리한다(350 → 10 과 10 → 350 중 하나에서 여전히 먼 쪽으로 돈다).",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "공개 함수의 단위를 라디안으로 바꾸거나 시그니처를 변경했다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector2 V(float x, float y) { return new System.Numerics.Vector2(x, y); }\n\n    // 두 각도(도)의 차이를 360 의 배수를 무시하고 0~180 으로 잰다.\n    static double AngDiff(double a, double b)\n    {\n        double d = (a - b) % 360.0;\n        if (d < 0) d += 360.0;\n        return d > 180.0 ? 360.0 - d : d;\n    }\n\n    static string Ang(string what, float fx, float fy, float tx, float ty, float expected)\n    {\n        float got = TurretAim.AngleTo(V(fx, fy), V(tx, ty));\n        string desc = what + \": AngleTo((\" + fx + \", \" + fy + \"), (\" + tx + \", \" + ty + \"))\";\n        if (float.IsNaN(got) || AngDiff(got, expected) > 0.01) return desc + \" → 기대 \" + expected + \"도 / 결과 \" + got;\n        if (got <= -180.01f || got > 180.01f) return desc + \" → 범위 (-180, 180] 를 벗어남: \" + got;\n        return null;\n    }\n\n    static string Dir(float degrees, float ex, float ey)\n    {\n        var got = TurretAim.DirectionFromAngle(degrees);\n        if (System.Math.Abs(got.X - ex) <= 0.0001f && System.Math.Abs(got.Y - ey) <= 0.0001f) return null;\n        return \"DirectionFromAngle(\" + degrees + \") → 기대 (\" + ex + \", \" + ey + \") / 결과 \" + got;\n    }\n\n    static string Lerp(string what, float from, float to, float t, float expected)\n    {\n        float got = TurretAim.LerpAngle(from, to, t);\n        if (!float.IsNaN(got) && AngDiff(got, expected) <= 0.01) return null;\n        return what + \": LerpAngle(\" + from + \", \" + to + \", \" + t + \") → 기대 \" + expected + \"도(360 의 배수 차이는 같은 각도) / 결과 \" + got;\n    }\n\n    public static void Main()\n    {\n        Run(\"angle-cardinals\", () =>\n            Ang(\"오른쪽\", 0, 0, 5, 0, 0f)\n            ?? Ang(\"위\", 0, 0, 0, 5, 90f)\n            ?? Ang(\"왼쪽\", 0, 0, -5, 0, 180f)\n            ?? Ang(\"아래\", 0, 0, 0, -5, -90f)\n            ?? Ang(\"원점이 아닌 포탑에서 위\", 2, 3, 2, 8, 90f)\n            ?? Ang(\"같은 위치는 0\", 4, -2, 4, -2, 0f));\n\n        Run(\"angle-quadrants\", () =>\n            Ang(\"1사분면 45도\", 0, 0, 1, 1, 45f)\n            ?? Ang(\"1사분면 30도\", 0, 0, 1.7320508f, 1, 30f)\n            ?? Ang(\"1사분면 60도\", 0, 0, 1, 1.7320508f, 60f)\n            ?? Ang(\"2사분면\", 0, 0, -1, 1, 135f)\n            ?? Ang(\"3사분면\", 0, 0, -1, -1, -135f)\n            ?? Ang(\"4사분면\", 0, 0, 1, -1, -45f)\n            ?? Ang(\"원점이 아닌 포탑\", 10, -4, 7, -1, 135f));\n\n        Run(\"direction-from-degrees\", () =>\n            Dir(0f, 1f, 0f) ?? Dir(90f, 0f, 1f) ?? Dir(180f, -1f, 0f) ?? Dir(270f, 0f, -1f)\n            ?? Dir(-90f, 0f, -1f) ?? Dir(60f, 0.5f, 0.8660254f) ?? Dir(360f, 1f, 0f) ?? Dir(-135f, -0.70710678f, -0.70710678f));\n\n        Run(\"angle-direction-roundtrip\", () =>\n        {\n            for (int a = -170; a <= 180; a += 10)\n            {\n                var from = V(3f, -2f);\n                var to = from + TurretAim.DirectionFromAngle(a) * 7f;\n                float back = TurretAim.AngleTo(from, to);\n                if (float.IsNaN(back) || AngDiff(back, a) > 0.01) return a + \"도 방향으로 7 만큼 떨어진 목표를 다시 AngleTo 로 재면 \" + a + \"도여야 함 / 결과 \" + back;\n            }\n            return null;\n        });\n\n        Run(\"lerp-without-seam\", () =>\n            Lerp(\"경계를 넘지 않는 보간\", 10f, 50f, 0.25f, 20f)\n            ?? Lerp(\"감소 방향\", 50f, 10f, 0.5f, 30f)\n            ?? Lerp(\"180도를 사이에 둔 보간\", 200f, 300f, 0.5f, 250f)\n            ?? Lerp(\"t = 0 은 시작 각도\", 80f, 200f, 0f, 80f)\n            ?? Lerp(\"t = 1 은 목표 각도\", 80f, 200f, 1f, 200f));\n\n        Run(\"lerp-across-seam\", () =>\n            Lerp(\"350 → 10 의 중간은 0도(180도가 아님)\", 350f, 10f, 0.5f, 0f)\n            ?? Lerp(\"350 → 10 의 1/4\", 350f, 10f, 0.25f, 355f)\n            ?? Lerp(\"10 → 350 의 1/4\", 10f, 350f, 0.25f, 5f)\n            ?? Lerp(\"300 → 20 은 0도를 지나는 쪽이 가깝다\", 300f, 20f, 0.5f, 340f)\n            ?? Lerp(\"5 → 355 의 중간\", 5f, 355f, 0.5f, 0f)\n            ?? Lerp(\"0 → 270 은 -90도 쪽이 가깝다\", 0f, 270f, 0.5f, -45f)\n            ?? Lerp(\"359 → 0\", 359f, 0f, 0.5f, 359.5f)\n            ?? Lerp(\"t = 1 은 목표와 같은 각도\", 350f, 10f, 1f, 10f));\n\n        Run(\"lerp-clamps-t\", () =>\n            Lerp(\"t < 0 은 0 으로\", 20f, 100f, -1f, 20f)\n            ?? Lerp(\"t > 1 은 1 로\", 20f, 100f, 2f, 100f)\n            ?? Lerp(\"경계를 넘는 보간에서 t > 1\", 350f, 10f, 5f, 10f));\n\n        Run(\"random-lerp-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            for (int i = 0; i < 3000; i++)\n            {\n                // 가장 짧은 차이 delta 를 먼저 정하고(정확히 반 바퀴 근처는 제외) 목표를 [0, 360) 으로 감는다\n                float from = (float)(rng.NextDouble() * 359.9);\n                float delta = (float)(rng.NextDouble() * 358 - 179);\n                float to = from + delta;\n                if (to < 0f) to += 360f; else if (to >= 360f) to -= 360f;\n                if (!(to >= 0f && to < 360f)) continue;\n                float t = (float)rng.NextDouble();\n                string e = Lerp(\"무작위 #\" + i, from, to, t, (float)((double)from + (double)delta * t));\n                if (e != null) return e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "angle-cardinals",
+          "angle-quadrants",
+          "direction-from-degrees",
+          "angle-direction-roundtrip",
+          "lerp-without-seam",
+          "lerp-across-seam",
+          "lerp-clamps-t",
+          "random-lerp-vs-reference"
+        ],
+        "note": "축 위·사분면별 목표에 대한 AngleTo(범위 (-180, 180] 포함), 도 단위 입력의 DirectionFromAngle, 방향 → 각도 왕복, 경계를 넘지 않는 보간과 넘는 보간, t 의 제한, 그리고 가장 짧은 차이를 미리 정해 만든 무작위 입력 3000 개에 대한 LerpAngle 을 검사합니다. 각도는 360 의 배수 차이를 같은 각도로 보고 0.01 도 이내, 방향은 성분별 0.0001 이내로 비교하며, 정확히 180 도 차이인 입력은 검사하지 않습니다. LerpAngle 에 넣는 두 각도는 모두 0 이상 360 미만입니다. TurretAim.AngleTo(Vector2, Vector2), DirectionFromAngle(float), LerpAngle(float, float, float) 시그니처와 도 단위는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "Easy 수준에 맞게 LerpAngle 입력을 0 이상 360 미만으로 좁히고 테스트·풀이·채점표를 맞춘 뒤 채점 서비스와 로컬 .NET 8 에서 실행했으며, 리포트의 수치(Cos(90) 등)를 실행으로 확인하고 Microsoft Atan2·MathF.Cos, Unity LerpAngle 문서를 열어 대조했습니다."
+      },
+      "nextMission": "`DeltaAngle(fromDegrees, toDegrees)` 를 따로 뽑아 (-180, 180] 범위의 가장 짧은 차이를 반환하게 하고, LerpAngle 이 그것을 쓰도록 바꿔 보세요. 이때 730 이나 -350 처럼 여러 바퀴 감긴 입력도 받도록 `% 360` 을 추가합니다(C# 의 `%` 는 결과의 부호가 왼쪽 피연산자를 따릅니다). 그다음 포탑의 화면 좌표가 +Y 아래(스크린 좌표)인 UI 미니맵에서 같은 AngleTo 를 쓰면 회전 방향이 어떻게 보이는지 (0, 5) 목표로 확인하고, 좌표계 규약을 클래스 주석에 적습니다."
+    },
+    {
+      "id": "t6-tutor-interpolation-lerp-remap-smoothstep",
+      "track": "track6",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "보간 가족: Lerp, InverseLerp, Remap, SmoothStep 으로 체력바 색 그라디언트 만들기",
+      "tags": [
+        "Math_Lerp",
+        "Math_Remap",
+        "Math_SmoothStep"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "unity-mathf-lerp",
+        "unity-mathf-inverselerp",
+        "wiki-smoothstep",
+        "wiki-linear-interpolation"
+      ],
+      "scenario": "액션 RPG 의 HUD 를 맡았습니다. 체력바의 색을 체력에 따라 빨강에서 초록으로 바꾸려고 하는데, 기획서의 요구는 이렇습니다. \"체력이 **20% 이하**면 완전한 빨강, **60% 이상**이면 완전한 초록, 그 사이에서는 색이 **부드럽게** 넘어간다(경계에서 뚝 끊기지 않게).\" 기존 코드는 `if (ratio < 0.2f) … else if (ratio < 0.3f) …` 같은 조건문 사다리로 색을 고르고 있어 구간을 바꿀 때마다 숫자를 여러 군데 고쳐야 합니다.\n\n**해야 할 일**\n\n1. 아래 개념 카드를 읽고 Lerp, InverseLerp, Remap, SmoothStep 이 서로 어떤 관계인지 정리합니다.\n2. `Interp` 의 여섯 함수를 구현합니다(연습 문제, 채점은 루브릭으로 자가 점검).\n3. 퀴즈 2문제에 답합니다.\n\n**이 문제의 약속**\n\n- `Lerp(a, b, t)` 와 `InverseLerp(a, b, value)` 는 **제한하지 않습니다**. `t` 가 `[0, 1]` 을 벗어나면 구간 밖으로 외삽합니다. `InverseLerp` 는 `a == b` 이면 0 을 반환합니다.\n- `Remap(inMin, inMax, outMin, outMax, value)` 은 비율을 `[0, 1]` 로 **제한합니다**. 입력이 범위를 벗어나면 `outMin` 또는 `outMax` 에 머뭅니다. `outMin > outMax` 처럼 뒤집힌 출력 범위도 허용합니다.\n- `SmoothStep01(t)` 는 `t` 를 `[0, 1]` 로 제한한 뒤 `3t² - 2t³` 을 반환합니다.\n- `HealthGradientT(health, maxHealth)`: 체력 비율이 0.2 이하면 0, 0.6 이상이면 1, 그 사이는 `SmoothStep01` 곡선. `maxHealth <= 0` 이면 0.\n- `HealthColor(health, maxHealth)`: 빨강 `(1, 0, 0)` 에서 초록 `(0, 1, 0)` 으로 `HealthGradientT` 만큼 선형 보간한 RGB(`System.Numerics.Vector3`, 각 성분 0~1).\n- 자가 점검의 허용 오차는 0.0001 입니다. 순수 C# (.NET 8) 입니다.\n\n**엔진 메모.** Unity 의 `Mathf.Lerp` 문서는 `t` 가 `[0, 1]` 로 제한된다고 적고, `Mathf.InverseLerp` 문서는 값이 범위를 벗어나면 0 또는 1 을 반환한다고 적습니다. 이 연습의 `Lerp`/`InverseLerp` 는 제한하지 않는 쪽으로 정했으므로 같은 이름이라도 동작이 다릅니다. 어느 함수가 제한을 하는지는 라이브러리마다 확인해야 합니다.",
+      "constraints": [
+        "여섯 함수 모두 시간 O(1), 힙 할당 없음.",
+        "MathF.Pow 와 삼각함수를 쓰지 않는다. SmoothStep01 은 곱셈과 뺄셈만으로 계산한다.",
+        "Remap 은 InverseLerp 와 Lerp 를 조합해 구현하고, HealthGradientT 는 조건문 사다리가 아니라 InverseLerp 와 SmoothStep01 의 조합으로 구현한다.",
+        "0 으로 나누는 경로(a == b, maxHealth <= 0)가 없어야 한다. 함수 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\npublic static class Interp\n{\n    // a 에서 b 로 t 만큼 선형 보간. t 를 제한하지 않는다(범위를 벗어나면 외삽).\n    public static float Lerp(float a, float b, float t)\n    {\n        throw new NotImplementedException();\n    }\n\n    // Lerp 의 역: value 가 a~b 구간의 어디쯤인지(0~1 비율). 제한하지 않는다. a == b 이면 0.\n    public static float InverseLerp(float a, float b, float value)\n    {\n        throw new NotImplementedException();\n    }\n\n    // value 를 [inMin, inMax] 에서 [outMin, outMax] 로 옮긴다. 비율은 [0, 1] 로 제한한다.\n    public static float Remap(float inMin, float inMax, float outMin, float outMax, float value)\n    {\n        throw new NotImplementedException();\n    }\n\n    // t 를 [0, 1] 로 제한한 뒤 3t^2 - 2t^3. 양 끝에서 기울기가 0 이다.\n    public static float SmoothStep01(float t)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 체력바 색 그라디언트의 매개변수(0 = 빨강, 1 = 초록).\n    // 체력 비율이 20% 이하면 0, 60% 이상이면 1, 그 사이는 SmoothStep01 로 부드럽게.\n    // maxHealth <= 0 이면 0.\n    public static float HealthGradientT(float health, float maxHealth)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 체력바 색(RGB, 각 성분 0~1). 빨강 (1, 0, 0) 에서 초록 (0, 1, 0) 으로 HealthGradientT 만큼 보간.\n    public static Vector3 HealthColor(float health, float maxHealth)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "t 가 [0, 1] 밖: Lerp(10, 20, 1.5) 는 25(외삽), Remap 은 끝값에 머문다.",
+        "InverseLerp 의 a == b: (value - a) / 0 은 NaN 또는 무한대가 된다.",
+        "뒤집힌 출력 범위: Remap(2, 10, 100, 20, 4) 는 80.",
+        "체력 비율이 구간 밖: 10% 는 0(빨강), 80% 는 1(초록). maxHealth 가 0 이면 0."
+      ],
+      "hints": [
+        "숫자 하나로 세 함수를 이어 보세요. 체력 30 / 최대 100 이면 비율은 0.3 입니다. 0.3 은 구간 `[0.2, 0.6]` 의 어디쯤일까요? 시작에서 0.1 만큼, 전체 길이 0.4 중이므로 `0.1 / 0.4 = 0.25` 입니다. 이것이 `InverseLerp(0.2, 0.6, 0.3)` 입니다. 이 0.25 를 그대로 쓰면 직선이고, `3t² - 2t³` 에 넣으면 `3 × 0.0625 - 2 × 0.015625 = 0.15625` 가 됩니다. 마지막으로 빨강과 초록 사이를 0.15625 만큼 `Lerp` 하면 색이 나옵니다.",
+        "`Lerp` 는 \"비율 → 값\", `InverseLerp` 는 \"값 → 비율\"로 서로 반대 방향입니다. `Lerp(a, b, t)` 의 식을 `t` 에 대해 풀면 `InverseLerp` 의 식이 나옵니다. 그 식에서 분모가 0 이 되는 입력은 무엇인가요? `Remap` 은 두 함수를 어떤 순서로 이으면 될까요, 그리고 제한(`Clamp`)은 값·비율·결과 중 어디에 걸어야 뒤집힌 출력 범위에서도 똑같이 동작할까요? `SmoothStep01` 의 `3t² - 2t³` 은 `t * t * (3 - 2t)` 로 묶으면 `Pow` 없이 곱셈 세 번입니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nLerp(a, b, t):            return a + ____ * t\nInverseLerp(a, b, value): if a == b: return 0\n                          return (____) / (____)\nRemap(inMin, inMax, outMin, outMax, value):\n    t = Clamp(InverseLerp(____, ____, value), 0, 1)\n    return Lerp(____, ____, t)\nSmoothStep01(t):          t = Clamp(t, 0, 1)\n                          return t * t * (____)\nHealthGradientT(health, maxHealth):\n    if maxHealth <= 0: return 0\n    ratio = ____\n    return SmoothStep01(InverseLerp(____, ____, ratio))\nHealthColor(health, maxHealth):\n    t = HealthGradientT(health, maxHealth)\n    return (Lerp(1, 0, t), Lerp(____, ____, t), 0)\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 볼륨 슬라이더\n\n설정 화면의 볼륨 슬라이더를 떠올려 보세요. 손잡이의 **위치**는 왼쪽 끝이 0, 오른쪽 끝이 1 인 비율이고, 실제 **볼륨 값**은 예컨대 -80dB 에서 0dB 사이입니다. 보간 함수들은 전부 이 \"비율 ↔ 값\" 사이를 오가는 도구입니다.\n\n| 함수 | 방향 | 슬라이더 비유 | 식 |\n|---|---|---|---|\n| `Lerp(a, b, t)` | 비율 → 값 | 손잡이 위치 t 일 때의 값 | `a + (b - a) * t` |\n| `InverseLerp(a, b, v)` | 값 → 비율 | 값 v 가 되려면 손잡이가 어디에 | `(v - a) / (b - a)` |\n| `Remap(a, b, c, d, v)` | 값 → 다른 범위의 값 | 슬라이더 두 개를 같은 위치로 묶기 | `Lerp(c, d, InverseLerp(a, b, v))` |\n| `SmoothStep01(t)` | 비율 → 비율 | 손잡이가 끝에서 천천히 움직이게 | `t * t * (3 - 2t)` |\n\n### Lerp: 두 값 사이를 t 만큼\n\n`t = 0` 이면 `a`, `t = 1` 이면 `b`, `t = 0.5` 면 한가운데입니다. `Lerp(10, 20, 0.25) = 12.5`. 위치, 색, 투명도, 볼륨처럼 \"두 상태 사이\"가 있는 값이면 무엇이든 같은 식으로 섞을 수 있습니다.\n\n`t` 가 `[0, 1]` 을 벗어나면 구간 밖으로 뻗어 나갑니다(외삽). `Lerp(10, 20, 1.5) = 25`. 이것을 허용할지 막을지는 라이브러리마다 다릅니다. Unity 의 `Mathf.Lerp` 는 문서상 `t` 를 `[0, 1]` 로 제한합니다.\n\n식을 쓰는 방법도 두 가지입니다. Wikipedia 는 `v0 + t * (v1 - v0)` 형태가 부동소수 오차 때문에 `t = 1` 에서 정확히 `v1` 이 된다는 보장이 없고, `(1 - t) * v0 + t * v1` 형태는 그것을 보장한다고 정리합니다. 실제로 .NET 8 의 float 에서 `a = -29.183247f`, `b = 88.77245f` 일 때 `a + (b - a) * 1f` 는 `88.77246` 이 나옵니다. \"도착했는가\"를 `==` 로 검사하지 말아야 하는 이유입니다.\n\n### InverseLerp: 값이 구간의 어디쯤인가\n\n`Lerp` 를 `t` 에 대해 푼 것입니다. `InverseLerp(10, 20, 12.5) = 0.25`. 체력, 거리, 시간처럼 단위가 있는 값을 **단위 없는 0~1 비율**로 바꾸는 첫 단계로 씁니다. `a == b` 이면 구간의 길이가 0 이라 나눗셈의 분모가 0 이 되므로, 이때 무엇을 반환할지 직접 정해야 합니다(이 문제에서는 0). Unity 의 `Mathf.InverseLerp` 문서에는 이 경우에 대한 설명이 없습니다.\n\n### Remap: 한 범위를 다른 범위로\n\n\"거리 2m 에서 피해 100, 10m 에서 피해 20\" 같은 기획 문장이 곧 `Remap(2, 10, 100, 20, distance)` 입니다. 값을 비율로 바꾸고(`InverseLerp`), 그 비율로 새 범위에서 값을 꺼냅니다(`Lerp`). 제한은 **비율**에 겁니다. 그러면 출력 범위가 `100 → 20` 처럼 뒤집혀 있어도 따로 신경 쓸 것이 없습니다.\n\n### SmoothStep 과 이징: 비율을 한 번 구부리기\n\n직선 비율 `t` 를 그대로 쓰면 구간의 양 끝에서 변화가 갑자기 시작하고 갑자기 멈춥니다. 엘리베이터가 출발과 정지에서 속도를 서서히 바꾸는 것처럼, 비율을 곡선에 한 번 통과시키면 됩니다. 이것이 이징(easing)입니다.\n\n| 곡선 | 식 | 성질 |\n|---|---|---|\n| ease-in | `t²` | 시작에서 기울기 0(천천히 출발) |\n| ease-out | `1 - (1 - t)²` | 끝에서 기울기 0(천천히 도착) |\n| smoothstep | `3t² - 2t³` | 양 끝에서 기울기 0 |\n| smootherstep | `6t⁵ - 15t⁴ + 10t³` | 양 끝에서 1차·2차 도함수가 0 |\n\nWikipedia 의 Smoothstep 문서에 따르면 smoothstep 은 왼쪽 경계 이하에서 0, 오른쪽 경계 이상에서 1 을 반환하고 그 사이에서 `3x² - 2x³` 이며 양쪽 경계에서 기울기가 0 입니다. smootherstep 은 Ken Perlin 이 제안한 개선판입니다. 값 몇 개를 외워 두면 감이 잡힙니다: `SmoothStep01(0.25) = 0.15625`, `SmoothStep01(0.5) = 0.5`, `SmoothStep01(0.75) = 0.84375`.\n\n곡선은 항상 **0~1 비율에** 적용한다는 점이 핵심입니다. 그래서 순서는 언제나 \"값 → 비율(InverseLerp) → 곡선(이징) → 값(Lerp)\" 입니다.\n\n### 이 카드가 다루지 않는 것\n\n`x = Lerp(x, target, 0.1f)` 를 매 프레임 호출하는 관용구는 이름만 Lerp 일 뿐 두 고정 값 사이의 보간이 아니라 지수 감쇠이며, 프레임률에 따라 결과가 달라집니다. 이 주제는 같은 트랙의 프레임률 독립 스무딩 문제에서 다룹니다.",
+      "quiz": [
+        {
+          "question": "체력 75, 최대 체력 250 인 보스의 체력바 색을 손으로 계산하세요. (1) 체력 비율, (2) `InverseLerp(0.2, 0.6, 비율)`, (3) `SmoothStep01` 을 통과한 값, (4) 최종 RGB 를 차례로 구하세요.",
+          "answer": "(1) 비율은 `75 / 250 = 0.3` 입니다. (2) 구간 `[0.2, 0.6]` 에서의 위치는 `(0.3 - 0.2) / (0.6 - 0.2) = 0.25` 입니다. (3) `3 × 0.25² - 2 × 0.25³ = 0.1875 - 0.03125 = 0.15625` 입니다. 직선(0.25)보다 작은 값인데, smoothstep 이 구간의 앞쪽에서 천천히 출발하기 때문입니다. (4) 빨강 성분은 `Lerp(1, 0, 0.15625) = 0.84375`, 초록 성분은 `Lerp(0, 1, 0.15625) = 0.15625` 이므로 RGB 는 `(0.84375, 0.15625, 0)` 입니다. 최대 체력이 100 이든 250 이든 먼저 비율로 바꿨기 때문에 같은 구간 설정을 그대로 쓸 수 있다는 점이 핵심입니다."
+        },
+        {
+          "question": "거리별 피해 감쇠를 `Remap(2, 10, 100, 20, distance)` 로 구현했습니다(2m 이하 100, 10m 이상 20). (가) 거리 4m 의 피해는 얼마입니까? (나) 거리 50m 의 피해는 얼마입니까? (다) 만약 Remap 이 비율을 제한하지 않는다면 50m 에서 어떤 값이 나오고, 게임에서는 어떤 버그로 보일까요?",
+          "answer": "(가) 비율은 `(4 - 2) / (10 - 2) = 0.25` 이고 `Lerp(100, 20, 0.25) = 100 + (20 - 100) × 0.25 = 80` 입니다. (나) 비율은 `(50 - 2) / 8 = 6` 이지만 `[0, 1]` 로 제한되어 1 이 되고 피해는 20 입니다. (다) 제한이 없으면 `100 + (-80) × 6 = -380` 입니다. 피해가 음수가 되므로, 피해를 체력에서 빼는 코드라면 멀리서 맞은 적의 체력이 오히려 380 늘어납니다. 제한하지 않는 Lerp 는 외삽이 필요할 때 유용하지만, 기획 값의 범위를 지켜야 하는 곳에서는 비율을 제한하는 것이 기본입니다."
+        }
+      ],
+      "solutionCode": "using System;\nusing System.Numerics;\n\npublic static class Interp\n{\n    // a 에서 b 로 t 만큼 선형 보간. t 를 제한하지 않는다(범위를 벗어나면 외삽).\n    public static float Lerp(float a, float b, float t)\n    {\n        return a + (b - a) * t;\n    }\n\n    // Lerp 의 역: value 가 a~b 구간의 어디쯤인지(0~1 비율). 제한하지 않는다. a == b 이면 0.\n    public static float InverseLerp(float a, float b, float value)\n    {\n        if (a == b) return 0f;                  // 구간의 길이가 0: 0 으로 나누지 않는다\n        return (value - a) / (b - a);\n    }\n\n    // value 를 [inMin, inMax] 에서 [outMin, outMax] 로 옮긴다. 비율은 [0, 1] 로 제한한다.\n    public static float Remap(float inMin, float inMax, float outMin, float outMax, float value)\n    {\n        float t = Math.Clamp(InverseLerp(inMin, inMax, value), 0f, 1f);\n        return Lerp(outMin, outMax, t);\n    }\n\n    // t 를 [0, 1] 로 제한한 뒤 3t^2 - 2t^3. 양 끝에서 기울기가 0 이다.\n    public static float SmoothStep01(float t)\n    {\n        t = Math.Clamp(t, 0f, 1f);\n        return t * t * (3f - 2f * t);\n    }\n\n    // 체력바 색 그라디언트의 매개변수(0 = 빨강, 1 = 초록).\n    // 체력 비율이 20% 이하면 0, 60% 이상이면 1, 그 사이는 SmoothStep01 로 부드럽게.\n    // maxHealth <= 0 이면 0.\n    public static float HealthGradientT(float health, float maxHealth)\n    {\n        if (!(maxHealth > 0f)) return 0f;\n        float ratio = health / maxHealth;                       // 값 -> 비율\n        return SmoothStep01(InverseLerp(0.2f, 0.6f, ratio));    // 비율 -> 구간 안의 위치 -> 곡선\n    }\n\n    // 체력바 색(RGB, 각 성분 0~1). 빨강 (1, 0, 0) 에서 초록 (0, 1, 0) 으로 HealthGradientT 만큼 보간.\n    public static Vector3 HealthColor(float health, float maxHealth)\n    {\n        float t = HealthGradientT(health, maxHealth);\n        return new Vector3(Lerp(1f, 0f, t), Lerp(0f, 1f, t), 0f);\n    }\n}\n",
+      "explanation": "**세 함수는 한 식의 세 가지 얼굴입니다.** `Lerp` 는 `a + (b - a) * t`, 이것을 `t` 에 대해 풀면 `InverseLerp` 의 `(v - a) / (b - a)`, 둘을 이으면 `Remap` 입니다. 그래서 풀이의 `Remap` 은 새 식을 쓰지 않고 `Lerp(outMin, outMax, Clamp(InverseLerp(inMin, inMax, value), 0, 1))` 한 줄입니다. 제한을 비율에 걸었기 때문에 `Remap(2, 10, 100, 20, 4)` 처럼 출력 범위가 뒤집혀 있어도(결과 80) 별도 처리가 필요 없습니다. 결과에 `Math.Clamp(result, outMin, outMax)` 를 거는 방식은 `outMin > outMax` 일 때 깨집니다(.NET 8 의 `Math.Clamp` 는 min 이 max 보다 크면 ArgumentException 을 던집니다).\n\n**0 으로 나누는 두 곳.** `InverseLerp` 는 `a == b` 일 때, `HealthGradientT` 는 `maxHealth` 가 0 일 때 분모가 0 입니다. float 나눗셈은 예외를 던지지 않고 NaN 이나 무한대를 만들어 색 값까지 조용히 오염시키므로, 나누기 전에 검사해 약속한 값(0)을 반환합니다. `!(maxHealth > 0f)` 로 쓰면 음수와 NaN 도 함께 걸러집니다.\n\n**SmoothStep01.** `3t² - 2t³` 을 `t * t * (3 - 2t)` 로 묶어 곱셈 세 번으로 계산합니다. 제한을 먼저 하지 않으면 다항식이 구간 밖에서 계속 변합니다. 예를 들어 `t = 3` 이면 `27 - 54 = -27` 입니다. Wikipedia 의 정의대로 경계 밖에서는 0 과 1 에 머물러야 하므로 `Clamp` 가 식보다 앞에 옵니다.\n\n**체력바 조합.** `HealthGradientT` 는 \"값 → 비율 → 구간 안의 위치 → 곡선\" 순서 그대로입니다. `health / maxHealth` 로 비율을 만들고, `InverseLerp(0.2, 0.6, ratio)` 로 구간 안의 위치를 구하고, `SmoothStep01` 이 제한과 곡선을 한 번에 처리합니다. 체력 20/100 은 0, 30/100 은 0.15625, 40/100 은 0.5, 60/100 이상은 1 입니다(float 로는 40/100 에서 0.49999994 처럼 마지막 자리가 다를 수 있습니다). 구간을 바꾸고 싶으면 0.2 와 0.6 두 숫자만 고치면 되고, 곡선을 바꾸고 싶으면 `SmoothStep01` 자리에 다른 이징 함수를 넣으면 됩니다. 조건문 사다리에 비해 고칠 곳이 한 군데라는 것이 이 구조의 장점입니다.\n\n**복잡도.** 전부 O(1), 할당 없음.\n\n**흔한 실수.**\n- `InverseLerp(a, b, v)` 의 인자 순서를 `Lerp` 와 헷갈려 `(a - v) / (b - a)` 처럼 부호를 뒤집는다.\n- 곡선을 비율이 아닌 값에 적용한다(`SmoothStep01(health)`): 체력이 1 을 넘는 순간 항상 1 이 된다.\n- RGB 를 선형 보간한 중간색이 탁해 보이는 문제를 수식 버그로 오해한다. 이것은 색 공간의 문제이며 이 카드의 범위 밖이다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Lerp(10, 20, 0.25) 가 12.5 이고, 제한하지 않아 Lerp(10, 20, 1.5) 가 25 다.",
+            "points": 10,
+            "sourceId": "wiki-linear-interpolation"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "InverseLerp(10, 20, 12.5) 가 0.25 이고, InverseLerp(5, 5, 7) 이 NaN 이나 무한대가 아닌 0 이다.",
+            "points": 10,
+            "sourceId": "unity-mathf-inverselerp"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "HealthGradientT 가 체력 20/100 에서 0, 30/100 에서 0.15625, 60/100 에서 1 이고, HealthColor(30, 100) 이 (0.84375, 0.15625, 0) 이다(오차 0.0001).",
+            "points": 15,
+            "sourceId": "wiki-smoothstep"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "여섯 함수에 힙 할당, MathF.Pow, 삼각함수가 없고 SmoothStep01 이 t * t * (3 - 2t) 형태다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "HealthGradientT 가 구간별 if/else 사다리나 색 테이블 탐색 없이 식 하나의 조합으로 O(1) 에 끝난다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "어느 함수가 제한을 하는지 구분되어 있다: Lerp/InverseLerp 는 제한 없음, Remap/SmoothStep01 은 제한. Unity 의 Mathf.Lerp 는 t 를 제한한다는 차이를 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "unity-mathf-lerp"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "나눗셈 앞에 a == b, maxHealth <= 0 검사가 있어 NaN/무한대가 만들어지지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "Remap 이 InverseLerp 와 Lerp 를 호출해 구현되어 있고 같은 식을 다시 쓰지 않았다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "HealthGradientT 가 비율 → 구간 안의 위치 → 곡선 순서로 읽히고, 구간 경계 0.2 와 0.6 이 한 곳에만 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "InverseLerp 또는 HealthGradientT 가 분모 0 에서 NaN/무한대를 반환한다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "Remap 이 비율을 제한하지 않아 입력이 범위를 벗어나면 출력도 범위를 벗어난다(예: Remap(2, 10, 100, 20, 50) 이 -380).",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "SmoothStep01 이 t 를 제한하지 않아 구간 밖에서 0~1 을 벗어난다(예: t = 3 에서 -27).",
+            "penalty": -10,
+            "sourceId": "wiki-smoothstep"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 테스트가 없는 문제로, 풀이 코드와 퀴즈·개념 카드의 수치(0.15625, 0.49999994, 88.77246, Math.Clamp 예외)를 로컬 .NET 8 에서 실행해 확인하고 Unity Mathf.Lerp·InverseLerp 문서와 Wikipedia Smoothstep·Linear interpolation 을 열어 대조했습니다."
+      },
+      "nextMission": "`SmootherStep01(t)` (6t⁵ - 15t⁴ + 10t³) 을 추가하고, t = 0.1, 0.25, 0.5 에서 Lerp(직선)·SmoothStep01·SmootherStep01 의 값을 표로 비교해 보세요. 그다음 HealthColor 를 빨강 → 노랑 → 초록의 3색 그라디언트로 확장합니다(비율 0.5 를 경계로 두 번의 Remap)."
+    },
+    {
+      "id": "t6-impl-ballistic-launch-velocity-two-arcs",
+      "track": "track6",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "박격포 조준: 고정 속력으로 목표를 맞히는 발사 속도 구하기(낮은 탄도·높은 탄도·사거리 밖)",
+      "tags": [
+        "Math_Ballistics",
+        "Math_ProjectileMotion",
+        "Math_Quadratic"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-projectile-motion"
+      ],
+      "scenario": "타워 디펜스 게임의 박격포 타워는 포구 속력이 고정되어 있습니다(업그레이드로만 바뀝니다). AI 는 목표 위치가 주어지면 \"어느 방향으로 쏴야 그 지점을 지나는가\"를 계산해야 합니다. 같은 속력으로 같은 지점을 맞히는 탄도는 보통 두 개입니다. 낮고 빠르게 꽂히는 탄도와, 높이 떠서 성벽을 넘어가는 탄도입니다. 타워 종류에 따라 둘 중 하나를 고릅니다.\n\n**할 일:** `Ballistics.SolveLaunchVelocity(origin, target, speed, gravity, highArc, out velocity)` 를 구현하세요.\n\n**물리 규약**\n\n- 중력은 **-Y 방향**으로 `gravity`(양수, 단위/초²)만큼 작용합니다. 공기 저항은 없습니다.\n- 포탄의 위치는 `P(t) = origin + velocity·t + (0, -gravity, 0)·t²/2` 입니다.\n- 높이는 Y, 수평면은 XZ 입니다. \"수평 거리\"는 `target - origin` 의 X, Z 성분만으로 잰 거리입니다.\n\n**반환 규약**\n\n1. 닿을 수 있으면 `true` 를 반환하고 `velocity` 에 발사 속도 벡터를 담습니다. 그 길이는 `speed` 이고, 수평 성분은 목표 쪽을 향합니다.\n2. 해가 두 개일 때 `highArc == false` 이면 **낮은 탄도**(발사각이 작은 쪽), `highArc == true` 이면 **높은 탄도**(발사각이 큰 쪽)를 반환합니다. 발사각은 수평면에서 위쪽이 양수이고, 낮은 목표를 향한 낮은 탄도는 아래를 겨눌 수도 있습니다(음수).\n3. 그 속력으로 닿을 수 없으면 `false`, `velocity = Vector3.Zero`.\n4. `speed <= 0`, `gravity <= 0`, 또는 수평 거리가 0(목표가 바로 위·아래이거나 같은 위치)이면 `false`, `velocity = Vector3.Zero`. 박격포는 수직 사격을 하지 않는다는 기획 규칙입니다.\n\n**채점 방식.** 테스트는 반환된 속도로 포탄을 실제로 날려 봅니다. 속도의 길이가 `speed` 와 0.005 이내인지, 수평으로 목표에 도달한 순간의 위치가 목표와 성분별 0.02 이내인지 확인합니다. 손으로 계산할 수 있는 입력은 속도 벡터를 성분별 0.002 이내로 직접 비교합니다. 해가 하나로 합쳐지는 경계(최대 사거리 바로 위)는 검사하지 않으며, 무작위 검사는 도달 가능 영역의 경계에서 높이로 0.5 이내인 목표를 제외합니다. 순수 C# (.NET 8, `System.Numerics`) 입니다.",
+      "constraints": [
+        "시간 O(1), 힙 할당 없음. 발사각을 조금씩 바꿔 가며 찾는 탐색(반복 시뮬레이션, 이분 탐색) 금지.",
+        "닿을 수 없는 경우를 판별식의 부호로 판정하고, 음수의 제곱근을 계산하지 않는다(NaN 이 결과에 섞이면 안 된다).",
+        "gravity 는 인자로 받은 값을 쓴다(9.81 을 코드에 박아 넣지 않는다).",
+        "SolveLaunchVelocity 의 시그니처를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\npublic static class Ballistics\n{\n    // 발사 속력 speed 가 고정일 때, origin 에서 쏜 포탄이 target 을 지나도록 하는 발사 속도 벡터를 구한다.\n    //   - 중력은 -Y 방향으로 gravity (양수, 단위/초^2) 만큼 작용한다. 공기 저항은 없다.\n    //     위치(t) = origin + velocity * t + (0, -gravity, 0) * t * t / 2\n    //   - 해가 두 개면 highArc = false 일 때 낮은 탄도(발사각이 작은 쪽, 먼저 도착),\n    //     highArc = true 일 때 높은 탄도(발사각이 큰 쪽)를 반환한다. 해가 하나면 둘 다 그 해.\n    //   - 닿을 수 없으면 false, velocity = Vector3.Zero.\n    //   - speed <= 0, gravity <= 0, 또는 수평 거리(XZ 평면)가 0 이면 false, velocity = Vector3.Zero.\n    //   - true 일 때 velocity 의 길이는 speed 이고, 수평 성분은 target 쪽을 향한다.\n    public static bool SolveLaunchVelocity(Vector3 origin, Vector3 target, float speed, float gravity, bool highArc, out Vector3 velocity)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "평지: 속력 20, 중력 10, 수평 거리 20 이면 발사각은 15 도와 75 도 두 개다.",
+        "높이 차: 목표가 위에 있으면 사거리가 줄고 아래에 있으면 늘어난다. 평지 공식 sin 2θ = g·x / v² 는 높이가 다르면 틀린다.",
+        "사거리 밖: 속력 10, 중력 10 의 평지 최대 사거리는 10 이므로 거리 20 은 닿지 않는다.",
+        "3D 방향: 목표가 (12, 10, 16) 만큼 떨어져 있으면 수평 거리는 20 이고 수평 속도는 (0.6, 0.8) 방향으로 나뉜다.",
+        "수평 거리 0, speed 0, gravity 0: 나눗셈의 분모가 0 이 된다."
+      ],
+      "hints": [
+        "문제를 2D 로 줄이세요. 포탄은 origin 과 target 을 지나는 수직 평면 안에서만 움직이므로, 수평 거리 `x` 와 높이 차 `y` 두 숫자만 있으면 됩니다. 발사각을 θ 라 하면 수평으로는 `x = v·cos θ·t`, 수직으로는 `y = v·sin θ·t - g·t²/2` 입니다. 먼저 평지(`y = 0`)에서 `v = 20`, `g = 10`, `x = 20` 을 손으로 풀어 보세요. `sin 2θ = g·x / v² = 0.5` 이므로 `2θ` 는 30 도 또는 150 도, 즉 θ 는 15 도 또는 75 도입니다. 해가 두 개라는 것, 그리고 `g·x / v²` 가 1 을 넘으면 해가 없다는 것을 확인하세요.",
+        "높이 차가 있으면 `sin 2θ` 공식을 쓸 수 없습니다. 첫 식에서 `t = x / (v·cos θ)` 를 구해 둘째 식에 넣고, `1 / cos² θ = 1 + tan² θ` 를 쓰면 `tan θ` 에 대한 **이차방정식**이 됩니다. 그 판별식의 부호가 \"닿는가\"이고, 두 근이 두 탄도입니다. 어느 근이 낮은 탄도인지는 `±` 의 부호로 바로 정해집니다. `tan θ` 를 구한 뒤에는 각도로 바꾸지 않아도 됩니다. 밑변 1, 높이 `tan θ` 인 직각삼각형의 빗변 길이를 생각하면 `cos θ` 와 `sin θ` 가 나옵니다. 마지막으로 수평 속력 `v·cos θ` 를 X 와 Z 로 나누려면 무엇이 필요할까요?",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nSolveLaunchVelocity(origin, target, speed, gravity, highArc, out velocity):\n    velocity = Zero\n    if speed <= 0 또는 gravity <= 0: return false\n    offset = target - origin\n    x = sqrt(offset.X^2 + offset.Z^2) ; y = offset.Y\n    if x == 0: return false\n    v2 = speed * speed\n    disc = v2 * v2 - gravity * (____)\n    if disc < 0: return false\n    tan = (v2 ____ sqrt(disc)) / (gravity * x)      // highArc 에 따라 + 또는 -\n    cos = 1 / sqrt(____) ; sin = tan * cos\n    velocity = (offset.X / x * ____, ____, offset.Z / x * ____)\n    return true\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\npublic static class Ballistics\n{\n    // 수평 거리 x, 높이 차 y, 속력 v, 중력 g 일 때 발사각 theta 는\n    //   tan(theta) = (v^2 ± sqrt(v^4 - g (g x^2 + 2 y v^2))) / (g x)\n    // 를 만족한다. 루트 안이 음수면 그 속력으로는 닿지 않는다. - 가 낮은 탄도, + 가 높은 탄도.\n    public static bool SolveLaunchVelocity(Vector3 origin, Vector3 target, float speed, float gravity, bool highArc, out Vector3 velocity)\n    {\n        velocity = Vector3.Zero;\n        if (!(speed > 0f) || !(gravity > 0f)) return false;\n\n        Vector3 offset = target - origin;\n        float x = MathF.Sqrt(offset.X * offset.X + offset.Z * offset.Z);   // 수평 거리\n        float y = offset.Y;                                                // 높이 차 (+ 가 위)\n        if (x == 0f) return false;                                         // 수평 방향을 정할 수 없다\n\n        float v2 = speed * speed;\n        float disc = v2 * v2 - gravity * (gravity * x * x + 2f * y * v2);\n        if (disc < 0f) return false;                                       // 사거리 밖\n\n        float root = MathF.Sqrt(disc);\n        float tan = (highArc ? v2 + root : v2 - root) / (gravity * x);\n\n        // tan 에서 cos, sin 을 직접 만든다(각도로 바꿨다가 되돌리지 않는다). -90도 < theta < 90도 이므로 cos > 0.\n        float cos = 1f / MathF.Sqrt(1f + tan * tan);\n        float sin = tan * cos;\n\n        float horizontalSpeed = speed * cos;\n        velocity = new Vector3(offset.X / x * horizontalSpeed, speed * sin, offset.Z / x * horizontalSpeed);\n        return true;\n    }\n}\n",
+      "explanation": "**식 세우기.** 포탄은 origin 과 target 을 포함하는 수직 평면 안에서 움직이므로 수평 거리 `x` 와 높이 차 `y` 의 2D 문제입니다. Wikipedia 의 Projectile motion 이 쓰는 변위 식은 `x = v·t·cos θ`, `y = v·t·sin θ - g·t²/2` 입니다. 첫 식에서 `t = x / (v·cos θ)` 를 둘째 식에 넣고 `1/cos² θ = 1 + tan² θ` 를 쓰면, `T = tan θ` 에 대해 `(g·x² / 2v²)·T² - x·T + (y + g·x² / 2v²) = 0` 이 됩니다. 근의 공식으로 풀면 같은 문서의 \"좌표 (x, y) 를 맞히는 데 필요한 각\" 식이 나옵니다.\n\n`tan θ = (v² ± √(v⁴ - g·(g·x² + 2·y·v²))) / (g·x)`\n\n문서의 설명대로 두 근은 가능한 두 발사각이고, 근이 허수(루트 안이 음수)이면 그 속력으로는 닿을 수 없습니다. 풀이는 루트 안의 값 `disc` 가 음수이면 Sqrt 를 호출하기 전에 false 를 반환합니다.\n\n**어느 근이 낮은 탄도인가.** `-` 쪽의 `tan θ` 가 더 작으므로 발사각이 작은 낮은 탄도입니다. 낮은 탄도가 항상 먼저 도착한다는 것도 유도할 수 있습니다. 두 근의 합은 `2v² / (g·x) > 0` 이므로 큰 근은 양수이고 절댓값도 더 큽니다. `cos θ = 1/√(1 + tan² θ)` 는 `|tan θ|` 가 클수록 작아지고, 비행 시간은 `t = x / (v·cos θ)` 이므로 높은 탄도가 더 오래 납니다.\n\n**각도를 거치지 않기.** `tan θ` 에서 `cos θ = 1/√(1 + tan²)`, `sin θ = tan θ·cos θ` 를 바로 만듭니다. 발사각은 -90 도와 90 도 사이이므로 `cos θ` 는 양수로 정해집니다. 속도는 수평 단위 방향 `(offset.X, offset.Z) / x` 에 `v·cos θ` 를, Y 에 `v·sin θ` 를 넣으면 되고, `cos² + sin² = 1` 이라 길이는 `speed` 입니다.\n\n**검산.** `v = 20`, `g = 10`, `x = 20`, `y = 0` 이면 `disc = 160000 - 10·4000 = 120000`, `√disc ≈ 346.41`, `tan θ = (400 ∓ 346.41)/200 ≈ 0.268, 3.732` 로 15 도와 75 도입니다. 같은 조건에서 `y = 10` 이면 `disc = 40000`, `tan θ = 1` 과 `3` 입니다. `tan θ = 1`(45 도)로 쏘면 수평·수직 속도가 각각 약 14.142 이고, 수평 20 을 가는 데 약 1.414 초가 걸리며 그때 높이는 `14.142 × 1.414 - 5 × 2 = 10` 입니다.\n\n**입력 검증.** `x = 0` 이면 `g·x` 로 나눌 수 없고 수평 방향도 정해지지 않습니다. `speed`, `gravity` 는 `!(값 > 0)` 로 검사하면 NaN 도 함께 걸러집니다. 음수의 `MathF.Sqrt` 는 예외 없이 NaN 을 반환하므로, 판별식 검사를 빼면 사거리 밖 목표에 NaN 속도가 조용히 나갑니다.\n\n**복잡도.** O(1), Sqrt 세 번(수평 거리, 판별식, `1 + tan²`).\n\n**흔한 실수.**\n- 평지 공식 `θ = ½·asin(g·x / v²)` 를 높이 차가 있는 목표에 그대로 사용한다.\n- `±` 를 반대로 연결해 `highArc` 가 뒤집힌다(`flat-two-arcs` 가 잡습니다).\n- 수평 방향을 정규화하지 않고 `offset.X`, `offset.Z` 에 그대로 곱해 속도의 길이가 `speed` 가 아니게 된다.\n- 중력의 부호를 헷갈려 `y` 항의 부호가 뒤집힌다: 위에 있는 목표가 아래에 있는 것처럼 계산된다.\n\n**정밀도 메모.** 목표가 최대 사거리에 가까우면 `disc` 가 0 근처가 되어 작은 반올림 오차에도 \"닿음/안 닿음\"이 뒤바뀔 수 있습니다. 실전에서는 사거리 판정에 여유를 두거나 double 로 계산합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "평지 검산이 맞다: origin 원점, target (20,0,0), speed 20, gravity 10 에서 낮은 탄도 (19.3185, 5.1764, 0), 높은 탄도 (5.1764, 19.3185, 0) 이다(오차 0.002).",
+            "points": 12,
+            "sourceId": "wiki-projectile-motion"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "높이 차를 반영한다: 수평 20, 위로 10 인 목표(speed 20, gravity 10)에서 낮은 탄도의 velocity.Y 와 수평 속력이 모두 약 14.142 이고, 아래에 있는 목표의 낮은 탄도는 velocity.Y 가 음수다.",
+            "points": 12,
+            "sourceId": "wiki-projectile-motion"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "닿을 수 없으면 false 다(speed 10, gravity 10, 평지 거리 20). true 일 때 velocity 의 길이가 speed 이고 수평 성분이 3D 에서 목표 쪽을 향한다.",
+            "points": 11,
+            "sourceId": "wiki-projectile-motion"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "닫힌 형태의 해로 O(1) 에 끝난다. 각도를 바꿔 가며 시뮬레이션하거나 탐색하는 반복문이 없다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "힙 할당이 없고, 닿지 않는 경우는 판별식 검사에서 바로 반환한다(판별식의 Sqrt 를 호출하지 않는다).",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "중력을 -Y 방향의 양수 크기 gravity 로 다루고(인자 값을 사용, 상수 9.81 없음), 높이는 Y, 수평은 XZ 로 계산한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "speed <= 0, gravity <= 0, 수평 거리 0, 사거리 밖에서 false 와 Vector3.Zero 를 반환하고 velocity 에 NaN 이 들어가지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "수평 거리, 높이 차, 판별식이 이름 있는 변수이고 사용한 공식이 주석으로 적혀 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "두 탄도의 선택이 ± 한 곳에서만 갈리고, 나머지 계산이 두 번 복사되어 있지 않다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "높이 차를 무시한다(평지 공식 sin 2θ = g·x / v² 만 사용).",
+            "penalty": -20,
+            "sourceId": "wiki-projectile-motion"
+          },
+          {
+            "id": "d2",
+            "description": "highArc 를 무시하거나 낮은 탄도와 높은 탄도를 반대로 반환한다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "닿을 수 없는 목표에서 false 대신 NaN 이 든 velocity 와 true 를 반환한다.",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static System.Numerics.Vector3 V(float x, float y, float z) { return new System.Numerics.Vector3(x, y, z); }\n\n    static string Desc(System.Numerics.Vector3 o, System.Numerics.Vector3 t, float v, float g, bool high)\n    {\n        return \"origin \" + o + \", target \" + t + \", speed \" + v + \", gravity \" + g + (high ? \", 높은 탄도\" : \", 낮은 탄도\");\n    }\n\n    // 반환된 속도로 실제로 날려 본다(double): 속력이 speed 인지, 수평으로 target 에 도달한 순간의 위치가 target 인지.\n    // 통과하면 null 을 반환하고 flightTime 에 비행 시간을 담는다.\n    static string Fly(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 t, float v, float g, bool high, out System.Numerics.Vector3 vel, out double flightTime)\n    {\n        flightTime = 0;\n        bool ok = Ballistics.SolveLaunchVelocity(o, t, v, g, high, out vel);\n        string desc = what + \": \" + Desc(o, t, v, g, high);\n        if (!ok) return desc + \" → 기대 true / 결과 false\";\n        double vx = vel.X, vy = vel.Y, vz = vel.Z;\n        double len = System.Math.Sqrt(vx * vx + vy * vy + vz * vz);\n        if (!(System.Math.Abs(len - v) <= 0.005)) return desc + \" → 속도의 길이 기대 \" + v + \" / 결과 \" + len.ToString(\"F4\") + \" (velocity \" + vel + \")\";\n        double dx = (double)t.X - o.X, dy = (double)t.Y - o.Y, dz = (double)t.Z - o.Z;\n        double hh = vx * vx + vz * vz;\n        if (!(hh > 1e-12)) return desc + \" → 수평 속도가 0 (velocity \" + vel + \")\";\n        double time = (dx * vx + dz * vz) / hh;\n        if (!(time > 0)) return desc + \" → 수평 속도가 target 반대쪽을 향함 (velocity \" + vel + \")\";\n        double px = vx * time, py = vy * time - 0.5 * g * time * time, pz = vz * time;\n        if (!(System.Math.Abs(px - dx) <= 0.02 && System.Math.Abs(py - dy) <= 0.02 && System.Math.Abs(pz - dz) <= 0.02))\n            return desc + \" → velocity \" + vel + \" 로 쏘면 \" + time.ToString(\"F3\") + \"초 뒤 origin 기준 (\" + px.ToString(\"F3\") + \", \" + py.ToString(\"F3\") + \", \" + pz.ToString(\"F3\") + \") 에 있음 / target 은 (\" + dx + \", \" + dy + \", \" + dz + \")\";\n        flightTime = time;\n        return null;\n    }\n\n    static string Expect(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 t, float v, float g, bool high, float ex, float ey, float ez)\n    {\n        System.Numerics.Vector3 vel; double time;\n        string e = Fly(what, o, t, v, g, high, out vel, out time);\n        if (e != null) return e;\n        if (System.Math.Abs(vel.X - ex) <= 0.002f && System.Math.Abs(vel.Y - ey) <= 0.002f && System.Math.Abs(vel.Z - ez) <= 0.002f) return null;\n        return what + \": \" + Desc(o, t, v, g, high) + \" → velocity 기대 (\" + ex + \", \" + ey + \", \" + ez + \") / 결과 \" + vel + \" (두 탄도를 바꿔 반환했는지 확인)\";\n    }\n\n    // 두 탄도가 모두 명중하고, 낮은 탄도가 발사각이 작으며 먼저 도착하는지 확인한다.\n    static string Both(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 t, float v, float g)\n    {\n        System.Numerics.Vector3 lowV, highV; double lowT, highT;\n        string e = Fly(what, o, t, v, g, false, out lowV, out lowT) ?? Fly(what, o, t, v, g, true, out highV, out highT);\n        if (e != null) return e;\n        Ballistics.SolveLaunchVelocity(o, t, v, g, true, out highV);\n        if (!(lowV.Y < highV.Y - 0.01f)) return what + \": origin \" + o + \", target \" + t + \", speed \" + v + \", gravity \" + g + \" → 낮은 탄도의 velocity.Y(\" + lowV.Y + \")가 높은 탄도(\" + highV.Y + \")보다 작아야 함\";\n        return null;\n    }\n\n    static string Fail(string what, System.Numerics.Vector3 o, System.Numerics.Vector3 t, float v, float g)\n    {\n        for (int k = 0; k < 2; k++)\n        {\n            System.Numerics.Vector3 vel;\n            bool ok = Ballistics.SolveLaunchVelocity(o, t, v, g, k == 1, out vel);\n            if (ok) return what + \": \" + Desc(o, t, v, g, k == 1) + \" → 기대 false / 결과 true (velocity \" + vel + \")\";\n            if (!(vel.X == 0f && vel.Y == 0f && vel.Z == 0f)) return what + \": false 일 때 velocity 는 Vector3.Zero 여야 함 / 결과 \" + vel;\n        }\n        return null;\n    }\n\n    public static void Main()\n    {\n        var O = V(0f, 0f, 0f);\n\n        Run(\"flat-two-arcs\", () =>\n            Expect(\"평지 20, 속력 20, 중력 10: 낮은 탄도는 15도\", O, V(20f, 0f, 0f), 20f, 10f, false, 19.318517f, 5.176381f, 0f)\n            ?? Expect(\"같은 조건의 높은 탄도는 75도\", O, V(20f, 0f, 0f), 20f, 10f, true, 5.176381f, 19.318517f, 0f)\n            ?? Expect(\"-X 쪽 목표\", O, V(-20f, 0f, 0f), 20f, 10f, false, -19.318517f, 5.176381f, 0f));\n\n        Run(\"elevated-target-3d\", () =>\n            Expect(\"수평 20, 위로 10: 낮은 탄도 tan = 1\", V(1f, 2f, 3f), V(13f, 12f, 19f), 20f, 10f, false, 8.485281f, 14.142136f, 11.313708f)\n            ?? Expect(\"수평 20, 위로 10: 높은 탄도 tan = 3\", V(1f, 2f, 3f), V(13f, 12f, 19f), 20f, 10f, true, 3.794733f, 18.973666f, 5.059644f));\n\n        Run(\"target-below\", () =>\n            Expect(\"절벽 위에서 아래로: 낮은 탄도는 아래를 향해 쏜다\", V(0f, 10f, 0f), V(0f, 0f, 20f), 20f, 10f, false, 0f, -4.595058f, 19.46498f)\n            ?? Expect(\"절벽 위에서 아래로: 높은 탄도\", V(0f, 10f, 0f), V(0f, 0f, 20f), 20f, 10f, true, 0f, 19.46498f, 4.595058f)\n            ?? Both(\"더 깊은 낙차\", V(5f, 40f, -5f), V(-25f, 0f, 35f), 18f, 9.81f));\n\n        Run(\"out-of-range\", () =>\n            Fail(\"평지 최대 사거리 10 인데 목표는 20\", O, V(20f, 0f, 0f), 10f, 10f)\n            ?? Fail(\"평지 최대 사거리 40 을 조금 넘음\", O, V(41f, 0f, 0f), 20f, 10f)\n            ?? Fail(\"너무 높은 목표\", O, V(5f, 30f, 0f), 20f, 10f)\n            ?? Both(\"최대 사거리 안쪽(39)은 닿는다\", O, V(39f, 0f, 0f), 20f, 10f));\n\n        Run(\"invalid-input\", () =>\n            Fail(\"speed 0\", O, V(20f, 0f, 0f), 0f, 10f)\n            ?? Fail(\"speed 음수\", O, V(20f, 0f, 0f), -20f, 10f)\n            ?? Fail(\"gravity 0\", O, V(20f, 0f, 0f), 20f, 0f)\n            ?? Fail(\"gravity 음수\", O, V(20f, 0f, 0f), 20f, -10f)\n            ?? Fail(\"origin 과 target 이 같음\", V(3f, 4f, 5f), V(3f, 4f, 5f), 20f, 10f)\n            ?? Fail(\"바로 위(수평 거리 0)\", O, V(0f, 5f, 0f), 20f, 10f)\n            ?? Fail(\"바로 아래(수평 거리 0)\", O, V(0f, -5f, 0f), 20f, 10f));\n\n        Run(\"gravity-and-direction\", () =>\n            Both(\"중력 9.81, 대각선 방향\", O, V(30f, 4f, -40f), 25f, 9.81f)\n            ?? Both(\"중력이 약한 달 맵\", V(-3f, 1f, 2f), V(40f, -6f, 60f), 12f, 1.62f)\n            ?? Both(\"가까운 목표\", V(2f, 0f, 2f), V(4f, 1f, 1f), 15f, 9.81f));\n\n        Run(\"random-simulation\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int reach = 0, unreachable = 0;\n            for (int i = 0; i < 3000; i++)\n            {\n                float v = (float)(10 + rng.NextDouble() * 30), g = (float)(5 + rng.NextDouble() * 15);\n                var o = V((float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10), (float)(rng.NextDouble() * 20 - 10));\n                double ang = rng.NextDouble() * 2 * System.Math.PI, dist = 3 + rng.NextDouble() * 80;\n                var t = o + V((float)(System.Math.Cos(ang) * dist), (float)(rng.NextDouble() * 60 - 30), (float)(System.Math.Sin(ang) * dist));\n                // 도달 가능 영역의 경계(안전 포물선): y <= v^2/(2g) - g x^2/(2 v^2). 경계에서 0.5 이내는 판정하지 않는다\n                double dx = (double)t.X - o.X, dy = (double)t.Y - o.Y, dz = (double)t.Z - o.Z;\n                double margin = (double)v * v / (2.0 * g) - g * (dx * dx + dz * dz) / (2.0 * v * v) - dy;\n                if (System.Math.Abs(margin) < 0.5) continue;\n                string e;\n                if (margin > 0) { reach++; e = Both(\"무작위 #\" + i, o, t, v, g); }\n                else { unreachable++; e = Fail(\"무작위 #\" + i, o, t, v, g); }\n                if (e != null) return e;\n            }\n            return reach > 600 && unreachable > 600 ? null : \"표본 부족: 도달 \" + reach + \" / 불가 \" + unreachable;\n        });\n    }\n}\n",
+        "cases": [
+          "flat-two-arcs",
+          "elevated-target-3d",
+          "target-below",
+          "out-of-range",
+          "invalid-input",
+          "gravity-and-direction",
+          "random-simulation"
+        ],
+        "note": "평지에서의 두 탄도(15 도, 75 도), 높이 차와 3D 방향이 있는 목표, 아래에 있는 목표, 사거리 밖(false 와 Vector3.Zero), 잘못된 입력(speed·gravity 가 0 이하, 수평 거리 0), 다른 중력 값을 검사하고, 무작위 입력 3000 개는 반환된 속도로 포탄을 날려 목표에 도달하는지(성분별 0.02 이내), 속도의 길이가 speed 인지(0.005 이내), 낮은 탄도의 velocity.Y 가 높은 탄도보다 작은지를 확인합니다. 도달 가능 여부의 기준은 안전 포물선 y <= v²/(2g) - g·x²/(2v²) 이며 경계에서 0.5 이내인 목표는 제외합니다. Ballistics.SolveLaunchVelocity(Vector3, Vector3, float, float, bool, out Vector3) 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "풀이·시작 코드와 숨은 테스트를 채점 서비스와 로컬 .NET 8 에서 실행하고, Atan2 방식·비행 시간 이차식 방식의 다른 정답 2개와 흔한 오답 7개로 테스트를 검증했으며, 기대 속도 벡터를 손으로 다시 계산하고 Wikipedia Projectile motion 의 발사각 식과 대조했습니다."
+      },
+      "nextMission": "`out float flightTime` 을 추가해 비행 시간 x / (v·cos θ) 를 함께 반환하고, 일정한 속도로 움직이는 목표를 맞히도록 \"비행 시간만큼 앞선 위치를 다시 목표로 삼는\" 반복을 2~3회 돌려 보세요. 그다음 반대 문제, 즉 발사각이 45 도로 고정일 때 목표를 맞히는 데 필요한 속력을 구하는 `SolveLaunchSpeed` 를 작성합니다."
+    },
+    {
+      "id": "t6-interview-coordinate-spaces-screen-to-world-ray",
+      "track": "track6",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "좌표 공간의 사슬: 로컬에서 스크린까지, 그리고 마우스 클릭을 월드 반직선으로 되돌리기",
+      "tags": [
+        "Math_CoordinateSpaces",
+        "Math_Projection",
+        "Math_ScreenRay"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "learnopengl-coordinate-systems",
+        "unity-camera-screenpointtoray",
+        "unity-camera-worldtoscreenpoint",
+        "unity-camera-worldtocameramatrix",
+        "vulkan-spec-vertex-postprocessing",
+        "wiki-orthographic-projection"
+      ],
+      "scenario": "3D RTS 게임 팀의 기술 면접입니다. 면접관이 현재 프로젝트의 두 기능을 예로 듭니다.\n\n- **이동 명령:** 플레이어가 지면을 클릭하면 선택한 유닛이 그 지점으로 이동한다. 입력은 마우스의 픽셀 좌표뿐이다.\n- **머리 위 체력바:** 유닛의 월드 위치를 화면 좌표로 바꿔 UI 를 그 위에 띄운다.\n\n면접관은 \"두 기능은 같은 파이프라인을 서로 반대 방향으로 지나갑니다\"라고 말합니다.\n\n**질문: 모델의 정점 하나가 화면의 픽셀이 되기까지 거치는 좌표 공간(로컬, 월드, 뷰, 클립, NDC, 스크린)을 순서대로 설명하고, 각 단계 사이를 무엇이 잇는지 말해 주세요. 그다음 이 파이프라인을 거꾸로 써서 마우스 클릭 한 점을 월드 공간의 반직선으로 바꾸는 과정을 설명해 주세요. 결과가 왜 '점'이 아니라 '반직선'인지도 포함해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "스크린 좌표의 원점: 라이브러리에 따라 왼쪽 아래 또는 왼쪽 위다. 뒤집지 않으면 위쪽을 클릭했는데 아래쪽이 선택된다.",
+        "카메라 뒤의 점: 원근 나눗셈의 분모(w)가 음수가 되어 좌표가 뒤집힌 채 화면 안에 들어온 것처럼 보인다.",
+        "클릭 반직선이 지면과 평행하거나 하늘을 향함: 평면과의 교점이 없거나 반직선 뒤쪽(t < 0)에 있다.",
+        "직교 투영 카메라: 모든 반직선이 평행하고 시작점이 픽셀마다 다르다. \"시작점은 항상 카메라 위치\"라는 가정이 깨진다.",
+        "NDC 의 깊이 범위와 뷰 공간의 전방 축: 라이브러리마다 다르므로(-1~1 또는 0~1, -Z 또는 +Z) 문서와 실행으로 확인해야 한다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "같은 4×4 행렬로 변환해도 \"위치\"와 \"방향\"은 결과가 달라야 합니다. 동차 좌표의 w 성분으로 그 차이를 설명해 주세요. 그리고 투영 행렬을 곱한 뒤에 왜 굳이 w 로 **나누는** 단계가 따로 있는지, 클립 공간과 NDC 를 구분해서 설명해 주세요.",
+          "intent": "4×4 행렬과 w 성분을 암기가 아니라 구조로 이해하는지 확인한다. 이동이 방향에 적용되면 안 되는 이유, 원근이 선형 변환만으로는 표현되지 않는 이유, 클리핑이 나눗셈 전에 일어나야 하는 이유를 연결해서 말하는지 본다.",
+          "keyAnswer": "- **w 가 이동을 켜고 끈다.** 4×4 변환 행렬에서 이동 성분은 입력의 w 에 곱해져 더해진다. 위치는 `(x, y, z, 1)` 로 넣어 이동이 적용되고, 방향은 `(x, y, z, 0)` 으로 넣어 회전·스케일만 적용된다. 예: \"Y 축으로 90 도 회전한 뒤 (10, 0, 0) 이동\"하는 행렬에 `(0, 0, 1)` 을 넣으면 위치로서는 `(11, 0, 0)`, 방향으로서는 `(1, 0, 0)` 이 나온다(System.Numerics 의 `Vector4.Transform` 으로 w 를 1 과 0 으로 바꿔 실행해 확인한 값). 방향에 이동이 적용되면 \"오른쪽\"이라는 방향이 오브젝트가 어디에 있느냐에 따라 달라지는 버그가 된다. 클릭 반직선으로 말하면 시작점은 위치, direction 은 방향이다.\n- **원근은 나눗셈이 필요하다.** 멀리 있는 것이 작게 보이려면 x, y 를 깊이로 나눠야 하는데, 행렬 곱은 덧셈과 곱셈뿐이라 나눗셈을 할 수 없다. 그래서 투영 행렬은 깊이에 해당하는 값을 결과의 **w** 에 실어 보내고, 그다음 단계에서 x, y, z 를 w 로 나눈다. LearnOpenGL 의 설명대로 정점이 관찰자에서 멀수록 w 가 커지고, 이 원근 나눗셈(perspective division)이 4D 클립 좌표를 3D 정규화 장치 좌표(NDC)로 바꾼다.\n- **클립 공간과 NDC 는 나눗셈의 앞과 뒤다.** 클립 공간은 투영 행렬을 곱한 직후의 4D 좌표이고, NDC 는 그것을 w 로 나눈 3D 좌표다(OpenGL 규약에서 각 축 -1 ~ 1). 화면 밖을 잘라 내는 클리핑은 이름 그대로 나누기 **전** 클립 공간에서 한다. LearnOpenGL 은 클립 공간의 좌표가 -w ~ w 범위에 있고 그 밖은 잘린다고 적고, Vulkan 명세도 뷰 볼륨을 클립 좌표에서 `-w <= x <= w`, `-w <= y <= w`, `z_m <= z <= w` 로 정의하며 원근 나눗셈을 별도의 단계로 둔다(깊이의 아래쪽 경계 `z_m` 은 Vulkan 기본값이 0, OpenGL 방식 설정에서는 -w 로 API 마다 다르다). 나누기 전에 자르는 이유로 흔히 드는 것은 두 가지다(명세가 이유까지 적지는 않으므로 일반적인 설명이다). 원근 투영에서 카메라를 지나는 평면 위의 점은 w 가 0 이라 나눌 수 없고, 카메라 뒤의 점은 w 가 음수라 나누면 좌표의 부호가 뒤집혀 화면 안에 있는 것처럼 보인다. 나눗셈 전에는 위의 부등식 비교만으로 안전하게 판정할 수 있다.\n- **역방향에서의 의미.** 클릭을 월드로 되돌릴 때도 같은 구조가 거꾸로 나타난다. NDC 의 점에 w = 1 을 붙여 역행렬을 곱하면 결과의 w 가 1 이 아니게 되므로, 다시 w 로 나눠야 월드 좌표가 된다. 이 나눗셈을 빼먹는 것이 직접 구현할 때 가장 흔한 실수다."
+        },
+        {
+          "question": "엔진의 `ScreenPointToRay` 를 쓸 수 없는 전용 서버나 툴 코드에서 같은 기능을 직접 구현해야 합니다. 입력은 픽셀 좌표, 화면 크기, 뷰 행렬과 투영 행렬입니다. 단계별로 설명하고, 구현이 맞는지 어떻게 검증할지, 라이브러리를 바꿀 때 무엇을 다시 확인해야 하는지 말해 주세요.",
+          "intent": "개념 설명을 실제 구현 절차로 내릴 수 있는지, 그리고 규약(y 방향, 깊이 범위, 곱셈 순서)이 라이브러리마다 다르다는 것을 알고 검증 습관을 갖고 있는지 확인한다. 원근·직교 카메라를 한 방법으로 처리하는 일반성도 본다.",
+          "keyAnswer": "- **1) 픽셀 → NDC.** `ndcX = px / width × 2 - 1`. y 는 스크린 원점이 어디냐에 따라 다르다. 원점이 왼쪽 위이고 NDC 의 +Y 가 위라면 `ndcY = 1 - py / height × 2`, 원점이 왼쪽 아래라면 `ndcY = py / height × 2 - 1` 이다.\n- **2) 깊이 두 개를 고른다.** 한 픽셀에 대응하는 월드 점은 직선을 이루므로, 그 직선 위의 두 점을 잡으면 된다. NDC 깊이의 가까운 쪽 끝(near 평면)과 먼 쪽 끝(far 평면)을 쓴다.\n- **3) 역행렬을 곱하고 w 로 나눈다.** 뷰와 투영을 합친 행렬(System.Numerics 같은 행 벡터 규약에서는 `view * projection`, 열 벡터 규약에서는 `projection × view`)의 역행렬을 한 번 구해 두 점 `(ndcX, ndcY, zNear, 1)`, `(ndcX, ndcY, zFar, 1)` 에 곱한다. 결과의 x, y, z 를 w 로 나누면 월드 공간의 두 점이 된다.\n- **4) 반직선을 만든다.** `origin = near 쪽 점`, `direction = normalize(far 쪽 점 - near 쪽 점)`. Unity 의 `Camera.ScreenPointToRay` 문서도 결과가 월드 공간의 반직선이며 카메라의 near 평면에서 시작해 그 픽셀을 지난다고 적는다. 두 점 방식은 직교 카메라에서도 그대로 동작한다. 원근 카메라에서만 통하는 \"시작점은 카메라 위치\"라는 지름길은 직교 카메라에서 틀린다. 직교 투영은 투영선이 모두 평행한 평행 투영이라(Wikipedia, Orthographic projection) 모든 픽셀의 반직선이 평행하고 시작점이 서로 다르다. 아래 실험의 투영 행렬을 `CreateOrthographic(32, 18, 0.1, 100)` 으로 바꿔 실행하면 픽셀 `(1400, 300)` 과 `(200, 900)` 의 direction 이 똑같이 약 `(0, -0.447, 0.894)` 이고 origin 만 다르게 나온다.\n- **검증: 왕복.** 반직선 위의 한 점을 다시 뷰·투영 행렬로 보내 w 로 나누고 픽셀로 바꿨을 때 원래 픽셀이 나오는지 본다. System.Numerics(.NET 8)로 실제로 해 보면 이렇다. 카메라 `(0, 5, -10)` 이 원점을 바라보고(`CreateLookAt`), 시야각 60 도, 16:9, near 0.1, far 100(`CreatePerspectiveFieldOfView`), 화면 1920×1080, 왼쪽 위 원점 기준 픽셀 `(1400, 300)`. 풀어낸 near 쪽 점은 카메라에서 약 0.113 떨어져 있고(화면 중심에서 벗어난 픽셀이라 near 거리 0.1 보다 조금 길다), 반직선이 `y = 0` 평면과 만나는 점은 약 `(-10.80, 0, 13.18)`, 그 점을 다시 투영하면 픽셀 `(1400.00, 300.00)` 으로 돌아온다.\n- **라이브러리를 바꿀 때 다시 확인할 것.** (가) 스크린 y 의 원점. (나) NDC 깊이의 범위: OpenGL 규약은 -1 ~ 1 이고, 위 실험의 System.Numerics 투영 행렬은 near 가 0, far 가 1 로 나왔다. (다) 뷰 공간에서 카메라가 바라보는 축: 같은 실험에서 near 쪽 점의 뷰 공간 z 는 -0.1 이었다(전방이 -Z). (라) 벡터를 행으로 쓰는지 열로 쓰는지에 따른 곱셈 순서: LearnOpenGL 은 `투영 × 뷰 × 모델 × 정점` 순서로 쓰고 오른쪽부터 읽는다고 설명하며, 행 벡터 규약의 라이브러리에서는 순서가 반대가 된다. 이 네 가지는 외우는 것이 아니라 왕복 테스트 하나로 한꺼번에 검증한다.\n- **비용.** 역행렬은 카메라가 움직일 때(보통 프레임당 한 번)만 다시 구하고, 클릭마다 구하지 않는다."
+        },
+        {
+          "question": "체력바에 버그 리포트가 들어왔습니다. \"카메라를 돌려 유닛이 등 뒤로 가면, 그 유닛의 체력바가 화면 한가운데 근처에 뜬다.\" 원인을 좌표 변환으로 설명하고 막는 방법을 말해 주세요. 그리고 이동 명령 쪽에서, 클릭 반직선과 지면(y = 0 평면)의 교점을 구할 때 처리해야 할 예외 상황도 함께 설명해 주세요.",
+          "intent": "파이프라인 지식을 실제 버그 진단에 쓰는지 확인한다. 원근 나눗셈에서 w 의 부호가 갖는 의미, 문서가 말하는 것과 말하지 않는 것을 구분하는 태도, 반직선-평면 교차의 분모 0 과 t < 0 처리를 본다.",
+          "keyAnswer": "- **원인: 음수 w 로 나눈 결과도 숫자로는 멀쩡하다.** 월드 → 스크린 변환은 뷰·투영 행렬을 곱하고 w 로 나누는 것이다. 카메라 뒤의 점은 w 가 음수인데, 나눗셈은 그대로 수행되어 x, y 의 부호가 뒤집힌 NDC 가 나온다. 앞의 실험과 같은 카메라(위치 `(0, 5, -10)`, 원점을 바라봄, 1920×1080)에서 카메라 뒤쪽의 월드 점 `(2, 7, -16)` 을 변환하면 클립 좌표의 w 가 약 -6.26 이고 NDC 는 약 `(0.31, 0.25)` 로 화면 범위(-1 ~ 1) 안이며, 픽셀로는 왼쪽 위 원점 기준 약 `(1259, 406)`, 곧 화면 중심 `(960, 540)` 근처다. 이 점은 뷰 공간에서 카메라의 왼쪽 아래(x = -2, y 약 -0.89)에 있는데 NDC 는 오른쪽 위로 나온다. 음수 w 로 나누면서 좌우·상하가 뒤집힌 채 \"화면 안\"인 것처럼 나타나므로, x·y 범위만 검사하는 코드는 이것을 걸러 내지 못한다.\n- **대책: 나누기 전에 앞뒤를 먼저 판정한다.** 직접 구현했다면 클립 좌표의 w(또는 뷰 공간 깊이)가 near 보다 작은 점을 버린다. Unity 에서는 `Camera.WorldToScreenPoint` 문서가 반환값의 z 를 \"카메라로부터의 거리(월드 단위)\"라고 정의하므로 이 값을 깊이 판정에 쓴다. 다만 그 문서는 뷰 볼륨 밖의 위치에는 화면 밖의 좌표를 반환한다고만 적고, 카메라 뒤의 점에서 x, y, z 가 구체적으로 어떤 값으로 나오는지는 적지 않는다. 엔진에서 직접 확인하거나, 규약에 기대지 않는 `Dot(camera.forward, unitPosition - camera.position) > 0` 검사를 먼저 하는 편이 안전하다.\n- **지면 교차의 식.** 반직선 `P(t) = origin + t·direction` 이 `y = 0` 평면과 만나는 `t` 는 `t = -origin.y / direction.y` 이다.\n- **예외 1: 평행.** `direction.y` 가 0 이면 0 으로 나누게 된다. 반직선이 지면과 평행하므로 교점이 없다고 처리한다(실전에서는 0 과의 정확한 비교 대신 작은 문턱값을 쓴다).\n- **예외 2: 뒤쪽.** `t < 0` 이면 평면과 만나는 점이 반직선의 뒤쪽, 곧 카메라 뒤에 있다. 지평선 위의 하늘을 클릭한 경우다. 이 검사를 빼면 하늘을 클릭했을 때 유닛이 카메라 뒤편의 엉뚱한 지점으로 이동한다.\n- **예외 3: 너무 먼 교점.** 지평선 근처를 클릭하면 `direction.y` 가 0 에 가까워 `t` 가 매우 커진다. 최대 거리(예: 카메라의 far 거리나 맵 경계)로 제한한다.\n- **지면이 평면이 아닐 때.** 지형에 높낮이가 있으면 평면 교차 대신 지형 콜라이더에 대한 레이캐스트나 깊이 버퍼 값을 써서 깊이를 정한다. 어느 경우든 \"클릭은 반직선까지만 알려 주고, 깊이는 다른 정보가 정한다\"는 구조는 같다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**정방향: 정점이 픽셀이 되기까지.** LearnOpenGL 이 정리한 다섯 좌표계(로컬, 월드, 뷰, 클립, 스크린)에 NDC 를 따로 떼어 적으면 다음 순서입니다.\n\n1. **로컬(오브젝트) 공간:** 모델 자신의 원점을 기준으로 한 좌표. 메시 파일에 들어 있는 값입니다.\n2. **월드 공간:** **모델 행렬**(이동·회전·스케일)을 곱해 씬 전체의 기준 좌표로 옮깁니다.\n3. **뷰(카메라) 공간:** **뷰 행렬**을 곱해 카메라가 원점에 놓인 좌표로 바꿉니다. 카메라를 옮기는 대신 세계를 반대로 옮기는 것, 곧 카메라 변환의 역입니다.\n4. **클립 공간:** **투영 행렬**을 곱한 4D 동차 좌표입니다. 여기서 시야 밖이 잘려 나갑니다.\n5. **NDC:** 클립 좌표의 x, y, z 를 **w 로 나눈**(원근 나눗셈) 결과입니다. 원근 투영에서는 멀수록 w 가 커서 나눈 결과가 작아지고, 이것이 원근감입니다.\n6. **스크린 공간:** **뷰포트 변환**이 NDC 를 픽셀 좌표로 옮깁니다.\n\nLearnOpenGL 은 이것을 `V_clip = M_projection · M_view · M_model · V_local` 로 쓰고, 곱셈을 오른쪽부터 읽는다고 설명합니다(열 벡터 규약).\n\n**역방향: 클릭을 월드로.** 체력바는 위 사슬을 그대로 따라 내려가면 되지만, 클릭은 거꾸로 올라가야 합니다. 픽셀을 NDC 로 바꾸고, 뷰와 투영을 합친 행렬의 역행렬을 곱하고, 다시 w 로 나눕니다.\n\n**왜 반직선인가.** 투영은 3D 를 2D 로 누르면서 깊이 한 차원을 버립니다. 픽셀 좌표 두 개로는 버려진 깊이를 복원할 수 없으므로, 한 픽셀에 대응하는 월드의 점은 하나가 아니라 그 픽셀을 지나는 직선 전체입니다. 그래서 깊이가 다른 두 점(near 평면 위의 점과 far 평면 위의 점)을 각각 되돌려 `origin = near 쪽 점`, `direction = normalize(far 쪽 점 - near 쪽 점)` 인 반직선을 만듭니다. 실제 클릭 위치는 이 반직선과 **다른 정보**의 교점입니다. 지면 평면과의 교차, 콜라이더에 대한 레이캐스트, 깊이 버퍼 값이 그 예입니다.\n\n**Unity 에서.** `Camera.ScreenPointToRay` 가 이 과정을 해 줍니다. 문서에 따르면 반환되는 반직선은 월드 공간에 있고 카메라의 near 평면에서 시작해 주어진 픽셀을 지납니다. 스크린 좌표는 픽셀 단위이며 왼쪽 아래가 `(0, 0)`, 오른쪽 위가 `(너비 - 1, 높이 - 1)` 이고 입력의 z 는 무시됩니다. 반대 방향인 `Camera.WorldToScreenPoint` 는 같은 스크린 좌표를 반환하고 z 에 카메라로부터의 거리(월드 단위)를 담습니다. `Camera.worldToCameraMatrix` 문서는 이 행렬이 흔히 뷰 행렬이라 불리며, 카메라 공간은 OpenGL 규약을 따라 전방이 **-Z** 이고 이는 전방이 +Z 인 Unity 의 일반 규약과 다르다고 명시합니다.\n\n**주의할 점.**\n- 규약은 라이브러리마다 다릅니다. 스크린 y 의 원점(위/아래), NDC 깊이 범위, 뷰 공간의 전방 축, 행렬 곱셈 순서를 문서와 실행으로 확인합니다.\n- 역변환 뒤의 w 나눗셈을 빼먹지 않습니다.\n- 카메라 뒤의 점은 w 가 음수라 나눗셈 결과가 뒤집힙니다. 월드 → 스크린에서는 앞뒤 판정을 먼저 합니다.\n- 구현 검증은 \"월드 점 → 픽셀 → 반직선 → 같은 월드 점을 지나는가\"의 왕복 테스트가 가장 확실합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "로컬 → 월드 → 뷰 → 클립 → NDC → 스크린 순서와, 각 단계를 잇는 것(모델 행렬, 뷰 행렬, 투영 행렬, w 나눗셈, 뷰포트 변환)을 빠짐없이 말했다.",
+            "points": 12,
+            "sourceId": "learnopengl-coordinate-systems"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "역방향 절차를 말했다: 픽셀 → NDC → 깊이가 다른 두 점 → 뷰·투영을 합친 행렬의 역행렬 → w 로 나눔 → 시작점과 방향.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "결과가 반직선인 이유(투영이 깊이를 버림)와, 깊이를 정하는 추가 정보(평면 교차, 레이캐스트, 깊이 버퍼 중 하나 이상)를 설명했다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "뷰·투영 행렬의 곱과 역행렬을 클릭이나 유닛마다가 아니라 카메라가 바뀔 때(프레임당 한 번) 계산한다고 말했다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "지면 교차를 반직선을 따라 전진하는 반복이 아니라 평면 방정식의 닫힌 해(t = -origin.y / direction.y)로 구한다고 말했다.",
+            "points": 15,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "엔진·언어 규약",
+            "description": "Unity 의 ScreenPointToRay 가 월드 공간 반직선을 near 평면에서 시작해 반환하고, 스크린 좌표가 왼쪽 아래 원점의 픽셀 단위라는 점을 말했다.",
+            "points": 10,
+            "sourceId": "unity-camera-screenpointtoray"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "규약이 라이브러리마다 다르다는 점(스크린 y 원점, 깊이 범위, 뷰 공간 전방 축, 곱셈 순서 중 둘 이상)을 짚고 문서나 실행으로 확인해야 한다고 말했다.",
+            "points": 10,
+            "sourceId": "unity-camera-worldtocameramatrix"
+          },
+          {
+            "id": "c8",
+            "category": "아키텍처·가독성",
+            "description": "정방향 사슬을 먼저 설명하고 그것을 뒤집어 역방향을 설명하는 순서로 답이 구성되어 있다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "구현 검증 방법(월드 → 스크린 → 반직선 왕복 테스트)을 제시했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "깊이 정보 없이 클릭 한 점이 월드의 한 점으로 정해진다고 설명한다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "w 나눗셈 단계를 빠뜨리거나 클립 공간과 NDC 를 같은 것으로 설명한다.",
+            "penalty": -15,
+            "sourceId": "learnopengl-coordinate-systems"
+          },
+          {
+            "id": "d3",
+            "description": "역방향에서 투영의 역만 적용하고 뷰의 역을 빠뜨려, 뷰 공간의 반직선을 월드 반직선이라고 한다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 테스트가 없는 문제로, LearnOpenGL·Unity Camera API 문서·Vulkan 명세·Wikipedia 를 열어 대조하고 클리핑 범위와 직교 투영 서술에 출처를 붙였으며, 답변 속 실험 수치를 System.Numerics(.NET 8)로 다시 실행해 확인하고 재현할 수 없던 카메라 뒤 점의 수치를 구체적인 점으로 바꿨습니다."
+      },
+      "nextMission": "System.Numerics 로 `ScreenPointToRay(pixel, screenSize, view, projection)` 를 직접 작성해 보세요. Matrix4x4.CreateLookAt 과 CreatePerspectiveFieldOfView 로 카메라를 만들고, 임의의 월드 점을 픽셀로 투영한 뒤 그 픽셀의 반직선이 원래 점을 0.001 이내로 지나는지 왕복 테스트를 붙입니다. 그다음 같은 함수에 CreateOrthographic 투영을 넣어 반직선들이 평행하게 나오는지 확인합니다."
     }
   ]
 }
