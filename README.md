@@ -38,6 +38,9 @@ data/track2_cpp.json
 data/track3_algo.json
 data/track4_unity.json … track10_patterns.json
 tools/check-tests.js 숨은 테스트 검증 스크립트 (Node 18+)
+tools/validate-data.js 스키마·배점·출처 id 검사 (Node 18+)
+tools/build-docs.js  docs/SOURCES.md, docs/VERIFICATION.md 생성 (Node 18+)
+docs/                작성·검수 기준, 자료 목록, 검증 기록, 검수 요약
 manifest.json, sw.js, icons/
 ```
 
@@ -104,6 +107,17 @@ node tools/check-tests.js data/track3_algo.json
 새 출처는 `data/sources.json`에 추가하거나, 트랙 파일 최상위의 `extraSources` 배열에 `{id, title, url, summary}`로 선언합니다.
 
 새 트랙은 문제 파일을 `data/`에 두고 `data/tracks.json`에 한 줄 추가합니다. 문제 파일은 처음 열 때 자동으로 오프라인 캐시에 들어갑니다.
+
+## 문서
+
+문제를 어떻게 만들고 검증했는지는 [`docs/`](docs/README.md)에 있습니다.
+
+- [작성·검수 기준](docs/STANDARDS.md): 출처 우선순위, 문제 형식과 난이도, 채점표, "흔한 오해", 실행 채점 규칙, 검수 절차
+- [검증 자료 목록](docs/SOURCES.md): 공통 자료와 트랙별 추가 자료, 자료마다 인용한 문제 (자동 생성)
+- [문제별 검증 기록](docs/VERIFICATION.md): 요약 통계와 문제마다의 검증 수준·날짜·메모 (자동 생성)
+- [트랙별 검수 기록](docs/README.md#트랙별-검수-기록): 묶음마다 무엇을 확인하고 무엇을 고쳤는지
+
+자동 생성 문서는 데이터를 바꾼 뒤 `node tools/build-docs.js`로 다시 만듭니다.
 
 ## 데이터 보관
 
