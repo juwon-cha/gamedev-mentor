@@ -97,3 +97,22 @@
 **틀려서 고친 것.** WeakReference 캐시는 테스트 두 개에서 실제 GC가 엉뚱한 순간에 돌면 정답 풀이가 떨어질 수 있었다(GC를 강제로 함께 돌리자 15번 중 15번 실패). `GC.KeepAlive`를 넣어 해결했고, GC 시점에 관한 흔한 오해를 JIT 최적화 수준에 따라 달라진다고 더 정확히 썼다. 백엔드 면접은 매뉴얼의 "거의 같다(nearly identical)"를 "같다"로 쓴 곳을 고치고, `where T : struct`를 붙여도 여전히 느리다는 점을 바로잡고, IL2CPP에도 GC가 있다는 문장에 두 백엔드 모두 Boehm GC를 쓴다는 Unity 페이지를 근거로 달았다. 숨은 할당 디버깅은 보간 문자열 설명을 현재 Learn 페이지에 맞추고, Unity 주장에 Unity 매뉴얼 근거를 달고, 측정하지 못한 부분은 "측정하지 않음"이나 "추론"으로 표시했으며, 트랙 1의 다른 문제와 겹치던 흔한 오해를 메서드 그룹 델리게이트 할당에 관한 새 항목(측정함)으로 바꿨다.
 
 **끝까지 확인하지 못한 것.** Unity Mono/IL2CPP에서의 바이트 수(`IComparer`를 `Sort`에 넘길 때의 64 B, 메서드 진입 시 클로저 할당, 변환당 64 B)는 .NET 8에서만 쟀다. 숨은 할당 디버깅은 트랙 1의 기존 문제 세 개와 부분적으로 겹치지만, 커리큘럼이 요구한 주제이고 조합이 새로워 중복으로 보지 않았다.
+
+## 최종 점검 (2026-11-23)
+
+배포된 30문제 전체를 점검 에이전트 3개(10문제씩)가 차례로 다시 확인하고, 점검에 참여하지 않은 검증 에이전트 2개(15문제씩)가 그 변경을 다시 확인했다. 두 검증 모두 통과 판정을 냈다.
+
+**한 일.** 흔한 오해가 없던 20문제에 "### 흔한 오해" 절을 넣고(출처나 .NET 8 실행으로 뒷받침, 트랙 안에서 중복 없음), 모든 채점 항목·감점에 `sourceId`나 `basis`를 붙이고, `sourceRefs`가 4개를 넘던 문제(최대 8개)를 4개로 줄였다. 새 근거로 C# 명세(field-like 이벤트, 명시적 숫자 변환), Microsoft Learn(NumberStyles, SkipLocalsInit, ArgumentOutOfRangeException 등), dotnet/runtime release/8.0 소스(`Number.Formatting.cs`, `ComparerHelpers.cs`, `OrderedEnumerable.cs`, `TaskCache`, `PoolingAsyncValueTaskMethodBuilder` 등), Unity 6.1 GC 설정 페이지를 더했다. 모범 답안과 숨은 테스트는 바꾸지 않았다.
+
+**확인한 것.** Microsoft Learn·C# 명세·.NET 8 소스·.NET Blog(Toub의 ConfigureAwait FAQ 등)·Cleary의 MSDN 글·Unity 6.0/6.1 매뉴얼·Boehm GC·UniTask README·타이밍 휠 논문·Game Programming Patterns·CMU 17-214 슬라이드 등 약 140쪽을 다시 받아 대조했다. 본문의 바이트 수·컴파일 오류·동작은 로컬 .NET 8.0.8에서 모두 다시 쟀고, 판정 서버에서 잰 것으로 적힌 수치는 판정 서버(.NET 8.0.24)에서 다시 쟀다. 커밋 전 `check-tests.js`를 판정 서버에서 전부 다시 돌려 통과했다.
+
+**틀려서 고친 것.**
+- `t1-interview-loh-arraypool-pinning`: "`new byte[0]`은 24 B를 할당한다"가 재현되지 않았다(쓰지 않는 한 번의 할당은 판정 서버와 로컬 모두 0 B). 재현되는 측정(예열 뒤 보관한 배열 1,000개, 각 24 B)으로 바꿨다.
+- `t1-interview-dotnet-gc-vs-unity-boehm`: Boehm GC 페이지는 Boehm도 세대별일 수 있다고 하므로 과장된 문장을 고치고, "보수적이라 이동하지 않는다"를 추론으로 표시했다.
+- `t1-impl-hud-timer-char-buffer`: "0~299의 ToString()은 0 B"에 .NET 8 캐시가 처음 쓸 때 채워진다는 점을 넣고(`Number.Formatting.cs` 인용), "300 이상은 32 B"를 300~99,999로 좁혔다(100000은 40 B).
+- `t1-interview-async-await-fundamentals`: 호출당 "정확히 112 B"를 "평균 약 112 B"로 고쳤다(풀 캐시가 한두 호출을 처리). 대리자 면접: §12.22.6.3 예제는 "같은 익명 함수 세 개"가 아니라 람다 하나를 세 번 평가하는 것이다.
+- `t1-tutor-generic-constraints-iequatable`: `EqualityComparer.Default`가 박싱을 피하는 것이 IEquatable 타입뿐이라 했지만 .NET 8은 enum과 Nullable도 특별 처리한다(enum 배열 0 B 측정). 사용자 정의 구조체로 좁혔다.
+- UniTask 쿨다운: 값 없는 UniTask의 `SuppressCancellationThrow`는 `(bool, T)`가 아니라 `bool`을 돌려준다(UniTask.cs 확인). 값 형식과 참조 형식: "지역 변수는 스택에"를 "대개"로 고쳤다(캡처된 지역 변수는 힙).
+- 테스트가 확인하지 않는 것을 "테스트로 확인"이라 한 항목(구조체 열거자 c2, ArrayPool c3, 숨은 할당 d2)과 감점 내용과 모순되는 문서를 인용한 항목(ref 반환 d2)을 바로잡았다.
+
+**끝까지 확인하지 못한 것.** Unity Mono/IL2CPP에서의 할당 바이트 수와 동작은 실행하지 못했다(본문에 "측정하지 않음"으로 표시). UniTask 관련 부분은 스텁 컴파일로만 확인했다.
