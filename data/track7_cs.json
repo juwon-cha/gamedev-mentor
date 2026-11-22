@@ -955,6 +955,30 @@
       "title": "SQLite — Frequently Asked Questions (q19: INSERT is really slow)",
       "url": "https://www.sqlite.org/faq.html#q19",
       "summary": "기본적으로 INSERT 하나가 트랜잭션 하나이며, 여러 작업을 한 트랜잭션으로 묶으면 성능이 크게 좋아진다는 설명과 synchronous=OFF 의 위험"
+    },
+    {
+      "id": "ms-csharp-spec-postfix",
+      "title": "Microsoft Learn · C# 명세 §12.8.16 Postfix increment and decrement operators",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12816-postfix-increment-and-decrement-operators",
+      "summary": "피연산자가 인덱서 접근이면 get 접근자로 값을 읽고 연산한 결과를 set 접근자로 다시 쓴다는 런타임 처리 규칙."
+    },
+    {
+      "id": "ms-csharp-spec-compound-assignment",
+      "title": "Microsoft Learn · C# 명세 §12.24.5 Compound assignment",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#12245-compound-assignment",
+      "summary": "`x op= y` 는 x 를 한 번만 평가하는 `x = x op y` 로 처리되며, 왼쪽이 속성·인덱서 접근이면 get 과 set(또는 init) 접근자가 모두 있어야 한다는 규칙."
+    },
+    {
+      "id": "ms-cs1612",
+      "title": "Microsoft Learn · Compiler Error CS1612",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/cs1612",
+      "summary": "속성이나 인덱서가 돌려준 값 형식은 변수가 아니므로 그 필드를 직접 고칠 수 없고, 지역 변수로 복사해 고친 뒤 다시 대입하라는 설명."
+    },
+    {
+      "id": "unity-nativearray-indexer-api",
+      "title": "Unity 6 Scripting API · NativeArray<T>.this[]",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unity/collections/nativearray1/item",
+      "summary": "NativeArray<T> 의 인덱서 `public T this[int index] { get; set; }` 와, 구조체는 참조가 아니라 값으로 반환된다는 설명."
     }
   ],
   "problems": [
@@ -1780,7 +1804,7 @@
         {
           "question": "잡 A 와 잡 B 가 같은 `NativeArray<float>` 에 쓰도록 두 잡을 연달아 스케줄하면 어떤 일이 일어납니까? 왜 그렇게 설계되어 있고, 어떻게 고칩니까?",
           "intent": "잡 안전 시스템이 경쟁 상태를 \"실행 중 우연히\"가 아니라 스케줄 시점에 결정적으로 거부한다는 점과, 의존성·읽기 전용 표시·데이터 분리라는 해결 수단을 아는지 확인한다.",
-          "keyAnswer": "- **일어나는 일:** 안전 시스템이 **두 번째 잡을 스케줄하는 시점에** 예외를 던지고, 메시지에 이유와 해결 방법이 적혀 있다. 조용히 실행되다가 가끔 값이 틀리는 식이 아니다.\n- **왜:** 서로 독립적으로 스케줄된 두 잡이 같은 NativeArray 에 쓰면 어느 잡이 먼저 실행될지 예측할 수 없어 누가 누구의 데이터를 덮어쓸지 알 수 없다. 안전 시스템은 모든 NativeContainer 인스턴스에 내장되어 누가 읽고 쓰는지 추적하고, 여러 잡과 스레드에서 결정적으로 동작하도록 규칙을 강제한다.\n- **고치는 방법 1 — 의존성:** B 를 스케줄할 때 A 의 핸들을 의존성으로 넘긴다. A 가 쓰고 끝난 뒤 B 가 같은 컨테이너를 안전하게 읽고 쓴다(순차 실행이 된다).\n- **고치는 방법 2 — 읽기 전용 표시:** 한쪽이 읽기만 한다면 그 필드에 `[ReadOnly]` 를 붙인다. 안전 시스템은 같은 데이터를 여러 잡이 병렬로 읽는 것은 허용한다. 잡은 기본적으로 읽기·쓰기 권한을 모두 가지므로 표시하지 않으면 불필요하게 병렬성이 줄어든다.\n- **고치는 방법 3 — 데이터 분리:** 두 잡이 정말 동시에 써야 한다면 출력 배열을 잡마다 따로 두고 나중에 합친다.\n- **메인 스레드도 같은 규칙:** 쓰는 잡이 끝나기 전에 메인 스레드에서 그 컨테이너를 읽거나, 읽고 쓰는 잡이 남아 있는데 메인 스레드에서 쓰려고 하면 안전 시스템이 오류를 낸다.\n- **함께 알아 둘 것:** NativeContainer 는 ref return 을 구현하지 않으므로 `nativeArray[0]++` 식의 직접 수정은 값을 바꾸지 못한다. 지역 복사본을 고친 뒤 다시 대입한다."
+          "keyAnswer": "- **일어나는 일:** 안전 시스템이 **두 번째 잡을 스케줄하는 시점에** 예외를 던지고, 메시지에 이유와 해결 방법이 적혀 있다. 조용히 실행되다가 가끔 값이 틀리는 식이 아니다.\n- **왜:** 서로 독립적으로 스케줄된 두 잡이 같은 NativeArray 에 쓰면 어느 잡이 먼저 실행될지 예측할 수 없어 누가 누구의 데이터를 덮어쓸지 알 수 없다. 안전 시스템은 모든 NativeContainer 인스턴스에 내장되어 누가 읽고 쓰는지 추적하고, 여러 잡과 스레드에서 결정적으로 동작하도록 규칙을 강제한다.\n- **고치는 방법 1 — 의존성:** B 를 스케줄할 때 A 의 핸들을 의존성으로 넘긴다. A 가 쓰고 끝난 뒤 B 가 같은 컨테이너를 안전하게 읽고 쓴다(순차 실행이 된다).\n- **고치는 방법 2 — 읽기 전용 표시:** 한쪽이 읽기만 한다면 그 필드에 `[ReadOnly]` 를 붙인다. 안전 시스템은 같은 데이터를 여러 잡이 병렬로 읽는 것은 허용한다. 잡은 기본적으로 읽기·쓰기 권한을 모두 가지므로 표시하지 않으면 불필요하게 병렬성이 줄어든다.\n- **고치는 방법 3 — 데이터 분리:** 두 잡이 정말 동시에 써야 한다면 출력 배열을 잡마다 따로 두고 나중에 합친다.\n- **메인 스레드도 같은 규칙:** 쓰는 잡이 끝나기 전에 메인 스레드에서 그 컨테이너를 읽거나, 읽고 쓰는 잡이 남아 있는데 메인 스레드에서 쓰려고 하면 안전 시스템이 오류를 낸다.\n- **함께 알아 둘 것:** Unity 6 매뉴얼의 NativeContainer 페이지는 NativeContainer 가 ref return 을 구현하지 않아 `nativeArray[0]++` 가 배열의 값을 갱신하지 않는다고 쓰지만 [unity-native-container], C# 명세와 실행 결과는 이와 다르다. `NativeArray<T>` 의 인덱서 `this[int]` 에는 get 과 set 이 있고 [unity-nativearray-indexer-api], 인덱서에 대한 `++` · `+=` 는 get 으로 읽어 연산한 뒤 set 으로 다시 쓰므로 `NativeArray<int>` 의 원소는 실제로 바뀐다 [ms-csharp-spec-postfix][ms-csharp-spec-compound-assignment]. 안 되는 것은 구조체 원소의 필드를 제자리에서 고치는 `nativeArray[0].memberVariable = 0` 으로, 인덱서가 돌려준 값은 변수가 아니라서 CS1612 컴파일 오류가 난다 [ms-cs1612]. 이때는 지역 변수로 복사해 고친 뒤 다시 대입한다. 이 내용은 Unity 안에서가 아니라 C# 명세와, 같은 모양의 인덱서(get/set, ref return 없음)를 .NET 8 에서 실행해 확인했다."
         }
       ],
       "concept": "",
@@ -1902,7 +1926,7 @@
       "verified": {
         "level": "reviewed",
         "date": "2026-11-22",
-        "note": "Unity 6 매뉴얼(Awaitable 두 문서, 코루틴, Job system overview, NativeContainer, Create and run a job)과 Burst 1.8 매뉴얼, Microsoft Learn(volatile, Interlocked, lock, TAP) 원문을 열어 제약과 인용을 문장별로 대조하고 JobHandle 서술을 매뉴얼 표현(Complete 호출 후 접근)으로 고쳤습니다."
+        "note": "Unity 6 매뉴얼(Awaitable 두 문서, 코루틴, Job system overview, NativeContainer, Create and run a job)과 Burst 1.8 매뉴얼, Microsoft Learn(volatile, Interlocked, lock, TAP) 원문을 열어 제약과 인용을 문장별로 대조하고 JobHandle 서술을 매뉴얼 표현(Complete 호출 후 접근)으로 고쳤습니다. 수정 2026-11-22: C# 명세(Learn §12.8.16 후위 증감, §12.24.5 복합 대입)·CS1612 문서·Unity 6 NativeArray 인덱서 API 를 열어 대조하고 Compiler Explorer(.NET 8)에서 같은 모양의 get/set 인덱서로 `[0]++`·`+=` 가 값을 바꾸고 구조체 원소 필드 대입이 CS1612 로 실패함을 실행해 확인한 뒤, 세 번째 후속 질문의 \"`nativeArray[0]++` 는 값을 바꾸지 못한다\"는 문장을 매뉴얼 서술과 명세·실행 결과를 구분하는 문장으로 고쳤습니다."
       },
       "nextMission": "Unity 6 프로젝트에서 길 찾기 흉내(큰 배열에 대한 무거운 계산)를 세 가지로 구현해 프로파일러의 메인 스레드 시간을 비교해 보세요: (a) 코루틴 한 번에 전부, (b) `Awaitable.BackgroundThreadAsync` 로 계산 후 `MainThreadAsync` 로 복귀, (c) `IJob` + `NativeArray` + Burst. 그리고 (c) 에서 같은 NativeArray 에 쓰는 잡 두 개를 의존성 없이 스케줄해 안전 시스템의 오류 메시지를 직접 읽어 봅니다.",
       "tests": null
