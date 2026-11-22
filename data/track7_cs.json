@@ -655,6 +655,306 @@
       "title": "Microsoft Learn · String.EnumerateRunes Method",
       "url": "https://learn.microsoft.com/en-us/dotnet/api/system.string.enumeraterunes?view=net-8.0",
       "summary": "문자열의 Rune 을 열거하며, 잘못된 시퀀스는 Rune.ReplacementChar 로 나타난다."
+    },
+    {
+      "id": "win32-file-caching",
+      "title": "Microsoft Learn — File Caching (Win32)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/file-caching",
+      "summary": "Windows 는 기본적으로 읽기·쓰기를 시스템 파일 캐시로 처리하고 지연 쓰기로 디스크에 내보낸다는 설명. 파일 시스템 메타데이터는 항상 캐시되므로 메타데이터 변경을 디스크에 남기려면 flush 하거나 FILE_FLAG_WRITE_THROUGH 로 열어야 한다는 설명"
+    },
+    {
+      "id": "linux-ext4-auto-da-alloc",
+      "title": "Linux kernel docs — ext4 General Information (auto_da_alloc)",
+      "url": "https://docs.kernel.org/admin-guide/ext4.html",
+      "summary": "fsync 없이 임시 파일 + rename 으로 교체하는 프로그램과 '길이 0 파일' 문제, 이를 완화하는 auto_da_alloc 마운트 옵션"
+    },
+    {
+      "id": "ms-binaryprimitives",
+      "title": "Microsoft Learn — BinaryPrimitives 클래스 (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.buffers.binary.binaryprimitives?view=net-8.0",
+      "summary": "지정한 엔디언으로 정수를 바이트 스팬에 읽고 쓰는 도우미"
+    },
+    {
+      "id": "crc-reveng-crc32",
+      "title": "Greg Cook, Catalogue of parametrised CRC algorithms — CRC-32/ISO-HDLC",
+      "url": "https://reveng.sourceforge.io/crc-catalogue/17plus.htm#crc.cat.crc-32-iso-hdlc",
+      "summary": "CRC-32/ISO-HDLC(별칭 CRC-32, PKZIP 등. 구현 예로 libpng 를 듦)의 매개변수(poly 0x04C11DB7, 반사, init/xorout 0xFFFFFFFF)와 검사값 check=0xCBF43926"
+    },
+    {
+      "id": "crc-reveng-legend",
+      "title": "Greg Cook, CRC catalogue — Legend",
+      "url": "https://reveng.sourceforge.io/crc-catalogue/legend.htm",
+      "summary": "카탈로그의 check 값이 ASCII \"123456789\" 를 넣었을 때의 결과라는 정의"
+    },
+    {
+      "id": "wiki-crc",
+      "title": "Wikipedia — Cyclic redundancy check",
+      "url": "https://en.wikipedia.org/wiki/Cyclic_redundancy_check",
+      "summary": "CRC 의 버스트 오류 검출 능력과, CRC 가 의도적인 변조를 막는 데는 적합하지 않다는 설명"
+    },
+    {
+      "id": "rfc9923-fnv",
+      "title": "RFC 9923 — The FNV Non-Cryptographic Hash Algorithm (2026)",
+      "url": "https://www.rfc-editor.org/rfc/rfc9923.html",
+      "summary": "FNV-1/FNV-1a 의 정의와 매개변수, 시험 코드의 검사값(FNV32svalues 등), 공격을 계산상 불가능하게 해야 하는 용도에는 FNV 를 권하지 않는다(NOT RECOMMENDED, 1.2절)는 설명. 2026년 2월 발행, Informational"
+    },
+    {
+      "id": "fnv-isthe",
+      "title": "Landon Curt Noll — FNV Hash (저자 페이지)",
+      "url": "https://www.isthe.com/chongo/tech/comp/fnv/index.html",
+      "summary": "FNV-1 과 FNV-1a 의 의사코드, FNV_prime 과 offset_basis 값, 가능하면 FNV-1a 를 쓰라는 권고"
+    },
+    {
+      "id": "ms-crypto-overview",
+      "title": "Microsoft Learn — Overview of encryption, signatures, and hash algorithms in .NET",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/security/cryptographic-services",
+      "summary": "기밀성·무결성·인증·부인 방지라는 목표와 대칭·비대칭 암호, 서명, 해시, HMAC 의 역할"
+    },
+    {
+      "id": "ms-learn-string-gethashcode",
+      "title": "Microsoft Learn — String.GetHashCode (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.string.gethashcode?view=net-8.0",
+      "summary": "문자열 해시 코드는 구현·버전·플랫폼·실행마다 달라질 수 있으므로 저장하지 말라는 주의"
+    },
+    {
+      "id": "ms-convert-tobase64string",
+      "title": "Microsoft Learn — Convert.ToBase64String (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.convert.tobase64string?view=net-8.0",
+      "summary": "바이트 배열을 base-64 숫자로 된 문자열로 바꾸는 인코딩 API"
+    },
+    {
+      "id": "ms-gh-stl-fnv1a",
+      "title": "microsoft/STL — type_traits 의 FNV-1a 도우미 (커밋 고정)",
+      "url": "https://github.com/microsoft/STL/blob/0cabaf3c7e0a73fe3040aabce40cd8833e80392b/stl/inc/type_traits#L2406-L2423",
+      "summary": "MSVC STL 이 키의 바이트 표현 해시에 쓰는 _Fnv1a_append_bytes 와 32/64비트 FNV 상수(구현 사실)"
+    },
+    {
+      "id": "ms-async-keyword",
+      "title": "Microsoft Learn — async keyword (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/async",
+      "summary": "async 메서드는 첫 await 에 도달할 때까지 동기로 실행되고, await 가 없으면 끝까지 동기로 실행된다는 규칙"
+    },
+    {
+      "id": "ms-async-scenarios",
+      "title": "Microsoft Learn — Asynchronous programming scenarios",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/async-scenarios",
+      "summary": "I/O 작업은 await, CPU 작업은 Task.Run 으로 다른 스레드에 보내라는 지침(게임 피해 계산 예제)과 Wait/Result 대신 await 를 쓰라는 표"
+    },
+    {
+      "id": "ms-task-run",
+      "title": "Microsoft Learn — Task.Run (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.run?view=net-8.0",
+      "summary": "지정한 작업을 스레드 풀에 예약하고 그 작업을 나타내는 Task 를 돌려주는 메서드"
+    },
+    {
+      "id": "ms-task1-result",
+      "title": "Microsoft Learn — Task<TResult>.Result (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1.result?view=net-8.0",
+      "summary": "get 접근자는 작업이 끝날 때까지 호출 스레드를 막고, 끝난 뒤에는 저장된 값을 바로 돌려준다. 실패·취소면 AggregateException"
+    },
+    {
+      "id": "ms-task-iscompleted",
+      "title": "Microsoft Learn — Task.IsCompleted (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task.iscompleted?view=net-8.0",
+      "summary": "RanToCompletion·Faulted·Canceled 세 최종 상태에서 true 이며 호출 스레드를 막지 않는 속성"
+    },
+    {
+      "id": "ms-lambda-expressions",
+      "title": "Microsoft Learn — Lambda expressions (C# reference)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions",
+      "summary": "람다가 바깥 변수를 붙잡아 저장하고, 붙잡은 변수의 새 값을 관찰한다는 설명과 static 람다"
+    },
+    {
+      "id": "ms-learn-list-removeat",
+      "title": "Microsoft Learn — List<T>.RemoveAt(Int32) Method (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-8.0",
+      "summary": "뒤의 원소들이 한 칸씩 당겨지며 O(n), n = Count - index 라고 명시"
+    },
+    {
+      "id": "win32-scheduling-priorities",
+      "title": "Microsoft Learn — Scheduling Priorities (Win32)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/scheduling-priorities",
+      "summary": "우선순위 0~31, 가장 높은 우선순위의 준비된 스레드에 라운드 로빈으로 타임 슬라이스, 선점, 우선순위 클래스·수준 사용 지침"
+    },
+    {
+      "id": "win32-context-switches",
+      "title": "Microsoft Learn — Context Switches (Win32)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/context-switches",
+      "summary": "우선순위별 준비 큐와 컨텍스트 스위치 단계, 스위치가 일어나는 흔한 이유(퀀텀 만료, 높은 우선순위 준비, 대기)"
+    },
+    {
+      "id": "win32-sleep",
+      "title": "Microsoft Learn — Sleep function (synchapi.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep",
+      "summary": "시스템 클록 틱 단위 대기(1~2틱 사이로 늘어날 수 있음), Sleep(0) 의 의미, timeBeginPeriod 사용 주의, 깨어난 뒤 곧바로 실행된다는 보장 없음"
+    },
+    {
+      "id": "win32-timebeginperiod",
+      "title": "Microsoft Learn — timeBeginPeriod function (timeapi.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/timeapi/nf-timeapi-timebeginperiod",
+      "summary": "Windows 10 2004 부터 호출한 프로세스에만 적용, Windows 11 의 가려진 창 예외, 높은 해상도의 성능·전력 비용"
+    },
+    {
+      "id": "win32-createwaitabletimerex",
+      "title": "Microsoft Learn — CreateWaitableTimerExW function",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-createwaitabletimerexw",
+      "summary": "Windows 10 1803 이상에서 쓸 수 있는 CREATE_WAITABLE_TIMER_HIGH_RESOLUTION 고해상도 대기 타이머"
+    },
+    {
+      "id": "ms-gettickcount64",
+      "title": "Microsoft Learn — GetTickCount64 function (sysinfoapi.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount64",
+      "summary": "GetTickCount64 의 해상도는 시스템 타이머 해상도에 묶이며, 그 해상도는 보통 10~16ms 범위라는 설명"
+    },
+    {
+      "id": "ms-qpc-timestamps",
+      "title": "Microsoft Learn — Acquiring high-resolution time stamps",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/sysinfo/acquiring-high-resolution-time-stamps",
+      "summary": "짧은 간격 측정에는 QPC 가 가장 좋고, 관리 코드의 Stopwatch 가 QPC 를 쓴다는 설명. 틱 기반 API 의 10~16ms 해상도"
+    },
+    {
+      "id": "linux-sched-man",
+      "title": "Linux man-pages 6.19 — sched(7)",
+      "url": "https://man7.org/linux/man-pages/man7/sched.7.html",
+      "summary": "SCHED_OTHER 와 nice 값(-20~+19, 차이 1 당 약 1.25배), SCHED_FIFO/SCHED_RR 실시간 정책의 선점 규칙"
+    },
+    {
+      "id": "linux-nanosleep-man",
+      "title": "Linux man-pages 6.19 — nanosleep(2)",
+      "url": "https://man7.org/linux/man-pages/man2/nanosleep.2.html",
+      "summary": "최소 지정 시간 이상 대기, 클록 단위로 올림, 깬 뒤의 지연, 재시작 시 표류와 절대 시각 clock_nanosleep"
+    },
+    {
+      "id": "linux-time-man",
+      "title": "Linux man-pages 6.19 — time(7)",
+      "url": "https://man7.org/linux/man-pages/man7/time.7.html",
+      "summary": "jiffy 와 HZ, 고해상도 타이머(마이크로초 정확도가 일반적), 깨우기를 늦출 수 있는 timer slack"
+    },
+    {
+      "id": "unity-targetframerate",
+      "title": "Unity 6 (6000.0) Scripting API — Application.targetFrameRate",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/application/targetframerate",
+      "summary": "플랫폼별 동작: 데스크톱은 vSyncCount != 0 이면 무시, 미세 떨림 경고, Android·iOS 의 30fps 기본 동작과 주사율 약수로의 내림, XR 은 무시"
+    },
+    {
+      "id": "unity-vsynccount",
+      "title": "Unity 6 (6000.0) Scripting API — QualitySettings.vSyncCount",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/qualitysettings/vsynccount",
+      "summary": "0~4, 기본값 1. 데스크톱의 실효 프레임 레이트 = 주사율 ÷ vSyncCount, 모바일에서는 항상 무시, 주사율이 실행 중 바뀔 수 있다는 주의"
+    },
+    {
+      "id": "ms-thread-priority",
+      "title": "Microsoft Learn — Thread.Priority (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.thread.priority?view=net-8.0",
+      "summary": "ThreadPriority 다섯 단계와, 운영 체제가 스레드 우선순위를 따를 의무가 없다는 설명"
+    },
+    {
+      "id": "wiki-token-bucket",
+      "title": "Wikipedia — Token bucket",
+      "url": "https://en.wikipedia.org/wiki/Token_bucket",
+      "summary": "1/r 초마다 토큰 추가, 최대 b 개, 가득 찼을 때 온 토큰은 버림, n 개보다 적으면 꺼내지 않고 거부. 평균 속도와 버스트 크기"
+    },
+    {
+      "id": "ms-tokenbucket-options",
+      "title": "Microsoft Learn — TokenBucketRateLimiterOptions (System.Threading.RateLimiting)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.ratelimiting.tokenbucketratelimiteroptions",
+      "summary": "TokenLimit(버킷 최대 토큰 수), TokensPerPeriod, ReplenishmentPeriod, AutoReplenishment / TryReplenish 의 의미"
+    },
+    {
+      "id": "ms-gh-runtime-tokenbucket-net8",
+      "title": "dotnet/runtime (release/8.0) — TokenBucketRateLimiter.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Threading.RateLimiting/src/System/Threading/RateLimiting/TokenBucketRateLimiter.cs",
+      "summary": ".NET 8 구현: 토큰 수를 double 로 보관하고 가득 찬 상태로 시작하며, 요청량이 TokenLimit 보다 크면 ArgumentOutOfRangeException"
+    },
+    {
+      "id": "ms-gh-runtime-tokenbucket-options-net8",
+      "title": "dotnet/runtime (release/8.0) — TokenBucketRateLimiterOptions.cs",
+      "url": "https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Threading.RateLimiting/src/System/Threading/RateLimiting/TokenBucketRateLimiterOptions.cs",
+      "summary": "AutoReplenishment 의 기본값이 true 라는 .NET 8 소스 주석과 초기값"
+    },
+    {
+      "id": "ms-timeprovider",
+      "title": "Microsoft Learn — TimeProvider (.NET 8)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.timeprovider?view=net-8.0",
+      "summary": "시간 추상화 클래스: GetTimestamp, TimestampFrequency, GetElapsedTime, 테스트용 FakeTimeProvider"
+    },
+    {
+      "id": "ms-stj-overview",
+      "title": "Microsoft Learn — Serialize and deserialize JSON using C# (System.Text.Json overview)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview",
+      "summary": "성능과 적은 할당을 우선한 설계, .NET Core 3.0 이후 공유 프레임워크 포함, 리플렉션 대신 소스 생성"
+    },
+    {
+      "id": "ms-stj-unmapped-members",
+      "title": "Microsoft Learn — Handle unmapped members during deserialization",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/missing-members",
+      "summary": "대상 형식에 없는 JSON 속성은 기본으로 무시되며, .NET 8 부터 JsonUnmappedMemberHandling.Disallow 로 JsonException 을 던지게 할 수 있음"
+    },
+    {
+      "id": "ms-stj-required",
+      "title": "Microsoft Learn — Require properties for deserialization",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/required-properties",
+      "summary": "required 한정자 / [JsonRequired] 로 표시한 속성이 JSON 에 없으면 JsonException"
+    },
+    {
+      "id": "ms-stj-handle-overflow",
+      "title": "Microsoft Learn — How to handle overflow JSON (JsonExtensionData)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/handle-overflow",
+      "summary": "매핑되지 않은 속성을 [JsonExtensionData] 사전에 담고 직렬화 때 되돌려 써서 왕복해도 데이터를 잃지 않게 하는 방법"
+    },
+    {
+      "id": "ms-binaryformatter-security",
+      "title": "Microsoft Learn — Deserialization risks in use of BinaryFormatter and related types",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide",
+      "summary": "BinaryFormatter 는 위험하고 안전하게 만들 수 없음. 게임 세이브 공유·클라우드 저장소 오염·고객 지원에 보낸 악성 파일 사례, .NET 9 부터 사용 시 예외, 대안 직렬화기"
+    },
+    {
+      "id": "ms-binaryformatter-net8-disabled",
+      "title": "Microsoft Learn — .NET 8 breaking change: BinaryFormatter disabled for most projects",
+      "url": "https://learn.microsoft.com/en-us/dotnet/core/compatibility/serialization/8.0/binaryformatter-disabled",
+      "summary": ".NET 8 부터 BinaryFormatter.Serialize/Deserialize 가 Windows Forms·WPF 를 뺀 모든 프로젝트 형식에서 실행 시 NotSupportedException 을 던지고(호환 스위치로 다시 켤 수 있음), 오류 수준 obsolete 가 유지된다는 호환성 변경 공지"
+    },
+    {
+      "id": "ms-data-sqlite",
+      "title": "Microsoft Learn — Microsoft.Data.Sqlite overview",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/",
+      "summary": "SQLite 용 경량 ADO.NET 공급자(NuGet 패키지), 연결·명령·데이터 리더 사용 예"
+    },
+    {
+      "id": "sqlite-appfileformat",
+      "title": "SQLite — SQLite As An Application File Format",
+      "url": "https://www.sqlite.org/appfileformat.html",
+      "summary": "응용 프로그램 파일 형식으로서의 장점: 단일 파일, SQL 조회, 원자적 트랜잭션, 바뀐 페이지만 쓰는 부분 갱신, 테이블·열 추가로 확장"
+    },
+    {
+      "id": "sqlite-whentouse",
+      "title": "SQLite — Appropriate Uses For SQLite",
+      "url": "https://www.sqlite.org/whentouse.html",
+      "summary": "SQLite 는 클라이언트/서버 DB 가 아니라 fopen() 과 경쟁하는 로컬 데이터 저장소라는 설명과 잘 맞는 상황"
+    },
+    {
+      "id": "sqlite-user-version",
+      "title": "SQLite — PRAGMA user_version",
+      "url": "https://www.sqlite.org/pragma.html#pragma_user_version",
+      "summary": "데이터베이스 헤더 오프셋 60 의 정수로, SQLite 는 쓰지 않고 응용 프로그램이 스키마 버전 등에 자유롭게 쓰는 값"
+    },
+    {
+      "id": "sqlite-altertable",
+      "title": "SQLite — ALTER TABLE",
+      "url": "https://www.sqlite.org/lang_altertable.html",
+      "summary": "지원하는 변경(테이블·열 이름 변경, 열 추가·삭제, 3.53.0 부터 열의 NOT NULL 제약 설정·해제), ADD COLUMN 의 제약(NOT NULL 이면 NULL 이 아닌 기본값), 그 밖의 변경을 위한 테이블 재생성 절차"
+    },
+    {
+      "id": "sqlite-foreignkeys",
+      "title": "SQLite — Foreign Key Support",
+      "url": "https://www.sqlite.org/foreignkeys.html",
+      "summary": "외래 키 제약은 하위 호환 때문에 기본으로 꺼져 있고 연결마다 PRAGMA foreign_keys = ON 으로 켜야 함"
+    },
+    {
+      "id": "sqlite-faq",
+      "title": "SQLite — Frequently Asked Questions (q19: INSERT is really slow)",
+      "url": "https://www.sqlite.org/faq.html#q19",
+      "summary": "기본적으로 INSERT 하나가 트랜잭션 하나이며, 여러 작업을 한 트랜잭션으로 묶으면 성능이 크게 좋아진다는 설명과 synchronous=OFF 의 위험"
     }
   ],
   "problems": [
@@ -3560,6 +3860,969 @@
         "note": "FileStream.Flush 두 오버로드·FlushFileBuffers·File.Move/Replace·MoveFileEx·ReplaceFile·FileOptions 문서 원문, POSIX fsync·rename·XBD 4.11 원문, Linux fsync(2), SQLite 원자적 커밋, GDK XGameSaveSubmitUpdate 를 대조하고 .NET 8 의 FileStream·FileSystem·pal_io 소스를 읽어 구현 세부로만 서술했으며, Windows 교체를 원자적이라 한 문장이 없음을 확인했다."
       },
       "nextMission": "이 절차를 테스트할 수 있게 만들어 보세요. `IFileSystem`(WriteAll, FlushToDisk, Replace, Read, Delete, Exists)을 정의하고, 메모리 안에서 동작하면서 **지정한 단계 직후에 '전원 차단'을 흉내 내는** 가짜 구현을 씁니다(flush 되지 않은 쓰기는 버리고, 교체는 이전 또는 새 상태 중 하나로 남김). 그 위에 `SaveService.Save / Load` 를 구현하고, 모든 크래시 지점 × (이전 세이브 있음 / 없음) 조합에서 `Load` 가 항상 검증을 통과한 이전 세이브나 새 세이브를 돌려주는지 반복 테스트로 확인합니다."
+    },
+    {
+      "id": "t7-impl-atomic-save-writer",
+      "track": "track7",
+      "mode": "implementation",
+      "difficulty": "Hard",
+      "title": "원자적 세이브 저장기: 임시 파일 → 영속 → 검증 → 교체, 어느 단계에서 전원이 나가도 살아남는 로드",
+      "tags": [
+        "CS_AtomicSave",
+        "CS_CrashConsistency",
+        "CS_Checksum"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "posix-rename",
+        "ms-filestream-flush",
+        "ms-file-move",
+        "crc-reveng-crc32"
+      ],
+      "scenario": "PC·모바일로 출시할 RPG 의 저장 모듈을 새로 만듭니다. 이전 빌드는 `File.WriteAllBytes(\"save.dat\", ...)` 로 세이브를 그 자리에서 덮어쓰다가, 저장 중 배터리가 나간 사용자의 세이브를 반쪽으로 만들었습니다. 이번에는 저장 절차를 `IFileSystem` 뒤에 두고, 메모리 안에서 **원하는 단계에서 전원을 끊어 보는** 가짜 파일 시스템으로 모든 크래시 지점을 테스트합니다.\n\n**파일 시스템 모델** (채점기의 가짜 구현이 이렇게 동작합니다)\n- `WriteAll` 은 파일을 만들거나 내용을 통째로 바꾸지만, 그 내용은 `FlushToDisk` 전까지 OS 캐시에만 있습니다. 실행 중에는 `ReadAll` 이 캐시의 내용을 보여 줍니다.\n- 전원이 나가면 캐시에만 있던 내용은 **사라지거나, 앞 절반만 남거나, 전부 남습니다**(어느 쪽일지 모릅니다). 한 번도 flush 되지 않은 새 파일은 빈 파일로 남을 수 있습니다.\n- `Move(src, dst)` 는 POSIX `rename` 처럼 dst 를 교체하며, 그동안에도 dst 는 이전 파일이나 새 파일 중 하나를 가리킵니다.\n- 이름 작업(`WriteAll` 의 새 파일 생성, `Move`, `Delete`)은 호출이 끝나는 즉시 영속된다고 **단순화**합니다. 실제 파일 시스템에서는 그렇지 않습니다(예: Linux 에서 이름 변경까지 저장 장치에 남기려면 디렉터리에 대한 fsync 가 따로 필요합니다).\n- 프로세스는 어느 변경 작업에서든 죽을 수 있습니다. `WriteAll` 도중이면 앞 절반만 쓰인 채로 죽습니다.\n\n**파일 형식** (12바이트 헤더 + 본문)\n\n| 오프셋 | 크기 | 내용 |\n|---|---|---|\n| 0 | 4 | 매직 `GSV1` (ASCII) |\n| 4 | 4 | 본문 길이, int32 리틀 엔디언 |\n| 8 | 4 | 본문의 CRC-32, uint32 리틀 엔디언 (주어진 `Crc32.Compute`) |\n| 12 | n | 본문 |\n\n**할 일:** `SaveStore` 의 네 메서드를 완성하세요.\n1. `Encode` / `TryDecode`: 위 형식으로 만들고, 매직·길이·체크섬이 모두 맞을 때만 받아들입니다. 어떤 입력(null, 잘린 파일 포함)에도 예외를 던지지 않습니다.\n2. `Save(payload)`: `save.tmp` 에 쓰고 → 저장 장치까지 기록하고 → 다시 읽어 검증한 뒤 → `save.dat` 와 교체합니다. 검증에 실패하면 `save.dat`, `save.bak` 를 건드리지 않고 `false` 를 반환합니다. 교체 전의 **정상** `save.dat` 는 `save.bak` 로 남깁니다.\n3. `Load()`: `save.dat` → `save.bak` 순서로 검증을 통과한 첫 파일을 돌려주고(`Source` 로 어느 쪽인지 표시), 둘 다 없거나 손상됐으면 `SaveSource.None` 을 돌려줍니다. 세이브 파일을 고치거나 지우지 않습니다.\n\n**보장해야 할 것:** `Save` 의 어느 단계에서 프로세스가 죽고 전원이 나가든, 다음 실행의 `Load` 는 **저장 전에 `Load` 가 돌려줬을 세이브** 아니면 **새 세이브**만 돌려줍니다. 그리고 `Save` 가 `true` 를 반환한 뒤에 전원이 나가면 반드시 새 세이브가 로드됩니다.",
+      "constraints": [
+        "모든 파일 작업은 IFileSystem 으로만 한다. System.IO.File / FileStream 을 직접 쓰지 않는다.",
+        "Save 는 새 세이브와 기존 세이브의 크기에 비례하는 시간(O(n + m))에 끝나고, FlushToDisk 를 작은 쓰기마다 부르지 않는다(세이브를 메모리에서 완성해 한 번에 쓴다).",
+        "Load 는 save.dat / save.bak 를 쓰거나 옮기거나 지우지 않는다(남은 save.tmp 를 지우는 것은 허용).",
+        "IFileSystem, Crc32, SaveSource, LoadResult, 파일 형식, SaveStore 의 공개 상수와 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Buffers.Binary;\nusing System.IO;\n\n// 저장 장치 추상화. 게임에서는 File/FileStream 으로 구현하고, 테스트에서는 전원 차단을 흉내 내는 메모리 구현을 쓴다.\n// 이 문제의 모델: 이름 작업(새 파일 생성, Move, Delete)은 호출이 끝나면 바로 영속된다고 가정한다.\n// 파일 내용은 FlushToDisk 를 부르기 전까지 OS 캐시에만 있을 수 있다.\npublic interface IFileSystem\n{\n    bool Exists(string path);\n    // 실행 중인 프로세스가 보는 현재 내용(OS 캐시 포함)의 복사본. 없으면 FileNotFoundException.\n    byte[] ReadAll(string path);\n    // 파일을 만들거나 내용을 통째로 바꾼다. 반환되어도 내용은 아직 저장 장치에 없을 수 있다.\n    void WriteAll(string path, byte[] data);\n    // FileStream.Flush(true) / fsync 에 해당: 이 파일의 지금 내용을 저장 장치에 기록한 뒤 반환한다.\n    void FlushToDisk(string path);\n    // POSIX rename 처럼 동작: dst 가 있으면 교체하며, 그동안에도 dst 는 이전 파일이나 새 파일 중 하나를 가리킨다.\n    void Move(string src, string dst);\n    // 없으면 아무 일도 하지 않는다.\n    void Delete(string path);\n}\n\n// CRC-32 (CRC-32/ISO-HDLC: zlib·PNG 와 같은 매개변수). 반사 다항식 0xEDB88320, 초기값·최종 XOR 0xFFFFFFFF.\n// 검사값: ASCII \"123456789\" -> 0xCBF43926. 이 문제에서는 주어진 그대로 쓴다.\npublic static class Crc32\n{\n    public static uint Compute(ReadOnlySpan<byte> data)\n    {\n        uint crc = 0xFFFFFFFFu;\n        foreach (byte b in data)\n        {\n            crc ^= b;\n            for (int k = 0; k < 8; k++)\n                crc = (crc & 1) != 0 ? (crc >> 1) ^ 0xEDB88320u : crc >> 1;\n        }\n        return ~crc;\n    }\n}\n\npublic enum SaveSource { None, Main, Backup }\n\npublic readonly struct LoadResult\n{\n    public LoadResult(SaveSource source, byte[] payload) { Source = source; Payload = payload; }\n    public SaveSource Source { get; }\n    public byte[] Payload { get; }   // Source == None 이면 null\n}\n\npublic sealed class SaveStore\n{\n    public const string MainPath = \"save.dat\";\n    public const string TempPath = \"save.tmp\";\n    public const string BackupPath = \"save.bak\";\n    public const int HeaderSize = 12;   // 매직 4 + 본문 길이 4 + 본문 CRC-32 4\n\n    private static ReadOnlySpan<byte> Magic => \"GSV1\"u8;\n\n    private readonly IFileSystem _fs;\n\n    public SaveStore(IFileSystem fs)\n    {\n        _fs = fs ?? throw new ArgumentNullException(nameof(fs));\n    }\n\n    // [0..4) \"GSV1\"  [4..8) 본문 길이(int32 LE)  [8..12) 본문 CRC-32(uint32 LE)  [12..) 본문\n    public static byte[] Encode(ReadOnlySpan<byte> payload)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 매직, 길이, 체크섬이 모두 맞을 때만 true 와 본문 복사본을 돌려준다. 어떤 입력에도 예외를 던지지 않는다.\n    public static bool TryDecode(byte[] file, out byte[] payload)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 새 세이브를 커밋하면 true. 임시 파일 검증에 실패하면 save.dat / save.bak 를 건드리지 않고 false.\n    public bool Save(byte[] payload)\n    {\n        throw new NotImplementedException();\n    }\n\n    // save.dat, save.bak 를 수정하지 않고, 검증을 통과한 세이브를 찾아 돌려준다.\n    public LoadResult Load()\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "처음 저장(save.dat 없음) 도중의 크래시: 이전 세이브가 '없음'이므로 None 또는 새 세이브만 허용된다.",
+        "Save 가 true 를 반환한 직후의 전원 차단(캐시 내용 유실): 교체 전에 flush 하지 않았다면 save.dat 가 빈 파일로 남는다.",
+        "save.dat 가 이미 손상되어 있고 save.bak 만 정상인 상태에서의 저장: 손상된 save.dat 를 save.bak 로 돌리는 순간 유일한 정상본이 사라진다.",
+        "임시 파일이 손상된 채 기록된 경우(다시 읽은 내용이 원본과 다름): 교체하지 않고 false, 기존 세이브는 그대로.",
+        "중단된 저장이 남긴 save.tmp(반쪽이거나 온전한)가 있는 상태에서의 Load 와 다음 Save."
+      ],
+      "hints": [
+        "반례 두 개부터 따라가 보세요. (1) save.dat = v0 인데 `WriteAll(\"save.dat\", v1)` 도중 프로세스가 죽어 앞 절반만 남으면, 다음 실행의 Load 는 무엇을 돌려줄 수 있나요? (2) `WriteAll(\"save.tmp\", v1)` → `Move(\"save.tmp\", \"save.dat\")` 만 하고 true 를 반환했는데, 그 직후 전원이 나가 캐시에만 있던 내용이 사라지면 save.dat 의 내용은 무엇인가요?",
+        "Save 를 '쓰기 → 영속 → 검증 → 백업 → 커밋' 다섯 단계로 나누고, 각 단계 사이에서 전원이 나갔을 때 세 파일(dat, bak, tmp)이 어떤 상태인지 표로 적어 보세요. 사용자에게 보이는 세이브가 바뀌는 순간(커밋)은 Move 한 번이어야 하고, 그 전까지 '지금의 정상본'이 디스크 어딘가에 온전히 남아 있어야 합니다. 백업으로 돌리는 save.dat 가 정말 정상인지도 확인하세요.",
+        "뼈대입니다. 빈칸과 검사 조건은 직접 채우세요.\n```\nSave(payload):\n    file = Encode(payload)\n    fs.WriteAll(Temp, file)\n    ____                                   // 교체 전에 내용이 저장 장치에 있어야 한다\n    if (다시 읽은 Temp 가 ____ ): Delete(Temp); return false\n    if (____): fs.Move(Main, Backup)       // 어떤 save.dat 만 백업이 될 자격이 있나?\n    fs.Move(Temp, Main)                    // 커밋 지점\n    return true\n\nLoad():\n    for path in [Main, Backup]:\n        if Exists(path) and TryDecode(ReadAll(path)) 성공: return (어느 쪽, 본문)\n    return None\n\nTryDecode(file):\n    길이 < 12 / 매직 불일치 / 길이 필드 != ____ / 저장된 CRC != ____  →  false\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Buffers.Binary;\nusing System.IO;\n\n// 저장 장치 추상화. 게임에서는 File/FileStream 으로 구현하고, 테스트에서는 전원 차단을 흉내 내는 메모리 구현을 쓴다.\n// 이 문제의 모델: 이름 작업(새 파일 생성, Move, Delete)은 호출이 끝나면 바로 영속된다고 가정한다.\n// 파일 내용은 FlushToDisk 를 부르기 전까지 OS 캐시에만 있을 수 있다.\npublic interface IFileSystem\n{\n    bool Exists(string path);\n    // 실행 중인 프로세스가 보는 현재 내용(OS 캐시 포함)의 복사본. 없으면 FileNotFoundException.\n    byte[] ReadAll(string path);\n    // 파일을 만들거나 내용을 통째로 바꾼다. 반환되어도 내용은 아직 저장 장치에 없을 수 있다.\n    void WriteAll(string path, byte[] data);\n    // FileStream.Flush(true) / fsync 에 해당: 이 파일의 지금 내용을 저장 장치에 기록한 뒤 반환한다.\n    void FlushToDisk(string path);\n    // POSIX rename 처럼 동작: dst 가 있으면 교체하며, 그동안에도 dst 는 이전 파일이나 새 파일 중 하나를 가리킨다.\n    void Move(string src, string dst);\n    // 없으면 아무 일도 하지 않는다.\n    void Delete(string path);\n}\n\n// CRC-32 (CRC-32/ISO-HDLC: zlib·PNG 와 같은 매개변수). 반사 다항식 0xEDB88320, 초기값·최종 XOR 0xFFFFFFFF.\n// 검사값: ASCII \"123456789\" -> 0xCBF43926. 이 문제에서는 주어진 그대로 쓴다.\npublic static class Crc32\n{\n    public static uint Compute(ReadOnlySpan<byte> data)\n    {\n        uint crc = 0xFFFFFFFFu;\n        foreach (byte b in data)\n        {\n            crc ^= b;\n            for (int k = 0; k < 8; k++)\n                crc = (crc & 1) != 0 ? (crc >> 1) ^ 0xEDB88320u : crc >> 1;\n        }\n        return ~crc;\n    }\n}\n\npublic enum SaveSource { None, Main, Backup }\n\npublic readonly struct LoadResult\n{\n    public LoadResult(SaveSource source, byte[] payload) { Source = source; Payload = payload; }\n    public SaveSource Source { get; }\n    public byte[] Payload { get; }   // Source == None 이면 null\n}\n\npublic sealed class SaveStore\n{\n    public const string MainPath = \"save.dat\";\n    public const string TempPath = \"save.tmp\";\n    public const string BackupPath = \"save.bak\";\n    public const int HeaderSize = 12;   // 매직 4 + 본문 길이 4 + 본문 CRC-32 4\n\n    private static ReadOnlySpan<byte> Magic => \"GSV1\"u8;\n\n    private readonly IFileSystem _fs;\n\n    public SaveStore(IFileSystem fs)\n    {\n        _fs = fs ?? throw new ArgumentNullException(nameof(fs));\n    }\n\n    // [0..4) \"GSV1\"  [4..8) 본문 길이(int32 LE)  [8..12) 본문 CRC-32(uint32 LE)  [12..) 본문\n    public static byte[] Encode(ReadOnlySpan<byte> payload)\n    {\n        var file = new byte[HeaderSize + payload.Length];\n        Magic.CopyTo(file);\n        BinaryPrimitives.WriteInt32LittleEndian(file.AsSpan(4), payload.Length);\n        BinaryPrimitives.WriteUInt32LittleEndian(file.AsSpan(8), Crc32.Compute(payload));\n        payload.CopyTo(file.AsSpan(HeaderSize));\n        return file;\n    }\n\n    // 매직, 길이, 체크섬이 모두 맞을 때만 true 와 본문 복사본을 돌려준다. 어떤 입력에도 예외를 던지지 않는다.\n    public static bool TryDecode(byte[] file, out byte[] payload)\n    {\n        payload = null;\n        if (file == null || file.Length < HeaderSize) return false;\n        ReadOnlySpan<byte> span = file;\n        if (!span.Slice(0, 4).SequenceEqual(Magic)) return false;\n        int length = BinaryPrimitives.ReadInt32LittleEndian(span.Slice(4, 4));\n        if (length != file.Length - HeaderSize) return false;            // 잘림, 덧붙음, 길이 필드 손상\n        ReadOnlySpan<byte> body = span.Slice(HeaderSize);\n        if (BinaryPrimitives.ReadUInt32LittleEndian(span.Slice(8, 4)) != Crc32.Compute(body)) return false;\n        payload = body.ToArray();\n        return true;\n    }\n\n    // 새 세이브를 커밋하면 true. 임시 파일 검증에 실패하면 save.dat / save.bak 를 건드리지 않고 false.\n    public bool Save(byte[] payload)\n    {\n        if (payload == null) throw new ArgumentNullException(nameof(payload));\n        byte[] file = Encode(payload);\n\n        // 1) 같은 디렉터리의 임시 파일에 전부 쓰고, 저장 장치까지 기록한다.\n        _fs.WriteAll(TempPath, file);\n        _fs.FlushToDisk(TempPath);\n\n        // 2) 다시 읽어 검증한다. 틀리면 정상본은 그대로 두고 실패를 알린다.\n        if (!TryDecode(_fs.ReadAll(TempPath), out byte[] check) || !check.AsSpan().SequenceEqual(payload))\n        {\n            _fs.Delete(TempPath);\n            return false;\n        }\n\n        // 3) 지금의 정상본만 백업으로 돌린다. 손상된 save.dat 로 멀쩡한 save.bak 를 덮어쓰지 않는다.\n        if (TryRead(MainPath, out _)) _fs.Move(MainPath, BackupPath);\n\n        // 4) 커밋 지점: rename 한 번으로 새 세이브가 save.dat 가 된다.\n        _fs.Move(TempPath, MainPath);\n        return true;\n    }\n\n    // 읽기만 한다: save.dat -> save.bak 순서로 검증을 통과한 첫 파일을 돌려준다.\n    // save.tmp 는 중단된 저장의 흔적이므로 쓰지 않는다(다음 Save 가 덮어쓴다).\n    public LoadResult Load()\n    {\n        if (TryRead(MainPath, out byte[] payload)) return new LoadResult(SaveSource.Main, payload);\n        if (TryRead(BackupPath, out payload)) return new LoadResult(SaveSource.Backup, payload);\n        return new LoadResult(SaveSource.None, null);\n    }\n\n    private bool TryRead(string path, out byte[] payload)\n    {\n        payload = null;\n        return _fs.Exists(path) && TryDecode(_fs.ReadAll(path), out payload);\n    }\n}\n",
+      "explanation": "**핵심 아이디어.** 사용자에게 보이는 세이브(`save.dat`)가 바뀌는 순간을 `Move` 한 번으로 만들고, 그 전까지는 온전한 정상본이 디스크 어딘가에 늘 남게 합니다. POSIX 는 `rename` 이 기존 대상을 교체하는 동안에도 대상 이름이 이전 파일이나 새 파일 중 하나를 가리킨다고 규정하고, 근거 설명(Rationale)에서 이 동작이 원자적이어야 한다고 말합니다 [posix-rename]. 가짜 파일 시스템의 `Move` 가 이 규정을 본뜬 것입니다. 다만 이 규정은 실행 중에 다른 스레드가 보는 상태에 대한 것이고, POSIX 의 파일 시스템 캐시 절은 크래시 뒤에는 rename 도 일부만 반영된 것처럼 보일 수 있다고 적습니다 [posix-xbd-file-system-cache]. 이 문제의 모델은 이름 작업을 즉시 영속으로 단순화했을 뿐이고, 실제 시스템에서는 rename 자체를 저장 장치에 남기는 일도 따로 챙겨야 합니다(아래 \"실제 파일 시스템으로 옮길 때\"). 그래도 남는 틈은 로드 때의 검증과 백업이 메웁니다.\n\n**크래시 지점별 상태 (모범 답안, 시작 상태 dat = v1, bak = v0).**\n\n| 크래시 지점 | dat | bak | tmp | Load |\n|---|---|---|---|---|\n| tmp 쓰기·flush 도중 | v1 | v0 | 불완전 | v1 |\n| 검증 뒤, 백업 Move 전 | v1 | v0 | v2 | v1 |\n| 백업 Move 뒤, 커밋 Move 전 | 없음 | v1 | v2 | v1 (bak) |\n| 커밋 Move 뒤 | v2 | v1 | 없음 | v2 |\n\n**flush 가 교체보다 먼저인 이유.** rename 의 보장은 이름에 대한 것입니다. flush 없이 교체하면 이름은 새 파일을 가리키는데 그 내용은 아직 캐시에만 있어서, 전원 차단 뒤 빈 파일이 남을 수 있습니다(`committed-save-survives-power-loss` 가 이 경우를 재현합니다). 실제 코드에서는 Microsoft Learn 이 디스크 기록을 보장하고 싶을 때 쓰라고 지목하는 `FileStream.Flush(true)` 가 이 자리입니다 [ms-filestream-flush].\n\n**검증 단계.** 다시 읽은 내용을 디코드해 원본과 비교하고, 틀리면 커밋하지 않습니다. 정상본은 그대로 남고 호출자는 `false` 를 보고 재시도나 경고를 정합니다. 다만 이 읽기는 OS 캐시에서 올 가능성이 높아 매체 검증은 아닙니다(아래 흔한 오해). 마지막 방어선은 로드 때의 체크섬과 백업입니다.\n\n**백업 회전의 함정.** `Exists(save.dat)` 만 보고 백업으로 옮기면, save.dat 가 이미 손상된 상태에서 유일한 정상본인 save.bak 가 덮어써집니다. 그 직후 크래시면 둘 다 잃습니다(`corrupt-main-keeps-backup`). 그래서 검증을 통과한 save.dat 만 돌립니다.\n\n**Load 는 읽기 전용.** 로드 중에 bak 를 dat 위로 '복구'해 쓰면 그 쓰기가 새로운 크래시 지점이 되고, 손상 분석에 쓸 원본도 사라집니다. 복구는 다음 Save 가 자연스럽게 합니다. 커밋되지 않은 save.tmp 는 쓰지 않습니다.\n\n**형식 검증.** 길이 필드는 잘림과 덧붙음을, CRC-32 는 본문 바이트 변경을 잡습니다. 생성 다항식에 +1 항이 있는 차수 r 의 CRC(CRC-32 포함)는 연속한 r 비트 안에 갇힌 오류 패턴을 모두 검출합니다 [wiki-crc]. 주어진 `Crc32` 는 CRC-32/ISO-HDLC 매개변수이고, \"123456789\" 에 대한 검사값(check)은 0xCBF43926 입니다 [crc-reveng-crc32] [crc-reveng-legend]. 체크섬은 우발적 손상을 잡는 도구이지 조작을 막지 못합니다 [wiki-crc].\n\n**복잡도.** Save 는 O(n + m) 입니다(n = 새 세이브, m = 기존 save.dat). 인코드·쓰기·검증 읽기가 각각 한 번이고, 백업 자격을 확인하려고 기존 save.dat 를 한 번 읽습니다. flush 는 한 번, 백업은 Move 라 복사 비용이 없습니다. 복사식 백업도 정답이지만 쓰기와 flush 가 한 번씩 더 듭니다. 비트 단위 CRC 는 바이트당 8회 반복하므로, 수 MB 세이브라면 256항목 표 방식이 낫습니다.\n\n**실제 파일 시스템으로 옮길 때.** .NET 8 의 Unix 구현은 `File.Move(…, overwrite: true)` 를 `rename()` 으로 처리하고, 다른 장치 사이면 복사 후 삭제로 바꿉니다 [ms-gh-runtime-filesystem-unix-net8]. 문서도 볼륨 간 이동은 복사 후 삭제와 같다고 하므로 임시 파일은 같은 디렉터리에 둡니다 [ms-file-move]. `File.Move(…, overwrite: true)`·`File.Replace` 문서는 교체가 원자적이라거나 크래시 뒤에 무엇이 남는지를 약속하지 않으므로(File.Move 문서가 원자성에 대해 적는 것은 복사 후 삭제 방식이 원자적이지 않다는 점뿐입니다) Windows 에서도 백업과 로드 검증을 함께 둡니다 [ms-file-move] [ms-file-replace]. 이름 변경을 저장 장치에 남기는 일도 따로입니다. Linux 의 fsync(2) 문서는 파일에 대한 fsync 가 디렉터리 항목까지 디스크에 닿게 한다고 보장하지 않으므로 디렉터리에 대한 fsync 가 따로 필요하다고 적고 [linux-fsync-man], Windows 문서는 파일 시스템 메타데이터가 항상 캐시되므로 메타데이터 변경을 디스크에 남기려면 파일을 flush 하거나 `FILE_FLAG_WRITE_THROUGH` 로 열어야 한다고 적습니다 [win32-file-caching].\n\n### 흔한 오해\n- **\"임시 파일에 쓰고 rename 하는 패턴이면 fsync(`Flush(true)`)를 빼도, 최악의 경우 이전 세이브가 남는다.\"** — POSIX 의 파일 시스템 캐시 절은 캐시가 저장 장치로 다 옮겨지기 전에 시스템이 죽으면 나중 연산의 효과는 남고 앞선 연산의 효과는 빠질 수 있다고 적습니다 [posix-xbd-file-system-cache]. 즉 rename 은 기록됐는데 그 앞의 write 는 빠진 상태, 이름은 새 파일인데 내용은 비어 있는 상태가 가능합니다. Linux 커널의 ext4 문서는 fsync 없이 이 패턴을 쓰는 프로그램을 \"broken\" 이라 부르고, 이때 생기는 '길이 0 파일' 문제를 기본으로 켜진 `auto_da_alloc` 휴리스틱으로 완화한다고 설명합니다. ext4 마운트 옵션에 기댄 완화일 뿐 보장이 아닙니다 [linux-ext4-auto-da-alloc]. 이 문제의 테스트에서도 flush 를 뺀 변형은 커밋 직후 전원 차단에서 빈 세이브를 남겼습니다(.NET 8 에서 실행해 확인).\n- **\"저장 직후 다시 읽어 체크섬이 맞으면 디스크에 제대로 기록된 것이다.\"** — Windows 는 기본적으로 파일 데이터를 캐시해, 읽기가 물리 디스크가 아니라 시스템 파일 캐시에서 이뤄진다고 문서에 적혀 있습니다 [win32-file-caching]. 방금 쓴 데이터를 다시 읽으면 캐시를 볼 가능성이 높으므로, 이 검증은 '쓰기 경로에서 바이트가 틀어지지 않았다'는 확인이지 매체에 무사히 기록됐다는 증명이 아닙니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "모든 시작 상태 x 모든 크래시 지점 x 전원 차단 방식에서 Load 가 '저장 전에 Load 가 돌려줬을 세이브' 또는 새 세이브만 돌려준다(crash-at-every-step 통과).",
+            "points": 10,
+            "sourceId": "posix-rename"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "임시 파일을 FlushToDisk 한 뒤에 Move 로 교체한다: Save 가 true 를 반환한 직후 캐시 내용이 사라져도 새 세이브가 로드된다.",
+            "points": 9,
+            "sourceId": "ms-filestream-flush"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "검증을 통과한 save.dat 만 save.bak 로 돌린다: 손상된 save.dat 로 멀쩡한 save.bak 를 덮어쓰지 않는다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "TryDecode 가 매직, 길이 필드와 실제 길이의 일치, CRC-32 를 모두 확인하고, 1바이트 변경·잘림·덧붙음·null 에 예외 없이 false 를 돌려준다.",
+            "points": 8,
+            "sourceId": "crc-reveng-crc32"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "FlushToDisk 를 커밋되는 세이브마다 필요한 횟수만 부른다(임시 파일 한 번, 복사식 백업을 택했다면 그 파일 한 번 더). 작은 쓰기마다 부르지 않는다.",
+            "points": 10,
+            "sourceId": "win32-flushfilebuffers"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Save 가 O(n + m)(새 세이브 n, 기존 세이브 m) 이다: 인코드·쓰기·검증 읽기가 각각 한 번이고, 백업은 Move(이름 바꾸기)로 처리하거나 복사의 추가 비용을 설명했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "Load 가 정상 save.dat 가 있으면 save.bak 를 읽지 않고, 파일을 최대 두 개만 읽는다. 큰 세이브에서는 표 방식 CRC 로 바꿀 수 있음을 안다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "모든 파일 작업을 IFileSystem 으로만 하고 File / FileStream 을 직접 부르지 않는다. 실제 구현에서 FlushToDisk 는 FileStream.Flush(true), Move 는 같은 볼륨 안의 File.Move(src, dst, overwrite: true) 에 대응한다는 점과 볼륨 간 이동은 복사 후 삭제라는 점을 안다.",
+            "points": 10,
+            "sourceId": "ms-file-move"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "헤더의 정수를 BinaryPrimitives 의 리틀 엔디언 메서드로 명시적으로 읽고 쓰며, 헤더 검사를 Span 슬라이스로 해서 범위 밖 접근 예외가 나지 않는다.",
+            "points": 10,
+            "sourceId": "ms-binaryprimitives"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "Save 의 단계(쓰기 → 영속 → 검증 → 백업 → 커밋)가 코드와 주석에서 구분되고, 사용자에게 보이는 세이브가 바뀌는 커밋 지점이 Move 한 번이다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "Load 가 읽기 전용이고, 커밋되지 않은 save.tmp 를 정상본으로 쓰지 않는다(또는 검증 후에만 쓴다는 근거를 밝혔다).",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "save.dat 를 그 자리에서 덮어쓰거나, 새 세이브를 쓰기 전에 save.dat 를 지운다: 커밋이 Move 한 번이 아니게 되어, 온전한 백업 사본이 없으면 그 사이의 크래시에 정상본이 사라진다.",
+            "penalty": -25,
+            "sourceId": "ms-file-move"
+          },
+          {
+            "id": "d2",
+            "description": "FlushToDisk 없이 Move 로 교체하고 true 를 반환한다: 커밋 직후 전원 차단에 빈 세이브가 남는다.",
+            "penalty": -20,
+            "sourceId": "linux-ext4-auto-da-alloc"
+          },
+          {
+            "id": "d3",
+            "description": "검증되지 않은(손상된) 내용으로 save.dat 나 save.bak 를 덮어쓴다(Load 안의 '복구' 쓰기 포함).",
+            "penalty": -15,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    sealed class Crash : System.Exception { }\n    sealed class Node { public byte[] Durable = new byte[0]; public byte[] Cached; }\n\n    // 메모리 파일 시스템. 이름 작업은 즉시 영속, 내용은 FlushToDisk 전까지 캐시에만 있다.\n    // CrashAt 번째 변경 작업에서 프로세스가 죽는다(WriteAll 이면 앞 절반만 쓰인 채). 그 뒤 모든 호출은 Crash.\n    sealed class MemFs : IFileSystem\n    {\n        public System.Collections.Generic.Dictionary<string, Node> Dir = new System.Collections.Generic.Dictionary<string, Node>();\n        public int Ops, CrashAt = -1; public bool Dead; public string CorruptNextWriteOf;\n        public System.Collections.Generic.List<string> Log = new System.Collections.Generic.List<string>();\n        void Alive() { if (Dead) throw new Crash(); }\n        bool Step(string what) { Alive(); Ops++; Log.Add(what); if (Ops != CrashAt) return false; Dead = true; return true; }\n        Node Get(string p) { if (!Dir.TryGetValue(p, out var n)) throw new System.IO.FileNotFoundException(p); return n; }\n        public bool Exists(string p) { Alive(); return Dir.ContainsKey(p); }\n        public byte[] ReadAll(string p) { Alive(); var n = Get(p); return (byte[])(n.Cached ?? n.Durable).Clone(); }\n        public void WriteAll(string p, byte[] data)\n        {\n            var copy = (byte[])data.Clone();\n            if (p == CorruptNextWriteOf && copy.Length > 0) { CorruptNextWriteOf = null; copy[copy.Length / 2] ^= 0x5A; }\n            bool crash = Step(\"W \" + p);\n            if (!Dir.TryGetValue(p, out var n)) Dir[p] = n = new Node();\n            n.Cached = crash ? Half(copy) : copy;\n            if (crash) throw new Crash();\n        }\n        public void FlushToDisk(string p) { if (Step(\"F \" + p)) throw new Crash(); var n = Get(p); if (n.Cached != null) { n.Durable = n.Cached; n.Cached = null; } }\n        public void Move(string s, string d) { if (Step(\"M \" + s + \">\" + d)) throw new Crash(); var n = Get(s); Dir.Remove(s); Dir[d] = n; }\n        public void Delete(string p) { if (Step(\"D \" + p)) throw new Crash(); Dir.Remove(p); }\n        // 전원 차단: 캐시에만 있던 내용은 mode 0 = 사라짐, 1 = 앞 절반만 남음, 2 = 전부 남음.\n        public void PowerLoss(int mode)\n        {\n            foreach (var n in Dir.Values)\n                if (n.Cached != null) { n.Durable = mode == 0 ? n.Durable : mode == 1 ? Half(n.Cached) : n.Cached; n.Cached = null; }\n            Dead = false; CrashAt = -1;\n        }\n        public void Put(string p, byte[] durable) { Dir[p] = new Node { Durable = (byte[])durable.Clone() }; }\n    }\n\n    static byte[] Half(byte[] a) { var h = new byte[a.Length / 2]; System.Array.Copy(a, h, h.Length); return h; }\n\n    static uint RefCrc(byte[] d, int off)\n    {\n        uint c = 0xFFFFFFFFu;\n        for (int i = off; i < d.Length; i++) { c ^= d[i]; for (int k = 0; k < 8; k++) c = (c & 1) != 0 ? (c >> 1) ^ 0xEDB88320u : c >> 1; }\n        return ~c;\n    }\n\n    static byte[] RefEncode(byte[] p)\n    {\n        var f = new byte[12 + p.Length];\n        f[0] = (byte)'G'; f[1] = (byte)'S'; f[2] = (byte)'V'; f[3] = (byte)'1';\n        System.Buffers.Binary.BinaryPrimitives.WriteInt32LittleEndian(new System.Span<byte>(f, 4, 4), p.Length);\n        System.Array.Copy(p, 0, f, 12, p.Length);\n        System.Buffers.Binary.BinaryPrimitives.WriteUInt32LittleEndian(new System.Span<byte>(f, 8, 4), RefCrc(f, 12));\n        return f;\n    }\n\n    static byte[] V(int tag, int len) { var a = new byte[len]; for (int i = 0; i < len; i++) a[i] = (byte)(tag * 31 + i * 7); return a; }\n    static bool Same(byte[] a, byte[] b) => a != null && b != null && System.MemoryExtensions.SequenceEqual<byte>(a, b);\n    static string Name(LoadResult r, byte[][] known)\n    {\n        if (r.Source == SaveSource.None) return r.Payload == null ? \"없음\" : \"None 인데 Payload 가 null 이 아님\";\n        for (int i = 0; i < known.Length; i++) if (Same(r.Payload, known[i])) return \"v\" + i + \"(\" + r.Source + \")\";\n        return \"알 수 없는 내용(\" + r.Source + \")\";\n    }\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name + \" \" + e.Message; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static readonly byte[][] Ver = { V(0, 40), V(1, 57), V(2, 33), V(3, 70) };\n\n    // 시작 상태들: (설명, 파일 구성). 저장 전의 \"이전 세이브\" 는 Load 로 판정한다.\n    static MemFs Scenario(int s)\n    {\n        var fs = new MemFs();\n        if (s == 1) fs.Put(\"save.dat\", RefEncode(Ver[0]));\n        if (s == 2) { fs.Put(\"save.dat\", RefEncode(Ver[1])); fs.Put(\"save.bak\", RefEncode(Ver[0])); }\n        if (s == 3) { var bad = RefEncode(Ver[1]); bad[20] ^= 0x10; fs.Put(\"save.dat\", bad); fs.Put(\"save.bak\", RefEncode(Ver[0])); }\n        if (s == 4) { fs.Put(\"save.bak\", RefEncode(Ver[0])); fs.Put(\"save.tmp\", Half(RefEncode(Ver[3]))); }\n        if (s == 5) { fs.Put(\"save.dat\", RefEncode(Ver[1])); fs.Put(\"save.tmp\", RefEncode(Ver[3])); }\n        return fs;\n    }\n    static readonly string[] ScenarioName = { \"빈 디스크\", \"save.dat=v0\", \"dat=v1, bak=v0\", \"손상된 dat, bak=v0\", \"dat 없음, bak=v0, 반쪽 tmp\", \"dat=v1, 남은 tmp=v3\" };\n    static readonly string[] ModeName = { \"캐시 내용 유실\", \"캐시 내용 절반만 기록\", \"캐시 내용 전부 기록\" };\n\n    // 모든 시작 상태 x 모든 크래시 지점 x 전원 차단 방식에서 Load 가 \"이전\" 또는 \"새\" 세이브만 돌려주는지 검사한다.\n    static string CrashMatrix(int[] scenarios)\n    {\n        foreach (int s in scenarios)\n        {\n            var probe = Scenario(s);\n            new SaveStore(probe).Load();\n            int before = probe.Ops;\n            if (!new SaveStore(probe).Save(Ver[2])) return ScenarioName[s] + \": 정상 Save 가 false 를 반환\";\n            int ops = probe.Ops - before;\n            for (int k = 1; k <= ops + 1; k++)\n                for (int mode = 0; mode < 3; mode++)\n                {\n                    var fs = Scenario(s);\n                    LoadResult old = new SaveStore(fs).Load();\n                    fs.CrashAt = fs.Ops + k;\n                    bool committed = false;\n                    try { committed = new SaveStore(fs).Save(Ver[2]); } catch (Crash) { }\n                    bool crashed = fs.Dead;\n                    string where = ScenarioName[s] + \", \" + (crashed ? \"Save 의 \" + k + \"번째 변경 작업(\" + fs.Log[fs.Log.Count - 1] + \")에서 크래시\" : \"Save 완료 후 전원 차단\") + \", \" + ModeName[mode];\n                    fs.PowerLoss(mode);\n                    LoadResult now = new SaveStore(fs).Load();\n                    if (!crashed && !committed) return where + \": 정상 Save 가 false 를 반환\";\n                    bool isNew = now.Source != SaveSource.None && Same(now.Payload, Ver[2]);\n                    bool isOld = now.Source == SaveSource.None ? old.Source == SaveSource.None : old.Source != SaveSource.None && Same(now.Payload, old.Payload);\n                    if (!crashed && !isNew) return where + \": 커밋된 새 세이브(v2) 대신 \" + Name(now, Ver) + \" 이 로드됨\";\n                    if (!isNew && !isOld) return where + \": 이전(\" + Name(old, Ver) + \") 도 새 세이브(v2) 도 아닌 \" + Name(now, Ver) + \" 이 로드됨\";\n                    if (!new SaveStore(fs).Save(Ver[3])) return where + \": 복구 뒤 다음 Save 가 false\";\n                    var again = new SaveStore(fs).Load();\n                    if (!Same(again.Payload, Ver[3])) return where + \": 복구 뒤 다음 Save(v3) 후 Load 결과가 \" + Name(again, Ver);\n                }\n        }\n        return null;\n    }\n\n    public static void Main()\n    {\n        Run(\"format-roundtrip\", () =>\n        {\n            foreach (int len in new[] { 0, 1, 40, 1000 })\n            {\n                var p = V(5, len);\n                byte[] f = SaveStore.Encode(p);\n                if (!Same(f, RefEncode(p))) return \"본문 \" + len + \"바이트: Encode 결과가 명세(매직 GSV1, 길이 LE, CRC-32 LE, 본문)와 다름\";\n                if (!SaveStore.TryDecode(f, out var back) || !Same(back, p)) return \"본문 \" + len + \"바이트: Encode 한 파일을 TryDecode 가 되살리지 못함\";\n            }\n            return null;\n        });\n\n        Run(\"decode-rejects-corruption\", () =>\n        {\n            byte[] good = RefEncode(V(7, 30));\n            for (int i = 0; i < good.Length; i++)\n                foreach (byte mask in new byte[] { 0x01, 0x80, 0xFF })\n                {\n                    var bad = (byte[])good.Clone(); bad[i] ^= mask;\n                    if (SaveStore.TryDecode(bad, out _)) return i + \"번째 바이트를 XOR 0x\" + mask.ToString(\"X2\") + \" 한 파일을 받아들임\";\n                }\n            for (int len = 0; len < good.Length; len++)\n                if (SaveStore.TryDecode(Half2(good, len), out _)) return len + \"바이트로 잘린 파일을 받아들임\";\n            var longer = new byte[good.Length + 1]; System.Array.Copy(good, longer, good.Length);\n            if (SaveStore.TryDecode(longer, out _)) return \"끝에 1바이트가 덧붙은 파일을 받아들임\";\n            if (SaveStore.TryDecode(null, out var p0) || p0 != null) return \"null 입력에 true 를 반환하거나 payload 가 null 이 아님\";\n            return null;\n        });\n\n        Run(\"save-load-basic\", () =>\n        {\n            var fs = new MemFs();\n            var store = new SaveStore(fs);\n            if (store.Load().Source != SaveSource.None) return \"빈 디스크에서 Load 의 Source 가 None 이 아님\";\n            if (!store.Save(Ver[0])) return \"Save(v0) 가 false\";\n            var r = new SaveStore(fs).Load();\n            if (r.Source != SaveSource.Main || !Same(r.Payload, Ver[0])) return \"Save(v0) 뒤 Load 가 \" + Name(r, Ver);\n            if (!store.Save(Ver[1])) return \"Save(v1) 가 false\";\n            r = new SaveStore(fs).Load();\n            if (r.Source != SaveSource.Main || !Same(r.Payload, Ver[1])) return \"Save(v1) 뒤 Load 가 \" + Name(r, Ver);\n            if (fs.Exists(\"save.tmp\")) return \"커밋 뒤 save.tmp 가 남아 있음\";\n            var cur = fs.ReadAll(\"save.dat\"); cur[13] ^= 0x04; fs.Put(\"save.dat\", cur);\n            r = new SaveStore(fs).Load();\n            if (r.Source != SaveSource.Backup || !Same(r.Payload, Ver[0])) return \"save.dat 이 손상된 뒤 Load 가 백업 v0 이 아니라 \" + Name(r, Ver);\n            return null;\n        });\n\n        Run(\"committed-save-survives-power-loss\", () =>\n        {\n            var fs = new MemFs();\n            for (int i = 0; i < 3; i++)\n            {\n                if (!new SaveStore(fs).Save(Ver[i])) return \"Save(v\" + i + \") 가 false\";\n                fs.PowerLoss(0);\n                var r = new SaveStore(fs).Load();\n                if (!Same(r.Payload, Ver[i])) return \"Save(v\" + i + \") 가 true 를 반환한 직후 전원이 나가자(캐시 유실) Load 가 \" + Name(r, Ver) + \" (rename 전에 FlushToDisk 필요)\";\n            }\n            return null;\n        });\n\n        Run(\"crash-at-every-step\", () => CrashMatrix(new[] { 0, 1, 2, 4, 5 }));\n\n        Run(\"corrupt-main-keeps-backup\", () => CrashMatrix(new[] { 3 }));\n\n        Run(\"verify-before-swap\", () =>\n        {\n            var fs = Scenario(2);\n            fs.CorruptNextWriteOf = \"save.tmp\";\n            if (new SaveStore(fs).Save(Ver[2])) return \"임시 파일에 손상된 내용이 기록됐는데 Save 가 true 를 반환(다시 읽어 검증하지 않음)\";\n            var r = new SaveStore(fs).Load();\n            if (r.Source != SaveSource.Main || !Same(r.Payload, Ver[1])) return \"검증 실패 뒤 Load 가 기존 save.dat(v1) 이 아니라 \" + Name(r, Ver);\n            if (!fs.Exists(\"save.bak\") || !SaveStore.TryDecode(fs.ReadAll(\"save.bak\"), out var b) || !Same(b, Ver[0])) return \"검증 실패한 Save 가 save.bak(v0) 을 바꿈\";\n            if (!new SaveStore(fs).Save(Ver[3]) || !Same(new SaveStore(fs).Load().Payload, Ver[3])) return \"검증 실패 뒤 정상 Save(v3) 가 커밋되지 않음\";\n            return null;\n        });\n\n        Run(\"load-is-read-only\", () =>\n        {\n            var fs = Scenario(3);\n            byte[] dat = fs.ReadAll(\"save.dat\"), bak = fs.ReadAll(\"save.bak\");\n            int before = fs.Log.Count;\n            var r = new SaveStore(fs).Load();\n            if (r.Source != SaveSource.Backup || !Same(r.Payload, Ver[0])) return \"손상된 save.dat + 정상 save.bak 에서 Load 가 \" + Name(r, Ver);\n            for (int i = before; i < fs.Log.Count; i++)\n                if (fs.Log[i].Contains(\"save.dat\") || fs.Log[i].Contains(\"save.bak\")) return \"Load 가 세이브 파일을 변경함: \" + fs.Log[i];\n            if (!fs.Exists(\"save.dat\") || !Same(fs.ReadAll(\"save.dat\"), dat) || !Same(fs.ReadAll(\"save.bak\"), bak)) return \"Load 뒤 save.dat / save.bak 내용이 바뀜\";\n            return null;\n        });\n    }\n\n    static byte[] Half2(byte[] a, int len) { var h = new byte[len]; System.Array.Copy(a, h, len); return h; }\n}\n",
+        "cases": [
+          "format-roundtrip",
+          "decode-rejects-corruption",
+          "save-load-basic",
+          "committed-save-survives-power-loss",
+          "crash-at-every-step",
+          "corrupt-main-keeps-backup",
+          "verify-before-swap",
+          "load-is-read-only"
+        ],
+        "note": "채점기가 IFileSystem 을 메모리로 구현하고, Save 의 각 변경 작업에서 프로세스를 죽인 뒤 세 가지 전원 차단 방식(캐시 내용 유실 / 절반만 기록 / 전부 기록)을 적용해 다음 실행의 Load 를 검사합니다. 검사 항목: 파일 형식(명세와 바이트 단위로 같은지), 1바이트 변경·잘림·덧붙음·null 거부, 기본 저장·로드와 백업, Save 가 true 를 반환한 직후 전원 차단, 6가지 시작 상태 x 모든 크래시 지점에서 '이전 또는 새 세이브'만 로드되는지와 복구 뒤 다음 저장, 손상된 save.dat 가 있을 때 백업 보존, 임시 파일이 손상되어 기록될 때 false 와 기존 세이브 유지, Load 가 save.dat / save.bak 를 바꾸지 않는지. IFileSystem 의 멤버, Crc32.Compute, SaveSource, LoadResult, SaveStore 의 상수(MainPath, TempPath, BackupPath, HeaderSize)와 Encode / TryDecode / Save / Load 시그니처, 파일 형식은 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "모범 답안·스타터를 채점기에서 실행했고, flush 생략·검증 없는 백업 회전·flush 를 교체 뒤로 미룬 변형·제자리 덮어쓰기·로드 중 복구 쓰기·길이 검사 누락 오답이 모두 걸리고 복사식 백업 정답은 통과함을 .NET 8 에서 확인했으며, POSIX rename·XBD 4.11, File.Move/Replace, fsync(2), ext4, Win32 파일 캐시 문서로 설명을 대조하고 rename 영속에 관한 서술을 바로잡았다."
+      },
+      "nextMission": "가짜 파일 시스템에 \"새 파일 생성과 Move 는 `FlushDirectory()` 를 불러야 영속된다\"는 규칙을 추가하세요(Linux fsync(2) 문서가 요구하는 디렉터리 fsync 를 흉내 낸 것). 그리고 PowerLoss 때 flush 되지 않은 이름 변경을 되돌리게 한 뒤 크래시 행렬을 다시 돌려, `Save` 의 어느 지점에 `FlushDirectory` 가 필요한지 찾아보세요. 그다음 `FileStream.Flush(true)` 와 `File.Move(src, dst, overwrite: true)` 로 실제 `DiskFileSystem : IFileSystem` 을 작성합니다."
+    },
+    {
+      "id": "t7-tutor-hash-encode-encrypt-fnv1a",
+      "track": "track7",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "해싱·인코딩·암호화 구분하기: 세이브 무결성 체크섬과 FNV-1a 직접 구현",
+      "tags": [
+        "CS_Hashing",
+        "CS_Checksum",
+        "CS_Encoding"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "rfc9923-fnv",
+        "ms-crypto-overview",
+        "wiki-crc",
+        "ms-learn-string-gethashcode"
+      ],
+      "scenario": "클라우드 세이브를 지원하는 모바일 퍼즐 게임입니다. 패치마다 내려받는 에셋 번들의 **매니페스트**(파일 이름 → 지문)와 **세이브 파일의 손상 검사**에 쓸 해시가 필요해졌는데, 회의에서 이런 말들이 오갔습니다.\n\n- \"세이브를 Base64 로 바꿔 저장하면 암호화되니까 유저가 골드를 못 고쳐요.\"\n- \"손상 검사는 `saveText.GetHashCode()` 를 헤더에 넣어 두고 로드할 때 비교하면 되죠.\"\n- \"어차피 해시니까 SHA-256 을 같이 저장하면 손상도 잡고 조작도 막아요.\"\n\n세 문장에는 모두 함정이 있습니다. 이번 문제에서는 **인코딩, 해시(체크섬), MAC, 암호화**가 각각 무엇을 위한 도구인지 정리하고, 에셋 매니페스트와 손상 검사에 쓸 빠른 비암호 해시 **FNV-1a (32비트)** 를 직접 구현합니다.\n\n**해야 할 일**\n1. 아래 개념 카드를 읽습니다.\n2. `Fnv1a` 의 세 메서드를 구현합니다. `Append` 는 이어서 해시하기(큰 파일을 청크로 읽을 때), `Hash32` 는 바이트 열 전체, `Hash32Utf8` 은 문자열을 UTF-8 바이트로 바꿔 해시합니다.\n3. 퀴즈 2문제에 답합니다.\n\n이 문제에는 실행 채점이 없습니다. 구현한 뒤 아래 값을 직접 출력해 확인하세요. 앞의 네 줄은 RFC 9923 의 FNV-1a 32비트 검사값이고, 나머지는 .NET 8 에서 모범 답안으로 계산하고 Node.js 로 따로 계산해 맞춰 본 값입니다.\n\n| 호출 | 기대 결과 |\n|---|---|\n| `Hash32(ASCII \"\")` | `0x811C9DC5` (offset basis 그대로) |\n| `Hash32(ASCII \"a\")` | `0xE40C292C` |\n| `Hash32(ASCII \"foobar\")` | `0xBF9CF968` |\n| `Hash32({ 48 65 6C 6C 6F 21 01 FF ED })` (\"Hello!\" + 01 FF ED) | `0xFD9D3881` |\n| `Append(Hash32(ASCII \"foo\"), ASCII \"bar\")` | `0xBF9CF968` (\"foobar\" 와 같음) |\n| `Hash32Utf8(\"검\")` (UTF-8: EA B2 80) | `0x19D57FE7` |\n| `Hash32Utf8(\"Lv99전사\")` | `0x0DCBD6BB` |\n| `Hash32Utf8(null)` | `ArgumentNullException` |",
+      "constraints": [
+        "Append / Hash32 는 O(n) 이고 힙 할당이 없다(ReadOnlySpan<byte> 를 한 번 훑는다).",
+        "System.IO.Hashing 등 외부 해시 구현이나 string.GetHashCode / HashCode 를 쓰지 않는다: XOR 과 곱셈만으로 구현한다.",
+        "상수 값(OffsetBasis32, Prime32)과 메서드 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Text;\n\n// FNV-1a 32비트 (RFC 9923). 빠른 비암호 해시: 해시 테이블 키, 에셋 지문, 우발적 손상 감지용.\npublic static class Fnv1a\n{\n    public const uint OffsetBasis32 = 2166136261u;   // 0x811C9DC5\n    public const uint Prime32 = 16777619u;           // 0x01000193 = 2^24 + 2^8 + 0x93\n\n    // 지금까지의 해시 hash 에 data 를 이어서 섞는다.\n    // Append(Hash32(a), b) 는 Hash32(a 와 b 를 이어 붙인 바이트) 와 같아야 한다.\n    public static uint Append(uint hash, ReadOnlySpan<byte> data)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 바이트 열 전체의 해시. 빈 입력이면 offset basis 그대로다.\n    public static uint Hash32(ReadOnlySpan<byte> data)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 문자열은 UTF-8 바이트로 바꿔서 해시한다. null 이면 ArgumentNullException.\n    public static uint Hash32Utf8(string text)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "빈 입력: 해시는 offset basis(0x811C9DC5) 그대로여야 한다.",
+        "0x7F 보다 큰 바이트(0xFF, 0xED 등)가 섞인 입력: byte 는 부호가 없으므로 그대로 XOR 한다.",
+        "나눠서 해시하기: Append(Hash32(\"foo\"), \"bar\") 와 Hash32(\"foobar\") 가 같아야 한다.",
+        "비ASCII 문자열(\"검\", 이모지): char(UTF-16) 값이 아니라 UTF-8 바이트를 섞어야 다른 플랫폼의 FNV-1a 와 같은 값이 나온다."
+      ],
+      "hints": [
+        "RFC 9923 의 검사값 \"a\" → 0xE40C292C 부터 맞춰 보세요. offset basis 0x811C9DC5 에 'a'(0x61) 를 XOR 한 뒤 16777619 를 곱하고 2^32 로 나눈 나머지를 구하면 됩니다. 곱한 다음 XOR 하면 다른 값(FNV-1 의 결과)이 나옵니다.",
+        "Hash32 는 Append 를 offset basis 에서 시작한 경우일 뿐입니다. Append 안에서 해시 상태를 처음부터 다시 시작하면 나눠서 해시한 값이 달라집니다. 곱셈 한 줄은 2^32 로 나눈 나머지가 되어야 하므로 넘침 검사 문맥에서도 안전하게 쓰세요.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nAppend(hash, data):\n    for each byte b in data:\n        hash = hash ____ b\n        hash = ____(hash * Prime32)\n    return hash\n\nHash32(data):      return Append(____, data)\nHash32Utf8(text):  null 검사 → return Hash32(____(text))\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 택배 상자에 붙는 네 가지\n\n- **송장을 다른 문자로 옮겨 적기 = 인코딩.** 같은 내용을 다른 표현으로 바꿀 뿐이라 규칙만 알면 누구나 되돌립니다. `Convert.ToBase64String` 은 바이트 배열을 base-64 숫자로 된 문자열로 바꾸고 [ms-convert-tobase64string], `Encoding.UTF8` 은 문자열을 UTF-8 바이트로 바꿉니다. `\"gold=100\"` 의 Base64 는 `Z29sZD0xMDA=` 이고, `Convert.FromBase64String` 한 줄이면 원문이 돌아옵니다.\n- **무게 스티커 = 체크섬·비암호 해시.** 내용을 짧은 고정 크기 값으로 요약합니다. 배송 중 내용물이 빠지면(우발적 손상) 무게가 달라져 알 수 있지만, 상자를 연 사람이 무게를 다시 재서 스티커를 바꿔 붙이면 알 수 없습니다. CRC-32, FNV-1a 가 여기에 속합니다.\n- **보낸 사람만 가진 도장 = MAC·전자 서명.** 비밀 키(MAC)나 개인 키(서명)가 있어야 만들 수 있으므로 내용이 바뀌었는지와 누가 만들었는지를 함께 확인합니다. .NET 의 `HMACSHA256` 은 암호 해시와 비밀 키를 결합해 계산하는 메시지 인증 코드입니다 [ms-crypto-overview].\n- **자물쇠 = 암호화.** 키가 없으면 읽을 수 없게 합니다(기밀성). Microsoft 문서는 암호의 목표를 기밀성, 데이터 무결성, 인증, 부인 방지로 나누고, 이 목표들은 암호 기본 요소(암호화, 서명, 해시)를 조합한 체계로 이룬다고 설명합니다 [ms-crypto-overview].\n\n| 구분 | 목적 | 키 | 되돌릴 수 있나 | .NET 예 |\n|---|---|---|---|---|\n| 인코딩 | 표현 바꾸기 | 없음 | 누구나 | `Convert.ToBase64String`, `Encoding.UTF8` |\n| 비암호 해시·체크섬 | 우발적 손상 감지, 해시 테이블 | 없음 | 아니요(요약) | CRC-32, FNV-1a (직접 구현) |\n| 암호 해시 | 충돌·역상을 찾기 어려운 지문 | 없음 | 아니요 | `SHA256` |\n| MAC / 서명 | 변조 감지 + 만든 쪽 확인 | 비밀 키 / 개인 키 | 해당 없음 | `HMACSHA256`, `RSA`, `ECDsa` |\n| 암호화 | 기밀성 | 키 | 키가 있으면 | `Aes` |\n\n### FNV-1a 알고리즘\n\n```\nhash = offset_basis              // 32비트: 2166136261 = 0x811C9DC5\nfor each octet in data:\n    hash = hash XOR octet\n    hash = hash * FNV_prime      // 32비트: 16777619 = 2^24 + 2^8 + 0x93, 2^32 로 나눈 나머지\nreturn hash\n```\n\nFNV-1 은 XOR 과 곱셈의 순서만 반대이고, 저자들은 가능하면 FNV-1a 를 쓰라고 권합니다 [fnv-isthe]. FNV 는 2026년 2월 RFC 9923(Informational)으로 발행되었고, 위 표의 검사값이 그 문서의 시험 코드에 있습니다 [rfc9923-fnv]. RFC 는 FNV 의 사용 예로 PS2·GameCube·Xbox 게임의 텍스트 기반 리소스 참조를 들고, Microsoft 의 STL(MSVC 표준 라이브러리)도 키의 바이트 표현을 해시하는 내부 도우미를 `_Fnv1a_append_bytes(지금까지의 해시, 바이트, 개수)` 로 구현합니다. 이 문제의 `Append` 와 같은 모양입니다(구현 사실이지 표준의 보장은 아닙니다) [ms-gh-stl-fnv1a].\n\n### 손상 감지 관점에서 본 CRC-32 와 FNV-1a\n\n- **CRC-32** 는 오류 검출용으로 설계된 코드입니다. 생성 다항식에 +1 항이 있는 차수 r 의 CRC 는 연속한 r 비트 안에 갇힌 오류 패턴을 모두 검출합니다 [wiki-crc]. zlib·PNG 와 같은 매개변수(CRC-32/ISO-HDLC)의 \"123456789\" 검사값(check)은 0xCBF43926 입니다 [crc-reveng-crc32] [crc-reveng-legend]. zlib 의 crc32 도 같은 값을 내는 것은 Node.js 의 `zlib.crc32(\"123456789\")` 로 실행해 확인했습니다. 트랙 7 의 원자적 세이브 저장기 문제가 이 CRC 를 씁니다.\n- **FNV-1a** 는 빠른 범용 해시입니다. 바이트 **하나**만 바뀌면 결과가 반드시 달라집니다. 같은 바이트로 XOR 하는 것과 홀수 소수를 곱하는 것(2^32 로 나눈 나머지)이 모두 되돌릴 수 있는 변환이라, 한 번 달라진 상태가 끝까지 달라진 채로 남기 때문입니다(직접 따져 본 성질이고, 64바이트 입력의 모든 1바이트 변경 16,320가지를 .NET 8 에서 돌려 충돌 0건을 확인했습니다). 하지만 CRC 같은 버스트 보장은 없습니다. 4바이트 입력 `28 AA 45 CC` 와 `70 18 9D F2` 는 FNV-1a 32 가 둘 다 `0xA2AAB39E` 인데, CRC-32 는 `0x8FF1B5A0` 과 `0xCF12EA2F` 로 구별합니다(.NET 8 과 Node.js 로 실행해 찾고 확인).\n- **둘 다 보안 도구가 아닙니다.** RFC 9923 은 공격을 계산상 불가능하게 만들어야 하는 용도에 FNV 를 권하지 않는다(NOT RECOMMENDED)고 적고 [rfc9923-fnv], CRC 도 의도적인 변조를 막는 데는 적합하지 않습니다 [wiki-crc].\n\n### C# 에서 주의할 점\n\n- **넘침:** 정수 연산은 기본이 unchecked 문맥이라 넘친 상위 비트가 버려집니다(2^32 로 나눈 나머지). 하지만 `CheckForOverflowUnderflow` 옵션이나 `checked` 블록 안에서는 `OverflowException` 이 납니다. 해시처럼 순환이 의도인 곳은 `unchecked(...)` 로 적어 둡니다 [ms-checked-unchecked].\n- **문자열은 UTF-16:** .NET 의 `string` 은 16비트 코드 단위(`char`)의 나열입니다 [ms-char-encoding-intro]. FNV 는 옥텟(바이트) 단위로 정의되므로, 서버나 툴(다른 언어)과 같은 값을 내려면 문자열을 UTF-8 바이트로 바꿔서 해시합니다.",
+      "quiz": [
+        {
+          "question": "다음 네 요구에 각각 어떤 도구(인코딩 / 비암호 해시·체크섬 / MAC·서명 / 암호화)가 맞습니까? 회의에서 나온 \"Base64 로 바꾸면 유저가 못 고친다\"는 말은 어디가 틀렸습니까?\n\n(a) 저장 장치 오류나 중간에 끊긴 다운로드로 세이브·에셋 파일이 깨졌는지 빠르게 확인한다.\n(b) 바이너리 세이브를 JSON 문자열 필드만 받는 클라우드 키-값 저장소에 넣는다.\n(c) 다른 사람이 세이브 파일을 열어 보더라도 쪽지(유저끼리 주고받은 메시지) 내용을 읽지 못하게 한다.\n(d) 서버가 내려준 보상 쿠폰 데이터가 중간에 바뀌지 않았고 정말 서버가 만든 것인지 클라이언트가 확인한다.",
+          "answer": "- **(a) 비암호 해시·체크섬.** CRC-32 나 FNV-1a 처럼 빠르고, 우발적 손상을 잡는 것이 목적입니다. 공격자를 상대하지 않으므로 암호 해시까지 쓸 필요는 없습니다.\n- **(b) 인코딩(Base64).** 바이트를 문자열로 옮겨 담는 것이 목적입니다. `Convert.ToBase64String` / `Convert.FromBase64String` 으로 그대로 되돌립니다.\n- **(c) 암호화(예: `Aes`).** 기밀성이 목적입니다. 다만 클라이언트 안에서 암호화하면 키도 클라이언트(게임 파일이나 기기)에 있어야 하므로, 키를 어떻게 지킬지가 진짜 문제입니다(판단).\n- **(d) 서명(또는 MAC).** 서버만 가진 개인 키로 서명하고 클라이언트는 공개 키로 검증하면, 변조 여부와 만든 쪽을 함께 확인할 수 있습니다. Microsoft 문서도 서명이 보낸 쪽을 인증하고 무결성을 지켜 준다고 설명합니다 [ms-crypto-overview]. HMAC 은 같은 비밀 키를 양쪽이 가져야 하므로, 키를 클라이언트에 넣으면 클라이언트도 유효한 MAC 을 만들 수 있게 됩니다(판단).\n\n**\"Base64 로 바꾸면 못 고친다\"가 틀린 이유:** Base64 는 키가 없는 인코딩입니다. `\"gold=100\"` 은 `Z29sZD0xMDA=` 가 되지만 누구나 디코드해 `gold=999` 로 바꾸고 다시 인코드할 수 있습니다. 읽기 어렵게 보일 뿐 기밀성도 무결성도 주지 않습니다."
+        },
+        {
+          "question": "동료가 FNV-1a 를 아래처럼 구현했습니다. `Hash32(ASCII \"a\")` 는 무엇을 돌려주고, 왜 RFC 의 검사값과 다릅니까? 그리고 세이브 손상 검사를 CRC-32 대신 FNV-1a 32 로 하면 무엇이 같고 무엇을 잃습니까?\n\n```csharp\nforeach (byte b in data) { hash = unchecked(hash * Prime32); hash ^= b; }\n```",
+          "answer": "이 코드는 곱한 다음 XOR 하는 **FNV-1** 입니다. `\"a\"` 에 대해 `0x050C5D7E` 를 돌려주는데(.NET 8 에서 실행해 확인), FNV-1a 의 검사값은 `0xE40C292C` 입니다 [rfc9923-fnv]. 두 변형은 매개변수가 같고 순서만 달라서 [fnv-isthe] 짧은 테스트로는 \"그럴듯한 숫자\"가 나오므로, 공개된 검사값과 비교하는 테스트가 꼭 필요합니다.\n\n**같은 점:** 둘 다 32비트 값이라, 무작위로 깨진 파일이 우연히 같은 값을 가질 가능성은 매우 낮습니다. 그리고 바이트 하나만 바뀐 경우는 FNV-1a 도 반드시 다른 값을 냅니다(XOR 과 홀수 곱이 모두 되돌릴 수 있는 변환이기 때문. 64바이트 입력의 모든 1바이트 변경을 실행해 확인).\n\n**잃는 것:** CRC-32 는 연속한 32비트 안의 오류를 모두 잡는다는 **보장**이 있지만 [wiki-crc] FNV-1a 에는 그런 보장이 없습니다. 실제로 4바이트 입력 `28 AA 45 CC` 와 `70 18 9D F2` 는 FNV-1a 32 값이 `0xA2AAB39E` 로 같지만 CRC-32 는 다릅니다(실행해 찾은 예). 버스트 오류는 자기·광학 저장 장치를 포함한 여러 채널에서 흔하므로 [wiki-crc], 오류 검출이 목적이라면 CRC-32 가 더 알맞고, FNV-1a 는 해시 테이블 키나 에셋 이름 지문처럼 빠른 분산이 목적인 곳에 씁니다."
+        }
+      ],
+      "solutionCode": "using System;\nusing System.Text;\n\n// FNV-1a 32비트 (RFC 9923). 빠른 비암호 해시: 해시 테이블 키, 에셋 지문, 우발적 손상 감지용.\npublic static class Fnv1a\n{\n    public const uint OffsetBasis32 = 2166136261u;   // 0x811C9DC5\n    public const uint Prime32 = 16777619u;           // 0x01000193 = 2^24 + 2^8 + 0x93\n\n    // 지금까지의 해시 hash 에 data 를 이어서 섞는다. 바이트마다 XOR 한 다음 곱한다(이 순서가 FNV-1a).\n    public static uint Append(uint hash, ReadOnlySpan<byte> data)\n    {\n        foreach (byte b in data)\n        {\n            hash ^= b;\n            hash = unchecked(hash * Prime32);   // 2^32 로 나눈 나머지. checked 빌드에서도 넘침 예외가 나지 않게 명시\n        }\n        return hash;\n    }\n\n    // 바이트 열 전체의 해시. 빈 입력이면 offset basis 그대로다.\n    public static uint Hash32(ReadOnlySpan<byte> data) => Append(OffsetBasis32, data);\n\n    // 문자열은 UTF-8 바이트로 바꿔서 해시한다(UTF-16 char 값을 그대로 섞지 않는다).\n    public static uint Hash32Utf8(string text)\n    {\n        if (text == null) throw new ArgumentNullException(nameof(text));\n        return Hash32(Encoding.UTF8.GetBytes(text));\n    }\n}\n",
+      "explanation": "**풀이.** 세 메서드는 하나의 반복문으로 모입니다.\n\n- `Append(hash, data)`: 바이트마다 `hash ^= b` 다음 `hash = unchecked(hash * Prime32)`. 해시 상태를 인자로 받아 이어서 섞으므로 `Append(Hash32(a), b) == Hash32(a + b)` 가 성립합니다. 큰 파일은 청크(예: 64KB)로 읽으며 같은 상태에 계속 Append 하면, 파일 전체를 메모리에 올리지 않고도 한 번에 해시한 값과 같습니다. MSVC STL 의 `_Fnv1a_append_bytes` 도 같은 모양입니다 [ms-gh-stl-fnv1a].\n- `Hash32(data)`: `Append(OffsetBasis32, data)`. 빈 입력이면 offset basis 가 그대로 나옵니다.\n- `Hash32Utf8(text)`: null 이면 `ArgumentNullException`, 아니면 `Encoding.UTF8.GetBytes(text)` 를 해시합니다. `char` 를 그대로 섞으면 \"검\" 은 `0x19D57FE7` 이 아니라 `0x84618F9F` 가 되어, UTF-8 바이트로 해시하는 서버·툴과 값이 어긋납니다(.NET 8 에서 실행해 확인).\n\n**왜 맞는가.** 알고리즘과 상수는 FNV 저자들의 설명과 RFC 9923 그대로이고 [fnv-isthe] [rfc9923-fnv], RFC 의 32비트 검사값 네 개와 나눠서 해시하기를 출력해 확인합니다. `byte` 는 부호가 없어 0xFF 같은 값도 그대로 XOR 되므로, C 에서 `char` 의 부호 때문에 생기는 문제가 C# 에는 없습니다.\n\n**복잡도.** O(n), 바이트당 XOR 한 번과 곱셈 한 번, 할당 없음(`Hash32Utf8` 의 UTF-8 변환 배열만 할당합니다. 매 프레임 부른다면 `stackalloc` 이나 재사용 버퍼에 인코드하세요).\n\n**어디에 쓰나.** 에셋 매니페스트의 파일 지문, 해시 테이블 키, 세이브의 우발적 손상 검사. 손상 검사가 주목적이면 버스트 보장이 있는 CRC-32 가 더 알맞습니다(퀴즈 2). 조작을 막아야 한다면 해시를 고르는 문제가 아니라 누가 키를 갖고 누가 권위를 갖는지의 문제입니다. 클라이언트에 든 키는 꺼낼 수 있다고 보고, 중요한 재화는 서버가 기록하는 것이 일반적인 판단입니다.\n\n**흔한 실수.** (1) FNV-1 순서로 구현하기(퀴즈 2). (2) `Append` 가 매번 offset basis 에서 다시 시작해 나눠 해시한 값이 달라지기. (3) `checked` 빌드에서 곱셈이 `OverflowException` 을 던지기 [ms-checked-unchecked]. (4) 체크섬을 세이브와 같은 파일에 두고 \"조작 방지\"라고 부르기.\n\n### 흔한 오해\n- **\"`string.GetHashCode()` 는 같은 문자열이면 같은 값이니, 세이브 헤더에 저장해 두고 다음 실행 때 비교하면 된다.\"** — 같은 프로세스 안에서만 맞는 말입니다. Microsoft 문서는 해시 코드가 .NET 구현·버전·플랫폼에 따라 달라질 수 있고 같은 프로그램을 연달아 실행해도 다를 수 있으므로 저장(persist)하지 말라고 못박습니다 [ms-learn-string-gethashcode]. .NET 8 에서 `\"save-slot-1\".GetHashCode()` 를 세 번 따로 실행하자 매번 다른 값이 나왔습니다(실행해 확인). 저장할 지문은 FNV-1a 나 CRC-32 처럼 정의가 고정된 알고리즘으로 만듭니다.\n- **\"SHA-256 은 암호 해시니까, 세이브 옆에 같이 저장해 두면 유저가 세이브를 고쳐도 들킨다.\"** — 세이브를 고친 사람은 해시도 다시 계산해 바꿔 넣으면 됩니다. CRC 든 암호 해시든 데이터 옆에 저장한 것만으로는 의도적인 수정을 막지 못하고, 그러려면 MAC 이나 전자 서명 같은 인증 수단이 필요합니다 [wiki-crc]. Microsoft 문서도 메시지와 해시를 함께 보내는 방식은 보낸 쪽의 진위를 보장하지 못한다고 설명합니다 [ms-crypto-overview]. 암호 해시가 주는 것은 '충돌을 찾기 어려움'이지 '키'가 아닙니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Hash32 가 RFC 9923 의 FNV-1a 32비트 검사값 네 개(\"\", \"a\", \"foobar\", \"Hello!\" + 01 FF ED)를 모두 낸다.",
+            "points": 9,
+            "sourceId": "rfc9923-fnv"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "바이트마다 XOR 을 먼저 하고 그다음 곱한다(FNV-1 의 순서가 아니다): \"a\" 에 대해 0xE40C292C 가 나온다.",
+            "points": 9,
+            "sourceId": "fnv-isthe"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Append(Hash32(a), b) 가 Hash32(a 와 b 를 이은 바이트) 와 같고, Hash32 는 Append(OffsetBasis32, data) 로 구현되어 있다.",
+            "points": 9,
+            "sourceId": "ms-gh-stl-fnv1a"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "Hash32Utf8 이 UTF-8 바이트를 해시한다(\"검\" 에 대해 0x19D57FE7, char 값을 섞으면 0x84618F9F). null 이면 ArgumentNullException 을 던진다.",
+            "points": 8,
+            "sourceId": "ms-char-encoding-intro"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Append / Hash32 가 할당 없이 ReadOnlySpan<byte> 를 한 번만 훑는다(O(n), 바이트당 XOR 한 번과 곱셈 한 번).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "큰 파일을 청크 단위로 읽으며 Append 로 이어서 해시하면 파일 전체를 메모리에 올리지 않아도 같은 값이 나온다는 점을 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "ms-gh-stl-fnv1a"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "세이브 손상 검사에 비암호 해시(CRC-32, FNV-1a)를 쓰는 이유(빠름)와, CRC-32 에는 연속 32비트 안의 오류를 모두 잡는 보장이 있고 FNV-1a 에는 없다는 차이를 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "wiki-crc"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "uint 곱셈이 2^32 로 나눈 나머지가 되도록 unchecked 를 명시했거나, CheckForOverflowUnderflow 가 켜진 빌드에서는 OverflowException 이 난다는 점을 안다.",
+            "points": 10,
+            "sourceId": "ms-checked-unchecked"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "string.GetHashCode() 값을 세이브 파일이나 네트워크에 저장하면 안 되는 이유를 문서 근거로 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "ms-learn-string-gethashcode"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "인코딩·체크섬·MAC·암호화를 목적(표현 바꾸기 / 우발적 손상 감지 / 변조 감지 / 기밀성)으로 구분해 퀴즈 1 의 네 요구에 맞는 도구를 골랐다.",
+            "points": 8,
+            "sourceId": "ms-crypto-overview"
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "offset basis 와 prime 을 이름 있는 상수로 두고, 값의 출처(RFC 9923)를 주석이나 문서로 밝혔다.",
+            "points": 7,
+            "sourceId": "rfc9923-fnv"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "곱한 뒤 XOR 하는 FNV-1 순서로 구현해 FNV-1a 검사값과 맞지 않는다.",
+            "penalty": -20,
+            "sourceId": "rfc9923-fnv"
+          },
+          {
+            "id": "d2",
+            "description": "Base64 인코딩이나, 세이브 옆에 저장한 체크섬·해시만으로 세이브 조작을 막을 수 있다고 답했다.",
+            "penalty": -20,
+            "sourceId": "wiki-crc"
+          },
+          {
+            "id": "d3",
+            "description": "string.GetHashCode() 를 쓰거나 char(UTF-16) 값을 그대로 섞어, 다른 실행이나 다른 플랫폼에서 값이 달라지는 해시를 만들었다.",
+            "penalty": -15,
+            "sourceId": "ms-learn-string-gethashcode"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 채점은 없으며, 표의 검사값(RFC 9923 FNV32svalues 와 일치)·FNV-1 값·UTF-16 char 해시·4바이트 충돌 쌍과 CRC·1바이트 변경 16,320가지·Base64·GetHashCode 실행마다 달라짐을 .NET 8 과 Node.js 로 직접 계산해 확인했고, RFC 9923·FNV 저자 페이지·MSVC STL 커밋·Microsoft 암호 개요·String.GetHashCode·CRC 카탈로그·위키백과 CRC 문서로 설명을 대조했다."
+      },
+      "nextMission": "같은 `Append` 모양으로 CRC-32 를 256항목 표 방식으로 구현하고(`Crc32.Append(uint state, ReadOnlySpan<byte>)`, 초기 상태 0xFFFFFFFF, 마지막에 반전), \"123456789\" → 0xCBF43926 을 확인하세요. 그다음 1MB 무작위 버퍼에서 비트 단위 CRC, 표 방식 CRC, FNV-1a 의 처리 시간을 `Stopwatch` 로 각각 5회씩 재어 비교하고, 퀴즈 2 의 4바이트 충돌 쌍을 표 방식 CRC 로도 구별하는지 확인합니다."
+    },
+    {
+      "id": "t7-debug-async-thread-chunk-mesher",
+      "track": "track7",
+      "mode": "debugging",
+      "difficulty": "Medium",
+      "title": "async 와 스레드를 헷갈린 청크 메시 서비스: 멈추는 프레임과 엉뚱한 청크",
+      "tags": [
+        "CS_AsyncVsThreads",
+        "CS_BlockingOnAsync",
+        "CS_CapturedState"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-async-keyword",
+        "ms-async-scenarios",
+        "ms-task1-result",
+        "ms-lambda-expressions"
+      ],
+      "scenario": "오픈월드 게임의 지형 스트리밍입니다. 플레이어가 움직이면 메인 루프가 새로 보이는 청크마다 `ChunkMeshService.Request(chunkId, voxels)` 를 부르고, 매 프레임 `Tick()` 을 불러 다 만들어진 메시를 렌더러에 넘깁니다(`Applied`). 메시 생성은 청크당 20~40ms, 충돌체 생성은 5~10ms 가 걸리는 CPU 작업이라 \"async 로 백그라운드에서\" 돌리도록 만들었는데 QA 보고는 이렇습니다.\n\n- 새 지역에 들어설 때마다 화면이 수십 ms 씩 멈춘다. 청크가 많이 보일수록 심해진다.\n- 멈춤은 청크를 **요청하는 순간**에도, 그다음 **프레임마다**도 생긴다.\n- 가끔 청크에 **옆 청크의 지형**이 그려진다. 충돌은 제대로인데 보이는 메시만 틀린다.\n\n메인 루프는 청크 데이터를 읽어 올 때 배열 하나(`voxelBuffer`)를 계속 재사용합니다. `Request` 가 반환되자마자 다음 청크의 데이터로 다시 채웁니다.\n\n**지켜야 할 동작**\n1. `Request` 와 `Tick` 은 메인 루프(스레드 하나)에서만 불리며, 어떤 경우에도 작업이 끝나기를 기다리지 않고 곧바로 돌아온다.\n2. 메시·충돌체 생성(`_buildMesh`, `_buildCollider`)은 메인 루프 스레드에서 실행하지 않는다.\n3. 각 청크의 결과는 그 청크를 요청할 때 넘긴 데이터로 계산한다.\n4. `Applied` 는 렌더러가 메인 스레드에서 읽으므로 `Tick` 안에서만 바뀐다. `Tick` 은 끝난 작업만 반영하고, 끝나지 않은 작업은 다음 프레임으로 넘긴다.\n\n같은 청크를 동시에 두 번 요청하지 않으며, 이 문제의 빌더는 예외를 던지지 않습니다. 순수 C#(.NET 8)이고 Unity API 는 쓰지 않습니다.\n\n**할 일:** 버그를 모두 찾아 고치고, 각 버그가 어떤 입력에서 어떤 증상을 내는지 설명하세요.",
+      "constraints": [
+        "public 시그니처(생성자, Request, Tick, Applied, InFlightCount)와 ChunkResult 는 바꾸지 않는다.",
+        "Request 와 Tick 은 블로킹 대기(Result, Wait, GetAwaiter().GetResult(), Thread.Sleep, 락 대기)를 하지 않는다.",
+        "Tick 은 진행 중인 작업마다 완료 여부를 한 번씩만 확인하고(완료 확인 O(k)), Request 는 복사를 포함해 청크 크기에 비례하는 시간만 쓴다.",
+        "워커 스레드는 _inFlight, _applied 같은 공유 컬렉션을 만지지 않는다(락으로 감싸는 것도 이 문제의 해법이 아니다)."
+      ],
+      "starterCode": "using System;\nusing System.Collections.Generic;\nusing System.Threading.Tasks;\n\n// 청크 하나를 만든 결과: 메시 정점 수와 충돌체 셀 수.\npublic readonly struct ChunkResult\n{\n    public ChunkResult(int vertices, int colliderCells) { Vertices = vertices; ColliderCells = colliderCells; }\n    public int Vertices { get; }\n    public int ColliderCells { get; }\n}\n\n// 오픈월드 청크 메시 서비스. Request 와 Tick 은 메인 루프(스레드 하나)에서만 불린다.\npublic sealed class ChunkMeshService\n{\n    private readonly Func<int[], int> _buildMesh;      // CPU 를 많이 쓴다(실제 게임에서 청크당 20~40ms)\n    private readonly Func<int[], int> _buildCollider;  // CPU 를 많이 쓴다(청크당 5~10ms)\n    private readonly List<(int chunkId, Task<ChunkResult> job)> _inFlight = new List<(int chunkId, Task<ChunkResult> job)>();\n    private readonly Dictionary<int, ChunkResult> _applied = new Dictionary<int, ChunkResult>();\n\n    public ChunkMeshService(Func<int[], int> buildMesh, Func<int[], int> buildCollider)\n    {\n        _buildMesh = buildMesh ?? throw new ArgumentNullException(nameof(buildMesh));\n        _buildCollider = buildCollider ?? throw new ArgumentNullException(nameof(buildCollider));\n    }\n\n    // 렌더러가 메인 스레드에서 읽는 상태. Tick 안에서만 바뀐다.\n    public IReadOnlyDictionary<int, ChunkResult> Applied => _applied;\n    public int InFlightCount => _inFlight.Count;\n\n    // 메인 루프가 부른다. 곧바로 돌아와야 한다.\n    // 호출자는 이 메서드가 반환되자마자 voxels 배열을 다음 청크의 데이터로 다시 채운다.\n    public void Request(int chunkId, int[] voxels)\n    {\n        _inFlight.Add((chunkId, BuildAsync(voxels)));\n    }\n\n    // 무거운 생성 작업을 비동기로 처리한다.\n    private async Task<ChunkResult> BuildAsync(int[] voxels)\n    {\n        int colliderCells = _buildCollider(voxels);\n        int vertices = await Task.Run(() => _buildMesh(voxels));\n        return new ChunkResult(vertices, colliderCells);\n    }\n\n    // 메인 루프가 매 프레임 부른다. 끝난 작업의 결과만 Applied 에 반영하고,\n    // 아직 끝나지 않은 작업은 다음 프레임으로 넘긴다. 프레임을 멈추게 하면 안 된다.\n    public void Tick()\n    {\n        for (int i = _inFlight.Count - 1; i >= 0; i--)\n        {\n            var (chunkId, job) = _inFlight[i];\n            _applied[chunkId] = job.Result;\n            _inFlight.RemoveAt(i);\n        }\n    }\n}\n",
+      "edgeCases": [
+        "빌더가 아직 계산 중일 때 Request 직후의 메인 스레드: 곧바로 다음 줄로 넘어가야 한다.",
+        "진행 중인 작업이 있는 상태에서의 Tick: 끝난 작업만 반영하고 나머지는 InFlightCount 에 남긴다.",
+        "호출자가 Request(10, buf) 직후 buf 를 청크 11 의 데이터로 채우고 Request(11, buf) 를 부르는 경우: 청크 10 의 메시는 청크 10 의 데이터로 만들어져야 한다.",
+        "두 작업 중 나중에 요청한 것이 먼저 끝나는 경우: 먼저 끝난 것만 반영된다."
+      ],
+      "hints": [
+        "빌더가 오래 걸린다고 가정하고 세 장면을 따라가 보세요. (1) `Request(1, a)` 를 부른 직후 `BuildAsync` 의 첫 줄 `_buildCollider(voxels)` 는 어느 스레드에서 실행됩니까? `await` 를 만나기 전입니다. (2) 메시가 아직 계산 중인데 `Tick()` 이 그 작업의 `Result` 를 읽으면 메인 스레드는 무엇을 합니까? (3) `Request(10, buf)` 뒤에 호출자가 buf 를 청크 11 의 데이터로 다시 채우면, 그 뒤에 실행되는 `Task.Run` 람다는 어떤 숫자들을 읽습니까?",
+        "버그는 `BuildAsync`, `Tick`, 그리고 `Task.Run` 람다가 붙잡는 변수에 하나씩 있습니다. \"async 메서드는 첫 await 까지 동기로 실행된다\", \"Result 는 끝날 때까지 기다린다\", \"람다가 붙잡은 배열 변수에 든 것은 내용의 복사본이 아니라 같은 배열을 가리키는 참조다\" 세 문장을 각각의 위치에 대어 보세요. 복사는 어느 스레드에서, 언제 해야 호출자가 배열을 다시 채우기 전이라고 보장됩니까?",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nRequest(chunkId, voxels):\n    snapshot = ____                        // 반환 전에, 메인 스레드에서\n    job = ____(() => Build(snapshot))      // CPU 작업 전체를 다른 스레드로\n    _inFlight.Add((chunkId, job))\n\nBuild(voxels):                             // 워커 스레드에서 실행, 공유 상태를 만지지 않는다\n    return new ChunkResult(_buildMesh(voxels), _buildCollider(voxels))\n\nTick():\n    for each (chunkId, job) in _inFlight (뒤에서부터):\n        if (____) continue                 // 기다리지 않고 다음 프레임으로\n        _applied[chunkId] = job.Result     // 여기서는 이미 끝났다\n        _inFlight.RemoveAt(i)\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Collections.Generic;\nusing System.Threading.Tasks;\n\n// 청크 하나를 만든 결과: 메시 정점 수와 충돌체 셀 수.\npublic readonly struct ChunkResult\n{\n    public ChunkResult(int vertices, int colliderCells) { Vertices = vertices; ColliderCells = colliderCells; }\n    public int Vertices { get; }\n    public int ColliderCells { get; }\n}\n\n// 오픈월드 청크 메시 서비스. Request 와 Tick 은 메인 루프(스레드 하나)에서만 불린다.\npublic sealed class ChunkMeshService\n{\n    private readonly Func<int[], int> _buildMesh;      // CPU 를 많이 쓴다(실제 게임에서 청크당 20~40ms)\n    private readonly Func<int[], int> _buildCollider;  // CPU 를 많이 쓴다(청크당 5~10ms)\n    // 아래 두 컬렉션은 메인 루프 스레드만 만진다. 워커는 자기 Task 의 결과만 만든다.\n    private readonly List<(int chunkId, Task<ChunkResult> job)> _inFlight = new List<(int chunkId, Task<ChunkResult> job)>();\n    private readonly Dictionary<int, ChunkResult> _applied = new Dictionary<int, ChunkResult>();\n\n    public ChunkMeshService(Func<int[], int> buildMesh, Func<int[], int> buildCollider)\n    {\n        _buildMesh = buildMesh ?? throw new ArgumentNullException(nameof(buildMesh));\n        _buildCollider = buildCollider ?? throw new ArgumentNullException(nameof(buildCollider));\n    }\n\n    // 렌더러가 메인 스레드에서 읽는 상태. Tick 안에서만 바뀐다.\n    public IReadOnlyDictionary<int, ChunkResult> Applied => _applied;\n    public int InFlightCount => _inFlight.Count;\n\n    // 메인 루프가 부른다. 곧바로 돌아와야 한다.\n    // 호출자는 이 메서드가 반환되자마자 voxels 배열을 다음 청크의 데이터로 다시 채운다.\n    public void Request(int chunkId, int[] voxels)\n    {\n        if (voxels == null) throw new ArgumentNullException(nameof(voxels));\n        // (버그 3) 호출자의 배열은 곧 덮어써지므로, 반환하기 전에 메인 스레드에서 이 작업 전용 복사본을 만든다.\n        int[] snapshot = (int[])voxels.Clone();\n        // (버그 1) async 라고 다른 스레드에서 도는 것이 아니다. CPU 작업은 전부 Task.Run 으로 스레드 풀에 보낸다.\n        Task<ChunkResult> job = Task.Run(() => Build(snapshot));\n        _inFlight.Add((chunkId, job));\n    }\n\n    // 워커 스레드에서 실행된다. 공유 상태를 건드리지 않고 결과만 돌려준다.\n    private ChunkResult Build(int[] voxels)\n    {\n        int colliderCells = _buildCollider(voxels);\n        int vertices = _buildMesh(voxels);\n        return new ChunkResult(vertices, colliderCells);\n    }\n\n    // 메인 루프가 매 프레임 부른다. 끝난 작업의 결과만 Applied 에 반영하고,\n    // 아직 끝나지 않은 작업은 다음 프레임으로 넘긴다. 프레임을 멈추게 하면 안 된다.\n    public void Tick()\n    {\n        for (int i = _inFlight.Count - 1; i >= 0; i--)\n        {\n            var (chunkId, job) = _inFlight[i];\n            // (버그 2) 끝나지 않은 작업의 Result 는 메인 스레드를 막는다. 끝난 것만 꺼낸다.\n            if (!job.IsCompleted) continue;\n            _applied[chunkId] = job.Result;   // 이미 끝났으므로 기다리지 않는다\n            _inFlight.RemoveAt(i);\n        }\n    }\n}\n",
+      "explanation": "버그는 세 가지이고, 모두 \"비동기 = 다른 스레드\"라는 오해에서 나왔습니다.\n\n**버그 1: async 메서드의 동기 구간에서 돈 CPU 작업.** Microsoft 문서대로 async 메서드는 첫 `await` 에 도달할 때까지 동기로 실행됩니다 [ms-async-keyword]. `BuildAsync` 의 `_buildCollider(voxels)` 는 `await` 앞에 있으므로 `Request` 를 부른 메인 스레드에서 끝까지 실행되고, 청크마다 5~10ms 씩 `Request` 가 멈춥니다. 재현 입력: 충돌체 빌더가 끝나지 않은 상태에서 `Request(1, a)` → 메인 루프가 1초 안에 돌아오지 않음(`request-returns-immediately`), 그리고 빌더가 기록한 스레드가 메인 루프 스레드(`heavy-work-off-main-thread`). 문서는 CPU 작업이면 `Task.Run` 으로 다른 스레드에 보내라고 하고 [ms-async-scenarios], `Task.Run` 은 작업을 스레드 풀에 예약합니다 [ms-task-run]. 고치기: 충돌체와 메시를 한 함수로 묶어 통째로 `Task.Run` 에 넘깁니다.\n\n**버그 2: Tick 의 `job.Result`.** `Result` 의 get 접근자는 작업이 끝날 때까지 호출 스레드를 막습니다 [ms-task1-result]. 그래서 \"끝난 작업만 반영\"하려던 `Tick` 이 진행 중인 메시를 기다리며 프레임마다 멈춥니다. 재현 입력: 메시가 계산 중일 때 `Request(3, a)` → `Tick()` 이 돌아오지 않음(`tick-never-waits`), 그리고 늦게 끝나는 청크 20 과 빨리 끝나는 21 을 요청하면 21 을 반영한 뒤 20 에서 멈춤(`partial-completion`). 고치기: `if (!job.IsCompleted) continue;` 로 끝난 작업만 꺼냅니다. `IsCompleted` 는 막지 않으며, 성공·실패·취소 세 최종 상태에서 true 입니다 [ms-task-iscompleted]. 이미 끝난 작업의 `Result` 는 기다리지 않고 저장된 값을 돌려줍니다.\n\n**버그 3: 람다가 붙잡은 호출자의 배열.** `Task.Run(() => _buildMesh(voxels))` 의 람다는 `voxels` 변수를 붙잡는데, 그 변수에 든 것은 배열 내용이 아니라 호출자 배열을 가리키는 참조입니다. 람다는 붙잡은 변수를 저장해 두었다가 실행될 때 읽으므로 [ms-lambda-expressions], 메시 빌더는 작업이 실제로 실행되는 시점의 호출자 배열 내용을 봅니다. 메인 루프는 `Request` 가 반환되자마자 그 배열을 다음 청크로 채우므로, 나중에 실행되는 메시 빌더는 다른 청크의 지형을 읽습니다. 충돌체는 버그 1 때문에 동기로 계산되어 오히려 맞았고, 그래서 \"충돌은 맞는데 메시만 틀린\" 증상이 났습니다. 재현 입력: `Request(10, buf)` → buf 를 청크 11 로 채움 → `Request(11, buf)` → … → 다시 덮어씀 → 청크 10 의 충돌체 수는 맞는데 정점 수는 나중에 채운 데이터로 계산됨(`caller-reuses-buffer` 는 같은 배열 하나로 6개 청크를 연달아 요청합니다). 고치기: `Request` 안, 메인 스레드에서 반환하기 전에 `(int[])voxels.Clone()` 으로 복사본을 만들어 그것만 넘깁니다. 복사를 람다 안에 넣으면 워커가 실행되는 시점에 복사되므로 같은 경쟁이 남습니다.\n\n**왜 이렇게 고치면 맞는가.** 메인 스레드 상태(`_inFlight`, `_applied`)는 메인 스레드만 만지고, 워커는 자기 복사본으로 계산해 결과를 Task 에 담을 뿐입니다. `Dictionary` 는 수정이 없을 때만 여러 읽기를 동시에 허용하므로 [ms-learn-dictionary], 워커가 `_applied` 에 직접 쓰는 \"고침\"은 렌더러의 읽기와 경쟁합니다(채점의 `applied-changes-only-in-tick`).\n\n**복잡도.** `Request` 는 청크 크기에 비례(복사), `Tick` 은 작업마다 완료 확인 한 번이고 블로킹이 없습니다. 다만 반영한 항목을 지우는 `List.RemoveAt` 은 뒤 원소를 당기는 O(Count − index) 연산이므로 [ms-learn-list-removeat], 진행 중 작업이 아주 많다면 살아남은 항목을 앞으로 모으는 한 번의 압축이 낫습니다. 복사는 메시 생성보다 훨씬 싸지만, 매 프레임 많은 청크를 요청한다면 버퍼 풀로 할당을 줄입니다.\n\n**흔한 실수.** (1) `Tick` 을 `if (job.Wait(1))` 로 바꾸기: 짧게라도 막는 코드이고 문제를 가릴 뿐입니다(`tick-no-timed-waits` 가 Tick 시간으로 잡습니다). (2) 모든 작업을 `Tick` 에서 지우기: 끝나지 않은 청크가 영영 반영되지 않습니다. (3) `_applied` 를 lock 으로 감싸 워커가 쓰게 하기: 렌더러는 Tick 사이에 락 없이 읽습니다.\n\n### 흔한 오해\n- **\"메서드에 async 를 붙이고 Task 를 돌려주면 그 일은 백그라운드 스레드에서 돈다.\"** — async 는 스레드를 만들지 않습니다. async 메서드는 첫 `await` 에 도달할 때까지 호출자의 스레드에서 동기로 실행되고, `await` 가 없으면 끝까지 동기로 실행됩니다 [ms-async-keyword]. CPU 작업을 다른 스레드로 보내는 것은 `Task.Run` 이 할 일이라고 문서가 따로 설명합니다 [ms-async-scenarios]. 이 문제의 채점에서도 `await` 앞에 둔 충돌체 빌더는 매번 메인 루프 스레드에서 실행되었습니다(.NET 8 채점 환경에서 8회 실행해 확인).\n- **\"Task.Run 에 넘긴 람다는 만들어지는 순간의 데이터를 챙겨 가니, 넘긴 배열은 그 뒤에 다시 채워도 된다.\"** — 람다는 값의 복사본이 아니라 바깥 변수 자체를 붙잡고, 실행될 때 그 변수를 읽습니다. 문서 예제도 붙잡은 변수가 바뀌면 람다가 새 값을 관찰한다고 보여 줍니다 [ms-lambda-expressions]. 게다가 배열 변수에 든 것은 참조라서, 변수를 다시 대입하지 않아도 람다가 읽는 것은 호출자의 배열 그 자체이고 작업이 실제로 실행되는 시점의 내용입니다. 내용을 고정하려면 람다를 만들기 전에 그 스레드에서 복사해야 합니다(채점의 `caller-reuses-buffer`).",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "충돌체·메시 생성이 모두 메인 루프 스레드 밖에서 실행되고, 빌더가 끝나지 않아도 Request 가 곧바로 돌아온다.",
+            "points": 12,
+            "sourceId": "ms-async-keyword"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "Tick 이 끝난 작업만 반영하고 끝나지 않은 작업은 다음 프레임으로 남긴다. Result / Wait / GetAwaiter().GetResult() 로 미완료 작업을 기다리지 않는다.",
+            "points": 12,
+            "sourceId": "ms-task1-result"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Request 가 반환되기 전에(메인 스레드에서) 입력 배열을 복사해, 호출자가 같은 배열을 다시 채워도 각 작업이 자기 청크 데이터로 계산한다.",
+            "points": 11,
+            "sourceId": "ms-lambda-expressions"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Tick 의 비용이 진행 중인 작업 수만큼의 완료 확인뿐이고, 어떤 경로에도 블로킹 대기나 Thread.Sleep 이 없다.",
+            "points": 10,
+            "sourceId": "ms-task-iscompleted"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "복사는 요청당 한 번(청크 크기에 비례)이고, 그 비용이 메시 생성보다 훨씬 작다는 점이나 버퍼 풀로 할당을 줄이는 방법을 설명했다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "청크 하나의 CPU 작업을 스레드 풀 작업 하나로 묶었거나, 둘로 나눌 때 늘어나는 예약 비용과 동시 실행 이득을 비교해 설명했다.",
+            "points": 10,
+            "sourceId": "ms-task-run"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "async 메서드는 첫 await 까지 호출자의 스레드에서 동기로 실행되고, CPU 작업은 Task.Run 으로 다른 스레드에 보내야 한다는 문서 규칙을 근거로 버그 1 을 설명했다.",
+            "points": 10,
+            "sourceId": "ms-async-scenarios"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "IsCompleted 는 막지 않고 세 가지 최종 상태에서 true 이며, Result 는 완료될 때까지 호출 스레드를 막는다는 차이를 문서 근거로 설명했다.",
+            "points": 10,
+            "sourceId": "ms-task-iscompleted"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "메인 스레드만 만지는 상태(_inFlight, _applied)와 워커가 다루는 데이터(복사본, Task 결과)가 코드 구조나 주석으로 구분되고, 워커가 공유 컬렉션에 쓰지 않는다.",
+            "points": 8,
+            "sourceId": "ms-learn-dictionary"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "세 버그 각각에 대해 실패하는 입력과 증상(Request 정지, 프레임 정지, 다른 청크의 메시)을 설명했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "워커 스레드(Task.Run 안이나 ContinueWith)에서 _applied 같은 메인 스레드 상태를 직접 바꾼다.",
+            "penalty": -25,
+            "sourceId": "ms-learn-dictionary"
+          },
+          {
+            "id": "d2",
+            "description": "Thread.Sleep, Wait(짧은 시간 제한), 재시도 루프처럼 타이밍에 기대어 프레임 정지를 '줄이는' 것으로 고쳤다.",
+            "penalty": -20,
+            "sourceId": "ms-async-scenarios"
+          },
+          {
+            "id": "d3",
+            "description": "배열 복사를 Task.Run 람다 안(워커 스레드)에서 해서, 호출자가 배열을 다시 채우기 전에 복사된다는 보장이 없다.",
+            "penalty": -15,
+            "sourceId": "ms-lambda-expressions"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    // 가짜 빌더. 문(gate)이 닫혀 있으면 열릴 때까지(최대 4초) 입력을 읽지 않고 기다린다 = \"아직 계산 중\".\n    sealed class Rig\n    {\n        public readonly System.Threading.ManualResetEventSlim MeshGate = new System.Threading.ManualResetEventSlim(true);\n        public readonly System.Threading.ManualResetEventSlim ColliderGate = new System.Threading.ManualResetEventSlim(true);\n        public readonly System.Threading.ManualResetEventSlim SlowGate = new System.Threading.ManualResetEventSlim(true);\n        public volatile int MainThreadId = -1;\n        public volatile bool MeshOnMain, ColliderOnMain, GotCallerArray;\n        public int MeshDone, ColliderDone;\n        public int[] CallerBuffer;\n        public int SlowMarker = int.MinValue;\n        public int Mesh(int[] v)\n        {\n            if (System.Environment.CurrentManagedThreadId == MainThreadId) MeshOnMain = true;\n            if (ReferenceEquals(v, CallerBuffer)) GotCallerArray = true;\n            (v.Length > 0 && v[0] == SlowMarker ? SlowGate : MeshGate).Wait(4000);\n            int r = MeshOf(v);\n            System.Threading.Interlocked.Increment(ref MeshDone);\n            return r;\n        }\n        public int Collider(int[] v)\n        {\n            if (System.Environment.CurrentManagedThreadId == MainThreadId) ColliderOnMain = true;\n            if (ReferenceEquals(v, CallerBuffer)) GotCallerArray = true;\n            ColliderGate.Wait(4000);\n            int r = ColliderOf(v);\n            System.Threading.Interlocked.Increment(ref ColliderDone);\n            return r;\n        }\n        public void OpenAll() { MeshGate.Set(); ColliderGate.Set(); SlowGate.Set(); }\n        public ChunkMeshService NewService() => new ChunkMeshService(Mesh, Collider);\n    }\n\n    static int MeshOf(int[] v) { int s = 0; for (int i = 0; i < v.Length; i++) s += v[i] * (i + 1); return s; }\n    static int ColliderOf(int[] v) { int c = 0; foreach (int x in v) if (x > 0) c++; return c; }\n    static int[] Data(int seed, int marker) { var r = new System.Random(seed); var a = new int[256]; for (int i = 0; i < a.Length; i++) a[i] = r.Next(-3, 10); a[0] = marker; return a; }\n    static string Check(ChunkMeshService s, int id, int[] data)\n    {\n        if (!s.Applied.TryGetValue(id, out var got)) return \"청크 \" + id + \" 의 결과가 Applied 에 없음\";\n        if (got.Vertices != MeshOf(data) || got.ColliderCells != ColliderOf(data))\n            return \"청크 \" + id + \": 기대 (정점 \" + MeshOf(data) + \", 충돌체 \" + ColliderOf(data) + \") / 결과 (정점 \" + got.Vertices + \", 충돌체 \" + got.ColliderCells + \")\";\n        return null;\n    }\n    // 메인 루프처럼 1ms 마다 Tick 을 부르며 cond 가 참이 될 때까지 기다린다(최대 limitMs).\n    static bool TickUntil(ChunkMeshService s, System.Func<bool> cond, int limitMs)\n    {\n        var sw = System.Diagnostics.Stopwatch.StartNew();\n        while (sw.ElapsedMilliseconds < limitMs) { s.Tick(); if (cond()) return true; System.Threading.Thread.Sleep(1); }\n        return false;\n    }\n\n    // body 를 전용 \"메인 루프\" 스레드에서 실행한다. limitMs 안에 끝나지 않으면 메인 루프가 막힌 것으로 본다.\n    static string OnMain(Rig rig, int limitMs, System.Func<string> body)\n    {\n        string result = null; System.Exception error = null;\n        var t = new System.Threading.Thread(() => { rig.MainThreadId = System.Environment.CurrentManagedThreadId; try { result = body(); } catch (System.Exception e) { error = e; } });\n        t.IsBackground = true;\n        t.Start();\n        if (!t.Join(limitMs)) { rig.OpenAll(); t.Join(3000); return \"메인 루프가 \" + limitMs + \"ms 동안 돌아오지 않음(Request 나 Tick 이 작업이 끝나기를 기다리며 막힘)\"; }\n        if (error != null) return \"예외 발생: \" + error.GetType().Name + \" \" + error.Message;\n        return result;\n    }\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    public static void Main()\n    {\n        System.Threading.ThreadPool.SetMinThreads(4, 4);   // 막혀 있는 가짜 빌더(동시에 최대 2개) 때문에 풀 스레드 주입이 늦어지지 않게 한다. 채점 환경은 만들 수 있는 스레드 수가 적다\n        var total = System.Diagnostics.Stopwatch.StartNew();\n\n        Run(\"single-request-applied\", () =>\n        {\n            var rig = new Rig();\n            return OnMain(rig, 2000, () =>\n            {\n                var s = rig.NewService(); var a = Data(1, 7);\n                s.Request(7, a);\n                if (!TickUntil(s, () => s.Applied.ContainsKey(7), 1500)) return \"1.5초 동안 Tick 을 불러도 청크 7 이 반영되지 않음\";\n                if (s.InFlightCount != 0) return \"반영된 뒤에도 InFlightCount 가 \" + s.InFlightCount;\n                return Check(s, 7, a);\n            });\n        });\n\n        Run(\"request-returns-immediately\", () =>\n        {\n            var rig = new Rig(); rig.MeshGate.Reset(); rig.ColliderGate.Reset();\n            return OnMain(rig, 1000, () =>\n            {\n                var s = rig.NewService(); var a = Data(2, 1);\n                s.Request(1, a);   // 빌더는 문이 열릴 때까지 끝나지 않는다. Request 는 그래도 돌아와야 한다\n                if (s.InFlightCount != 1 || s.Applied.Count != 0) return \"Request 직후 InFlightCount=\" + s.InFlightCount + \", Applied=\" + s.Applied.Count + \" (기대 1, 0)\";\n                rig.OpenAll();\n                if (!TickUntil(s, () => s.Applied.ContainsKey(1), 800)) return \"문을 연 뒤에도 청크 1 이 반영되지 않음\";\n                return Check(s, 1, a);\n            });\n        });\n\n        Run(\"heavy-work-off-main-thread\", () =>\n        {\n            var rig = new Rig();\n            string e = OnMain(rig, 2000, () =>\n            {\n                var s = rig.NewService(); var d = new[] { Data(3, 1), Data(4, 2), Data(5, 3) };\n                for (int i = 0; i < 3; i++) s.Request(100 + i, d[i]);\n                if (!TickUntil(s, () => s.Applied.Count == 3, 1500)) return \"청크 3개가 1.5초 안에 모두 반영되지 않음\";\n                for (int i = 0; i < 3; i++) { string c = Check(s, 100 + i, d[i]); if (c != null) return c; }\n                return null;\n            });\n            if (e != null) return e;\n            if (rig.ColliderOnMain) return \"충돌체 생성(_buildCollider)이 메인 루프 스레드에서 실행됨\";\n            if (rig.MeshOnMain) return \"메시 생성(_buildMesh)이 메인 루프 스레드에서 실행됨\";\n            return null;\n        });\n\n        Run(\"tick-never-waits\", () =>\n        {\n            var rig = new Rig(); rig.MeshGate.Reset();\n            return OnMain(rig, 1000, () =>\n            {\n                var s = rig.NewService(); var a = Data(6, 3);\n                s.Request(3, a);\n                s.Tick(); s.Tick();   // 메시가 아직 계산 중이다. Tick 은 기다리지 않고 돌아와야 한다\n                if (s.Applied.ContainsKey(3) || s.InFlightCount != 1) return \"끝나지 않은 작업이 Tick 에서 빠짐(Applied 에 있음=\" + s.Applied.ContainsKey(3) + \", InFlightCount=\" + s.InFlightCount + \")\";\n                rig.MeshGate.Set();\n                if (!TickUntil(s, () => s.Applied.ContainsKey(3), 800)) return \"문을 연 뒤에도 청크 3 이 반영되지 않음\";\n                return Check(s, 3, a);\n            });\n        });\n\n        Run(\"caller-reuses-buffer\", () =>\n        {\n            var rig = new Rig();   // 문은 열어 둔다: 채점 환경은 스레드 수가 적어 막힌 작업을 많이 만들지 않는다\n            return OnMain(rig, 1500, () =>\n            {\n                var s = rig.NewService(); var data = new int[6][];\n                for (int i = 0; i < 6; i++) data[i] = Data(7 + i, i + 1);\n                var buf = new int[256]; rig.CallerBuffer = buf;\n                for (int i = 0; i < 6; i++)\n                {\n                    System.Array.Copy(data[i], buf, buf.Length);   // 호출자가 같은 배열을 이번 청크 데이터로 채우고\n                    s.Request(10 + i, buf);                        // 요청한 뒤 곧바로 다음 청크 데이터로 덮어쓴다\n                }\n                System.Array.Copy(Data(99, 9), buf, buf.Length);   // 다음 프레임 준비로 또 덮어쓴다\n                if (!TickUntil(s, () => s.Applied.Count == 6, 1200)) return \"청크 10~15 가 모두 반영되지 않음\";\n                for (int i = 0; i < 6; i++) { string e = Check(s, 10 + i, data[i]); if (e != null) return e + \" (작업이 호출자가 다시 채운 배열을 읽음)\"; }\n                return rig.GotCallerArray ? \"빌더가 호출자의 배열을 복사하지 않고 그대로 받음\" : null;\n            });\n        });\n\n        Run(\"tick-no-timed-waits\", () =>\n        {\n            var rig = new Rig(); rig.MeshGate.Reset();\n            return OnMain(rig, 2500, () =>\n            {\n                var s = rig.NewService(); var a = Data(13, 6);\n                s.Request(40, a);\n                var t = new double[21];   // 메시가 아직 계산 중인 작업 하나를 두고 Tick 21회의 시간을 잰다\n                for (int r = 0; r < t.Length; r++) { var sw = System.Diagnostics.Stopwatch.StartNew(); s.Tick(); t[r] = sw.Elapsed.TotalMilliseconds; }\n                System.Array.Sort(t);\n                rig.MeshGate.Set();\n                if (t[10] >= 0.5) return \"끝나지 않은 작업 하나가 있을 때 Tick 시간의 중앙값이 \" + t[10].ToString(\"F2\") + \"ms(21회). Wait(1) 처럼 잠깐씩이라도 기다리는 코드로 보임\";\n                if (!TickUntil(s, () => s.Applied.ContainsKey(40), 800)) return \"문을 연 뒤에도 청크 40 이 반영되지 않음\";\n                return Check(s, 40, a);\n            });\n        });\n\n        Run(\"partial-completion\", () =>\n        {\n            var rig = new Rig(); rig.SlowMarker = 555; rig.SlowGate.Reset();\n            return OnMain(rig, 1500, () =>\n            {\n                var s = rig.NewService(); var slow = Data(10, 555); var fast = Data(11, 4);\n                s.Request(20, slow); s.Request(21, fast);\n                if (!TickUntil(s, () => s.Applied.ContainsKey(21), 1000)) return \"먼저 끝난 청크 21 이 반영되지 않음\";\n                if (s.Applied.ContainsKey(20) || s.InFlightCount != 1) return \"아직 계산 중인 청크 20 이 Tick 에서 사라짐(InFlightCount=\" + s.InFlightCount + \")\";\n                rig.SlowGate.Set();\n                if (!TickUntil(s, () => s.Applied.ContainsKey(20), 800)) return \"문을 연 뒤에도 청크 20 이 반영되지 않음\";\n                return Check(s, 20, slow) ?? Check(s, 21, fast);\n            });\n        });\n\n        Run(\"applied-changes-only-in-tick\", () =>\n        {\n            var rig = new Rig();\n            return OnMain(rig, 2500, () =>\n            {\n                var s = rig.NewService(); var a = Data(12, 5);\n                s.Request(30, a);\n                var sw = System.Diagnostics.Stopwatch.StartNew();\n                while ((System.Threading.Volatile.Read(ref rig.MeshDone) < 1 || System.Threading.Volatile.Read(ref rig.ColliderDone) < 1) && sw.ElapsedMilliseconds < 1500) System.Threading.Thread.Sleep(1);\n                if (sw.ElapsedMilliseconds >= 1500) return \"빌더가 1.5초 안에 끝나지 않음\";\n                var quiet = System.Diagnostics.Stopwatch.StartNew();   // 빌더가 끝난 뒤 300ms 동안 Tick 없이 지켜본다\n                while (quiet.ElapsedMilliseconds < 300) { if (s.Applied.Count != 0) return \"Tick 을 부르지 않았는데 Applied 가 바뀜(워커 스레드가 메인 스레드 상태를 직접 씀)\"; System.Threading.Thread.Sleep(1); }\n                if (!TickUntil(s, () => s.Applied.ContainsKey(30), 800)) return \"Tick 을 불러도 청크 30 이 반영되지 않음\";\n                return Check(s, 30, a);\n            });\n        });\n\n        if (total.ElapsedMilliseconds > 9000) System.Console.WriteLine(\"(채점 전체 \" + total.ElapsedMilliseconds + \"ms)\");\n    }\n}\n",
+        "cases": [
+          "single-request-applied",
+          "request-returns-immediately",
+          "heavy-work-off-main-thread",
+          "tick-never-waits",
+          "caller-reuses-buffer",
+          "tick-no-timed-waits",
+          "partial-completion",
+          "applied-changes-only-in-tick"
+        ],
+        "note": "채점기가 메시·충돌체 빌더를 가짜로 주입합니다. 빌더는 '문'이 닫혀 있으면 열릴 때까지 입력을 읽지 않고 기다리므로(최대 4초), 결과가 타이밍에 기대지 않습니다. 모든 호출은 채점기가 만든 전용 '메인 루프' 스레드에서 하고, 그 스레드가 제한 시간(1~2.5초) 안에 돌아오지 않으면 문을 모두 열고 [FAIL] 로 보고합니다. 검사 항목: 기본 반영, 빌더가 끝나지 않았을 때 Request 와 Tick 이 곧바로 돌아오는지, 빌더가 메인 루프 스레드에서 실행되지 않는지, 호출자가 배열 하나를 다시 채워 가며 6개 청크를 연달아 요청해도 각 청크가 자기 데이터로 계산되는지(빌더가 호출자의 배열 자체를 받으면 실패), 끝나지 않은 작업이 있을 때 Tick 시간의 중앙값(21회)이 0.5ms 미만인지(Wait(1) 처럼 잠깐씩 기다리는 코드를 잡음), 먼저 끝난 작업만 반영되고 나머지는 남는지, Tick 을 부르지 않는 동안 Applied 가 바뀌지 않는지(빌더가 끝난 뒤 300ms 관찰). 복사를 Task.Run 람다 안(워커 스레드)에서 하는 오답은 워커가 호출자의 덮어쓰기보다 먼저 복사하면 걸리지 않을 수 있어 6번 연달아 경쟁시킵니다(채점 환경과 로컬 실행에서 매번 걸렸습니다). 채점 환경은 만들 수 있는 스레드 수가 적으므로(검수 때 약 12개), 청크마다 새 Thread 를 만드는 식의 풀이는 스레드 생성에 실패할 수 있습니다. ChunkResult, ChunkMeshService 의 생성자 (Func<int[], int> buildMesh, Func<int[], int> buildCollider), Request(int, int[]), Tick(), Applied, InFlightCount 는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "모범 답안·스타터와 람다 안 복사·Wait(1)·ContinueWith 로 _applied 쓰기·복사 없음 오답, 작업을 둘로 나눈 정답을 로컬과 채점기(스레드 수 제한 확인)에서 실행해 오답만 걸리도록 caller-reuses-buffer 를 6회 경쟁으로 늘리고 tick-no-timed-waits 를 추가했으며, async·Task.Run·Result·IsCompleted·람다 캡처·Dictionary·RemoveAt 문서로 설명을 대조했다."
+      },
+      "nextMission": "빌더가 예외를 던질 수 있게 바꿔 보세요. `Tick` 은 실패한 작업(`IsFaulted`)을 `Applied` 에 넣지 않고 `FailedChunks` 목록에 청크 id 와 예외 메시지를 남기며, 어떤 경우에도 예외를 프레임 루프 밖으로 던지지 않아야 합니다. 그다음 같은 청크를 다시 요청하면 이전 작업의 결과를 버리도록(요청마다 버전 번호를 붙여 Tick 에서 비교) 확장하고, 두 기능을 이 문제와 같은 '문' 방식의 가짜 빌더로 테스트합니다."
+    },
+    {
+      "id": "t7-interview-os-scheduling-frame-pacing",
+      "track": "track7",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "OS 스케줄링과 타이밍: Sleep(16) 프레임 제한이 32fps 가 되는 이유와 프레임 페이싱 설계",
+      "tags": [
+        "CS_Scheduling",
+        "CS_TimerResolution",
+        "CS_FramePacing"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "win32-scheduling-priorities",
+        "win32-sleep",
+        "win32-timebeginperiod",
+        "unity-targetframerate"
+      ],
+      "scenario": "Windows PC 판과 리눅스 전용 서버 빌드를 함께 내는 2D 리듬 액션 게임입니다. 자체 C# 프레임 루프에 60fps 제한을 넣었습니다.\n\n```csharp\nwhile (running)\n{\n    long start = Stopwatch.GetTimestamp();\n    Update(); Render();                                   // 보통 2~3ms\n    int elapsedMs = (int)Stopwatch.GetElapsedTime(start).TotalMilliseconds;\n    int wait = 16 - elapsedMs;\n    if (wait > 0) Thread.Sleep(wait);                     // 남는 시간만큼 쉰다\n}\n```\n\nQA 보고는 이렇습니다.\n\n- Windows PC 에서 60fps 가 아니라 **약 32fps** 가 나온다. 리눅스 서버 빌드의 같은 루프는 초당 거의 60회 돈다.\n- 애셋 로딩 스레드를 `ThreadPriority.Highest` 로 올리자 로딩은 빨라졌지만, 로딩 중에 입력과 음악 동기화가 끊긴다.\n- 같은 팀의 Unity 6 모바일 버전은 60Hz 화면의 Android 기기에서 `Application.targetFrameRate = 25` 로 했더니 20fps 가 나오고, 데스크톱 빌드는 `QualitySettings.vSyncCount = 0; Application.targetFrameRate = 60;` 인데 미세하게 떨린다.\n\n이 문제를 만들면서 같은 루프(일 2ms + `Thread.Sleep(16 - 경과)`)를 60프레임 돌려 보니, Windows 11 PC(.NET 8, 이 프로세스는 `timeBeginPeriod` 를 부르지 않음)에서는 프레임 간격 중앙값이 31.0ms, 채점 서버의 리눅스(.NET 8)에서는 16.1ms 였습니다(검수 때 다시 재도 각각 30.9~31.0ms, 16.1ms). PC 한 대와 채점 서버에서 잰 관찰값이지 보장된 수치가 아닙니다.\n\n**질문: 운영 체제 스케줄러가 스레드에 CPU 를 나눠 주는 방식(타임 슬라이스, 우선순위, 선점)과 `Sleep` 의 정밀도가 무엇에 달려 있는지 설명하고, 위 세 증상이 각각 왜 생기는지 말해 주세요. 그리고 게임의 프레임 페이싱(고른 프레임 간격)을 어떻게 설계하겠습니까?**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "남은 시간이 1ms 같은 아주 짧은 값일 때: Windows 의 기본 타이머 해상도에서는 한 틱 가까이 늘어날 수 있다.",
+        "같은 코드가 OS·전원 설정·창 상태(최소화, 가려짐)에 따라 다른 정밀도로 도는 경우: Windows 11 은 보이지 않는 창의 프로세스에 높은 해상도를 보장하지 않는다.",
+        "CPU 코어가 모두 바쁠 때 높은 우선순위의 CPU 작업: 더 낮은 우선순위의 메인·입력 스레드가 선점당한다.",
+        "16ms 목표와 60Hz 디스플레이(16.67ms)처럼 프레임 제한 주기와 주사율이 맞지 않는 경우: 정확히 지켜도 주기적으로 프레임이 겹치거나 빠진다.",
+        "실행 중 주사율이 바뀌는 경우(모니터 이동, 노트북 전원 분리): 시작할 때 읽은 주사율을 계속 믿으면 안 된다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "Windows 에서 `Thread.Sleep(1)` 이 15ms 넘게 걸리는 이유는 무엇이고, `timeBeginPeriod(1)` 로 \"해결\"하기 전에 무엇을 알아야 합니까? 리눅스에서는 왜 거의 요청한 만큼 잤습니까?",
+          "intent": "Sleep 의 정밀도가 스케줄러의 타이머 틱에 묶여 있다는 점, timeBeginPeriod 의 적용 범위가 Windows 버전에 따라 바뀌었고 비용이 있다는 점, 리눅스의 고해상도 타이머·올림·timer slack 을 문서 표현으로 구분하는지 본다.",
+          "keyAnswer": "- **틱 단위 대기:** Win32 `Sleep` 문서는 시스템 클록이 일정한 속도로 \"틱\"하며, 지정 시간이 한 틱보다 길고 두 틱보다 짧으면 대기가 1~2틱 사이 어디든 될 수 있다고 설명합니다. 깨어난 스레드는 준비 상태가 될 뿐 곧바로 실행된다는 보장도 없습니다. 기본 틱 길이는 `Sleep` 문서에 숫자로 나오지 않습니다. Microsoft 의 `GetTickCount64` 문서는 시스템 타이머 해상도가 보통 10~16ms 범위라고 적고, 시간 측정 문서도 \"10~16ms 해상도로 충분하면\" `GetTickCount64` 를 쓰라고 안내합니다. 정확한 값은 측정합니다. 이 문제를 만들며 Windows 11 PC 에서 .NET 의 `Thread.Sleep` 을 재 보니 `Sleep(1)` 100회의 평균이 15.49ms, `Sleep(16)` 은 30.59ms(약 두 틱)로, 문서가 설명하는 틱 단위 동작과 맞았습니다(PC 한 대의 관찰값). 측정과 맞는 설명은 이렇습니다(판단): 루프는 틱에 맞춰 깨어나므로, 일 2ms 뒤의 `Sleep(14)` 는 만료 시각(틱 뒤 16ms)이 첫 틱(약 15.5ms 뒤)을 지나 두 번째 틱에서야 끝나고, 프레임이 약 31ms, 즉 32fps 가 됩니다.\n- **timeBeginPeriod 의 범위:** 문서에 따르면 Windows 10 2004 이전에는 전역 설정이라 어떤 프로세스든 가장 높은 해상도 요청이 모두에게 적용됐지만, 2004 부터는 **호출한 프로세스에만** 적용되고 호출하지 않은 프로세스에는 기본 해상도 이상을 보장하지 않습니다. Windows 11 부터는 창을 가진 프로세스가 완전히 가려지거나 최소화되면 높은 해상도를 보장하지 않습니다. 같은 PC 에서 `timeBeginPeriod(1)` 을 부른 뒤 재 보니 `Sleep(1)` 평균이 보통 1.9ms 안팎으로 줄었지만, 창 없는 콘솔 프로세스로 돌린 검수 실행 가운데 한 번은 15.5ms 그대로였습니다(원인은 확인하지 못함). 문서가 말하는 것은 보장의 범위이므로 실제 빌드에서 측정해 확인합니다.\n- **비용:** 문서는 높은 해상도가 스케줄러의 작업 전환을 늘려 시스템 성능을 떨어뜨리고, CPU 가 절전 상태에 들어가지 못하게 할 수 있다고 경고합니다. `Sleep` 문서도 자주 호출하지 말고 앱 시작 때 한 번, 끝날 때 `timeEndPeriod` 로 짝을 맞추라고 합니다. 노트북·휴대 기기에서 배터리 비용을 따져야 하는 이유입니다. 짧은 대기가 필요한 곳만 정밀하게 하려면 Windows 10 1803 이상의 `CREATE_WAITABLE_TIMER_HIGH_RESOLUTION` 대기 타이머도 선택지입니다.\n- **리눅스:** `nanosleep(2)` 은 **최소한** 지정 시간 이상 자고, 시간이 클록 단위의 배수가 아니면 다음 배수로 올림하며, 깬 뒤에도 CPU 를 얻기까지 지연이 있을 수 있다고 적습니다. `time(7)` 은 고해상도 타이머를 지원하는 시스템에서는 sleep 정확도가 jiffy 에 묶이지 않고 마이크로초 수준이 일반적이라고 하고, 커널이 전력 절약을 위해 깨우기를 조금 늦출 수 있는 timer slack 도 설명합니다. 채점 서버(리눅스, .NET 8)에서 잰 `Sleep(1)` 평균 1.06~1.16ms, `Sleep(16)` 16.06~16.21ms(두 번 측정)가 이와 맞습니다."
+        },
+        {
+          "question": "로딩 스레드를 `ThreadPriority.Highest` 로 올리면 왜 입력과 음악 동기화가 끊깁니까? 게임에서 스레드 우선순위는 어떻게 쓰고, 무엇은 하지 말아야 합니까?",
+          "intent": "우선순위 기반 선점과 라운드 로빈, 기아 상태, 그리고 Microsoft 가 권하는 우선순위 사용법을 알고, 우선순위를 성능 문제의 해결책으로 오용하지 않는지 본다.",
+          "keyAnswer": "- **선점:** Windows 는 준비된 스레드 중 가장 높은 우선순위의 스레드들에게만 라운드 로빈으로 타임 슬라이스를 주고, 그 스레드들이 하나도 준비되지 않았을 때만 다음 우선순위로 내려갑니다. 더 높은 우선순위 스레드가 준비되면 낮은 쪽은 타임 슬라이스를 다 쓰지 못한 채 멈춥니다. CPU 를 계속 쓰는 로딩 스레드(디코딩·압축 해제)를 높이면, 코어가 모자랄 때마다 보통 우선순위인 메인·입력·오디오 스레드가 밀립니다. 컨텍스트 스위치 문서도 그 이유로 퀀텀 만료와 더 높은 우선순위 스레드의 준비를 듭니다.\n- **문서의 권장:** Microsoft 문서는 입력 스레드에 `THREAD_PRIORITY_ABOVE_NORMAL`/`HIGHEST` 를, CPU 를 많이 쓰는 백그라운드 스레드에 `BELOW_NORMAL`/`LOWEST` 를 주어 필요할 때 선점되게 하라고 합니다. 높은 우선순위 스레드는 짧게, 시간에 민감한 일이 있을 때만 실행되어야 하고, `REALTIME_PRIORITY_CLASS` 는 마우스·키보드 입력과 디스크 플러시를 처리하는 시스템 스레드까지 끊으므로 거의 쓰지 말라고 합니다. 즉 이 게임은 반대로 했습니다. 로더를 낮추고, 필요하면 입력·오디오 쪽을 약간 올립니다.\n- **하지 말 것:** 높은 우선순위 스레드가 낮은 우선순위 스레드의 결과를 바쁜 루프로 기다리면, 낮은 쪽이 스케줄되지 않아 멈출 수 있습니다. 문서는 대기 함수나 `Sleep`, `SwitchToThread` 로 막아 두라고 합니다. 또 .NET 문서는 운영 체제가 스레드 우선순위를 따를 의무가 없다고 적으므로, 우선순위는 힌트이지 동작의 근거가 아닙니다.\n- **리눅스:** 일반 스레드(`SCHED_OTHER`)는 nice 값(-20 ~ +19)으로 몫이 정해지고, `sched(7)` 은 현재 구현에서 nice 차이 1 이 CPU 배분에 약 1.25배 차이를 만든다고 설명합니다. `SCHED_FIFO` 같은 실시간 정책 스레드는 준비되는 즉시 `SCHED_OTHER` 스레드를 항상 선점하므로 게임 작업에 쓰면 같은 문제가 더 심해집니다.\n- **진짜 해결(판단):** 로딩이 프레임을 방해하지 않게 하려면 작업을 작은 단위로 쪼개고, 동시에 도는 로딩 작업 수를 (코어 수 − 메인·렌더 스레드) 이하로 제한하고, 로딩 스레드는 낮은 우선순위로 둡니다. 우선순위는 \"누가 먼저\"를 바꿀 뿐 CPU 총량을 늘리지 않습니다."
+        },
+        {
+          "question": "Unity 데스크톱·모바일에서는 프레임 페이싱을 각각 어떻게 설정하겠습니까? 자체 엔진 루프라면 \"고른 프레임 간격\"을 어떻게 구현하고 검증하겠습니까?",
+          "intent": "Unity 6 문서의 vSyncCount / targetFrameRate 규칙을 플랫폼별로 정확히 알고, 자체 루프에서는 절대 마감 시각·정밀 대기·분포 측정으로 페이싱을 설계하고 검증할 수 있는지 본다.",
+          "keyAnswer": "- **Unity 데스크톱:** `vSyncCount` 는 0~4 이고 기본값은 1 입니다. 0 이 아니면 `targetFrameRate` 는 무시되고, 실효 프레임 레이트는 디스플레이 주사율 ÷ `vSyncCount` 입니다. `targetFrameRate` 문서는 `vSyncCount` 가 하드웨어 기반 동기화이고 `targetFrameRate` 는 소프트웨어 타이밍이라 미세 떨림(microstuttering)이 생길 수 있으므로, 부드러운 프레임 페이싱이 필요하면 항상 `vSyncCount > 0` 을 쓰라고 권합니다. 그래서 데스크톱 빌드의 떨림은 문서가 예고한 동작입니다. `vSyncCount = 1` 로 바꾸는 것이 첫 번째 답입니다.\n- **Unity 모바일:** Android·iOS 에서는 모바일 기기가 비동기 렌더링을 허용하지 않으므로 `vSyncCount` 가 항상 무시되고, `targetFrameRate` 로 조절합니다. 문서는 `vSyncCount = 0` 이고 `targetFrameRate = -1`(기본값)이면 배터리 절약을 위해 주사율과 상관없이 고정 30fps 로 렌더링한다고 적습니다. 지정한 값이 주사율을 나누어떨어지게 하지 않으면 그런 값으로 내림되므로, 60Hz 에서 25 는 20 이 됩니다(QA 의 20fps). 주사율과 맞는 값(60Hz 면 60·30·20)을 고르고, 주사율은 `Screen.currentResolution.refreshRateRatio` 로 읽습니다. 문서는 주사율이 실행 중에 바뀔 수 있으니(모니터 이동, 충전 중 60Hz 제한) 시작 때 본 값을 고정 가정하지 말라고 합니다. XR 은 두 값을 모두 무시합니다.\n- **자체 엔진 루프(판단 + 근거):** 가능하면 스왑 체인의 vsync(Present 대기)에 맞춥니다. 직접 제한해야 한다면 (1) 다음 프레임의 **절대 마감 시각**을 `마감 += 주기` 로 잡아 오차가 쌓이지 않게 하고(리눅스 `nanosleep(2)` 문서도 상대 시간 대기를 신호로 끊겼다가 다시 시작하면 끝나는 시각이 표류하며, 절대 시각을 쓰는 `clock_nanosleep` 으로 피할 수 있다고 설명합니다. 같은 원리입니다), (2) 주기를 정수 16ms 가 아니라 1/60초를 Stopwatch 틱으로 계산하며, (3) 마감 직전까지는 거칠게 자고 마지막 짧은 구간만 고해상도 타이머나 짧은 스핀으로 기다립니다. 스핀은 그동안 코어 하나를 쓰므로 길이는 측정해 정합니다.\n- **검증:** Windows 에서 Stopwatch 는 QPC 를 쓰고, Microsoft 는 짧은 간격 측정에 QPC 를 권합니다. 프레임마다 시작 시각을 기록해 간격의 중앙값·99번째 백분위·최댓값과 \"목표의 1.5배를 넘은 프레임 수\"를 봅니다. 평균 FPS 는 31ms 프레임과 1ms 프레임이 섞여도 정상처럼 보일 수 있습니다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**스케줄링의 기본.** Windows 는 우선순위 0~31 의 스레드 중 준비된 가장 높은 우선순위의 스레드들에게 라운드 로빈으로 타임 슬라이스를 주고, 더 높은 우선순위 스레드가 준비되면 즉시 선점합니다 [win32-scheduling-priorities]. 컨텍스트 스위치의 가장 흔한 이유는 퀀텀이 끝나고 같은 우선순위 이상의 스레드가 준비됐을 때, 더 높은 스레드가 준비됐을 때, 실행 중인 스레드가 기다려야 할 때이며, 기다리는 스레드는 남은 타임 슬라이스를 내놓습니다 [win32-context-switches]. 리눅스의 일반 스레드는 nice 값으로 몫이 정해지고 실시간 정책 스레드는 그들을 항상 선점합니다 [linux-sched-man].\n\n**증상 1: 32fps.** `Sleep` 은 시스템 클록 틱 단위로 동작해 1~2틱 사이로 늘어날 수 있습니다 [win32-sleep]. 기본 해상도의 Windows 에서는 깨어나는 시각이 틱(Microsoft 문서상 보통 10~16ms [ms-gettickcount64], 측정으로는 약 15.5ms)에 묶이므로, 일 2ms 뒤의 `Sleep(14)` 가 두 번째 틱에서야 끝나 프레임이 약 31ms 가 됩니다(측정값은 시나리오 참고). Windows 10 2004 부터 `timeBeginPeriod` 는 호출한 프로세스에만 적용되므로 다른 앱이 해상도를 올려 둔 것에 기댈 수 없고, 높이면 전력·성능 비용이 따릅니다 [win32-timebeginperiod]. 리눅스는 고해상도 타이머 덕분에 요청 시간에 가깝게 깨지만 여전히 \"최소 그 시간 이상\"이며 올림과 timer slack 이 있습니다 [linux-nanosleep-man] [linux-time-man]. 게다가 정수 16ms 는 60Hz 의 16.67ms 와 달라서, 정확히 지켜도 주사율과 어긋나 주기적으로 프레임이 겹치거나 빠집니다(판단).\n\n**증상 2: 로딩 중 입력 끊김.** CPU 를 계속 쓰는 로더를 높은 우선순위로 올리면 코어가 모자랄 때마다 보통 우선순위의 메인·입력 스레드가 선점됩니다. Microsoft 는 반대로 CPU 집약 백그라운드 스레드를 낮게, 입력 스레드를 약간 높게 두라고 권합니다 [win32-scheduling-priorities]. .NET 문서는 운영 체제가 스레드 우선순위를 따를 의무가 없다고도 적으므로 [ms-thread-priority], 해법은 작업을 쪼개고 동시 실행 수를 제한하는 쪽입니다.\n\n**증상 3: Unity 설정.** 데스크톱에서 `vSyncCount = 0` 과 `targetFrameRate` 는 문서가 미세 떨림을 경고하는 소프트웨어 타이밍이고, 부드러운 페이싱에는 `vSyncCount > 0` 을 권합니다. Android·iOS 는 `targetFrameRate` 를 주사율을 나누어떨어지게 하는 값으로 내림하므로 60Hz 화면에서 25 가 20 이 됩니다(문서의 Android 예) [unity-targetframerate]. 모바일에서는 `vSyncCount` 가 무시됩니다 [unity-vsynccount].\n\n**설계.** vsync 에 맞출 수 있으면 맞추고, 직접 제한한다면 절대 마감 시각, 틱 단위 주기, 거친 대기 + 짧은 정밀 대기(Windows 10 1803 이상 고해상도 대기 타이머 [win32-createwaitabletimerex])를 씁니다. 검증은 QPC 기반 Stopwatch 로 프레임 간격의 분포를 봅니다 [ms-qpc-timestamps].\n\n**흔한 오답.** \"Sleep(1) 은 1ms 쉰다\", \"우선순위를 올리면 빨라진다\", \"targetFrameRate 만 넣으면 어디서든 그 프레임이 나온다\", \"평균 FPS 가 60 이면 부드럽다\".\n\n### 흔한 오해\n- **\"timeBeginPeriod 는 시스템 전역 설정이라, 브라우저나 음악 앱이 이미 1ms 로 올려 두었으면 내 게임의 Sleep 도 정밀해진다.\"** — Windows 10 2004 이전에는 맞던 설명입니다. 문서는 2004 부터 이 함수가 전역 타이머 해상도에 영향을 주지 않으며, 호출하지 않은 프로세스에는 기본 해상도보다 높은 해상도를 보장하지 않는다고 적습니다 [win32-timebeginperiod]. 검수 때 Windows 11 PC 에서 다른 프로세스가 `timeBeginPeriod(1)` 을 걸어 둔 동안에도, 부르지 않은 프로세스의 `Sleep(1)` 평균은 15.5ms 였습니다(.NET 8 에서 실행해 확인).\n- **\"Unity 에서 `Application.targetFrameRate = 60` 만 넣으면 어느 플랫폼에서든 60fps 로 고정된다.\"** — 데스크톱과 웹에서는 `vSyncCount` 가 0 이 아니면 `targetFrameRate` 가 무시되는데, `vSyncCount` 의 기본값이 1 입니다 [unity-vsynccount]. Android·iOS 에서는 주사율을 나누어떨어지게 하는 값으로 내림되고(60Hz Android 에서 25 → 20), XR 플랫폼은 두 값을 모두 무시합니다 [unity-targetframerate].",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "Windows 스케줄러가 준비된 스레드 중 가장 높은 우선순위의 스레드들에 라운드 로빈으로 타임 슬라이스를 주고, 더 높은 우선순위 스레드가 준비되면 남은 타임 슬라이스와 상관없이 선점한다고 설명했다.",
+            "points": 9,
+            "sourceId": "win32-scheduling-priorities"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "Sleep 이 시스템 클록 틱 단위로 동작해 지정 시간이 1~2틱 사이로 늘어날 수 있고, 깨어나도 바로 실행된다는 보장이 없다는 점을 설명했다.",
+            "points": 9,
+            "sourceId": "win32-sleep"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "timeBeginPeriod 가 Windows 10 2004 부터 호출한 프로세스에만 적용되고(Windows 11 은 가려진 창 예외 포함), 높은 해상도가 시스템 성능과 전력 절약에 비용을 낸다는 점을 알고 있다.",
+            "points": 9,
+            "sourceId": "win32-timebeginperiod"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "Linux 의 nanosleep 이 최소 지정 시간 이상 자고 클록 단위로 올림되며, 고해상도 타이머와 timer slack 이 결과에 영향을 준다는 점으로 두 OS 의 차이를 설명했다.",
+            "points": 8,
+            "sourceId": "linux-nanosleep-man"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "프레임 시간을 정수 ms 가 아니라 Stopwatch(QPC) 틱으로 재고, 평균 FPS 대신 프레임 간격 분포(최댓값, 백분위)로 검증하는 방법을 제시했다.",
+            "points": 10,
+            "sourceId": "ms-qpc-timestamps"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "'지금 + 주기'가 아니라 절대 마감 시각(마감 += 주기)으로 다음 프레임을 잡아 누적 오차를 막고, 거친 Sleep 과 정밀 대기(고해상도 타이머, 짧은 스핀)의 CPU·전력 비용을 비교했다.",
+            "points": 10,
+            "sourceId": "linux-nanosleep-man"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "CPU 를 많이 쓰는 백그라운드 작업은 낮은 우선순위로 두고 작업을 쪼개거나 동시 실행 수를 제한하는 등, 우선순위 올리기를 성능 해결책으로 쓰지 않는 설계를 제시했다.",
+            "points": 10,
+            "sourceId": "win32-scheduling-priorities"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "Unity 에서 vSyncCount 가 0 이 아니면 targetFrameRate 가 무시되고(기본 vSyncCount = 1), 문서가 부드러운 프레임 페이싱에 vSyncCount > 0 을 권하며, Android·iOS 에서는 vSyncCount 가 무시된다는 점을 정확히 말했다.",
+            "points": 10,
+            "sourceId": "unity-vsynccount"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "Android·iOS 에서 targetFrameRate 가 주사율을 나누어떨어지게 하는 값으로 내림된다는 점(60Hz 에서 25 → 20)과, 문서가 vSyncCount = 0 이고 targetFrameRate 가 기본값(-1)이면 모바일은 고정 30fps 로 렌더링한다고 적는 점을 설명했다.",
+            "points": 10,
+            "sourceId": "unity-targetframerate"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "세 증상(Windows 32fps, 로딩 중 입력 끊김, Unity 설정 결과)을 각각 원인 → 근거 → 해결로 짝지어 정리했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "문서가 보장하는 것과 측정이나 판단으로 아는 것(기본 타이머 해상도 값, 특정 기기의 측정 결과, 스핀 대기의 적정 길이)을 구분해 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Sleep(n) 이 n ms 뒤에 정확히 깨어난다고 가정하거나, 프레임 간격의 흔들림을 운영 체제 타이머와 무관한 게임 코드 문제로만 설명했다.",
+            "penalty": -20,
+            "sourceId": "win32-sleep"
+          },
+          {
+            "id": "d2",
+            "description": "해결책으로 프로세스나 스레드를 REALTIME / 최고 우선순위로 올리라고 제안했다.",
+            "penalty": -15,
+            "sourceId": "win32-scheduling-priorities"
+          },
+          {
+            "id": "d3",
+            "description": "timeBeginPeriod(1) 을 적용 범위와 비용(전력, 시스템 성능) 설명 없이 만능 해결책으로 제시했다.",
+            "penalty": -15,
+            "sourceId": "win32-timebeginperiod"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 채점은 없으며, Win32 스케줄링 우선순위·컨텍스트 스위치·Sleep·timeBeginPeriod·고해상도 대기 타이머·QPC·GetTickCount64, Linux sched(7)·nanosleep(2)·time(7), .NET Thread.Priority, Unity 6 targetFrameRate·vSyncCount 문서로 대조했고, Sleep·프레임 루프·다른 프로세스의 timeBeginPeriod 영향을 Windows 11 PC 와 리눅스 채점기에서 다시 재서 수치를 관찰값으로 고쳐 적었다."
+      },
+      "nextMission": "시나리오의 프레임 루프를 '절대 마감 시각' 방식으로 다시 작성하세요. 마감을 `Stopwatch` 틱으로 `next += Stopwatch.Frequency / 60` 처럼 누적하고, 마감 2ms 전까지는 `Thread.Sleep(1)`, 그 뒤는 `Thread.SpinWait` 로 기다립니다. 같은 PC 에서 (1) 원래 코드, (2) 새 코드, (3) 새 코드 + `timeBeginPeriod(1)` 로 각각 600프레임을 돌려 프레임 간격의 중앙값·99번째 백분위·최댓값과 그동안의 CPU 사용률을 표로 비교하세요."
+    },
+    {
+      "id": "t7-impl-token-bucket-rate-limiter",
+      "track": "track7",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "토큰 버킷 레이트 리미터: 채팅·이모트 도배를 막는 버스트 5, 초당 1개",
+      "tags": [
+        "CS_RateLimiting",
+        "CS_TokenBucket",
+        "CS_InjectedClock"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-token-bucket",
+        "ms-tokenbucket-options",
+        "ms-timeprovider"
+      ],
+      "scenario": "실시간 대전 게임의 서버가 세션마다 채팅과 이모트를 받습니다. 매크로로 이모트를 초당 수십 번 보내는 플레이어 때문에 다른 플레이어의 화면이 도배되고 서버 대역폭도 늘었습니다. 기획 수치는 이렇습니다.\n\n- **채팅:** 평소에는 1초에 1개, 잠깐 몰아서는 최대 5개까지(버스트).\n- **이모트:** 2초에 1개, 최대 3개까지.\n\n두 규칙 모두 **토큰 버킷**으로 표현할 수 있습니다. 버킷에 토큰이 최대 `capacity` 개 들어가고, `refillIntervalMs` 마다 1개씩 찹니다. 메시지 하나를 보내려면 토큰 하나를 써야 하고, 토큰이 없으면 거부합니다.\n\n**할 일:** `TokenBucket` 의 `Available`, `TryConsume`, `MillisUntilAvailable` 을 구현하세요. 시간은 생성자로 받은 시계 `clockMs()`(단조 증가하는 ms)로만 읽습니다. 서버는 이 값을 `Stopwatch` 타임스탬프에서 만들고, 테스트는 가짜 시계를 넣습니다.\n\n**채우기 규칙 (정확한 정의)**\n1. 버킷은 **가득 찬 상태**(capacity 개)로 시작하고, 생성 시각이 기준 시각입니다.\n2. 토큰을 읽거나 쓸 때마다 먼저 채웁니다. 기준 시각 이후 흐른 시간 `elapsed` 에 대해 `elapsed / refillIntervalMs` 개(**내림**)를 더하고, 기준 시각은 **더한 개수 × refillIntervalMs** 만큼만 앞으로 옮깁니다. 나머지 자투리 시간은 다음 계산으로 넘어갑니다.\n3. 더한 결과가 capacity 이상이면 capacity 로 자르고 기준 시각을 지금으로 옮깁니다. 가득 찬 동안 흐른 시간은 쌓이지 않습니다.\n4. `TryConsume(count)` 는 count 개를 한꺼번에 씁니다. 모자라면 **하나도 쓰지 않고** false 입니다. count 는 1 ~ capacity 이고, 벗어나면 `ArgumentOutOfRangeException` 입니다(`MillisUntilAvailable` 도 같음).\n5. `MillisUntilAvailable(count)` 는 count 개가 모이기까지 남은 ms 입니다. 지금 쓸 수 있으면 0 입니다.\n6. 시계가 뒤로 가면(지금 < 기준 시각) 아무것도 바꾸지 않습니다.\n\n규칙 2~3 은 \"토큰이 1ms 마다 1/refillIntervalMs 개씩 물처럼 차오르고, 가득 차면 넘치는 양은 버린다\"는 연속 모델을 정수로 옮긴 것입니다.\n\n| 시각 (capacity 5, 간격 1000ms) | 호출 | 결과 |\n|---|---|---|\n| 0 | `TryConsume()` × 5 | 모두 true |\n| 0 | `TryConsume()` | false |\n| 1500 | `Available` | 1 (자투리 500ms 는 남김) |\n| 1500 | `TryConsume()` 후 `MillisUntilAvailable(1)` | 500 |\n| 2000 | `Available` | 1 |",
+      "constraints": [
+        "모든 연산은 O(1) 이고 힙 할당이 없다. 토큰을 반복문으로 하나씩 더하지 않는다.",
+        "정수(long) 연산만 쓴다. float / double 로 토큰을 누적하지 않는다.",
+        "DateTime.Now, Stopwatch, Timer, Thread.Sleep 을 직접 쓰지 않는다: 시간은 주입된 clockMs() 로만 읽는다.",
+        "System.Threading.RateLimiting 같은 라이브러리로 구현을 대신하지 않는다. 생성자와 공개 시그니처는 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\n\n// 채팅·이모트 도배 방지용 토큰 버킷. 시간은 주입된 시계(단조 증가하는 ms)로만 읽는다.\npublic sealed class TokenBucket\n{\n    private readonly Func<long> _clockMs;\n    private readonly long _intervalMs;\n    private int _tokens;\n    private long _origin;   // 아직 토큰으로 바꾸지 않은 시간이 시작된 시각\n\n    // capacity: 버스트 용량(가득 찬 버킷의 토큰 수). refillIntervalMs: 토큰 1개가 차는 데 걸리는 시간.\n    // 버킷은 가득 찬 상태로 시작한다.\n    public TokenBucket(int capacity, long refillIntervalMs, Func<long> clockMs)\n    {\n        if (capacity < 1) throw new ArgumentOutOfRangeException(nameof(capacity));\n        if (refillIntervalMs < 1) throw new ArgumentOutOfRangeException(nameof(refillIntervalMs));\n        _clockMs = clockMs ?? throw new ArgumentNullException(nameof(clockMs));\n        Capacity = capacity;\n        _intervalMs = refillIntervalMs;\n        _tokens = capacity;\n        _origin = _clockMs();\n    }\n\n    public int Capacity { get; }\n\n    // 지금 시각까지 채운 뒤의 토큰 수.\n    public int Available\n    {\n        get { throw new NotImplementedException(); }\n    }\n\n    // count 개(1 ~ Capacity)를 한꺼번에 쓴다. 모자라면 하나도 쓰지 않고 false.\n    // count 가 범위를 벗어나면 ArgumentOutOfRangeException.\n    public bool TryConsume(int count = 1)\n    {\n        throw new NotImplementedException();\n    }\n\n    // count 개(1 ~ Capacity)가 모일 때까지 남은 ms. 지금 쓸 수 있으면 0.\n    public long MillisUntilAvailable(int count = 1)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "버스트: 가득 찬 버킷(5개)에 같은 시각 6번 요청하면 5번째까지만 허용된다.",
+        "자투리 시간: 간격 1000ms 에서 t=1500 에 1개를 채웠다면 남은 500ms 는 다음 토큰의 진행분으로 남아 t=2000 에 다음 토큰이 찬다.",
+        "오래 쉰 뒤: 가득 찬 동안의 시간은 쌓이지 않으므로, 한 번 쓴 직후 다음 토큰은 정확히 한 간격 뒤에 찬다.",
+        "모자란 요청: 토큰 2개에 TryConsume(3) 은 false 이고 토큰은 2개 그대로다.",
+        "시계가 뒤로 감: 예외 없이 아무것도 바뀌지 않고, 시계가 원래 기준 시각을 지나면 다시 채워진다."
+      ],
+      "hints": [
+        "표의 t=1500 → t=2000 을 따라가 보세요. t=1500 에 토큰 1개를 채우면서 기준 시각을 '지금(1500)'으로 옮기면, t=2000 에는 500ms 밖에 안 흘렀으니 토큰이 없습니다. 하지만 1000ms 마다 1개라는 규칙대로라면 t=1000 과 t=2000 에 하나씩 찼어야 합니다. 기준 시각을 어디로 옮겨야 할까요?",
+        "채우기 로직을 private 메서드 하나(`Refill(now)`)에 모으고 `Available`, `TryConsume`, `MillisUntilAvailable` 이 모두 먼저 그것을 부르게 하세요. 그 메서드 안의 분기는 세 가지뿐입니다: 시간이 안 흘렀거나 뒤로 갔을 때, 더해도 가득 차지 않을 때, 가득 차거나 넘칠 때. `MillisUntilAvailable` 은 '모자란 토큰 수 × 간격'에서 기준 시각 이후 이미 흐른 시간을 빼면 됩니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nRefill(now):\n    elapsed = now - _origin\n    if (elapsed <= 0) return\n    whole = elapsed / _intervalMs\n    if (whole >= Capacity - _tokens):\n        _tokens = Capacity; _origin = ____\n    else:\n        _tokens += whole;   _origin += ____\n\nTryConsume(count):\n    범위 검사 → Refill(clock())\n    if (_tokens < count) return false     // 아무것도 쓰지 않는다\n    _tokens -= count; return true\n\nMillisUntilAvailable(count):\n    범위 검사 → Refill(now)\n    if (_tokens >= count) return 0\n    return (count - _tokens) * _intervalMs - ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\n\n// 채팅·이모트 도배 방지용 토큰 버킷. 시간은 주입된 시계(단조 증가하는 ms)로만 읽는다.\npublic sealed class TokenBucket\n{\n    private readonly Func<long> _clockMs;\n    private readonly long _intervalMs;\n    private int _tokens;\n    private long _origin;   // 아직 토큰으로 바꾸지 않은 시간이 시작된 시각\n\n    // capacity: 버스트 용량(가득 찬 버킷의 토큰 수). refillIntervalMs: 토큰 1개가 차는 데 걸리는 시간.\n    // 버킷은 가득 찬 상태로 시작한다.\n    public TokenBucket(int capacity, long refillIntervalMs, Func<long> clockMs)\n    {\n        if (capacity < 1) throw new ArgumentOutOfRangeException(nameof(capacity));\n        if (refillIntervalMs < 1) throw new ArgumentOutOfRangeException(nameof(refillIntervalMs));\n        _clockMs = clockMs ?? throw new ArgumentNullException(nameof(clockMs));\n        Capacity = capacity;\n        _intervalMs = refillIntervalMs;\n        _tokens = capacity;\n        _origin = _clockMs();\n    }\n\n    public int Capacity { get; }\n\n    // 지금 시각까지 채운 뒤의 토큰 수.\n    public int Available\n    {\n        get { Refill(_clockMs()); return _tokens; }\n    }\n\n    // count 개를 한꺼번에 쓴다. 모자라면 하나도 쓰지 않고 false.\n    public bool TryConsume(int count = 1)\n    {\n        ValidateCount(count);\n        Refill(_clockMs());\n        if (_tokens < count) return false;\n        _tokens -= count;\n        return true;\n    }\n\n    // count 개가 모일 때까지 남은 ms. 지금 쓸 수 있으면 0.\n    public long MillisUntilAvailable(int count = 1)\n    {\n        ValidateCount(count);\n        long now = _clockMs();\n        Refill(now);\n        if (_tokens >= count) return 0;\n        long progress = Math.Max(0, now - _origin);          // 다음 토큰을 향해 이미 흐른 시간\n        return (count - _tokens) * _intervalMs - progress;\n    }\n\n    private void ValidateCount(int count)\n    {\n        if (count < 1 || count > Capacity) throw new ArgumentOutOfRangeException(nameof(count));\n    }\n\n    private void Refill(long now)\n    {\n        long elapsed = now - _origin;\n        if (elapsed <= 0) return;                            // 시간이 안 흘렀거나 시계가 뒤로 갔다: 아무것도 바꾸지 않는다\n        long whole = elapsed / _intervalMs;                  // 다 찬 토큰만 더한다(내림)\n        if (whole >= Capacity - _tokens)\n        {\n            _tokens = Capacity;                              // 넘치는 양과 자투리 시간은 버린다\n            _origin = now;\n            return;\n        }\n        _tokens += (int)whole;\n        _origin += whole * _intervalMs;                      // 자투리 시간(elapsed % interval)은 다음 계산으로 넘긴다\n    }\n}\n",
+      "explanation": "**풀이.** 상태는 정수 두 개입니다. 지금 있는 토큰 수와, 아직 토큰으로 바꾸지 않은 시간이 시작된 **기준 시각**입니다. 호출될 때마다 `Refill(now)` 가 흐른 시간을 간격으로 나눠 다 찬 토큰만 더하고, 기준 시각은 더한 개수 × 간격만큼만 옮깁니다. 그래서 자투리 시간이 버려지지 않습니다. 더한 결과가 용량에 닿으면 용량으로 자르고 기준 시각을 지금으로 옮겨, 가득 찬 동안의 시간이 '저금'되지 않게 합니다. 위키백과의 토큰 버킷 설명대로 버킷에는 최대 b 개만 들어가고 가득 찼을 때 도착한 토큰은 버려지며, n 개보다 적으면 토큰을 꺼내지 않고 요청을 거부합니다 [wiki-token-bucket].\n\n**왜 맞는가.** '크레딧 = 토큰 수 × 간격 + (지금 − 기준 시각)' 으로 보면, 크레딧은 1ms 에 1 씩 늘고 용량 × 간격에서 멈추며, 소비하면 count × 간격만큼 줄어듭니다. 채우기 분기 둘 다 이 값을 정확히 유지하므로(더할 때는 크레딧 불변, 넘칠 때는 상한으로 자름) 결과는 연속 모델과 같습니다. 숨은 테스트의 무작위 비교가 바로 이 참조 모델과 맞춰 봅니다. `MillisUntilAvailable` 은 `count × 간격 − 크레딧` 입니다.\n\n**버스트와 평균.** 계산하면 어떤 T 밀리초 동안 허용되는 최대 개수는 용량 + ⌊T ÷ 간격⌋ 입니다. 채팅(용량 5, 1000ms)이면 1분 동안 최대 65개, 길게 보면 초당 1개로 수렴합니다. 위키백과도 길게 보면 통과량이 토큰이 차는 속도 r 로 제한되고, 몰림(burstiness)은 버킷 깊이로 정해진다고 설명합니다 [wiki-token-bucket].\n\n**복잡도.** 모든 연산 O(1), 할당 없음. 타이머 없이 호출될 때만 계산하므로 세션이 수천 개여도 비용은 메시지 수에 비례합니다. Microsoft 의 `System.Threading.RateLimiting` 패키지에 있는 `TokenBucketRateLimiter` 는 TokenLimit(버킷 최대 토큰 수), TokensPerPeriod, ReplenishmentPeriod 로 같은 개념을 표현하고, `AutoReplenishment` 옵션으로 리미터가 스스로 토큰을 보충할지 다른 코드가 `TryReplenish()` 를 불러 보충할지 고르게 했습니다 [ms-tokenbucket-options]. .NET 8 소스에서 이 옵션의 기본값은 true 입니다 [ms-gh-runtime-tokenbucket-options-net8]. .NET 8 구현은 토큰 수를 double 로 들고, 요청량이 TokenLimit 보다 크면 `ArgumentOutOfRangeException` 을 던집니다(구현 사실) [ms-gh-runtime-tokenbucket-net8]. 이 문제의 범위 검사도 같은 판단입니다. 용량보다 큰 요청은 영원히 성공할 수 없으니 호출자 버그로 봅니다.\n\n**시계.** 시간을 `Func<long>` 으로 주입했기 때문에 테스트가 가짜 시계로 결정적입니다. .NET 8 에는 시간 추상화인 `TimeProvider` 가 있고, 테스트용 `FakeTimeProvider` 는 Microsoft.Extensions.Time.Testing 패키지에 있습니다 [ms-timeprovider].\n\n**흔한 실수.** (1) 채울 때마다 기준 시각 = 지금(자주 호출할수록 느려짐). (2) 가득 찼을 때 채우기를 건너뛰고 기준 시각을 그대로 두기(오래 쉬면 소비 직후 한꺼번에 다시 참). (3) 모자랄 때 남은 토큰만이라도 써 버리기. (4) 시계가 뒤로 가면 음수 경과로 토큰이 줄어들기.\n\n### 흔한 오해\n- **\"용량 5, 1초에 1개짜리 버킷이면 어떤 1초 구간에도 메시지는 최대 1개만 통과한다.\"** — 이 문제의 버킷은 (.NET 8 의 `TokenBucketRateLimiter` 구현처럼 [ms-gh-runtime-tokenbucket-net8]) 가득 찬 상태로 시작하고, 가득 찬 만큼은 한꺼번에 쓸 수 있습니다. 토큰 버킷은 길게 본 통과량을 토큰이 차는 속도로 제한할 뿐이고, 한꺼번에 몰리는 양은 버킷 깊이가 정합니다 [wiki-token-bucket]. 이 설정에서는 한순간에 5개가 통과하고(숨은 테스트 burst-capacity), 1초 구간이면 최대 6개입니다. \"어떤 구간에도 1개\"가 목표라면 용량을 1 로 둬야 합니다.\n- **\"토큰을 float 로 두고 매 프레임 경과 시간 ÷ 간격을 더하면 정수 계산과 같은 결과가 나온다.\"** — 수식은 같아도 부동소수점 누적에는 반올림 오차가 생겨 경계값에서 어긋납니다. 이 문제를 만들면서 double 로 토큰을 누적하는 변형을 숨은 테스트의 무작위 비교에 돌려 보니, 간격 3ms 에서 `MillisUntilAvailable` 이 정수 모델과 1ms 다른 값을 냈습니다(.NET 8 에서 실행해 확인). 정확한 경계가 필요한 판정에는 정수 ms(또는 틱)로 계산합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "가득 찬 상태로 시작해 같은 시각에 capacity 개까지 연속으로 허용하고, 그다음 요청은 거부한다.",
+            "points": 9,
+            "sourceId": "wiki-token-bucket"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "다 찬 토큰만 더하고(내림) 기준 시각을 더한 개수 × 간격만큼만 옮겨 자투리 시간을 넘긴다: 간격 1000ms 에서 t=1500 에 1개, 그 토큰을 쓴 뒤 t=2000 에 다시 1개.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "가득 찬 동안의 시간은 쌓지 않고(가득 차면 기준 시각 = 지금), 토큰이 모자란 요청은 하나도 쓰지 않고 거부한다.",
+            "points": 9,
+            "sourceId": "wiki-token-bucket"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "MillisUntilAvailable 이 자투리 진행분을 빼서 계산하고, 범위 밖 count·잘못된 생성 인자·뒤로 간 시계를 명세대로 처리한다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "모든 연산이 O(1) 이고 힙 할당이 없다: 경과 시간을 한 번에 나눠 계산하고 토큰을 반복문으로 하나씩 더하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "타이머 스레드나 매 프레임 갱신 없이, 호출될 때만 경과 시간으로 채운다(지연 계산). 세션이 수천 개여도 비용이 호출 수에만 비례한다.",
+            "points": 10,
+            "sourceId": "ms-tokenbucket-options"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "정수 ms 연산만 쓰고, float/double 로 토큰을 누적하면 경계에서 결과가 어긋날 수 있다는 점을 설명할 수 있다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "시간을 주입된 단조 시계로만 읽어(DateTime.Now 를 직접 부르지 않음) 가짜 시계로 결정적으로 테스트할 수 있고, .NET 8 의 TimeProvider 로 바꿀 수 있음을 안다.",
+            "points": 10,
+            "sourceId": "ms-timeprovider"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "범위 밖 count 에 ArgumentOutOfRangeException 을 던지는 설계를, 요청량이 TokenLimit 보다 크면 같은 예외를 던지는 .NET 8 TokenBucketRateLimiter 의 구현과 비교해 설명할 수 있다.",
+            "points": 10,
+            "sourceId": "ms-gh-runtime-tokenbucket-net8"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "채우기 로직이 private 메서드 하나에 모여 있고 Available, TryConsume, MillisUntilAvailable 이 모두 그것을 거친다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "버스트 용량과 평균 속도를 기획 수치로 설명하고, T 밀리초 동안 허용되는 최대 개수(용량 + T ÷ 간격의 내림)를 계산할 수 있다.",
+            "points": 7,
+            "sourceId": "wiki-token-bucket"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "호출할 때마다 기준 시각을 지금으로 옮겨 자투리 시간을 버린다: 자주 확인할수록 토큰이 늦게 찬다.",
+            "penalty": -20,
+            "sourceId": ""
+          },
+          {
+            "id": "d2",
+            "description": "가득 찬 동안의 시간을 쌓아 용량보다 많은 연속 요청을 허용하거나, 모자란 요청에 토큰 일부를 써 버린다.",
+            "penalty": -20,
+            "sourceId": "wiki-token-bucket"
+          },
+          {
+            "id": "d3",
+            "description": "DateTime.Now 를 직접 읽거나 Timer·Thread.Sleep 으로 토큰을 채워 결정적으로 테스트할 수 없게 만든다.",
+            "penalty": -15,
+            "sourceId": "ms-timeprovider"
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static long now;   // 가짜 시계(ms)\n    static TokenBucket New(int cap, long interval) => new TokenBucket(cap, interval, () => now);\n\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n    static string Expect(string what, long expected, long actual) => expected == actual ? null : what + \": 기대 \" + expected + \" / 결과 \" + actual;\n    static bool Throws(System.Action a) { try { a(); return false; } catch (System.ArgumentOutOfRangeException) { return true; } }\n\n    public static void Main()\n    {\n        Run(\"burst-capacity\", () =>\n        {\n            now = 1000; var b = New(5, 1000);\n            if (b.Capacity != 5 || b.Available != 5) return \"새 버킷은 가득(5) 차 있어야 함: Available=\" + b.Available;\n            for (int i = 0; i < 5; i++) if (!b.TryConsume()) return \"t=1000 에서 \" + (i + 1) + \"번째 소비가 거부됨(버스트 5 허용)\";\n            if (b.TryConsume()) return \"t=1000 에서 6번째 소비가 허용됨(버스트 용량 초과)\";\n            return Expect(\"6번째 거부 뒤 Available\", 0, b.Available);\n        });\n\n        Run(\"refill-keeps-remainder\", () =>\n        {\n            now = 0; var b = New(5, 1000);\n            b.TryConsume(5);\n            now = 999; string e = Expect(\"t=999 Available\", 0, b.Available); if (e != null) return e;\n            now = 1500; e = Expect(\"t=1500 Available(1개 + 자투리 500ms)\", 1, b.Available); if (e != null) return e;\n            if (!b.TryConsume()) return \"t=1500 에서 소비가 거부됨\";\n            now = 1999; e = Expect(\"t=1999 Available\", 0, b.Available); if (e != null) return e;\n            now = 2000; e = Expect(\"t=2000 Available(자투리 500ms 가 이어져야 함)\", 1, b.Available); if (e != null) return e;\n            now = 4600; return Expect(\"t=4600 Available\", 3, b.Available);\n        });\n\n        Run(\"full-bucket-no-banking\", () =>\n        {\n            now = 0; var b = New(3, 100);\n            now = 10_050; string e = Expect(\"오래 쉰 뒤 Available(용량 3)\", 3, b.Available); if (e != null) return e;\n            if (!b.TryConsume()) return \"t=10050 소비가 거부됨\";\n            now = 10_100; e = Expect(\"가득 찬 동안의 시간은 쌓이지 않음: t=10100 Available\", 2, b.Available); if (e != null) return e;\n            now = 10_149; e = Expect(\"t=10149 Available\", 2, b.Available); if (e != null) return e;\n            now = 10_150; return Expect(\"t=10150 Available(소비 후 정확히 100ms)\", 3, b.Available);\n        });\n\n        Run(\"all-or-nothing\", () =>\n        {\n            now = 0; var b = New(5, 1000);\n            if (!b.TryConsume(3)) return \"TryConsume(3) 이 거부됨\";\n            if (b.TryConsume(3)) return \"토큰 2개뿐인데 TryConsume(3) 이 허용됨\";\n            string e = Expect(\"거부된 요청은 토큰을 쓰지 않음: Available\", 2, b.Available); if (e != null) return e;\n            if (!b.TryConsume(2)) return \"TryConsume(2) 가 거부됨\";\n            return Expect(\"Available\", 0, b.Available);\n        });\n\n        Run(\"argument-validation\", () =>\n        {\n            now = 0; var b = New(4, 50);\n            if (!Throws(() => b.TryConsume(0))) return \"TryConsume(0) 이 ArgumentOutOfRangeException 을 던지지 않음\";\n            if (!Throws(() => b.TryConsume(5))) return \"용량보다 큰 TryConsume(5) 가 ArgumentOutOfRangeException 을 던지지 않음\";\n            if (!Throws(() => b.MillisUntilAvailable(-1))) return \"MillisUntilAvailable(-1) 이 ArgumentOutOfRangeException 을 던지지 않음\";\n            if (!Throws(() => new TokenBucket(0, 50, () => now))) return \"용량 0 버킷 생성이 허용됨\";\n            if (!Throws(() => new TokenBucket(3, 0, () => now))) return \"간격 0 버킷 생성이 허용됨\";\n            return Expect(\"잘못된 호출 뒤 Available\", 4, b.Available);\n        });\n\n        Run(\"millis-until-available\", () =>\n        {\n            now = 0; var b = New(5, 1000);\n            string e = Expect(\"가득 찬 버킷의 MillisUntilAvailable(5)\", 0, b.MillisUntilAvailable(5)); if (e != null) return e;\n            b.TryConsume(5);\n            now = 300;\n            e = Expect(\"t=300 MillisUntilAvailable(1)\", 700, b.MillisUntilAvailable(1)) ?? Expect(\"t=300 MillisUntilAvailable(3)\", 2700, b.MillisUntilAvailable(3));\n            if (e != null) return e;\n            now = 3000;\n            return Expect(\"t=3000 MillisUntilAvailable(3)\", 0, b.MillisUntilAvailable(3)) ?? Expect(\"t=3000 MillisUntilAvailable(5)\", 2000, b.MillisUntilAvailable(5));\n        });\n\n        Run(\"clock-backwards\", () =>\n        {\n            now = 5000; var b = New(2, 1000);\n            b.TryConsume(2);\n            now = 4000;   // 시계가 뒤로 감\n            string e = Expect(\"시계가 뒤로 간 뒤 Available\", 0, b.Available); if (e != null) return e;\n            if (b.TryConsume()) return \"시계가 뒤로 간 뒤 토큰이 생김\";\n            now = 5999; e = Expect(\"t=5999 Available\", 0, b.Available); if (e != null) return e;\n            now = 6000; return Expect(\"원래 기준 시각에서 1000ms 뒤(t=6000) Available\", 1, b.Available);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(2026);\n            long[] intervals = { 1, 3, 7, 100, 333, 1000 };\n            for (int round = 0; round < 60; round++)\n            {\n                int cap = rng.Next(1, 9); long iv = intervals[rng.Next(intervals.Length)];\n                now = rng.Next(0, 100000); var b = New(cap, iv);\n                long level = cap * iv, last = now;   // 참조 모델: 'ms 단위 크레딧'이 연속으로 차오르고 cap*iv 에서 넘친다\n                for (int step = 0; step < 300; step++)\n                {\n                    int k = rng.Next(100);\n                    now += k < 30 ? 0 : k < 70 ? rng.Next(1, (int)iv * 2 + 2) : k < 95 ? rng.Next(1, 7) : rng.Next(1, 50000);\n                    level = System.Math.Min(cap * iv, level + (now - last)); last = now;\n                    int n = rng.Next(1, cap + 1); int op = rng.Next(3);\n                    string where = \"용량 \" + cap + \", 간격 \" + iv + \"ms, \" + step + \"번째 호출(t=\" + now + \")\";\n                    if (op == 0)\n                    {\n                        bool exp = level >= n * iv; if (exp) level -= n * iv;\n                        bool got = b.TryConsume(n);\n                        if (got != exp) return where + \": TryConsume(\" + n + \") 기대 \" + exp + \" / 결과 \" + got;\n                    }\n                    else if (op == 1) { string e = Expect(where + \": Available\", level / iv, b.Available); if (e != null) return e; }\n                    else { string e = Expect(where + \": MillisUntilAvailable(\" + n + \")\", System.Math.Max(0, n * iv - level), b.MillisUntilAvailable(n)); if (e != null) return e; }\n                }\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "burst-capacity",
+          "refill-keeps-remainder",
+          "full-bucket-no-banking",
+          "all-or-nothing",
+          "argument-validation",
+          "millis-until-available",
+          "clock-backwards",
+          "random-vs-reference"
+        ],
+        "note": "가짜 시계(ms)를 주입해 시간을 직접 움직이며 검사합니다. 검사 항목: 가득 찬 상태로 시작하는 버스트 용량, 다 찬 토큰만 더하고 자투리 시간을 넘기는 채우기, 가득 찬 동안 시간이 쌓이지 않는지, 모자란 요청이 토큰을 쓰지 않는지, 잘못된 인자의 ArgumentOutOfRangeException, MillisUntilAvailable 의 남은 시간, 시계가 뒤로 갈 때 아무것도 바뀌지 않는지, 그리고 무작위 시간 흐름(간격 1~1000ms, 0ms·짧은·아주 긴 흐름 섞음)에서 'ms 단위 크레딧이 연속으로 차오르고 용량에서 넘치는' 참조 모델과의 일치. 생성자 TokenBucket(int capacity, long refillIntervalMs, Func<long> clockMs), Capacity, Available, TryConsume(int), MillisUntilAvailable(int) 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "모범 답안·스타터를 채점기에서 실행했고, 기준 시각을 늘 지금으로 옮기는 변형·가득 찼을 때 채우기를 건너뛰는 변형·double 누적 변형이 걸리고 ms 크레딧 방식 정답은 통과함을 .NET 8 에서 확인했으며, 위키백과 토큰 버킷·TokenBucketRateLimiterOptions·.NET 8 소스·TimeProvider 문서로 설명을 대조했다."
+      },
+      "nextMission": "`TokenBucket` 의 시계를 `TimeProvider` 로 바꾸세요(`GetTimestamp()` 와 `TimestampFrequency` 로 ms 를 계산). 그다음 서버에서 세션 id → 버킷을 들고 있는 `RateLimiterRegistry` 를 만들어, 채팅·이모트 규칙을 각각 적용하고 일정 시간 동안 쓰이지 않은 가득 찬 버킷을 정리(제거)하세요. 정리해도 동작이 바뀌지 않는 이유(가득 찬 버킷은 새로 만든 버킷과 같다)를 테스트로 확인합니다."
+    },
+    {
+      "id": "t7-interview-client-data-formats-sqlite",
+      "track": "track7",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "게임 클라이언트의 데이터 저장 형식: JSON·바이너리·SQLite 고르기와 스키마 버전 관리",
+      "tags": [
+        "CS_DataFormats",
+        "CS_SchemaVersioning",
+        "CS_EmbeddedDatabase"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "ms-stj-unmapped-members",
+        "ms-stj-handle-overflow",
+        "sqlite-appfileformat",
+        "sqlite-faq"
+      ],
+      "scenario": "모바일 수집형 RPG(.NET 8 기반 공용 코드)의 클라이언트가 기기에 네 종류의 데이터를 저장합니다.\n\n| 데이터 | 크기·빈도 | 접근 방식 |\n|---|---|---|\n| 설정(그래픽·사운드·키 배치) | 수 KB, 가끔 변경 | 시작할 때 통째로 읽음 |\n| 오프라인 진행 세이브(캐릭터 30명, 장비 2,000개, 퀘스트) | 수백 KB, 30초마다 오토세이브 | 통째로 읽고 씀 |\n| 우편함·채팅 기록 캐시 | 수만 건, 수시로 몇 건씩 추가·읽음 표시 | 최근 순 정렬, 보낸 사람·종류로 필터, 30일 지난 것 삭제 |\n| 정적 데이터 테이블(아이템 정의 1만 줄) | 패치 때마다 통째로 교체 | 읽기 전용, 전투 중 수시로 조회 |\n\n지금은 이 모두를 `data.json` 하나에 넣고, 무엇이든 바뀌면 `System.Text.Json` 으로 전체를 다시 씁니다. 파일은 8MB 가 되었고, 우편 하나를 읽음으로 표시할 때도 전체를 다시 써서 화면이 멈춥니다. 지난 두 번의 업데이트에서는 이런 사고도 있었습니다.\n\n- 세이브 클래스의 `Hp` 를 `MaxHp` 로 이름만 바꿨더니, 업데이트한 유저의 캐릭터 체력이 전부 0 이 되었다. 예외는 없었다.\n- 스토어 심사 때문에 업데이트를 못 받은 구버전 기기가 클라우드 동기화로 새 세이브를 받아 다시 저장하자, 새 버전에서 추가한 `Level` 과 `Title` 이 사라졌다.\n\n**질문: 네 종류의 데이터에 각각 JSON, 직접 정의한 바이너리, SQLite 같은 내장 데이터베이스 중 무엇을 쓰겠습니까? 스키마가 바뀔 때(필드 추가·이름 변경·삭제) 옛 데이터와 새 코드가 서로를 깨뜨리지 않게 하는 버전 관리 방법과, 관계형 모델이 실제로 도움이 되는 경우와 과한 경우를 설명해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "필드 이름 변경: 옛 JSON 의 값은 아무 속성에도 매핑되지 않아 조용히 버려지고, 새 속성은 기본값으로 남는다.",
+        "구버전 클라이언트가 새 세이브를 다시 저장: 모르는 필드는 기본으로 버려지므로 그대로 저장하면 새 필드가 사라진다.",
+        "우편함에 1만 건을 한꺼번에 받는 경우: SQLite 는 기본적으로 INSERT 하나가 트랜잭션 하나라서, 묶지 않으면 커밋 비용이 행 수만큼 든다.",
+        "SQLite 테이블에 NOT NULL 열을 추가: ALTER TABLE ADD COLUMN 은 기본값이 NULL 이 아닌 경우에만 허용한다.",
+        "정적 데이터 테이블을 전투 중에 매번 파일이나 DB 에서 조회: 프레임마다 I/O 와 파싱 비용이 든다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "두 사고(`Hp` → `MaxHp` 이름 변경, 구버전 기기의 재저장)를 System.Text.Json 의 기본 동작으로 설명해 주세요. 다음 업데이트부터는 세이브 스키마를 어떻게 관리하겠습니까?",
+          "intent": "System.Text.Json 의 기본 매핑 규칙(모르는 속성 무시, 없는 속성은 기본값)을 문서대로 알고, 이를 전제로 버전 번호·마이그레이션·모르는 필드 보존 같은 앞뒤 호환 전략을 세우는지 본다.",
+          "keyAnswer": "- **기본 동작:** Microsoft 문서는 JSON 에 대상 형식에 없는 속성이 있으면 기본으로 그냥 무시된다고 설명합니다. 반대로 JSON 에 없는 속성은 예외 없이 그대로 남습니다(속성 초기화 값). 이 문제를 만들며 .NET 8 에서 실행해 보니 `{\"Version\":1,\"Gold\":50,\"Hp\":120}` 를 `MaxHp` 가 있는 새 클래스로 읽으면 `MaxHp = 0`, 새로 추가한 `Level` 은 초기화 값 1 이 되었습니다. 즉 이름 변경은 \"옛 필드 삭제 + 새 필드 추가\"와 같고, 데이터는 조용히 사라집니다.\n- **구버전의 재저장:** 구버전 클래스로 새 세이브를 읽으면 `Level`, `Title` 은 무시되고, 다시 저장하면 그 필드가 없는 JSON 이 써집니다. 실행해 보니 `Version` 값 2 는 그대로 남은 채 내용은 구버전 모양이 되어, 버전 번호까지 거짓말을 하게 되었습니다.\n- **고치는 방법:** (1) 세이브 최상위에 `Version` 을 두고, 로드할 때 `v1 → v2 → v3` 마이그레이션 함수를 순서대로 적용합니다. 이름 변경은 마이그레이션에서 옛 값을 새 이름으로 옮기는 코드로만 합니다(판단). (2) 모르는 필드를 보존하려면 `[JsonExtensionData]` 속성을 둡니다. 문서는 매핑되지 않은 속성이 이 사전에 담기고 직렬화할 때 다시 원래 속성으로 써져 왕복해도 데이터를 잃지 않는다고 설명합니다. 실행해 보니 구버전 클래스에 이것을 두자 `MaxHp`, `Level`, `Title` 이 다시 저장되었습니다. (3) 구버전이 상위 버전 세이브를 덮어쓰지 못하게, \"알고 있는 최대 버전보다 높으면 읽기 전용으로 열고 클라우드에 쓰지 않기\" 같은 정책을 둡니다(판단).\n- **엄격 모드:** .NET 8 부터는 `JsonUnmappedMemberHandling.Disallow` 로 모르는 속성이 있으면 `JsonException` 을 던지게 할 수 있습니다. 실제 로드에는 너무 엄격하지만, 테스트에서 \"마이그레이션이 모든 필드를 옮겼는지\" 검사하는 데 쓸 수 있습니다. 반드시 있어야 하는 값은 `required` 나 `[JsonRequired]` 로 표시하면 빠졌을 때 `JsonException` 이 납니다."
+        },
+        {
+          "question": "우편함·채팅 기록 캐시를 SQLite 로 옮기면 무엇이 좋아지고, 무엇을 새로 책임져야 합니까?",
+          "intent": "내장 DB 의 장점(부분 갱신, 트랜잭션, 인덱스 조회)을 SQLite 문서의 표현으로 말하고, 트랜잭션 묶기·스키마 마이그레이션·외래 키 같은 운영상의 책임까지 아는지 본다.",
+          "keyAnswer": "- **좋아지는 것:** SQLite 문서는 응용 프로그램 파일 형식으로 쓸 때의 장점으로 (1) 쓰기가 원자적이라 시스템 충돌이나 전원 차단 중에도 완전히 되거나 전혀 안 되며, 여러 변경을 한 트랜잭션으로 묶을 수 있다는 점, (2) 실제로 바뀐 부분만 디스크에 써서 한 바이트를 바꾸려고 전체 문서를 다시 쓸 필요가 없다는 점, (3) SQL 로 조회할 수 있다는 점을 듭니다. \"최근 30일, 보낸 사람별, 최신 순\" 같은 조회에 `(종류, 받은 시각)` 인덱스를 두면 전체를 메모리에 올려 정렬할 필요가 없습니다. 원자성은 SQLite 가 자기 문서에서 주장하는 성질이고, 그 근거는 원자적 커밋 문서(롤백 저널 모드 기준)가 설명하는 저널과 핵심 지점의 flush(fsync) 절차입니다.\n- **트랜잭션 묶기:** SQLite FAQ 는 기본적으로 INSERT 하나가 각각 트랜잭션이라 트랜잭션 처리 비용이 매번 들고, 여러 작업을 한 트랜잭션으로 묶으면 성능이 크게 좋아진다고 설명합니다. 우편 1만 건을 받으면 `BEGIN … COMMIT` 하나로 넣습니다. `PRAGMA synchronous=OFF` 로 빠르게 할 수도 있지만 같은 FAQ 는 전원이 나가면 DB 파일이 손상될 수 있다고 경고합니다.\n- **스키마 버전:** `PRAGMA user_version` 은 데이터베이스 헤더의 정수로, SQLite 자신은 쓰지 않고 응용 프로그램이 마음대로 쓰라고 남겨 둔 값입니다. 앱 시작 때 이 값을 읽어 마이그레이션 SQL 을 순서대로 실행하고 값을 올립니다. `ALTER TABLE` 이 직접 지원하는 것은 테이블 이름 바꾸기, 열 이름 바꾸기, 열 추가, 열 삭제와, SQLite 3.53.0(2026-04)부터 추가된 열의 `NOT NULL` 제약 설정·해제입니다(기기에 든 SQLite 가 그보다 오래됐을 수 있으니 앱이 쓰는 버전을 확인합니다). 추가하는 열에 `NOT NULL` 을 붙이려면 NULL 이 아닌 기본값이 있어야 합니다. 그 밖의 변경은 문서의 절차대로 새 테이블을 만들어 복사하고 바꿔치기합니다.\n- **무결성:** SQLite 의 외래 키 제약은 하위 호환 때문에 기본으로 꺼져 있고 연결마다 따로 켜야 합니다(`PRAGMA foreign_keys = ON`). 선언만으로는 지켜지지 않습니다.\n- **.NET 에서:** Microsoft.Data.Sqlite 는 SQLite 용 경량 ADO.NET 공급자로 NuGet 패키지로 받습니다. 대상 플랫폼마다 네이티브 SQLite 라이브러리가 함께 배포되는지 확인하고, 연결·명령 객체의 수명과 어느 스레드에서 쓸지를 정해야 합니다(판단)."
+        },
+        {
+          "question": "정적 데이터 테이블(아이템 정의 1만 줄)과 설정·진행 세이브는 각각 어떤 형식과 메모리 구조로 두겠습니까? 관계형 모델이 도움이 되는 경우와 과한 경우를 구분해 주세요.",
+          "intent": "데이터의 수명·접근 패턴에 따라 형식을 고르는 판단을 근거와 함께 말하고, 관계형 모델을 만능으로 보지 않으며, 직접 바이너리를 만들 때의 안전한 방법과 BinaryFormatter 의 위험을 아는지 본다.",
+          "keyAnswer": "- **정적 데이터(판단):** 읽기 전용이고 통째로 교체되므로 관계형 DB 의 장점(부분 갱신, 트랜잭션)이 거의 쓰이지 않습니다. 빌드 파이프라인에서 검증한 뒤 JSON 이나 직접 정의한 바이너리로 내려받고, 로드할 때 한 번 파싱해 `ItemDef[]` 배열과 `id → 인덱스` 딕셔너리로 바꿉니다. 전투 중 조회는 메모리 조회입니다. 바이너리를 쓴다면 헤더(매직·버전·길이·체크섬)를 두고, 정수는 `BinaryPrimitives` 의 리틀 엔디언 메서드처럼 엔디언을 명시해 읽고 씁니다. `System.Text.Json` 도 성능과 적은 메모리 할당을 우선해 설계되었고 런타임 리플렉션 대신 소스 생성을 써서 성능을 높일 수 있으니, 먼저 JSON 으로 재 보고 느릴 때 바이너리로 갑니다.\n- **설정:** 작고 사람이 읽고 고칠 일이 있으니 JSON 이 알맞습니다(판단). 통째로 읽고 쓰므로 원자적 저장(임시 파일 + 교체)만 지키면 됩니다.\n- **진행 세이브:** 통째로 저장하는 스냅샷이고 버전 관리가 핵심이므로 JSON(+ 버전 번호 + 마이그레이션) 또는 체크섬을 둔 직접 정의 바이너리가 알맞습니다. 장비 2,000개를 개별 수정해야 하는 구조가 되면 SQLite 를 검토합니다(판단).\n- **BinaryFormatter 는 안 됨:** Microsoft 문서는 `BinaryFormatter` 가 위험하고 안전하게 만들 수 없으며, 신뢰한다고 믿는 데이터라도 쓰지 말라고 합니다. 게임이라면 세이브 파일을 공유하는 유저가 모르는 사이 위험해진다는 예와, 클라우드 저장소 계정에 접근한 공격자가 데이터 파일을 오염시키는 예까지 들고, .NET 9 부터는 사용하면 예외를 던진다고 적습니다. 이 게임이 쓰는 .NET 8 에서도 이미 Windows Forms·WPF 를 뺀 모든 프로젝트 형식에서 `Serialize`·`Deserialize` 가 기본으로 `NotSupportedException` 을 던지고(호환 스위치로만 다시 켤 수 있음), 이 API 들은 오류 수준으로 obsolete 입니다(.NET 8 호환성 변경 문서). 대안으로 `System.Text.Json`, `BinaryReader`/`BinaryWriter` 등을 듭니다.\n- **관계형이 도움이 될 때:** 여러 조건으로 조회·정렬하는 데이터, 일부만 자주 바뀌는 데이터, 서로를 참조하는 데이터(우편 ↔ 첨부 아이템)입니다. SQLite 문서는 자신이 클라이언트/서버 DB 와 경쟁하지 않고 `fopen()` 과 경쟁한다고, 즉 로컬 데이터 저장을 위한 것이라고 설명합니다. **과할 때:** 통째로 읽고 쓰는 작은 설정, 읽기 전용 정적 테이블, 매 프레임 바뀌는 런타임 상태(이것은 메모리에 둡니다)."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**한 파일 전략의 문제.** 성격이 다른 네 데이터를 한 JSON 에 넣으면, 가장 자주 바뀌는 데이터(우편 읽음 표시)가 가장 큰 쓰기(8MB 전체)를 일으킵니다. 형식을 고르기 전에 **바뀌는 빈도, 크기, 접근 방식**으로 나누는 것이 첫 답입니다.\n\n**권하는 배치(판단, 근거는 각 문서).**\n\n| 데이터 | 형식 | 이유 |\n|---|---|---|\n| 설정 | JSON | 작고 사람이 읽음, 통째로 읽고 씀 |\n| 진행 세이브 | JSON 또는 체크섬 있는 바이너리 + 버전 번호 | 스냅샷, 마이그레이션이 핵심 |\n| 우편·채팅 캐시 | SQLite | 부분 갱신, 조회·정렬, 트랜잭션 [sqlite-appfileformat] [sqlite-atomic-commit] |\n| 정적 데이터 | JSON 또는 바이너리 → 로드 때 배열·딕셔너리 | 읽기 전용, 통째로 교체 |\n\nSystem.Text.Json 은 기능보다 성능과 적은 메모리 할당을 우선해 설계되었고 런타임 리플렉션 대신 소스 생성을 써서 성능을 높이고 메모리 사용을 줄일 수 있으므로 [ms-stj-overview], 정적 데이터도 먼저 JSON 으로 재 보고 느릴 때 바이너리로 옮기는 것이 순서입니다(판단).\n\n**두 사고의 원인.** System.Text.Json 은 모르는 JSON 속성을 기본으로 무시하고 [ms-stj-unmapped-members], JSON 에 없는 속성은 초기화 값으로 남깁니다. 그래서 `Hp → MaxHp` 는 예외 없이 0 이 되고, 구버전 클래스로 읽어 다시 쓰면 새 필드가 사라집니다(둘 다 .NET 8 에서 실행해 재현). 해법은 버전 번호와 순차 마이그레이션, 그리고 구버전이 모르는 필드를 보존하는 `[JsonExtensionData]` 입니다. 이 속성은 매핑되지 않은 속성을 담았다가 직렬화 때 되돌려 써서 왕복해도 데이터를 잃지 않게 합니다 [ms-stj-handle-overflow]. 꼭 있어야 하는 값은 `required` 로 표시하면 빠졌을 때 `JsonException` 이 납니다 [ms-stj-required].\n\n**SQLite 를 쓸 때의 책임.** INSERT 하나가 기본적으로 트랜잭션 하나이므로 여러 쓰기는 한 트랜잭션으로 묶습니다 [sqlite-faq]. 스키마 버전은 응용 프로그램용 정수인 `PRAGMA user_version` 으로 관리하고 [sqlite-user-version], `ALTER TABLE` 이 지원하지 않는 변경은 문서의 재생성 절차를 따릅니다 [sqlite-altertable]. 외래 키는 연결마다 켜야 합니다 [sqlite-foreignkeys]. .NET 에서는 Microsoft.Data.Sqlite 를 씁니다 [ms-data-sqlite].\n\n**바이너리를 직접 만든다면.** 헤더(매직, 버전, 길이, 체크섬)를 두고 엔디언을 명시합니다 [ms-binaryprimitives]. `BinaryFormatter` 는 Microsoft 가 안전하게 만들 수 없다고 못박은 API 이고 게임 세이브를 위험 사례로 직접 듭니다 [ms-binaryformatter-security]. .NET 8 에서도 Windows Forms·WPF 가 아닌 프로젝트에서는 기본으로 예외를 던집니다 [ms-binaryformatter-net8-disabled].\n\n**관계형 모델의 자리.** SQLite 는 스스로를 `fopen()` 의 경쟁자, 즉 로컬 저장 수단이라고 설명합니다 [sqlite-whentouse]. 여러 조건 조회, 부분 갱신, 관계 무결성이 필요할 때 이득이 크고, 통째로 쓰는 작은 데이터나 읽기 전용 테이블에는 과합니다. 런타임 상태는 어느 형식이든 메모리에서 다루고 저장은 스냅샷으로 합니다.\n\n**흔한 오답.** \"JSON 은 이름이 있으니 알아서 호환된다\", \"바이너리는 BinaryFormatter 가 제일 간단하다\", \"DB 를 쓰면 매 프레임 조회해도 된다\", \"SQLite 는 자동으로 빠르다(트랜잭션을 안 묶어도)\".\n\n### 흔한 오해\n- **\"바이너리 세이브는 BinaryFormatter 로 객체를 통째로 저장하면 간단하고, 내 기기의 내 파일이니 보안은 상관없다.\"** — Microsoft 문서는 `BinaryFormatter` 가 위험하고 안전하게 만들 수 없으며 신뢰한다고 믿는 데이터에도 쓰지 말라고 합니다. 게임에서 유저가 세이브 파일을 주고받는 경우, 클라우드 저장소 계정에 접근한 공격자가 데이터 파일을 오염시키는 경우, 공격자가 개발사 고객 지원에 악성 데이터 파일을 보내는 경우를 예로 들고, .NET 9 부터는 사용하면 예외를 던진다고 적습니다 [ms-binaryformatter-security]. .NET 8 에서도 Windows Forms·WPF 를 뺀 프로젝트에서는 `Serialize`·`Deserialize` 가 기본으로 `NotSupportedException` 을 던집니다 [ms-binaryformatter-net8-disabled].\n- **\"JSON 은 필드 이름이 들어 있으니 필드를 추가하든 이름을 바꾸든 옛 세이브와 알아서 호환된다.\"** — 추가는 대체로 괜찮지만(없는 필드는 초기화 값), 이름 변경은 옛 값이 무시되고 새 필드가 기본값이 되는 조용한 데이터 손실입니다. 문서대로 모르는 속성은 기본으로 무시되며 [ms-stj-unmapped-members], .NET 8 에서 `Hp` 를 `MaxHp` 로 바꾼 클래스로 옛 세이브를 읽자 `MaxHp` 가 0 이 되었습니다(실행해 확인). 이름 변경은 버전 번호를 올리고 마이그레이션 코드로 값을 옮겨야 합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "System.Text.Json 이 기본으로 모르는 JSON 속성을 무시하고, JSON 에 없는 속성은 기본값(초기화 값)으로 남긴다는 점으로 두 사고(Hp→MaxHp 이름 변경, 구버전의 재저장)를 설명했다.",
+            "points": 9,
+            "sourceId": "ms-stj-unmapped-members"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "세이브에 버전 번호를 두고 로드 때 버전별 마이그레이션을 순서대로 적용하며, 이름 변경·의미 변경은 마이그레이션 코드로 옮기는 절차를 제시했다.",
+            "points": 9,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "구버전 클라이언트가 새 세이브를 다시 저장할 때 모르는 필드를 보존하는 방법([JsonExtensionData])이나, 구버전이 상위 버전 세이브를 쓰지 못하게 막는 정책을 제시했다.",
+            "points": 9,
+            "sourceId": "ms-stj-handle-overflow"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "SQLite 의 쓰기가 트랜잭션 단위로 원자적이고 바뀐 부분만 디스크에 쓴다는 SQLite 문서의 설명을, 우편함·채팅 기록처럼 자주 조금씩 바뀌는 데이터에 연결했다.",
+            "points": 8,
+            "sourceId": "sqlite-appfileformat"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "작은 변경마다 큰 JSON 파일 전체를 다시 직렬화·기록하는 비용을 지적하고, 데이터를 변경 빈도와 크기에 따라 나눴다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "SQLite 에서 INSERT 가 기본적으로 각각 별도 트랜잭션이므로 여러 쓰기를 한 트랜잭션으로 묶어야 한다는 점과, 자주 쓰는 조회에 인덱스를 두는 점을 말했다.",
+            "points": 10,
+            "sourceId": "sqlite-faq"
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "정적 데이터 테이블은 로드 때 한 번 파싱해 배열·딕셔너리 같은 메모리 구조로 바꾸고, 매 프레임 DB 나 파일을 조회하지 않는 설계를 제시했다(판단임을 밝힘).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "BinaryFormatter 를 세이브 형식으로 쓰면 안 되는 이유를 Microsoft 문서 근거(안전하게 만들 수 없음, .NET 8 에서도 Windows Forms·WPF 외에는 기본으로 꺼져 있음, .NET 9 부터 항상 예외)로 설명하고, 직접 정의한 바이너리라면 BinaryPrimitives 등으로 엔디언과 길이를 명시한다고 말했다.",
+            "points": 10,
+            "sourceId": "ms-binaryformatter-security"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "SQLite 스키마 버전을 PRAGMA user_version 으로 관리하고, ALTER TABLE 이 지원하는 변경(이름 바꾸기, 열 추가·삭제)과 테이블을 다시 만들어야 하는 변경을 구분했으며, 외래 키가 연결마다 기본으로 꺼져 있다는 점을 알고 있다.",
+            "points": 10,
+            "sourceId": "sqlite-altertable"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "네 종류의 데이터 각각에 대해 형식·이유·버전 관리 방법을 짝지어 정리했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "관계형 모델이 도움이 되는 경우(여러 조건 조회, 부분 갱신, 관계 무결성)와 과한 경우(통째로 읽고 쓰는 작은 설정, 읽기 전용 정적 데이터)를 구분하고, 문서가 말하는 것과 자기 판단을 구분했다.",
+            "points": 7,
+            "sourceId": "sqlite-whentouse"
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "세이브·캐시 형식으로 BinaryFormatter 를 제안했다.",
+            "penalty": -25,
+            "sourceId": "ms-binaryformatter-security"
+          },
+          {
+            "id": "d2",
+            "description": "JSON 은 필드 이름이 있으니 이름 변경이나 삭제도 자동으로 호환된다고 단정하고 버전 번호·마이그레이션을 두지 않았다.",
+            "penalty": -20,
+            "sourceId": "ms-stj-unmapped-members"
+          },
+          {
+            "id": "d3",
+            "description": "매 프레임 또는 작은 변경마다 큰 파일 전체를 다시 쓰는 구조를 그대로 두거나, SQLite 쓰기를 트랜잭션 없이 행마다 커밋하는 설계를 제시했다.",
+            "penalty": -15,
+            "sourceId": "sqlite-faq"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "실행 채점은 없으며, Hp→MaxHp 이름 변경·구버전 재저장·JsonExtensionData 보존·Disallow 예외를 .NET 8 에서 직접 재현했고, System.Text.Json·BinaryFormatter(보안 가이드와 .NET 8 호환성 변경)·Microsoft.Data.Sqlite·SQLite 공식 문서로 대조해 BinaryFormatter 의 .NET 8 상태와 ALTER TABLE 의 3.53.0 변경을 바로잡았다."
+      },
+      "nextMission": "세이브 마이그레이션 체인을 직접 만들어 보세요. `SaveDto` 에 `Version` 을 두고, `JsonNode` 로 읽은 원본에 `Migrate1To2`(Hp → MaxHp 이름 변경), `Migrate2To3`(Title 추가, 기본값 \"Novice\")를 순서대로 적용한 뒤 최신 클래스로 역직렬화하는 `SaveLoader.Load(string json)` 을 구현합니다. v1·v2·v3 JSON 샘플 각각과, 알 수 없는 상위 버전(v9)을 넣었을 때의 동작(읽기 전용 표시)을 테스트로 확인하세요."
     }
   ]
 }
