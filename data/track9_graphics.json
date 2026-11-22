@@ -343,6 +343,246 @@
       "title": "Unity 6 Scripting API · VertexAttributeDescriptor",
       "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/rendering/vertexattributedescriptor",
       "summary": "정점 속성의 형식(Float32, Float16, UNorm8 등)과 성분 수로 정점 레이아웃을 지정하며, 위치는 대개 float 3개짜리 벡터(Vector3)라는 설명."
+    },
+    {
+      "id": "ms-matrix4x4",
+      "title": "Microsoft Learn · Matrix4x4 Struct (System.Numerics)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4",
+      "summary": "행렬 변환에서 Vector2·Vector3·Vector4 를 행으로 보고 vM 곱으로 변환한다는 설명과, 왼손 좌표계용 메서드(CreateLookAtLeftHanded 등)가 따로 있는 멤버 목록."
+    },
+    {
+      "id": "ms-matrix4x4-perspective-fov",
+      "title": "Microsoft Learn · Matrix4x4.CreatePerspectiveFieldOfView Method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4.createperspectivefieldofview?view=net-8.0",
+      "summary": "세로 시야각(라디안), 종횡비, near·far 평면 거리로 원근 투영 행렬을 만드는 메서드의 매개변수와 예외 조건(near ≤ 0, near ≥ far 등). 행렬 원소와 좌표계 방향은 이 문서에 적혀 있지 않다."
+    },
+    {
+      "id": "ms-d3dx-perspective-fov-rh",
+      "title": "Microsoft Learn · D3DXMatrixPerspectiveFovRH function",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixperspectivefovrh",
+      "summary": "오른손 좌표계 원근 투영 행렬의 원소: yScale = cot(fovY/2), xScale = yScale / aspect, zf/(zn−zf), −1, zn·zf/(zn−zf)."
+    },
+    {
+      "id": "ms-d3d9-viewports-clipping",
+      "title": "Microsoft Learn · Viewports and Clipping (Direct3D 9)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d9/viewports-and-clipping",
+      "summary": "투영 뒤 클리핑 볼륨이 −w ≤ x ≤ w, −w ≤ y ≤ w, 0 ≤ z ≤ w 이고, 뷰포트 변환이 화면 원점(왼쪽 위, y 는 아래로 증가)에 맞게 y 를 뒤집는다는 설명."
+    },
+    {
+      "id": "ms-d3d11-rasterizer-stage",
+      "title": "Microsoft Learn · Getting Started with the Rasterizer Stage (Direct3D 11)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d11/d3d10-graphics-programming-guide-rasterizer-stage-getting-started",
+      "summary": "뷰포트 변환 식 X = (X + 1) · Width · 0.5 + TopLeftX, Y = (1 − Y) · Height · 0.5 + TopLeftY, Z = MinDepth + Z · (MaxDepth − MinDepth)."
+    },
+    {
+      "id": "ms-plane",
+      "title": "Microsoft Learn · Plane Struct (System.Numerics)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.plane?view=net-8.0",
+      "summary": "3차원 평면을 노멀 벡터(Normal)와 D 값으로 표현하는 구조체의 필드와 메서드 목록(.NET 8)."
+    },
+    {
+      "id": "ms-plane-dotcoordinate",
+      "title": "Microsoft Learn · Plane.DotCoordinate Method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.plane.dotcoordinate?view=net-8.0",
+      "summary": "3차원 벡터와 평면 노멀의 내적에 평면의 D 값을 더한 값을 돌려준다는 설명."
+    },
+    {
+      "id": "wiki-viewing-frustum",
+      "title": "Wikipedia · Viewing frustum",
+      "url": "https://en.wikipedia.org/wiki/Viewing_frustum",
+      "summary": "뷰 프러스텀(절두체)과 near·far 평면의 정의, 절두체 밖에 완전히 놓인 오브젝트를 렌더링에서 빼는 프러스텀 컬링과 바운딩 볼륨을 쓰는 이유."
+    },
+    {
+      "id": "wiki-hesse-normal-form",
+      "title": "Wikipedia · Hesse normal form",
+      "url": "https://en.wikipedia.org/wiki/Hesse_normal_form",
+      "summary": "단위 노멀로 쓴 평면 식(헤세 표준형)이 점과 평면 사이의 거리 계산에 쓰인다는 설명."
+    },
+    {
+      "id": "unity-calculate-frustum-planes",
+      "title": "Unity 6 Scripting API · GeometryUtility.CalculateFrustumPlanes",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/script-reference/unityengine/geometryutility/calculatefrustumplanes",
+      "summary": "카메라의 뷰 프러스텀을 이루는 평면 여섯 개를 돌려주며, 각 평면의 노멀은 프러스텀 안쪽을 가리키고 순서는 Left, Right, Bottom, Top, Near, Far 라는 설명."
+    },
+    {
+      "id": "wiki-z-fighting",
+      "title": "Wikipedia · Z-fighting",
+      "url": "https://en.wikipedia.org/wiki/Z-fighting",
+      "summary": "두 프리미티브의 깊이 값이 거의 같아 깊이 버퍼가 앞뒤를 구분하지 못할 때 생기는 z-fighting 의 원인과, near·far 간격 및 near 위치가 미치는 영향, 완화 방법."
+    },
+    {
+      "id": "ms-d3d9-depth-buffers",
+      "title": "Microsoft Learn · Depth Buffers (Direct3D 9)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/direct3d9/depth-buffers",
+      "summary": "깊이 버퍼를 가장 큰 값으로 초기화하고 더 작은 깊이 값만 기록하는 깊이 테스트 절차와, far/near 비율이 100 이면 깊이 범위의 90% 가 장면 깊이의 처음 10% 에 쓰인다는 설명."
+    },
+    {
+      "id": "unity-ztest",
+      "title": "Unity 6 Manual · ZTest command in ShaderLab reference",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/reference/sl-reference/sl-commands/sl-ztest",
+      "summary": "깊이 테스트의 통과 조건을 정하는 ZTest 명령의 값(Less, LEqual, Always 등)과 기본값이 LEqual 이라는 설명."
+    },
+    {
+      "id": "unity-platform-differences",
+      "title": "Unity 6 Manual · Write HLSL for different graphics APIs",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/shaders/writing-custom/shader-writing/sl/writing-shader-writing-shader-programs-hlsl/sl-platform-differences",
+      "summary": "그래픽스 API 에 따라 깊이 방향이 다르다는 설명: DirectX·Metal·Vulkan 은 깊이 버퍼가 near 1.0 → far 0.0(뒤집힌 Z), OpenGL ES·WebGL 은 near 0.0 → far 1.0 이고 클립 공간 z 는 −1.0 ~ 1.0."
+    },
+    {
+      "id": "wiki-phong-reflection",
+      "title": "Wikipedia · Phong reflection model",
+      "url": "https://en.wikipedia.org/wiki/Phong_reflection_model",
+      "summary": "앰비언트·디퓨즈·스페큘러 세 항으로 이루어진 경험적 국소 조명 모델과 각 항의 계수(ka, kd, ks, 광택 지수 α)의 의미."
+    },
+    {
+      "id": "unity-metallic-specular-workflows",
+      "title": "Unity 6 Manual · Metallic and specular workflows",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/built-in/shader-built-in-configure-properties/standard-shader-metallic-vs-specular",
+      "summary": "메탈릭 워크플로에서 Metallic 0(비금속: 베이스 색이 디퓨즈로 보이고 하이라이트는 광원 색)과 1(금속: 디퓨즈가 없고 베이스 색이 반사 색)의 차이, Smoothness 가 미세 표면의 거칠기를 나타낸다는 설명."
+    },
+    {
+      "id": "unity-configure-reflections",
+      "title": "Unity 6 Manual · Configure reflections in prebuilt shaders",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/built-in/shader-built-in-configure-properties/standard-shader-material-parameter-metallic",
+      "summary": "메탈릭 워크플로에서 Metallic 값(0 또는 1, 사이 값은 혼합)과 Smoothness 로 반사를 설정하는 방법, 그리고 맵 텍스처의 R 채널이 Metallic, A 채널이 Smoothness 라는 설명."
+    },
+    {
+      "id": "unity-urp-lit-shader",
+      "title": "Unity 6 Manual · Lit shader material Inspector window reference for URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/materials-and-shaders/built-in/shaders-in-universalrp/reference/lit-shader",
+      "summary": "URP Lit 셰이더의 Workflow Mode, Base Map, Metallic Map, Smoothness, Specular Highlights 속성의 의미와 값 범위."
+    },
+    {
+      "id": "unity-lighting-intro",
+      "title": "Unity 6 Manual · Introduction to lighting",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/lighting-in-unity",
+      "summary": "직접광과 간접광의 정의, 실시간 라이팅(런타임 계산)과 베이크 라이팅(미리 계산해 저장)의 구분."
+    },
+    {
+      "id": "unity-light-modes",
+      "title": "Unity 6 Manual · Light Modes",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/lighting-light-sources/components/configuring/light-modes/introduction",
+      "summary": "Light 컴포넌트의 세 모드(Baked, Realtime, Mixed)의 동작과 한계: Baked 라이트는 런타임에 바꿀 수 없고 스페큘러에 기여하지 않으며 동적 오브젝트를 비추지 않는다는 점 등."
+    },
+    {
+      "id": "unity-lighting-mode",
+      "title": "Unity 6 Manual · Lighting Mode (Mixed lights)",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/lighting-light-sources/components/configuring/lighting-mode/lighting-mode",
+      "summary": "Mixed 라이트의 동작을 정하는 Lighting Mode(Baked Indirect, Shadowmask, Distance Shadowmask, Subtractive)별 직접광·간접광·그림자 계산 방식 표."
+    },
+    {
+      "id": "unity-light-probes",
+      "title": "Unity 6 Manual · Light Probes",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/direct-and-indirect-lighting/light-probes/light-probes",
+      "summary": "라이트 프로브가 씬의 빈 공간을 지나는 빛의 베이크 정보를 저장하고, 런타임에 동적 오브젝트의 간접광을 가까운 프로브 값으로 근사한다는 설명."
+    },
+    {
+      "id": "wiki-normal-geometry",
+      "title": "Wikipedia · Normal (geometry)",
+      "url": "https://en.wikipedia.org/wiki/Normal_(geometry)",
+      "summary": "표면에 변환 M 을 적용할 때 노멀은 M 의 역전치 행렬 (M⁻¹)ᵀ 로 옮겨야 하며, 회전만 있는 직교 행렬에서는 역전치가 원래 행렬과 같다는 유도."
+    },
+    {
+      "id": "wiki-phong-shading",
+      "title": "Wikipedia · Phong shading",
+      "url": "https://en.wikipedia.org/wiki/Phong_shading",
+      "summary": "정점 노멀을 폴리곤 표면에서 선형 보간하고 픽셀마다 정규화한 뒤 반사 모델에 넣는 노멀 보간 셰이딩."
+    },
+    {
+      "id": "wiki-lambertian-reflectance",
+      "title": "Wikipedia · Lambertian reflectance",
+      "url": "https://en.wikipedia.org/wiki/Lambertian_reflectance",
+      "summary": "디퓨즈 반사를 표면의 단위 노멀 N 과 표면에서 광원을 향하는 정규화된 방향 L 의 내적으로 계산한다는 설명."
+    },
+    {
+      "id": "ms-vector3-transformnormal",
+      "title": "Microsoft Learn · Vector3.TransformNormal Method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3.transformnormal?view=net-8.0",
+      "summary": "벡터 노멀을 4x4 행렬로 변환한다는 한 줄 설명과 Vector3.TransformNormal(Vector3, Matrix4x4) 의 시그니처(.NET 8). 역전치 적용 여부는 문서에 적혀 있지 않다."
+    },
+    {
+      "id": "ms-matrix4x4-invert",
+      "title": "Microsoft Learn · Matrix4x4.Invert Method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.numerics.matrix4x4.invert?view=net-8.0",
+      "summary": "행렬의 역행렬을 구하고 성공 여부를 bool 로 돌려주는 Matrix4x4.Invert(Matrix4x4, out Matrix4x4)."
+    },
+    {
+      "id": "unity-shadow-mapping",
+      "title": "Unity 6 Manual · Shadow mapping",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-realtime/shadow-mapping",
+      "summary": "라이트 시점에서 섀도 맵을 만들고 이를 샘플링해 실시간 그림자를 계산하는 방식, 섀도 맵 해상도의 영향, 포인트 라이트가 여섯 방향을 캡처한다는 설명."
+    },
+    {
+      "id": "unity-shadow-cascades",
+      "title": "Unity 6 Manual · Introduction to shadow cascades",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-realtime/shadow-cascades/shadow-cascades",
+      "summary": "섀도 캐스케이드가 섀도 맵 해상도를 올리지 않고 그림자 품질을 높이며, 디렉셔널 라이트에서만 동작하고 원근 에일리어싱을 완화한다는 설명."
+    },
+    {
+      "id": "unity-shadow-cascades-impl",
+      "title": "Unity 6 Manual · Shadow cascades implementation details",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-realtime/shadow-cascades/implementation-details",
+      "summary": "카메라 가까이의 섀도 맵 픽셀이 크게 확대되어 보이는 원근 에일리어싱의 원인과, 프러스텀을 거리별 구역으로 나눠 구역마다 섀도 맵을 따로 쓰는 캐스케이드의 원리."
+    },
+    {
+      "id": "unity-shadow-cascades-perf",
+      "title": "Unity 6 Manual · Performance impact of shadow cascades",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-realtime/shadow-cascades/performance",
+      "summary": "캐스케이드 수를 늘리면 그림자 렌더링 패스의 드로우 콜이 늘어 성능에 불리하다는 설명."
+    },
+    {
+      "id": "unity-shadow-cascades-use",
+      "title": "Unity 6 Manual · Configure shadow cascades",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-realtime/shadow-cascades/use",
+      "summary": "파이프라인별 캐스케이드 설정 위치(URP: Cascade Count 와 분할 거리, Built-in: Quality Settings, HDRP: Volume)와 URP Rendering Debugger 의 Shadow Cascades 뷰."
+    },
+    {
+      "id": "unity-shadow-troubleshooting",
+      "title": "Unity 6 Manual · Troubleshooting shadows",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-performance",
+      "summary": "실시간 그림자의 비용, 섀도 애크니의 원인, Bias·Normal Bias 를 너무 높였을 때의 부작용(그림자가 떨어져 보임, 그림자가 좁아짐, 빛 샘 — Built-in 파이프라인의 Light Inspector 기준 설명), 섀도 팬케이킹."
+    },
+    {
+      "id": "unity-shadow-distance",
+      "title": "Unity 6 Manual · Set shadow distance in a scene",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/shadows/shadow-realtime/shadow-distance",
+      "summary": "Shadow Distance 가 실시간 그림자를 그리는 최대 거리를 정하며 파이프라인별로 설정 위치(Built-in: Quality Settings, URP: URP Asset, HDRP: Volume)가 다르다는 설명."
+    },
+    {
+      "id": "unity-urp-asset",
+      "title": "Unity 6 Manual · Universal Render Pipeline asset reference for URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/render-pipelines/universal-render-pipeline/urp-reference/universalrp-asset",
+      "summary": "URP Asset 의 그림자 설정: Shadow Resolution, Max Distance, Cascade Count, Depth Bias, Normal Bias, Soft Shadows 의 의미."
+    },
+    {
+      "id": "unity-urp-shadows-optimization",
+      "title": "Unity 6 Manual · Optimize shadow rendering in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/lighting/shadows-in-urp/shadows-optimization",
+      "summary": "URP 에서 그림자 렌더링 시간에 영향을 주는 요소(그림자를 드리우는 오브젝트 수, Max Distance, Cascade Count, 해상도, Soft Shadows)와 최적화 기법(Shadowmask, 단순화한 그림자 전용 메시 등)."
+    },
+    {
+      "id": "unity-urp-shadows-troubleshooting",
+      "title": "Unity 6 Manual · Troubleshooting shadows in URP",
+      "url": "https://docs.unity.com/en-us/engine/6000.0/manual/lighting-overview/lighting/shadows-in-urp/shadows-troubleshooting-urp",
+      "summary": "URP 에서 섀도 바이어스를 URP Asset 과 개별 라이트에서 설정하는 방법과, 바이어스가 높을 때 생기는 빛 샘."
+    },
+    {
+      "id": "ms-shadow-depth-maps",
+      "title": "Microsoft Learn · Common Techniques to Improve Shadow Depth Maps",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/dxtecharts/common-techniques-to-improve-shadow-depth-maps",
+      "summary": "섀도 맵의 대표적 결함(원근 에일리어싱, 섀도 애크니, 피터 패닝)의 원인과 깊이 오프셋, 기울기 비례 바이어스, near·far 평면을 타이트하게 맞추는 대응."
+    },
+    {
+      "id": "ms-cascaded-shadow-maps",
+      "title": "Microsoft Learn · Cascaded Shadow Maps",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/dxtecharts/cascaded-shadow-maps",
+      "summary": "프러스텀을 여러 하위 프러스텀으로 나눠 각각 섀도 맵을 렌더링하고, 픽셀 셰이더가 필요한 해상도에 가장 가까운 맵에서 샘플링하는 캐스케이드 섀도 맵의 기본 원리."
+    },
+    {
+      "id": "wiki-shadow-mapping",
+      "title": "Wikipedia · Shadow mapping",
+      "url": "https://en.wikipedia.org/wiki/Shadow_mapping",
+      "summary": "라이트 시점의 깊이를 저장하는 첫 단계와, 카메라 시점에서 각 점을 라이트 공간으로 옮겨 저장된 깊이와 비교하는 둘째 단계로 이루어진 섀도 매핑의 원리."
     }
   ],
   "problems": [
@@ -2248,6 +2488,941 @@
         "note": "정점 속성 배열·인덱스·와인딩·논리적 정점 분할·16/32비트 인덱스 설명을 Unity 6 매뉴얼 4개 페이지와 IndexFormat 원문과 문장 단위로 대조하고, 8×3=24·36 인덱스·140/192바이트 계산을 다시 했으며, 출처가 없던 바이트 가정과 평균 노멀 셰이딩 설명에 Unity VertexAttributeDescriptor·Wikipedia Vertex normal 출처를 붙였습니다."
       },
       "nextMission": "Unity 에서 스크립트로 상자 메시를 두 가지 방식으로 만들어 보세요. (가) 정점 24개(면마다 노멀을 따로)와 (나) 정점 8개(꼭짓점마다 평균 노멀). 둘 다 인덱스는 36개입니다. 같은 조명 아래에서 두 상자의 셰이딩이 어떻게 다른지 캡처하고, 각 메시의 정점 수와 인덱스 수를 로그로 출력해 표로 정리하세요."
+    },
+    {
+      "id": "t9-impl-mvp-clip-ndc-screen",
+      "track": "track9",
+      "mode": "implementation",
+      "difficulty": "Medium",
+      "title": "MVP 변환 직접 따라가기: 클립 공간, 원근 나눗셈, 뷰포트 매핑",
+      "tags": [
+        "Gfx_Transform",
+        "Gfx_Projection",
+        "Gfx_Viewport"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "ms-matrix4x4",
+        "ms-matrix4x4-perspective-fov",
+        "ms-d3dx-perspective-fov-rh",
+        "unity-platform-differences"
+      ],
+      "scenario": "MMORPG 의 몬스터 이름표는 UI 캔버스에 그립니다. 프레임마다 \"몬스터 머리 위의 한 점\"을 화면 픽셀 좌표로 바꿔 그 자리에 이름표를 놓습니다. 그런데 QA 제보가 올라왔습니다. \"몬스터를 등지고 서면, 등 뒤에 있는 몬스터의 이름표가 화면 한가운데에 뜬다.\" 엔진의 변환 함수를 감으로 조합한 결과입니다. 버텍스 셰이더와 래스터라이저가 정점 하나에 하는 일을 CPU 코드로 한 단계씩 구현해, 이름표 배치와 단위 테스트에 쓸 참조 구현을 만들려고 합니다.\n\n**할 일:** `Projection` 의 다섯 함수를 구현하세요. UnityEngine 없이 순수 C#(.NET 8), `System.Numerics` 만 씁니다.\n\n**규약** (정답의 기준입니다. API 와 엔진마다 다르므로 여기 적힌 것만 따릅니다)\n\n| 항목 | 이 문제의 규약 |\n|---|---|\n| 벡터와 행렬 | `System.Numerics` 는 벡터를 **행**으로 봅니다. `v' = v × M` 이고 `Vector4.Transform(v, M)` 이 이 계산입니다. 그래서 A 를 먼저, B 를 나중에 적용하는 합성은 `A * B` 입니다. 이동 성분은 넷째 행(`M41, M42, M43`)에 있습니다. |\n| 뷰 공간 | 오른손 좌표계. 카메라는 원점에서 **−Z** 방향을 봅니다(`Matrix4x4.CreateLookAt` 이 만드는 뷰 행렬이 이 규약입니다. Learn 문서에는 방향이 적혀 있지 않아 .NET 8 에서 실행해 확인했습니다). |\n| 투영 행렬 | `Matrix4x4.CreatePerspectiveFieldOfView(fovY, aspect, near, far)` 가 만든 행렬. 원소는 `M11 = yScale / aspect`, `M22 = yScale = cot(fovY / 2)`, `M33 = far / (near − far)`, `M34 = −1`, `M43 = near × far / (near − far)`, 나머지는 0 입니다. Learn 의 메서드 문서에는 원소가 적혀 있지 않습니다. .NET 8 에서 실행해 확인한 값이고, Direct3D 문서가 `D3DXMatrixPerspectiveFovRH` 에 싣는 식과 같습니다. |\n| 클립 공간 | 보이는 범위는 `−w ≤ x ≤ w`, `−w ≤ y ≤ w`, **`0 ≤ z ≤ w`** (경계 포함). 위 투영 행렬에서 `w = −z_view`, 곧 카메라 앞쪽으로 잰 거리입니다. |\n| NDC | 클립 좌표를 `w` 로 나눈 값. x, y 는 −1 ~ 1 (y 는 **위가 +1**), z 는 0(near) ~ 1(far). |\n| 화면 좌표 | 뷰포트는 `(0, 0)` 에서 시작하고 크기는 `viewportWidth × viewportHeight`. 원점은 **왼쪽 위**, y 는 **아래로** 증가합니다. `x = (ndc.x + 1) × width / 2`, `y = (1 − ndc.y) × height / 2`, `z = ndc.z`. |\n\n**함수**\n\n- `LocalToClip(localPosition, model, view, projection)`: 로컬 공간의 점(위치이므로 w = 1)을 클립 좌표로.\n- `IsInsideClipVolume(clip)`: 위 여섯 부등식을 모두 만족하면 `true`. `w ≤ 0` 이면 `false`.\n- `ClipToNdc(clip)`: 원근 나눗셈.\n- `NdcToScreen(ndc, viewportWidth, viewportHeight)`: 뷰포트 매핑.\n- `TryProject(...)`: 위 단계를 이어 붙입니다. 보이는 범위 밖이면 `false` 를 반환하고 `screen` 은 `(0, 0, 0)`.\n\n**예시** (세로 시야각 90°, 종횡비 2, near 1, far 101 → `M11 = 0.5`, `M22 = 1`, `M33 = −1.01`, `M43 = −1.01`. model 과 view 는 단위행렬)\n\n| 로컬 점 | 클립 좌표 | NDC | 800×600 화면 |\n|---|---|---|---|\n| (2, 1, −2) | (1, 1, 1.01, 2) | (0.5, 0.5, 0.505) | (600, 150, 0.505) |\n| (0, 0, −1) | (0, 0, 0, 1) | (0, 0, 0) | (400, 300, 0) |\n| (1, 1, 5) — 카메라 뒤 | (0.5, 1, −6.06, −5) | 보이지 않음 | `TryProject` 는 `false` |",
+      "constraints": [
+        "다섯 함수 모두 시간 O(1), 힙 할당 없음(배열·리스트·LINQ 를 쓰지 않는다).",
+        "`Matrix4x4` 의 곱셈 연산자와 `Vector4.Transform` 은 써도 된다. 합성 순서와 위치의 w 값은 직접 정해야 한다.",
+        "`IsInsideClipVolume` 은 나눗셈 없이 클립 좌표의 부등식으로 판정한다. `w ≤ 0` 인 점을 나눈 뒤 NDC 범위로 판정하지 않는다.",
+        "규약(행 벡터, 클립 z 범위 0 ~ w, 화면 원점 왼쪽 위)과 공개 시그니처를 바꾸지 않는다.",
+        "검사 허용 오차: 클립·NDC 는 1e-4 수준, 화면 좌표는 1e-3 픽셀(무작위 검사는 0.05 픽셀)."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 규약 (이 규약이 정답의 기준입니다)\n// - System.Numerics 는 벡터를 행으로 본다: v' = v * M (Vector4.Transform(v, M)).\n//   따라서 A 를 먼저, B 를 나중에 적용하는 합성 행렬은 A * B 다.\n// - projection 은 Matrix4x4.CreatePerspectiveFieldOfView 가 만든 행렬이다.\n//   카메라는 뷰 공간의 -Z 방향을 보고, 클립 공간에서 보이는 범위는\n//   -w <= x <= w, -w <= y <= w, 0 <= z <= w 다 (경계 포함).\n// - 화면 좌표: 원점은 뷰포트의 왼쪽 위, x 는 오른쪽으로, y 는 아래쪽으로 증가한다(픽셀 단위).\n//   z 에는 깊이 0(near) ~ 1(far) 를 그대로 담는다.\npublic static class Projection\n{\n    // 로컬(오브젝트) 공간의 점을 클립 공간 좌표 (x, y, z, w) 로 옮긴다.\n    public static Vector4 LocalToClip(Vector3 localPosition, Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 클립 좌표가 보이는 범위 안인가. w <= 0 이면 false.\n    public static bool IsInsideClipVolume(Vector4 clip)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 원근 나눗셈: 클립 좌표 -> NDC. (w 가 0 인 입력은 주어지지 않는다)\n    public static Vector3 ClipToNdc(Vector4 clip)\n    {\n        throw new NotImplementedException();\n    }\n\n    // NDC -> 화면 좌표. 뷰포트는 (0, 0) 에서 시작하고 크기는 viewportWidth x viewportHeight.\n    public static Vector3 NdcToScreen(Vector3 ndc, float viewportWidth, float viewportHeight)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 위 단계를 이어 붙인다. 보이는 범위 밖이면 false 를 반환하고 screen 은 (0, 0, 0).\n    public static bool TryProject(Vector3 localPosition, Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection,\n                                  float viewportWidth, float viewportHeight, out Vector3 screen)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "카메라 뒤의 점: (1, 1, 5) 의 클립 좌표는 (0.5, 1, −6.06, −5) 이다. w 로 나누면 x, y 가 (−0.1, −0.2) 로 [−1, 1] 안에 들어오므로, x 와 y 만 보면 \"화면 안\"으로 잘못 판정된다.",
+        "카메라 위치의 점 (0, 0, 0): w = 0 이라 나눌 수 없다. `IsInsideClipVolume` 이 먼저 걸러야 한다.",
+        "경계 포함: near 평면 위의 점은 z = 0, far 평면 위의 점은 z = w 이고 둘 다 보이는 범위다.",
+        "z 의 아래 경계는 −w 가 아니라 0 이다: 클립 좌표 (0, 0, −1, 2) 는 범위 밖이다.",
+        "Y 뒤집기: NDC (−1, 1) 은 화면의 왼쪽 위 (0, 0), NDC (1, −1) 은 오른쪽 아래 (width, height) 다."
+      ],
+      "hints": [
+        "숫자 하나를 손으로 따라가 보세요. 투영 행렬이 `M11 = 0.5, M22 = 1, M33 = −1.01, M34 = −1, M43 = −1.01` 일 때 뷰 공간의 점 (2, 1, −2, 1) 을 행 벡터로 곱하면 `x = 2 × 0.5 = 1`, `y = 1`, `z = (−2)(−1.01) + 1 × (−1.01) = 1.01`, `w = (−2)(−1) = 2` 입니다. w 가 \"카메라 앞 거리\"와 같다는 점을 확인하세요. 그러면 카메라 뒤의 점 (1, 1, 5) 는 w 가 얼마입니까? 그 점을 w 로 나누면 x, y 가 어디로 갑니까?",
+        "함수마다 정할 것이 하나씩 있습니다. `LocalToClip`: 세 행렬을 어느 순서로 곱하는가(행 벡터 규약에서는 먼저 적용할 변환이 왼쪽), 그리고 `Vector3` 를 `Vector4` 로 올릴 때 w 에 무엇을 넣는가(0 을 넣으면 이동이 사라집니다). `IsInsideClipVolume`: 부등식 여섯 개와 w 의 부호. `NdcToScreen`: x 와 y 중 어느 쪽을 뒤집는가. `TryProject`: 판정과 나눗셈 중 무엇이 먼저인가.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nLocalToClip(p, model, view, projection):\n    mvp = ____ * ____ * ____\n    return Transform(Vector4(p, ____), mvp)\n\nIsInsideClipVolume(c):\n    if c.w ____ : return false\n    return -c.w <= c.x <= c.w  and  -c.w <= c.y <= c.w  and  ____ <= c.z <= ____\n\nClipToNdc(c):      return (c.x, c.y, c.z) / ____\n\nNdcToScreen(n, width, height):\n    return ((n.x + 1) * 0.5 * width,  (____) * 0.5 * height,  n.z)\n\nTryProject(...):\n    clip = LocalToClip(...)\n    if not ____ : screen = (0, 0, 0); return false\n    screen = NdcToScreen(ClipToNdc(clip), width, height); return true\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 규약 (문제 본문과 같다)\n// - System.Numerics 는 벡터를 행으로 본다: v' = v * M. 변환은 왼쪽 행렬부터 차례로 적용된다.\n// - projection 은 Matrix4x4.CreatePerspectiveFieldOfView 가 만든 행렬이다.\n//   카메라는 뷰 공간의 -Z 를 보고, 클립 공간에서 보이는 범위는 -w <= x, y <= w, 0 <= z <= w.\n// - 화면 좌표: 원점은 뷰포트의 왼쪽 위, x 는 오른쪽, y 는 아래쪽으로 증가. z 는 깊이 0(near) ~ 1(far).\npublic static class Projection\n{\n    public static Vector4 LocalToClip(Vector3 localPosition, Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection)\n    {\n        // 행 벡터 규약이므로 모델 -> 뷰 -> 투영 순서로 왼쪽부터 곱한다. 위치이므로 w = 1.\n        Matrix4x4 mvp = model * view * projection;\n        return Vector4.Transform(new Vector4(localPosition, 1f), mvp);\n    }\n\n    public static bool IsInsideClipVolume(Vector4 clip)\n    {\n        // w <= 0 이면 카메라가 있는 평면 위이거나 그 뒤쪽이다. 나누기 전에 걸러야 한다.\n        if (!(clip.W > 0f)) return false;\n        return clip.X >= -clip.W && clip.X <= clip.W\n            && clip.Y >= -clip.W && clip.Y <= clip.W\n            && clip.Z >= 0f && clip.Z <= clip.W;\n    }\n\n    public static Vector3 ClipToNdc(Vector4 clip)\n    {\n        // 원근 나눗셈: 멀수록 w 가 커서 x, y 가 화면 중심 쪽으로 모인다.\n        float invW = 1f / clip.W;\n        return new Vector3(clip.X * invW, clip.Y * invW, clip.Z * invW);\n    }\n\n    public static Vector3 NdcToScreen(Vector3 ndc, float viewportWidth, float viewportHeight)\n    {\n        // NDC 의 y 는 위가 +1 이고 화면의 y 는 아래로 증가하므로 뒤집는다.\n        float x = (ndc.X + 1f) * 0.5f * viewportWidth;\n        float y = (1f - ndc.Y) * 0.5f * viewportHeight;\n        return new Vector3(x, y, ndc.Z);\n    }\n\n    public static bool TryProject(Vector3 localPosition, Matrix4x4 model, Matrix4x4 view, Matrix4x4 projection,\n                                  float viewportWidth, float viewportHeight, out Vector3 screen)\n    {\n        Vector4 clip = LocalToClip(localPosition, model, view, projection);\n        if (!IsInsideClipVolume(clip))\n        {\n            screen = default;\n            return false;\n        }\n\n        screen = NdcToScreen(ClipToNdc(clip), viewportWidth, viewportHeight);\n        return true;\n    }\n}\n",
+      "explanation": "**파이프라인.** 정점 하나는 로컬 → 월드(model) → 뷰(view) → 클립(projection) → NDC(w 로 나눗셈) → 화면(뷰포트 매핑) 순서로 옮겨집니다. 앞의 세 단계는 행렬 곱이고, 그 뒤는 w 로 나누는 나눗셈(행렬 곱만으로는 표현되지 않습니다)과 1차식인 뷰포트 매핑입니다.\n\n**곱하는 순서.** Microsoft Learn 의 `Matrix4x4` 문서는 행렬 변환에서 벡터를 행으로 표현하고 `vM` 곱으로 변환한다고 설명합니다. 그래서 `v × model × view × projection` 이고, 합성 행렬은 `model * view * projection` 입니다. 반대로 곱하면 \"2배 확대 후 (10, 0, 0) 이동\"한 모델의 로컬 (1, 1, 0) 이 (12, 2, 0) 이 아닌 엉뚱한 곳으로 갑니다. 위치는 `w = 1` 로 올려야 넷째 행의 이동 성분이 더해집니다.\n\n**투영 행렬과 w.** Learn 의 `CreatePerspectiveFieldOfView` 문서는 매개변수와 예외만 적고 행렬 원소와 좌표계 방향은 적지 않습니다. 규약 표의 원소는 .NET 8 에서 실행해 확인한 값이고, Direct3D 문서가 `D3DXMatrixPerspectiveFovRH` 에 싣는 오른손 좌표계 식(`yScale = cot(fovY/2)`, `xScale = yScale / aspect`, `zf/(zn−zf)`, `−1`, `zn·zf/(zn−zf)`)과 일치합니다. near 평면 위의 점이 z = 0, far 평면 위의 점이 z = w 가 되는 것도 실행으로 확인했습니다. `M34 = −1` 이므로 `w = −z_view`, 즉 카메라 앞 거리입니다. x, y 를 이 w 로 나누기 때문에 먼 물체가 화면 중심으로 모여 작아 보입니다.\n\n**클리핑이 나눗셈보다 먼저인 이유.** 카메라 뒤의 점은 `w < 0` 입니다. 그대로 나누면 x, y 의 부호가 뒤집혀 [−1, 1] 안으로 들어올 수 있고, 이것이 \"등 뒤 몬스터의 이름표가 화면에 뜨는\" 버그입니다. Direct3D 9 문서는 클리핑 볼륨을 투영 뒤의 좌표로 `−w ≤ x ≤ w`, `−w ≤ y ≤ w`, `0 ≤ z ≤ w` 로 정의합니다. 이 부등식을 `w > 0` 과 함께 클립 공간에서 검사하면 나눗셈 없이 판정이 끝납니다.\n\n**뷰포트.** Direct3D 11 문서의 식은 `X = (X + 1) × Width × 0.5 + TopLeftX`, `Y = (1 − Y) × Height × 0.5 + TopLeftY`, `Z = MinDepth + Z × (MaxDepth − MinDepth)` 입니다. 렌더 타깃의 Y 축이 아래를 향하므로 Y 를 뒤집는다는 설명도 같은 문서에 있습니다. 이 문제는 `TopLeft = (0, 0)`, 깊이 범위 0 ~ 1 입니다.\n\n**복잡도.** 모든 함수가 O(1) 이고 값 형식만 다루므로 할당이 없습니다. 이름표가 수백 개라면 `view * projection` 을 프레임당 한 번 계산해 두고 오브젝트마다 `model` 만 곱하는 식으로 재사용합니다.\n\n**흔한 실수.**\n- 열 벡터 규약의 순서(`projection * view * model`)를 그대로 가져온다.\n- 위치를 `w = 0` 으로 올려 이동이 사라진다.\n- z 의 범위를 −w ~ w 로 잡는다. Unity 매뉴얼에 따르면 클립 공간 z 가 −1.0 ~ 1.0 인 API(OpenGL ES, WebGL)도 있지만 이 문제의 규약은 0 ~ w 입니다.\n- Y 를 뒤집지 않아 이름표가 위아래로 반전된다.\n- 나눈 뒤 x, y 범위만 검사해 카메라 뒤의 점을 통과시킨다.\n\n이 구현은 점 하나의 가시성만 봅니다. 삼각형이 범위에 걸칠 때 잘라 내는 실제 클리핑은 다루지 않습니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "LocalToClip 이 model → view → projection 순서로 합성하고 위치를 w = 1 로 올린다: \"2배 확대 후 (10,0,0) 이동\" 모델, 카메라 (10,0,5), 예시 투영에서 로컬 (1,1,0) → (1, 2, 4.04, 5).",
+            "points": 10,
+            "sourceId": "ms-matrix4x4"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "IsInsideClipVolume 이 여섯 부등식을 경계 포함으로 검사하고 w ≤ 0 이면 false 다: (2,−2,0,2) → true, (0,0,−1,2) → false, (0,0,0,0) → false.",
+            "points": 9,
+            "sourceId": "ms-d3d9-viewports-clipping"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "ClipToNdc 와 NdcToScreen 이 맞다: 클립 (1,1,1.01,2) → NDC (0.5,0.5,0.505) → 800×600 에서 (600, 150, 0.505).",
+            "points": 9,
+            "sourceId": "ms-d3d11-rasterizer-stage"
+          },
+          {
+            "id": "c4",
+            "category": "정확성",
+            "description": "TryProject 가 카메라 뒤의 점 (1,1,5) 와 카메라 위치의 점 (0,0,0) 에서 false 를 반환하고 screen 을 (0,0,0) 으로 둔다.",
+            "points": 7,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "다섯 함수에 힙 할당이 없다(배열, 리스트, LINQ, 문자열 없음).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "TryProject 가 클립 좌표를 한 번만 계산한다(판정과 변환에서 행렬 곱을 반복하지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "메모리·성능",
+            "description": "보이지 않는 점에서는 나눗셈과 뷰포트 계산을 하지 않고 바로 반환한다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "System.Numerics 의 행 벡터 규약(v × M)에 맞게 Vector4.Transform 과 행렬 곱 순서를 썼다(전치하거나 열 벡터 식으로 바꾸지 않았다).",
+            "points": 10,
+            "sourceId": "ms-matrix4x4"
+          },
+          {
+            "id": "c9",
+            "category": "엔진·언어 규약",
+            "description": "클립 z 범위 0 ~ w 와 화면 원점 왼쪽 위(y 아래로 증가)를 규약대로 구현했다.",
+            "points": 10,
+            "sourceId": "ms-d3d9-viewports-clipping"
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "TryProject 가 앞의 네 함수를 조합해 만들어졌다(같은 식을 다시 쓰지 않았다).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c11",
+            "category": "아키텍처·가독성",
+            "description": "단계마다 어느 공간에서 어느 공간으로 가는지 드러나는 이름이나 주석이 있다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "w ≤ 0 인 점을 걸러내지 않고 나눈 뒤 NDC 범위만 검사해 카메라 뒤의 점을 보이는 것으로 판정한다.",
+            "penalty": -20,
+            "sourceId": "ms-d3d9-viewports-clipping"
+          },
+          {
+            "id": "d2",
+            "description": "행렬을 반대 순서(projection * view * model)로 합성했다.",
+            "penalty": -15,
+            "sourceId": "ms-matrix4x4"
+          },
+          {
+            "id": "d3",
+            "description": "공개 시그니처나 규약(클립 z 범위, 화면 원점)을 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static bool Near(double got, double exp, double eps) { return !double.IsNaN(got) && System.Math.Abs(got - exp) <= eps; }\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n\n    static string V4(string what, System.Numerics.Vector4 got, double x, double y, double z, double w, double eps)\n    {\n        return Near(got.X, x, eps) && Near(got.Y, y, eps) && Near(got.Z, z, eps) && Near(got.W, w, eps) ? null\n            : what + \": 기대 (\" + F(x) + \", \" + F(y) + \", \" + F(z) + \", \" + F(w) + \"), 결과 (\" + F(got.X) + \", \" + F(got.Y) + \", \" + F(got.Z) + \", \" + F(got.W) + \")\";\n    }\n    static string V3(string what, System.Numerics.Vector3 got, double x, double y, double z, double eps)\n    {\n        return Near(got.X, x, eps) && Near(got.Y, y, eps) && Near(got.Z, z, eps) ? null\n            : what + \": 기대 (\" + F(x) + \", \" + F(y) + \", \" + F(z) + \"), 결과 (\" + F(got.X) + \", \" + F(got.Y) + \", \" + F(got.Z) + \")\";\n    }\n    static string In(System.Numerics.Vector4 c, bool exp)\n    {\n        bool got = Projection.IsInsideClipVolume(c);\n        return got == exp ? null : \"IsInsideClipVolume((\" + F(c.X) + \", \" + F(c.Y) + \", \" + F(c.Z) + \", \" + F(c.W) + \")): 기대 \" + exp + \", 결과 \" + got;\n    }\n\n    // 참조: 행 벡터 v * M 을 double 로 직접 계산한다 (라이브러리의 Transform 과 행렬 곱을 쓰지 않는다)\n    static double[] Mul(double[] v, System.Numerics.Matrix4x4 m)\n    {\n        return new double[] {\n            v[0] * m.M11 + v[1] * m.M21 + v[2] * m.M31 + v[3] * m.M41,\n            v[0] * m.M12 + v[1] * m.M22 + v[2] * m.M32 + v[3] * m.M42,\n            v[0] * m.M13 + v[1] * m.M23 + v[2] * m.M33 + v[3] * m.M43,\n            v[0] * m.M14 + v[1] * m.M24 + v[2] * m.M34 + v[3] * m.M44 };\n    }\n    static double[] RefClip(System.Numerics.Vector3 p, System.Numerics.Matrix4x4 model, System.Numerics.Matrix4x4 view, System.Numerics.Matrix4x4 proj)\n    {\n        return Mul(Mul(Mul(new double[] { p.X, p.Y, p.Z, 1.0 }, model), view), proj);\n    }\n\n    static readonly System.Numerics.Matrix4x4 I = System.Numerics.Matrix4x4.Identity;\n    // 세로 시야각 90도, 종횡비 2, near 1, far 101: M11 = 0.5, M22 = 1, M33 = -1.01, M34 = -1, M43 = -1.01\n    static System.Numerics.Matrix4x4 Proj() { return System.Numerics.Matrix4x4.CreatePerspectiveFieldOfView((float)(System.Math.PI / 2), 2f, 1f, 101f); }\n\n    public static void Main()\n    {\n        Run(\"clip-known-values\", () =>\n        {\n            var p = Proj();\n            return V4(\"LocalToClip((2, 1, -2), I, I, P)\", Projection.LocalToClip(new System.Numerics.Vector3(2, 1, -2), I, I, p), 1, 1, 1.01, 2, 1e-4)\n                ?? V4(\"LocalToClip((0, 0, -1), I, I, P) [near 평면 위]\", Projection.LocalToClip(new System.Numerics.Vector3(0, 0, -1), I, I, p), 0, 0, 0, 1, 1e-4)\n                ?? V4(\"LocalToClip((0, 0, -101), I, I, P) [far 평면 위]\", Projection.LocalToClip(new System.Numerics.Vector3(0, 0, -101), I, I, p), 0, 0, 101, 101, 1e-3)\n                ?? V4(\"LocalToClip((-4, 3, -10), I, I, P)\", Projection.LocalToClip(new System.Numerics.Vector3(-4, 3, -10), I, I, p), -2, 3, 9.09, 10, 1e-4);\n        });\n\n        Run(\"clip-multiplication-order\", () =>\n        {\n            // 모델: 2배 확대 후 (10, 0, 0) 이동. 뷰: 카메라가 (10, 0, 5) 에서 -Z 를 본다(월드를 (-10, 0, -5) 만큼 옮긴다).\n            var model = new System.Numerics.Matrix4x4(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 10, 0, 0, 1);\n            var view = new System.Numerics.Matrix4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -10, 0, -5, 1);\n            // 로컬 (1, 1, 0) -> 월드 (12, 2, 0) -> 뷰 (2, 2, -5) -> 클립 (1, 2, 4.04, 5)\n            string e = V4(\"LocalToClip((1, 1, 0), [2배 확대 후 (10,0,0) 이동], [카메라 (10,0,5)], P)\", Projection.LocalToClip(new System.Numerics.Vector3(1, 1, 0), model, view, Proj()), 1, 2, 4.04, 5, 1e-4);\n            if (e != null) return e + \" — 행 벡터 규약의 합성 순서는 model * view * projection\";\n            // 이동 성분은 넷째 행(M41, M42, M43)에 있다: 위치의 w 가 1 이어야 이동이 적용된다\n            var t = new System.Numerics.Matrix4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 3, -2, -7, 1);\n            return V4(\"LocalToClip((0, 0, 0), [(3,-2,-7) 이동], I, P)\", Projection.LocalToClip(System.Numerics.Vector3.Zero, t, I, Proj()), 1.5, -2, 6.06, 7, 1e-4);\n        });\n\n        Run(\"clip-volume-bounds\", () =>\n        {\n            return In(new System.Numerics.Vector4(0, 0, 0.5f, 1), true) ?? In(new System.Numerics.Vector4(2, -2, 0, 2), true) ?? In(new System.Numerics.Vector4(-3, 3, 3, 3), true)\n                ?? In(new System.Numerics.Vector4(2.5f, 0, 1, 2), false) ?? In(new System.Numerics.Vector4(0, -2.5f, 1, 2), false) ?? In(new System.Numerics.Vector4(-2.5f, 0, 1, 2), false) ?? In(new System.Numerics.Vector4(0, 2.5f, 1, 2), false)\n                ?? In(new System.Numerics.Vector4(0, 0, -0.25f, 2), false) ?? In(new System.Numerics.Vector4(0, 0, 2.5f, 2), false)\n                ?? In(new System.Numerics.Vector4(0, 0, -1, 2), false) // z 의 아래 경계는 -w 가 아니라 0 이다\n                ?? In(new System.Numerics.Vector4(0, 0, 0, 0), false) ?? In(new System.Numerics.Vector4(0.5f, 0.5f, -1, -2), false) ?? In(new System.Numerics.Vector4(0, 0, 0, -1), false);\n        });\n\n        Run(\"ndc-perspective-divide\", () =>\n        {\n            return V3(\"ClipToNdc((1, 1, 1.01, 2))\", Projection.ClipToNdc(new System.Numerics.Vector4(1, 1, 1.01f, 2)), 0.5, 0.5, 0.505, 1e-5)\n                ?? V3(\"ClipToNdc((-2, 3, 9.09, 10))\", Projection.ClipToNdc(new System.Numerics.Vector4(-2, 3, 9.09f, 10)), -0.2, 0.3, 0.909, 1e-5)\n                ?? V3(\"ClipToNdc((0.25, -0.5, 0, 0.5))\", Projection.ClipToNdc(new System.Numerics.Vector4(0.25f, -0.5f, 0, 0.5f)), 0.5, -1, 0, 1e-5);\n        });\n\n        Run(\"viewport-origin-top-left\", () =>\n        {\n            return V3(\"NdcToScreen((0, 0, 0.25), 800, 600)\", Projection.NdcToScreen(new System.Numerics.Vector3(0, 0, 0.25f), 800, 600), 400, 300, 0.25, 1e-3)\n                ?? V3(\"NdcToScreen((-1, 1, 0), 800, 600) [왼쪽 위 모서리]\", Projection.NdcToScreen(new System.Numerics.Vector3(-1, 1, 0), 800, 600), 0, 0, 0, 1e-3)\n                ?? V3(\"NdcToScreen((1, -1, 1), 800, 600) [오른쪽 아래 모서리]\", Projection.NdcToScreen(new System.Numerics.Vector3(1, -1, 1), 800, 600), 800, 600, 1, 1e-3)\n                ?? V3(\"NdcToScreen((0.5, 0.5, 0.505), 800, 600)\", Projection.NdcToScreen(new System.Numerics.Vector3(0.5f, 0.5f, 0.505f), 800, 600), 600, 150, 0.505, 1e-3)\n                ?? V3(\"NdcToScreen((-0.2, 0.3, 0.909), 1920, 1080)\", Projection.NdcToScreen(new System.Numerics.Vector3(-0.2f, 0.3f, 0.909f), 1920, 1080), 768, 378, 0.909, 1e-3);\n        });\n\n        Run(\"try-project-visible\", () =>\n        {\n            System.Numerics.Vector3 s;\n            if (!Projection.TryProject(new System.Numerics.Vector3(2, 1, -2), I, I, Proj(), 800, 600, out s)) return \"TryProject((2, 1, -2), I, I, P, 800, 600): 기대 true, 결과 false\";\n            string e = V3(\"TryProject((2, 1, -2), I, I, P, 800, 600) 의 screen\", s, 600, 150, 0.505, 1e-3);\n            if (e != null) return e;\n            // 이름표: 몬스터는 월드 (0, 0, -20) 에 있고 로컬 (0, 2, 0) 이 머리 위다. 카메라는 (0, 2, 0) 에서 -Z 를 본다.\n            var model = System.Numerics.Matrix4x4.CreateTranslation(0, 0, -20);\n            var view = System.Numerics.Matrix4x4.CreateLookAt(new System.Numerics.Vector3(0, 2, 0), new System.Numerics.Vector3(0, 2, -1), System.Numerics.Vector3.UnitY);\n            if (!Projection.TryProject(new System.Numerics.Vector3(0, 2, 0), model, view, Proj(), 1920, 1080, out s)) return \"카메라 정면 20 앞의 이름표: 기대 true, 결과 false\";\n            return V3(\"카메라 정면 20 앞의 이름표 TryProject 의 screen\", s, 960, 540, 1.01 * 19 / 20, 1e-3);\n        });\n\n        Run(\"try-project-rejected\", () =>\n        {\n            var p = Proj();\n            System.Numerics.Vector3[] outside = {\n                new System.Numerics.Vector3(1, 1, 5),      // 카메라 뒤: 나누면 x, y 가 [-1, 1] 안으로 들어온다\n                new System.Numerics.Vector3(0, 0, -0.5f),  // near 보다 가깝다\n                new System.Numerics.Vector3(0, 0, -150),   // far 보다 멀다\n                new System.Numerics.Vector3(30, 0, -10),   // 오른쪽 밖\n                new System.Numerics.Vector3(0, -11, -10),  // 아래쪽 밖\n                new System.Numerics.Vector3(0, 0, 0) };    // 카메라 위치 (w = 0)\n            foreach (var q in outside)\n            {\n                System.Numerics.Vector3 s = new System.Numerics.Vector3(7, 7, 7);\n                if (Projection.TryProject(q, I, I, p, 800, 600, out s)) return \"TryProject((\" + F(q.X) + \", \" + F(q.Y) + \", \" + F(q.Z) + \"), I, I, P): 기대 false, 결과 true\";\n                if (s != System.Numerics.Vector3.Zero) return \"TryProject 가 false 일 때 screen 은 (0, 0, 0) 이어야 한다. 결과 (\" + F(s.X) + \", \" + F(s.Y) + \", \" + F(s.Z) + \")\";\n            }\n            return null;\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            System.Func<double, double, float> R = (lo, hi) => (float)(lo + rng.NextDouble() * (hi - lo));\n            int visible = 0;\n            for (int i = 0; i < 3000; i++)\n            {\n                var model = System.Numerics.Matrix4x4.CreateScale(R(0.5, 2), R(0.5, 2), R(0.5, 2)) * System.Numerics.Matrix4x4.CreateRotationY(R(-3, 3)) * System.Numerics.Matrix4x4.CreateTranslation(R(-5, 5), R(-5, 5), R(-5, 5));\n                var eye = new System.Numerics.Vector3(R(-10, 10), R(1, 8), R(8, 20));\n                var view = System.Numerics.Matrix4x4.CreateLookAt(eye, new System.Numerics.Vector3(R(-2, 2), R(-2, 2), R(-2, 2)), System.Numerics.Vector3.UnitY);\n                float w = rng.Next(2) == 0 ? 1920 : 800, h = rng.Next(2) == 0 ? 1080 : 600;\n                var proj = System.Numerics.Matrix4x4.CreatePerspectiveFieldOfView(R(0.6, 1.4), w / h, R(0.1, 1), R(30, 200));\n                var local = new System.Numerics.Vector3(R(-4, 4), R(-4, 4), R(-4, 4));\n                double[] c = RefClip(local, model, view, proj);\n                string e = V4(\"LocalToClip (무작위 #\" + i + \")\", Projection.LocalToClip(local, model, view, proj), c[0], c[1], c[2], c[3], 2e-3);\n                if (e != null) return e;\n                // 경계에 너무 가까운 표본은 가시성 판정에서 뺀다\n                double m = 1e-2 * System.Math.Max(1.0, System.Math.Abs(c[3]));\n                double[] edges = { c[3] - c[0], c[3] + c[0], c[3] - c[1], c[3] + c[1], c[2], c[3] - c[2], c[3] };\n                bool skip = false, inside = true;\n                foreach (double d in edges) { if (System.Math.Abs(d) < m) skip = true; if (d < 0) inside = false; }\n                if (skip) continue;\n                System.Numerics.Vector3 s;\n                bool got = Projection.TryProject(local, model, view, proj, w, h, out s);\n                if (got != inside) return \"TryProject (무작위 #\" + i + \"): 기대 \" + inside + \", 결과 \" + got + \" (클립 좌표 \" + F(c[0]) + \", \" + F(c[1]) + \", \" + F(c[2]) + \", \" + F(c[3]) + \")\";\n                if (!inside) continue;\n                visible++;\n                e = V3(\"TryProject 의 screen (무작위 #\" + i + \")\", s, (c[0] / c[3] + 1) * 0.5 * w, (1 - c[1] / c[3]) * 0.5 * h, c[2] / c[3], 0.05);\n                if (e != null) return e;\n            }\n            return visible >= 200 ? null : \"채점기 오류: 보이는 표본이 너무 적다 (\" + visible + \")\";\n        });\n    }\n}\n",
+        "cases": [
+          "clip-known-values",
+          "clip-multiplication-order",
+          "clip-volume-bounds",
+          "ndc-perspective-divide",
+          "viewport-origin-top-left",
+          "try-project-visible",
+          "try-project-rejected",
+          "random-vs-reference"
+        ],
+        "note": "LocalToClip 의 알려진 값(near·far 평면 위의 점 포함)과 합성 순서·w = 1, IsInsideClipVolume 의 경계 포함 여부와 z 아래 경계 0, w ≤ 0 처리, ClipToNdc 의 나눗셈, NdcToScreen 의 왼쪽 위 원점과 Y 뒤집기, TryProject 의 성공 값과 실패 시 screen = (0, 0, 0), 그리고 무작위 model·view·projection 에서 double 로 직접 계산한 참조값과의 일치를 검사합니다. 무작위 검사는 클립 볼륨 경계에 아주 가까운 표본을 가시성 판정에서 뺍니다. public static class Projection 의 LocalToClip(Vector3, Matrix4x4, Matrix4x4, Matrix4x4), IsInsideClipVolume(Vector4), ClipToNdc(Vector4), NdcToScreen(Vector3, float, float), TryProject(Vector3, Matrix4x4, Matrix4x4, Matrix4x4, float, float, out Vector3) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "투영 행렬 원소·카메라 방향·near/far 의 z 값을 로컬 .NET 8 에서 실행해 확인하고 테스트 기대값을 손으로 다시 계산했으며, 합성 순서·w=0·z 범위·Y 뒤집기 등 오답 13종이 걸러지는지와 다르게 쓴 정답이 통과하는지 확인한 뒤 채점 서비스에서 solution 전부 PASS 를 확인했습니다."
+      },
+      "nextMission": "`TryProject` 의 반대 방향인 `ScreenToWorldRay(screenX, screenY, view, projection, width, height, out origin, out direction)` 를 구현해 보세요. 화면의 한 점을 NDC 로 되돌린 뒤 `view * projection` 의 역행렬(`Matrix4x4.Invert`)로 near 평면(z = 0)과 far 평면(z = 1) 위의 두 점을 구하면 됩니다. 구현한 뒤 임의의 월드 점을 `TryProject` 로 화면에 보냈다가 이 광선으로 되돌렸을 때 원래 점이 광선 위에 있는지 테스트로 확인하세요."
+    },
+    {
+      "id": "t9-impl-frustum-sphere-culling",
+      "track": "track9",
+      "mode": "implementation",
+      "difficulty": "Easy",
+      "title": "프러스텀 컬링: 바운딩 구와 여섯 평면",
+      "tags": [
+        "Gfx_Culling",
+        "Gfx_Frustum"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-viewing-frustum",
+        "ms-plane",
+        "ms-plane-dotcoordinate",
+        "wiki-hesse-normal-form"
+      ],
+      "scenario": "디펜스 게임의 후반 웨이브에는 몬스터가 2,000마리쯤 나옵니다. 카메라에 잡히는 것은 그중 일부인데, 지금은 전부를 그리기 목록에 넣고 있습니다. 몬스터마다 **바운딩 구**(중심과 반지름)가 있으니, 카메라의 뷰 프러스텀 밖에 완전히 놓인 몬스터를 CPU 에서 먼저 걸러 내려고 합니다. 프러스텀은 평면 여섯 개(왼쪽, 오른쪽, 아래, 위, near, far)의 식으로 주어집니다.\n\n**할 일:** `FrustumCulling` 의 두 함수를 구현하세요. 순수 C#(.NET 8), `System.Numerics` 만 씁니다.\n\n**규약** (정답의 기준입니다)\n\n- 평면은 `System.Numerics.Plane` 으로 주어지고, 평면 위의 점 `p` 는 `Normal · p + D = 0` 을 만족합니다(`Plane.DotCoordinate` 가 계산하는 식).\n- `Normal` 은 프러스텀의 **안쪽**을 가리킵니다. `Normal · p + D > 0` 인 점이 그 평면의 안쪽입니다.\n- `Normal` 의 길이는 **1 이 아닐 수 있습니다**(0 은 아닙니다). 식 전체에 양수를 곱해도 같은 평면이기 때문입니다.\n- 구가 평면에 **걸치거나 닿기만 해도 보이는 것**으로 봅니다. 구 전체가 어느 한 평면의 바깥쪽에 있을 때만 컬링합니다.\n- 좌표와 반지름에 NaN·무한대는 주어지지 않고, 길이가 0 인 노멀도 주어지지 않습니다. 이런 입력의 결과는 정하지 않으며 검사하지도 않습니다.\n\n**함수**\n\n- `SignedDistance(plane, point)`: 점에서 평면까지의 부호 있는 거리(월드 단위). 안쪽이면 양수, 바깥쪽이면 음수.\n- `IsSphereVisible(planes, center, radius)`: 여섯 평면 모두에 대해 `SignedDistance(plane, center) ≥ −radius` 이면 `true`, 하나라도 어기면 `false`. `radius` 는 0 이상입니다(0 이면 점 검사).\n\n**예시** (카메라가 원점에서 −Z 를 보고, 시야각은 가로·세로 90°, near 1, far 100. `k = 1/√2`)\n\n| 평면 | Normal | D |\n|---|---|---|\n| 왼쪽 | (k, 0, −k) | 0 |\n| 오른쪽 | (−k, 0, −k) | 0 |\n| 아래 | (0, k, −k) | 0 |\n| 위 | (0, −k, −k) | 0 |\n| near | (0, 0, −1) | −1 |\n| far | (0, 0, 1) | 100 |\n\n- 중심 (0, 0, −50), 반지름 1 → 보임.\n- 중심 (0, 0, 1), 반지름 3 → 보임. near 평면까지의 거리가 −2 이고 반지름이 3 이라 걸칩니다.\n- 중심 (0, 0, 1), 반지름 1.5 → 컬링. −2 < −1.5.\n- 중심 (−80, 0, −30), 반지름 5 → 컬링. 왼쪽 평면까지의 거리가 약 −35.4 입니다.",
+      "constraints": [
+        "`IsSphereVisible` 은 평면 수에 비례하는 시간(O(평면 수))에 끝나고, 컬링이 확정되면 남은 평면을 검사하지 않는다.",
+        "두 함수 모두 힙 할당이 없다(정규화한 평면 배열을 새로 만들지 않는다).",
+        "`Normal` 이 단위 벡터라고 가정하지 않는다.",
+        "`planes` 는 null 이 아니고 길이는 6 이다. `radius` 는 0 이상이다. 좌표·반지름·평면 값에 NaN·무한대는 없다. 공개 시그니처를 바꾸지 않는다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 규약 (이 규약이 정답의 기준입니다)\n// - 평면은 Normal · p + D = 0 이고, Normal 은 절두체 \"안쪽\"을 가리킨다.\n//   즉 Normal · p + D 가 양수인 점이 안쪽이다.\n// - Normal 의 길이는 1 이 아닐 수 있다(0 은 아니다).\n// - 구가 평면에 걸치거나 닿기만 해도 보이는 것으로 본다.\npublic static class FrustumCulling\n{\n    // 점에서 평면까지의 부호 있는 거리(월드 단위). 안쪽이면 양수, 바깥쪽이면 음수.\n    public static float SignedDistance(Plane plane, Vector3 point)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 구가 절두체와 조금이라도 겹칠 수 있으면 true, 어느 한 평면의 완전히 바깥이면 false.\n    // planes 는 절두체의 여섯 평면이다.\n    public static bool IsSphereVisible(Plane[] planes, Vector3 center, float radius)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "정규화되지 않은 평면: `Normal = (2, 0, 0), D = 20` (x ≥ −10 과 같은 평면)에서 중심 (−10.75, 0, 0), 반지름 1 인 구는 보인다. 실제 거리는 −0.75 인데 식의 값은 −1.5 라서, 나누지 않으면 컬링해 버린다.",
+        "반대 방향의 오류: `Normal = (0, 0.5, 0), D = 5` (y ≥ −10) 에서 중심 (0, −11.5, 0), 반지름 1 인 구는 컬링이다. 실제 거리는 −1.5 인데 식의 값은 −0.75 다.",
+        "평면에 정확히 닿는 구(거리 == −반지름)는 보이는 것으로 본다.",
+        "반지름 0: 점이 프러스텀 안(경계 포함)에 있는지 검사하는 것과 같다."
+      ],
+      "hints": [
+        "평면 `y = 0` 을 두 가지로 써 보세요. `Normal = (0, 1, 0), D = 0` 과 `Normal = (0, 2, 0), D = 0` 은 같은 평면입니다. 점 (0, 5, 0) 을 식 `Normal · p + D` 에 넣으면 각각 5 와 10 이 나옵니다. 실제 거리는 둘 다 5 입니다. 10 을 5 로 만들려면 무엇으로 나눠야 합니까?",
+        "`SignedDistance` 는 식의 값과 노멀의 길이 두 가지만 있으면 됩니다. `IsSphereVisible` 은 반복문 하나입니다. 평면마다 \"구 전체가 이 평면의 바깥쪽인가\"를 묻고, 그렇다면 더 볼 필요가 없습니다. 중심이 바깥쪽으로 얼마나 나가 있어야 구 전체가 바깥인지 그림으로 그려 보세요. 중심이 평면 밖에 있어도 반지름이 더 크면 구의 일부는 안쪽에 있습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nSignedDistance(plane, point):\n    value = dot(plane.Normal, point) + plane.D\n    return value / ____\n\nIsSphereVisible(planes, center, radius):\n    for each plane in planes:\n        if SignedDistance(plane, center) < ____ :\n            return ____\n    return ____\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 규약 (문제 본문과 같다)\n// - 평면은 Normal · p + D = 0 이고, Normal 은 절두체 \"안쪽\"을 가리킨다.\n// - Normal 의 길이는 1 이 아닐 수 있다(0 은 아니다).\n// - 구가 평면에 걸치거나 닿기만 해도 보이는 것으로 본다.\npublic static class FrustumCulling\n{\n    public static float SignedDistance(Plane plane, Vector3 point)\n    {\n        // 평면 식에 점을 넣은 값을 노멀의 길이로 나눠야 실제 거리가 된다.\n        float value = Vector3.Dot(plane.Normal, point) + plane.D;\n        return value / plane.Normal.Length();\n    }\n\n    public static bool IsSphereVisible(Plane[] planes, Vector3 center, float radius)\n    {\n        for (int i = 0; i < planes.Length; i++)\n        {\n            // 중심이 어느 한 평면의 바깥쪽으로 반지름보다 더 나가 있으면 구 전체가 그 평면 밖이다.\n            if (SignedDistance(planes[i], center) < -radius) return false;\n        }\n\n        return true;\n    }\n}\n",
+      "explanation": "**개념.** Wikipedia 의 설명으로 뷰 프러스텀은 화면에 나타날 수 있는 공간 영역이고, 프러스텀 컬링은 그 영역 밖에 완전히 놓인 오브젝트를 렌더링 과정에서 빼는 일입니다. 빠르게 하려고 오브젝트 자체가 아니라 그것을 감싸는 바운딩 볼륨으로 검사합니다. 구는 중심과 반지름만으로 표현되고 평면 하나당 거리 계산 한 번으로 검사가 끝나는 단순한 바운딩 볼륨입니다.\n\n**부호 있는 거리.** 평면 식 `Normal · p + D` 에 점을 넣은 값은 노멀의 길이에 비례합니다. 노멀이 단위 벡터일 때만(헤세 표준형) 그 값이 곧 거리입니다. 그래서 `SignedDistance` 는 식의 값을 `Normal.Length()` 로 나눕니다. `Normal = (3, 0, 4), D = 10` 에 점 (1, 9, 3) 을 넣으면 식의 값은 3 + 12 + 10 = 25 이고, 노멀의 길이 5 로 나눈 5 가 실제 거리입니다. .NET 의 `Plane.DotCoordinate` 는 문서대로 \"노멀과의 내적에 D 를 더한 값\"만 돌려주므로 정규화는 직접 해야 합니다.\n\n**구 판정.** 노멀이 안쪽을 가리키므로 거리 `d` 가 양수면 중심이 안쪽입니다. 구에서 평면 바깥쪽으로 가장 덜 나간 점은 중심에서 노멀 방향으로 반지름만큼 간 점이고, 그 점의 거리는 `d + radius` 입니다. 이 값이 음수, 곧 `d < −radius` 이면 구 전체가 그 평면 밖입니다. 프러스텀은 여섯 반공간의 교집합이라 한 평면에서만 완전히 밖이어도 프러스텀 밖이 확정됩니다. 그래서 첫 실패에서 바로 `false` 를 반환합니다. 반대로 여섯 평면을 모두 통과해야 `true` 입니다.\n\n**이 검사의 성질.** \"어느 한 평면의 완전히 바깥\"만 걸러 내므로, 프러스텀의 모서리 근처에서는 실제로 겹치지 않는 구가 통과할 수 있습니다(두 평면에 각각 걸치지만 모서리 바깥에 있는 경우). 컬링은 그릴 필요가 없는 것을 줄이는 최적화이므로 \"보이는 것을 지우는\" 오류만 없으면 됩니다. 이 문단은 인용한 문서가 아니라 식에서 바로 나오는 성질과 일반적인 렌더링 지식입니다.\n\n**규약 확인.** 평면의 부호 규약은 라이브러리마다 다릅니다. Unity 의 `GeometryUtility.CalculateFrustumPlanes` 문서는 반환하는 여섯 평면의 노멀이 프러스텀 안쪽을 가리키고 순서가 Left, Right, Bottom, Top, Near, Far 라고 적습니다. 이 문제도 \"안쪽 노멀\"을 쓰지만, 다른 곳에서 평면을 받아 올 때는 방향과 정규화 여부를 문서에서 확인해야 합니다.\n\n**복잡도.** 구 하나에 평면 여섯 개, 평면마다 내적 한 번과 제곱근 한 번입니다. 시간 O(평면 수), 추가 메모리 O(1). 구가 수천 개라면 평면을 프레임당 한 번 정규화해 두고 제곱근을 없애는 것이 다음 최적화입니다.\n\n**흔한 실수.**\n- 식의 값을 거리로 착각해 `value < −radius` 로 비교한다. 노멀 길이가 2 면 보이는 구를 지우고, 0.5 면 지워야 할 구를 남긴다.\n- 중심만 검사한다(`d < 0`). 화면 가장자리에 걸친 큰 몬스터가 갑자기 사라진다.\n- `d < radius` 로 써서 \"완전히 안쪽\"인 구만 남긴다.\n- 노멀 방향을 반대로 가정한다.\n- 길이의 제곱으로 나눈다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "SignedDistance 가 식의 값을 노멀의 길이로 나눈다: Normal (3, 0, 4), D 10, 점 (1, 9, 3) → 5. Normal (0, 2, 0), D 0, 점 (0, 5, 0) → 5.",
+            "points": 12,
+            "sourceId": "wiki-hesse-normal-form"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "IsSphereVisible 이 \"어느 한 평면에서 거리 < −반지름\"일 때만 false 다: 예시 프러스텀에서 중심 (0,0,1) 반지름 3 → true, 반지름 1.5 → false.",
+            "points": 12,
+            "sourceId": "wiki-viewing-frustum"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "평면에 정확히 닿는 구(거리 == −반지름)와 반지름 0 인 경계 위의 점을 true 로 판정한다.",
+            "points": 11,
+            "sourceId": ""
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "두 함수에 힙 할당이 없다(새 배열이나 리스트를 만들지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "컬링이 확정된 평면에서 바로 반환한다(남은 평면을 검사하지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "평면마다 내적 한 번과 길이 계산 한 번으로 끝난다(반복문이 하나이고 삼각함수가 없다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "평면 식을 Normal · p + D 로 계산했다(D 의 부호를 뒤집지 않았다). Plane.DotCoordinate 를 썼다면 그 값을 길이로 나눴다.",
+            "points": 10,
+            "sourceId": "ms-plane-dotcoordinate"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "노멀이 안쪽을 가리킨다는 규약대로 양수를 안쪽으로 처리했다.",
+            "points": 10,
+            "sourceId": "unity-calculate-frustum-planes"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "IsSphereVisible 이 SignedDistance 를 재사용한다(거리 식을 두 번 쓰지 않았다).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "−radius 와 비교하는 이유(걸친 구는 보인다)가 주석이나 이름으로 드러난다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "노멀을 단위 벡터로 가정하고 식의 값을 그대로 반지름과 비교했다.",
+            "penalty": -20,
+            "sourceId": "wiki-hesse-normal-form"
+          },
+          {
+            "id": "d2",
+            "description": "구의 중심만 검사해(거리 < 0 이면 컬링) 프러스텀에 걸친 구를 지운다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "공개 시그니처나 규약(노멀 방향, 닿는 경우의 처리)을 바꿔서 통과시켰다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static System.Numerics.Plane P(float a, float b, float c, float d) { return new System.Numerics.Plane(new System.Numerics.Vector3(a, b, c), d); }\n    static System.Numerics.Vector3 V(double x, double y, double z) { return new System.Numerics.Vector3((float)x, (float)y, (float)z); }\n\n    static string D(System.Numerics.Plane pl, System.Numerics.Vector3 p, double exp)\n    {\n        float got = FrustumCulling.SignedDistance(pl, p);\n        return !float.IsNaN(got) && System.Math.Abs(got - exp) <= 1e-3 ? null\n            : \"SignedDistance(평면 (\" + F(pl.Normal.X) + \", \" + F(pl.Normal.Y) + \", \" + F(pl.Normal.Z) + \" | D \" + F(pl.D) + \"), 점 (\" + F(p.X) + \", \" + F(p.Y) + \", \" + F(p.Z) + \")): 기대 \" + F(exp) + \", 결과 \" + F(got);\n    }\n    static string S(string name, System.Numerics.Plane[] f, System.Numerics.Vector3 c, double r, bool exp)\n    {\n        bool got = FrustumCulling.IsSphereVisible(f, c, (float)r);\n        return got == exp ? null : \"IsSphereVisible(\" + name + \", 중심 (\" + F(c.X) + \", \" + F(c.Y) + \", \" + F(c.Z) + \"), 반지름 \" + F(r) + \"): 기대 \" + exp + \", 결과 \" + got;\n    }\n\n    // 카메라가 원점에서 -Z 를 본다. 세로·가로 시야각 90도, near 1, far 100. 노멀은 모두 단위 길이.\n    static System.Numerics.Plane[] Camera()\n    {\n        float k = (float)(1.0 / System.Math.Sqrt(2.0));\n        return new[] { P(k, 0, -k, 0), P(-k, 0, -k, 0), P(0, k, -k, 0), P(0, -k, -k, 0), P(0, 0, -1, -1), P(0, 0, 1, 100) };\n    }\n    // 같은 절두체를 평면마다 다른 양수 배율로 늘린 것 (노멀이 단위 길이가 아니다)\n    static System.Numerics.Plane[] CameraScaled()\n    {\n        return new[] { P(1, 0, -1, 0), P(-3, 0, -3, 0), P(0, 0.25f, -0.25f, 0), P(0, -2, -2, 0), P(0, 0, -4, -4), P(0, 0, 0.5f, 50) };\n    }\n    // -10 <= x, y, z <= 10 인 상자. 노멀의 길이가 2 또는 0.5 다.\n    static System.Numerics.Plane[] Box()\n    {\n        return new[] { P(2, 0, 0, 20), P(-2, 0, 0, 20), P(0, 0.5f, 0, 5), P(0, -0.5f, 0, 5), P(0, 0, 2, 20), P(0, 0, -0.5f, 5) };\n    }\n\n    static double RefDist(System.Numerics.Plane pl, double x, double y, double z)\n    {\n        double nx = pl.Normal.X, ny = pl.Normal.Y, nz = pl.Normal.Z;\n        return (nx * x + ny * y + nz * z + pl.D) / System.Math.Sqrt(nx * nx + ny * ny + nz * nz);\n    }\n\n    public static void Main()\n    {\n        Run(\"distance-unit-normal\", () =>\n        {\n            return D(P(0, 1, 0, 0), V(3, 5, -2), 5) ?? D(P(0, 1, 0, 0), V(3, -2.5, 7), -2.5) ?? D(P(0, 1, 0, -4), V(0, 6, 0), 2)\n                ?? D(P(0, 0, -1, -1), V(0, 0, -11), 10) ?? D(P(0, 0, -1, -1), V(5, 5, 0), -1) ?? D(P(0, 0, 1, 100), V(0, 0, -100), 0);\n        });\n\n        Run(\"distance-unnormalized-normal\", () =>\n        {\n            return D(P(0, 2, 0, 0), V(0, 5, 0), 5) ?? D(P(0, 0.5f, 0, 0), V(0, -3, 0), -3) ?? D(P(3, 0, 4, 10), V(1, 9, 3), 5)\n                ?? D(P(3, 0, 4, 10), V(-2, 0, -1), 0) ?? D(P(1, 0, -1, 0), V(3, 0, 1), System.Math.Sqrt(2.0)) ?? D(P(0, 0, -4, -4), V(0, 0, -3), 2);\n        });\n\n        Run(\"sphere-inside-and-outside\", () =>\n        {\n            var f = Camera();\n            return S(\"카메라\", f, V(0, 0, -50), 1, true) ?? S(\"카메라\", f, V(10, -10, -30), 2, true)\n                ?? S(\"카메라\", f, V(0, 0, 20), 5, false) ?? S(\"카메라\", f, V(0, 0, -200), 5, false)\n                ?? S(\"카메라\", f, V(-80, 0, -30), 5, false) ?? S(\"카메라\", f, V(80, 0, -30), 5, false)\n                ?? S(\"카메라\", f, V(0, 60, -30), 5, false) ?? S(\"카메라\", f, V(0, -60, -30), 5, false);\n        });\n\n        Run(\"sphere-straddling-is-visible\", () =>\n        {\n            var f = Camera();\n            // 중심은 평면 밖이지만 반지름 때문에 걸친다\n            return S(\"카메라\", f, V(0, 0, 1), 3, true) ?? S(\"카메라\", f, V(0, 0, -103), 5, true)\n                ?? S(\"카메라\", f, V(-32, 0, -30), 2, true) ?? S(\"카메라\", f, V(0, 32, -30), 2, true)\n                // 같은 중심이라도 반지름이 작으면 컬링된다\n                ?? S(\"카메라\", f, V(0, 0, 1), 1.5, false) ?? S(\"카메라\", f, V(0, 0, -103), 2, false) ?? S(\"카메라\", f, V(-32, 0, -30), 1, false) ?? S(\"카메라\", f, V(0, 32, -30), 1, false);\n        });\n\n        Run(\"sphere-touching-and-point\", () =>\n        {\n            var b = Box();\n            // 정확히 닿는 경우(거리 == -반지름)는 보이는 것으로 본다. 반지름 0 은 점 검사다.\n            return S(\"상자\", b, V(12, 0, 0), 2, true) ?? S(\"상자\", b, V(0, -14, 0), 4, true) ?? S(\"상자\", b, V(10, 10, 10), 0, true)\n                ?? S(\"상자\", b, V(0, 0, 0), 0, true) ?? S(\"상자\", b, V(10.5, 0, 0), 0, false) ?? S(\"상자\", b, V(0, 0, -10.5), 0, false);\n        });\n\n        Run(\"sphere-unnormalized-planes\", () =>\n        {\n            var b = Box();\n            // 노멀 길이 2: 식의 값은 실제 거리의 2배다. 길이 0.5: 절반이다.\n            return S(\"상자\", b, V(-10.75, 0, 0), 1, true)    // 실제 거리 -0.75, 식의 값 -1.5\n                ?? S(\"상자\", b, V(0, -11.5, 0), 1, false)     // 실제 거리 -1.5, 식의 값 -0.75\n                ?? S(\"상자\", b, V(0, 0, 11.5), 1, false)      // 실제 거리 -1.5, 식의 값 -0.75\n                ?? S(\"상자\", b, V(10.75, 0, 0), 1, true)\n                ?? S(\"배율이 섞인 카메라\", CameraScaled(), V(-32, 0, -30), 2, true) ?? S(\"배율이 섞인 카메라\", CameraScaled(), V(32, 0, -30), 1, false)\n                ?? S(\"배율이 섞인 카메라\", CameraScaled(), V(0, 0, 1), 3, true) ?? S(\"배율이 섞인 카메라\", CameraScaled(), V(0, 0, -103), 2, false);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            int vis = 0, cull = 0;\n            for (int i = 0; i < 20000; i++)\n            {\n                var src = Camera();\n                var f = new System.Numerics.Plane[6];\n                for (int k = 0; k < 6; k++)\n                {\n                    float s = (float)System.Math.Pow(2.0, rng.Next(-3, 4)); // 1/8 ~ 8 배\n                    f[k] = new System.Numerics.Plane(src[k].Normal * s, src[k].D * s);\n                }\n                double x = rng.Next(-1200, 1201) / 10.0, y = rng.Next(-1200, 1201) / 10.0, z = rng.Next(-1300, 301) / 10.0, r = rng.Next(0, 81) / 4.0;\n                bool exp = true, skip = false;\n                for (int k = 0; k < 6; k++)\n                {\n                    double d = RefDist(f[k], x, y, z);\n                    if (System.Math.Abs(d + r) < 1e-2) skip = true;\n                    if (d < -r) exp = false;\n                }\n                if (skip) continue;\n                if (exp) vis++; else cull++;\n                string e = S(\"무작위 배율의 카메라 #\" + i, f, V(x, y, z), r, exp);\n                if (e != null) return e;\n            }\n            return vis > 1000 && cull > 1000 ? null : \"채점기 오류: 표본이 한쪽으로 치우쳤다 (\" + vis + \" / \" + cull + \")\";\n        });\n    }\n}\n",
+        "cases": [
+          "distance-unit-normal",
+          "distance-unnormalized-normal",
+          "sphere-inside-and-outside",
+          "sphere-straddling-is-visible",
+          "sphere-touching-and-point",
+          "sphere-unnormalized-planes",
+          "random-vs-reference"
+        ],
+        "note": "SignedDistance 의 값(단위 노멀과 길이가 1 이 아닌 노멀), IsSphereVisible 의 안·밖 판정, 평면에 걸친 구와 정확히 닿는 구, 반지름 0 인 점, 노멀 길이가 2·0.5 인 평면에서의 판정, 그리고 평면마다 무작위 배율을 곱한 프러스텀에서 double 참조 구현과의 일치를 검사합니다. 무작위 검사는 거리 + 반지름이 0 에 아주 가까운 표본을 뺍니다. public static class FrustumCulling 의 SignedDistance(Plane plane, Vector3 point) 와 IsSphereVisible(Plane[] planes, Vector3 center, float radius) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "예시와 테스트의 거리·판정 값을 손으로 다시 계산하고, 로컬 .NET 8 에서 정규화 누락·길이 제곱·중심만 검사·닿는 구 컬링 등 오답 8종이 걸러지고 다르게 쓴 정답 3종이 통과함을 확인한 뒤 채점 서비스에서 solution 전부 PASS 를 확인했습니다. 퇴화 입력(NaN, 길이 0 노멀)은 주어지지 않는다고 본문에 명시했습니다."
+      },
+      "nextMission": "같은 규약으로 축 정렬 바운딩 박스(AABB) 검사 `IsBoxVisible(Plane[] planes, Vector3 min, Vector3 max)` 를 구현해 보세요. 평면마다 노멀 방향으로 가장 멀리 있는 꼭짓점 하나(노멀 성분이 양수면 max, 음수면 min 의 좌표를 고른 점)만 검사하면 됩니다. 그런 다음 몬스터 10,000개의 구를 무작위로 만들어, 평면을 미리 정규화했을 때와 아닐 때의 `IsSphereVisible` 실행 시간을 `Stopwatch` 로 비교하세요."
+    },
+    {
+      "id": "t9-tutor-depth-buffer-precision",
+      "track": "track9",
+      "mode": "tutoring",
+      "difficulty": "Easy",
+      "title": "깊이 버퍼: 깊이 테스트, z-fighting, near·far 평면과 정밀도",
+      "tags": [
+        "Gfx_DepthBuffer",
+        "Gfx_ZFighting"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-z-buffering",
+        "wiki-z-fighting",
+        "ms-d3d9-depth-buffers",
+        "unity-ztest"
+      ],
+      "scenario": "오픈 월드 RPG 의 성벽에 현상금 포스터 데칼을 붙였습니다. 가까이에서는 멀쩡한데, 100 m 쯤 떨어져서 보면 포스터와 벽이 줄무늬로 깜빡이며 서로를 뚫고 나옵니다. 며칠 전에 1인칭 무기 모델이 잘려 보인다는 이유로 카메라의 near 평면을 0.3 에서 0.01 로 당긴 뒤부터 생긴 일입니다. far 평면은 1000 그대로입니다.\n\n원인을 설명하려면 **깊이 버퍼가 무엇을 저장하고, 그 값이 거리와 어떤 관계인지** 알아야 합니다.\n\n**해야 할 일**\n1. 아래 개념 카드를 읽고, near 가 0.3 일 때와 0.01 일 때 거리 100 의 깊이 값이 각각 얼마인지 손으로 계산해 보세요.\n2. `starterCode` 의 `DistanceToDepth`, `DepthToDistance`, `QuantizeDepth` 를 구현하세요. 순수 C#(.NET 8) 이고 정밀도를 보려는 연습이라 `double` 을 씁니다.\n3. 구현한 함수로 퀴즈의 숫자를 직접 확인하세요.\n\n**이 연습의 규약:** 깊이 값은 near 에서 0, far 에서 1 입니다(Direct3D 식 0 ~ 1 범위, 뒤집지 않은 Z). `System.Numerics` 의 `Matrix4x4.CreatePerspectiveFieldOfView` 로 투영한 뒤 `z / w` 를 구한 값과 같습니다(Learn 문서에는 이 행렬의 깊이 범위가 적혀 있지 않아 .NET 8 에서 실행해 확인했습니다). 정수 깊이 버퍼는 이 값에 `2^bits − 1` 을 곱해 가장 가까운 정수로 반올림해 저장한다고 봅니다. 실제 GPU 와 엔진은 다른 범위나 방향, 부동소수 형식을 쓰기도 합니다(개념 카드 5번).",
+      "constraints": [
+        "세 함수 모두 시간 O(1), 힙 할당 없음.",
+        "`DistanceToDepth` 는 주석의 식을 그대로 구현한다. `DepthToDistance` 는 그 식을 거리에 대해 풀어 직접 유도한다(반복 탐색이나 이분법을 쓰지 않는다).",
+        "`QuantizeDepth` 는 depth 를 [0, 1] 로 자른 뒤 `2^bits − 1` 을 곱해 가장 가까운 정수로 반올림한다. bits 는 1 ~ 32 이므로 `1 << bits` 를 `int` 로 계산하지 않는다.",
+        "입력은 `0 < near < far`, `near ≤ distance ≤ far` 라고 가정한다."
+      ],
+      "starterCode": "using System;\n\n// 규약\n// - distance 는 카메라가 보는 방향으로 잰 거리(뷰 공간 깊이)이고 near <= distance <= far 다.\n// - 깊이 값은 near 에서 0, far 에서 1 이다 (Direct3D 식 0..1 범위, 뒤집지 않은 Z).\n//   System.Numerics 의 Matrix4x4.CreatePerspectiveFieldOfView 로 투영한 뒤 z / w 를 구한 값과 같다.\npublic static class DepthMath\n{\n    // 거리 -> 깊이 값(0..1).\n    //   depth = far * (distance - near) / (distance * (far - near))\n    public static double DistanceToDepth(double distance, double near, double far)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 깊이 값(0..1) -> 거리. DistanceToDepth 의 역함수다. 식은 직접 유도한다.\n    public static double DepthToDistance(double depth, double near, double far)\n    {\n        throw new NotImplementedException();\n    }\n\n    // 깊이 값(0..1) 을 bits 비트 정수 깊이 버퍼에 저장되는 값으로 바꾼다.\n    //   round(depth * (2^bits - 1)).  depth 는 먼저 [0, 1] 로 자른다. bits 는 1 ~ 32.\n    public static long QuantizeDepth(double depth, int bits)\n    {\n        throw new NotImplementedException();\n    }\n}\n",
+      "edgeCases": [
+        "양 끝: `DistanceToDepth(near, near, far)` 는 0, `DistanceToDepth(far, near, far)` 는 1 이고, `DepthToDistance(0, …)` 는 near, `DepthToDistance(1, …)` 는 far 다.",
+        "깊이 0.5 는 거리의 절반이 아니다: near 1, far 100 에서 `DepthToDistance(0.5, 1, 100)` 은 50.5 가 아니라 약 1.98 이다.",
+        "`QuantizeDepth(1.0, 32)` 는 4,294,967,295 다. `1 << 32` 를 `int` 로 계산하면 1 이 되어 결과가 0 이 된다.",
+        "범위 밖 깊이: `QuantizeDepth(-1, 16)` 은 0, `QuantizeDepth(2, 16)` 은 65,535 다."
+      ],
+      "hints": [
+        "숫자 하나를 손으로 따라가 보세요. near 1, far 100 에서 거리 2 의 깊이는 `100 × (2 − 1) / (2 × 99) = 100 / 198 ≈ 0.505` 입니다. 카메라에서 2 만큼만 떨어져도 깊이 범위의 절반을 이미 썼습니다. 거리 10 은 `100 × 9 / (10 × 99) ≈ 0.909` 입니다.",
+        "`DepthToDistance` 는 `d = far × (z − near) / (z × (far − near))` 를 z 에 대해 푸는 문제입니다. 양변에 `z × (far − near)` 를 곱하고 z 가 있는 항을 한쪽으로 모으세요. 답이 맞는지는 `d = 0` 에서 near, `d = 1` 에서 far 가 나오는지로 확인할 수 있습니다. `QuantizeDepth` 에서는 `2^bits − 1` 을 `long` 으로 만들어야 bits = 32 에서 넘치지 않습니다.",
+        "뼈대입니다. 빈칸은 직접 채우세요.\n```\nDistanceToDepth(z, near, far):\n    return far * (z - near) / (z * (far - near))\n\nDepthToDistance(d, near, far):\n    return near * far / (____ - d * ____)\n\nQuantizeDepth(d, bits):\n    d = clamp(d, 0, 1)\n    max = (1L << bits) - 1\n    return (long) round(d * ____)\n```"
+      ],
+      "followUps": [],
+      "concept": "### 비유: 픽셀마다 붙은 \"현재 1등 기록\" 메모\n\n달리기 기록판에는 가장 빠른 기록만 남습니다. 새 기록이 들어오면 적힌 값과 비교해, 더 빠르면 덮어쓰고 아니면 버립니다. 깊이 버퍼는 화면의 **픽셀마다** 이런 메모를 하나씩 둔 것이고, 기록은 \"이 픽셀에 지금까지 그려진 것 중 가장 가까운 것의 깊이\"입니다. 그리는 순서와 상관없이 가까운 것이 남는 이유가 이것입니다.\n\n### 1. 깊이 테스트\n\n- Direct3D 문서의 절차: 깊이 버퍼를 장면에서 가능한 **가장 큰 값**으로 초기화합니다. 폴리곤을 래스터화할 때 그 지점의 깊이가 버퍼에 저장된 값보다 **작으면** 깊이를 버퍼에 쓰고 색을 렌더 타깃에 씁니다. 크면 넘어갑니다.\n- Wikipedia 의 표현도 같습니다. 프래그먼트의 깊이를 버퍼의 값과 비교해 더 가까우면 교체하고, 더 멀면 버립니다. 이것이 깊이 테스트입니다.\n- 비교 방식은 바꿀 수 있습니다. Unity 의 ShaderLab 에서는 `ZTest` 명령이 통과 조건을 정하고, 기본값은 `LEqual`(기존 지오메트리보다 앞이거나 같은 거리면 그린다)입니다.\n\n### 2. 깊이 값은 거리에 비례하지 않는다\n\n깊이 버퍼에 들어가는 것은 거리 자체가 아니라 투영 뒤의 `z / w` 입니다. 이 연습의 규약(near 에서 0, far 에서 1)에서는 카메라 앞 거리 `z` 에 대해\n\n```\ndepth = far × (z − near) / (z × (far − near))\n```\n\n입니다. Direct3D 문서의 오른손 좌표계 투영 행렬(`zf/(zn−zf)`, `−1`, `zn·zf/(zn−zf)`)로 `z / w` 를 계산하면 이 식이 나오고, Wikipedia 가 [0, 1] 로 정규화해 싣고 있는 식을 정리해도 같습니다. `1/z` 꼴이라 **near 근처에서 값이 급하게 변하고 멀어질수록 거의 변하지 않습니다.**\n\n| 거리 | near 0.3, far 1000 | near 0.01, far 1000 |\n|---|---|---|\n| near 의 2배 (0.6 / 0.02) | 0.50015 | 0.500005 |\n| 1 | 0.70021 | 0.99001 |\n| 10 | 0.97029 | 0.99901 |\n| 100 | 0.99730 | 0.99991 |\n| 500 | 0.99970 | 0.99999 |\n| 1000 | 1 | 1 |\n\nnear 의 2배 거리에서 이미 범위의 절반을 씁니다. near 를 0.01 로 당기면 거리 1 에서 벌써 0.99 이고, 그 뒤의 999 는 남은 1% 를 나눠 씁니다. Microsoft 문서도 far/near 비율이 100 일 때 깊이 버퍼 범위의 90% 가 장면 깊이의 처음 10% 에 쓰인다고 설명합니다.\n\n### 3. 정수로 저장하면 생기는 일\n\nWikipedia 의 설명대로 깊이 값은 보통 고정소수점으로 저장되고, 비트 수 d 에 대해 `2^d − 1` 을 곱해 정수로 반올림합니다. 24비트면 0 ~ 16,777,215 의 칸이 있습니다. 칸은 깊이 값 기준으로는 고르지만, 거리로 되돌리면 폭이 제각각입니다. 아래는 이 연습의 모델로 계산한 \"칸 하나가 덮는 거리 폭\"입니다.\n\n| 24비트, far 1000 | 거리 10 | 거리 100 | 거리 500 |\n|---|---|---|---|\n| near 0.3 | 약 0.02 mm | 약 2 mm | 약 5 cm |\n| near 0.01 | 약 0.6 mm | 약 6 cm | 약 1.5 m |\n\n### 4. z-fighting\n\nWikipedia 의 정의로 z-fighting 은 둘 이상의 프리미티브가 카메라에서 거의 같은 거리에 있어 깊이 버퍼의 값이 거의 같거나 똑같아질 때 생깁니다. 어느 쪽이 앞인지 구분할 수 없어, 픽셀마다 둘 중 하나가 임의로 그려집니다. 같은 평면에 겹쳐 놓인(coplanar) 폴리곤에서 특히 흔합니다.\n\n성벽 포스터가 그 경우입니다. 벽이 100 m, 포스터가 그보다 2 cm 앞(100.02 로 계산)이라고 하면:\n\n- near 0.3: 24비트 값이 16,731,903 과 16,731,913. 10칸 차이라 구분됩니다.\n- near 0.01: 둘 다 16,775,705. **같은 칸**이라 구분되지 않습니다.\n\n같은 문서의 설명으로, near 와 far 의 간격이 넓을수록, 특히 near 가 눈 가까이에 있을수록 z-fighting 이 생기기 쉽습니다. Wikipedia 의 Z-buffering 문서도 near 가 작을수록 먼 곳의 정밀도가 떨어지며, near 를 너무 가깝게 잡는 것이 먼 물체에서 생기는 결함의 흔한 원인이라고 적습니다.\n\n완화 방법(Wikipedia): 더 높은 해상도의 깊이 버퍼를 쓴다, 폴리곤을 더 띄운다, 화면에 투영된 모양은 그대로 두고 깊이 값만 밀어 주는 오프셋을 준다, 보이는 거리를 줄여 near 와 far 의 간격을 좁힌다.\n\n### 5. near·far 를 고르는 기준과 주의\n\n- **near 는 가능한 한 멀리.** 위 표처럼 near 를 30배 당기면 먼 곳의 칸 폭이 약 30배 넓어집니다. 무기가 잘려 보이는 문제는 near 를 당기는 것 말고 다른 방법으로 푸는 편이 안전합니다.\n- **far 는 near 만큼 민감하지 않습니다.** 퀴즈 2 에서 숫자로 확인합니다.\n- **API 마다 방향과 범위가 다릅니다.** Unity 매뉴얼에 따르면 깊이 버퍼의 값은 DirectX·Metal·Vulkan 에서 near 1.0 → far 0.0 으로 뒤집혀 있고, OpenGL ES·WebGL 에서는 near 0.0 → far 1.0 입니다. 셰이더에서 깊이 값을 직접 읽을 때는 `UNITY_REVERSED_Z` 나 `SystemInfo.usesReversedZBuffer` 로 확인해야 합니다. 이 연습의 식은 \"near 0, far 1\" 규약 하나만 다룹니다.\n- 깊이 버퍼가 부동소수 형식일 때의 정밀도 분포는 이 연습의 정수 모델과 다릅니다. 여기서는 다루지 않습니다.",
+      "quiz": [
+        {
+          "question": "near 0.01, far 1000, 24비트 정수 깊이 버퍼입니다. 카메라에서 100 떨어진 성벽과, 그보다 2 cm 앞(거리 100.02 로 계산)에 붙인 포스터가 z-fighting 을 일으킵니다. 두 표면의 깊이 값과 버퍼에 저장되는 정수를 계산해 원인을 설명하고, near 를 0.3 으로 되돌리면 어떻게 되는지 보이세요.",
+          "answer": "`depth = far × (z − near) / (z × (far − near))` 에 넣습니다. near 0.01 에서 벽은 1000 × 99.99 / (100 × 999.99) ≈ 0.99991000, 포스터는 ≈ 0.99991002 입니다. 차이는 약 2 × 10⁻⁸ 인데 24비트의 한 칸은 1 / 16,777,215 ≈ 6 × 10⁻⁸ 이라, 16,777,215 를 곱해 반올림하면 둘 다 16,775,705 가 됩니다. 버퍼 안에서는 같은 깊이이므로 깊이 테스트가 앞뒤를 가릴 수 없고, 픽셀마다 보간 오차에 따라 벽이나 포스터가 그려져 줄무늬로 깜빡입니다. near 0.3 에서는 벽이 ≈ 0.99729919 → 16,731,903, 포스터가 ≈ 0.99729979 → 16,731,913 으로 10칸 떨어져 구분됩니다. near 를 30배 당긴 것이 먼 곳의 정밀도를 약 30배 떨어뜨렸다는 뜻입니다. 대응은 near 를 되돌리는 것(무기 잘림은 다른 방법으로 해결), 포스터를 벽에서 더 띄우는 것, 깊이 오프셋을 주는 것 순으로 검토합니다."
+        },
+        {
+          "question": "같은 장면에서 팀원이 \"near 는 0.3 으로 두고, 대신 far 를 1000 에서 300 으로 줄이면 정밀도가 세 배쯤 좋아지지 않을까?\"라고 제안했습니다. 거리 100 과 100.02 의 24비트 값으로 확인하고, near 와 far 중 어느 쪽이 정밀도에 더 큰 영향을 주는지 식으로 설명하세요.",
+          "answer": "near 0.3, far 300 에서 벽은 300 × 99.7 / (100 × 299.7) ≈ 0.99799800 → 16,743,627, 포스터는 ≈ 0.99799860 → 16,743,637 로 10칸 차이입니다. far 가 1000 일 때도 10칸 차이였으므로 거의 달라지지 않습니다. 식을 `depth = far / (far − near) × (1 − near / z)` 로 고쳐 쓰면 이유가 보입니다. 두 거리의 깊이 차이는 `far × near / (far − near) × (1/z₁ − 1/z₂)` 인데, far 가 near 보다 훨씬 크면 `far / (far − near)` 는 거의 1 이라 far 를 바꿔도 값이 거의 그대로입니다. 반면 near 는 곱해지는 인수라서 near 를 30분의 1 로 줄이면 깊이 차이도 약 30분의 1 이 됩니다. 그래서 정밀도가 부족할 때는 far 를 줄이기 전에 near 를 얼마나 밀 수 있는지부터 봅니다. far 를 줄이는 것은 그릴 오브젝트가 줄어드는 효과는 있지만 깊이 정밀도에는 큰 도움이 되지 않습니다."
+        }
+      ],
+      "solutionCode": "using System;\n\n// 규약\n// - distance 는 카메라가 보는 방향으로 잰 거리(뷰 공간 깊이)이고 near <= distance <= far 다.\n// - 깊이 값은 near 에서 0, far 에서 1 이다 (Direct3D 식 0..1 범위, 뒤집지 않은 Z).\n//   System.Numerics 의 Matrix4x4.CreatePerspectiveFieldOfView 로 투영한 뒤 z / w 를 구한 값과 같다.\npublic static class DepthMath\n{\n    // 거리 -> 깊이 값(0..1).  depth = far * (distance - near) / (distance * (far - near))\n    public static double DistanceToDepth(double distance, double near, double far)\n    {\n        return far * (distance - near) / (distance * (far - near));\n    }\n\n    // 깊이 값(0..1) -> 거리.  위 식을 distance 에 대해 푼 것.\n    public static double DepthToDistance(double depth, double near, double far)\n    {\n        return near * far / (far - depth * (far - near));\n    }\n\n    // 깊이 값(0..1) 을 bits 비트 정수 깊이 버퍼에 저장되는 값으로 바꾼다: round(depth * (2^bits - 1))\n    public static long QuantizeDepth(double depth, int bits)\n    {\n        double clamped = Math.Min(1.0, Math.Max(0.0, depth));\n        long maxValue = (1L << bits) - 1;\n        return (long)Math.Round(clamped * maxValue, MidpointRounding.AwayFromZero);\n    }\n}\n",
+      "explanation": "**DistanceToDepth.** 투영 행렬의 셋째 열과 넷째 열에서 `z_clip = z_view × far/(near − far) + near × far/(near − far)`, `w = −z_view` 입니다. 카메라 앞 거리 `z = −z_view` 로 바꿔 나누면 `depth = far × (z − near) / (z × (far − near))` 가 됩니다. `z = near` 에서 0, `z = far` 에서 1 입니다. 풀이는 이 식 한 줄이고, 2,000개의 무작위 near·far·거리에서 `Matrix4x4.CreatePerspectiveFieldOfView` 로 투영한 `z / w` 와 비교해 차이가 float 오차(약 2 × 10⁻⁷) 안임을 확인했습니다.\n\n**DepthToDistance.** 위 식을 z 에 대해 풉니다. `d × z × (far − near) = far × z − far × near` 에서 `z × (far − d × (far − near)) = far × near`, 따라서 `z = near × far / (far − d × (far − near))` 입니다. 분모는 `d = 0` 에서 far, `d = 1` 에서 near 이므로 결과가 near 와 far 로 맞게 나옵니다. 깊이 값을 다시 거리로 바꾸는 이 계산은 깊이 텍스처로 안개나 소프트 파티클을 만들 때 쓰는 \"깊이 선형화\"와 같은 일입니다(이 문장은 인용이 아닌 일반 지식입니다).\n\n**QuantizeDepth.** `2^bits − 1` 을 곱해 반올림합니다. `bits = 32` 를 다루려면 `(1L << bits) − 1` 처럼 `long` 으로 계산해야 합니다. C# 에서 `int` 의 시프트는 시프트 수의 아래 5비트만 쓰므로 `1 << 32` 는 1 입니다.\n\n**값이 말해 주는 것.** depth 는 `1/z` 꼴이라 near 근처에 값이 몰립니다. near 의 2배 거리에서 이미 0.5 이고, near 0.01 · far 1000 이면 거리 1 에서 0.99 입니다. 정수로 저장하면 먼 곳에서는 여러 거리가 한 칸에 들어가고, 한 칸에 들어간 두 표면은 깊이 테스트로 구분되지 않습니다. 이것이 z-fighting 입니다. 두 거리의 깊이 차이는 `far × near / (far − near) × (1/z₁ − 1/z₂)` 이므로 near 에 거의 비례하고 far 에는 둔감합니다.\n\n**복잡도.** 세 함수 모두 O(1), 할당 없음.\n\n**흔한 실수.**\n- 깊이가 거리에 비례한다고 보고 `(z − near) / (far − near)` 로 계산한다. 이것은 직교 투영의 식입니다.\n- `DepthToDistance` 를 `near + d × (far − near)` 로 쓴다.\n- near 와 far 를 바꿔 넣는다.\n- `float` 으로 계산한다. 1 근처에서 `float` 의 간격이 24비트 한 칸과 같은 크기(약 6 × 10⁻⁸)라서 이 연습의 비교가 흐려집니다.\n- 반올림 대신 버림을 쓴다.\n- 뒤집힌 Z 를 쓰는 플랫폼의 깊이 값에 이 식을 그대로 적용한다.\n\n이 문제에는 숨은 테스트가 없습니다. 개념 카드와 퀴즈의 숫자를 직접 출력해 맞춰 보세요.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "DistanceToDepth 가 식대로 동작한다: (2, 1, 100) → 0.50505, (10, 1, 100) → 0.90909, (near, …) → 0, (far, …) → 1 (오차 1e-5 이내).",
+            "points": 13,
+            "sourceId": "ms-d3dx-perspective-fov-rh"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "DepthToDistance 가 역함수다: (0.5, 1, 100) → 1.98020, (0.9, 1, 100) → 9.17431, 그리고 near ~ far 의 거리를 왕복 변환하면 원래 값으로 돌아온다.",
+            "points": 12,
+            "sourceId": ""
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "QuantizeDepth 가 2^bits − 1 을 곱해 반올림한다: (0.25, 8) → 64, (1, 24) → 16,777,215, DistanceToDepth(100, 0.3, 1000) 의 24비트 값 → 16,731,903.",
+            "points": 10,
+            "sourceId": "wiki-z-buffering"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "세 함수가 O(1) 이고 힙 할당이 없다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "DepthToDistance 가 닫힌 식 한 줄이다(반복 탐색이나 이분법을 쓰지 않았다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "정밀도를 비교하는 계산을 double 로 했다(float 으로 낮추지 않았다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "QuantizeDepth 가 bits = 32 에서 넘치지 않는다((1L << bits) − 1 처럼 long 으로 계산했다): (1, 32) → 4,294,967,295.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "이 식이 \"near 0, far 1\" 규약의 것이며 플랫폼에 따라 깊이 방향이 뒤집힌다는 점을 주석이나 답변에 적었다.",
+            "points": 10,
+            "sourceId": "unity-platform-differences"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "퀴즈 1 의 두 정수(near 0.01 에서 둘 다 16,775,705, near 0.3 에서 16,731,903 과 16,731,913)를 직접 출력해 확인했다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "near 와 far 중 near 가 정밀도에 더 큰 영향을 준다는 것을 식이나 숫자로 설명했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "깊이를 거리에 비례하는 값((z − near) / (far − near))으로 계산했다.",
+            "penalty": -20,
+            "sourceId": "wiki-z-buffering"
+          },
+          {
+            "id": "d2",
+            "description": "DepthToDistance 가 DistanceToDepth 의 역함수가 아니다(왕복 변환이 원래 거리로 돌아오지 않는다).",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "z-fighting 의 대응으로 near 를 더 당기거나 far 를 줄이는 것만 제시했다(near 가 원인임을 짚지 못했다).",
+            "penalty": -10,
+            "sourceId": "wiki-z-fighting"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "숨은 테스트가 없는 문제로, 개념 카드의 두 표와 퀴즈·채점표의 모든 숫자를 로컬 .NET 8 에서 solutionCode 로 다시 계산해 일치를 확인했고 CreatePerspectiveFieldOfView 의 z/w 와 식이 float 오차 안에서 같음을 실행으로 확인했으며, 인용한 Wikipedia·Microsoft·Unity 문서 문장을 원문과 대조했습니다."
+      },
+      "nextMission": "`DepthStepWidth(double distance, double near, double far, int bits)` 를 추가해 \"그 거리에서 깊이 버퍼 한 칸이 덮는 거리 폭\"을 계산하세요(그 거리의 정수 값 q 에 대해 `DepthToDistance((q + 0.5) / max) − DepthToDistance((q − 0.5) / max)`). near 를 0.01, 0.1, 0.3, 1 로 바꿔 가며 거리 10, 100, 500 에서의 폭을 표로 출력하고, 개념 카드의 표(near 0.3 에서 거리 100 은 약 2 mm, near 0.01 에서는 약 6 cm)와 맞는지 확인하세요."
+    },
+    {
+      "id": "t9-interview-lighting-models-pbr-baked",
+      "track": "track9",
+      "mode": "interview",
+      "difficulty": "Medium",
+      "title": "라이팅 모델 한눈에 보기: 앰비언트·디퓨즈·스페큘러, PBR 파라미터, 베이크와 실시간",
+      "tags": [
+        "Gfx_Lighting",
+        "Gfx_PBR",
+        "Gfx_BakedLighting"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "wiki-phong-reflection",
+        "unity-metallic-specular-workflows",
+        "unity-configure-reflections",
+        "unity-light-modes"
+      ],
+      "scenario": "모바일 RPG(Unity 6, URP)의 마을 씬을 맡았습니다. 요청이 세 건 들어와 있습니다.\n\n- 아티스트: \"기사 갑옷이 금속이 아니라 회색 플라스틱처럼 보여요. 머티리얼에서 뭘 만져야 하죠?\"\n- 레벨 디자이너: \"가로등 12개를 전부 실시간 라이트로 깔았더니 중급 기기에서 프레임이 떨어져요. 건물과 가로등은 움직이지 않아요.\"\n- 기획자: \"캐릭터가 건물 그림자 안에 들어가면 주변과 따로 노는 것처럼 보여요.\"\n\n머티리얼은 모두 URP 의 Lit 셰이더(Metallic 워크플로)입니다.\n\n**질문: 표면의 밝기를 앰비언트·디퓨즈·스페큘러 세 항으로 나눠 설명하고, PBR 머티리얼의 Albedo(Base Map)·Metallic·Smoothness 가 그 항들과 어떻게 이어지는지 설명해 주세요. 그런 다음 이 마을 씬의 조명을 Unity 의 Baked·Mixed·Realtime 중 무엇으로 둘지와 그 이유를 말해 주세요.**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "Metallic 을 1 로 올렸는데 Base Map 이 어두운 회색이면 반사 색 자체가 어두워 금속처럼 보이지 않는다.",
+        "Baked 라이트만 있는 씬의 동적 캐릭터: 문서상 동적 오브젝트는 Baked 라이트에서 빛도 그림자도 받지 않는다. Light Probe 가 없으면 주변과 따로 논다.",
+        "Baked Global Illumination 을 끈 씬: Baked·Mixed 라이트가 모두 Realtime 처럼 동작해, 모드를 바꿔도 비용이 줄지 않는다.",
+        "런타임에 색이나 세기가 바뀌어야 하는 조명(깜빡이는 횃불): Baked 로 두면 바꿀 수 없다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "갑옷 머티리얼의 Metallic 을 0 에서 1 로 올리면 Base Map 색의 역할이 어떻게 바뀝니까? 그리고 Smoothness 를 0.2 에서 0.9 로 올리면 하이라이트가 어떻게 달라집니까? \"회색 플라스틱처럼 보인다\"는 제보에 어떤 순서로 대응하겠습니까?",
+          "intent": "PBR 파라미터를 슬라이더 이름이 아니라 디퓨즈·스페큘러 항의 배분과 모양으로 이해하고 있는지, 문서가 설명하는 범위 안에서 정확히 말하는지 확인한다.",
+          "keyAnswer": "- **Metallic 0 (비금속):** Unity 매뉴얼의 설명으로 베이스 색이 매트한 색, 곧 디퓨즈 반사로 보이고 스페큘러 하이라이트는 광원의 색이다.\n- **Metallic 1 (금속):** 디퓨즈 반사가 없다. 베이스 색이 스페큘러 반사와 환경 반사의 색을 정한다. 0 과 1 사이의 값은 두 결과를 섞는다.\n- **Smoothness:** 미세 표면의 거칠기를 나타낸다. 낮으면 표면이 미시적으로 거칠어 빛이 넓은 각도로 튀고 반사가 흐릿하게 퍼진다. 높으면 좁은 각도로 튀어 반사가 선명하고 또렷하다. URP Lit 문서는 범위를 0 ~ 1 로, 0 은 넓고 거친 하이라이트, 1 은 유리처럼 작고 날카로운 하이라이트라고 적는다.\n- **대응 순서:** (1) Metallic 이 0 근처인지 본다. 금속 부위는 1, 천·가죽 부위는 0 이어야 하므로 부위가 섞여 있으면 Metallic Map 을 쓴다(Unity 매뉴얼의 \"Configure reflections in prebuilt shaders\" 에 따르면 메탈릭 워크플로의 맵은 R 채널이 Metallic 값, A 채널이 Smoothness 값이다). (2) Smoothness 가 너무 낮지 않은지 본다. (3) 금속은 디퓨즈가 없고 반사로만 보이므로 반사할 환경이 있는지 확인한다. (4) Lit 머티리얼의 Specular Highlights 옵션이 꺼져 있지 않은지 본다.\n- (3) 의 \"반사할 환경(리플렉션 프로브나 스카이박스)이 없으면 금속이 어둡게 보인다\"는 것은 문서의 \"금속은 디퓨즈 반사가 없고 베이스 색이 환경 반사의 색을 정한다\"에서 나오는 추론이자 일반적인 실무 지식이다."
+        },
+        {
+          "question": "가로등 12개를 Baked 로 바꾸면 무엇을 얻고 무엇을 잃습니까? 움직이는 캐릭터는 그 빛을 어떻게 받습니까?",
+          "intent": "베이크 라이팅의 한계를 문서 수준으로 정확히 알고, 정적 오브젝트와 동적 오브젝트가 빛을 받는 경로가 다르다는 점을 설명할 수 있는지 확인한다.",
+          "keyAnswer": "- **얻는 것:** Unity 매뉴얼의 설명으로 Baked 라이트의 계산은 에디터에서 미리 하고 결과를 라이팅 데이터로 저장한다. 직접광과 간접광이 모두 라이트맵에 구워지므로 런타임 셰이딩 비용과 그림자 렌더링 비용이 줄어든다. 라이트를 처리하는 런타임 비용은 없고, 라이트맵을 적용하는 약간의 비용만 있다.\n- **잃는 것(문서의 한계 목록):** 런타임에 라이트의 속성을 바꿀 수 없다. 스페큘러 라이팅에 기여하지 않는다. **동적 GameObject 는 Baked 라이트에서 빛도 그림자도 받지 않는다.**\n- **캐릭터가 빛을 받는 경로:** Light Probe. 문서에 따르면 Light Probe 는 씬의 빈 공간을 지나는 빛의 베이크 정보를 저장하고, 런타임에 동적 오브젝트에 닿는 간접광을 가장 가까운 프로브들의 값으로 근사한다. Baked 라이트는 직접광과 간접광을 Light Probe 에도 굽는다.\n- **기획자의 제보와의 연결:** 캐릭터가 지나다니는 길과 건물 그늘 안팎에 프로브가 없으면 캐릭터는 그 자리의 구워진 빛을 받지 못해 주변과 따로 논다. 프로브를 밝기가 바뀌는 경계(그늘 안과 밖)에 놓는다.\n- **주의:** 모드는 Baked Global Illumination 이 켜져 있을 때만 의미가 있다. 꺼져 있으면 Baked·Mixed 라이트가 Realtime 으로 설정된 것처럼 동작한다고 문서가 적는다.\n- \"프로브를 밝기 경계에 놓는다\"는 배치 요령은 문서 인용이 아닌 일반적인 실무 지식이다."
+        },
+        {
+          "question": "해가 되는 디렉셔널 라이트는 Mixed 로 두려고 합니다. Mixed 라이트의 동작을 정하는 Lighting Mode 에는 어떤 선택지가 있고, 저사양 기기까지 지원해야 하는 이 프로젝트에서는 어떻게 고르겠습니까? 나중에 \"낮밤이 바뀌는 연출\"이 추가되면 무엇이 문제가 됩니까?",
+          "intent": "Light Mode(라이트별)와 Lighting Mode(씬 전체의 Mixed 라이트 동작)를 구분하고, 문서의 비교표를 근거로 품질과 비용을 저울질하며, 베이크된 데이터가 런타임에 바뀌지 않는다는 제약을 요구 사항과 연결할 수 있는지 확인한다.",
+          "keyAnswer": "- **구분:** Light Mode 는 라이트마다 정하는 Baked / Mixed / Realtime 이고, Lighting Mode 는 Lighting Settings Asset 에서 씬의 모든 Mixed 라이트가 어떻게 동작할지 정하는 설정이다.\n- **선택지(문서, 품질이 높은 순):** Distance Shadowmask(먼 거리까지 사실적이지만 성능 영향이 가장 크다), Shadowmask(실시간 그림자가 더 적고 영향이 덜하다), Baked Indirect(사실적인 라이팅과 실시간 그림자), Subtractive(단순한 라이팅과 저품질 그림자, 성능 영향이 낮다. 저사양 하드웨어나 라이트가 적은 단순한 씬, 스타일라이즈드 아트에 쓸 수 있다).\n- **문서의 표 요약:** 네 모드 모두 간접광은 베이크다. 직접광은 Baked Indirect·Shadowmask·Distance Shadowmask 에서 실시간이고, Subtractive 에서는 동적 오브젝트만 실시간, 정적 오브젝트는 베이크다. 정적 오브젝트의 그림자는 Shadowmask 에서 베이크(GameObject 당 최대 4개 라이트), Baked Indirect 에서는 Shadow Distance 까지 실시간이고 그 밖에서는 없다.\n- **선택:** 정적 건물의 그림자를 매 프레임 그리지 않아도 되는 Shadowmask 를 기본으로 검토하고, 최저 사양에서 그래도 무거우면 Subtractive 로 내린다. Subtractive 는 문서상 동적 오브젝트의 실시간 그림자가 가장 센 디렉셔널 라이트 하나에서만 나오고, 실시간 그림자와 베이크 그림자가 잘 섞이지 않을 수 있다는 점을 아트 팀과 합의한다. 어느 렌더 파이프라인이 어느 Lighting Mode 를 지원하는지는 문서의 기능 비교표에서 확인한다.\n- **Mixed 의 비용:** 문서에 따르면 Mixed 라이트는 실시간과 베이크를 항상 함께 쓰므로 완전 베이크보다 런타임 계산이 많고 완전 실시간보다 메모리를 더 쓴다.\n- **낮밤 연출의 문제:** 문서에 따르면 Mixed 라이트의 속성을 런타임에 바꾸면 실시간 라이팅만 갱신되고 베이크된 라이팅은 갱신되지 않는다. 해의 방향과 색을 돌려도 라이트맵의 간접광과 구워진 그림자는 낮 상태로 남는다.\n- **대안(문서 인용이 아닌 일반적인 설계 판단):** 해를 Realtime 으로 두고 간접광은 단순한 앰비언트로 대신한다, 시간대별 라이팅 데이터를 여러 벌 구워 전환한다, 낮밤을 씬 단위로 나눈다. 각각 런타임 비용, 빌드 용량, 제작 비용을 치른다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**세 항.** Phong 반사 모델은 표면이 빛을 반사하는 방식을 거친 표면의 디퓨즈 반사와 반짝이는 표면의 스페큘러 반사의 조합으로 기술하고, 장면 전체에 흩어진 소량의 빛을 나타내는 앰비언트 항을 더한 경험적 모델입니다(Wikipedia).\n- **앰비언트:** 방향과 무관한 균일한 항. 장면 전체에 흩어진 빛을 상수 하나로 근사한 것입니다.\n- **디퓨즈:** 표면 방향에 따라 세기가 변하고 보는 방향에는 영향을 받지 않습니다. 물체의 \"바탕색\"을 만듭니다.\n- **스페큘러:** 보는 방향이 반사 방향과 맞을 때만 커집니다. 광택 지수가 크면(더 매끄럽고 거울 같은 표면) 하이라이트가 작아집니다.\n\n**PBR 파라미터와의 연결.** Unity 의 Metallic 워크플로는 이 배분을 물리적으로 말이 되는 범위로 묶은 것으로 볼 수 있습니다. 각 파라미터의 정의는 Unity 매뉴얼의 것이고, Phong 의 세 항과 잇는 대응은 문서 인용이 아닌 해석입니다.\n- **Albedo / Base Map:** 표면색. URP Lit 문서는 Base Map 을 \"디퓨즈라고도 하는 표면색\"이라고 적습니다.\n- **Metallic:** 0 이면 베이스 색이 디퓨즈로 보이고 하이라이트는 광원 색, 1 이면 디퓨즈가 없고 베이스 색이 반사의 색이 됩니다. 디퓨즈와 스페큘러 중 어느 쪽으로 빛을 돌려보내는지 정하는 값입니다.\n- **Smoothness:** 미세 표면의 거칠기. 낮으면 반사가 흐릿하게 퍼지고 높으면 선명해집니다. Phong 의 광택 지수와 비슷한 역할을 한다고 볼 수 있습니다.\n- **앰비언트의 자리:** Unity 는 직접광(한 번 닿고 반사되어 눈에 들어오는 빛)과 간접광(여러 번 튄 빛과 하늘빛을 포함한 나머지)을 구분하고, 간접광을 라이트맵과 Light Probe 로 미리 계산해 둘 수 있습니다. 상수 하나였던 앰비언트 항을 위치마다 다른 값으로 바꾼 셈입니다.\n\n**갑옷.** \"회색 플라스틱\"은 Metallic 이 0 에 가깝거나 Smoothness 가 낮다는 신호입니다. 금속 부위의 Metallic 을 1 로, Smoothness 를 올리고, 부위가 섞여 있으면 Metallic Map 으로 나눕니다.\n\n**마을 씬의 조명.** Unity 매뉴얼의 정의로 실시간 라이팅은 런타임에 계산하고, 베이크 라이팅은 미리 계산해 저장한 결과를 런타임에 적용합니다.\n- **가로등 12개 → Baked.** 움직이지 않고 건물도 정적입니다. Realtime 라이트의 비용은 씬의 복잡도, 그림자를 드리우는 라이트 수, 겹치는 라이트 수에 따라 커진다고 문서가 설명합니다. Baked 는 런타임에 라이트를 처리하는 비용이 없습니다. 대신 런타임에 바꿀 수 없고 스페큘러에 기여하지 않으며 동적 오브젝트를 비추지 않습니다.\n- **해(디렉셔널) → Mixed.** 캐릭터에게 실시간 직접광과 그림자를 주면서 간접광은 굽습니다. 세부 동작은 Lighting Mode 가 정합니다.\n- **깜빡이는 횃불이나 스킬 이펙트 → Realtime**, 수를 제한합니다. 런타임에 속성을 바꿀 수 있는 것이 Realtime 의 용도입니다.\n- **캐릭터가 따로 노는 문제 → Light Probe.** 동적 오브젝트는 구워진 빛을 프로브로 받습니다.\n\n**전제 확인.** 이 구분은 Baked Global Illumination 이 켜져 있을 때만 의미가 있습니다. 꺼져 있으면 Baked·Mixed 라이트가 Realtime 처럼 동작합니다.\n\n**흔한 오답.**\n- Metallic 을 \"반짝임의 세기\"로, Smoothness 를 \"밝기\"로 설명한다.\n- \"Baked 는 공짜\"라고 답한다. 라이트맵 메모리와 굽는 시간이 들고, 동적 오브젝트는 프로브가 필요합니다.\n- Baked 라이트가 캐릭터도 비춘다고 가정한다.\n- 여기 적은 Unity 설정을 모든 엔진과 파이프라인의 공통 동작처럼 말한다.\n\n이 답의 Unity 관련 서술은 Unity 6 매뉴얼 기준이고, 머티리얼 속성 이름은 URP Lit 셰이더의 것입니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "앰비언트(방향과 무관한 균일한 항), 디퓨즈(표면 방향에 따라 변하고 보는 방향과 무관), 스페큘러(보는 방향에 의존하는 하이라이트)를 구분해 설명했다.",
+            "points": 12,
+            "sourceId": "wiki-phong-reflection"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "Metallic 0 은 베이스 색이 디퓨즈로 보이고, 1 은 디퓨즈가 없고 베이스 색이 반사 색이 된다는 점과 Smoothness 가 반사의 선명도를 정한다는 점을 말했다.",
+            "points": 12,
+            "sourceId": "unity-metallic-specular-workflows"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "Baked(미리 계산해 저장), Realtime(런타임 계산), Mixed(둘의 혼합)의 차이를 말하고 가로등·해·동적 조명에 각각 모드를 배정했다.",
+            "points": 11,
+            "sourceId": "unity-lighting-intro"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "Realtime 라이트의 비용이 그림자를 드리우는 라이트 수와 겹치는 라이트 수에 따라 커진다는 점을 근거로 가로등을 Baked 로 옮겼다.",
+            "points": 10,
+            "sourceId": "unity-light-modes"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "Baked 의 대가(런타임 변경 불가, 스페큘러 미기여, 동적 오브젝트 미조명)를 하나 이상 말했다.",
+            "points": 10,
+            "sourceId": "unity-light-modes"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "Mixed 라이트가 완전 베이크보다 런타임 계산이 많고 완전 실시간보다 메모리를 더 쓴다는 점이나, Lighting Mode 별 비용 차이를 말했다.",
+            "points": 10,
+            "sourceId": "unity-lighting-mode"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "동적 오브젝트는 구워진 빛을 Light Probe 로 받는다고 설명했다.",
+            "points": 10,
+            "sourceId": "unity-light-probes"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "속성 이름과 범위를 파이프라인을 밝혀 말했다(URP Lit 의 Base Map, Metallic 0 ~ 1, Smoothness 0 ~ 1).",
+            "points": 10,
+            "sourceId": "unity-urp-lit-shader"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "답변이 세 항 → PBR 파라미터 → 씬의 조명 배치 순서로 이어진다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "세 제보(갑옷, 가로등, 캐릭터)에 각각 구체적인 조치를 하나씩 제시했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "Baked 라이트가 동적 캐릭터도 비추고 그림자도 드리운다고 답했다.",
+            "penalty": -20,
+            "sourceId": "unity-light-modes"
+          },
+          {
+            "id": "d2",
+            "description": "Metallic 을 단순한 \"반짝임의 세기\"로 설명했다(금속에서 디퓨즈가 사라지고 베이스 색이 반사 색이 된다는 점을 모른다).",
+            "penalty": -15,
+            "sourceId": "unity-metallic-specular-workflows"
+          },
+          {
+            "id": "d3",
+            "description": "특정 파이프라인의 설정을 모든 엔진·파이프라인의 공통 동작처럼 말했다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼 8개 페이지(Metallic·Smoothness, URP Lit, Light Modes, Lighting Mode 표, Light Probes)와 Wikipedia Phong 문서를 curl 로 받아 인용 문장을 원문과 대조했고, 문서에 없는 해석·실무 판단에는 그 표시가 붙어 있는지 확인했습니다."
+      },
+      "nextMission": "Unity 6 URP 프로젝트에 구 9개를 3 × 3 으로 놓고 Lit 머티리얼의 Metallic 을 0 / 0.5 / 1, Smoothness 를 0.2 / 0.5 / 0.9 로 바꿔 캡처하세요. 그런 다음 점광원 4개를 Realtime 으로 둔 씬과 Baked 로 구운 씬에서 정적 큐브와 움직이는 캡슐이 각각 어떻게 보이는지, Light Probe Group 을 추가하기 전과 후로 비교해 표로 정리하세요."
+    },
+    {
+      "id": "t9-debug-normal-handling",
+      "track": "track9",
+      "mode": "debugging",
+      "difficulty": "Hard",
+      "title": "노멀 처리 버그: 보간 후 정규화, 비균등 스케일의 노멀 변환, 공간이 섞인 내적",
+      "tags": [
+        "Gfx_Normal",
+        "Gfx_Lighting",
+        "Gfx_Transform"
+      ],
+      "language": "csharp",
+      "sourceRefs": [
+        "wiki-normal-geometry",
+        "ms-matrix4x4",
+        "ms-vector3-transformnormal",
+        "wiki-phong-shading"
+      ],
+      "scenario": "모바일 전략 게임은 건물과 소품의 조명을 빌드 시점에 CPU 에서 정점 색으로 구워 둡니다. 그 도구의 노멀 처리 코드가 `NormalShading` 입니다. 아트 팀에서 제보가 세 건 올라왔습니다.\n\n- \"둥근 지붕의 림 라이트와 하이라이트가 삼각형 가운데에서만 어두워진다. 보간한 노멀을 받아 쓰는 다른 도구에서 그렇다.\"\n- \"깃발을 세로로 4배 늘린 것(Scale (1, 4, 1))처럼 **축마다 배율이 다른** 오브젝트만 명암이 이상하다. 비탈진 면이 엉뚱한 쪽에서 밝아진다.\"\n- \"원점 근처의 오브젝트는 멀쩡한데, **맵 구석으로 옮긴** 오브젝트는 가로등 바로 아래에 있어도 어둡다.\"\n\n**규약** (코드 주석에도 적혀 있으며, 이 규약이 정답의 기준입니다)\n\n- `System.Numerics` 의 행 벡터 규약을 씁니다. 월드 위치 = `Vector3.Transform(오브젝트 위치, model)`.\n- `model` 은 확대/축소(축마다 다를 수 있고 음수일 수도 있음), 회전, 이동을 합친 행렬이며 역행렬이 있습니다.\n- \"노멀\"을 돌려주는 함수는 모두 **길이 1** 인 벡터를 돌려줍니다.\n- 디퓨즈 값은 `max(0, N · L)` 이고 `N` 과 `L` 은 **둘 다 월드 공간**의 단위 벡터입니다. `L` 은 표면의 점에서 광원을 향합니다.\n- `InterpolateNormal` 의 입력은 단위 벡터 세 개와 합이 1 인 0 이상의 무게중심 좌표입니다. 보간 결과의 길이가 0 이 되는 입력은 주어지지 않습니다.\n\n**할 일:** 아래 코드의 버그를 모두 찾아 고치세요. 버그마다 \"수정 전에는 틀리고 수정 후에는 맞는\" 가장 작은 입력을 하나씩 적어 보세요. 공개 시그니처와 규약은 바꾸지 않습니다.",
+      "constraints": [
+        "세 함수 모두 시간 O(1), 힙 할당 없음.",
+        "공개 멤버(`InterpolateNormal`, `ObjectToWorldNormal`, `PointLightDiffuse`)의 이름과 시그니처를 바꾸지 않는다.",
+        "노멀 변환을 \"배율이 균등하다\"는 가정에 기대지 않는다. 축마다 배율이 다르거나 음수인 `model` 에서도 맞아야 한다.",
+        "노멀을 `Vector3.Transform` 으로 옮기지 않는다(이동이 섞인다). 위치를 `Vector3.TransformNormal` 로 옮기지 않는다(이동이 빠진다).",
+        "검사 허용 오차는 고정 사례 1e-4, 무작위 사례 2e-3 ~ 3e-3 이다."
+      ],
+      "starterCode": "using System;\nusing System.Numerics;\n\n// 버텍스 라이팅 베이크 도구의 노멀 처리.\n//\n// 규약\n// - System.Numerics 의 행 벡터 규약을 쓴다: 월드 위치 = Vector3.Transform(오브젝트 위치, model).\n// - model 은 확대/축소(축마다 다를 수 있고 음수일 수도 있다), 회전, 이동을 합친 행렬이며 역행렬이 있다.\n// - \"노멀\"을 돌려주는 함수는 모두 길이 1 인 벡터를 돌려준다.\n// - 디퓨즈 값은 max(0, N · L) 이고, N 과 L 은 둘 다 월드 공간의 단위 벡터다.\n//   L 은 표면의 한 점에서 광원을 향하는 방향이다.\npublic static class NormalShading\n{\n    // 삼각형의 세 정점 노멀을 무게중심 좌표 (b0, b1, b2) 로 보간한 노멀.\n    // b0 + b1 + b2 = 1 이고 모두 0 이상이다. 세 정점 노멀은 단위 벡터다.\n    public static Vector3 InterpolateNormal(Vector3 n0, Vector3 n1, Vector3 n2, float b0, float b1, float b2)\n    {\n        return n0 * b0 + n1 * b1 + n2 * b2;\n    }\n\n    // 오브젝트 공간의 노멀을 월드 공간의 노멀로 옮긴다.\n    public static Vector3 ObjectToWorldNormal(Vector3 normalObject, Matrix4x4 model)\n    {\n        Vector3 n = Vector3.TransformNormal(normalObject, model);\n        return Vector3.Normalize(n);\n    }\n\n    // 점광원 하나에 대한 디퓨즈 값 (0 ~ 1). 거리 감쇠는 여기서 다루지 않는다.\n    // positionObject, normalObject 는 오브젝트 공간, lightPositionWorld 는 월드 공간이다.\n    public static float PointLightDiffuse(Vector3 positionObject, Vector3 normalObject, Matrix4x4 model, Vector3 lightPositionWorld)\n    {\n        Vector3 n = ObjectToWorldNormal(normalObject, model);\n        Vector3 toLight = Vector3.Normalize(lightPositionWorld - positionObject);\n        return MathF.Max(0f, Vector3.Dot(n, toLight));\n    }\n}\n",
+      "edgeCases": [
+        "보간: X, Y, Z 축 노멀을 (0.5, 0.5, 0) 으로 보간하면 (0.5, 0.5, 0) 이 아니라 (0.7071, 0.7071, 0) 이어야 한다. 정점 위(가중치 하나가 1)에서는 정규화하지 않아도 길이가 1 이라 버그가 드러나지 않는다.",
+        "비균등 스케일: 45° 비탈면의 노멀 (0.7071, 0.7071, 0) 을 Scale (1, 4, 1) 로 옮기면 (0.2425, 0.9701, 0) 이 아니라 (0.9701, 0.2425, 0) 이다. 균등 스케일, 회전, 이동만 있는 `model` 에서는 두 방법의 결과가 같아 드러나지 않는다.",
+        "축 방향 노멀: 노멀이 배율 축과 나란하면(예: (0, 1, 0) 과 Scale (5, 0.1, 5)) 틀린 방법도 맞는 답을 낸다.",
+        "좌우 반전: Scale (−1, 1, 1) 에서 노멀 (1, 0, 0) 은 (−1, 0, 0) 이 되어야 한다.",
+        "이동만 있는 `model`: 오브젝트를 (10, 0, 0) 으로 옮기고 광원을 바로 위 (10, 5, 0) 에 두면 디퓨즈는 1 이어야 한다."
+      ],
+      "hints": [
+        "변환 종류를 하나씩만 넣어 확인하세요. (가) `InterpolateNormal(X, Y, Z, 0.5, 0.5, 0)` 의 길이를 재 보세요. (나) `model` 이 단위행렬일 때, 이동만 있을 때, Scale (1, 4, 1) 일 때 각각 `ObjectToWorldNormal((0.7071, 0.7071, 0), model)` 이 무엇을 내는지 보세요. 45° 비탈을 세로로 4배 늘리면 비탈은 더 가팔라집니다. 가파른 비탈의 노멀은 위를 향합니까, 옆을 향합니까? (다) `model` 이 (10, 0, 0) 이동일 때 `PointLightDiffuse((0,0,0), (0,1,0), model, (10,5,0))` 는 광원이 바로 위에 있으므로 1 이어야 합니다.",
+        "세 증상은 세 함수에 하나씩 있습니다. `InterpolateNormal`: 단위 벡터들의 가중평균은 단위 벡터입니까? `ObjectToWorldNormal`: 표면 위의 방향(접선)은 `model` 로 옮기면 되지만, 노멀은 \"옮겨진 접선에 수직\"이어야 합니다. 접선과 같은 행렬로 옮겨도 수직이 유지되는 것은 어떤 행렬일 때뿐입니까? 그렇지 않은 행렬에서는 어떤 행렬을 써야 수직이 유지됩니까? `PointLightDiffuse`: 뺄셈 `lightPositionWorld - positionObject` 의 두 항은 같은 공간에 있습니까?",
+        "수정 위치의 뼈대입니다. 식은 직접 채우세요.\n```\nInterpolateNormal(n0, n1, n2, b0, b1, b2):\n    n = n0 * b0 + n1 * b1 + n2 * b2\n    return ____(n)\n\nObjectToWorldNormal(normalObject, model):\n    inverse = Invert(model)\n    n = TransformNormal(normalObject, ____(inverse))    // 행 벡터 규약에서의 역전치\n    return Normalize(n)\n\nPointLightDiffuse(positionObject, normalObject, model, lightPositionWorld):\n    n = ObjectToWorldNormal(normalObject, model)\n    positionWorld = ____(positionObject, model)          // 위치이므로 이동까지 적용\n    toLight = Normalize(lightPositionWorld - positionWorld)\n    return max(0, dot(n, toLight))\n```"
+      ],
+      "followUps": [],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "using System;\nusing System.Numerics;\n\n// 규약\n// - 행 벡터 규약: 월드 위치 = Vector3.Transform(오브젝트 위치, model).\n// - model 은 확대/축소(축마다 다를 수 있고 음수일 수도 있다), 회전, 이동을 합친 행렬이며 역행렬이 있다.\n// - \"노멀\"을 돌려주는 함수는 모두 길이 1 인 벡터를 돌려준다.\n// - 디퓨즈 값은 max(0, N · L) 이고, N 과 L 은 둘 다 월드 공간의 단위 벡터다.\npublic static class NormalShading\n{\n    public static Vector3 InterpolateNormal(Vector3 n0, Vector3 n1, Vector3 n2, float b0, float b1, float b2)\n    {\n        // [수정 1] 단위 벡터들의 가중평균은 길이가 1 보다 짧아진다. 보간한 뒤 다시 정규화한다.\n        Vector3 n = n0 * b0 + n1 * b1 + n2 * b2;\n        return Vector3.Normalize(n);\n    }\n\n    public static Vector3 ObjectToWorldNormal(Vector3 normalObject, Matrix4x4 model)\n    {\n        // [수정 2] 노멀은 표면에 수직이어야 하므로 model 이 아니라 model 의 역전치 행렬로 옮긴다.\n        // 축마다 배율이 다르면 model 로 옮긴 노멀은 더 이상 표면에 수직이 아니다.\n        Matrix4x4 inverse;\n        if (!Matrix4x4.Invert(model, out inverse)) throw new ArgumentException(\"model 의 역행렬이 없다\", nameof(model));\n        Vector3 n = Vector3.TransformNormal(normalObject, Matrix4x4.Transpose(inverse));\n        return Vector3.Normalize(n);\n    }\n\n    public static float PointLightDiffuse(Vector3 positionObject, Vector3 normalObject, Matrix4x4 model, Vector3 lightPositionWorld)\n    {\n        Vector3 n = ObjectToWorldNormal(normalObject, model);\n        // [수정 3] 광원 위치는 월드 공간이므로 표면 위치도 월드 공간으로 옮긴 뒤 뺀다.\n        Vector3 positionWorld = Vector3.Transform(positionObject, model);\n        Vector3 toLight = Vector3.Normalize(lightPositionWorld - positionWorld);\n        return MathF.Max(0f, Vector3.Dot(n, toLight));\n    }\n}\n",
+      "explanation": "**버그 1: 보간한 노멀을 정규화하지 않는다 (`InterpolateNormal`).** 단위 벡터들의 가중평균은 방향이 다르면 길이가 1 보다 짧습니다. 실패 입력: `InterpolateNormal(X, Y, Z, 0.5, 0.5, 0)` 이 (0.7071, 0.7071, 0) 이 아니라 길이 0.707 인 (0.5, 0.5, 0). 삼각형 한가운데(1/3, 1/3, 1/3)에서는 길이가 0.577 까지 줄어듭니다. 길이가 짧은 노멀로 `N · L` 을 구하면 그만큼 어두워지고, 거듭제곱이 들어가는 스페큘러에서는 더 크게 틀립니다. Wikipedia 의 Phong shading 설명도 노멀을 선형 보간한 뒤 픽셀마다 정규화해 반사 모델에 넣는다고 적습니다. 수정: 보간 결과에 `Vector3.Normalize`.\n\n**버그 2: 노멀을 model 로 옮긴다 (`ObjectToWorldNormal`).** 노멀은 표면에 수직이라는 성질로 정의됩니다. 접선 `t` 가 `M` 으로 옮겨질 때, 옮겨진 접선에 수직인 벡터는 `M` 이 아니라 **역전치 행렬** `(M⁻¹)ᵀ` 로 옮긴 노멀입니다(Wikipedia 의 유도: `Wn` 이 `Mt` 에 수직이려면 `WᵀM = I`). 회전처럼 직교 행렬이면 역전치가 원래 행렬과 같아서 차이가 없고, 균등 스케일은 길이만 달라져 정규화하면 같아집니다. 축마다 배율이 다를 때만 방향이 틀어지므로 \"깃발만 이상한\" 증상이 됩니다. 실패 입력: `ObjectToWorldNormal((0.7071, 0.7071, 0), Scale(1, 4, 1))` 이 (0.9701, 0.2425, 0) 이 아니라 (0.2425, 0.9701, 0). 수정: `Matrix4x4.Invert` 로 역행렬을 구하고 `Vector3.TransformNormal(n, Matrix4x4.Transpose(inverse))`, 그 뒤 정규화. `System.Numerics` 는 벡터를 행으로 보지만(문서: `vM`), 식을 행 벡터로 옮겨 적어도 곱하는 행렬은 같은 역전치입니다. Learn 문서는 `TransformNormal` 을 \"벡터 노멀을 4×4 행렬로 변환한다\"고만 설명합니다. .NET 8 에서 실행해 보면 넘겨준 행렬의 위쪽 3×3 만 곱해 이동이 섞이지 않을 뿐이고, 역전치를 대신 구해 주지는 않습니다. 역전치 행렬은 직접 만들어 넘겨야 합니다. 좌우 반전(음수 배율)에서도 이 식은 바깥을 향하는 노멀을 냅니다.\n\n**버그 3: 서로 다른 공간의 값을 뺀다 (`PointLightDiffuse`).** `lightPositionWorld - positionObject` 는 월드 공간의 점에서 오브젝트 공간의 점을 뺍니다. `model` 이 단위행렬이면 두 공간이 같아 맞게 나오고, 오브젝트를 옮기는 순간 틀립니다. 실패 입력: `PointLightDiffuse((0,0,0), (0,1,0), Translation(10,0,0), (10,5,0))` 가 1 이 아니라 0.447 (틀린 방향 (10, 5, 0) 과의 내적). 수정: `Vector3.Transform(positionObject, model)` 로 표면 위치를 월드로 옮긴 뒤 뺍니다. 디퓨즈는 Wikipedia 의 설명대로 단위 노멀과 \"표면에서 광원을 향하는\" 정규화된 방향의 내적이고, 두 벡터가 같은 공간에 있어야 의미가 있습니다.\n\n**버그끼리의 관계.** 세 버그는 서로 다른 입력에서 드러납니다. 단위행렬 `model` 에서는 2 와 3 이 숨고, 이동만 있으면 3 만 드러납니다. 비균등 스케일이 있으면 2 가 드러나고, 원점이 아닌 표면 점에서는 3 도 함께 드러납니다. 그래서 \"원점의 큐브\"로만 디퓨즈를 확인하면 전부 통과합니다. 또 버그 1 은 `ObjectToWorldNormal` 이 끝에서 정규화하기 때문에 이 파일의 디퓨즈 경로에서는 보이지 않고, 보간한 노멀을 그대로 받아 쓰는 다른 코드에서만 드러납니다. 함수의 계약(\"단위 벡터를 돌려준다\")을 함수마다 지켜야 하는 이유입니다.\n\n**복잡도.** 모든 함수가 O(1) 이고 할당이 없습니다. 역행렬은 오브젝트당 한 번 구해 두고 정점마다 재사용하는 것이 다음 최적화입니다.\n\n**흔한 잘못된 수정.**\n- 역행렬만 쓰고 전치하지 않는다. 대각 스케일에서는 우연히 맞고 회전이 섞이면 틀린다.\n- 전치만 하고 역행렬을 쓰지 않는다.\n- 역전치로 옮긴 뒤 정규화를 뺀다.\n- 표면 위치를 `TransformNormal` 로 옮겨 이동을 빠뜨린다.\n- 광원을 오브젝트 공간으로 옮겨 오브젝트 공간에서 내적한다. 비균등 스케일에서는 각도가 보존되지 않아 틀린다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "보간 후 정규화를 넣었다: InterpolateNormal(X, Y, Z, 0.5, 0.5, 0) → (0.7071, 0.7071, 0).",
+            "points": 11,
+            "sourceId": "wiki-phong-shading"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "노멀을 역전치 행렬로 옮긴다: ObjectToWorldNormal((0.7071, 0.7071, 0), Scale(1, 4, 1)) → (0.9701, 0.2425, 0), Scale(−1, 1, 1) 에서 (1, 0, 0) → (−1, 0, 0).",
+            "points": 13,
+            "sourceId": "wiki-normal-geometry"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "표면 위치를 월드로 옮긴 뒤 광원 방향을 구한다: Translation(10, 0, 0), 광원 (10, 5, 0), 노멀 (0, 1, 0) → 1.",
+            "points": 11,
+            "sourceId": "wiki-lambertian-reflectance"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "세 함수가 O(1) 이고 힙 할당이 없다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "ObjectToWorldNormal 이 역행렬을 한 번만 구한다(같은 호출 안에서 반복하지 않는다).",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "정규화가 필요한 곳(보간 뒤, 변환 뒤, 광원 방향)에만 있고 같은 벡터를 연달아 두 번 정규화하지 않는다.",
+            "points": 10,
+            "sourceId": ""
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "노멀은 Vector3.TransformNormal, 위치는 Vector3.Transform 으로 옮겼다(이동이 노멀에 섞이거나 위치에서 빠지지 않는다).",
+            "points": 10,
+            "sourceId": "ms-vector3-transformnormal"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "Matrix4x4.Invert 의 반환값(성공 여부)을 확인하거나, 역행렬이 있다는 전제를 주석으로 남겼다.",
+            "points": 10,
+            "sourceId": "ms-matrix4x4-invert"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "버그마다 수정 전에 실패하는 최소 입력을 제시했다(보간 가중치, 비균등 스케일, 이동).",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "단위행렬 model 에서는 버그 2·3 이 드러나지 않는 이유를 설명했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "비균등 스케일에서 노멀이 여전히 틀리다(model 로 옮기거나, 역행렬만 쓰거나, 전치만 했다).",
+            "penalty": -20,
+            "sourceId": "wiki-normal-geometry"
+          },
+          {
+            "id": "d2",
+            "description": "광원 방향을 구할 때 여전히 서로 다른 공간의 위치를 뺀다.",
+            "penalty": -15,
+            "sourceId": ""
+          },
+          {
+            "id": "d3",
+            "description": "공개 시그니처나 규약을 바꾸거나, 특정 테스트 입력만 통과하도록 분기해 맞췄다.",
+            "penalty": -10,
+            "sourceId": ""
+          }
+        ]
+      },
+      "tests": {
+        "template": "{{USER_CODE}}\n\npublic static class __Judge\n{\n    static void Run(string id, System.Func<string> body)\n    {\n        string err;\n        try { err = body(); }\n        catch (System.Exception e) { err = \"예외 발생: \" + e.GetType().Name; }\n        System.Console.WriteLine(err == null ? \"[PASS] \" + id : \"[FAIL] \" + id + \" :: \" + err);\n    }\n\n    static string F(double v) { return v.ToString(\"0.####\", System.Globalization.CultureInfo.InvariantCulture); }\n    static string S(System.Numerics.Vector3 v) { return \"(\" + F(v.X) + \", \" + F(v.Y) + \", \" + F(v.Z) + \")\"; }\n    static System.Numerics.Vector3 V(double x, double y, double z) { return new System.Numerics.Vector3((float)x, (float)y, (float)z); }\n    static bool Near(double got, double exp, double eps) { return !double.IsNaN(got) && System.Math.Abs(got - exp) <= eps; }\n\n    static string Vec(string what, System.Numerics.Vector3 got, double x, double y, double z, double eps)\n    {\n        return Near(got.X, x, eps) && Near(got.Y, y, eps) && Near(got.Z, z, eps) ? null : what + \": 기대 (\" + F(x) + \", \" + F(y) + \", \" + F(z) + \"), 결과 \" + S(got);\n    }\n    static string Num(string what, double got, double exp, double eps)\n    {\n        return Near(got, exp, eps) ? null : what + \": 기대 \" + F(exp) + \", 결과 \" + F(got);\n    }\n\n    static System.Numerics.Matrix4x4 Scale(double x, double y, double z) { return System.Numerics.Matrix4x4.CreateScale((float)x, (float)y, (float)z); }\n    static System.Numerics.Matrix4x4 Move(double x, double y, double z) { return System.Numerics.Matrix4x4.CreateTranslation((float)x, (float)y, (float)z); }\n\n    // 참조 (double): 방향 d 를 행 벡터 규약으로 옮긴다 (이동 제외)\n    static double[] Dir(double[] d, System.Numerics.Matrix4x4 m)\n    {\n        return new double[] { d[0] * m.M11 + d[1] * m.M21 + d[2] * m.M31, d[0] * m.M12 + d[1] * m.M22 + d[2] * m.M32, d[0] * m.M13 + d[1] * m.M23 + d[2] * m.M33 };\n    }\n    static double[] Cross(double[] a, double[] b) { return new double[] { a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0] }; }\n    static double Dot(double[] a, double[] b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }\n    static double[] Unit(double[] a) { double l = System.Math.Sqrt(Dot(a, a)); return new double[] { a[0] / l, a[1] / l, a[2] / l }; }\n    // 참조 노멀: 노멀에 수직인 접선 두 개를 model 로 옮긴 뒤 외적한다. 역전치를 쓰지 않는 독립적인 계산이다.\n    static double[] RefNormal(double[] n, System.Numerics.Matrix4x4 m)\n    {\n        double[] helper = System.Math.Abs(n[0]) < 0.6 ? new double[] { 1, 0, 0 } : new double[] { 0, 1, 0 };\n        double[] t1 = Unit(Cross(n, helper)), t2 = Cross(n, t1); // t1 x t2 = n\n        double[] c = Cross(Dir(t1, m), Dir(t2, m));\n        double det = Dot(Cross(Dir(new double[] { 1, 0, 0 }, m), Dir(new double[] { 0, 1, 0 }, m)), Dir(new double[] { 0, 0, 1 }, m));\n        double[] u = Unit(c);\n        return det < 0 ? new double[] { -u[0], -u[1], -u[2] } : u;\n    }\n    static double RefDiffuse(double[] p, double[] n, System.Numerics.Matrix4x4 m, double[] light)\n    {\n        double[] d = Dir(p, m);\n        double[] w = { d[0] + m.M41, d[1] + m.M42, d[2] + m.M43 };\n        double[] l = Unit(new double[] { light[0] - w[0], light[1] - w[1], light[2] - w[2] });\n        return System.Math.Max(0.0, Dot(RefNormal(n, m), l));\n    }\n\n    public static void Main()\n    {\n        double h = System.Math.Sqrt(0.5);\n\n        Run(\"interpolate-unit-length\", () =>\n        {\n            var x = V(1, 0, 0); var y = V(0, 1, 0); var z = V(0, 0, 1);\n            double t = 1 / System.Math.Sqrt(3.0);\n            return Vec(\"InterpolateNormal(X, Y, Z, 0.5, 0.5, 0)\", NormalShading.InterpolateNormal(x, y, z, 0.5f, 0.5f, 0f), h, h, 0, 1e-4)\n                ?? Vec(\"InterpolateNormal(X, Y, Z, 1/3, 1/3, 1/3)\", NormalShading.InterpolateNormal(x, y, z, 1f / 3f, 1f / 3f, 1f / 3f), t, t, t, 1e-4)\n                ?? Vec(\"InterpolateNormal(X, Y, Z, 0.25, 0, 0.75)\", NormalShading.InterpolateNormal(x, y, z, 0.25f, 0f, 0.75f), 0.316228, 0, 0.948683, 1e-4)\n                ?? Vec(\"InterpolateNormal(X, Y, Z, 0, 1, 0) [정점 위]\", NormalShading.InterpolateNormal(x, y, z, 0f, 1f, 0f), 0, 1, 0, 1e-4)\n                ?? Vec(\"InterpolateNormal(Y, Y, Y, 0.2, 0.3, 0.5) [평평한 면]\", NormalShading.InterpolateNormal(y, y, y, 0.2f, 0.3f, 0.5f), 0, 1, 0, 1e-4);\n        });\n\n        Run(\"normal-rigid-transform\", () =>\n        {\n            // 회전과 이동만 있는 model: 노멀은 회전만 따라간다\n            var rotZ = System.Numerics.Matrix4x4.CreateRotationZ((float)(System.Math.PI / 2));\n            return Vec(\"ObjectToWorldNormal((0, 1, 0), 단위행렬)\", NormalShading.ObjectToWorldNormal(V(0, 1, 0), System.Numerics.Matrix4x4.Identity), 0, 1, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((1, 0, 0), Z축 90도 회전)\", NormalShading.ObjectToWorldNormal(V(1, 0, 0), rotZ), 0, 1, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0, 1, 0), Z축 90도 회전 후 (5, 6, 7) 이동)\", NormalShading.ObjectToWorldNormal(V(0, 1, 0), rotZ * Move(5, 6, 7)), -1, 0, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0.6, 0.8, 0), (100, -50, 3) 이동)\", NormalShading.ObjectToWorldNormal(V(0.6, 0.8, 0), Move(100, -50, 3)), 0.6, 0.8, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0.6, 0.8, 0), 3배 균등 확대)\", NormalShading.ObjectToWorldNormal(V(0.6, 0.8, 0), Scale(3, 3, 3)), 0.6, 0.8, 0, 1e-4);\n        });\n\n        Run(\"normal-nonuniform-scale\", () =>\n        {\n            // 45도 비탈면의 노멀 (1, 1, 0)/sqrt(2). y 를 4배로 늘리면 비탈이 가팔라져 노멀은 x 쪽으로 눕는다.\n            return Vec(\"ObjectToWorldNormal((0.7071, 0.7071, 0), 확대 (1, 4, 1))\", NormalShading.ObjectToWorldNormal(V(h, h, 0), Scale(1, 4, 1)), 0.970143, 0.242536, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0.7071, 0.7071, 0), 확대 (2, 1, 1))\", NormalShading.ObjectToWorldNormal(V(h, h, 0), Scale(2, 1, 1)), 0.447214, 0.894427, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0, 0.6, 0.8), 확대 (1, 1, 0.25) 후 (9, 9, 9) 이동)\", NormalShading.ObjectToWorldNormal(V(0, 0.6, 0.8), Scale(1, 1, 0.25) * Move(9, 9, 9)), 0, 0.184289, 0.982872, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0, 1, 0), 확대 (5, 0.1, 5)) [축 방향 노멀은 그대로]\", NormalShading.ObjectToWorldNormal(V(0, 1, 0), Scale(5, 0.1, 5)), 0, 1, 0, 1e-4);\n        });\n\n        Run(\"normal-mirrored-scale\", () =>\n        {\n            // 음수 배율(좌우 반전)에서도 노멀은 표면 바깥을 가리켜야 한다\n            return Vec(\"ObjectToWorldNormal((1, 0, 0), 확대 (-1, 1, 1))\", NormalShading.ObjectToWorldNormal(V(1, 0, 0), Scale(-1, 1, 1)), -1, 0, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0, 1, 0), 확대 (-1, 1, 1))\", NormalShading.ObjectToWorldNormal(V(0, 1, 0), Scale(-1, 1, 1)), 0, 1, 0, 1e-4)\n                ?? Vec(\"ObjectToWorldNormal((0.7071, 0.7071, 0), 확대 (-2, 1, 1))\", NormalShading.ObjectToWorldNormal(V(h, h, 0), Scale(-2, 1, 1)), -0.447214, 0.894427, 0, 1e-4);\n        });\n\n        Run(\"diffuse-translated-object\", () =>\n        {\n            // 오브젝트가 (10, 0, 0) 으로 옮겨져 있고 광원은 그 바로 위 (10, 5, 0) 에 있다\n            return Num(\"PointLightDiffuse(위치 (0,0,0), 노멀 (0,1,0), (10,0,0) 이동, 광원 (10,5,0))\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), Move(10, 0, 0), V(10, 5, 0)), 1, 1e-4)\n                ?? Num(\"PointLightDiffuse(위치 (0,0,0), 노멀 (0,1,0), (10,0,0) 이동, 광원 (13,4,0))\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), Move(10, 0, 0), V(13, 4, 0)), 0.8, 1e-4)\n                ?? Num(\"PointLightDiffuse(위치 (1,0,0), 노멀 (0,1,0), 2배 확대 후 (0,0,-6) 이동, 광원 (2,3,-2))\", NormalShading.PointLightDiffuse(V(1, 0, 0), V(0, 1, 0), Scale(2, 2, 2) * Move(0, 0, -6), V(2, 3, -2)), 0.6, 1e-4)\n                ?? Num(\"PointLightDiffuse(위치 (0,0,0), 노멀 (0,1,0), (0,8,0) 이동, 광원 (0,3,0)) [광원이 표면 뒤]\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), Move(0, 8, 0), V(0, 3, 0)), 0, 1e-4);\n        });\n\n        Run(\"diffuse-identity-and-clamp\", () =>\n        {\n            var id = System.Numerics.Matrix4x4.Identity;\n            return Num(\"PointLightDiffuse(원점, 노멀 (0,1,0), 단위행렬, 광원 (0,2,0))\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), id, V(0, 2, 0)), 1, 1e-4)\n                ?? Num(\"PointLightDiffuse(원점, 노멀 (0,1,0), 단위행렬, 광원 (3,4,0))\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), id, V(3, 4, 0)), 0.8, 1e-4)\n                ?? Num(\"PointLightDiffuse(원점, 노멀 (0,1,0), 단위행렬, 광원 (5,0,0)) [스치는 빛]\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), id, V(5, 0, 0)), 0, 1e-4)\n                ?? Num(\"PointLightDiffuse(원점, 노멀 (0,1,0), 단위행렬, 광원 (0,-4,0)) [뒤쪽 빛]\", NormalShading.PointLightDiffuse(V(0, 0, 0), V(0, 1, 0), id, V(0, -4, 0)), 0, 1e-4);\n        });\n\n        Run(\"diffuse-scaled-slope\", () =>\n        {\n            // 확대 (1, 4, 1) 된 45도 비탈면. 월드 노멀은 (0.9701, 0.2425, 0), 표면 점 (1, 1, 0) 은 월드 (1, 4, 0).\n            var m = Scale(1, 4, 1);\n            return Num(\"PointLightDiffuse(위치 (1,1,0), 노멀 (0.7071,0.7071,0), 확대 (1,4,1), 광원 (6,4,0))\", NormalShading.PointLightDiffuse(V(1, 1, 0), V(h, h, 0), m, V(6, 4, 0)), 0.970143, 1e-4)\n                ?? Num(\"PointLightDiffuse(위치 (1,1,0), 노멀 (0.7071,0.7071,0), 확대 (1,4,1), 광원 (1,9,0))\", NormalShading.PointLightDiffuse(V(1, 1, 0), V(h, h, 0), m, V(1, 9, 0)), 0.242536, 1e-4);\n        });\n\n        Run(\"random-vs-reference\", () =>\n        {\n            var rng = new System.Random(20261122);\n            System.Func<double, double, double> R = (lo, hi) => lo + rng.NextDouble() * (hi - lo);\n            for (int i = 0; i < 3000; i++)\n            {\n                double sx = R(0.3, 3), sy = R(0.3, 3), sz = R(0.3, 3);\n                if (rng.Next(4) == 0) sx = -sx;\n                var m = Scale(sx, sy, sz) * System.Numerics.Matrix4x4.CreateFromYawPitchRoll((float)R(-3, 3), (float)R(-1.5, 1.5), (float)R(-3, 3)) * Move(R(-20, 20), R(-20, 20), R(-20, 20));\n                double[] n = Unit(new double[] { R(-1, 1), R(-1, 1), R(-1, 1) + 1e-3 });\n                var nf = V(n[0], n[1], n[2]);\n                double[] rn = RefNormal(new double[] { nf.X, nf.Y, nf.Z }, m);\n                string e = Vec(\"ObjectToWorldNormal(\" + S(nf) + \", 무작위 model #\" + i + \")\", NormalShading.ObjectToWorldNormal(nf, m), rn[0], rn[1], rn[2], 2e-3);\n                if (e != null) return e;\n                var p = V(R(-2, 2), R(-2, 2), R(-2, 2));\n                var l = V(R(-40, 40), R(-40, 40), R(-40, 40));\n                double exp = RefDiffuse(new double[] { p.X, p.Y, p.Z }, new double[] { nf.X, nf.Y, nf.Z }, m, new double[] { l.X, l.Y, l.Z });\n                e = Num(\"PointLightDiffuse(위치 \" + S(p) + \", 노멀 \" + S(nf) + \", 무작위 model #\" + i + \", 광원 \" + S(l) + \")\", NormalShading.PointLightDiffuse(p, nf, m, l), exp, 3e-3);\n                if (e != null) return e;\n                var a = V(n[0], n[1], n[2]); var b = System.Numerics.Vector3.Normalize(V(R(-1, 1), R(0.2, 1), R(-1, 1))); var c = System.Numerics.Vector3.Normalize(a + b + V(0, 0.5, 0));\n                double b0 = R(0, 1), b1 = R(0, 1 - b0), b2 = 1 - b0 - b1;\n                double[] mix = { a.X * b0 + b.X * b1 + c.X * b2, a.Y * b0 + b.Y * b1 + c.Y * b2, a.Z * b0 + b.Z * b1 + c.Z * b2 };\n                if (Dot(mix, mix) < 0.01) continue;\n                double[] u = Unit(mix);\n                e = Vec(\"InterpolateNormal (무작위 #\" + i + \")\", NormalShading.InterpolateNormal(a, b, c, (float)b0, (float)b1, (float)b2), u[0], u[1], u[2], 2e-3);\n                if (e != null) return e;\n            }\n            return null;\n        });\n    }\n}\n",
+        "cases": [
+          "interpolate-unit-length",
+          "normal-rigid-transform",
+          "normal-nonuniform-scale",
+          "normal-mirrored-scale",
+          "diffuse-translated-object",
+          "diffuse-identity-and-clamp",
+          "diffuse-scaled-slope",
+          "random-vs-reference"
+        ],
+        "note": "InterpolateNormal 이 단위 벡터를 돌려주는지, ObjectToWorldNormal 이 회전·이동·균등 스케일에서 기존 동작을 유지하면서 축마다 배율이 다르거나 음수인 model 에서도 맞는지, PointLightDiffuse 가 이동·확대된 오브젝트에서 맞는 값을 내고 뒤쪽·스치는 빛에서 0 을 내는지 검사합니다. 무작위 검사는 스케일·회전·이동을 합친 model 에서 \"노멀에 수직인 접선 두 개를 model 로 옮겨 외적하는\" 독립적인 참조 계산과 비교합니다(역전치를 쓰지 않는 계산입니다). public static class NormalShading 의 InterpolateNormal(Vector3, Vector3, Vector3, float, float, float), ObjectToWorldNormal(Vector3, Matrix4x4), PointLightDiffuse(Vector3, Vector3, Matrix4x4, Vector3) 의 이름과 시그니처는 바꾸면 안 됩니다."
+      },
+      "verified": {
+        "level": "executed",
+        "date": "2026-11-22",
+        "note": "세 버그의 실패 입력과 기대값을 손으로 다시 계산하고, 로컬 .NET 8 에서 버그를 하나씩 남긴 부분 수정 3종과 역행렬만·전치만·정규화 누락 등 잘못된 수정이 모두 걸러지며 역전치를 다르게 구현한 정답 2종이 통과함을 확인했고, TransformNormal 이 위쪽 3×3 만 곱한다는 점도 실행으로 확인한 뒤 채점 서비스에서 solution 전부 PASS 를 확인했습니다."
+      },
+      "nextMission": "오브젝트 하나의 정점 수천 개를 한 번에 처리하는 `BakeDiffuse(Vector3[] positions, Vector3[] normals, Matrix4x4 model, Vector3 lightPositionWorld, float[] output)` 를 추가하세요. 역전치 행렬은 반복문 밖에서 한 번만 구하고, 결과가 `PointLightDiffuse` 를 정점마다 부른 것과 같은지 테스트로 확인합니다. 그런 다음 `model` 이 회전과 이동뿐일 때(역전치가 원래 행렬과 같을 때) 역행렬 계산을 건너뛰는 빠른 경로를 넣고, 그 조건을 어떻게 판정할지 정해 보세요."
+    },
+    {
+      "id": "t9-interview-shadow-mapping-cascades",
+      "track": "track9",
+      "mode": "interview",
+      "difficulty": "Hard",
+      "title": "그림자: 섀도 매핑, 캐스케이드, 애크니와 피터 패닝, 품질과 비용을 바꾸는 설정",
+      "tags": [
+        "Gfx_Shadow",
+        "Gfx_ShadowMap",
+        "Gfx_Cascade"
+      ],
+      "language": "none",
+      "sourceRefs": [
+        "wiki-shadow-mapping",
+        "unity-shadow-mapping",
+        "unity-shadow-cascades",
+        "ms-cascaded-shadow-maps"
+      ],
+      "scenario": "모바일 오픈 필드 RPG(Unity 6, URP)에 해(디렉셔널 라이트)의 실시간 그림자를 켰습니다. 그 뒤로 제보가 세 건 올라왔습니다.\n\n- \"캐릭터 발밑 그림자의 가장자리가 계단처럼 굵게 깨진다. 멀리 있는 나무의 그림자는 오히려 멀쩡하다.\"\n- \"햇빛을 정면으로 받는 바닥과 벽에 줄무늬 얼룩이 생긴다. 바이어스를 올렸더니 얼룩은 사라졌는데, 이번에는 캐릭터가 땅에서 떠 있는 것처럼 보인다.\"\n- \"그림자를 켜면 드로우 콜이 크게 늘고 중급 기기에서 프레임이 떨어진다. 캐스케이드를 4개로 올린 뒤에 더 심해졌다.\"\n\n**질문: 섀도 매핑이 그림자를 만드는 원리를 두 단계로 설명하고, 그 원리에서 위 세 증상이 각각 왜 생기는지 설명해 주세요. 그리고 URP 에서 그림자의 품질과 비용을 맞바꾸는 설정에는 무엇이 있고, 이 프로젝트에서는 어떻게 조정하겠습니까?**",
+      "constraints": [],
+      "starterCode": "",
+      "edgeCases": [
+        "바이어스의 양쪽 끝: 너무 낮으면 섀도 애크니, 너무 높으면 그림자가 캐스터에서 떨어져 보인다(피터 패닝). 둘을 동시에 0 으로 만드는 값은 없을 수 있다.",
+        "포인트 라이트의 그림자: 문서상 섀도 맵을 여섯 방향으로 캡처하므로 스폿 라이트 여섯 개분에 해당한다.",
+        "캐스케이드는 디렉셔널 라이트에서만 동작한다. URP 의 캐스케이드 설정은 메인 라이트에만 적용된다.",
+        "카메라의 Far Plane 이 Shadow Distance 보다 가까우면 Far Plane 이 대신 쓰인다.",
+        "해상도를 올리면 가장자리는 좋아지지만 메모리 대역폭을 더 쓴다. Soft Shadows 는 타일 기반 GPU 에서 비용이 클 수 있다."
+      ],
+      "hints": [],
+      "followUps": [
+        {
+          "question": "섀도 애크니와 피터 패닝이 각각 왜 생기는지, 섀도 맵의 한 텍셀과 깊이 비교를 기준으로 설명해 주세요. URP 에서는 어떤 설정으로 조정하고, 값을 정할 때 무엇을 조심합니까?",
+          "intent": "두 결함이 같은 깊이 비교의 양쪽 끝이라는 점을 이해하고, 바이어스가 원인을 없애는 것이 아니라 오차를 한쪽으로 미는 절충이라는 점을 설명할 수 있는지 확인한다.",
+          "keyAnswer": "- **깊이 비교:** 섀도 매핑은 화면의 각 점을 라이트 공간으로 옮겨, 그 점의 깊이와 섀도 맵에 저장된 깊이를 비교한다. 점의 깊이가 저장된 값보다 크면 가려진 것으로 본다(Wikipedia).\n- **애크니:** 빛을 직접 받는 표면은 \"저장된 깊이 = 자기 깊이\"여야 하는데, 두 값이 아주 가깝다 보니 오차 때문에 자기 자신에게 가려진 것으로 판정되는 픽셀이 생긴다. Microsoft 문서는 섀도 맵이 텍셀 하나 전체의 깊이를 한 값으로 양자화하기 때문에 비교 결과가 그림자와 빛 사이를 오간다고 설명하고, 깊이 정밀도 차이도 원인으로 든다. Unity 매뉴얼은 정확히 섀도 맵의 거리에 있어야 할 픽셀이 더 먼 것으로 계산되는 것이라고 설명하며, 섀도 필터링이나 저해상도 섀도 맵의 결과라고 적는다.\n- **바이어스:** 비교할 때 깊이를 조금 밀어 \"자기 자신\"이 통과하게 만든다. Microsoft 문서의 표현으로는 라이트 공간의 픽셀 위치에 값을 더하는 깊이 오프셋이다.\n- **피터 패닝:** 오프셋이 너무 크면 이번에는 가려져야 할 점까지 통과한다. 캐스터와 맞닿은 부분의 그림자가 사라져 물체가 땅에서 떠 보인다. Unity 매뉴얼은 Bias 가 너무 높으면 캐스터 근처가 잘못 밝아져 그림자가 떨어져 보인다고 설명한다(Built-in 파이프라인 Light Inspector 의 Bias 속성을 기준으로 쓴 설명이다).\n- **URP 의 설정:** URP Asset 의 Shadows 섹션에 Depth Bias 와 Normal Bias 가 있고(둘 다 섀도 애크니를 줄이는 설정으로 문서에 적혀 있다), 이 값이 씬의 모든 라이트의 기본값이다. 라이트마다 Bias 를 Custom 으로 바꿔 Depth 와 Normal 을 따로 줄 수도 있다.\n- **조심할 점:** Unity 매뉴얼은 Normal Bias 가 너무 높으면 그림자가 오브젝트보다 좁아지고 경우에 따라 빛이 새는 현상이 생긴다고 설명하고, 값을 계산하기보다 눈으로 보며 맞추는 편이 쉽다고 적는다(둘 다 Built-in 파이프라인의 Light Inspector 를 기준으로 쓴 설명이다). URP 문서는 바이어스 값이 높으면 빛이 메시를 통과해 새어 그림자와 캐스터 사이에 틈이 보일 수 있다고 적는다. 그래서 애크니가 사라지는 가장 작은 값을 고르고, 캐릭터의 발과 벽 모서리처럼 맞닿는 곳을 함께 확인한다.\n- **바이어스 말고 줄이는 방법:** Microsoft 문서는 라이트 프러스텀의 near·far 평면을 가능한 한 타이트하게 잡으면 깊이 정밀도가 올라가 애크니와 피터 패닝이 모두 줄어든다고 설명하고, 표면의 기울기에 비례하는 바이어스(slope-scaled depth bias)도 소개한다."
+        },
+        {
+          "question": "캐스케이드가 왜 필요한지, 발밑 그림자만 깨지는 현상에서 출발해 설명해 주세요. 캐스케이드 수를 늘리면 무엇이 좋아지고 무엇이 비싸집니까?",
+          "intent": "원근 에일리어싱을 섀도 맵 텍셀과 화면 픽셀의 비율로 설명하고, 캐스케이드의 비용을 \"섀도 패스에서 장면을 여러 번 그린다\"는 구조로 이해하는지 확인한다.",
+          "keyAnswer": "- **원근 에일리어싱:** 디렉셔널 라이트의 섀도 맵은 카메라가 보는 영역 전체를 덮어야 한다. Unity 매뉴얼의 설명으로, 카메라 가까운 곳은 화면에서 크게 보이는데 섀도 맵에서는 적은 수의 픽셀만 배정받는다. 매뉴얼의 단순화한 예에서는 프러스텀의 먼 끝이 섀도 맵 20픽셀, 가까운 끝이 4픽셀로 덮이는데 화면에서는 두 끝이 같은 크기로 보인다. 그래서 가까운 그림자의 텍셀이 확대되어 계단처럼 보이고 먼 그림자는 멀쩡하다.\n- **캐스케이드의 원리:** 프러스텀을 카메라에서의 거리에 따라 구역으로 나누고 구역마다 섀도 맵을 따로 쓴다. 가까운 구역은 좁은 영역을 같은 해상도로 덮으므로 텍셀이 촘촘해진다. Microsoft 의 Cascaded Shadow Maps 문서의 표현으로는 프러스텀을 여러 개의 하위 프러스텀으로 나누고, 하위 프러스텀마다 섀도 맵을 렌더링한 뒤 픽셀 셰이더가 필요한 해상도에 가장 가까운 맵에서 샘플링한다.\n- **좋아지는 것:** Unity 매뉴얼의 표현으로 섀도 맵 해상도를 올리지 않고 그림자의 시각적 품질을 높인다.\n- **비싸지는 것:** Unity 매뉴얼은 캐스케이드 수를 늘리면 그림자 렌더링 패스의 드로우 콜이 늘어 성능에 불리하고, 줄이면 드로우 콜이 크게 줄어든다고 적는다. 캐스케이드마다 그 구역에 걸친 그림자 캐스터를 다시 그려야 하기 때문이다. 세 번째 제보가 이것이다.\n- **제약:** 캐스케이드는 디렉셔널 라이트에서만 동작하고, URP 에서는 메인 라이트에만 적용된다.\n- **조정:** URP Asset 의 Cascade Count 와 분할 거리로 정한다. 가까운 구역을 좁게 잡을수록 발밑이 선명해진다. Unity 매뉴얼에 따르면 URP 에서는 Rendering Debugger 의 Shadow Cascades 뷰로 구역을 눈으로 확인할 수 있다.\n- \"캐스케이드마다 캐스터를 다시 그린다\"는 이유 설명은 \"하위 프러스텀마다 섀도 맵을 렌더링한다\"는 문서 내용에서 나오는 추론이다."
+        },
+        {
+          "question": "중급 모바일 기기에서 그림자 비용을 줄여야 합니다. URP 에서 손댈 수 있는 설정과 기법을 비용이 줄어드는 이유와 함께 들고, 어떤 순서로 적용할지, 효과를 어떻게 확인할지 말해 주세요.",
+          "intent": "설정 이름을 나열하는 데서 그치지 않고 각 설정이 섀도 패스의 어느 비용(그리는 오브젝트 수, 패스 수, 텍셀 수, 샘플 수)을 줄이는지 연결하고, 측정으로 검증하는 절차를 갖고 있는지 확인한다.",
+          "keyAnswer": "- **비용의 구조:** Unity 매뉴얼의 설명으로 그림자를 드리울 수 있는 GameObject 를 먼저 섀도 맵에 그리고, 그 맵으로 그림자를 받는 오브젝트를 그린다. URP 문서는 그림자 렌더링 시간에 영향을 주는 요소로 그림자를 드리우는 보이는 오브젝트 수(Max Distance 에 좌우된다), 그림자를 받는 오브젝트 수, 그림자를 드리우는 라이트 수, Cascade Count 와 분할 크기, 섀도 해상도, Soft Shadows 를 든다.\n- **1순위 — 그리는 양을 줄인다:** Max Distance 를 줄인다(그 거리 밖의 그림자는 그리지 않는다). 작은 소품은 Mesh Renderer 의 Cast Shadows 를 끈다. 복잡한 메시는 단순화한 그림자 전용 메시(Cast Shadows = Shadows Only)로 대신한다. Cascade Count 를 4 에서 2 로 내린다. 이들은 섀도 패스의 드로우 콜을 직접 줄인다.\n- **2순위 — 라이트를 줄인다:** 그림자를 드리우는 포인트 라이트를 모바일에서 줄이거나 없앤다. 문서상 포인트 라이트는 섀도 맵을 여섯 방향으로 캡처해 스폿 라이트 여섯 개분의 비용이 든다. 멀리 있는 라이트는 스크립트로 끈다.\n- **3순위 — 픽셀 비용을 줄인다:** Shadow Resolution 을 낮춘다. Soft Shadows 는 문서상 모바일 같은 타일 기반 렌더링 플랫폼에서 성능 영향이 클 수 있으므로 프로파일링해서 정한다. 문서는 낮은 해상도와 Soft Shadows 를 함께 써서 부드러운 그림자를 얻는 방법도 소개한다.\n- **4순위 — 굽는다:** 정적 오브젝트의 그림자는 Shadowmask Lighting Mode 로 구워 실시간으로 그리지 않는다. 문서상 조건은 라이트가 Mixed 이고 그림자를 드리우도록 설정되어 있으며 GameObject 가 정적인 것이다.\n- **품질을 지키는 순서:** Max Distance 를 줄이면 같은 해상도가 더 좁은 범위를 덮으므로 품질이 오히려 좋아진다. 그래서 가장 먼저 한다. Cascade Count 와 해상도는 품질을 깎으므로 그다음이다.\n- **확인:** 문서가 드는 도구는 Rendering Debugger, Frame Debugger, Render Graph Viewer, Unity Profiler 다. Frame Debugger 에서 섀도 패스의 드로우 콜 수를 설정 전후로 비교하고, 대상 기기에서 프레임 시간을 잰다.\n- 우선순위와 \"Max Distance 를 줄이면 텍셀이 더 촘촘해진다\"는 설명은 문서 인용이 아닌 추론과 일반적인 실무 판단이다."
+        }
+      ],
+      "concept": "",
+      "quiz": [],
+      "solutionCode": "",
+      "explanation": "**원리: 두 단계.** Wikipedia 의 설명으로 광원에서 내다봤을 때 보이는 것은 빛을 받고, 그 뒤에 있는 것은 그림자입니다.\n1. **섀도 맵 만들기:** 라이트의 시점에서 장면을 그려, 보이는 표면의 깊이를 저장합니다. 디렉셔널 라이트는 직교 투영을 씁니다. 깊이만 필요하므로 색과 라이팅 계산은 끄는 것이 보통입니다.\n2. **적용하기:** 카메라 시점에서 장면을 그리면서 각 점을 라이트 공간으로 옮겨, 그 점의 깊이를 섀도 맵에 저장된 깊이와 비교합니다. 더 크면(더 멀면) 무언가에 가려진 것이므로 그림자로 그립니다.\n\nUnity 매뉴얼도 같은 구조로 설명합니다. 라이트의 관점에서 섀도 맵을 만들고(카메라가 깊이 텍스처를 만드는 것과 비슷하게), 그 맵을 샘플링해 실시간 그림자를 계산합니다. Wikipedia 의 표현으로 섀도 맵의 정확도는 그 해상도로 제한됩니다.\n\n**증상 1 — 발밑만 계단처럼 깨진다: 원근 에일리어싱.** 디렉셔널 라이트의 섀도 맵은 카메라가 보는 넓은 영역을 덮습니다. 카메라 가까운 곳은 화면에서 크게 보이는데 섀도 맵에서는 텍셀 몇 개만 배정받으므로 텍셀이 확대되어 보입니다. 먼 곳은 화면에서 작아서 같은 텍셀 밀도로도 충분합니다. 대응은 캐스케이드입니다. 프러스텀을 거리별로 나눠 가까운 구역에 섀도 맵을 따로 주면 해상도를 올리지 않고 가까운 그림자가 선명해집니다.\n\n**증상 2 — 줄무늬 얼룩과 뜬 캐릭터: 애크니와 피터 패닝.** 빛을 직접 받는 표면에서는 비교하는 두 깊이가 거의 같습니다. 섀도 맵의 텍셀 하나가 넓은 면적의 깊이를 값 하나로 대표하므로 오차가 생기고, 일부 픽셀이 자기 자신에게 가려진 것으로 판정됩니다. 이것이 섀도 애크니입니다. 바이어스로 비교를 한쪽으로 밀면 사라지지만, 너무 밀면 캐스터와 맞닿은 부분의 그림자가 없어져 물체가 떠 보입니다(피터 패닝). 두 결함은 같은 비교의 양쪽 끝이라 바이어스는 절충입니다.\n\n**증상 3 — 드로우 콜이 는다.** 섀도 맵을 만들려면 그림자를 드리우는 오브젝트를 한 번 더 그려야 합니다. 캐스케이드를 쓰면 구역마다 섀도 맵을 렌더링하므로 섀도 패스의 드로우 콜이 늘어납니다. Unity 매뉴얼도 캐스케이드 수를 늘리면 섀도 패스의 드로우 콜이 늘어난다고 적습니다.\n\n**URP 에서 품질과 비용을 바꾸는 설정** (URP Asset 기준)\n- **Max Distance:** 이 거리 밖에는 그림자를 그리지 않습니다. 그림자를 드리우는 오브젝트 수가 줄어듭니다.\n- **Cascade Count 와 분할 거리:** 가까운 그림자의 품질과 섀도 패스의 드로우 콜을 맞바꿉니다. 메인 라이트에만 적용됩니다.\n- **Shadow Resolution:** 높을수록 선명하지만 메모리와 렌더링 시간이 듭니다.\n- **Depth Bias / Normal Bias:** 애크니와 피터 패닝 사이의 절충입니다.\n- **Soft Shadows:** 섀도 맵을 추가로 처리해 가장자리를 부드럽게 합니다. 끄면 섀도 맵을 한 번만 샘플링합니다.\n\n**이 프로젝트의 조정.** Max Distance 를 플레이에 필요한 거리까지 줄이고, Cascade Count 를 4 에서 2 로 내린 뒤 분할 거리를 캐릭터 주변에 맞춥니다. 바이어스는 애크니가 사라지는 가장 작은 값으로 정하고 발밑을 확인합니다. 작은 소품의 Cast Shadows 를 끄고, 정적 오브젝트의 그림자를 굽는 방안을 검토합니다. 설정마다 Frame Debugger 의 섀도 패스 드로우 콜과 기기의 프레임 시간으로 효과를 확인합니다. 이 조정 순서는 문서 인용이 아닌 실무 판단입니다.\n\n**흔한 오답.**\n- 발밑 계단 현상을 해상도만으로 해결하려 한다.\n- 바이어스를 \"클수록 안전한 값\"으로 본다.\n- 캐스케이드가 공짜라고 생각하거나 포인트·스폿 라이트에도 적용된다고 말한다.\n- Built-in 파이프라인의 설정 위치(Quality Settings)를 URP 의 것처럼 말한다. Shadow Distance 는 Built-in 에서는 Quality Settings, URP 에서는 URP Asset, HDRP 에서는 Volume 에서 설정합니다.",
+      "rubric": {
+        "criteria": [
+          {
+            "id": "c1",
+            "category": "정확성",
+            "description": "섀도 매핑을 두 단계(라이트 시점에서 깊이 저장 → 카메라 시점에서 각 점을 라이트 공간으로 옮겨 깊이 비교)로 설명했다.",
+            "points": 12,
+            "sourceId": "wiki-shadow-mapping"
+          },
+          {
+            "id": "c2",
+            "category": "정확성",
+            "description": "발밑 계단 현상을 원근 에일리어싱(가까운 곳에 배정되는 섀도 맵 텍셀이 적다)으로 설명하고 캐스케이드가 이를 어떻게 줄이는지 말했다.",
+            "points": 12,
+            "sourceId": "unity-shadow-cascades-impl"
+          },
+          {
+            "id": "c3",
+            "category": "정확성",
+            "description": "애크니(자기 자신에게 가려진 것으로 잘못 판정)와 피터 패닝(바이어스가 너무 커서 그림자가 떨어짐)을 같은 깊이 비교의 양쪽 끝으로 설명했다.",
+            "points": 11,
+            "sourceId": "ms-shadow-depth-maps"
+          },
+          {
+            "id": "c4",
+            "category": "메모리·성능",
+            "description": "그림자 비용의 구조(캐스터를 섀도 맵에 한 번 더 그린다)를 말했다.",
+            "points": 10,
+            "sourceId": "unity-shadow-troubleshooting"
+          },
+          {
+            "id": "c5",
+            "category": "메모리·성능",
+            "description": "캐스케이드 수를 늘리면 섀도 패스의 드로우 콜이 늘어난다고 말했다.",
+            "points": 10,
+            "sourceId": "unity-shadow-cascades-perf"
+          },
+          {
+            "id": "c6",
+            "category": "메모리·성능",
+            "description": "비용을 줄이는 설정을 세 가지 이상 이유와 함께 들었다(Max Distance, Cascade Count, 해상도, Soft Shadows, Cast Shadows 끄기, 포인트 라이트 그림자 줄이기, Shadowmask 등).",
+            "points": 10,
+            "sourceId": "unity-urp-shadows-optimization"
+          },
+          {
+            "id": "c7",
+            "category": "엔진·언어 규약",
+            "description": "URP Asset 의 설정 이름을 정확히 말했다(Max Distance, Cascade Count, Shadow Resolution, Depth Bias, Normal Bias, Soft Shadows).",
+            "points": 10,
+            "sourceId": "unity-urp-asset"
+          },
+          {
+            "id": "c8",
+            "category": "엔진·언어 규약",
+            "description": "파이프라인을 밝혀 말했다(캐스케이드는 디렉셔널 라이트 전용이고 URP 에서는 메인 라이트에만 적용, 설정 위치가 파이프라인마다 다름).",
+            "points": 10,
+            "sourceId": "unity-shadow-cascades-use"
+          },
+          {
+            "id": "c9",
+            "category": "아키텍처·가독성",
+            "description": "답변이 원리 → 세 증상의 원인 → 설정 → 이 프로젝트의 조정 순서로 이어진다.",
+            "points": 8,
+            "sourceId": ""
+          },
+          {
+            "id": "c10",
+            "category": "아키텍처·가독성",
+            "description": "조정의 효과를 확인할 방법(Frame Debugger 의 섀도 패스 드로우 콜, 기기에서의 프레임 시간)을 말했다.",
+            "points": 7,
+            "sourceId": ""
+          }
+        ],
+        "criticalDeductions": [
+          {
+            "id": "d1",
+            "description": "애크니와 피터 패닝을 구분하지 못하거나, 바이어스를 올릴수록 좋다고 답했다.",
+            "penalty": -20,
+            "sourceId": "unity-urp-shadows-troubleshooting"
+          },
+          {
+            "id": "d2",
+            "description": "캐스케이드를 늘려도 비용이 늘지 않는다고 답했다.",
+            "penalty": -15,
+            "sourceId": "unity-shadow-cascades-perf"
+          },
+          {
+            "id": "d3",
+            "description": "한 파이프라인의 설정이나 동작을 모든 파이프라인의 공통 동작처럼 말했다.",
+            "penalty": -10,
+            "sourceId": "unity-shadow-distance"
+          }
+        ]
+      },
+      "tests": null,
+      "verified": {
+        "level": "reviewed",
+        "date": "2026-11-22",
+        "note": "Unity 6 매뉴얼 10개 페이지와 Microsoft 섀도 문서 2개, Wikipedia 문서를 curl 로 받아 인용 문장을 원문과 대조했고, Bias·Normal Bias 부작용 설명에 Built-in 파이프라인 기준이라는 표시를 붙이고 URP 문서의 설명을 따로 적었으며 추론 항목에 표시가 있는지 확인했습니다."
+      },
+      "nextMission": "Unity 6 URP 프로젝트에 평지와 캐릭터, 나무 50그루를 놓고 디렉셔널 라이트의 그림자를 켜세요. Cascade Count 1 / 2 / 4, Max Distance 50 / 150 의 여섯 조합에서 Frame Debugger 의 섀도 패스 드로우 콜 수와 캐릭터 발밑 그림자의 캡처를 표로 정리합니다. 그런 다음 Depth Bias 를 0 에서 조금씩 올리며 애크니가 사라지는 값과 캐릭터가 떠 보이기 시작하는 값을 각각 기록하세요."
     }
   ]
 }
